@@ -255,7 +255,7 @@ def _run_one_experiment(
     row["started_at"] = _now_iso()
     cached_repo: Path | None = None
     try:
-        _log_event(f"START {sample.input_id} | agent={agent.name} | prompt={strategy.name}")
+        _log_event(f"START {sample.input_id} | project={sample.project_id} | agent={agent.name} | prompt={strategy.name}")
         _log_event(f"CLONE/CACHE repo {sample.repository_url}")
         cached_repo = _prepare_repo(sample, config)
         row["repo_cache_path"] = str(cached_repo)

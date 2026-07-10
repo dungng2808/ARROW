@@ -32,6 +32,12 @@ SHARD_ROOT = PROJECT_ROOT / "shards"
 RUNS: dict[str, dict[str, Any]] = {}
 RUN_LOCK = threading.Lock()
 DISCONNECTED_ERRORS = (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)
+ANSI_ESCAPE_RE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
+ERROR_MARKER_RE = re.compile(
+    r"(?im)(?:\bERROR\b|BUILD FAILURE|COMPILATION (?:ERROR|FAILURE)|cannot find symbol|"
+    r"failed with an exception|failed to execute goal|exception caught|caused by:|"
+    r"there were failing tests|tests run:.*(?:failures|errors):\s*[1-9])"
+)
 
 
 def _ensure_runtime_dirs() -> None:
@@ -77,6 +83,99 @@ def _read_text(path: Path, limit: int = 80_000) -> str:
     if len(text) <= limit:
         return text
     return text[:limit] + "\n\n[truncated]\n"
+
+
+def _clean_output(text: str) -> str:
+    return ANSI_ESCAPE_RE.sub("", text).replace("\r\n", "\n")
+
+
+def _json_contains_error(value: Any, key: str = "") -> bool:
+    if isinstance(value, dict):
+        return any(_json_contains_error(item, str(item_key)) for item_key, item in value.items())
+    if isinstance(value, list):
+        return any(_json_contains_error(item, key) for item in value)
+    if value in {None, "", False, 0}:
+        return False
+    lowered_key = key.lower()
+    text = str(value).strip().upper()
+    if lowered_key == "error" or lowered_key.endswith("_error"):
+        return True
+    if lowered_key in {"primary_error", "test_fail_reason", "normalized_error_signature"}:
+        return True
+    if lowered_key in {"state", "initial_failure_state", "final_failure_state"}:
+        return text not in {"TARGET_TEST_PASSED", "MODULE_TESTS_PASSED", "PASSED", "SUCCESS"}
+    if lowered_key == "decision":
+        return text in {"REGRESSION", "REPEATED_ERROR", "REPEATED_CODE", "NO_PROGRESS", "INVALID_LLM_OUTPUT", "STOP"}
+    return False
+
+
+def _error_artifact_candidates(experiment_dir: Path) -> list[Path]:
+    candidates: set[Path] = set()
+    for pattern in ("*_build_output.txt", "*_verification.json", "metrics_report.json", "repair_summary.json"):
+        candidates.update(path for path in experiment_dir.glob(pattern) if path.is_file())
+    checkpoint_root = experiment_dir / "repair" / "checkpoints"
+    if checkpoint_root.is_dir():
+        for pattern in ("attempt_*/build_output_before.txt", "attempt_*/build_output_after.txt", "attempt_*/decision.json"):
+            candidates.update(path for path in checkpoint_root.glob(pattern) if path.is_file())
+    return sorted(candidates, key=lambda path: path.relative_to(experiment_dir).as_posix())
+
+
+def _error_artifact_content(path: Path, limit: int = 500_000) -> str:
+    return _clean_output(_read_text(path, limit=limit))
+
+
+def _is_error_artifact(path: Path) -> tuple[bool, int]:
+    content = _error_artifact_content(path)
+    if path.suffix.lower() == ".json":
+        try:
+            has_error = _json_contains_error(json.loads(content))
+        except Exception:
+            has_error = bool(ERROR_MARKER_RE.search(content))
+    else:
+        has_error = bool(ERROR_MARKER_RE.search(content))
+    return has_error, len(ERROR_MARKER_RE.findall(content))
+
+
+def _encode_artifact_path(experiment_dir: Path, path: Path) -> str:
+    relative = path.resolve().relative_to(experiment_dir.resolve()).as_posix()
+    return base64.urlsafe_b64encode(relative.encode("utf-8")).decode("ascii").rstrip("=")
+
+
+def _decode_artifact_path(experiment_dir: Path, token: str) -> Path:
+    padded = token + ("=" * (-len(token) % 4))
+    relative = Path(base64.urlsafe_b64decode(padded.encode("ascii")).decode("utf-8"))
+    candidate = (experiment_dir / relative).resolve()
+    root = experiment_dir.resolve()
+    if root not in candidate.parents or not candidate.is_file():
+        raise ValueError("Invalid error artifact id")
+    return candidate
+
+
+def _error_artifact_summaries(experiment_dir: Path) -> list[dict[str, Any]]:
+    summaries = []
+    for path in _error_artifact_candidates(experiment_dir):
+        has_error, marker_count = _is_error_artifact(path)
+        if not has_error:
+            continue
+        relative = path.relative_to(experiment_dir).as_posix()
+        summaries.append(
+            {
+                "id": _encode_artifact_path(experiment_dir, path),
+                "name": path.name,
+                "relative_path": relative,
+                "size_bytes": path.stat().st_size,
+                "error_markers": marker_count,
+            }
+        )
+    return summaries
+
+
+def _combined_error_artifacts(experiment_dir: Path) -> str:
+    sections = []
+    for item in _error_artifact_summaries(experiment_dir):
+        path = _decode_artifact_path(experiment_dir, item["id"])
+        sections.append(f"===== {item['relative_path']} =====\n{_error_artifact_content(path)}")
+    return "\n\n".join(sections)
 
 
 def _project_config() -> dict[str, Any]:
@@ -210,6 +309,49 @@ def _safe_name(value: str) -> str:
     return "".join(ch for ch in value if ch.isalnum() or ch in {"_", "-", "."})
 
 
+def _selected_generation_prompts(payload: dict[str, Any]) -> list[str]:
+    raw = payload.get("generation_prompts")
+    if raw is None:
+        legacy = str(payload.get("generation_prompt", "")).strip()
+        return [legacy] if legacy else []
+    if not isinstance(raw, list):
+        raise ValueError("generation_prompts must be a list")
+    selected: list[str] = []
+    for item in raw:
+        name = _safe_name(str(item).strip())
+        if name and name not in selected:
+            selected.append(name)
+    if not selected:
+        raise ValueError("Select at least one generation prompt")
+    return selected
+
+
+def _start_event(line: str) -> dict[str, str] | None:
+    match = re.search(r"(?:^|\]\s*)START\s+(\S+)(.*)$", line.strip())
+    if not match:
+        return None
+    sample_id = match.group(1)
+    fields: dict[str, str] = {"sample_id": sample_id}
+    for part in match.group(2).split("|"):
+        if "=" not in part:
+            continue
+        key, value = part.split("=", 1)
+        fields[key.strip()] = value.strip()
+    fields["project_id"] = fields.get("project") or sample_id.rsplit("_", 1)[0]
+    return fields
+
+
+def _finish_event(line: str) -> dict[str, str] | None:
+    match = re.search(r"(?:^|\]\s*)FINISH\s+(\S+)\s+status=(\S+)", line.strip())
+    if not match:
+        return None
+    return {"sample_id": match.group(1), "status": match.group(2)}
+
+
+def _project_log_path(run_id: str, project_id: str) -> Path:
+    return LOG_ROOT / _safe_name(run_id) / f"{_safe_name(project_id)}.log"
+
+
 def _safe_shard_file(value: str) -> Path | None:
     name = Path(str(value)).name
     if not name.endswith(".txt"):
@@ -292,6 +434,19 @@ def _write_runtime_config(payload: dict[str, Any], run_id: str) -> Path:
     if "shard_id" in payload:
         run_cfg["shard_id"] = _safe_name(str(payload.get("shard_id") or run_cfg.get("shard_id", "local"))) or "local"
     config["run"] = run_cfg
+    selected_prompts = _selected_generation_prompts(payload)
+    if selected_prompts:
+        available_prompts = {
+            str(item.get("name", ""))
+            for item in config.get("prompts", {}).get("generation_strategies", [])
+        }
+        unknown = [name for name in selected_prompts if name not in available_prompts]
+        if unknown:
+            raise ValueError(f"Unknown generation prompts: {', '.join(unknown)}")
+        experiment_cfg = dict(config.get("experiment", {}))
+        experiment_cfg["run_all_generation_prompts"] = False
+        experiment_cfg["selected_generation_prompts"] = selected_prompts
+        config["experiment"] = experiment_cfg
     path = RUNTIME_CONFIG_ROOT / f"{run_id}.yaml"
     path.write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
     return path
@@ -303,7 +458,7 @@ def _build_pipeline_command(payload: dict[str, Any], config_path: Path) -> list[
     project_id = _safe_name(str(payload.get("project_id", "")))
     sample_file = Path(str(payload.get("sample_file", ""))).name
     agent = str(payload.get("agent", "")).strip()
-    prompt = str(payload.get("generation_prompt", "")).strip()
+    prompts = _selected_generation_prompts(payload)
     if run_scope == "shard":
         shard_file = _safe_shard_file(str(payload.get("repo_shard", "")))
         if shard_file is None:
@@ -320,7 +475,7 @@ def _build_pipeline_command(payload: dict[str, Any], config_path: Path) -> list[
         command.extend(["--sample-file", sample_file])
     if agent:
         command.extend(["--agent", agent])
-    if prompt:
+    for prompt in prompts:
         command.extend(["--generation-prompt", prompt])
     if payload.get("skip_metrics"):
         command.append("--skip-metrics")
@@ -347,11 +502,59 @@ def _stop_process_tree(pid: int) -> None:
 
 
 def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) -> None:
+    current_project_id = ""
+    project_log = None
     with log_path.open("a", encoding="utf-8", errors="replace") as log:
         assert process.stdout is not None
-        for line in process.stdout:
-            log.write(line)
-            log.flush()
+        try:
+            for line in process.stdout:
+                start = _start_event(line)
+                if start:
+                    project_id = _safe_name(start["project_id"])
+                    if project_id and project_id != current_project_id:
+                        if project_log is not None:
+                            project_log.close()
+                        with RUN_LOCK:
+                            run = RUNS.get(run_id)
+                            if run:
+                                for item in run.get("project_logs", []):
+                                    if item.get("project_id") == current_project_id and item.get("status") == "running":
+                                        item["status"] = "completed"
+                                entry = next((item for item in run.get("project_logs", []) if item.get("project_id") == project_id), None)
+                                if entry is None:
+                                    entry = {
+                                        "project_id": project_id,
+                                        "status": "running",
+                                        "experiments_completed": 0,
+                                        "last_experiment_status": "",
+                                    }
+                                    run.setdefault("project_logs", []).append(entry)
+                                else:
+                                    entry["status"] = "running"
+                                entry["sample_id"] = start.get("sample_id", "")
+                                entry["agent"] = start.get("agent", "")
+                                entry["prompt"] = start.get("prompt", "")
+                        current_project_id = project_id
+                        project_path = _project_log_path(run_id, project_id)
+                        project_path.parent.mkdir(parents=True, exist_ok=True)
+                        project_log = project_path.open("a", encoding="utf-8", errors="replace")
+                log.write(line)
+                log.flush()
+                if project_log is not None:
+                    project_log.write(line)
+                    project_log.flush()
+                finish = _finish_event(line)
+                if finish and current_project_id:
+                    with RUN_LOCK:
+                        run = RUNS.get(run_id)
+                        if run:
+                            entry = next((item for item in run.get("project_logs", []) if item.get("project_id") == current_project_id), None)
+                            if entry:
+                                entry["experiments_completed"] = int(entry.get("experiments_completed") or 0) + 1
+                                entry["last_experiment_status"] = finish["status"]
+        finally:
+            if project_log is not None:
+                project_log.close()
     return_code = process.wait()
     with RUN_LOCK:
         run = RUNS.get(run_id)
@@ -360,11 +563,15 @@ def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) 
             run["finished_at"] = datetime.now().isoformat(timespec="seconds")
             if run.get("status") != "stopped":
                 run["status"] = "completed" if return_code == 0 else "failed"
+            final_project_status = "stopped" if run.get("status") == "stopped" else "completed" if return_code == 0 else "failed"
+            for item in run.get("project_logs", []):
+                if item.get("status") == "running":
+                    item["status"] = final_project_status
 
 
 def _start_run(payload: dict[str, Any]) -> dict[str, Any]:
     _ensure_runtime_dirs()
-    run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
+    run_id = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
     config_path = _write_runtime_config(payload, run_id)
     command = _build_pipeline_command(payload, config_path)
     log_path = LOG_ROOT / f"{run_id}.log"
@@ -393,6 +600,7 @@ def _start_run(payload: dict[str, Any]) -> dict[str, Any]:
         "log_path": str(log_path),
         "config_path": str(config_path),
         "pid": process.pid,
+        "project_logs": [],
     }
     with RUN_LOCK:
         RUNS[run_id] = run
@@ -425,7 +633,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 with RUN_LOCK:
                     return _json_response(self, {"runs": list(RUNS.values())})
             if path.startswith("/api/runs/"):
-                return self._api_run_route(path)
+                return self._api_run_route(path, parsed.query)
             return self._serve_static(path)
         except DISCONNECTED_ERRORS:
             return
@@ -474,6 +682,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             "build": config.get("build", {}),
             "input": config.get("input", {}),
             "run": config.get("run", {}),
+            "experiment": config.get("experiment", {}),
             "java": _detect_java(),
             "dataset_root": str(DATASET_ROOT),
             "runs_root": str(PROJECT_ROOT / "runs"),
@@ -510,6 +719,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
     def _api_experiment_route(self, path: str) -> None:
         parts = path.strip("/").split("/")
+        if len(parts) < 3 or not parts[2]:
+            return _json_response(self, {"error": "Experiment not found"}, status=404)
         token = parts[2]
         result_path = _decode_result_path(token)
         row = _load_experiment(result_path)
@@ -521,6 +732,25 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                     "experiment": row,
                     "repair_summary": _read_json(experiment_dir / "repair_summary.json"),
                     "checkpoints": _checkpoint_summaries(experiment_dir),
+                    "error_files": _error_artifact_summaries(experiment_dir),
+                },
+            )
+        if len(parts) == 4 and parts[3] == "errors":
+            return _json_response(
+                self,
+                {
+                    "error_files": _error_artifact_summaries(experiment_dir),
+                    "content": _combined_error_artifacts(experiment_dir),
+                },
+            )
+        if len(parts) == 5 and parts[3] == "errors":
+            artifact = _decode_artifact_path(experiment_dir, parts[4])
+            return _json_response(
+                self,
+                {
+                    "id": parts[4],
+                    "relative_path": artifact.relative_to(experiment_dir).as_posix(),
+                    "content": _error_artifact_content(artifact),
                 },
             )
         if len(parts) == 5 and parts[3] == "checkpoints":
@@ -541,7 +771,7 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             )
         return _json_response(self, {"error": "Not found"}, status=404)
 
-    def _api_run_route(self, path: str) -> None:
+    def _api_run_route(self, path: str, query: str = "") -> None:
         parts = path.strip("/").split("/")
         run_id = _safe_name(parts[2]) if len(parts) > 2 else ""
         with RUN_LOCK:
@@ -549,7 +779,16 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         if not run:
             return _json_response(self, {"error": "Run not found"}, status=404)
         if len(parts) == 4 and parts[3] == "logs":
-            return _json_response(self, {"id": run_id, "logs": _tail(Path(str(run["log_path"])))})
+            params = parse_qs(query)
+            project_id = _safe_name(params.get("project_id", [""])[0])
+            if project_id:
+                known = any(item.get("project_id") == project_id for item in run.get("project_logs", []))
+                if not known:
+                    return _json_response(self, {"error": "Project log not found"}, status=404)
+                log_path = _project_log_path(run_id, project_id)
+            else:
+                log_path = Path(str(run["log_path"]))
+            return _json_response(self, {"id": run_id, "project_id": project_id, "logs": _tail(log_path)})
         return _json_response(self, run)
 
     def _api_stop_run(self, run_id: str) -> dict[str, Any]:

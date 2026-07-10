@@ -88,10 +88,10 @@
               <span>Agent</span>
               <select id="agentSelect" name="agent"></select>
             </label>
-            <label>
-              <span>Prompt</span>
-              <select id="promptSelect" name="generation_prompt"></select>
-            </label>
+            <fieldset class="prompt-field wide">
+              <legend>Prompts</legend>
+              <div id="promptOptions" class="prompt-options"></div>
+            </fieldset>
             <label>
               <span>Retry</span>
               <select id="retryMode" name="retry_mode">
@@ -167,7 +167,12 @@
             <div class="run-list" id="runList"></div>
             <div class="log-panel">
               <div class="log-toolbar">
-                <span>Run logs</span>
+                <div class="log-toolbar-main">
+                  <span id="logTitle">Run logs</span>
+                  <select id="logScope" class="log-scope" aria-label="Log project">
+                    <option value="">All projects</option>
+                  </select>
+                </div>
                 <div class="log-actions">
                   <small id="copyLogStatus"></small>
                   <button id="copyLogsBtn" class="icon-btn" type="button" title="Copy logs" aria-label="Copy logs">
@@ -226,6 +231,25 @@
             </div>
           </div>
           <div id="summaryGrid" class="summary-grid"></div>
+        </section>
+
+        <section id="errors" class="panel detail-panel">
+          <div class="section-title">
+            <div>
+              <h2>Errors</h2>
+              <span id="errorFileCount"></span>
+            </div>
+            <div class="error-actions">
+              <small id="copyErrorStatus"></small>
+              <button id="copyErrorsBtn" class="icon-btn" type="button" title="Copy all errors" aria-label="Copy all errors" disabled>
+                <i data-lucide="copy"></i>
+              </button>
+            </div>
+          </div>
+          <select id="errorFileSelect" class="error-file-select" aria-label="Error file" disabled>
+            <option value="">No error files</option>
+          </select>
+          <pre id="errorContent" class="error-content"></pre>
         </section>
 
         <section id="repair" class="panel detail-panel">

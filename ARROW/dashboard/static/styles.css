@@ -208,6 +208,11 @@ button svg {
   padding: 0;
 }
 
+.icon-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .primary {
   background: var(--blue);
   color: #ffffff;
@@ -264,6 +269,54 @@ textarea {
 
 .wide {
   grid-column: span 2;
+}
+
+.prompt-field {
+  min-width: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+}
+
+.prompt-field legend {
+  margin-bottom: 5px;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.prompt-options {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  min-height: 38px;
+  padding: 7px 10px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.prompt-options.invalid {
+  border-color: var(--red);
+}
+
+.prompt-option {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-width: 0;
+  cursor: pointer;
+}
+
+.prompt-option input {
+  flex: 0 0 16px;
+  width: 16px;
+  height: 16px;
+  margin: 0;
+}
+
+.prompt-option span {
+  overflow-wrap: anywhere;
 }
 
 .hidden {
@@ -404,6 +457,26 @@ pre {
   font-weight: 800;
 }
 
+.log-toolbar-main {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-width: 0;
+}
+
+.log-toolbar-main > span {
+  flex: 0 0 auto;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.log-scope {
+  width: min(280px, 42vw);
+  height: 34px;
+  padding-block: 4px;
+}
+
 .log-actions {
   display: inline-flex;
   align-items: center;
@@ -503,6 +576,22 @@ tbody tr.selected {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+}
+
+.error-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.error-file-select {
+  margin-bottom: 10px;
+}
+
+.error-content {
+  min-height: 220px;
+  max-height: 520px;
+  color: #fee2e2;
 }
 
 .summary-item {
@@ -798,6 +887,16 @@ body.sidebar-collapsed .nav-link {
   }
 
   .filters input {
+    width: 100%;
+  }
+
+  .log-toolbar,
+  .log-toolbar-main {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .log-scope {
     width: 100%;
   }
 

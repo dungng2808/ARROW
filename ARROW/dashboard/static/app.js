@@ -4,9 +4,13 @@ const state = {
   selectedId: null,
   selectedCheckpoint: null,
   checkpointPayload: null,
+  errorFiles: [],
+  selectedErrorFileId: null,
   currentTab: "decision",
   finishedRunIds: new Set(),
   selectedRunId: null,
+  runs: [],
+  selectedLogProjectByRun: new Map(),
   shards: [],
   sidebarCollapsed: localStorage.getItem("arrow.sidebarCollapsed") === "true",
 };
@@ -72,6 +76,13 @@ function bindEvents() {
   $("#refreshBtn").addEventListener("click", refreshAll);
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#copyLogsBtn").addEventListener("click", copyRunLogs);
+  $("#copyErrorsBtn").addEventListener("click", copyExperimentErrors);
+  $("#errorFileSelect").addEventListener("change", () => selectErrorFile($("#errorFileSelect").value));
+  $("#logScope").addEventListener("change", async () => {
+    if (!state.selectedRunId) return;
+    state.selectedLogProjectByRun.set(state.selectedRunId, $("#logScope").value);
+    await loadSelectedRunLog();
+  });
   $("#projectSelect").addEventListener("change", () => loadSamples($("#projectSelect").value));
   $("#runScope").addEventListener("change", toggleRunScope);
   $("#shardSelect").addEventListener("change", updateShardMeta);
@@ -86,7 +97,7 @@ function bindEvents() {
       renderCheckpointContent();
     });
   });
-  setInterval(loadRuns, 3000);
+  setInterval(() => loadRuns().catch((error) => console.error(error)), 3000);
 }
 
 function toggleSidebar() {
@@ -144,6 +155,42 @@ function setCopyLogStatus(message) {
   }, 1800);
 }
 
+function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    return navigator.clipboard.writeText(text);
+  }
+  fallbackCopy(text);
+  return Promise.resolve();
+}
+
+function setCopyErrorStatus(message) {
+  $("#copyErrorStatus").textContent = message;
+  window.clearTimeout(setCopyErrorStatus.timer);
+  setCopyErrorStatus.timer = window.setTimeout(() => {
+    $("#copyErrorStatus").textContent = "";
+  }, 1800);
+}
+
+async function copyExperimentErrors() {
+  if (!state.selectedId || !state.errorFiles.length) {
+    setCopyErrorStatus("No errors");
+    return;
+  }
+  const payload = await api(`/api/experiments/${encodeURIComponent(state.selectedId)}/errors`);
+  const content = payload.content || "";
+  if (!content.trim()) {
+    setCopyErrorStatus("No errors");
+    return;
+  }
+  try {
+    await copyText(content);
+    setCopyErrorStatus("Copied all");
+  } catch (_error) {
+    fallbackCopy(content);
+    setCopyErrorStatus("Copied all");
+  }
+}
+
 async function refreshAll() {
   await loadExperiments();
   await loadRuns();
@@ -153,7 +200,19 @@ function renderConfig() {
   const agents = state.config.agents || [];
   const prompts = state.config.generation_prompts || [];
   $("#agentSelect").innerHTML = agents.map((agent) => `<option value="${escapeHtml(agent.name)}">${escapeHtml(agent.name)}</option>`).join("");
-  $("#promptSelect").innerHTML = prompts.map((prompt) => `<option value="${escapeHtml(prompt.name)}">${escapeHtml(prompt.name)}</option>`).join("");
+  $("#promptOptions").innerHTML = prompts
+    .map(
+      (prompt, index) => `
+        <label class="prompt-option">
+          <input type="checkbox" name="generation_prompt" value="${escapeHtml(prompt.name)}" ${index === 0 ? "checked" : ""} />
+          <span>${escapeHtml(prompt.name)}</span>
+        </label>
+      `,
+    )
+    .join("");
+  document.querySelectorAll('#promptOptions input[type="checkbox"]').forEach((input) => {
+    input.addEventListener("change", () => $("#promptOptions").classList.remove("invalid"));
+  });
   const retry = state.config.adaptive_repair || {};
   $("#retryMode").value = retry.retry_mode || "bounded";
   $("#wallClock").value = retry.unlimited_max_wall_clock_minutes || 120;
@@ -280,12 +339,14 @@ async function selectExperiment(id) {
   state.selectedId = id;
   state.selectedCheckpoint = null;
   state.checkpointPayload = null;
+  state.errorFiles = [];
+  state.selectedErrorFileId = null;
   renderExperiments();
   const payload = await api(`/api/experiments/${encodeURIComponent(id)}`);
-  renderDetail(payload.experiment, payload.repair_summary || {}, payload.checkpoints || []);
+  renderDetail(payload.experiment, payload.repair_summary || {}, payload.checkpoints || [], payload.error_files || []);
 }
 
-function renderDetail(row, repair, checkpoints) {
+function renderDetail(row, repair, checkpoints, errorFiles) {
   $("#detailTitle").textContent = row.focal_class || row.Class_Under_Test || "Experiment";
   $("#detailSubtitle").textContent = `${row.project_id || ""} / ${row.sample_id || ""}`;
   const summary = [
@@ -307,6 +368,42 @@ function renderDetail(row, repair, checkpoints) {
     .join("");
   renderMetrics(row);
   renderTimeline(checkpoints);
+  renderErrorFiles(errorFiles);
+}
+
+function renderErrorFiles(errorFiles) {
+  state.errorFiles = errorFiles;
+  $("#errorFileCount").textContent = `${errorFiles.length} files`;
+  $("#copyErrorsBtn").disabled = !errorFiles.length;
+  if (!errorFiles.length) {
+    state.selectedErrorFileId = null;
+    $("#errorFileSelect").innerHTML = `<option value="">No error files</option>`;
+    $("#errorFileSelect").disabled = true;
+    $("#errorContent").textContent = "No error artifacts detected.";
+    return;
+  }
+  $("#errorFileSelect").disabled = false;
+  $("#errorFileSelect").innerHTML = errorFiles
+    .map((file) => {
+      const markerText = file.error_markers ? ` (${file.error_markers})` : "";
+      return `<option value="${escapeHtml(file.id)}">${escapeHtml(file.relative_path + markerText)}</option>`;
+    })
+    .join("");
+  const selected = errorFiles.some((file) => file.id === state.selectedErrorFileId) ? state.selectedErrorFileId : errorFiles[0].id;
+  $("#errorFileSelect").value = selected;
+  selectErrorFile(selected);
+}
+
+async function selectErrorFile(id) {
+  if (!state.selectedId || !id) {
+    $("#errorContent").textContent = "";
+    return;
+  }
+  const experimentId = state.selectedId;
+  state.selectedErrorFileId = id;
+  const payload = await api(`/api/experiments/${encodeURIComponent(experimentId)}/errors/${encodeURIComponent(id)}`);
+  if (state.selectedId !== experimentId || state.selectedErrorFileId !== id) return;
+  $("#errorContent").textContent = payload.content || "";
 }
 
 function renderMetrics(row) {
@@ -451,6 +548,12 @@ function renderCheckpointContent() {
 
 async function startRun(event) {
   event.preventDefault();
+  const generationPrompts = Array.from(document.querySelectorAll('#promptOptions input[type="checkbox"]:checked')).map((input) => input.value);
+  if (!generationPrompts.length) {
+    $("#promptOptions").classList.add("invalid");
+    $("#runLog").textContent = "Select at least one prompt.";
+    return;
+  }
   const payload = {
     run_scope: $("#runScope").value,
     project_id: $("#projectSelect").value,
@@ -462,7 +565,7 @@ async function startRun(event) {
     start_index: Number($("#startIndex").value || 0),
     limit: Number($("#limit").value || 0),
     agent: $("#agentSelect").value,
-    generation_prompt: $("#promptSelect").value,
+    generation_prompts: generationPrompts,
     retry_mode: $("#retryMode").value,
     unlimited_max_wall_clock_minutes: Number($("#wallClock").value || 120),
     max_attempts_per_prompt: Number($("#maxAttemptsPerPrompt").value || 2),
@@ -490,29 +593,54 @@ async function startRun(event) {
 async function loadRuns() {
   const payload = await api("/api/runs");
   const runs = payload.runs || [];
+  state.runs = runs;
   const newlyFinished = runs.some((run) => {
     const done = ["completed", "failed"].includes(run.status);
     if (!done || state.finishedRunIds.has(run.id)) return false;
     state.finishedRunIds.add(run.id);
     return true;
   });
-  renderRunList(runs);
-  if (newlyFinished) {
-    await loadExperiments();
-  }
   if (!state.selectedRunId || !runs.some((run) => run.id === state.selectedRunId)) {
     const running = runs.find((run) => run.status === "running");
     const newest = runs[runs.length - 1];
     state.selectedRunId = (running || newest || {}).id || null;
+  }
+  renderRunList(runs);
+  renderLogScope(runs.find((run) => run.id === state.selectedRunId));
+  if (newlyFinished || runs.some((run) => ["running", "stopping"].includes(run.status))) {
+    await loadExperiments();
   }
   await loadSelectedRunLog();
 }
 
 async function loadSelectedRunLog() {
   if (!state.selectedRunId) return;
-  const log = await api(`/api/runs/${encodeURIComponent(state.selectedRunId)}/logs`);
+  const projectId = state.selectedLogProjectByRun.get(state.selectedRunId) || "";
+  const query = projectId ? `?project_id=${encodeURIComponent(projectId)}` : "";
+  const log = await api(`/api/runs/${encodeURIComponent(state.selectedRunId)}/logs${query}`);
   $("#runLog").textContent = log.logs || "";
+  $("#logTitle").textContent = projectId ? `Project ${projectId}` : "Run logs";
   $("#copyLogStatus").textContent = "";
+}
+
+function renderLogScope(run) {
+  const select = $("#logScope");
+  const projects = run?.project_logs || [];
+  let selected = run ? state.selectedLogProjectByRun.get(run.id) || "" : "";
+  if (selected && !projects.some((project) => project.project_id === selected)) {
+    selected = "";
+    if (run) state.selectedLogProjectByRun.set(run.id, "");
+  }
+  select.innerHTML = [
+    `<option value="">All projects</option>`,
+    ...projects.map((project) => {
+      const count = Number(project.experiments_completed || 0);
+      const suffix = count ? ` · ${count} complete` : ` · ${project.status}`;
+      return `<option value="${escapeHtml(project.project_id)}">${escapeHtml(project.project_id + suffix)}</option>`;
+    }),
+  ].join("");
+  select.value = selected;
+  select.disabled = !run;
 }
 
 function renderRunList(runs) {
@@ -522,6 +650,9 @@ function renderRunList(runs) {
     .map((run) => {
       const kind = run.status === "completed" ? "pass" : run.status === "running" ? "info" : "fail";
       const selected = state.selectedRunId === run.id ? "selected" : "";
+      const projectLogs = run.project_logs || [];
+      const completedProjects = projectLogs.filter((project) => project.status === "completed").length;
+      const projectMeta = projectLogs.length ? `${projectLogs.length} projects seen · ${completedProjects} complete` : "Waiting for project";
       const stopButton =
         run.status === "running" || run.status === "stopping"
           ? `<button class="mini-stop" data-stop="${escapeHtml(run.id)}" title="Stop this run">Stop</button>`
@@ -529,6 +660,7 @@ function renderRunList(runs) {
       return `
         <div class="run-item ${selected}" data-run="${escapeHtml(run.id)}">
           <strong>${escapeHtml(run.id)}</strong>
+          <small>${escapeHtml(projectMeta)}</small>
           <div class="run-actions">${badge(run.status, kind)}${stopButton}</div>
         </div>
       `;
@@ -545,6 +677,7 @@ function renderRunList(runs) {
     item.addEventListener("click", async () => {
       state.selectedRunId = item.dataset.run;
       renderRunList(runs);
+      renderLogScope(runs.find((run) => run.id === state.selectedRunId));
       await loadSelectedRunLog();
     });
   });
