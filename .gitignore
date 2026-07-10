@@ -4,3 +4,8 @@ ARROW/repos/
 ARROW/shards/
 ARROW/dashboard/logs/
 ARROW/dashboard/runtime_configs/
+ARROW/dashboard/__pycache__/
+
+# Python generated files
+**/__pycache__/
+*.py[cod]
