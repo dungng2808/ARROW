@@ -2,7 +2,15 @@ from __future__ import annotations
 
 import pytest
 
-from src.build_runner import BuildContext, select_gradle_command, select_maven_command, target_test_command
+from src.build_runner import (
+    BuildContext,
+    module_test_command,
+    select_gradle_command,
+    select_maven_command,
+    target_test_command,
+    verify_module_tests,
+)
+from src.models import FailureOrigin, FailureState, VerificationResult
 from src.repo_manager import safe_remove_tree
 from src.test_writer import JavaValidationError, validate_java_candidate, write_owned_generated_test
 
@@ -208,6 +216,61 @@ def test_gradle_wrapper_selection_windows(monkeypatch, tmp_path):
     ctx = BuildContext(repo, module, "gradle", "FooTest", "demo.FooTest")
     command = select_gradle_command(ctx)
     assert command[0].endswith("gradlew.bat")
+
+
+def test_gradle_nested_module_uses_project_dir_when_not_in_root_settings(monkeypatch, tmp_path):
+    monkeypatch.setattr("src.build_runner._is_windows", lambda: False)
+    repo = tmp_path / "workspace"
+    module = repo / "strategies"
+    module.mkdir(parents=True)
+    (repo / "gradlew").write_text("#!/bin/sh", encoding="utf-8")
+    (repo / "settings.gradle").write_text("rootProject.name = 'workspace'", encoding="utf-8")
+    (module / "build.gradle").write_text("plugins { id 'java' }", encoding="utf-8")
+    ctx = BuildContext(repo, module, "gradle", "FooTest", "demo.FooTest")
+
+    _tool, command, cwd = module_test_command(ctx)
+
+    assert command == [str(repo / "gradlew"), "-p", str(module), "test"]
+    assert cwd == module
+
+
+def test_gradle_missing_root_project_retries_as_standalone_module(monkeypatch, tmp_path):
+    monkeypatch.setattr("src.build_runner._is_windows", lambda: False)
+    repo = tmp_path / "workspace"
+    module = repo / "strategies"
+    module.mkdir(parents=True)
+    (repo / "gradlew").write_text("#!/bin/sh", encoding="utf-8")
+    (repo / "settings.gradle").write_text("include 'strategies'", encoding="utf-8")
+    (module / "build.gradle").write_text("plugins { id 'java' }", encoding="utf-8")
+    ctx = BuildContext(repo, module, "gradle", "FooTest", "demo.FooTest")
+    calls = []
+
+    def fake_run_command(_ctx, command, cwd, tool_name, target_only):
+        calls.append((command, cwd, tool_name, target_only))
+        if len(calls) == 1:
+            return VerificationResult(
+                state=FailureState.COMPILE_FAILED,
+                failure_origin=FailureOrigin.BUILD_CONFIGURATION,
+                exit_code=1,
+                raw_output="Project 'strategies' not found in root project 'workspace'.",
+            )
+        return VerificationResult(
+            state=FailureState.MODULE_TESTS_PASSED,
+            failure_origin=FailureOrigin.UNKNOWN,
+            exit_code=0,
+            raw_output="BUILD SUCCESSFUL",
+        )
+
+    monkeypatch.setattr("src.build_runner.run_command", fake_run_command)
+
+    result = verify_module_tests(ctx)
+
+    assert calls[0][0] == [str(repo / "gradlew"), ":strategies:test"]
+    assert calls[0][1] == repo
+    assert calls[1][0] == [str(repo / "gradlew"), "-p", str(module), "test"]
+    assert calls[1][1] == module
+    assert result.state == FailureState.MODULE_TESTS_PASSED
+    assert "standalone-module fallback" in result.raw_output
 
 
 def test_safe_remove_tree_removes_only_inside_allowed_root(tmp_path):

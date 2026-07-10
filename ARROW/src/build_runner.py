@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import os
 import platform
+import re
 import shutil
 import signal
 import subprocess
@@ -124,6 +125,52 @@ def _gradle_test_invocation(ctx: BuildContext) -> tuple[list[str], Path]:
     return command, ctx.module_root
 
 
+def _gradle_standalone_test_invocation(ctx: BuildContext, target_only: bool) -> tuple[list[str], Path]:
+    command = select_gradle_command(ctx)
+    command.extend(["-p", str(ctx.module_root), "test"])
+    if target_only:
+        command.extend(["--tests", ctx.generated_test_fqcn])
+    return command, ctx.module_root
+
+
+def _gradle_project_not_found(result: VerificationResult) -> bool:
+    return bool(
+        re.search(
+            r"project\s+['\"][^'\"]+['\"]\s+not\s+found\s+in\s+root\s+project",
+            result.raw_output or "",
+            flags=re.IGNORECASE,
+        )
+    )
+
+
+def _run_with_gradle_project_fallback(
+    ctx: BuildContext,
+    command: list[str],
+    cwd: Path,
+    target_only: bool,
+) -> VerificationResult:
+    result = run_command(ctx, command, cwd, "gradle", target_only=target_only)
+    if ctx.module_root.resolve() == ctx.repository_root.resolve() or not _gradle_project_not_found(result):
+        return result
+
+    fallback_command, fallback_cwd = _gradle_standalone_test_invocation(ctx, target_only)
+    if fallback_command == command and fallback_cwd.resolve() == cwd.resolve():
+        return result
+
+    print(
+        f"[{time.strftime('%H:%M:%S')}] BUILD gradle module is not registered in root settings; "
+        f"retry with -p {ctx.module_root}",
+        flush=True,
+    )
+    fallback = run_command(ctx, fallback_command, fallback_cwd, "gradle", target_only=target_only)
+    fallback.raw_output = (
+        result.raw_output
+        + "\n\n--- ARROW Gradle standalone-module fallback ---\n\n"
+        + fallback.raw_output
+    )
+    return fallback
+
+
 def target_test_command(ctx: BuildContext) -> tuple[str, list[str], Path]:
     if ctx.build_tool == "maven":
         command = select_maven_command(ctx)
@@ -241,11 +288,15 @@ def run_command(ctx: BuildContext, command: list[str], cwd: Path, tool_name: str
 
 def verify_target_test(ctx: BuildContext) -> VerificationResult:
     tool, command, cwd = target_test_command(ctx)
+    if tool == "gradle":
+        return _run_with_gradle_project_fallback(ctx, command, cwd, target_only=True)
     return run_command(ctx, command, cwd, tool, target_only=True)
 
 
 def verify_module_tests(ctx: BuildContext) -> VerificationResult:
     tool, command, cwd = module_test_command(ctx)
+    if tool == "gradle":
+        return _run_with_gradle_project_fallback(ctx, command, cwd, target_only=False)
     return run_command(ctx, command, cwd, tool, target_only=False)
 
 
