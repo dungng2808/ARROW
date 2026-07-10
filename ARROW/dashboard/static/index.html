@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ARROW Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div class="brand-copy">
+            <h1>ARROW</h1>
+            <span>Experiment Dashboard</span>
+          </div>
+          <button id="sidebarToggle" class="sidebar-toggle" type="button" title="Hide sidebar" aria-label="Toggle sidebar" aria-expanded="true">
+            <i data-lucide="panel-left-close"></i>
+          </button>
+        </div>
+        <nav>
+          <a class="nav-link active" href="#launcher"><i data-lucide="play"></i><span>Launcher</span></a>
+          <a class="nav-link" href="#experiments"><i data-lucide="table-2"></i><span>Experiments</span></a>
+          <a class="nav-link" href="#repair"><i data-lucide="git-branch"></i><span>Repair</span></a>
+          <a class="nav-link" href="#metrics"><i data-lucide="bar-chart-3"></i><span>Metrics</span></a>
+        </nav>
+      </aside>
+
+      <main class="main">
+        <section id="launcher" class="panel launcher">
+          <div class="section-title">
+            <div>
+              <h2>Run Launcher</h2>
+              <span id="configMeta"></span>
+            </div>
+            <button id="refreshBtn" class="icon-btn" title="Refresh dashboard data"><i data-lucide="refresh-cw"></i></button>
+          </div>
+
+          <form id="runForm" class="run-grid">
+            <label>
+              <span>Run scope</span>
+              <select id="runScope" name="run_scope">
+                <option value="single">Single sample</option>
+                <option value="shard">Shard batch</option>
+              </select>
+            </label>
+            <label class="single-field">
+              <span>Project</span>
+              <select id="projectSelect" name="project_id"></select>
+              <small id="projectMeta"></small>
+            </label>
+            <label class="single-field">
+              <span>Sample</span>
+              <select id="sampleSelect" name="sample_file"></select>
+            </label>
+            <label class="shard-field">
+              <span>Shard file</span>
+              <select id="shardSelect" name="repo_shard"></select>
+              <small id="shardMeta"></small>
+            </label>
+            <label class="shard-field">
+              <span>Shard ID</span>
+              <input id="shardId" name="shard_id" type="text" placeholder="person_00" />
+            </label>
+            <label class="shard-field">
+              <span>Input mode</span>
+              <select id="inputMode" name="input_mode">
+                <option value="project">Project</option>
+                <option value="sample">Sample</option>
+              </select>
+            </label>
+            <label class="shard-field">
+              <span>Samples/project</span>
+              <input id="samplesPerProject" name="samples_per_project" type="text" value="1" />
+            </label>
+            <label class="shard-field">
+              <span>Start index</span>
+              <input id="startIndex" name="start_index" type="number" min="0" value="0" />
+            </label>
+            <label class="shard-field">
+              <span>Limit</span>
+              <input id="limit" name="limit" type="number" min="0" value="0" />
+              <small>0 = all remaining</small>
+            </label>
+            <label>
+              <span>Agent</span>
+              <select id="agentSelect" name="agent"></select>
+            </label>
+            <label>
+              <span>Prompt</span>
+              <select id="promptSelect" name="generation_prompt"></select>
+            </label>
+            <label>
+              <span>Retry</span>
+              <select id="retryMode" name="retry_mode">
+                <option value="bounded">Bounded</option>
+                <option value="unlimited">Unlimited guarded</option>
+              </select>
+            </label>
+            <label>
+              <span>Wall clock minutes</span>
+              <input id="wallClock" name="unlimited_max_wall_clock_minutes" type="number" min="1" value="120" />
+            </label>
+            <label>
+              <span>Java default</span>
+              <input id="javaDefault" name="java_default" type="text" placeholder="Fallback JAVA_HOME" />
+              <small id="javaMeta"></small>
+            </label>
+            <label>
+              <span>Override JAVA_HOME</span>
+              <input id="javaHome" name="java_home" type="text" placeholder="Optional" />
+            </label>
+            <label class="wide">
+              <span>JDK version map</span>
+              <textarea id="javaHomes" name="java_homes" rows="4" placeholder="java-17: C:\Program Files\Java\jdk-17"></textarea>
+            </label>
+            <div class="toggles">
+              <label><input id="skipMetrics" type="checkbox" /> <span>Skip metrics</span></label>
+              <label><input id="keepWorkspace" type="checkbox" /> <span>Keep workspace</span></label>
+              <label><input id="keepRepo" type="checkbox" /> <span>Keep repo</span></label>
+              <label><input id="mockSmoke" type="checkbox" /> <span>Mock LLM</span></label>
+            </div>
+            <button class="primary" type="submit"><i data-lucide="play"></i><span>Run</span></button>
+          </form>
+
+          <details class="repair-settings" open>
+            <summary>Adaptive Repair Bounds</summary>
+            <div class="bounds-grid">
+              <label>
+                <span>Attempts per prompt</span>
+                <input id="maxAttemptsPerPrompt" type="number" min="1" />
+              </label>
+              <label>
+                <span>Max repair attempts</span>
+                <input id="maxRepairAttempts" type="number" min="1" />
+              </label>
+              <label>
+                <span>Max regeneration</span>
+                <input id="maxRegenerateAttempts" type="number" min="0" />
+              </label>
+              <label>
+                <span>Max total LLM</span>
+                <input id="maxTotalLlmAttempts" type="number" min="1" />
+              </label>
+              <label>
+                <span>No-progress patience</span>
+                <input id="noProgressPatience" type="number" min="1" />
+              </label>
+              <label>
+                <span>Repeated-error patience</span>
+                <input id="repeatedErrorPatience" type="number" min="1" />
+              </label>
+              <label>
+                <span>Build timeout retries</span>
+                <input id="maxBuildTimeoutRetries" type="number" min="0" />
+              </label>
+              <label>
+                <span>Tool error retries</span>
+                <input id="maxToolErrorRetries" type="number" min="0" />
+              </label>
+            </div>
+          </details>
+
+          <div class="run-status">
+            <div class="run-list" id="runList"></div>
+            <div class="log-panel">
+              <div class="log-toolbar">
+                <span>Run logs</span>
+                <div class="log-actions">
+                  <small id="copyLogStatus"></small>
+                  <button id="copyLogsBtn" class="icon-btn" type="button" title="Copy logs" aria-label="Copy logs">
+                    <i data-lucide="copy"></i>
+                  </button>
+                </div>
+              </div>
+              <pre id="runLog"></pre>
+            </div>
+          </div>
+        </section>
+
+        <section id="experiments" class="panel">
+          <div class="section-title">
+            <div>
+              <h2>Experiments</h2>
+              <span id="experimentCount"></span>
+            </div>
+            <div class="filters">
+              <input id="searchBox" type="search" placeholder="Filter" />
+              <select id="statusFilter">
+                <option value="">All</option>
+                <option value="passed">Passed</option>
+                <option value="failed">Failed</option>
+                <option value="repaired">Repaired</option>
+              </select>
+            </div>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Sample</th>
+                  <th>Class</th>
+                  <th>Agent</th>
+                  <th>Prompt</th>
+                  <th>State</th>
+                  <th>Repair</th>
+                  <th>Coverage</th>
+                  <th>Mutation</th>
+                  <th>Time</th>
+                </tr>
+              </thead>
+              <tbody id="experimentRows"></tbody>
+            </table>
+          </div>
+        </section>
+      </main>
+
+      <aside class="detail">
+        <section class="panel detail-panel">
+          <div class="section-title">
+            <div>
+              <h2 id="detailTitle">Experiment</h2>
+              <span id="detailSubtitle"></span>
+            </div>
+          </div>
+          <div id="summaryGrid" class="summary-grid"></div>
+        </section>
+
+        <section id="repair" class="panel detail-panel">
+          <div class="section-title">
+            <div>
+              <h2>Repair Timeline</h2>
+              <span id="checkpointCount"></span>
+            </div>
+          </div>
+          <div id="timeline" class="timeline"></div>
+        </section>
+
+        <section id="metrics" class="panel detail-panel">
+          <div class="section-title">
+            <div>
+              <h2>Metrics</h2>
+              <span id="metricMeta"></span>
+            </div>
+          </div>
+          <div id="metricBars" class="metric-bars"></div>
+          <div id="metricDetails" class="metric-details"></div>
+        </section>
+
+        <section class="panel detail-panel">
+          <div class="section-title">
+            <div>
+              <h2>Checkpoint</h2>
+              <span id="checkpointTitle"></span>
+            </div>
+          </div>
+          <div class="tabs">
+            <button class="tab active" data-tab="decision">Decision</button>
+            <button class="tab" data-tab="build">Build</button>
+            <button class="tab" data-tab="response">LLM</button>
+            <button class="tab" data-tab="test">Test</button>
+          </div>
+          <pre id="checkpointContent"></pre>
+        </section>
+      </aside>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

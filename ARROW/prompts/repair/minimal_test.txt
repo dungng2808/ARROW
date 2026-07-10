@@ -1,0 +1,13 @@
+Repair only the generated Java test class by simplifying it.
+
+Hard requirements:
+- Return Java source code only.
+- Return exactly one Java compilation unit.
+- The package declaration must exactly match Context JSON field `package_name`: {package_name}
+- The only public top-level class must exactly match Context JSON field `required_generated_class_name`: {required_generated_class_name}
+- Do not return, rewrite, summarize, or modify the focal class.
+- Do not output production code, build files, dependency changes, patches, or unified diffs.
+- Do not include markdown fences, explanations, or multiple files.
+- Include all imports required by the detected framework. For junit5 use `org.junit.jupiter.api.Test`, lifecycle imports such as `BeforeEach`, and `org.junit.jupiter.api.Assertions`; for junit4 use `org.junit.Test`, lifecycle imports such as `Before`, and `org.junit.Assert`.
+- Prefer a small deterministic test that avoids fragile mocks, global state, external services, threads, filesystem side effects, and broad integration setup.
+- If a meaningful assertion is hard, still return a minimal valid generated test class that compiles.

@@ -1,0 +1,586 @@
+from __future__ import annotations
+
+import argparse
+import base64
+import json
+import os
+import re
+import shutil
+import subprocess
+import sys
+import threading
+from datetime import datetime
+from http.server import SimpleHTTPRequestHandler, ThreadingHTTPServer
+from pathlib import Path
+from typing import Any
+from urllib.parse import parse_qs, unquote, urlparse
+
+try:
+    import yaml
+except ImportError:  # pragma: no cover - the project requirements include PyYAML.
+    yaml = None
+
+
+PROJECT_ROOT = Path(__file__).resolve().parents[1]
+DASHBOARD_ROOT = Path(__file__).resolve().parent
+STATIC_ROOT = DASHBOARD_ROOT / "static"
+LOG_ROOT = DASHBOARD_ROOT / "logs"
+RUNTIME_CONFIG_ROOT = DASHBOARD_ROOT / "runtime_configs"
+DATASET_ROOT = PROJECT_ROOT.parent / "classes2test" / "dataset"
+SHARD_ROOT = PROJECT_ROOT / "shards"
+
+RUNS: dict[str, dict[str, Any]] = {}
+RUN_LOCK = threading.Lock()
+DISCONNECTED_ERRORS = (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)
+
+
+def _ensure_runtime_dirs() -> None:
+    LOG_ROOT.mkdir(parents=True, exist_ok=True)
+    RUNTIME_CONFIG_ROOT.mkdir(parents=True, exist_ok=True)
+
+
+def _json_response(handler: SimpleHTTPRequestHandler, payload: Any, status: int = 200) -> None:
+    data = json.dumps(payload, ensure_ascii=False, indent=2).encode("utf-8")
+    try:
+        handler.send_response(status)
+        handler.send_header("Content-Type", "application/json; charset=utf-8")
+        handler.send_header("Content-Length", str(len(data)))
+        handler.end_headers()
+        handler.wfile.write(data)
+    except DISCONNECTED_ERRORS:
+        return
+
+
+def _text_response(handler: SimpleHTTPRequestHandler, text: str, status: int = 200, content_type: str = "text/plain; charset=utf-8") -> None:
+    data = text.encode("utf-8", errors="replace")
+    try:
+        handler.send_response(status)
+        handler.send_header("Content-Type", content_type)
+        handler.send_header("Content-Length", str(len(data)))
+        handler.end_headers()
+        handler.wfile.write(data)
+    except DISCONNECTED_ERRORS:
+        return
+
+
+def _read_json(path: Path) -> dict[str, Any]:
+    try:
+        return json.loads(path.read_text(encoding="utf-8"))
+    except Exception:
+        return {}
+
+
+def _read_text(path: Path, limit: int = 80_000) -> str:
+    if not path.is_file():
+        return ""
+    text = path.read_text(encoding="utf-8", errors="replace")
+    if len(text) <= limit:
+        return text
+    return text[:limit] + "\n\n[truncated]\n"
+
+
+def _project_config() -> dict[str, Any]:
+    config_path = PROJECT_ROOT / "config" / "pipeline.yaml"
+    if yaml is None or not config_path.is_file():
+        return {}
+    return yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+
+
+def _detect_java() -> dict[str, Any]:
+    java_exe = shutil.which("java")
+    detected = {
+        "java_executable": java_exe or "",
+        "java_home_env": os.environ.get("JAVA_HOME", ""),
+        "java_home_detected": "",
+        "version_output": "",
+        "available": bool(java_exe),
+    }
+    if not java_exe:
+        return detected
+    try:
+        result = subprocess.run(
+            [java_exe, "-XshowSettings:properties", "-version"],
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            timeout=10,
+        )
+    except Exception as exc:
+        detected["version_output"] = str(exc)
+        return detected
+    output = ((result.stdout or "") + "\n" + (result.stderr or "")).strip()
+    detected["version_output"] = output
+    match = re.search(r"(?m)^\s*java\.home\s*=\s*(.+?)\s*$", output)
+    if match:
+        detected["java_home_detected"] = match.group(1)
+    return detected
+
+
+def _encode_result_path(path: Path) -> str:
+    relative = path.resolve().relative_to((PROJECT_ROOT / "runs").resolve())
+    token = base64.urlsafe_b64encode(str(relative).encode("utf-8")).decode("ascii")
+    return token.rstrip("=")
+
+
+def _decode_result_path(token: str) -> Path:
+    padded = token + ("=" * (-len(token) % 4))
+    relative = Path(base64.urlsafe_b64decode(padded.encode("ascii")).decode("utf-8"))
+    candidate = (PROJECT_ROOT / "runs" / relative).resolve()
+    runs_root = (PROJECT_ROOT / "runs").resolve()
+    if runs_root not in candidate.parents or candidate.name != "result.json":
+        raise ValueError("Invalid experiment id")
+    return candidate
+
+
+def _experiment_dir(row: dict[str, Any], result_path: Path) -> Path:
+    configured = row.get("experiment_dir")
+    if configured:
+        path = Path(str(configured))
+        if path.exists():
+            return path
+    # runs/<repo>/<sample>/reports/records/<sample>/<agent>/<prompt>/result.json
+    parts = result_path.resolve().parts
+    try:
+        reports_index = parts.index("reports")
+        run_sample_root = Path(*parts[:reports_index])
+        agent = result_path.parent.parent.name
+        prompt = result_path.parent.name
+        return run_sample_root / agent / prompt
+    except ValueError:
+        return result_path.parent
+
+
+def _checkpoint_summaries(experiment_dir: Path) -> list[dict[str, Any]]:
+    checkpoint_root = experiment_dir / "repair" / "checkpoints"
+    summaries: list[dict[str, Any]] = []
+    if not checkpoint_root.is_dir():
+        return summaries
+    for path in sorted(checkpoint_root.glob("attempt_*"), key=lambda item: int(item.name.split("_")[-1]) if item.name.split("_")[-1].isdigit() else 0):
+        decision = _read_json(path / "decision.json")
+        summaries.append(
+            {
+                "attempt": path.name,
+                "attempt_number": decision.get("attempt_number") or path.name.replace("attempt_", ""),
+                "previous_state": decision.get("previous_state", ""),
+                "new_state": decision.get("new_state", ""),
+                "decision": decision.get("decision", ""),
+                "reason": decision.get("reason", ""),
+                "rollback_performed": bool(decision.get("rollback_performed")),
+                "prompt_switched": bool(decision.get("prompt_switched")),
+                "build_skipped": bool(decision.get("build_skipped")),
+                "path": str(path),
+            }
+        )
+    return summaries
+
+
+def _load_experiment(result_path: Path) -> dict[str, Any]:
+    row = _read_json(result_path)
+    experiment_dir = _experiment_dir(row, result_path)
+    repair_summary = _read_json(experiment_dir / "repair_summary.json")
+    row["dashboard_id"] = _encode_result_path(result_path)
+    row["result_path"] = str(result_path)
+    row["experiment_dir"] = str(experiment_dir)
+    row["checkpoint_count"] = len(_checkpoint_summaries(experiment_dir))
+    if repair_summary:
+        row["repair_summary"] = repair_summary
+    return row
+
+
+def _experiments() -> list[dict[str, Any]]:
+    runs_root = PROJECT_ROOT / "runs"
+    if not runs_root.is_dir():
+        return []
+    rows = []
+    for path in runs_root.rglob("result.json"):
+        rows.append(_load_experiment(path))
+    rows.sort(key=lambda row: str(row.get("finished_at") or row.get("started_at") or ""), reverse=True)
+    return rows
+
+
+def _tail(path: Path, lines: int = 300) -> str:
+    if not path.is_file():
+        return ""
+    content = path.read_text(encoding="utf-8", errors="replace").splitlines()
+    return "\n".join(content[-lines:])
+
+
+def _safe_name(value: str) -> str:
+    return "".join(ch for ch in value if ch.isalnum() or ch in {"_", "-", "."})
+
+
+def _safe_shard_file(value: str) -> Path | None:
+    name = Path(str(value)).name
+    if not name.endswith(".txt"):
+        return None
+    safe = _safe_name(name)
+    if safe != name:
+        return None
+    path = (SHARD_ROOT / safe).resolve()
+    try:
+        if SHARD_ROOT.resolve() not in path.parents or not path.is_file():
+            return None
+    except OSError:
+        return None
+    return path
+
+
+def _parse_java_homes(value: Any) -> dict[str, str]:
+    if value is None:
+        return {}
+    if isinstance(value, dict):
+        return {str(key).strip(): str(item).strip().strip('"').strip("'") for key, item in value.items() if str(key).strip() and str(item).strip()}
+    if not isinstance(value, str):
+        return {}
+    homes: dict[str, str] = {}
+    for line in value.splitlines():
+        text = line.strip()
+        if not text or text.startswith("#"):
+            continue
+        if ":" in text:
+            key, item = text.split(":", 1)
+        elif "=" in text:
+            key, item = text.split("=", 1)
+        else:
+            continue
+        key = key.strip()
+        item = item.strip().strip('"').strip("'")
+        if key and item:
+            homes[key] = item
+    return homes
+
+
+def _write_runtime_config(payload: dict[str, Any], run_id: str) -> Path:
+    if yaml is None:
+        raise RuntimeError("PyYAML is required to write runtime configs")
+    config = _project_config()
+    adaptive = dict(config.get("adaptive_repair", {}))
+    retry_mode = payload.get("retry_mode") or adaptive.get("retry_mode") or "bounded"
+    adaptive["retry_mode"] = retry_mode
+    numeric_int_keys = [
+        "max_attempts_per_prompt",
+        "max_repair_attempts",
+        "max_regenerate_attempts",
+        "max_total_llm_attempts",
+        "no_progress_patience",
+        "repeated_error_patience",
+        "max_build_timeout_retries",
+        "max_tool_error_retries",
+    ]
+    for key in numeric_int_keys:
+        if key in payload and payload[key] not in {"", None}:
+            adaptive[key] = int(payload[key])
+    if "unlimited_max_wall_clock_minutes" in payload and payload["unlimited_max_wall_clock_minutes"] not in {"", None}:
+        adaptive["unlimited_max_wall_clock_minutes"] = float(payload["unlimited_max_wall_clock_minutes"])
+    config["adaptive_repair"] = adaptive
+    build = dict(config.get("build", {}))
+    if "java_default" in payload:
+        build["java_default"] = str(payload.get("java_default") or "").strip().strip('"').strip("'")
+    if "java_homes" in payload:
+        build["java_homes"] = _parse_java_homes(payload.get("java_homes"))
+    config["build"] = build
+    input_cfg = dict(config.get("input", {}))
+    if "input_mode" in payload:
+        input_mode = str(payload.get("input_mode") or input_cfg.get("mode", "sample")).strip()
+        input_cfg["mode"] = "project" if input_mode == "project" else "sample"
+    if "samples_per_project" in payload:
+        samples_per_project = str(payload.get("samples_per_project") or input_cfg.get("samples_per_project", 1)).strip()
+        input_cfg["samples_per_project"] = samples_per_project if samples_per_project == "all" else int(samples_per_project or 1)
+    config["input"] = input_cfg
+    run_cfg = dict(config.get("run", {}))
+    if "shard_id" in payload:
+        run_cfg["shard_id"] = _safe_name(str(payload.get("shard_id") or run_cfg.get("shard_id", "local"))) or "local"
+    config["run"] = run_cfg
+    path = RUNTIME_CONFIG_ROOT / f"{run_id}.yaml"
+    path.write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
+    return path
+
+
+def _build_pipeline_command(payload: dict[str, Any], config_path: Path) -> list[str]:
+    command = [sys.executable, "-m", "src.run_pipeline", "--config", str(config_path)]
+    run_scope = str(payload.get("run_scope") or "single")
+    project_id = _safe_name(str(payload.get("project_id", "")))
+    sample_file = Path(str(payload.get("sample_file", ""))).name
+    agent = str(payload.get("agent", "")).strip()
+    prompt = str(payload.get("generation_prompt", "")).strip()
+    if run_scope == "shard":
+        shard_file = _safe_shard_file(str(payload.get("repo_shard", "")))
+        if shard_file is None:
+            raise ValueError("Invalid repo shard file")
+        command.extend(["--repo-shard", str(shard_file)])
+        shard_id = _safe_name(str(payload.get("shard_id") or shard_file.stem))
+        if shard_id:
+            command.extend(["--shard-id", shard_id])
+        command.extend(["--start-index", str(int(payload.get("start_index") or 0))])
+        command.extend(["--limit", str(int(payload.get("limit") or 0))])
+    elif project_id:
+        command.extend(["--project-id", project_id])
+    if run_scope != "shard" and sample_file and sample_file.endswith(".json"):
+        command.extend(["--sample-file", sample_file])
+    if agent:
+        command.extend(["--agent", agent])
+    if prompt:
+        command.extend(["--generation-prompt", prompt])
+    if payload.get("skip_metrics"):
+        command.append("--skip-metrics")
+    if payload.get("keep_workspace"):
+        command.append("--keep-workspace")
+    if payload.get("keep_repo_cache"):
+        command.append("--keep-repo-cache")
+    if payload.get("mock_llm_smoke"):
+        command.append("--mock-llm-smoke")
+    java_home = str(payload.get("java_home", "")).strip()
+    if java_home:
+        command.extend(["--java-home", java_home])
+    return command
+
+
+def _stop_process_tree(pid: int) -> None:
+    if os.name == "nt":
+        subprocess.run(["taskkill", "/F", "/T", "/PID", str(pid)], capture_output=True, text=True)
+    else:
+        try:
+            os.killpg(pid, 15)
+        except Exception:
+            subprocess.run(["kill", "-TERM", str(pid)], capture_output=True, text=True)
+
+
+def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) -> None:
+    with log_path.open("a", encoding="utf-8", errors="replace") as log:
+        assert process.stdout is not None
+        for line in process.stdout:
+            log.write(line)
+            log.flush()
+    return_code = process.wait()
+    with RUN_LOCK:
+        run = RUNS.get(run_id)
+        if run:
+            run["return_code"] = return_code
+            run["finished_at"] = datetime.now().isoformat(timespec="seconds")
+            if run.get("status") != "stopped":
+                run["status"] = "completed" if return_code == 0 else "failed"
+
+
+def _start_run(payload: dict[str, Any]) -> dict[str, Any]:
+    _ensure_runtime_dirs()
+    run_id = datetime.now().strftime("%Y%m%d-%H%M%S")
+    config_path = _write_runtime_config(payload, run_id)
+    command = _build_pipeline_command(payload, config_path)
+    log_path = LOG_ROOT / f"{run_id}.log"
+    env = os.environ.copy()
+    env["PYTHONIOENCODING"] = "utf-8"
+    creationflags = (subprocess.CREATE_NO_WINDOW | subprocess.CREATE_NEW_PROCESS_GROUP) if os.name == "nt" else 0
+    process = subprocess.Popen(
+        command,
+        cwd=PROJECT_ROOT,
+        stdout=subprocess.PIPE,
+        stderr=subprocess.STDOUT,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        env=env,
+        creationflags=creationflags,
+        start_new_session=os.name != "nt",
+    )
+    run = {
+        "id": run_id,
+        "status": "running",
+        "started_at": datetime.now().isoformat(timespec="seconds"),
+        "finished_at": "",
+        "return_code": None,
+        "command": command,
+        "log_path": str(log_path),
+        "config_path": str(config_path),
+        "pid": process.pid,
+    }
+    with RUN_LOCK:
+        RUNS[run_id] = run
+    threading.Thread(target=_watch_process, args=(run_id, process, log_path), daemon=True).start()
+    return run
+
+
+class DashboardHandler(SimpleHTTPRequestHandler):
+    def log_message(self, format: str, *args: object) -> None:
+        return
+
+    def do_GET(self) -> None:
+        parsed = urlparse(self.path)
+        path = parsed.path
+        try:
+            if path == "/api/config":
+                return _json_response(self, self._api_config())
+            if path == "/api/projects":
+                return _json_response(self, self._api_projects(parsed.query))
+            if path.startswith("/api/projects/") and path.endswith("/samples"):
+                project_id = unquote(path.split("/")[3])
+                return _json_response(self, self._api_samples(project_id))
+            if path == "/api/shards":
+                return _json_response(self, self._api_shards())
+            if path == "/api/experiments":
+                return _json_response(self, {"experiments": _experiments()})
+            if path.startswith("/api/experiments/"):
+                return self._api_experiment_route(path)
+            if path == "/api/runs":
+                with RUN_LOCK:
+                    return _json_response(self, {"runs": list(RUNS.values())})
+            if path.startswith("/api/runs/"):
+                return self._api_run_route(path)
+            return self._serve_static(path)
+        except DISCONNECTED_ERRORS:
+            return
+        except Exception as exc:
+            return _json_response(self, {"error": str(exc)}, status=500)
+
+    def do_POST(self) -> None:
+        parsed = urlparse(self.path)
+        try:
+            if parsed.path == "/api/runs":
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+                run = _start_run(payload)
+                return _json_response(self, run, status=201)
+            if parsed.path.startswith("/api/runs/") and parsed.path.endswith("/stop"):
+                run_id = _safe_name(parsed.path.strip("/").split("/")[2])
+                return _json_response(self, self._api_stop_run(run_id))
+            return _json_response(self, {"error": "Not found"}, status=404)
+        except DISCONNECTED_ERRORS:
+            return
+        except Exception as exc:
+            return _json_response(self, {"error": str(exc)}, status=500)
+
+    def _serve_static(self, path: str) -> None:
+        if path in {"", "/"}:
+            target = STATIC_ROOT / "index.html"
+        else:
+            target = (STATIC_ROOT / path.lstrip("/")).resolve()
+            if STATIC_ROOT.resolve() not in target.parents and target != STATIC_ROOT.resolve():
+                return _json_response(self, {"error": "Invalid static path"}, status=404)
+        if not target.is_file():
+            return _json_response(self, {"error": "Not found"}, status=404)
+        content_type = "text/html; charset=utf-8"
+        if target.suffix == ".css":
+            content_type = "text/css; charset=utf-8"
+        elif target.suffix == ".js":
+            content_type = "application/javascript; charset=utf-8"
+        return _text_response(self, target.read_text(encoding="utf-8"), content_type=content_type)
+
+    def _api_config(self) -> dict[str, Any]:
+        config = _project_config()
+        return {
+            "agents": config.get("llm", {}).get("agents", []),
+            "generation_prompts": config.get("prompts", {}).get("generation_strategies", []),
+            "adaptive_repair": config.get("adaptive_repair", {}),
+            "build": config.get("build", {}),
+            "input": config.get("input", {}),
+            "run": config.get("run", {}),
+            "java": _detect_java(),
+            "dataset_root": str(DATASET_ROOT),
+            "runs_root": str(PROJECT_ROOT / "runs"),
+        }
+
+    def _api_projects(self, query: str) -> dict[str, Any]:
+        params = parse_qs(query)
+        limit_text = params.get("limit", [""])[0]
+        limit = int(limit_text) if limit_text else 0
+        projects = []
+        if DATASET_ROOT.is_dir():
+            for item in sorted(DATASET_ROOT.iterdir(), key=lambda path: path.name):
+                if item.is_dir():
+                    projects.append({"project_id": item.name, "sample_count": len(list(item.glob("*.json")))})
+                    if limit and len(projects) >= limit:
+                        break
+        return {"projects": projects, "project_count": len(projects), "limited": bool(limit)}
+
+    def _api_samples(self, project_id: str) -> dict[str, Any]:
+        safe_project = _safe_name(project_id)
+        project_dir = DATASET_ROOT / safe_project
+        samples = []
+        if project_dir.is_dir():
+            samples = [path.name for path in sorted(project_dir.glob("*.json"), key=lambda item: item.name)]
+        return {"project_id": safe_project, "samples": samples}
+
+    def _api_shards(self) -> dict[str, Any]:
+        shards = []
+        if SHARD_ROOT.is_dir():
+            for path in sorted(SHARD_ROOT.glob("*.txt"), key=lambda item: item.name):
+                lines = [line.strip() for line in path.read_text(encoding="utf-8", errors="replace").splitlines() if line.strip()]
+                shards.append({"name": path.name, "repo_count": len(lines), "path": str(path)})
+        return {"shards": shards, "shard_count": len(shards), "shards_root": str(SHARD_ROOT)}
+
+    def _api_experiment_route(self, path: str) -> None:
+        parts = path.strip("/").split("/")
+        token = parts[2]
+        result_path = _decode_result_path(token)
+        row = _load_experiment(result_path)
+        experiment_dir = Path(str(row["experiment_dir"]))
+        if len(parts) == 3:
+            return _json_response(
+                self,
+                {
+                    "experiment": row,
+                    "repair_summary": _read_json(experiment_dir / "repair_summary.json"),
+                    "checkpoints": _checkpoint_summaries(experiment_dir),
+                },
+            )
+        if len(parts) == 5 and parts[3] == "checkpoints":
+            attempt = _safe_name(parts[4])
+            checkpoint_dir = experiment_dir / "repair" / "checkpoints" / attempt
+            return _json_response(
+                self,
+                {
+                    "attempt": attempt,
+                    "decision": _read_json(checkpoint_dir / "decision.json"),
+                    "repair_prompt": _read_text(checkpoint_dir / "repair_prompt.txt"),
+                    "llm_response": _read_text(checkpoint_dir / "llm_response.txt"),
+                    "build_output_before": _read_text(checkpoint_dir / "build_output_before.txt"),
+                    "build_output_after": _read_text(checkpoint_dir / "build_output_after.txt"),
+                    "generated_test_before": _read_text(checkpoint_dir / "generated_test_before.java"),
+                    "generated_test_after": _read_text(checkpoint_dir / "generated_test_after.java"),
+                },
+            )
+        return _json_response(self, {"error": "Not found"}, status=404)
+
+    def _api_run_route(self, path: str) -> None:
+        parts = path.strip("/").split("/")
+        run_id = _safe_name(parts[2]) if len(parts) > 2 else ""
+        with RUN_LOCK:
+            run = RUNS.get(run_id)
+        if not run:
+            return _json_response(self, {"error": "Run not found"}, status=404)
+        if len(parts) == 4 and parts[3] == "logs":
+            return _json_response(self, {"id": run_id, "logs": _tail(Path(str(run["log_path"])))})
+        return _json_response(self, run)
+
+    def _api_stop_run(self, run_id: str) -> dict[str, Any]:
+        with RUN_LOCK:
+            run = RUNS.get(run_id)
+            if not run:
+                return {"error": "Run not found"}
+            if run.get("status") != "running":
+                return run
+            run["status"] = "stopping"
+            pid = int(run.get("pid") or 0)
+        if pid:
+            _stop_process_tree(pid)
+        with RUN_LOCK:
+            run = RUNS.get(run_id, run)
+            run["status"] = "stopped"
+            run["finished_at"] = datetime.now().isoformat(timespec="seconds")
+            run["return_code"] = run.get("return_code")
+            return run
+
+
+def main() -> None:
+    parser = argparse.ArgumentParser(description="Run the ARROW dashboard.")
+    parser.add_argument("--host", default="127.0.0.1")
+    parser.add_argument("--port", type=int, default=8765)
+    args = parser.parse_args()
+    _ensure_runtime_dirs()
+    server = ThreadingHTTPServer((args.host, args.port), DashboardHandler)
+    print(f"Dashboard running at http://{args.host}:{args.port}")
+    server.serve_forever()
+
+
+if __name__ == "__main__":
+    main()

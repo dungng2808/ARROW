@@ -1,0 +1,217 @@
+run:
+  run_id: auto
+  shard_id: local
+
+output:
+  root_dir: runs
+  layout: repo_sample # repo_sample | run_shard
+  repo_folder_name: project_id # repo_name | owner_repo | project_id
+  on_repo_name_conflict: fail # fail | append_project_id
+
+report:
+  primary_format: json
+  write_per_experiment_json: true
+  write_shard_jsonl: true
+  write_csv_per_run: false
+  json_records_dir: records
+  merged_dir: merged
+
+input:
+  mode: sample
+  project_ids: []
+  project_shard_file: null
+  samples_per_project: 1
+  sample_order: sorted
+
+repo:
+  clone_repo: true
+  repos_dir: repos
+  checkout_commit: true
+  delete_after_report: true
+
+cleanup:
+  delete_experiment_workspace_after_report: true
+  delete_repo_cache_after_run: true # legacy alias; repo.delete_after_report is preferred
+  keep_failed_workspaces: false
+
+build:
+  enabled_tools: ["maven", "gradle"]
+  prefer_wrapper: true
+  # If repo Java version is not detected, not mapped, or mapped path is missing,
+  # this JDK is used as the fallback JAVA_HOME. Leave empty to use system default.
+  java_default: 'C:\Program Files\Java\jdk-17'
+  # Exact Java version -> JDK home mapping.
+  # The key can be java-8/java-11/java-17/java-21, jdk-17, or just "17".
+  java_homes:
+    java-8: 'C:\Program Files\Java\jdk1.8.0_202'
+    java-11: 'C:\Program Files\Java\jdk-11'
+    java-17: 'C:\Program Files\Java\jdk-17'
+    java-21: 'C:\Program Files\Java\jdk-21'
+  test_timeout_seconds: 900
+  maven:
+    multi_module_strategy: root_with_pl_am # module_only = chạy đúng pom của module; root_with_pl_am = chạy từ root pom với -pl module và -am để build cả module phụ thuộc.
+    use_also_make: true # true = thêm -am để Maven build luôn các module dependency nội bộ, ví dụ adbcj-api trước mysql-codec.
+    fail_if_no_specified_tests: false # false = thêm -Dsurefire.failIfNoSpecifiedTests=false để multi-module -am không fail ở module phụ thuộc không chứa generated test.
+
+llm:
+  provider: litellm
+  # Secrets are read from environment variables named by api_key_env.
+  # Do not write a real API key into this file.
+  agents:
+    - name: qwen-coder-1.5b
+      model: ollama/qwen2.5-coder:1.5b
+      api_base: http://localhost:11434
+      temperature: 0
+      num_ctx: 32768
+      max_tokens: 2048
+    - name: qwen-coder-2.5-7b
+      model: ollama/qwen-unit-test-elite-dataset-07-07:latest
+      api_base: http://localhost:11434
+      temperature: 0
+      num_ctx: 8192
+      max_tokens: 2048
+    - name: gpt-4.1-mini
+      model: openai/gpt-4.1-mini
+      api_key_env: OPENAI_API_KEY
+      temperature: 0
+      max_tokens: 2048
+
+prompts:
+  generation_strategies:
+    - name: zero-shot
+      template: prompts/generation/zero_shot.txt
+    - name: zero-shot-project-aware
+      template: prompts/generation/zero_shot_project_aware.txt
+    - name: few-shot
+      template: prompts/generation/few_shot.txt
+      examples: prompts/examples/few_shot_examples.json
+  repair_strategies:
+    - name: compile-error-focused
+      template: prompts/repair/compile_error_focused.txt
+    - name: dependency-aware
+      template: prompts/repair/dependency_aware.txt
+    - name: minimal-test
+      template: prompts/repair/minimal_test.txt
+    - name: module-regression-focused
+      template: prompts/repair/module_regression_focused.txt
+
+experiment:
+  run_all_agents: true
+  run_all_generation_prompts: true
+  selected_agents: []
+  selected_generation_prompts: []
+
+adaptive_repair:
+  # Bật/tắt Adaptive Repair. Nếu false, pipeline chỉ generate test rồi build/test, không gọi LLM để sửa.
+  enabled: true
+
+  # bounded = dùng max_repair_attempts/max_total_llm_attempts như ARROW mặc định.
+  # unlimited = bỏ giới hạn số lần repair và xoay vòng prompt_order cho đến khi pass,
+  # hết wall-clock guard, timeout/tool error, hoặc người dùng dừng process.
+  retry_mode: bounded # bounded | unlimited
+  unlimited_max_wall_clock_minutes: 120
+
+  # Cách ra quyết định repair. state_machine nghĩa là dùng failure state + signature + code hash,
+  # không dùng số lượng lỗi để tính điểm.
+  decision_mode: state_machine
+
+  # Mỗi loại repair prompt được thử tối đa bao nhiêu lần trước khi chuyển sang prompt tiếp theo.
+  # Ví dụ compile-error-focused được thử 2 lần, nếu vẫn không tiến bộ thì đổi prompt.
+  max_attempts_per_prompt: 2
+
+  # Tổng số lần gọi LLM bằng repair prompt cho một experiment.
+  # Không tính lần regenerate từ đầu.
+  max_repair_attempts: 6
+
+  # Số lần cho phép generate lại test mới từ đầu sau khi tất cả repair prompt đều thất bại.
+  max_regenerate_attempts: 1
+
+  # Giới hạn tổng số lần gọi LLM = repair attempts + regeneration attempts.
+  # Dùng để tránh vòng lặp LLM quá dài.
+  max_total_llm_attempts: 7
+
+  # Nếu candidate mới không tạo tiến bộ rõ ràng liên tiếp N lần thì rollback và đổi prompt.
+  # Tiến bộ được xét bằng state/signature, không xét số lượng lỗi.
+  no_progress_patience: 2
+
+  # Số lần chịu được khi gặp lại cùng normalized error signature.
+  # Với giá trị 1, gặp lỗi lặp là đổi prompt ngay.
+  repeated_error_patience: 1
+
+  # Nếu Maven/Gradle timeout, thử lại build tối đa bao nhiêu lần trước khi dừng experiment.
+  # Timeout không gọi LLM repair vì chưa chắc là lỗi Java test.
+  max_build_timeout_retries: 1
+
+  # Nếu lỗi tool/build runner, thử lại tối đa bao nhiêu lần trước khi dừng experiment.
+  # TOOL_ERROR không đổi prompt vì lỗi có thể do môi trường/tool.
+  max_tool_error_retries: 1
+
+  # Nếu candidate mới làm state xấu đi, copy best_candidate.java trở lại generated test.
+  rollback_on_regression: true
+
+  # Nếu lỗi signature bị lặp lại, rollback về best candidate.
+  rollback_on_repeated_error: true
+
+  # Nếu LLM trả lại code đã từng thử, rollback về best candidate và không chạy Maven/Gradle lại.
+  rollback_on_repeated_code: true
+
+  # Các tình huống khiến pipeline chuyển sang repair prompt tiếp theo.
+  switch_prompt_on:
+    # Candidate mới làm trạng thái xấu đi, ví dụ ASSERTION_FAILED -> COMPILE_FAILED.
+    - regression
+    # Normalized error signature giống lần trước.
+    - repeated_error
+    # Generated Java code hash đã từng xuất hiện.
+    - repeated_code
+    # Không có tiến bộ sau số lần no_progress_patience.
+    - no_progress
+    # LLM output không phải Java test hợp lệ, sai package/class, là diff, hoặc rỗng.
+    - invalid_llm_output
+
+  # Thứ tự prompt fallback theo từng failure state.
+  # Prompt đầu tiên là chiến lược ưu tiên cho state đó.
+  prompt_order_by_state:
+    # Compile fail thì ưu tiên prompt chuyên sửa import, symbol, API, dependency usage.
+    COMPILE_FAILED:
+      - compile-error-focused
+      - dependency-aware
+      - minimal-test
+
+    # Không discover được test thì ưu tiên prompt hiểu dependency/framework/module.
+    TEST_DISCOVERY_FAILED:
+      - dependency-aware
+      - compile-error-focused
+      - minimal-test
+
+    # Runtime exception thường liên quan dependency, setup, resource, API usage.
+    RUNTIME_FAILED:
+      - dependency-aware
+      - minimal-test
+      - compile-error-focused
+
+    # Assertion fail thì ưu tiên tạo test tối giản, ít giả định hơn.
+    ASSERTION_FAILED:
+      - minimal-test
+      - dependency-aware
+      - compile-error-focused
+
+    # Target test pass nhưng module suite fail thì ưu tiên sửa test isolation/regression.
+    MODULE_TESTS_FAILED:
+      - module-regression-focused
+      - minimal-test
+      - dependency-aware
+
+    # Không phân loại rõ thì dùng chiến lược an toàn: test tối giản trước.
+    UNKNOWN_FAILED:
+      - minimal-test
+      - dependency-aware
+      - compile-error-focused
+
+  # Nếu repair bằng các prompt fallback đều fail, cho phép generate lại test mới từ đầu.
+  # Regeneration không dùng broken candidate làm template chính, chỉ dùng lịch sử lỗi ngắn gọn.
+  allow_regenerate_after_prompt_fallback_fail: true
+
+metrics:
+  coverage: true
+  mutation: true
+  smells: true
