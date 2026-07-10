@@ -20,6 +20,8 @@ try:
 except ImportError:  # pragma: no cover - the project requirements include PyYAML.
     yaml = None
 
+from src.llm_client import record_token_usage, token_usage_report
+
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
 DASHBOARD_ROOT = Path(__file__).resolve().parent
@@ -284,7 +286,26 @@ def _load_experiment(result_path: Path) -> dict[str, Any]:
     row["checkpoint_count"] = len(_checkpoint_summaries(experiment_dir))
     if repair_summary:
         row["repair_summary"] = repair_summary
+    token_report = _experiment_token_usage(row, experiment_dir)
+    for key, value in token_report.items():
+        current = row.get(key)
+        if current is None or current == "":
+            row[key] = value
     return row
+
+
+def _experiment_token_usage(row: dict[str, Any], experiment_dir: Path) -> dict[str, Any]:
+    saved = _read_json(experiment_dir / "token_usage.json")
+    if saved:
+        return saved
+    generation = _read_json(experiment_dir / "generation_metadata.json")
+    metadata = generation.get("metadata")
+    if not isinstance(metadata, dict):
+        return {}
+    bucket: dict[str, dict[str, int]] = {}
+    strategy = str(row.get("generation_prompt_strategy") or row.get("Prompt_Technique") or "unknown")
+    record_token_usage(bucket, f"generation:{strategy}", metadata)
+    return token_usage_report(bucket) if bucket else {}
 
 
 def _experiments() -> list[dict[str, Any]]:
@@ -323,6 +344,23 @@ def _selected_generation_prompts(payload: dict[str, Any]) -> list[str]:
             selected.append(name)
     if not selected:
         raise ValueError("Select at least one generation prompt")
+    return selected
+
+
+def _selected_agents(payload: dict[str, Any]) -> list[str]:
+    raw = payload.get("agents")
+    if raw is None:
+        legacy = str(payload.get("agent", "")).strip()
+        return [legacy] if legacy else []
+    if not isinstance(raw, list):
+        raise ValueError("agents must be a list")
+    selected: list[str] = []
+    for item in raw:
+        name = _safe_name(str(item).strip())
+        if name and name not in selected:
+            selected.append(name)
+    if not selected:
+        raise ValueError("Select at least one model")
     return selected
 
 
@@ -447,6 +485,16 @@ def _write_runtime_config(payload: dict[str, Any], run_id: str) -> Path:
         experiment_cfg["run_all_generation_prompts"] = False
         experiment_cfg["selected_generation_prompts"] = selected_prompts
         config["experiment"] = experiment_cfg
+    selected_agents = _selected_agents(payload)
+    if selected_agents:
+        available_agents = {str(item.get("name", "")) for item in config.get("llm", {}).get("agents", [])}
+        unknown_agents = [name for name in selected_agents if name not in available_agents]
+        if unknown_agents:
+            raise ValueError(f"Unknown models: {', '.join(unknown_agents)}")
+        experiment_cfg = dict(config.get("experiment", {}))
+        experiment_cfg["run_all_agents"] = False
+        experiment_cfg["selected_agents"] = selected_agents
+        config["experiment"] = experiment_cfg
     path = RUNTIME_CONFIG_ROOT / f"{run_id}.yaml"
     path.write_text(yaml.safe_dump(config, allow_unicode=True, sort_keys=False), encoding="utf-8")
     return path
@@ -457,7 +505,7 @@ def _build_pipeline_command(payload: dict[str, Any], config_path: Path) -> list[
     run_scope = str(payload.get("run_scope") or "single")
     project_id = _safe_name(str(payload.get("project_id", "")))
     sample_file = Path(str(payload.get("sample_file", ""))).name
-    agent = str(payload.get("agent", "")).strip()
+    agents = _selected_agents(payload)
     prompts = _selected_generation_prompts(payload)
     if run_scope == "shard":
         shard_file = _safe_shard_file(str(payload.get("repo_shard", "")))
@@ -473,7 +521,7 @@ def _build_pipeline_command(payload: dict[str, Any], config_path: Path) -> list[
         command.extend(["--project-id", project_id])
     if run_scope != "shard" and sample_file and sample_file.endswith(".json"):
         command.extend(["--sample-file", sample_file])
-    if agent:
+    for agent in agents:
         command.extend(["--agent", agent])
     for prompt in prompts:
         command.extend(["--generation-prompt", prompt])

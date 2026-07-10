@@ -18,7 +18,7 @@ from .build_runner import BuildContext, verify_baseline, verify_module_tests, ve
 from .fs_utils import atomic_write_json, atomic_write_text, ensure_dir
 from .input_selector import count_dataset, select_inputs
 from .java_resolver import resolve_java_home
-from .llm_client import LiteLlmClient, LlmRequest, StaticLlmClient
+from .llm_client import LiteLlmClient, LlmRequest, StaticLlmClient, record_token_usage, token_usage_report
 from .metrics_runner import run_maven_metrics
 from .models import AgentConfig, FailureOrigin, FailureState, GenerationStrategy, RepairConfig, RepairStatus, SampleInput
 from .output_paths import OutputPaths, resolve_output_paths
@@ -199,6 +199,11 @@ def _base_row(run_id: str, shard_id: str, sample: SampleInput, agent: AgentConfi
         "first_passed_at": "",
         "first_pass_elapsed_seconds": "",
         "error": "",
+        "llm_input_tokens": 0,
+        "llm_output_tokens": 0,
+        "llm_total_tokens": 0,
+        "llm_call_count": 0,
+        "token_usage_by_prompt": {},
     })
 
 
@@ -252,6 +257,7 @@ def _run_one_experiment(
     exp_dir = _experiment_dir(output_paths, agent, strategy)
     workspace = exp_dir / "workspace"
     row = _base_row(run_id, shard_id, sample, agent, strategy, output_paths, exp_dir)
+    token_usage_by_prompt: dict[str, dict[str, int]] = {}
     row["started_at"] = _now_iso()
     cached_repo: Path | None = None
     try:
@@ -357,9 +363,22 @@ def _run_one_experiment(
                 max_tokens=agent.max_tokens,
             )
         )
+        generation_usage = record_token_usage(
+            token_usage_by_prompt,
+            f"generation:{strategy.name}",
+            response.metadata,
+        )
+        if generation_usage:
+            _log_event(
+                f"GENERATE tokens input={generation_usage['input_tokens']} "
+                f"output={generation_usage['output_tokens']} total={generation_usage['total_tokens']}"
+            )
         _log_event("GENERATE response received; validating Java candidate")
         atomic_write_text(exp_dir / "llm_response.txt", response.content)
-        atomic_write_json(exp_dir / "generation_metadata.json", {"model": agent.model, "metadata": response.metadata})
+        atomic_write_json(
+            exp_dir / "generation_metadata.json",
+            {"model": agent.model, "metadata": response.metadata, "token_usage": generation_usage or {}},
+        )
         code, _digest = validate_java_candidate(
             response.content,
             expected_package=context.package_name,
@@ -406,12 +425,15 @@ def _run_one_experiment(
                 temperature=agent.temperature,
                 num_ctx=agent.num_ctx,
                 max_tokens=agent.max_tokens,
+                token_usage_by_prompt=token_usage_by_prompt,
             )
             repair_summary = run_adaptive_repair(repair_runtime, initial_verification=target, baseline_verification=baseline)
             _log_event(f"REPAIR done status={repair_summary.repair_status.value} attempts={repair_summary.repair_attempts} final={repair_summary.final_failure_state} reason={repair_summary.repair_stopped_reason}")
-            atomic_write_json(exp_dir / "repair_summary.json", repair_summary.to_dict())
+            repair_data = repair_summary.to_dict()
+            repair_data.update(token_usage_report(token_usage_by_prompt))
+            atomic_write_json(exp_dir / "repair_summary.json", repair_data)
         if repair_summary:
-            row = repair_summary_to_report_row(repair_summary.to_dict(), row)
+            row = repair_summary_to_report_row(repair_data, row)
             if row.get("target_test_passed") is True:
                 _mark_target_pass(row, started)
             if row.get("module_tests_passed") is True:
@@ -485,6 +507,9 @@ def _run_one_experiment(
         _log_event(f"ERROR {type(exc).__name__}: {exc}")
         row["error"] = f"{type(exc).__name__}: {exc}"
         row["repair_status"] = "FAILED"
+    row.update(token_usage_report(token_usage_by_prompt))
+    if exp_dir.exists():
+        atomic_write_json(exp_dir / "token_usage.json", token_usage_report(token_usage_by_prompt))
     row["elapsed_seconds"] = _seconds_since(started)
     row["finished_at"] = _now_iso()
     if workspace.exists() and _should_delete_workspace(config, args, row):

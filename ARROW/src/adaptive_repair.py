@@ -6,7 +6,7 @@ from pathlib import Path
 
 from .build_runner import BuildContext, verify_module_tests, verify_target_test
 from .fs_utils import atomic_copy, atomic_write_json, atomic_write_text, ensure_dir, read_text_if_exists
-from .llm_client import LlmClient, LlmRequest
+from .llm_client import LlmClient, LlmRequest, record_token_usage
 from .models import (
     ExperimentContext,
     FailureOrigin,
@@ -124,6 +124,7 @@ class RepairRuntime:
     temperature: float = 0.0
     num_ctx: int | None = None
     max_tokens: int | None = None
+    token_usage_by_prompt: dict[str, dict[str, int]] = field(default_factory=dict)
     attempted_hashes: set[str] = field(default_factory=set)
     failed_signatures: list[str] = field(default_factory=list)
 
@@ -192,7 +193,7 @@ def _verify_candidate(runtime: RepairRuntime) -> VerificationResult:
     return module if module.state == FailureState.MODULE_TESTS_PASSED else module
 
 
-def _call_llm(runtime: RepairRuntime, prompt: str) -> str:
+def _call_llm(runtime: RepairRuntime, prompt: str, prompt_name: str) -> str:
     response = runtime.llm_client.complete(
         LlmRequest(
             model=runtime.model,
@@ -204,6 +205,12 @@ def _call_llm(runtime: RepairRuntime, prompt: str) -> str:
             max_tokens=runtime.max_tokens,
         )
     )
+    usage = record_token_usage(runtime.token_usage_by_prompt, prompt_name, response.metadata)
+    if usage:
+        _repair_log(
+            f"tokens prompt={prompt_name} input={usage['input_tokens']} "
+            f"output={usage['output_tokens']} total={usage['total_tokens']}"
+        )
     return response.content
 
 
@@ -339,7 +346,7 @@ def run_adaptive_repair(
             failed_signature_history=runtime.failed_signatures,
         )
         atomic_write_text(path / "repair_prompt.txt", prompt)
-        llm_content = _call_llm(runtime, prompt)
+        llm_content = _call_llm(runtime, prompt, f"repair:{prompt_name}")
         total_llm_attempts += 1
         repair_attempts += 1
         attempts_for_prompt += 1
@@ -548,7 +555,7 @@ def run_adaptive_repair(
             context=runtime.context,
             failed_signature_history=runtime.failed_signatures,
         )
-        content = _call_llm(runtime, prompt)
+        content = _call_llm(runtime, prompt, "regeneration")
         regen_dir = runtime.repair_dir / "regeneration"
         ensure_dir(regen_dir)
         atomic_write_text(regen_dir / "regeneration_prompt.txt", prompt)

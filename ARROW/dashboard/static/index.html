@@ -84,10 +84,10 @@
               <input id="limit" name="limit" type="number" min="0" value="0" />
               <small>0 = all remaining</small>
             </label>
-            <label>
-              <span>Agent</span>
-              <select id="agentSelect" name="agent"></select>
-            </label>
+            <fieldset class="agent-field wide">
+              <legend>Models</legend>
+              <div id="agentOptions" class="agent-options"></div>
+            </fieldset>
             <fieldset class="prompt-field wide">
               <legend>Prompts</legend>
               <div id="promptOptions" class="prompt-options"></div>
@@ -209,6 +209,7 @@
                   <th>Class</th>
                   <th>Agent</th>
                   <th>Prompt</th>
+                  <th>Tokens</th>
                   <th>State</th>
                   <th>Repair</th>
                   <th>Coverage</th>

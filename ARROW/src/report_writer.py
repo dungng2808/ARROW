@@ -71,6 +71,11 @@ CLASS_REPORT_COLUMNS = [
     "repair_attempts",
     "regeneration_attempts",
     "total_llm_attempts",
+    "llm_input_tokens",
+    "llm_output_tokens",
+    "llm_total_tokens",
+    "llm_call_count",
+    "token_usage_by_prompt",
     "build_attempts",
     "repair_status",
     "initial_repair_prompt_strategy",
@@ -235,6 +240,9 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
         avg_target_pass = _average(items, "target_pass_elapsed_seconds")
         avg_module_pass = _average(items, "module_pass_elapsed_seconds")
         avg_first_pass = _average(items, "first_pass_elapsed_seconds")
+        avg_llm_input_tokens = _average(items, "llm_input_tokens")
+        avg_llm_output_tokens = _average(items, "llm_output_tokens")
+        avg_llm_total_tokens = _average(items, "llm_total_tokens")
         output_rows.append(
             {
                 "agent_name": agent,
@@ -250,6 +258,9 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
                 "avg_target_pass_elapsed_seconds": avg_target_pass,
                 "avg_module_pass_elapsed_seconds": avg_module_pass,
                 "avg_first_pass_elapsed_seconds": avg_first_pass,
+                "avg_llm_input_tokens": avg_llm_input_tokens,
+                "avg_llm_output_tokens": avg_llm_output_tokens,
+                "avg_llm_total_tokens": avg_llm_total_tokens,
             }
         )
     ensure_dir(path.parent)
@@ -267,6 +278,9 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
         "avg_target_pass_elapsed_seconds",
         "avg_module_pass_elapsed_seconds",
         "avg_first_pass_elapsed_seconds",
+        "avg_llm_input_tokens",
+        "avg_llm_output_tokens",
+        "avg_llm_total_tokens",
     ]
     with path.open("w", newline="", encoding="utf-8") as output_file:
         writer = csv.DictWriter(output_file, fieldnames=fieldnames)
@@ -325,6 +339,10 @@ def write_experiment_statistics_csv(path: Path, rows: list[dict[str, Any]]) -> N
         "repair_success_rate",
         "avg_repair_attempts",
         "avg_total_llm_attempts",
+        "avg_llm_input_tokens",
+        "avg_llm_output_tokens",
+        "avg_llm_total_tokens",
+        "avg_llm_call_count",
         "avg_elapsed_seconds",
         "avg_line_coverage",
         "avg_branch_coverage",
@@ -391,6 +409,10 @@ def _statistics_for_rows(rows: list[dict[str, Any]]) -> dict[str, Any]:
         "repair_success_rate": _rate(len(repair_success), len(repair_attempted)),
         "avg_repair_attempts": _average_multi(repair_attempted, ("repair_attempts",)),
         "avg_total_llm_attempts": _average_multi(repair_attempted, ("total_llm_attempts",)),
+        "avg_llm_input_tokens": _average_multi(rows, ("llm_input_tokens",)),
+        "avg_llm_output_tokens": _average_multi(rows, ("llm_output_tokens",)),
+        "avg_llm_total_tokens": _average_multi(rows, ("llm_total_tokens",)),
+        "avg_llm_call_count": _average_multi(rows, ("llm_call_count",)),
         "avg_elapsed_seconds": _average_multi(rows, ("elapsed_seconds",)),
         "avg_target_pass_elapsed_seconds": _average_multi(module_passed, ("target_pass_elapsed_seconds",)),
         "avg_module_pass_elapsed_seconds": _average_multi(module_passed, ("module_pass_elapsed_seconds",)),

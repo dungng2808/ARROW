@@ -20,6 +20,22 @@ def test_pipeline_command_accepts_multiple_generation_prompts(tmp_path):
     assert [command[index + 1] for index in prompt_indexes] == ["zero-shot", "few-shot"]
 
 
+def test_pipeline_command_accepts_multiple_agents(tmp_path):
+    command = server._build_pipeline_command(
+        {
+            "run_scope": "single",
+            "project_id": "10016717",
+            "sample_file": "10016717_17.json",
+            "agents": ["qwen-coder-1.5b", "qwen-coder-2.5-7b"],
+            "generation_prompts": ["zero-shot"],
+        },
+        tmp_path / "runtime.yaml",
+    )
+
+    agent_indexes = [index for index, item in enumerate(command) if item == "--agent"]
+    assert [command[index + 1] for index in agent_indexes] == ["qwen-coder-1.5b", "qwen-coder-2.5-7b"]
+
+
 def test_runtime_config_records_selected_generation_prompts(monkeypatch, tmp_path):
     monkeypatch.setattr(server, "RUNTIME_CONFIG_ROOT", tmp_path)
     monkeypatch.setattr(
@@ -44,6 +60,32 @@ def test_runtime_config_records_selected_generation_prompts(monkeypatch, tmp_pat
 
     assert config["experiment"]["run_all_generation_prompts"] is False
     assert config["experiment"]["selected_generation_prompts"] == ["zero-shot", "few-shot"]
+
+
+def test_runtime_config_records_selected_agents(monkeypatch, tmp_path):
+    monkeypatch.setattr(server, "RUNTIME_CONFIG_ROOT", tmp_path)
+    monkeypatch.setattr(
+        server,
+        "_project_config",
+        lambda: {
+            "llm": {
+                "agents": [
+                    {"name": "qwen-coder-1.5b", "model": "ollama/qwen-small"},
+                    {"name": "qwen-coder-2.5-7b", "model": "ollama/qwen-large"},
+                ]
+            },
+            "experiment": {"run_all_agents": True},
+        },
+    )
+
+    path = server._write_runtime_config(
+        {"agents": ["qwen-coder-1.5b", "qwen-coder-2.5-7b"]},
+        "run-models",
+    )
+    config = server.yaml.safe_load(path.read_text(encoding="utf-8"))
+
+    assert config["experiment"]["run_all_agents"] is False
+    assert config["experiment"]["selected_agents"] == ["qwen-coder-1.5b", "qwen-coder-2.5-7b"]
 
 
 def test_process_watcher_splits_logs_by_project(monkeypatch, tmp_path):
@@ -118,3 +160,22 @@ def test_error_artifacts_include_every_failed_build_file(tmp_path):
     assert "\x1b" not in combined
     assert "===== mutation_prepare_build_output.txt =====" in combined
     assert "===== repair/checkpoints/attempt_1/build_output_after.txt =====" in combined
+
+
+def test_old_experiment_token_usage_is_read_from_generation_metadata(tmp_path):
+    experiment = tmp_path / "experiment"
+    experiment.mkdir()
+    (experiment / "generation_metadata.json").write_text(
+        '{"metadata":{"usage":{"prompt_tokens":1228,"completion_tokens":125,"total_tokens":1353}}}',
+        encoding="utf-8",
+    )
+
+    report = server._experiment_token_usage(
+        {"generation_prompt_strategy": "zero-shot"},
+        experiment,
+    )
+
+    assert report["llm_input_tokens"] == 1228
+    assert report["llm_output_tokens"] == 125
+    assert report["llm_total_tokens"] == 1353
+    assert report["token_usage_by_prompt"]["generation:zero-shot"]["calls"] == 1

@@ -60,6 +60,11 @@ function repairKind(status) {
   return "fail";
 }
 
+function formatNumber(value) {
+  const number = Number(value);
+  return Number.isFinite(number) ? new Intl.NumberFormat("en-US").format(number) : "N/A";
+}
+
 async function init() {
   applySidebarState();
   state.config = await api("/api/config");
@@ -199,7 +204,19 @@ async function refreshAll() {
 function renderConfig() {
   const agents = state.config.agents || [];
   const prompts = state.config.generation_prompts || [];
-  $("#agentSelect").innerHTML = agents.map((agent) => `<option value="${escapeHtml(agent.name)}">${escapeHtml(agent.name)}</option>`).join("");
+  $("#agentOptions").innerHTML = agents
+    .map(
+      (agent, index) => `
+        <label class="agent-option" title="${escapeHtml(agent.model)}">
+          <input type="checkbox" name="agent" value="${escapeHtml(agent.name)}" ${index === 0 ? "checked" : ""} />
+          <span>${escapeHtml(agent.name)}</span>
+        </label>
+      `,
+    )
+    .join("");
+  document.querySelectorAll('#agentOptions input[type="checkbox"]').forEach((input) => {
+    input.addEventListener("change", () => $("#agentOptions").classList.remove("invalid"));
+  });
   $("#promptOptions").innerHTML = prompts
     .map(
       (prompt, index) => `
@@ -323,6 +340,7 @@ function renderExperiments() {
           <td>${escapeHtml(row.focal_class || row.Class_Under_Test)}</td>
           <td>${escapeHtml(row.agent_name || row["Generator(LLM)"])}</td>
           <td>${escapeHtml(row.generation_prompt_strategy || row.Prompt_Technique)}</td>
+          <td>${escapeHtml(formatNumber(row.llm_total_tokens))}</td>
           <td>${badge(stateLabel(row), passKind(row))}</td>
           <td>${badge(row.repair_status || "N/A", repairKind(row.repair_status))}</td>
           <td>${escapeHtml(coverage ? `${coverage}%` : "")}</td>
@@ -352,6 +370,10 @@ function renderDetail(row, repair, checkpoints, errorFiles) {
   const summary = [
     ["Agent", row.agent_name || row["Generator(LLM)"]],
     ["Prompt", row.generation_prompt_strategy || row.Prompt_Technique],
+    ["Input tokens", formatNumber(row.llm_input_tokens)],
+    ["Output tokens", formatNumber(row.llm_output_tokens)],
+    ["Total tokens", formatNumber(row.llm_total_tokens)],
+    ["LLM calls", formatNumber(row.llm_call_count)],
     ["Build", row.build_tool],
     ["Module", row.module_path],
     ["Initial", row.initial_failure_state],
@@ -430,6 +452,17 @@ function renderMetrics(row) {
 }
 
 function renderMetricDetails(row) {
+  const tokenUsage = row.token_usage_by_prompt || {};
+  const tokenRows = [
+    ["Input tokens", formatNumber(row.llm_input_tokens)],
+    ["Output tokens", formatNumber(row.llm_output_tokens)],
+    ["Total tokens", formatNumber(row.llm_total_tokens)],
+    ["LLM calls", formatNumber(row.llm_call_count)],
+    ...Object.entries(tokenUsage).map(([prompt, usage]) => [
+      prompt,
+      `in ${formatNumber(usage.input_tokens)} · out ${formatNumber(usage.output_tokens)} · total ${formatNumber(usage.total_tokens)} · ${formatNumber(usage.calls)} calls`,
+    ]),
+  ];
   const coverageRows = [
     ["Branch_Coverage%", row["Branch_Coverage%"] || row.coverage_branch],
     ["Line_Coverage%", row["Line_Coverage%"] || row.coverage_line],
@@ -470,6 +503,7 @@ function renderMetricDetails(row) {
   ];
   const smellRows = smellFields.map((field) => [field, row[field]]);
   $("#metricDetails").innerHTML = [
+    metricGroup("LLM Tokens", tokenRows),
     metricGroup("JaCoCo", coverageRows),
     metricGroup("PIT", mutationRows),
     metricGroup("tsDetect", smellRows),
@@ -548,6 +582,12 @@ function renderCheckpointContent() {
 
 async function startRun(event) {
   event.preventDefault();
+  const agents = Array.from(document.querySelectorAll('#agentOptions input[type="checkbox"]:checked')).map((input) => input.value);
+  if (!agents.length) {
+    $("#agentOptions").classList.add("invalid");
+    $("#runLog").textContent = "Select at least one model.";
+    return;
+  }
   const generationPrompts = Array.from(document.querySelectorAll('#promptOptions input[type="checkbox"]:checked')).map((input) => input.value);
   if (!generationPrompts.length) {
     $("#promptOptions").classList.add("invalid");
@@ -564,7 +604,7 @@ async function startRun(event) {
     samples_per_project: $("#samplesPerProject").value,
     start_index: Number($("#startIndex").value || 0),
     limit: Number($("#limit").value || 0),
-    agent: $("#agentSelect").value,
+    agents,
     generation_prompts: generationPrompts,
     retry_mode: $("#retryMode").value,
     unlimited_max_wall_clock_minutes: Number($("#wallClock").value || 120),

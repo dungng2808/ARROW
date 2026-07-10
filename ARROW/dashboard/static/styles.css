@@ -271,6 +271,7 @@ textarea {
   grid-column: span 2;
 }
 
+.agent-field,
 .prompt-field {
   min-width: 0;
   margin: 0;
@@ -278,12 +279,14 @@ textarea {
   border: 0;
 }
 
+.agent-field legend,
 .prompt-field legend {
   margin-bottom: 5px;
   color: var(--muted);
   font-size: 12px;
 }
 
+.agent-options,
 .prompt-options {
   display: flex;
   align-items: center;
@@ -296,10 +299,12 @@ textarea {
   background: #ffffff;
 }
 
+.agent-options.invalid,
 .prompt-options.invalid {
   border-color: var(--red);
 }
 
+.agent-option,
 .prompt-option {
   display: inline-flex;
   align-items: center;
@@ -308,6 +313,7 @@ textarea {
   cursor: pointer;
 }
 
+.agent-option input,
 .prompt-option input {
   flex: 0 0 16px;
   width: 16px;
@@ -315,6 +321,7 @@ textarea {
   margin: 0;
 }
 
+.agent-option span,
 .prompt-option span {
   overflow-wrap: anywhere;
 }
@@ -501,7 +508,7 @@ pre {
 
 table {
   width: 100%;
-  min-width: 900px;
+  min-width: 980px;
   table-layout: fixed;
   border-collapse: collapse;
   font-size: 13px;

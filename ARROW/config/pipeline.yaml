@@ -68,7 +68,7 @@ llm:
       model: ollama/qwen-unit-test-elite-dataset-07-07:latest
       api_base: http://localhost:11434
       temperature: 0
-      num_ctx: 8192
+      num_ctx: 32768
       max_tokens: 2048
     - name: gpt-4.1-mini
       model: openai/gpt-4.1-mini

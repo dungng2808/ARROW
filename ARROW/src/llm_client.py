@@ -89,6 +89,64 @@ def _safe_litellm_metadata(result: Any) -> dict[str, Any]:
     return _json_safe(metadata)
 
 
+def token_usage_from_metadata(metadata: dict[str, Any]) -> dict[str, int] | None:
+    usage = metadata.get("usage")
+    if not isinstance(usage, dict):
+        return None
+    input_tokens = _usage_int(usage, "prompt_tokens", "input_tokens")
+    output_tokens = _usage_int(usage, "completion_tokens", "output_tokens")
+    total_tokens = _usage_int(usage, "total_tokens") or input_tokens + output_tokens
+    return {
+        "input_tokens": input_tokens,
+        "output_tokens": output_tokens,
+        "total_tokens": total_tokens,
+        "calls": 1,
+    }
+
+
+def record_token_usage(bucket: dict[str, dict[str, int]], prompt_name: str, metadata: dict[str, Any]) -> dict[str, int] | None:
+    usage = token_usage_from_metadata(metadata)
+    if usage is None:
+        return None
+    current = bucket.setdefault(
+        prompt_name,
+        {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0, "calls": 0},
+    )
+    for key in ("input_tokens", "output_tokens", "total_tokens", "calls"):
+        current[key] = int(current.get(key, 0)) + usage[key]
+    return usage
+
+
+def token_usage_report(bucket: dict[str, dict[str, int]]) -> dict[str, Any]:
+    totals = {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0, "calls": 0}
+    normalized: dict[str, dict[str, int]] = {}
+    for prompt_name, usage in bucket.items():
+        normalized[prompt_name] = {}
+        for key in totals:
+            value = int(usage.get(key, 0))
+            normalized[prompt_name][key] = value
+            totals[key] += value
+    return {
+        "llm_input_tokens": totals["input_tokens"],
+        "llm_output_tokens": totals["output_tokens"],
+        "llm_total_tokens": totals["total_tokens"],
+        "llm_call_count": totals["calls"],
+        "token_usage_by_prompt": normalized,
+    }
+
+
+def _usage_int(usage: dict[str, Any], *keys: str) -> int:
+    for key in keys:
+        value = usage.get(key)
+        if value in {None, ""}:
+            continue
+        try:
+            return int(value)
+        except (TypeError, ValueError):
+            continue
+    return 0
+
+
 def _get_value(obj: Any, key: str) -> Any:
     if isinstance(obj, dict):
         return obj.get(key)

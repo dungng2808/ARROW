@@ -6,7 +6,14 @@ from types import SimpleNamespace
 
 import pytest
 
-from src.llm_client import LiteLlmClient, LlmRequest, _safe_litellm_metadata
+from src.llm_client import (
+    LiteLlmClient,
+    LlmRequest,
+    _safe_litellm_metadata,
+    record_token_usage,
+    token_usage_from_metadata,
+    token_usage_report,
+)
 
 
 class Choice:
@@ -30,6 +37,30 @@ def test_safe_litellm_metadata_is_json_serializable():
     assert metadata["finish_reason"] == "stop"
     assert metadata["usage"]["prompt_tokens"] == 1
     json.dumps(metadata)
+
+
+def test_token_usage_is_aggregated_by_prompt():
+    bucket = {}
+    record_token_usage(
+        bucket,
+        "generation:zero-shot",
+        {"usage": {"prompt_tokens": 100, "completion_tokens": 20, "total_tokens": 120}},
+    )
+    record_token_usage(
+        bucket,
+        "repair:minimal-test",
+        {"usage": {"input_tokens": 80, "output_tokens": 15}},
+    )
+
+    alias_usage = token_usage_from_metadata({"usage": {"input_tokens": 3, "output_tokens": 2}})
+    assert alias_usage is not None
+    assert alias_usage["total_tokens"] == 5
+    report = token_usage_report(bucket)
+    assert report["llm_input_tokens"] == 180
+    assert report["llm_output_tokens"] == 35
+    assert report["llm_total_tokens"] == 215
+    assert report["llm_call_count"] == 2
+    assert report["token_usage_by_prompt"]["repair:minimal-test"]["total_tokens"] == 95
 
 
 def test_litellm_reads_api_key_from_configured_environment(monkeypatch):
