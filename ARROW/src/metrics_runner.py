@@ -163,6 +163,7 @@ def _run_pitest_dependency_prepare(ctx: BuildContext) -> VerificationResult | No
     command.extend(
         [
             "-DskipTests",
+            "-Ddocker.skip=true",
             "-DfailIfNoTests=false",
             "-Dsurefire.failIfNoSpecifiedTests=false",
             "install",

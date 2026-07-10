@@ -102,6 +102,7 @@ def test_pitest_prepare_installs_multimodule_dependencies(monkeypatch, tmp_path)
     assert "-am" in captured["command"]
     assert "install" in captured["command"]
     assert "-DskipTests" in captured["command"]
+    assert "-Ddocker.skip=true" in captured["command"]
     assert captured["cwd"] == module
     assert captured["target_only"] is False
 
