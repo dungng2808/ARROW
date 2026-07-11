@@ -80,6 +80,15 @@ Voi project legacy khai bao Java 7 tro xuong, neu khong co JDK khop chinh xac,
 pipeline uu tien JDK 8 truoc `java_default`. Cach nay tranh JVM crash voi cac
 build plugin cu nhu JaCoCo 0.7.x va Surefire 2.12.x khi Java he thong la 17/21.
 
+Neu project khong khai bao Java source/target, pipeline doc version trong
+`gradle/wrapper/gradle-wrapper.properties`. Vi du Gradle 4.x se chay bang JDK 8
+thay vi Java 17/21, tranh loi `Unsupported class file major version 61`.
+
+Mot so Gradle build goi `git describe` de tao version. Pipeline chi voi cac repo
+nay se fetch day du history/tag va copy `.git` vao workspace rieng. Cac repo
+khong dung Git trong build van giu shallow clone de tranh tang thoi gian va dung
+luong tren ca Windows va Ubuntu.
+
 ## 2. Chay Ollama, OpenAI va LiteLLM
 
 Pipeline bat buoc goi model qua `src/llm_client.py` bang LiteLLM. Khong goi

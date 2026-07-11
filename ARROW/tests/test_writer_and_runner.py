@@ -11,7 +11,8 @@ from src.build_runner import (
     verify_module_tests,
 )
 from src.models import FailureOrigin, FailureState, VerificationResult
-from src.repo_manager import safe_remove_tree
+from src import repo_manager
+from src.repo_manager import copy_isolated_workspace, safe_remove_tree
 from src.test_writer import JavaValidationError, validate_java_candidate, write_owned_generated_test
 
 
@@ -341,3 +342,66 @@ def test_safe_remove_tree_removes_only_inside_allowed_root(tmp_path):
     with pytest.raises(ValueError):
         safe_remove_tree(outside, allowed_root)
     assert outside.exists()
+
+
+def test_workspace_copy_preserves_source_package_named_build_but_skips_gradle_outputs(tmp_path):
+    source = tmp_path / "cached-repo"
+    destination = tmp_path / "experiment" / "workspace"
+    source.mkdir()
+    (source / "build.gradle").write_text("plugins { id 'java' }", encoding="utf-8")
+    gradle_source = source / "buildSrc" / "src" / "main" / "groovy" / "com" / "linkedin" / "gradle" / "build"
+    gradle_source.mkdir(parents=True)
+    (source / "buildSrc" / "build.gradle").write_text("plugins { id 'groovy' }", encoding="utf-8")
+    (gradle_source / "DistributeTask.groovy").write_text(
+        "package com.linkedin.gradle.build\nclass DistributeTask {}\n",
+        encoding="utf-8",
+    )
+    root_output = source / "build"
+    module_output = source / "buildSrc" / "build"
+    root_output.mkdir()
+    module_output.mkdir()
+    (root_output / "generated.bin").write_bytes(b"generated")
+    (module_output / "generated.bin").write_bytes(b"generated")
+
+    copy_isolated_workspace(source, destination)
+
+    assert (destination / gradle_source.relative_to(source) / "DistributeTask.groovy").is_file()
+    assert not (destination / "build").exists()
+    assert not (destination / "buildSrc" / "build").exists()
+
+
+def test_workspace_copy_includes_git_metadata_when_gradle_build_uses_git(tmp_path):
+    source = tmp_path / "cached-repo"
+    destination = tmp_path / "experiment" / "workspace"
+    git_dir = source / ".git"
+    git_dir.mkdir(parents=True)
+    (git_dir / "config").write_text("[core]\nrepositoryformatversion = 0\n", encoding="utf-8")
+    (source / "build.gradle").write_text(
+        "exec { commandLine 'git', 'describe', '--tags' }\n",
+        encoding="utf-8",
+    )
+
+    copy_isolated_workspace(source, destination)
+
+    assert (destination / ".git" / "config").is_file()
+
+
+def test_git_dependent_shallow_repo_fetches_history_and_tags(monkeypatch, tmp_path):
+    repository = tmp_path / "repo"
+    repository.mkdir()
+    (repository / "build.gradle").write_text(
+        "exec { commandLine 'git', 'describe', '--tags' }\n",
+        encoding="utf-8",
+    )
+    calls = []
+
+    def fake_run(command, **kwargs):
+        calls.append(command)
+        return repo_manager.subprocess.CompletedProcess(command, 0, stdout="true\n", stderr="")
+
+    monkeypatch.setattr(repo_manager.subprocess, "run", fake_run)
+
+    repo_manager._ensure_git_history_for_build(repository)
+
+    assert ["git", "rev-parse", "--is-shallow-repository"] in calls
+    assert ["git", "fetch", "--unshallow", "--tags"] in calls

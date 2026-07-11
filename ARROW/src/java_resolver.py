@@ -27,6 +27,25 @@ def resolve_java_home(repository_root: Path, module_root: Path, config: dict[str
 
     version, source = detect_project_java_version(repository_root, module_root)
     if not version:
+        gradle_version, gradle_source = detect_gradle_wrapper_version(repository_root)
+        gradle_java_version = compatible_java_version_for_gradle(gradle_version)
+        if gradle_java_version:
+            gradle_home, gradle_key = _configured_java_home_for_version(gradle_java_version, build_cfg.get("java_homes"))
+            if gradle_home:
+                return JavaSelection(
+                    requested_version=gradle_java_version,
+                    java_home=gradle_home,
+                    source=gradle_source,
+                    reason=f"Gradle {gradle_version} requires compatible JDK {gradle_java_version}; matched build.java_homes.{gradle_key}",
+                )
+            gradle_home = discover_java_home(gradle_java_version)
+            if gradle_home:
+                return JavaSelection(
+                    requested_version=gradle_java_version,
+                    java_home=gradle_home,
+                    source=gradle_source,
+                    reason=f"Gradle {gradle_version} requires compatible JDK {gradle_java_version}; auto-discovered",
+                )
         if default_java_home:
             return JavaSelection(
                 requested_version="default",
@@ -97,6 +116,32 @@ def _compatible_jdk_version(requested_version: str) -> str:
     except ValueError:
         return ""
     return "8" if version < 8 else ""
+
+
+def detect_gradle_wrapper_version(repository_root: Path) -> tuple[str, str]:
+    properties = repository_root / "gradle" / "wrapper" / "gradle-wrapper.properties"
+    if not properties.is_file():
+        return "", ""
+    text = properties.read_text(encoding="utf-8", errors="ignore")
+    match = re.search(r"gradle-([0-9]+(?:\.[0-9]+){1,3})-(?:all|bin)\.zip", text, flags=re.IGNORECASE)
+    return (match.group(1), str(properties)) if match else ("", str(properties))
+
+
+def compatible_java_version_for_gradle(gradle_version: str) -> str:
+    if not gradle_version:
+        return ""
+    try:
+        parts = tuple(int(part) for part in gradle_version.split("."))
+    except ValueError:
+        return ""
+    normalized = parts + (0,) * (3 - len(parts))
+    if normalized < (5, 0, 0):
+        return "8"
+    if normalized < (7, 3, 0):
+        return "11"
+    if normalized < (8, 5, 0):
+        return "17"
+    return ""
 
 
 def platform_config_value(value: Any) -> Any:

@@ -1,6 +1,12 @@
 from __future__ import annotations
 
-from src.java_resolver import detect_project_java_version, normalize_java_version, resolve_java_home
+from src.java_resolver import (
+    compatible_java_version_for_gradle,
+    detect_gradle_wrapper_version,
+    detect_project_java_version,
+    normalize_java_version,
+    resolve_java_home,
+)
 
 
 def test_detect_maven_java_version(tmp_path):
@@ -32,6 +38,48 @@ def test_detect_gradle_java_version(tmp_path):
     (repo / "build.gradle").write_text("java { toolchain { languageVersion = JavaLanguageVersion.of(17) } }", encoding="utf-8")
     version, _source = detect_project_java_version(repo, repo)
     assert version == "17"
+
+
+def test_detect_legacy_gradle_wrapper_and_compatible_java(tmp_path):
+    repo = tmp_path / "repo"
+    wrapper = repo / "gradle" / "wrapper" / "gradle-wrapper.properties"
+    wrapper.parent.mkdir(parents=True)
+    wrapper.write_text(
+        "distributionUrl=https\\://services.gradle.org/distributions/gradle-4.10.3-all.zip\n",
+        encoding="utf-8",
+    )
+
+    version, source = detect_gradle_wrapper_version(repo)
+
+    assert version == "4.10.3"
+    assert source == str(wrapper)
+    assert compatible_java_version_for_gradle(version) == "8"
+
+
+def test_resolve_uses_jdk8_for_gradle4_when_project_java_is_not_declared(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    wrapper = repo / "gradle" / "wrapper" / "gradle-wrapper.properties"
+    wrapper.parent.mkdir(parents=True)
+    wrapper.write_text(
+        "distributionUrl=https\\://services.gradle.org/distributions/gradle-4.10.3-all.zip\n",
+        encoding="utf-8",
+    )
+    (repo / "build.gradle").write_text("plugins { id 'java' }", encoding="utf-8")
+    jdk8 = tmp_path / "java-8"
+    jdk17 = tmp_path / "java-17"
+    jdk8.mkdir()
+    jdk17.mkdir()
+    monkeypatch.setattr("src.java_resolver.discover_java_home", lambda _version: "")
+
+    selection = resolve_java_home(
+        repo,
+        repo,
+        {"build": {"java_homes": {"java-8": str(jdk8)}, "java_default": str(jdk17)}},
+    )
+
+    assert selection.requested_version == "8"
+    assert selection.java_home == str(jdk8)
+    assert selection.reason == "Gradle 4.10.3 requires compatible JDK 8; matched build.java_homes.java-8"
 
 
 def test_resolve_uses_system_default_when_no_mapping_or_java_default(tmp_path):
