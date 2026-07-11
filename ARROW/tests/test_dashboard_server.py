@@ -28,7 +28,7 @@ def test_merge_reports_now_writes_dashboard_artifacts(monkeypatch, tmp_path):
     assert (tmp_path / "runs" / "merged" / "rq1_summary.csv").is_file()
     assert (tmp_path / "runs" / "merged" / "rq1_paired.csv").is_file()
     assert (tmp_path / "runs" / "merged" / "rq1_details.csv").is_file()
-    assert result["artifacts"]["rq1"]["summary"]["rows"] == 4
+    assert result["artifacts"]["rq1"]["summary"]["rows"] == 3
 
 
 def test_dashboard_contains_merge_button_and_api_binding():
@@ -40,27 +40,47 @@ def test_dashboard_contains_merge_button_and_api_binding():
     assert 'api("/api/reports/merge"' in javascript
 
 
-def test_dashboard_contains_rq1_export_buttons_and_api_bindings():
+def test_dashboard_links_to_rq1_preview_instead_of_direct_csv_buttons():
     html = (server.STATIC_ROOT / "index.html").read_text(encoding="utf-8")
     javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
 
-    for export_kind in ("summary", "paired", "details"):
-        assert f'id="export{export_kind.title()}Btn"' in html
-        assert f'/api/reports/export/${{exportKind}}' in javascript
-    assert "result.relative_path" in javascript
-    assert "downloadBlob" not in javascript
+    assert 'id="rq1ExportLink"' in html
+    assert 'href="/rq1.html"' in html
+    assert "exportSummaryBtn" not in html
+    assert "exportPairedBtn" not in html
+    assert "exportDetailsBtn" not in html
+    assert "/api/reports/export/${exportKind}" not in javascript
 
 
 def _bare_dashboard_handler(path: str):
     handler = object.__new__(server.DashboardHandler)
     handler.path = path
     handler.wfile = io.BytesIO()
+    handler.rfile = io.BytesIO()
+    handler.headers = {}
     handler.response_status = None
     handler.response_headers = {}
     handler.send_response = lambda status: setattr(handler, "response_status", status)
     handler.send_header = lambda name, value: handler.response_headers.__setitem__(name, value)
     handler.end_headers = lambda: None
     return handler
+
+
+def test_rq1_page_contains_preview_and_workbook_export_bindings():
+    html = (server.STATIC_ROOT / "rq1.html").read_text(encoding="utf-8")
+    javascript = (server.STATIC_ROOT / "rq1.js").read_text(encoding="utf-8")
+
+    assert "Prompt Repository-aware có cải thiện" in html
+    assert 'id="exportRq1Btn"' in html
+    assert "Tổng hợp kết quả" in html
+    assert 'id="overallResultsHead"' in html
+    assert 'id="modelResultsHead"' in html
+    assert 'data-preview-tab="summary"' in html
+    assert 'data-preview-tab="paired"' in html
+    assert 'data-preview-tab="details"' in html
+    assert "/api/reports/rq1/preview" in javascript
+    assert "renderResultTables" in javascript
+    assert 'api("/api/reports/export/rq1"' in javascript
 
 
 def test_rq1_export_endpoint_merges_and_saves_csv(monkeypatch, tmp_path):
@@ -107,6 +127,63 @@ def test_rq1_export_endpoint_rejects_unknown_type(monkeypatch):
 
     assert handler.response_status == 404
     assert b"Unknown CSV export type" in handler.wfile.getvalue()
+
+
+def test_rq1_preview_endpoint_returns_latest_snapshot(monkeypatch):
+    monkeypatch.setattr(
+        server,
+        "_rq1_preview",
+        lambda query: {"query": query, "readiness": {"status": "NOT_READY"}},
+    )
+    handler = _bare_dashboard_handler(
+        "/api/reports/rq1/preview?paired_page=2&details_page=3&page_size=25"
+    )
+
+    handler.do_GET()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    assert handler.response_status == 200
+    assert payload["readiness"]["status"] == "NOT_READY"
+    assert "paired_page=2" in payload["query"]
+
+
+def test_rq1_workbook_export_endpoint_saves_server_file(monkeypatch):
+    monkeypatch.setattr(
+        server,
+        "_save_rq1_workbook",
+        lambda revision: {
+            "relative_path": "export/RQ1/rq1_export_20260712_000000.xlsx",
+            "preview_was_stale": revision != "current",
+            "rows": {"Summary": 20, "Paired Samples": 2, "Raw Details": 4},
+        },
+    )
+    body = json.dumps({"preview_revision": "old"}).encode("utf-8")
+    handler = _bare_dashboard_handler("/api/reports/export/rq1")
+    handler.rfile = io.BytesIO(body)
+    handler.headers = {"Content-Length": str(len(body))}
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    assert handler.response_status == 201
+    assert payload["preview_was_stale"] is True
+    assert payload["relative_path"].endswith(".xlsx")
+
+
+def test_rq1_workbook_export_endpoint_reports_excel_limit(monkeypatch):
+    def fail(_revision):
+        raise server.RQ1ExcelLimitError("Raw Details", 1_048_577)
+
+    monkeypatch.setattr(server, "_save_rq1_workbook", fail)
+    handler = _bare_dashboard_handler("/api/reports/export/rq1")
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    assert handler.response_status == 422
+    assert payload["sheet"] == "Raw Details"
+    assert payload["rows"] == 1_048_577
+    assert payload["max_rows"] == 1_048_576
 
 
 def test_pipeline_command_accepts_multiple_generation_prompts(tmp_path):

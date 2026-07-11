@@ -23,6 +23,14 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
 from src.report_writer import load_experiment_jsonl, write_rq1_exports
+from src.rq1_export import (
+    RQ1ExcelLimitError,
+    RQ1NoDataError,
+    RQ1SnapshotChangedError,
+    build_rq1_preview,
+    load_rq1_snapshot,
+    save_rq1_workbook,
+)
 from src.run_pipeline import _merge_reports
 
 
@@ -40,6 +48,7 @@ SHARD_ROOT = PROJECT_ROOT / "shards"
 RUNS: dict[str, dict[str, Any]] = {}
 RUN_LOCK = threading.Lock()
 MERGE_LOCK = threading.Lock()
+RQ1_EXPORT_LOCK = threading.Lock()
 DISCONNECTED_ERRORS = (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)
 RQ1_EXPORT_FILENAMES = {
     "summary": "rq1_summary.csv",
@@ -305,6 +314,35 @@ def _save_rq1_export(export_kind: str) -> dict[str, Any]:
         "relative_path": relative_path,
         "rows": int(metadata.get("rows") or 0),
     }
+
+
+def _rq1_preview(query: str = "") -> dict[str, Any]:
+    params = parse_qs(query)
+    paired_page = int(params.get("paired_page", ["1"])[0])
+    details_page = int(params.get("details_page", ["1"])[0])
+    page_size = int(params.get("page_size", ["50"])[0])
+    snapshot = load_rq1_snapshot(PROJECT_ROOT / "runs")
+    return build_rq1_preview(
+        snapshot,
+        paired_page=paired_page,
+        details_page=details_page,
+        page_size=page_size,
+    )
+
+
+def _save_rq1_workbook(preview_revision: str = "") -> dict[str, Any]:
+    if not RQ1_EXPORT_LOCK.acquire(blocking=False):
+        raise RuntimeError("Đang có yêu cầu xuất RQ1 khác chạy")
+    try:
+        snapshot = load_rq1_snapshot(PROJECT_ROOT / "runs")
+        return save_rq1_workbook(
+            RQ1_EXPORT_ROOT,
+            PROJECT_ROOT,
+            snapshot,
+            preview_revision=preview_revision,
+        )
+    finally:
+        RQ1_EXPORT_LOCK.release()
 
 
 def _detect_java() -> dict[str, Any]:
@@ -1017,6 +1055,13 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 return _json_response(self, {"experiments": _experiments()})
             if path.startswith("/api/experiments/"):
                 return self._api_experiment_route(path)
+            if path == "/api/reports/rq1/preview":
+                try:
+                    return _json_response(self, _rq1_preview(parsed.query))
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=400)
+                except RQ1SnapshotChangedError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=409)
             if path == "/api/runs":
                 with RUN_LOCK:
                     return _json_response(self, {"runs": list(RUNS.values())})
@@ -1033,6 +1078,31 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         try:
             if parsed.path == "/api/reports/merge":
                 return _json_response(self, _merge_reports_now(), status=201)
+            if parsed.path == "/api/reports/export/rq1":
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+                try:
+                    result = _save_rq1_workbook(str(payload.get("preview_revision") or ""))
+                    return _json_response(self, result, status=201)
+                except RQ1ExcelLimitError as exc:
+                    return _json_response(
+                        self,
+                        {
+                            "error": str(exc),
+                            "sheet": exc.sheet,
+                            "rows": exc.rows,
+                            "max_rows": exc.max_rows,
+                        },
+                        status=422,
+                    )
+                except RQ1NoDataError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=422)
+                except RQ1SnapshotChangedError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=409)
+                except RuntimeError as exc:
+                    if str(exc) == "Đang có yêu cầu xuất RQ1 khác chạy":
+                        return _json_response(self, {"error": str(exc)}, status=409)
+                    raise
             if parsed.path.startswith("/api/reports/export/"):
                 export_kind = parsed.path.removeprefix("/api/reports/export/").strip("/")
                 if export_kind not in RQ1_EXPORT_FILENAMES:

@@ -1,6 +1,7 @@
 classes2test/
 ARROW/runs/
 ARROW/repos/
+ARROW/export/
 ARROW/dashboard/logs/
 ARROW/dashboard/runtime_configs/
 ARROW/dashboard/run_records/

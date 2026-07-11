@@ -220,9 +220,15 @@ def test_rq1_incomplete_triplet_is_paired_but_excluded_from_summary():
     assert paired[0]["complete_triplet"] is False
     assert paired[0]["repository_aware_run_id"] == ""
     summary = build_rq1_summary_rows(rows)
-    assert len(summary) == 4
+    assert len(summary) == 3
+    assert {row["prompt_strategy"] for row in summary} == {
+        "zero-shot",
+        "few-shot",
+        "zero-shot-project-aware",
+    }
     assert {row["complete_triplets"] for row in summary} == {0}
     assert {row["rq1_conclusion"] for row in summary} == {"INSUFFICIENT_DATA"}
+    assert all(row["rq1_answer_en"].startswith("INSUFFICIENT DATA:") for row in summary)
     assert all("CHƯA ĐỦ DỮ LIỆU" in row["rq1_answer_vi"] for row in summary)
 
 
@@ -243,18 +249,17 @@ def test_rq1_summary_uses_equal_complete_sample_denominators_and_tri_state_metri
     ]
 
     summary = build_rq1_summary_rows(rows)
-    comparisons = {(row["metric"], row["baseline_prompt"]): row for row in summary}
+    by_prompt = {row["prompt_strategy"]: row for row in summary}
 
-    assert len(summary) == 4
+    assert len(summary) == 3
     assert {row["complete_triplets"] for row in summary} == {1}
-    compile_zero = comparisons[("compile", "zero-shot")]
-    assert compile_zero["paired_evaluable_samples"] == 1
-    assert compile_zero["baseline_success_rate_pct"] == 100.0
-    assert compile_zero["repository_aware_success_rate_pct"] == 0.0
-    assert compile_zero["repository_aware_improvement_pp"] == -100.0
-    compile_few = comparisons[("compile", "few-shot")]
-    assert compile_few["paired_evaluable_samples"] == 0
-    assert compile_few["comparison_result"] == "INSUFFICIENT_DATA"
+    assert {row["data_ready"] for row in summary} == {False}
+    assert {row["compile_paired_samples"] for row in summary} == {0}
+    assert by_prompt["zero-shot"]["compile_success_rate_pct"] == ""
+    assert by_prompt["few-shot"]["execution_success_rate_pct"] == ""
+    assert {
+        row["repo_vs_zero_compile_result"] for row in summary
+    } == {"INSUFFICIENT_DATA"}
     assert {row["rq1_conclusion"] for row in summary} == {"INSUFFICIENT_DATA"}
 
 
@@ -271,7 +276,7 @@ def test_rq1_exports_combine_build_tools_in_summary_and_paired_rows():
     summary = build_rq1_summary_rows(rows)
     paired = build_rq1_paired_rows(rows)
 
-    assert len(summary) == 4
+    assert len(summary) == 3
     assert {row["complete_triplets"] for row in summary} == {2}
     assert {row["build_tools"] for row in summary} == {"gradle|maven"}
     assert len(paired) == 2
@@ -298,16 +303,24 @@ def test_rq1_summary_directly_answers_when_repository_aware_wins_all_pairs():
 
     summary = build_rq1_summary_rows(rows)
 
-    assert len(summary) == 4
-    assert {row["repository_aware_improvement_pp"] for row in summary} == {100.0}
-    assert {row["repository_aware_wins"] for row in summary} == {10}
-    assert {row["repository_aware_losses"] for row in summary} == {0}
-    assert all(row["holm_adjusted_p_value"] < 0.05 for row in summary)
-    assert {row["comparison_result"] for row in summary} == {"IMPROVED"}
+    assert len(summary) == 3
+    assert {row["prompt_strategy"] for row in summary} == {
+        "zero-shot",
+        "few-shot",
+        "zero-shot-project-aware",
+    }
+    assert {row["repo_vs_zero_compile_improvement_pp"] for row in summary} == {100.0}
+    assert {row["repo_vs_few_execution_improvement_pp"] for row in summary} == {100.0}
+    assert {row["repo_vs_zero_compile_wins"] for row in summary} == {10}
+    assert {row["repo_vs_few_execution_losses"] for row in summary} == {0}
+    assert all(row["repo_vs_zero_compile_holm_p_value"] < 0.05 for row in summary)
+    assert {row["repo_vs_zero_compile_result"] for row in summary} == {"IMPROVED"}
+    assert {row["repo_vs_few_execution_result"] for row in summary} == {"IMPROVED"}
     assert {row["rq1_conclusion"] for row in summary} == {
         "YES_IMPROVES_COMPILE_AND_EXECUTION"
     }
     assert all(row["rq1_answer_vi"].startswith("CÓ:") for row in summary)
+    assert all(row["rq1_answer_en"].startswith("YES:") for row in summary)
 
 
 def test_write_rq1_exports_writes_bom_clean_columns_and_metadata(tmp_path):
@@ -323,7 +336,7 @@ def test_write_rq1_exports_writes_bom_clean_columns_and_metadata(tmp_path):
     metadata = write_rq1_exports(tmp_path, rows)
 
     assert set(metadata) == {"summary", "paired", "details"}
-    assert metadata["summary"]["rows"] == 4
+    assert metadata["summary"]["rows"] == 3
     assert metadata["paired"]["rows"] == 1
     assert metadata["details"]["rows"] == 3
     for item in metadata.values():

@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Xuất dữ liệu RQ1 · ARROW</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body class="rq1-page">
+    <div class="rq1-shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div class="brand-mark">A</div>
+          <div class="brand-copy"><h1>ARROW</h1><span>Bảng điều khiển thí nghiệm</span></div>
+          <button id="sidebarToggle" class="sidebar-toggle" type="button" title="Ẩn thanh bên" aria-label="Bật tắt thanh bên" aria-expanded="true"><i data-lucide="panel-left-close"></i></button>
+        </div>
+        <nav>
+          <a class="nav-link" href="/"><i data-lucide="layout-dashboard"></i><span>Bảng điều khiển</span></a>
+          <a class="nav-link active" href="/rq1.html"><i data-lucide="file-spreadsheet"></i><span>Xuất RQ1</span></a>
+        </nav>
+      </aside>
+
+      <main class="rq1-main">
+        <header class="rq1-header">
+          <div><span class="eyebrow">Xuất dữ liệu nghiên cứu</span><h1>So sánh chiến lược prompt cho RQ1</h1><p id="snapshotMeta">Đang tải snapshot JSONL mới nhất…</p></div>
+          <div class="rq1-header-actions">
+            <button id="refreshRq1Btn" class="icon-btn" type="button" title="Làm mới bản xem trước" aria-label="Làm mới bản xem trước"><i data-lucide="refresh-cw"></i></button>
+            <button id="exportRq1Btn" class="primary rq1-export-primary" type="button" disabled><i data-lucide="file-down"></i>Xuất RQ1 (.xlsx)</button>
+          </div>
+        </header>
+        <div id="rq1Status" class="rq1-action-status" aria-live="polite"></div>
+
+        <section class="panel rq1-question">
+          <span class="eyebrow">Câu hỏi nghiên cứu</span>
+          <h2>Prompt Repository-aware có cải thiện tỷ lệ biên dịch ban đầu và thực thi kiểm thử so với Zero-shot và Few-shot không?</h2>
+          <div class="rq1-definitions">
+            <p><strong>Biên dịch thành công</strong><span>Mã kiểm thử được sinh lần đầu biên dịch thành công.</span></p>
+            <p><strong>Thực thi thành công</strong><span>Kiểm thử mục tiêu được sinh lần đầu chạy thành công.</span></p>
+          </div>
+        </section>
+
+        <section class="panel rq1-section">
+          <div class="section-title"><div><h2>Mức độ sẵn sàng dữ liệu</h2><span>Tất cả thí nghiệm RQ1 hiện có</span></div><span id="readinessBadge" class="readiness-badge">ĐANG TẢI</span></div>
+          <div id="readinessGrid" class="rq1-kpi-grid"></div>
+          <div id="readinessWarning" class="rq1-warning hidden"></div>
+        </section>
+
+        <section class="panel rq1-section">
+          <div class="section-title"><div><h2>So sánh chiến lược</h2><span id="primaryScopeMeta"></span></div></div>
+          <div id="strategyCards" class="strategy-card-grid"></div>
+          <div id="strategyBars" class="rq1-bars"></div>
+          <div class="rq1-result-summary">
+            <div class="rq1-subsection-title">
+              <h3>Tổng hợp kết quả</h3>
+              <span>Số lượng và tỷ lệ được tính từ kết quả logical mới nhất của từng chiến lược có dữ liệu.</span>
+            </div>
+            <div class="table-wrap"><table class="rq1-result-table overall-results-table"><thead id="overallResultsHead"></thead><tbody id="overallResultsBody"></tbody></table></div>
+            <div class="rq1-subsection-title model-results-title">
+              <h3>Tổng hợp kết quả theo mô hình</h3>
+              <span>Cùng bộ metric, tách theo tác nhân và mô hình.</span>
+            </div>
+            <div class="table-wrap"><table class="rq1-result-table model-results-table"><thead id="modelResultsHead"></thead><tbody id="modelResultsBody"></tbody></table></div>
+          </div>
+        </section>
+
+        <section class="panel rq1-section">
+          <div class="section-title"><div><h2>So sánh thống kê</h2><span>Repository-aware so với hai baseline · p-value hiệu chỉnh Holm, α = 0.05</span></div></div>
+          <div class="table-wrap"><table class="rq1-comparison-table"><thead><tr><th>So sánh</th><th>Chỉ số</th><th>Cặp mẫu</th><th>Cải thiện (điểm %)</th><th>Thắng</th><th>Thua</th><th>Hòa</th><th>p-value</th><th>p-value Holm</th><th>Kết quả</th></tr></thead><tbody id="comparisonRows"></tbody></table></div>
+          <div id="rq1Conclusion" class="rq1-conclusion"></div>
+        </section>
+
+        <section class="panel rq1-section">
+          <div class="section-title preview-title">
+            <div><h2>Xem trước tệp Excel</h2><span>Xem đúng các bộ dữ liệu sẽ dùng cho ba trang tính trong tệp Excel</span></div>
+            <label class="page-size-control"><span>Số dòng mỗi trang</span><select id="pageSize"><option value="25">25</option><option value="50" selected>50</option><option value="100">100</option></select></label>
+          </div>
+          <div class="rq1-preview-tabs" role="tablist">
+            <button class="rq1-preview-tab active" data-preview-tab="summary" type="button">Tổng hợp</button>
+            <button class="rq1-preview-tab" data-preview-tab="paired" type="button">Mẫu ghép cặp <span id="pairedCount"></span></button>
+            <button class="rq1-preview-tab" data-preview-tab="details" type="button">Chi tiết thô <span id="detailsCount"></span></button>
+          </div>
+          <div id="summaryPreview" class="rq1-preview-panel active"><div class="table-wrap"><table><thead id="summaryHead"></thead><tbody id="summaryBody"></tbody></table></div></div>
+          <div id="pairedPreview" class="rq1-preview-panel"><div class="table-wrap"><table><thead id="pairedHead"></thead><tbody id="pairedBody"></tbody></table></div><div id="pairedPager" class="rq1-pager"></div></div>
+          <div id="detailsPreview" class="rq1-preview-panel"><div class="table-wrap"><table><thead id="detailsHead"></thead><tbody id="detailsBody"></tbody></table></div><div id="detailsPager" class="rq1-pager"></div></div>
+        </section>
+      </main>
+    </div>
+    <script src="/rq1.js"></script>
+  </body>
+</html>

@@ -25,6 +25,7 @@
           <a class="nav-link" href="#experiments"><i data-lucide="table-2"></i><span>Experiments</span></a>
           <a class="nav-link" href="#repair"><i data-lucide="git-branch"></i><span>Repair</span></a>
           <a class="nav-link" href="#metrics"><i data-lucide="bar-chart-3"></i><span>Metrics</span></a>
+          <a class="nav-link" href="/rq1.html"><i data-lucide="file-spreadsheet"></i><span>Xuất RQ1</span></a>
         </nav>
       </aside>
 
@@ -41,15 +42,9 @@
                 <button id="mergeReportsBtn" class="merge-btn report-action-btn" type="button" title="Merge all reports into runs/merged">
                   <i data-lucide="merge"></i><span>Merge reports</span>
                 </button>
-                <button id="exportSummaryBtn" class="export-btn report-action-btn" type="button" title="Merge reports and save the RQ1 summary CSV to export/RQ1">
-                  <i data-lucide="download"></i><span>Export RQ1 Summary</span>
-                </button>
-                <button id="exportPairedBtn" class="export-btn report-action-btn" type="button" title="Merge reports and save the RQ1 paired CSV to export/RQ1">
-                  <i data-lucide="download"></i><span>Export RQ1 Paired</span>
-                </button>
-                <button id="exportDetailsBtn" class="export-btn report-action-btn" type="button" title="Merge reports and save the RQ1 details CSV to export/RQ1">
-                  <i data-lucide="download"></i><span>Export RQ1 Details</span>
-                </button>
+                <a id="rq1ExportLink" class="export-btn report-action-btn report-link" href="/rq1.html" title="Xem trước dữ liệu RQ1 trước khi xuất workbook Excel">
+                  <i data-lucide="file-spreadsheet"></i><span>Xem trước / Xuất RQ1</span>
+                </a>
                 <button id="refreshBtn" class="icon-btn" type="button" title="Refresh dashboard data"><i data-lucide="refresh-cw"></i></button>
               </div>
             </div>

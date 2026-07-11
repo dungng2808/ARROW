@@ -163,24 +163,49 @@ RQ1_SUMMARY_COLUMNS = [
     "few_shot_available_samples",
     "repository_aware_available_samples",
     "complete_triplets",
-    "metric",
-    "baseline_prompt",
-    "repository_aware_prompt",
-    "paired_evaluable_samples",
-    "baseline_success_count",
-    "baseline_success_rate_pct",
-    "repository_aware_success_count",
-    "repository_aware_success_rate_pct",
-    "repository_aware_improvement_pp",
-    "repository_aware_wins",
-    "repository_aware_losses",
-    "ties",
-    "mcnemar_p_value",
-    "mcnemar_method",
-    "holm_adjusted_p_value",
+    "data_ready",
+    "prompt_strategy",
+    "compile_paired_samples",
+    "compile_success_count",
+    "compile_success_rate_pct",
+    "execution_paired_samples",
+    "execution_success_count",
+    "execution_success_rate_pct",
+    "repo_vs_zero_compile_improvement_pp",
+    "repo_vs_few_compile_improvement_pp",
+    "repo_vs_zero_execution_improvement_pp",
+    "repo_vs_few_execution_improvement_pp",
+    "repo_vs_zero_compile_wins",
+    "repo_vs_zero_compile_losses",
+    "repo_vs_zero_compile_ties",
+    "repo_vs_zero_compile_p_value",
+    "repo_vs_zero_compile_p_method",
+    "repo_vs_zero_compile_holm_p_value",
+    "repo_vs_zero_compile_result",
+    "repo_vs_few_compile_wins",
+    "repo_vs_few_compile_losses",
+    "repo_vs_few_compile_ties",
+    "repo_vs_few_compile_p_value",
+    "repo_vs_few_compile_p_method",
+    "repo_vs_few_compile_holm_p_value",
+    "repo_vs_few_compile_result",
+    "repo_vs_zero_execution_wins",
+    "repo_vs_zero_execution_losses",
+    "repo_vs_zero_execution_ties",
+    "repo_vs_zero_execution_p_value",
+    "repo_vs_zero_execution_p_method",
+    "repo_vs_zero_execution_holm_p_value",
+    "repo_vs_zero_execution_result",
+    "repo_vs_few_execution_wins",
+    "repo_vs_few_execution_losses",
+    "repo_vs_few_execution_ties",
+    "repo_vs_few_execution_p_value",
+    "repo_vs_few_execution_p_method",
+    "repo_vs_few_execution_holm_p_value",
+    "repo_vs_few_execution_result",
     "alpha",
-    "comparison_result",
     "rq1_conclusion",
+    "rq1_answer_en",
     "rq1_answer_vi",
 ]
 
@@ -371,23 +396,7 @@ def build_rq1_summary_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
 
     output_rows: list[dict[str, Any]] = []
     for scope, agent, model, triplets in scopes:
-        scope_rows = _rq1_comparison_rows(scope, agent, model, triplets)
-        adjusted = _holm_adjusted_p_values(
-            [row["mcnemar_p_value"] for row in scope_rows]
-        )
-        for row, adjusted_p in zip(scope_rows, adjusted):
-            row["holm_adjusted_p_value"] = adjusted_p
-            row["comparison_result"] = _rq1_comparison_result(
-                row["paired_evaluable_samples"],
-                row["repository_aware_improvement_pp"],
-                adjusted_p,
-            )
-        conclusion = _rq1_conclusion([row["comparison_result"] for row in scope_rows])
-        answer_vi = _rq1_answer_vi(conclusion)
-        for row in scope_rows:
-            row["rq1_conclusion"] = conclusion
-            row["rq1_answer_vi"] = answer_vi
-        output_rows.extend(scope_rows)
+        output_rows.extend(_rq1_prompt_summary_rows(scope, agent, model, triplets))
     return output_rows
 
 
@@ -992,13 +1001,23 @@ def _rq1_target_from_state(state: str) -> bool | None:
     return None
 
 
-def _rq1_comparison_rows(
+def _rq1_prompt_summary_rows(
     scope: str,
     agent: str,
     model: str,
     triplets: list[dict[str, dict[str, Any]]],
 ) -> list[dict[str, Any]]:
     complete = [triplet for triplet in triplets if _is_complete_rq1_triplet(triplet)]
+    compile_ready = [
+        triplet
+        for triplet in complete
+        if all(_rq1_initial_compile(triplet[strategy]) is not None for strategy in RQ1_PROMPT_STRATEGIES)
+    ]
+    execution_ready = [
+        triplet
+        for triplet in complete
+        if all(_rq1_initial_target_pass(triplet[strategy]) is not None for strategy in RQ1_PROMPT_STRATEGIES)
+    ]
     all_items = [item for triplet in triplets for item in triplet.values()]
     common = {
         "scope": scope,
@@ -1012,62 +1031,113 @@ def _rq1_comparison_rows(
             "zero-shot-project-aware" in triplet for triplet in triplets
         ),
         "complete_triplets": len(complete),
+        "data_ready": bool(compile_ready and execution_ready),
     }
-    comparisons = (
-        ("compile", "zero-shot", _rq1_initial_compile),
-        ("compile", "few-shot", _rq1_initial_compile),
-        ("execution", "zero-shot", _rq1_initial_target_pass),
-        ("execution", "few-shot", _rq1_initial_target_pass),
+    comparison_specs = (
+        ("repo_vs_zero_compile", compile_ready, "zero-shot", _rq1_initial_compile),
+        ("repo_vs_few_compile", compile_ready, "few-shot", _rq1_initial_compile),
+        ("repo_vs_zero_execution", execution_ready, "zero-shot", _rq1_initial_target_pass),
+        ("repo_vs_few_execution", execution_ready, "few-shot", _rq1_initial_target_pass),
     )
-    output: list[dict[str, Any]] = []
-    for metric, baseline_prompt, getter in comparisons:
-        pairs: list[tuple[bool, bool]] = []
-        for triplet in complete:
-            baseline_value = getter(triplet[baseline_prompt])
-            repository_value = getter(triplet["zero-shot-project-aware"])
-            if baseline_value is not None and repository_value is not None:
-                pairs.append((baseline_value, repository_value))
-        baseline_success = sum(baseline for baseline, _repository in pairs)
-        repository_success = sum(repository for _baseline, repository in pairs)
-        wins = sum((not baseline) and repository for baseline, repository in pairs)
-        losses = sum(baseline and (not repository) for baseline, repository in pairs)
-        ties = len(pairs) - wins - losses
-        baseline_rate = _percentage(baseline_success, len(pairs))
-        repository_rate = _percentage(repository_success, len(pairs))
-        improvement = (
-            repository_rate - baseline_rate
-            if isinstance(repository_rate, float) and isinstance(baseline_rate, float)
-            else ""
+    comparisons = {
+        name: _rq1_pair_comparison(metric_triplets, baseline, getter)
+        for name, metric_triplets, baseline, getter in comparison_specs
+    }
+    adjusted = _holm_adjusted_p_values(
+        [comparisons[name]["p_value"] for name, *_rest in comparison_specs]
+    )
+    for (name, *_rest), adjusted_p in zip(comparison_specs, adjusted):
+        comparison = comparisons[name]
+        comparison["holm_p_value"] = adjusted_p
+        comparison["result"] = _rq1_comparison_result(
+            comparison["paired_samples"],
+            comparison["improvement_pp"],
+            adjusted_p,
         )
-        if pairs:
-            mcnemar_p_value, mcnemar_method = _mcnemar_p_value(wins, losses)
-        else:
-            mcnemar_p_value, mcnemar_method = "", ""
+    conclusion = _rq1_conclusion([comparisons[name]["result"] for name, *_rest in comparison_specs])
+
+    comparison_columns: dict[str, Any] = {}
+    for name, comparison in comparisons.items():
+        comparison_columns.update(
+            {
+                f"{name}_improvement_pp": comparison["improvement_pp"],
+                f"{name}_wins": comparison["wins"],
+                f"{name}_losses": comparison["losses"],
+                f"{name}_ties": comparison["ties"],
+                f"{name}_p_value": comparison["p_value"],
+                f"{name}_p_method": comparison["p_method"],
+                f"{name}_holm_p_value": comparison["holm_p_value"],
+                f"{name}_result": comparison["result"],
+            }
+        )
+
+    output: list[dict[str, Any]] = []
+    for strategy in RQ1_PROMPT_STRATEGIES:
+        compile_success = sum(
+            _rq1_initial_compile(triplet[strategy]) is True for triplet in compile_ready
+        )
+        execution_success = sum(
+            _rq1_initial_target_pass(triplet[strategy]) is True for triplet in execution_ready
+        )
         output.append(
             {
                 **common,
-                "metric": metric,
-                "baseline_prompt": baseline_prompt,
-                "repository_aware_prompt": "zero-shot-project-aware",
-                "paired_evaluable_samples": len(pairs),
-                "baseline_success_count": baseline_success,
-                "baseline_success_rate_pct": baseline_rate,
-                "repository_aware_success_count": repository_success,
-                "repository_aware_success_rate_pct": repository_rate,
-                "repository_aware_improvement_pp": improvement,
-                "repository_aware_wins": wins,
-                "repository_aware_losses": losses,
-                "ties": ties,
-                "mcnemar_p_value": mcnemar_p_value,
-                "mcnemar_method": mcnemar_method,
-                "holm_adjusted_p_value": "",
+                "prompt_strategy": strategy,
+                "compile_paired_samples": len(compile_ready),
+                "compile_success_count": compile_success,
+                "compile_success_rate_pct": _percentage(compile_success, len(compile_ready)),
+                "execution_paired_samples": len(execution_ready),
+                "execution_success_count": execution_success,
+                "execution_success_rate_pct": _percentage(execution_success, len(execution_ready)),
+                **comparison_columns,
                 "alpha": 0.05,
-                "comparison_result": "",
-                "rq1_conclusion": "",
-                "rq1_answer_vi": "",
+                "rq1_conclusion": conclusion,
+                "rq1_answer_en": _rq1_answer_en(conclusion),
+                "rq1_answer_vi": _rq1_answer_vi(conclusion),
             }
         )
     return output
+
+
+def _rq1_pair_comparison(
+    triplets: list[dict[str, dict[str, Any]]],
+    baseline_prompt: str,
+    getter: Any,
+) -> dict[str, Any]:
+    pairs = [
+        (
+            bool(getter(triplet[baseline_prompt])),
+            bool(getter(triplet["zero-shot-project-aware"])),
+        )
+        for triplet in triplets
+    ]
+    baseline_success = sum(baseline for baseline, _repository in pairs)
+    repository_success = sum(repository for _baseline, repository in pairs)
+    wins = sum((not baseline) and repository for baseline, repository in pairs)
+    losses = sum(baseline and (not repository) for baseline, repository in pairs)
+    ties = len(pairs) - wins - losses
+    baseline_rate = _percentage(baseline_success, len(pairs))
+    repository_rate = _percentage(repository_success, len(pairs))
+    improvement = (
+        repository_rate - baseline_rate
+        if isinstance(repository_rate, float) and isinstance(baseline_rate, float)
+        else ""
+    )
+    if pairs:
+        p_value, p_method = _mcnemar_p_value(wins, losses)
+    else:
+        p_value, p_method = "", ""
+    return {
+        "paired_samples": len(pairs),
+        "improvement_pp": improvement,
+        "wins": wins,
+        "losses": losses,
+        "ties": ties,
+        "p_value": p_value,
+        "p_method": p_method,
+        "holm_p_value": "",
+        "result": "",
+    }
 
 
 def _percentage(numerator: int, denominator: int) -> float | str:
@@ -1153,6 +1223,32 @@ def _rq1_answer_vi(conclusion: str) -> str:
         ),
         "INSUFFICIENT_DATA": (
             "CHƯA ĐỦ DỮ LIỆU: cần chạy đủ ba prompt trên cùng sample và model để trả lời RQ1."
+        ),
+    }
+    return answers[conclusion]
+
+
+def _rq1_answer_en(conclusion: str) -> str:
+    answers = {
+        "YES_IMPROVES_COMPILE_AND_EXECUTION": (
+            "YES: Repository-aware prompting significantly improves both initial compilation "
+            "and test execution compared with Zero-shot and Few-shot."
+        ),
+        "PARTIAL_IMPROVEMENT": (
+            "PARTIAL IMPROVEMENT: Repository-aware prompting is significantly better for only "
+            "some metrics or baselines."
+        ),
+        "NO_REPOSITORY_AWARE_IS_WORSE": (
+            "NO: Repository-aware prompting does not improve the results and is significantly "
+            "worse in at least one comparison."
+        ),
+        "NO_SIGNIFICANT_IMPROVEMENT": (
+            "NO SIGNIFICANT IMPROVEMENT: The observed Repository-aware differences are not "
+            "statistically significant."
+        ),
+        "INSUFFICIENT_DATA": (
+            "INSUFFICIENT DATA: Run all three prompting strategies on the same sample and model "
+            "before drawing an RQ1 conclusion."
         ),
     }
     return answers[conclusion]

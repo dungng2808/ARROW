@@ -80,9 +80,6 @@ async function init() {
 function bindEvents() {
   $("#refreshBtn").addEventListener("click", refreshAll);
   $("#mergeReportsBtn").addEventListener("click", mergeReports);
-  $("#exportSummaryBtn").addEventListener("click", () => exportRq1Csv("summary"));
-  $("#exportPairedBtn").addEventListener("click", () => exportRq1Csv("paired"));
-  $("#exportDetailsBtn").addEventListener("click", () => exportRq1Csv("details"));
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#copyLogsBtn").addEventListener("click", copyRunLogs);
   $("#copyErrorsBtn").addEventListener("click", copyExperimentErrors);
@@ -229,35 +226,6 @@ async function mergeReports() {
   } catch (error) {
     status.className = "error";
     status.textContent = error.message || "Merge failed";
-  } finally {
-    setReportActionsBusy(false);
-  }
-}
-
-const rq1ExportButtons = {
-  summary: "#exportSummaryBtn",
-  paired: "#exportPairedBtn",
-  details: "#exportDetailsBtn",
-};
-
-async function exportRq1Csv(exportKind) {
-  const buttonSelector = rq1ExportButtons[exportKind];
-  if (!buttonSelector) return;
-
-  const button = $(buttonSelector);
-  const status = $("#mergeStatus");
-  setReportActionsBusy(true, button);
-  status.className = "";
-  status.textContent = "Merging reports…";
-
-  try {
-    const result = await api(`/api/reports/export/${exportKind}`, {method: "POST", body: "{}"});
-    status.className = "success";
-    status.textContent = `Saved ${formatNumber(result.rows)} records to ${result.relative_path}`;
-    await loadExperiments();
-  } catch (error) {
-    status.className = "error";
-    status.textContent = error.message || "Export failed";
   } finally {
     setReportActionsBusy(false);
   }
