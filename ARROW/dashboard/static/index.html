@@ -35,7 +35,13 @@
               <h2>Run Launcher</h2>
               <span id="configMeta"></span>
             </div>
-            <button id="refreshBtn" class="icon-btn" title="Refresh dashboard data"><i data-lucide="refresh-cw"></i></button>
+            <div class="launcher-actions">
+              <small id="mergeStatus" aria-live="polite"></small>
+              <button id="mergeReportsBtn" class="merge-btn" type="button" title="Merge all reports into runs/merged">
+                <i data-lucide="merge"></i><span>Merge reports</span>
+              </button>
+              <button id="refreshBtn" class="icon-btn" type="button" title="Refresh dashboard data"><i data-lucide="refresh-cw"></i></button>
+            </div>
           </div>
 
           <form id="runForm" class="run-grid">

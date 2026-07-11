@@ -79,6 +79,7 @@ async function init() {
 
 function bindEvents() {
   $("#refreshBtn").addEventListener("click", refreshAll);
+  $("#mergeReportsBtn").addEventListener("click", mergeReports);
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#copyLogsBtn").addEventListener("click", copyRunLogs);
   $("#copyErrorsBtn").addEventListener("click", copyExperimentErrors);
@@ -202,6 +203,27 @@ async function copyExperimentErrors() {
 async function refreshAll() {
   await loadExperiments();
   await loadRuns();
+}
+
+async function mergeReports() {
+  const button = $("#mergeReportsBtn");
+  const status = $("#mergeStatus");
+  button.disabled = true;
+  button.classList.add("busy");
+  status.className = "";
+  status.textContent = "Merging…";
+  try {
+    const result = await api("/api/reports/merge", { method: "POST", body: "{}" });
+    status.className = "success";
+    status.textContent = `Merged ${formatNumber(result.experiments)} · ${formatNumber(result.passed)} passed · ${formatNumber(result.failed)} failed`;
+    await loadExperiments();
+  } catch (error) {
+    status.className = "error";
+    status.textContent = error.message || "Merge failed";
+  } finally {
+    button.disabled = false;
+    button.classList.remove("busy");
+  }
 }
 
 function renderConfig() {

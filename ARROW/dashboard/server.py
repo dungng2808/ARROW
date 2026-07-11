@@ -22,6 +22,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
+from src.run_pipeline import _merge_reports
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -36,6 +37,7 @@ SHARD_ROOT = PROJECT_ROOT / "shards"
 
 RUNS: dict[str, dict[str, Any]] = {}
 RUN_LOCK = threading.Lock()
+MERGE_LOCK = threading.Lock()
 DISCONNECTED_ERRORS = (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)
 ANSI_ESCAPE_RE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
 ERROR_MARKER_RE = re.compile(
@@ -232,6 +234,33 @@ def _project_config() -> dict[str, Any]:
     if yaml is None or not config_path.is_file():
         return {}
     return yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+
+
+def _merge_reports_now() -> dict[str, Any]:
+    if not MERGE_LOCK.acquire(blocking=False):
+        raise RuntimeError("Report merge is already running")
+    try:
+        config = _project_config()
+        runs_dir = (PROJECT_ROOT / "runs").resolve()
+        configured_output = Path(config.get("report", {}).get("merged_dir", "merged"))
+        output_dir = configured_output if configured_output.is_absolute() else runs_dir / configured_output
+        _merge_reports(
+            argparse.Namespace(runs_dir=runs_dir, output_dir=output_dir),
+            config,
+        )
+        summary = _read_json(output_dir / "merge_summary.json")
+        return {
+            **summary,
+            "output_dir": str(output_dir),
+            "artifacts": {
+                "merged_jsonl": str(output_dir / "experiments_merged.jsonl"),
+                "class_report": str(output_dir / "output_agone_classes_lite.csv"),
+                "mean_report": str(output_dir / "output_agone_mean_lite.csv"),
+                "statistics": str(output_dir / "experiment_statistics.json"),
+            },
+        }
+    finally:
+        MERGE_LOCK.release()
 
 
 def _detect_java() -> dict[str, Any]:
@@ -958,6 +987,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
     def do_POST(self) -> None:
         parsed = urlparse(self.path)
         try:
+            if parsed.path == "/api/reports/merge":
+                return _json_response(self, _merge_reports_now(), status=201)
             if parsed.path == "/api/runs":
                 length = int(self.headers.get("Content-Length", "0"))
                 payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")

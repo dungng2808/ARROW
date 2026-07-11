@@ -188,6 +188,7 @@ button svg {
 }
 
 .icon-btn,
+.merge-btn,
 .primary,
 .tab {
   display: inline-flex;
@@ -211,6 +212,44 @@ button svg {
 .icon-btn:disabled {
   cursor: not-allowed;
   opacity: 0.45;
+}
+
+.launcher-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+  min-width: 0;
+}
+
+.launcher-actions small {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+  text-align: right;
+}
+
+.launcher-actions small.success {
+  color: var(--green);
+}
+
+.launcher-actions small.error {
+  color: var(--red);
+}
+
+.merge-btn:disabled {
+  cursor: wait;
+  opacity: 0.65;
+}
+
+.merge-btn.busy svg {
+  animation: merge-spin 0.9s linear infinite;
+}
+
+@keyframes merge-spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .primary {

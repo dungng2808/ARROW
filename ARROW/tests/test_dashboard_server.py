@@ -5,6 +5,35 @@ from pathlib import Path
 from dashboard import server
 
 
+def test_merge_reports_now_writes_dashboard_artifacts(monkeypatch, tmp_path):
+    records = tmp_path / "runs" / "repo" / "sample" / "reports" / "records"
+    records.mkdir(parents=True)
+    (records / "experiments.jsonl").write_text(
+        '{"run_id":"r","shard_id":"s","input_id":"i","agent_name":"a",'
+        '"generation_prompt_strategy":"zero-shot","test_passed":true}\n',
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(server, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(server, "_project_config", lambda: {"report": {"merged_dir": "merged"}})
+
+    result = server._merge_reports_now()
+
+    assert result["experiments"] == 1
+    assert result["passed"] == 1
+    assert result["failed"] == 0
+    assert (tmp_path / "runs" / "merged" / "experiments_merged.jsonl").is_file()
+    assert (tmp_path / "runs" / "merged" / "output_agone_classes_lite.csv").is_file()
+
+
+def test_dashboard_contains_merge_button_and_api_binding():
+    html = (server.STATIC_ROOT / "index.html").read_text(encoding="utf-8")
+    javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
+
+    assert 'id="mergeReportsBtn"' in html
+    assert 'id="mergeStatus"' in html
+    assert 'api("/api/reports/merge"' in javascript
+
+
 def test_pipeline_command_accepts_multiple_generation_prompts(tmp_path):
     command = server._build_pipeline_command(
         {
