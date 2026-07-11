@@ -1,1 +1,30 @@
-[]
+[
+  {
+    "id": "junit5-boundary-and-constructor-validation",
+    "testing_framework": "junit5",
+    "focus": "Cover normal behavior, inclusive boundaries, and one invalid constructor input without inventing helper methods.",
+    "focal_class_source": "package examples.range;\n\npublic final class IntRange {\n    private final int start;\n    private final int end;\n\n    public IntRange(int start, int end) {\n        if (start > end) {\n            throw new IllegalArgumentException(\"start must not exceed end\");\n        }\n        this.start = start;\n        this.end = end;\n    }\n\n    public boolean contains(int value) {\n        return value >= start && value <= end;\n    }\n\n    public int size() {\n        return end - start + 1;\n    }\n}",
+    "expected_test_source": "package examples.range;\n\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.assertEquals;\nimport static org.junit.jupiter.api.Assertions.assertFalse;\nimport static org.junit.jupiter.api.Assertions.assertThrows;\nimport static org.junit.jupiter.api.Assertions.assertTrue;\n\npublic class IntRangeTest_Example {\n    @Test\n    void containsIncludesBothBoundaries() {\n        IntRange range = new IntRange(3, 5);\n\n        assertTrue(range.contains(3));\n        assertTrue(range.contains(5));\n        assertFalse(range.contains(2));\n        assertFalse(range.contains(6));\n    }\n\n    @Test\n    void sizeCountsEveryIntegerInRange() {\n        assertEquals(3, new IntRange(3, 5).size());\n        assertEquals(1, new IntRange(4, 4).size());\n    }\n\n    @Test\n    void constructorRejectsReversedRange() {\n        assertThrows(IllegalArgumentException.class, () -> new IntRange(5, 3));\n    }\n}"
+  },
+  {
+    "id": "junit5-deterministic-value-object",
+    "testing_framework": "junit5",
+    "focus": "Use only visible APIs, verify normalization, and test exceptions with the framework-native assertion.",
+    "focal_class_source": "package examples.text;\n\npublic final class Label {\n    private final String value;\n\n    public Label(String value) {\n        if (value == null || value.trim().isEmpty()) {\n            throw new IllegalArgumentException(\"value must not be blank\");\n        }\n        this.value = value.trim().toLowerCase();\n    }\n\n    public String value() {\n        return value;\n    }\n}",
+    "expected_test_source": "package examples.text;\n\nimport org.junit.jupiter.api.Test;\n\nimport static org.junit.jupiter.api.Assertions.assertEquals;\nimport static org.junit.jupiter.api.Assertions.assertThrows;\n\npublic class LabelTest_Example {\n    @Test\n    void constructorTrimsAndLowercasesValue() {\n        Label label = new Label(\"  READY  \");\n\n        assertEquals(\"ready\", label.value());\n    }\n\n    @Test\n    void constructorRejectsNullAndBlankValues() {\n        assertThrows(IllegalArgumentException.class, () -> new Label(null));\n        assertThrows(IllegalArgumentException.class, () -> new Label(\"   \"));\n    }\n}"
+  },
+  {
+    "id": "junit4-compatible-boundaries",
+    "testing_framework": "junit4",
+    "focus": "Follow JUnit 4 APIs, cover valid boundaries, and use the supported expected-exception style.",
+    "focal_class_source": "package examples.net;\n\npublic final class PortNumber {\n    private final int value;\n\n    public PortNumber(int value) {\n        if (value < 1 || value > 65535) {\n            throw new IllegalArgumentException(\"invalid port\");\n        }\n        this.value = value;\n    }\n\n    public int value() {\n        return value;\n    }\n}",
+    "expected_test_source": "package examples.net;\n\nimport org.junit.Assert;\nimport org.junit.Test;\n\npublic class PortNumberTest_Example {\n    @Test\n    public void acceptsLowestAndHighestValidPorts() {\n        Assert.assertEquals(1, new PortNumber(1).value());\n        Assert.assertEquals(65535, new PortNumber(65535).value());\n    }\n\n    @Test(expected = IllegalArgumentException.class)\n    public void rejectsZero() {\n        new PortNumber(0);\n    }\n\n    @Test(expected = IllegalArgumentException.class)\n    public void rejectsValueAboveMaximum() {\n        new PortNumber(65536);\n    }\n}"
+  },
+  {
+    "id": "junit4-small-state-transition",
+    "testing_framework": "junit4",
+    "focus": "Test observable state transitions with no mocks, sleeps, external resources, or undeclared test helpers.",
+    "focal_class_source": "package examples.counter;\n\npublic final class Counter {\n    private int value;\n\n    public Counter(int initialValue) {\n        value = initialValue;\n    }\n\n    public int increment() {\n        return ++value;\n    }\n\n    public int reset() {\n        value = 0;\n        return value;\n    }\n\n    public int value() {\n        return value;\n    }\n}",
+    "expected_test_source": "package examples.counter;\n\nimport org.junit.Assert;\nimport org.junit.Test;\n\npublic class CounterTest_Example {\n    @Test\n    public void incrementUpdatesAndReturnsCurrentValue() {\n        Counter counter = new Counter(4);\n\n        Assert.assertEquals(5, counter.increment());\n        Assert.assertEquals(5, counter.value());\n    }\n\n    @Test\n    public void resetClearsCurrentValue() {\n        Counter counter = new Counter(9);\n\n        Assert.assertEquals(0, counter.reset());\n        Assert.assertEquals(0, counter.value());\n    }\n}"
+  }
+]

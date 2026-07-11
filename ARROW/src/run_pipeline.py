@@ -214,7 +214,7 @@ def _base_row(run_id: str, shard_id: str, sample: SampleInput, agent: AgentConfi
     })
 
 
-def _load_examples(strategy: GenerationStrategy) -> list[dict[str, Any]]:
+def _load_examples(strategy: GenerationStrategy, *, testing_framework: str) -> list[dict[str, Any]]:
     if not strategy.examples:
         return []
     path = Path(strategy.examples)
@@ -222,7 +222,20 @@ def _load_examples(strategy: GenerationStrategy) -> list[dict[str, Any]]:
         path = project_root() / path
     if not path.is_file():
         return []
-    return json.loads(path.read_text(encoding="utf-8"))
+    loaded = json.loads(path.read_text(encoding="utf-8"))
+    if not isinstance(loaded, list):
+        return []
+    framework = testing_framework.strip().lower()
+    selected: list[dict[str, Any]] = []
+    for example in loaded:
+        if not isinstance(example, dict):
+            continue
+        example_framework = str(example.get("testing_framework", "")).strip().lower()
+        if example_framework in {"", "any", framework}:
+            selected.append(example)
+        if len(selected) == 2:
+            break
+    return selected
 
 
 def _prepare_repo(sample: SampleInput, config: dict[str, Any]) -> Path:
@@ -351,7 +364,11 @@ def _run_one_experiment(
 
         _log_event(f"GENERATE test with {agent.model}")
         template = load_template(project_root(), strategy.template)
-        prompt = build_generation_prompt(template=template, context=context, examples=_load_examples(strategy))
+        prompt = build_generation_prompt(
+            template=template,
+            context=context,
+            examples=_load_examples(strategy, testing_framework=context.testing_framework),
+        )
         atomic_write_json(exp_dir / "prompt_messages.json", [{"role": "user", "content": prompt}])
         if args.mock_llm_smoke:
             llm = StaticLlmClient([_mock_smoke_code(context.package_name, context.generated_test_class_name, context.testing_framework)])

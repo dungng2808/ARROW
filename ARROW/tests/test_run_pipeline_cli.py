@@ -1,11 +1,12 @@
 from __future__ import annotations
 
+import json
 from argparse import Namespace
 
 import pytest
 
-from src.models import FailureOrigin, FailureState, VerificationResult
-from src.run_pipeline import _agents, _baseline_blocks_generation
+from src.models import FailureOrigin, FailureState, GenerationStrategy, VerificationResult
+from src.run_pipeline import _agents, _baseline_blocks_generation, _load_examples
 
 
 CONFIG = {
@@ -62,3 +63,41 @@ def test_build_configuration_baseline_failure_blocks_generation_even_when_parser
     )
 
     assert _baseline_blocks_generation(baseline) is True
+
+
+def test_load_examples_selects_only_matching_framework_and_limits_context(tmp_path):
+    examples_path = tmp_path / "examples.json"
+    examples_path.write_text(
+        json.dumps(
+            [
+                {"id": "junit4-one", "testing_framework": "junit4"},
+                {"id": "junit5-one", "testing_framework": "junit5"},
+                {"id": "junit5-two", "testing_framework": "junit5"},
+                {"id": "junit5-three", "testing_framework": "junit5"},
+            ]
+        ),
+        encoding="utf-8",
+    )
+    strategy = GenerationStrategy(name="few-shot", template="few.txt", examples=str(examples_path))
+
+    selected = _load_examples(strategy, testing_framework="junit5")
+
+    assert [example["id"] for example in selected] == ["junit5-one", "junit5-two"]
+
+
+def test_load_examples_does_not_mix_frameworks_when_detection_is_unknown(tmp_path):
+    examples_path = tmp_path / "examples.json"
+    examples_path.write_text(
+        json.dumps(
+            [
+                {"id": "junit4", "testing_framework": "junit4"},
+                {"id": "generic", "testing_framework": "any"},
+            ]
+        ),
+        encoding="utf-8",
+    )
+    strategy = GenerationStrategy(name="few-shot", template="few.txt", examples=str(examples_path))
+
+    selected = _load_examples(strategy, testing_framework="unknown")
+
+    assert [example["id"] for example in selected] == ["generic"]

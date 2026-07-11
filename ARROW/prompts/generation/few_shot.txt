@@ -12,5 +12,7 @@ Hard requirements:
 - Use the detected test framework from Context JSON: {testing_framework}
 - Include all imports required by the detected framework. For junit5 use `org.junit.jupiter.api.Test`, lifecycle imports such as `BeforeEach`, and `org.junit.jupiter.api.Assertions`; for junit4 use `org.junit.Test`, lifecycle imports such as `Before`, and `org.junit.Assert`.
 - Use only APIs, constructors, methods, imports, and dependencies visible in Context JSON.
+- Follow only examples whose `testing_framework` matches the current Context JSON.
 - Use examples only to infer testing style; do not copy irrelevant classes, packages, or names from examples.
+- Every helper method invoked by the generated test must be declared in that test class or come from a visible imported API.
 - Prefer a small deterministic test that compiles over a broad fragile test.

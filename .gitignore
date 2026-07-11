@@ -1,9 +1,10 @@
 classes2test/
 ARROW/runs/
 ARROW/repos/
-ARROW/shards/
 ARROW/dashboard/logs/
 ARROW/dashboard/runtime_configs/
+ARROW/dashboard/run_records/
+ARROW/dashboard/runtime_shards/
 ARROW/dashboard/__pycache__/
 
 # Python generated files
