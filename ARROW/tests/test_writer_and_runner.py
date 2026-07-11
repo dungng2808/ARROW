@@ -137,6 +137,26 @@ public class FooTest_1234abcd {
     assert "import org.junit.jupiter.api.Test;" in code
 
 
+def test_validate_java_adds_high_confidence_common_jdk_imports():
+    code, _digest = validate_java_candidate(
+        """package demo;
+public class FooTest_1234abcd {
+    Object values = Arrays.asList(1, 2);
+    Object empty = Collections.emptyList();
+    Object order = Comparator.comparingInt(Object::hashCode);
+    Class<?> missing = NoSuchElementException.class;
+}
+""",
+        expected_package="demo",
+        expected_class_name="FooTest_1234abcd",
+    )
+
+    assert "import java.util.Arrays;" in code
+    assert "import java.util.Collections;" in code
+    assert "import java.util.Comparator;" in code
+    assert "import java.util.NoSuchElementException;" in code
+
+
 def test_validate_java_normalizes_junit4_lifecycle_annotations():
     code, _digest = validate_java_candidate(
         """package demo;

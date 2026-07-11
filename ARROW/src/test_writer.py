@@ -183,6 +183,7 @@ def validate_java_candidate(
     if class_matches != [expected_class_name]:
         raise JavaValidationError(f"expected exactly one public class {expected_class_name}, found {class_matches}")
     code = normalize_junit_imports(code, testing_framework)
+    code = normalize_common_java_imports(code)
     package_match = re.search(r"(?m)^package\s+([A-Za-z_][A-Za-z0-9_.]*)\s*;", code)
     actual_package = package_match.group(1) if package_match else ""
     if actual_package != expected_package:
@@ -235,6 +236,21 @@ def normalize_junit_imports(code: str, testing_framework: str) -> str:
     if framework == "junit4":
         return _normalize_junit4_imports(code)
     return code
+
+
+def normalize_common_java_imports(code: str) -> str:
+    """Add only high-confidence JDK imports for common generated-test idioms."""
+    required: list[str] = []
+    patterns = {
+        "import java.util.Arrays;": r"(?<![\w.])Arrays\s*\.",
+        "import java.util.Collections;": r"(?<![\w.])Collections\s*\.",
+        "import java.util.Comparator;": r"(?<![\w.])Comparator\s*\.",
+        "import java.util.NoSuchElementException;": r"(?<![\w.])NoSuchElementException\s*(?:\.class|\()",
+    }
+    for import_line, pattern in patterns.items():
+        if import_line not in code and re.search(pattern, code):
+            required.append(import_line)
+    return _insert_missing_imports(code, required)
 
 
 def _normalize_junit5_imports(code: str) -> str:
