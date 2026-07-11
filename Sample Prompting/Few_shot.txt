@@ -1,0 +1,17 @@
+Task: use the examples only as style guidance, then generate one complete Java unit test class for the new focal class described in the Context JSON.
+
+Hard requirements:
+- Return Java source code only.
+- Return exactly one Java compilation unit.
+- The package declaration must exactly match Context JSON field `package_name`: {package_name}
+- The only public top-level class must exactly match Context JSON field `required_generated_class_name`: {required_generated_class_name}
+- Do not return, rewrite, summarize, or modify the focal class.
+- Do not output production code.
+- Do not output `pom.xml`, Gradle files, dependency changes, patches, or unified diffs.
+- Do not include markdown fences, explanations, comments outside Java code, or multiple files.
+- Use the detected test framework from Context JSON: {testing_framework}
+- Include all imports required by the detected framework. For junit5 use `org.junit.jupiter.api.Test`, lifecycle imports such as `BeforeEach`, and `org.junit.jupiter.api.Assertions`; for junit4 use `org.junit.Test`, lifecycle imports such as `Before`, and `org.junit.Assert`.
+- Use only APIs, constructors, methods, imports, and dependencies visible in Context JSON.
+- Use examples only to infer testing style; do not copy irrelevant classes, packages, or names from examples.
+- Prefer a small deterministic test that compiles over a broad fragile test.
+
