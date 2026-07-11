@@ -100,3 +100,22 @@ def test_module_success_with_zero_tests_can_still_pass(tmp_path):
         target_only=False,
     )
     assert result.state == FailureState.MODULE_TESTS_PASSED
+
+
+def test_missing_selected_maven_reactor_project_is_build_configuration_failure(tmp_path):
+    result = parse_verification_output(
+        raw_output=(
+            "[ERROR] Could not find the selected project in the reactor: "
+            "hello-world/src/main/resources/archetype-resources\n"
+        ),
+        exit_code=1,
+        timed_out=False,
+        tool_name="maven",
+        command=["mvn", "-pl", "hello-world/src/main/resources/archetype-resources", "test"],
+        module_root=tmp_path,
+        generated_test_class="HelloWorldBuilderTest_abcd1234",
+        target_only=False,
+    )
+
+    assert result.state == FailureState.RUNTIME_FAILED
+    assert result.failure_origin == FailureOrigin.BUILD_CONFIGURATION

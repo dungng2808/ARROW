@@ -73,7 +73,10 @@ def test_pitest_prepare_installs_multimodule_dependencies(monkeypatch, tmp_path)
     repo = tmp_path / "repo"
     module = repo / "solutions"
     module.mkdir(parents=True)
-    (repo / "pom.xml").write_text("<project/>", encoding="utf-8")
+    (repo / "pom.xml").write_text(
+        "<project><modules><module>solutions</module></modules></project>",
+        encoding="utf-8",
+    )
     (module / "pom.xml").write_text("<project/>", encoding="utf-8")
     ctx = BuildContext(
         repo,

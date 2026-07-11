@@ -244,7 +244,10 @@ def test_maven_root_with_pl_am_for_submodule(tmp_path):
     repo = tmp_path / "repo"
     module = repo / "mysql" / "codec"
     module.mkdir(parents=True)
-    (repo / "pom.xml").write_text("<project/>", encoding="utf-8")
+    (repo / "pom.xml").write_text(
+        "<project><modules><module>mysql/codec</module></modules></project>",
+        encoding="utf-8",
+    )
     (module / "pom.xml").write_text("<project/>", encoding="utf-8")
     ctx = BuildContext(
         repo,
@@ -259,6 +262,54 @@ def test_maven_root_with_pl_am_for_submodule(tmp_path):
     assert command[command.index("-f") + 1] == str(repo / "pom.xml")
     assert command[command.index("-pl") + 1] == "mysql/codec"
     assert "-am" in command
+
+
+def test_maven_unregistered_nested_project_uses_its_own_pom(tmp_path):
+    repo = tmp_path / "repo"
+    module = repo / "examples" / "standalone"
+    module.mkdir(parents=True)
+    (repo / "pom.xml").write_text("<project/>", encoding="utf-8")
+    (module / "pom.xml").write_text("<project/>", encoding="utf-8")
+    ctx = BuildContext(
+        repo,
+        module,
+        "maven",
+        "FooTest",
+        "demo.FooTest",
+        maven_multi_module_strategy="root_with_pl_am",
+    )
+
+    command = select_maven_command(ctx)
+
+    assert command[command.index("-f") + 1] == str(module / "pom.xml")
+    assert "-pl" not in command
+    assert "-am" not in command
+
+
+def test_maven_archetype_template_stops_before_running_maven(tmp_path):
+    repo = tmp_path / "repo"
+    module = repo / "hello-world" / "src" / "main" / "resources" / "archetype-resources"
+    module.mkdir(parents=True)
+    (repo / "pom.xml").write_text(
+        "<project><modules><module>hello-world</module></modules></project>",
+        encoding="utf-8",
+    )
+    (module / "pom.xml").write_text("<project/>", encoding="utf-8")
+    ctx = BuildContext(
+        repo,
+        module,
+        "maven",
+        "FooTest",
+        "demo.FooTest",
+        maven_multi_module_strategy="root_with_pl_am",
+    )
+
+    result = verify_module_tests(ctx)
+
+    assert result.state == FailureState.RUNTIME_FAILED
+    assert result.failure_origin == FailureOrigin.BUILD_CONFIGURATION
+    assert result.build_skipped is True
+    assert result.normalized_error_signature == "maven_archetype_template_not_materialized"
 
 
 def test_maven_target_test_ignores_no_matching_tests_in_also_make_modules(tmp_path):

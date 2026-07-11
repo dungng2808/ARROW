@@ -83,7 +83,18 @@ def _classify_origin(raw_output: str, failed_test_ids: list[str], generated_test
         return FailureOrigin.UNKNOWN
     if state in {FailureState.BUILD_TIMEOUT}:
         return FailureOrigin.INFRASTRUCTURE
-    if any(token in lowered for token in ("could not resolve", "failed to execute goal", "plugin", "settings.gradle", "pom.xml", "build.gradle")):
+    if any(
+        token in lowered
+        for token in (
+            "could not resolve",
+            "could not find the selected project in the reactor",
+            "failed to execute goal",
+            "plugin",
+            "settings.gradle",
+            "pom.xml",
+            "build.gradle",
+        )
+    ):
         if generated_test_class.lower() not in lowered:
             return FailureOrigin.BUILD_CONFIGURATION
     if generated_test_class and generated_test_class.lower() in lowered:

@@ -7,6 +7,7 @@ import shutil
 import signal
 import subprocess
 import time
+import xml.etree.ElementTree as ET
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -46,6 +47,76 @@ def _find_upwards(start: Path, stop: Path, names: list[str]) -> Path | None:
         current = current.parent
 
 
+def _maven_declared_module_paths(pom: Path) -> list[Path]:
+    try:
+        root = ET.parse(pom).getroot()
+    except (ET.ParseError, OSError):
+        return []
+    modules: list[Path] = []
+    for element in root.iter():
+        if element.tag.rsplit("}", 1)[-1] != "module" or not element.text:
+            continue
+        value = element.text.strip()
+        if value and "${" not in value:
+            modules.append((pom.parent / value).resolve())
+    return modules
+
+
+def _maven_module_is_in_root_reactor(ctx: BuildContext) -> bool:
+    repository_root = ctx.repository_root.resolve()
+    target = ctx.module_root.resolve()
+    pending = [repository_root]
+    visited: set[Path] = set()
+    while pending:
+        current = pending.pop()
+        if current in visited:
+            continue
+        visited.add(current)
+        for module in _maven_declared_module_paths(current / "pom.xml"):
+            try:
+                module.relative_to(repository_root)
+            except ValueError:
+                continue
+            if module == target:
+                return True
+            if (module / "pom.xml").is_file():
+                pending.append(module)
+    return False
+
+
+def _maven_archetype_template_failure(ctx: BuildContext) -> VerificationResult | None:
+    if ctx.build_tool != "maven":
+        return None
+    try:
+        relative = ctx.module_root.resolve().relative_to(ctx.repository_root.resolve())
+    except ValueError:
+        return None
+    relative_parts = tuple(part.lower() for part in relative.parts)
+    marker = ("src", "main", "resources", "archetype-resources")
+    is_template = any(
+        relative_parts[index : index + len(marker)] == marker
+        for index in range(len(relative_parts) - len(marker) + 1)
+    )
+    if not is_template:
+        return None
+    message = (
+        "Maven archetype template sources are not a directly buildable reactor module; "
+        "materialize the archetype before compiling generated tests"
+    )
+    return VerificationResult(
+        state=FailureState.RUNTIME_FAILED,
+        failure_origin=FailureOrigin.BUILD_CONFIGURATION,
+        exit_code=None,
+        raw_output=message + f": {ctx.module_root}",
+        primary_error="maven_archetype_template_not_materialized",
+        normalized_error_signature="maven_archetype_template_not_materialized",
+        error_signatures=["maven_archetype_template_not_materialized"],
+        build_skipped=True,
+        tool_name="maven",
+        command=[],
+    )
+
+
 def select_maven_command(ctx: BuildContext) -> list[str]:
     wrapper_names = ["mvnw.cmd"] if _is_windows() else ["mvnw"]
     wrapper = _find_upwards(ctx.module_root, ctx.repository_root, wrapper_names) if ctx.prefer_wrapper else None
@@ -54,7 +125,15 @@ def select_maven_command(ctx: BuildContext) -> list[str]:
     else:
         exe = shutil.which("mvn.cmd") or shutil.which("mvn") if _is_windows() else shutil.which("mvn")
         command = [exe or ("mvn.cmd" if _is_windows() else "mvn")]
-    if ctx.maven_multi_module_strategy == "root_with_pl_am" and (ctx.repository_root / "pom.xml").is_file():
+    use_root_reactor = (
+        ctx.maven_multi_module_strategy == "root_with_pl_am"
+        and (ctx.repository_root / "pom.xml").is_file()
+        and (
+            ctx.module_root.resolve() == ctx.repository_root.resolve()
+            or _maven_module_is_in_root_reactor(ctx)
+        )
+    )
+    if use_root_reactor:
         command.extend(["-f", str(ctx.repository_root / "pom.xml")])
         if ctx.module_root.resolve() != ctx.repository_root.resolve():
             module_selector = ctx.module_root.resolve().relative_to(ctx.repository_root.resolve()).as_posix()
@@ -287,6 +366,9 @@ def run_command(ctx: BuildContext, command: list[str], cwd: Path, tool_name: str
 
 
 def verify_target_test(ctx: BuildContext) -> VerificationResult:
+    preflight_failure = _maven_archetype_template_failure(ctx)
+    if preflight_failure is not None:
+        return preflight_failure
     tool, command, cwd = target_test_command(ctx)
     if tool == "gradle":
         return _run_with_gradle_project_fallback(ctx, command, cwd, target_only=True)
@@ -294,6 +376,9 @@ def verify_target_test(ctx: BuildContext) -> VerificationResult:
 
 
 def verify_module_tests(ctx: BuildContext) -> VerificationResult:
+    preflight_failure = _maven_archetype_template_failure(ctx)
+    if preflight_failure is not None:
+        return preflight_failure
     tool, command, cwd = module_test_command(ctx)
     if tool == "gradle":
         return _run_with_gradle_project_fallback(ctx, command, cwd, target_only=False)
