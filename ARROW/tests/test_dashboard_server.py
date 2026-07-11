@@ -1,5 +1,7 @@
 from __future__ import annotations
 
+import io
+import json
 from pathlib import Path
 
 from dashboard import server
@@ -23,6 +25,10 @@ def test_merge_reports_now_writes_dashboard_artifacts(monkeypatch, tmp_path):
     assert result["failed"] == 0
     assert (tmp_path / "runs" / "merged" / "experiments_merged.jsonl").is_file()
     assert (tmp_path / "runs" / "merged" / "output_agone_classes_lite.csv").is_file()
+    assert (tmp_path / "runs" / "merged" / "rq1_summary.csv").is_file()
+    assert (tmp_path / "runs" / "merged" / "rq1_paired.csv").is_file()
+    assert (tmp_path / "runs" / "merged" / "rq1_details.csv").is_file()
+    assert result["artifacts"]["rq1"]["summary"]["rows"] == 4
 
 
 def test_dashboard_contains_merge_button_and_api_binding():
@@ -32,6 +38,75 @@ def test_dashboard_contains_merge_button_and_api_binding():
     assert 'id="mergeReportsBtn"' in html
     assert 'id="mergeStatus"' in html
     assert 'api("/api/reports/merge"' in javascript
+
+
+def test_dashboard_contains_rq1_export_buttons_and_api_bindings():
+    html = (server.STATIC_ROOT / "index.html").read_text(encoding="utf-8")
+    javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
+
+    for export_kind in ("summary", "paired", "details"):
+        assert f'id="export{export_kind.title()}Btn"' in html
+        assert f'/api/reports/export/${{exportKind}}' in javascript
+    assert "result.relative_path" in javascript
+    assert "downloadBlob" not in javascript
+
+
+def _bare_dashboard_handler(path: str):
+    handler = object.__new__(server.DashboardHandler)
+    handler.path = path
+    handler.wfile = io.BytesIO()
+    handler.response_status = None
+    handler.response_headers = {}
+    handler.send_response = lambda status: setattr(handler, "response_status", status)
+    handler.send_header = lambda name, value: handler.response_headers.__setitem__(name, value)
+    handler.end_headers = lambda: None
+    return handler
+
+
+def test_rq1_export_endpoint_merges_and_saves_csv(monkeypatch, tmp_path):
+    merged_dir = tmp_path / "runs" / "merged"
+    merged_dir.mkdir(parents=True)
+    csv_path = merged_dir / "rq1_summary.csv"
+    csv_path.write_text("column\nvalue\n", encoding="utf-8-sig")
+    merge_calls = []
+
+    def fake_merge():
+        merge_calls.append(True)
+        return {
+            "output_dir": str(merged_dir),
+            "artifacts": {
+                "rq1": {
+                    "summary": {"path": str(csv_path), "rows": 1},
+                }
+            }
+        }
+
+    monkeypatch.setattr(server, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(server, "RQ1_EXPORT_ROOT", tmp_path / "export" / "RQ1")
+    monkeypatch.setattr(server, "_merge_reports_now", fake_merge)
+    handler = _bare_dashboard_handler("/api/reports/export/summary")
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    saved_path = Path(payload["path"])
+    assert merge_calls == [True]
+    assert handler.response_status == 201
+    assert handler.response_headers["Content-Type"] == "application/json; charset=utf-8"
+    assert payload["rows"] == 1
+    assert payload["relative_path"].startswith("export/RQ1/rq1_summary_")
+    assert saved_path.parent == tmp_path / "export" / "RQ1"
+    assert saved_path.read_bytes().startswith(b"\xef\xbb\xbf")
+
+
+def test_rq1_export_endpoint_rejects_unknown_type(monkeypatch):
+    monkeypatch.setattr(server, "_merge_reports_now", lambda: (_ for _ in ()).throw(AssertionError("must not merge")))
+    handler = _bare_dashboard_handler("/api/reports/export/../../secret")
+
+    handler.do_POST()
+
+    assert handler.response_status == 404
+    assert b"Unknown CSV export type" in handler.wfile.getvalue()
 
 
 def test_pipeline_command_accepts_multiple_generation_prompts(tmp_path):

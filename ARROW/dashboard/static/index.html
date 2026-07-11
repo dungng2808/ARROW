@@ -37,10 +37,21 @@
             </div>
             <div class="launcher-actions">
               <small id="mergeStatus" aria-live="polite"></small>
-              <button id="mergeReportsBtn" class="merge-btn" type="button" title="Merge all reports into runs/merged">
-                <i data-lucide="merge"></i><span>Merge reports</span>
-              </button>
-              <button id="refreshBtn" class="icon-btn" type="button" title="Refresh dashboard data"><i data-lucide="refresh-cw"></i></button>
+              <div class="report-actions">
+                <button id="mergeReportsBtn" class="merge-btn report-action-btn" type="button" title="Merge all reports into runs/merged">
+                  <i data-lucide="merge"></i><span>Merge reports</span>
+                </button>
+                <button id="exportSummaryBtn" class="export-btn report-action-btn" type="button" title="Merge reports and save the RQ1 summary CSV to export/RQ1">
+                  <i data-lucide="download"></i><span>Export RQ1 Summary</span>
+                </button>
+                <button id="exportPairedBtn" class="export-btn report-action-btn" type="button" title="Merge reports and save the RQ1 paired CSV to export/RQ1">
+                  <i data-lucide="download"></i><span>Export RQ1 Paired</span>
+                </button>
+                <button id="exportDetailsBtn" class="export-btn report-action-btn" type="button" title="Merge reports and save the RQ1 details CSV to export/RQ1">
+                  <i data-lucide="download"></i><span>Export RQ1 Details</span>
+                </button>
+                <button id="refreshBtn" class="icon-btn" type="button" title="Refresh dashboard data"><i data-lucide="refresh-cw"></i></button>
+              </div>
             </div>
           </div>
 

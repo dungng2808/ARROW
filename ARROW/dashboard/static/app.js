@@ -80,6 +80,9 @@ async function init() {
 function bindEvents() {
   $("#refreshBtn").addEventListener("click", refreshAll);
   $("#mergeReportsBtn").addEventListener("click", mergeReports);
+  $("#exportSummaryBtn").addEventListener("click", () => exportRq1Csv("summary"));
+  $("#exportPairedBtn").addEventListener("click", () => exportRq1Csv("paired"));
+  $("#exportDetailsBtn").addEventListener("click", () => exportRq1Csv("details"));
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#copyLogsBtn").addEventListener("click", copyRunLogs);
   $("#copyErrorsBtn").addEventListener("click", copyExperimentErrors);
@@ -205,13 +208,19 @@ async function refreshAll() {
   await loadRuns();
 }
 
+function setReportActionsBusy(busy, activeButton = null) {
+  document.querySelectorAll(".report-action-btn").forEach((button) => {
+    button.disabled = busy;
+    button.classList.toggle("busy", busy && button === activeButton);
+  });
+}
+
 async function mergeReports() {
   const button = $("#mergeReportsBtn");
   const status = $("#mergeStatus");
-  button.disabled = true;
-  button.classList.add("busy");
+  setReportActionsBusy(true, button);
   status.className = "";
-  status.textContent = "Merging…";
+  status.textContent = "Merging reports…";
   try {
     const result = await api("/api/reports/merge", { method: "POST", body: "{}" });
     status.className = "success";
@@ -221,8 +230,36 @@ async function mergeReports() {
     status.className = "error";
     status.textContent = error.message || "Merge failed";
   } finally {
-    button.disabled = false;
-    button.classList.remove("busy");
+    setReportActionsBusy(false);
+  }
+}
+
+const rq1ExportButtons = {
+  summary: "#exportSummaryBtn",
+  paired: "#exportPairedBtn",
+  details: "#exportDetailsBtn",
+};
+
+async function exportRq1Csv(exportKind) {
+  const buttonSelector = rq1ExportButtons[exportKind];
+  if (!buttonSelector) return;
+
+  const button = $(buttonSelector);
+  const status = $("#mergeStatus");
+  setReportActionsBusy(true, button);
+  status.className = "";
+  status.textContent = "Merging reports…";
+
+  try {
+    const result = await api(`/api/reports/export/${exportKind}`, {method: "POST", body: "{}"});
+    status.className = "success";
+    status.textContent = `Saved ${formatNumber(result.rows)} records to ${result.relative_path}`;
+    await loadExperiments();
+  } catch (error) {
+    status.className = "error";
+    status.textContent = error.message || "Export failed";
+  } finally {
+    setReportActionsBusy(false);
   }
 }
 

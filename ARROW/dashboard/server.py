@@ -22,6 +22,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
+from src.report_writer import load_experiment_jsonl, write_rq1_exports
 from src.run_pipeline import _merge_reports
 
 
@@ -32,6 +33,7 @@ LOG_ROOT = DASHBOARD_ROOT / "logs"
 RUNTIME_CONFIG_ROOT = DASHBOARD_ROOT / "runtime_configs"
 RUN_RECORD_ROOT = DASHBOARD_ROOT / "run_records"
 RUNTIME_SHARD_ROOT = DASHBOARD_ROOT / "runtime_shards"
+RQ1_EXPORT_ROOT = PROJECT_ROOT / "export" / "RQ1"
 DATASET_ROOT = PROJECT_ROOT.parent / "classes2test" / "dataset"
 SHARD_ROOT = PROJECT_ROOT / "shards"
 
@@ -39,6 +41,11 @@ RUNS: dict[str, dict[str, Any]] = {}
 RUN_LOCK = threading.Lock()
 MERGE_LOCK = threading.Lock()
 DISCONNECTED_ERRORS = (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)
+RQ1_EXPORT_FILENAMES = {
+    "summary": "rq1_summary.csv",
+    "paired": "rq1_paired.csv",
+    "details": "rq1_details.csv",
+}
 ANSI_ESCAPE_RE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
 ERROR_MARKER_RE = re.compile(
     r"(?im)(?:\bERROR\b|BUILD FAILURE|COMPILATION (?:ERROR|FAILURE)|cannot find symbol|"
@@ -248,19 +255,56 @@ def _merge_reports_now() -> dict[str, Any]:
             argparse.Namespace(runs_dir=runs_dir, output_dir=output_dir),
             config,
         )
+        merged_jsonl = output_dir / "experiments_merged.jsonl"
+        rq1_exports = write_rq1_exports(output_dir, load_experiment_jsonl([merged_jsonl]))
         summary = _read_json(output_dir / "merge_summary.json")
         return {
             **summary,
             "output_dir": str(output_dir),
             "artifacts": {
-                "merged_jsonl": str(output_dir / "experiments_merged.jsonl"),
+                "merged_jsonl": str(merged_jsonl),
                 "class_report": str(output_dir / "output_agone_classes_lite.csv"),
                 "mean_report": str(output_dir / "output_agone_mean_lite.csv"),
                 "statistics": str(output_dir / "experiment_statistics.json"),
+                "statistics_csv": str(output_dir / "experiment_statistics_by_group.csv"),
+                "rq1": rq1_exports,
             },
         }
     finally:
         MERGE_LOCK.release()
+
+
+def _save_rq1_export(export_kind: str) -> dict[str, Any]:
+    if export_kind not in RQ1_EXPORT_FILENAMES:
+        raise ValueError("Unknown CSV export type")
+    merged = _merge_reports_now()
+    metadata = merged.get("artifacts", {}).get("rq1", {}).get(export_kind, {})
+    source = Path(str(merged.get("output_dir") or "")) / RQ1_EXPORT_FILENAMES[export_kind]
+    if not source.is_file():
+        raise FileNotFoundError(f"CSV export was not created: {source.name}")
+
+    RQ1_EXPORT_ROOT.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    base_name = f"rq1_{export_kind}_{timestamp}"
+    destination = RQ1_EXPORT_ROOT / f"{base_name}.csv"
+    suffix = 2
+    while destination.exists():
+        destination = RQ1_EXPORT_ROOT / f"{base_name}_{suffix}.csv"
+        suffix += 1
+    temporary = destination.with_suffix(".csv.tmp")
+    shutil.copyfile(source, temporary)
+    os.replace(temporary, destination)
+    try:
+        relative_path = destination.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        relative_path = str(destination)
+    return {
+        "export_type": export_kind,
+        "filename": destination.name,
+        "path": str(destination),
+        "relative_path": relative_path,
+        "rows": int(metadata.get("rows") or 0),
+    }
 
 
 def _detect_java() -> dict[str, Any]:
@@ -989,6 +1033,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
         try:
             if parsed.path == "/api/reports/merge":
                 return _json_response(self, _merge_reports_now(), status=201)
+            if parsed.path.startswith("/api/reports/export/"):
+                export_kind = parsed.path.removeprefix("/api/reports/export/").strip("/")
+                if export_kind not in RQ1_EXPORT_FILENAMES:
+                    return _json_response(self, {"error": "Unknown CSV export type"}, status=404)
+                return _json_response(self, _save_rq1_export(export_kind), status=201)
             if parsed.path == "/api/runs":
                 length = int(self.headers.get("Content-Length", "0"))
                 payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")

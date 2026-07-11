@@ -1,0 +1,35 @@
+{
+  "run_id": "20260711-005828",
+  "shard_id": "repo_shard_00",
+  "selected_inputs": 20,
+  "experiments": 20,
+  "passed": 2,
+  "failed": 18,
+  "skip_metrics": false,
+  "cleanup": {
+    "enabled": true,
+    "deleted": [
+      "/home/cuongpv/ARROW/ARROW/repos/10016717",
+      "/home/cuongpv/ARROW/ARROW/repos/100295611",
+      "/home/cuongpv/ARROW/ARROW/repos/100366560",
+      "/home/cuongpv/ARROW/ARROW/repos/100402355",
+      "/home/cuongpv/ARROW/ARROW/repos/100418846",
+      "/home/cuongpv/ARROW/ARROW/repos/100522769",
+      "/home/cuongpv/ARROW/ARROW/repos/100600744",
+      "/home/cuongpv/ARROW/ARROW/repos/10065023",
+      "/home/cuongpv/ARROW/ARROW/repos/100716846",
+      "/home/cuongpv/ARROW/ARROW/repos/10079780",
+      "/home/cuongpv/ARROW/ARROW/repos/100874896",
+      "/home/cuongpv/ARROW/ARROW/repos/101047757",
+      "/home/cuongpv/ARROW/ARROW/repos/10116915",
+      "/home/cuongpv/ARROW/ARROW/repos/101231823",
+      "/home/cuongpv/ARROW/ARROW/repos/101401522",
+      "/home/cuongpv/ARROW/ARROW/repos/10144081",
+      "/home/cuongpv/ARROW/ARROW/repos/101495687",
+      "/home/cuongpv/ARROW/ARROW/repos/101650961",
+      "/home/cuongpv/ARROW/ARROW/repos/1017889",
+      "/home/cuongpv/ARROW/ARROW/repos/10195984"
+    ],
+    "errors": []
+  }
+}

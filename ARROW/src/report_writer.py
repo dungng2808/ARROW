@@ -2,6 +2,8 @@ from __future__ import annotations
 
 import csv
 import json
+from datetime import datetime, timezone
+from math import erfc, sqrt
 from pathlib import Path
 from typing import Any
 
@@ -133,6 +135,134 @@ CLASS_REPORT_COLUMNS = [
 SMELL_COLUMNS = PAPER_REPORT_COLUMNS[10:]
 
 
+RQ1_PROMPT_STRATEGIES = (
+    "zero-shot",
+    "few-shot",
+    "zero-shot-project-aware",
+)
+
+RQ1_STRATEGY_PREFIXES = {
+    "zero-shot": "zero_shot",
+    "few-shot": "few_shot",
+    "zero-shot-project-aware": "repository_aware",
+}
+
+RQ1_EXPORT_FILENAMES = {
+    "summary": "rq1_summary.csv",
+    "paired": "rq1_paired.csv",
+    "details": "rq1_details.csv",
+}
+
+RQ1_SUMMARY_COLUMNS = [
+    "scope",
+    "agent_name",
+    "model",
+    "build_tools",
+    "total_samples",
+    "zero_shot_available_samples",
+    "few_shot_available_samples",
+    "repository_aware_available_samples",
+    "complete_triplets",
+    "metric",
+    "baseline_prompt",
+    "repository_aware_prompt",
+    "paired_evaluable_samples",
+    "baseline_success_count",
+    "baseline_success_rate_pct",
+    "repository_aware_success_count",
+    "repository_aware_success_rate_pct",
+    "repository_aware_improvement_pp",
+    "repository_aware_wins",
+    "repository_aware_losses",
+    "ties",
+    "mcnemar_p_value",
+    "mcnemar_method",
+    "holm_adjusted_p_value",
+    "alpha",
+    "comparison_result",
+    "rq1_conclusion",
+    "rq1_answer_vi",
+]
+
+_RQ1_PAIRED_METRICS = [
+    "run_id",
+    "initial_state",
+    "initial_compile_success",
+    "initial_target_pass",
+    "final_state",
+    "final_compile_success",
+    "final_target_pass",
+    "final_module_pass",
+    "repair_status",
+    "repair_attempts",
+    "total_llm_attempts",
+    "elapsed_seconds",
+    "llm_total_tokens",
+]
+
+RQ1_PAIRED_COLUMNS = [
+    "project_id",
+    "input_id",
+    "sample_id",
+    "focal_class",
+    "agent_name",
+    "model",
+    "build_tools",
+    "complete_triplet",
+    *[
+        f"{RQ1_STRATEGY_PREFIXES[strategy]}_{metric}"
+        for strategy in RQ1_PROMPT_STRATEGIES
+        for metric in _RQ1_PAIRED_METRICS
+    ],
+]
+
+RQ1_DETAILS_COLUMNS = [
+    "run_id",
+    "shard_id",
+    "project_id",
+    "input_id",
+    "sample_id",
+    "focal_class",
+    "agent_name",
+    "model",
+    "generation_prompt_strategy",
+    "build_tool",
+    "initial_state",
+    "initial_compile_success",
+    "initial_target_pass",
+    "final_state",
+    "final_compile_success",
+    "final_target_pass",
+    "final_module_pass",
+    "repair_status",
+    "repair_attempts",
+    "regeneration_attempts",
+    "total_llm_attempts",
+    "llm_input_tokens",
+    "llm_output_tokens",
+    "llm_total_tokens",
+    "elapsed_seconds",
+    "coverage_branch",
+    "coverage_line",
+    "coverage_method",
+    "mutation_score",
+    "mutations_total",
+    "mutations_killed",
+    "mutations_survived",
+    "test_smell_total",
+    "test_smell_details",
+    "initial_failure_origin",
+    "final_failure_origin",
+    "repair_stopped_reason",
+    "test_fail_reason",
+    "error",
+    "started_at",
+    "finished_at",
+    "is_latest_logical_result",
+    "complete_triplet",
+]
+
+
 def ensure_paper_report_fields(row: dict[str, Any]) -> dict[str, Any]:
     normalized = row.copy()
     normalized["Generator(LLM)"] = normalized.get("Generator(LLM)") or normalized.get("agent_name") or normalized.get("model", "")
@@ -219,6 +349,166 @@ def write_merged_jsonl(path: Path, rows: list[dict[str, Any]]) -> None:
     with path.open("w", encoding="utf-8", newline="\n") as output_file:
         for row in rows:
             output_file.write(json.dumps(ensure_paper_report_fields(row), ensure_ascii=False, default=str) + "\n")
+
+
+def build_rq1_summary_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build a direct RQ1 comparison table for repository-aware versus both baselines."""
+    latest = _latest_rq1_rows(rows)
+    grouped_triplets: dict[tuple[str, str, str, str], dict[str, dict[str, Any]]] = {}
+    for logical_key, row in latest.items():
+        grouped_triplets.setdefault(logical_key[:-1], {})[logical_key[-1]] = row
+
+    model_groups: dict[tuple[str, str], list[dict[str, dict[str, Any]]]] = {}
+    for base_key, triplet in grouped_triplets.items():
+        model_groups.setdefault((base_key[2], base_key[3]), []).append(triplet)
+
+    scopes: list[tuple[str, str, str, list[dict[str, dict[str, Any]]]]] = [
+        ("model", agent, model, model_groups[(agent, model)])
+        for agent, model in sorted(model_groups)
+    ]
+    if len(model_groups) > 1:
+        scopes.append(("overall", "ALL", "ALL", list(grouped_triplets.values())))
+
+    output_rows: list[dict[str, Any]] = []
+    for scope, agent, model, triplets in scopes:
+        scope_rows = _rq1_comparison_rows(scope, agent, model, triplets)
+        adjusted = _holm_adjusted_p_values(
+            [row["mcnemar_p_value"] for row in scope_rows]
+        )
+        for row, adjusted_p in zip(scope_rows, adjusted):
+            row["holm_adjusted_p_value"] = adjusted_p
+            row["comparison_result"] = _rq1_comparison_result(
+                row["paired_evaluable_samples"],
+                row["repository_aware_improvement_pp"],
+                adjusted_p,
+            )
+        conclusion = _rq1_conclusion([row["comparison_result"] for row in scope_rows])
+        answer_vi = _rq1_answer_vi(conclusion)
+        for row in scope_rows:
+            row["rq1_conclusion"] = conclusion
+            row["rq1_answer_vi"] = answer_vi
+        output_rows.extend(scope_rows)
+    return output_rows
+
+
+def build_rq1_paired_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build one wide row per sample/model combination, including incomplete triplets."""
+    latest = _latest_rq1_rows(rows)
+    grouped: dict[tuple[str, str, str, str], dict[str, dict[str, Any]]] = {}
+    for logical_key, row in latest.items():
+        grouped.setdefault(logical_key[:-1], {})[logical_key[-1]] = row
+
+    output_rows: list[dict[str, Any]] = []
+    for base_key in sorted(grouped):
+        project_id, input_id, agent, model = base_key
+        triplet = grouped[base_key]
+        representative = next((triplet.get(strategy) for strategy in RQ1_PROMPT_STRATEGIES if strategy in triplet), {})
+        output: dict[str, Any] = {
+            "project_id": project_id,
+            "input_id": input_id,
+            "sample_id": _first_value(representative, ("sample_id", "input_id")),
+            "focal_class": _first_value(representative, ("focal_class", "Class_Under_Test")),
+            "agent_name": agent,
+            "model": model,
+            "build_tools": _rq1_build_tools(list(triplet.values())),
+            "complete_triplet": _is_complete_rq1_triplet(triplet),
+        }
+        for strategy in RQ1_PROMPT_STRATEGIES:
+            prefix = RQ1_STRATEGY_PREFIXES[strategy]
+            item = triplet.get(strategy)
+            values = _rq1_paired_values(item) if item is not None else {}
+            for metric in _RQ1_PAIRED_METRICS:
+                output[f"{prefix}_{metric}"] = values.get(metric, "")
+        output_rows.append(output)
+    return output_rows
+
+
+def build_rq1_details_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    """Build history-preserving RQ1 detail rows with latest/triplet markers."""
+    filtered = _filtered_rq1_rows(rows)
+    latest_indices = _latest_rq1_row_indices(filtered)
+    latest = {key: filtered[index][1] for key, index in latest_indices.items()}
+    complete_keys = {
+        key[:-1]
+        for key in latest
+        if all((*key[:-1], strategy) in latest for strategy in RQ1_PROMPT_STRATEGIES)
+    }
+    output_rows: list[dict[str, Any]] = []
+    for filtered_index, (_original_index, row) in enumerate(filtered):
+        logical_key = _rq1_logical_key(row)
+        output_rows.append(
+            {
+                "run_id": row.get("run_id", ""),
+                "shard_id": row.get("shard_id", ""),
+                "project_id": logical_key[0],
+                "input_id": logical_key[1],
+                "sample_id": _first_value(row, ("sample_id", "input_id")),
+                "focal_class": _first_value(row, ("focal_class", "Class_Under_Test")),
+                "agent_name": logical_key[2],
+                "model": logical_key[3],
+                "generation_prompt_strategy": logical_key[4],
+                "build_tool": _rq1_build_tool(row),
+                "initial_state": _rq1_state(row, "initial"),
+                "initial_compile_success": _rq1_initial_compile(row),
+                "initial_target_pass": _rq1_initial_target_pass(row),
+                "final_state": _rq1_state(row, "final"),
+                "final_compile_success": _rq1_final_compile(row),
+                "final_target_pass": _rq1_final_target_pass(row),
+                "final_module_pass": _rq1_final_module_pass(row),
+                "repair_status": row.get("repair_status", ""),
+                "repair_attempts": row.get("repair_attempts", ""),
+                "regeneration_attempts": row.get("regeneration_attempts", ""),
+                "total_llm_attempts": row.get("total_llm_attempts", ""),
+                "llm_input_tokens": row.get("llm_input_tokens", ""),
+                "llm_output_tokens": row.get("llm_output_tokens", ""),
+                "llm_total_tokens": row.get("llm_total_tokens", ""),
+                "elapsed_seconds": row.get("elapsed_seconds", ""),
+                "coverage_branch": _first_present(row, ("coverage_branch", "Branch_Coverage%")),
+                "coverage_line": _first_present(row, ("coverage_line", "Line_Coverage%")),
+                "coverage_method": _first_present(row, ("coverage_method", "Method_Coverage%")),
+                "mutation_score": _first_present(row, ("mutation_score", "Mutation_Score%")),
+                "mutations_total": row.get("mutations_total", ""),
+                "mutations_killed": row.get("mutations_killed", ""),
+                "mutations_survived": row.get("mutations_survived", ""),
+                "test_smell_total": row.get("test_smell_total", ""),
+                "test_smell_details": _csv_safe_value(row.get("test_smell_details", "")),
+                "initial_failure_origin": row.get("initial_failure_origin", ""),
+                "final_failure_origin": row.get("final_failure_origin", ""),
+                "repair_stopped_reason": row.get("repair_stopped_reason", ""),
+                "test_fail_reason": row.get("test_fail_reason", ""),
+                "error": row.get("error", ""),
+                "started_at": row.get("started_at", ""),
+                "finished_at": row.get("finished_at", ""),
+                "is_latest_logical_result": latest_indices.get(logical_key) == filtered_index,
+                "complete_triplet": logical_key[:-1] in complete_keys,
+            }
+        )
+    return output_rows
+
+
+def write_rq1_exports(output_dir: Path, rows: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    """Write all RQ1 CSV exports using UTF-8 BOM and return artifact metadata."""
+    ensure_dir(output_dir)
+    export_rows = {
+        "summary": build_rq1_summary_rows(rows),
+        "paired": build_rq1_paired_rows(rows),
+        "details": build_rq1_details_rows(rows),
+    }
+    columns = {
+        "summary": RQ1_SUMMARY_COLUMNS,
+        "paired": RQ1_PAIRED_COLUMNS,
+        "details": RQ1_DETAILS_COLUMNS,
+    }
+    metadata: dict[str, dict[str, Any]] = {}
+    for export_type in ("summary", "paired", "details"):
+        path = output_dir / RQ1_EXPORT_FILENAMES[export_type]
+        _write_csv_with_bom(path, export_rows[export_type], columns[export_type])
+        metadata[export_type] = {
+            "path": str(path),
+            "filename": path.name,
+            "rows": len(export_rows[export_type]),
+        }
+    return metadata
 
 
 def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
@@ -521,3 +811,415 @@ def _value_counts(rows: list[dict[str, Any]], key: str) -> dict[str, int]:
         value = str(row.get(key) or "N/A")
         counts[value] = counts.get(value, 0) + 1
     return counts
+
+
+_RQ1_INFRASTRUCTURE_STATES = {
+    "BUILD_TIMEOUT",
+    "TIMEOUT",
+    "TOOL_ERROR",
+    "UNKNOWN",
+    "UNKNOWN_FAILED",
+}
+
+_RQ1_EVALUABLE_STATES = {
+    "COMPILE_FAILED",
+    "TEST_DISCOVERY_FAILED",
+    "RUNTIME_FAILED",
+    "ASSERTION_FAILED",
+    "TARGET_TEST_PASSED",
+    "MODULE_TESTS_FAILED",
+    "MODULE_TESTS_PASSED",
+}
+
+
+def _filtered_rq1_rows(rows: list[dict[str, Any]]) -> list[tuple[int, dict[str, Any]]]:
+    return [
+        (index, row)
+        for index, row in enumerate(rows)
+        if _rq1_strategy(row) in RQ1_PROMPT_STRATEGIES
+    ]
+
+
+def _latest_rq1_row_indices(
+    filtered: list[tuple[int, dict[str, Any]]],
+) -> dict[tuple[str, str, str, str, str], int]:
+    latest: dict[tuple[str, str, str, str, str], int] = {}
+    latest_ranks: dict[tuple[str, str, str, str, str], tuple[Any, ...]] = {}
+    for filtered_index, (original_index, row) in enumerate(filtered):
+        key = _rq1_logical_key(row)
+        rank = (
+            _rq1_timestamp_rank(row.get("finished_at")),
+            _rq1_timestamp_rank(row.get("started_at")),
+            str(row.get("run_id") or ""),
+            original_index,
+        )
+        if key not in latest_ranks or rank > latest_ranks[key]:
+            latest[key] = filtered_index
+            latest_ranks[key] = rank
+    return latest
+
+
+def _latest_rq1_rows(
+    rows: list[dict[str, Any]],
+) -> dict[tuple[str, str, str, str, str], dict[str, Any]]:
+    filtered = _filtered_rq1_rows(rows)
+    indices = _latest_rq1_row_indices(filtered)
+    return {key: filtered[index][1] for key, index in indices.items()}
+
+
+def _rq1_timestamp_rank(value: Any) -> tuple[int, float, str]:
+    text = str(value or "").strip()
+    if not text:
+        return (0, float("-inf"), "")
+    try:
+        parsed = datetime.fromisoformat(text.replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = parsed.replace(tzinfo=timezone.utc)
+        return (1, parsed.timestamp(), text)
+    except (OverflowError, ValueError):
+        return (0, float("-inf"), text)
+
+
+def _rq1_logical_key(row: dict[str, Any]) -> tuple[str, str, str, str, str]:
+    return (
+        _first_value(row, ("project_id", "Project_ID")),
+        _first_value(row, ("input_id", "sample_id")),
+        _rq1_agent(row),
+        _rq1_model(row),
+        _rq1_strategy(row),
+    )
+
+
+def _rq1_agent(row: dict[str, Any]) -> str:
+    return _first_value(row, ("agent_name", "Generator(LLM)"))
+
+
+def _rq1_model(row: dict[str, Any]) -> str:
+    return _first_value(row, ("model",))
+
+
+def _rq1_build_tool(row: dict[str, Any]) -> str:
+    return _first_value(row, ("build_tool",)).strip().lower()
+
+
+def _rq1_build_tools(rows: list[dict[str, Any]]) -> str:
+    tools = sorted({_rq1_build_tool(row) for row in rows if _rq1_build_tool(row)})
+    return "|".join(tools)
+
+
+def _rq1_strategy(row: dict[str, Any]) -> str:
+    return _first_value(row, ("generation_prompt_strategy", "Prompt_Technique")).strip().lower()
+
+
+def _is_complete_rq1_triplet(triplet: dict[str, dict[str, Any]]) -> bool:
+    return all(strategy in triplet for strategy in RQ1_PROMPT_STRATEGIES)
+
+
+def _rq1_state(row: dict[str, Any], phase: str) -> str:
+    value = _first_value(row, (f"{phase}_state", f"{phase}_failure_state"))
+    return value.strip().upper()
+
+
+def _rq1_initial_compile(row: dict[str, Any]) -> bool | None:
+    state = _rq1_state(row, "initial")
+    if state:
+        return _rq1_compile_from_state(state)
+    return _rq1_tri_bool(_first_present(row, ("initial_compile_success", "initial_compilation_success")))
+
+
+def _rq1_initial_target_pass(row: dict[str, Any]) -> bool | None:
+    state = _rq1_state(row, "initial")
+    if state:
+        return _rq1_target_from_state(state)
+    return _rq1_tri_bool(_first_present(row, ("initial_target_pass", "initial_target_test_passed")))
+
+
+def _rq1_final_compile(row: dict[str, Any]) -> bool | None:
+    state = _rq1_state(row, "final")
+    if state:
+        return _rq1_compile_from_state(state)
+    return _rq1_tri_bool(
+        _first_present(
+            row,
+            ("final_compile_success", "final_compilation_success", "compilation", "Compilation"),
+        )
+    )
+
+
+def _rq1_final_target_pass(row: dict[str, Any]) -> bool | None:
+    state = _rq1_state(row, "final")
+    if state:
+        return _rq1_target_from_state(state)
+    return _rq1_tri_bool(
+        _first_present(row, ("final_target_pass", "final_target_test_passed", "target_test_passed"))
+    )
+
+
+def _rq1_final_module_pass(row: dict[str, Any]) -> bool | None:
+    state = _rq1_state(row, "final")
+    if state in _RQ1_INFRASTRUCTURE_STATES:
+        return None
+    if state in _RQ1_EVALUABLE_STATES:
+        return state == "MODULE_TESTS_PASSED"
+    if state:
+        return None
+    return _rq1_tri_bool(
+        _first_present(
+            row,
+            ("final_module_pass", "final_module_tests_passed", "module_tests_passed", "test_passed"),
+        )
+    )
+
+
+def _rq1_compile_from_state(state: str) -> bool | None:
+    if state in _RQ1_INFRASTRUCTURE_STATES:
+        return None
+    if state == "COMPILE_FAILED":
+        return False
+    if state in _RQ1_EVALUABLE_STATES:
+        # Discovery failure means Java compilation completed but no generated test ran.
+        return True
+    return None
+
+
+def _rq1_target_from_state(state: str) -> bool | None:
+    if state in _RQ1_INFRASTRUCTURE_STATES:
+        return None
+    if state in {"TARGET_TEST_PASSED", "MODULE_TESTS_FAILED", "MODULE_TESTS_PASSED"}:
+        return True
+    if state in _RQ1_EVALUABLE_STATES:
+        return False
+    return None
+
+
+def _rq1_comparison_rows(
+    scope: str,
+    agent: str,
+    model: str,
+    triplets: list[dict[str, dict[str, Any]]],
+) -> list[dict[str, Any]]:
+    complete = [triplet for triplet in triplets if _is_complete_rq1_triplet(triplet)]
+    all_items = [item for triplet in triplets for item in triplet.values()]
+    common = {
+        "scope": scope,
+        "agent_name": agent,
+        "model": model,
+        "build_tools": _rq1_build_tools(all_items),
+        "total_samples": len(triplets),
+        "zero_shot_available_samples": sum("zero-shot" in triplet for triplet in triplets),
+        "few_shot_available_samples": sum("few-shot" in triplet for triplet in triplets),
+        "repository_aware_available_samples": sum(
+            "zero-shot-project-aware" in triplet for triplet in triplets
+        ),
+        "complete_triplets": len(complete),
+    }
+    comparisons = (
+        ("compile", "zero-shot", _rq1_initial_compile),
+        ("compile", "few-shot", _rq1_initial_compile),
+        ("execution", "zero-shot", _rq1_initial_target_pass),
+        ("execution", "few-shot", _rq1_initial_target_pass),
+    )
+    output: list[dict[str, Any]] = []
+    for metric, baseline_prompt, getter in comparisons:
+        pairs: list[tuple[bool, bool]] = []
+        for triplet in complete:
+            baseline_value = getter(triplet[baseline_prompt])
+            repository_value = getter(triplet["zero-shot-project-aware"])
+            if baseline_value is not None and repository_value is not None:
+                pairs.append((baseline_value, repository_value))
+        baseline_success = sum(baseline for baseline, _repository in pairs)
+        repository_success = sum(repository for _baseline, repository in pairs)
+        wins = sum((not baseline) and repository for baseline, repository in pairs)
+        losses = sum(baseline and (not repository) for baseline, repository in pairs)
+        ties = len(pairs) - wins - losses
+        baseline_rate = _percentage(baseline_success, len(pairs))
+        repository_rate = _percentage(repository_success, len(pairs))
+        improvement = (
+            repository_rate - baseline_rate
+            if isinstance(repository_rate, float) and isinstance(baseline_rate, float)
+            else ""
+        )
+        if pairs:
+            mcnemar_p_value, mcnemar_method = _mcnemar_p_value(wins, losses)
+        else:
+            mcnemar_p_value, mcnemar_method = "", ""
+        output.append(
+            {
+                **common,
+                "metric": metric,
+                "baseline_prompt": baseline_prompt,
+                "repository_aware_prompt": "zero-shot-project-aware",
+                "paired_evaluable_samples": len(pairs),
+                "baseline_success_count": baseline_success,
+                "baseline_success_rate_pct": baseline_rate,
+                "repository_aware_success_count": repository_success,
+                "repository_aware_success_rate_pct": repository_rate,
+                "repository_aware_improvement_pp": improvement,
+                "repository_aware_wins": wins,
+                "repository_aware_losses": losses,
+                "ties": ties,
+                "mcnemar_p_value": mcnemar_p_value,
+                "mcnemar_method": mcnemar_method,
+                "holm_adjusted_p_value": "",
+                "alpha": 0.05,
+                "comparison_result": "",
+                "rq1_conclusion": "",
+                "rq1_answer_vi": "",
+            }
+        )
+    return output
+
+
+def _percentage(numerator: int, denominator: int) -> float | str:
+    if not denominator:
+        return ""
+    return numerator * 100.0 / denominator
+
+
+def _mcnemar_p_value(wins: int, losses: int) -> tuple[float, str]:
+    discordant = wins + losses
+    if discordant == 0:
+        return 1.0, "exact_binomial"
+    if discordant <= 2000:
+        tail_end = min(wins, losses)
+        term = 1
+        numerator = 1
+        for index in range(1, tail_end + 1):
+            term = term * (discordant - index + 1) // index
+            numerator += term
+        return min(1.0, (2 * numerator) / (2**discordant)), "exact_binomial"
+    continuity_corrected_z = max(0.0, abs(wins - losses) - 1) / sqrt(discordant)
+    return erfc(continuity_corrected_z / sqrt(2.0)), "normal_approximation"
+
+
+def _holm_adjusted_p_values(values: list[Any]) -> list[float | str]:
+    adjusted: list[float | str] = [""] * len(values)
+    valid = sorted(
+        (float(value), index)
+        for index, value in enumerate(values)
+        if value not in {"", None}
+    )
+    previous = 0.0
+    total = len(valid)
+    for rank, (p_value, index) in enumerate(valid):
+        current = min(1.0, p_value * (total - rank))
+        previous = max(previous, current)
+        adjusted[index] = previous
+    return adjusted
+
+
+def _rq1_comparison_result(
+    paired_samples: int,
+    improvement_pp: Any,
+    adjusted_p_value: Any,
+) -> str:
+    if paired_samples <= 0 or improvement_pp in {"", None} or adjusted_p_value in {"", None}:
+        return "INSUFFICIENT_DATA"
+    improvement = float(improvement_pp)
+    significant = float(adjusted_p_value) < 0.05
+    if significant and improvement > 0:
+        return "IMPROVED"
+    if significant and improvement < 0:
+        return "WORSE"
+    return "NO_SIGNIFICANT_DIFFERENCE"
+
+
+def _rq1_conclusion(results: list[str]) -> str:
+    if not results or any(result == "INSUFFICIENT_DATA" for result in results):
+        return "INSUFFICIENT_DATA"
+    if all(result == "IMPROVED" for result in results):
+        return "YES_IMPROVES_COMPILE_AND_EXECUTION"
+    if any(result == "IMPROVED" for result in results):
+        return "PARTIAL_IMPROVEMENT"
+    if any(result == "WORSE" for result in results):
+        return "NO_REPOSITORY_AWARE_IS_WORSE"
+    return "NO_SIGNIFICANT_IMPROVEMENT"
+
+
+def _rq1_answer_vi(conclusion: str) -> str:
+    answers = {
+        "YES_IMPROVES_COMPILE_AND_EXECUTION": (
+            "CÓ: Repository-aware cải thiện có ý nghĩa thống kê cả khả năng biên dịch và thực thi "
+            "so với Zero-shot và Few-shot."
+        ),
+        "PARTIAL_IMPROVEMENT": (
+            "CẢI THIỆN MỘT PHẦN: Repository-aware chỉ tốt hơn có ý nghĩa ở một số metric hoặc baseline."
+        ),
+        "NO_REPOSITORY_AWARE_IS_WORSE": (
+            "KHÔNG: Repository-aware không cải thiện và có ít nhất một so sánh kém hơn có ý nghĩa thống kê."
+        ),
+        "NO_SIGNIFICANT_IMPROVEMENT": (
+            "CHƯA CÓ BẰNG CHỨNG: chênh lệch của Repository-aware chưa có ý nghĩa thống kê."
+        ),
+        "INSUFFICIENT_DATA": (
+            "CHƯA ĐỦ DỮ LIỆU: cần chạy đủ ba prompt trên cùng sample và model để trả lời RQ1."
+        ),
+    }
+    return answers[conclusion]
+
+
+def _rq1_tri_bool(value: Any) -> bool | None:
+    if isinstance(value, bool):
+        return value
+    if isinstance(value, (int, float)) and value in {0, 1}:
+        return bool(value)
+    text = str(value or "").strip().lower()
+    if text in {"true", "1", "yes"}:
+        return True
+    if text in {"false", "0", "no"}:
+        return False
+    return None
+
+
+def _rq1_metric_summary(
+    rows: list[dict[str, Any]],
+    getter: Any,
+) -> tuple[int, int, float | str]:
+    values = [getter(row) for row in rows]
+    evaluable = [value for value in values if value is not None]
+    passed = sum(1 for value in evaluable if value is True)
+    return len(evaluable), passed, _rate(passed, len(evaluable))
+
+
+def _rq1_repair_attempted(row: dict[str, Any]) -> bool:
+    return _int_value(row.get("repair_attempts")) > 0 or _int_value(row.get("regeneration_attempts")) > 0
+
+
+def _rq1_paired_values(row: dict[str, Any]) -> dict[str, Any]:
+    return {
+        "run_id": row.get("run_id", ""),
+        "initial_state": _rq1_state(row, "initial"),
+        "initial_compile_success": _rq1_initial_compile(row),
+        "initial_target_pass": _rq1_initial_target_pass(row),
+        "final_state": _rq1_state(row, "final"),
+        "final_compile_success": _rq1_final_compile(row),
+        "final_target_pass": _rq1_final_target_pass(row),
+        "final_module_pass": _rq1_final_module_pass(row),
+        "repair_status": row.get("repair_status", ""),
+        "repair_attempts": row.get("repair_attempts", ""),
+        "total_llm_attempts": row.get("total_llm_attempts", ""),
+        "elapsed_seconds": row.get("elapsed_seconds", ""),
+        "llm_total_tokens": row.get("llm_total_tokens", ""),
+    }
+
+
+def _first_present(row: dict[str, Any], keys: tuple[str, ...]) -> Any:
+    for key in keys:
+        value = row.get(key)
+        if value not in {"", None}:
+            return value
+    return ""
+
+
+def _csv_safe_value(value: Any) -> Any:
+    if isinstance(value, (dict, list, tuple, set)):
+        return json.dumps(value, ensure_ascii=False, default=str, sort_keys=True)
+    return value
+
+
+def _write_csv_with_bom(path: Path, rows: list[dict[str, Any]], fieldnames: list[str]) -> None:
+    ensure_dir(path.parent)
+    with path.open("w", newline="", encoding="utf-8-sig") as output_file:
+        writer = csv.DictWriter(output_file, fieldnames=fieldnames, extrasaction="ignore")
+        writer.writeheader()
+        writer.writerows(rows)
