@@ -7,6 +7,13 @@ fail, sau do ghi report.
 
 Pipeline nay khong phu thuoc code trong `mini-agonetest`.
 
+Pipeline chay duoc tren ca Windows va Ubuntu. Code Java do LLM tra ve duoc
+chuan hoa CRLF/LF va kiem tra block, comment, literal, dau ngoac truoc khi goi
+Maven/Gradle. Neu response bi cat giua chung (`reached end of file while
+parsing`), pipeline khong ghi de candidate dang dung ma tu dong generate lai
+theo `llm.max_invalid_output_retries`. Gioi han output mac dinh la 4096 token
+de tranh cat file Java dai o moc 2048 token.
+
 ## 1. Chuan bi moi truong
 
 Mo PowerShell tai folder:
@@ -36,23 +43,42 @@ Neu may co nhieu Java version, co the truyen rieng `JAVA_HOME` cho build:
 python -m src.run_pipeline --java-home "C:\Program Files\Java\jdk1.8.0_202" --count-only
 ```
 
+Ubuntu:
+
+```bash
+python -m src.run_pipeline --java-home /usr/lib/jvm/java-17-openjdk-amd64 --count-only
+```
+
 Neu muon auto-detect Java theo tung repo nhung JDK nam o thu muc rieng cua may,
 sua `build.java_homes` trong `config/pipeline.yaml`:
 
 ```yaml
 build:
-  java_default: 'D:\Java\jdk-21'
+  java_default:
+    windows: 'D:\Java\jdk-21'
+    linux: '/usr/lib/jvm/java-21-openjdk-amd64'
   java_homes:
-    java-8: 'D:\Java\jdk1.8.0_202'
-    java-11: 'D:\Java\jdk-11'
-    java-17: 'D:\Java\jdk-17'
-    java-21: 'D:\Java\jdk-21'
+    java-8:
+      windows: 'D:\Java\jdk1.8.0_202'
+      linux: '/usr/lib/jvm/java-8-openjdk-amd64'
+    java-11:
+      windows: 'D:\Java\jdk-11'
+      linux: '/usr/lib/jvm/java-11-openjdk-amd64'
+    java-17:
+      windows: 'D:\Java\jdk-17'
+      linux: '/usr/lib/jvm/java-17-openjdk-amd64'
 ```
 
 Key co the viet dang `java-17`, `jdk-17`, hoac chi `"17"`. Khi repo detect can
 Java 17 thi pipeline dung path trong `java_homes.java-17`. Neu path khong ton
-tai tren may do thi pipeline dung `java_default`. Neu `java_default` cung rong
-hoac khong ton tai thi Maven/Gradle dung Java default cua may.
+tai, pipeline tu tim JDK dung version qua `JAVA_17_HOME`, `JAVA17_HOME`,
+`JDK_17_HOME`, `JAVA_HOME`, `/usr/lib/jvm`, cac thu muc JDK pho bien tren
+Windows, hoac `JAVA_VERSIONS_HOME`. Sau do pipeline moi fallback ve
+`java_default` va Java he thong.
+
+Voi project legacy khai bao Java 7 tro xuong, neu khong co JDK khop chinh xac,
+pipeline uu tien JDK 8 truoc `java_default`. Cach nay tranh JVM crash voi cac
+build plugin cu nhu JaCoCo 0.7.x va Surefire 2.12.x khi Java he thong la 17/21.
 
 ## 2. Chay Ollama, OpenAI va LiteLLM
 

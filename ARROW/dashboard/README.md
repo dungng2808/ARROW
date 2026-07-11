@@ -19,6 +19,8 @@ The dashboard is a thin UI layer over the existing pipeline:
 - launches `python -m src.run_pipeline` as a subprocess;
 - writes per-run logs to `dashboard/logs`;
 - writes per-run temporary configs to `dashboard/runtime_configs`;
+- saves launcher run history to `dashboard/run_records` so rerun/resume remains available after restarting the dashboard;
+- writes filtered rerun project lists to `dashboard/runtime_shards`;
 - reads experiment results from `runs/**/reports/records/**/result.json`;
 - reads Adaptive Repair checkpoints from `runs/**/<agent>/<prompt>/repair/checkpoints`.
 
@@ -48,6 +50,15 @@ If a project Java version is detected but no matching configured JDK exists, the
 When a launched run finishes, the dashboard polls run status and refreshes the experiment table automatically.
 
 Running jobs can be interrupted with the `Stop` button in the run list. The dashboard stops the pipeline process tree, including child Maven/Gradle/Git processes on Windows.
+
+After a shard has finished or been stopped, `Run again` appears with four choices:
+
+- `Run all again`: run the whole selected shard from the beginning;
+- `Run failed projects`: run only projects with at least one failed experiment in the latest run;
+- `Continue stopped run`: include the project that was interrupted, then continue with every remaining project.
+- `Retry failed, then continue`: first rerun failed projects from the stopped run, then include the interrupted project and every remaining project; duplicate project IDs are removed.
+
+The filtered modes always reset `Start index` to `0` and `Limit` to `0` because they operate on a newly generated project list.
 
 Pipeline logs include the current phase, selected Java behavior, Maven/Gradle command, verification result, and Adaptive Repair attempt decisions.
 

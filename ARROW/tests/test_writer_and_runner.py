@@ -29,6 +29,60 @@ public class FooTest_1234abcd {
     assert digest
 
 
+def test_validate_java_normalizes_crlf_and_lf_to_same_code_and_hash():
+    lf = "package demo;\npublic class FooTest_1234abcd {\n}\n"
+    crlf = lf.replace("\n", "\r\n")
+
+    lf_code, lf_hash = validate_java_candidate(
+        lf,
+        expected_package="demo",
+        expected_class_name="FooTest_1234abcd",
+    )
+    crlf_code, crlf_hash = validate_java_candidate(
+        crlf,
+        expected_package="demo",
+        expected_class_name="FooTest_1234abcd",
+    )
+
+    assert crlf_code == lf_code
+    assert crlf_hash == lf_hash
+    assert "\r" not in crlf_code
+
+
+def test_validate_java_rejects_truncated_compilation_unit_before_build():
+    with pytest.raises(JavaValidationError, match="unclosed delimiter"):
+        validate_java_candidate(
+            "package demo;\npublic class FooTest_1234abcd {\n    void test() {\n",
+            expected_package="demo",
+            expected_class_name="FooTest_1234abcd",
+        )
+
+
+def test_validate_java_ignores_delimiters_inside_literals_and_comments():
+    code, _digest = validate_java_candidate(
+        '''package demo;
+public class FooTest_1234abcd {
+    String value = "not structural: })]";
+    // not structural: {
+    /* not structural: ( [ { */
+}
+''',
+        expected_package="demo",
+        expected_class_name="FooTest_1234abcd",
+    )
+
+    assert "not structural" in code
+
+
+def test_validate_java_rejects_unterminated_block_comment():
+    with pytest.raises(JavaValidationError, match="unterminated block comment"):
+        validate_java_candidate(
+            "package demo;\npublic class FooTest_1234abcd { /* truncated\n",
+            expected_package="demo",
+            expected_class_name="FooTest_1234abcd",
+        )
+
+
 def test_validate_java_normalizes_common_generated_class_name_variants():
     code, _digest = validate_java_candidate(
         """package demo;

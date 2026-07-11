@@ -39,14 +39,26 @@ build:
   prefer_wrapper: true
   # If repo Java version is not detected, not mapped, or mapped path is missing,
   # this JDK is used as the fallback JAVA_HOME. Leave empty to use system default.
-  java_default: 'C:\Program Files\Java\jdk-17'
   # Exact Java version -> JDK home mapping.
   # The key can be java-8/java-11/java-17/java-21, jdk-17, or just "17".
+  java_default:
+    windows: 'C:\Program Files\Java\jdk-17'
+    linux: '/home/cuongpv/ARROW/Java-version/java-8'
   java_homes:
-    java-8: 'C:\Program Files\Java\jdk1.8.0_202'
-    java-11: 'C:\Program Files\Java\jdk-11'
-    java-17: 'C:\Program Files\Java\jdk-17'
-    java-21: 'C:\Program Files\Java\jdk-21'
+    java-8:
+      windows: 'C:\Program Files\Java\jdk1.8.0_202'
+      linux: '/home/cuongpv/ARROW/Java-version/java-8'
+    java-11:
+      windows: 'C:\Program Files\Java\jdk-11'
+      linux: '/home/cuongpv/ARROW/Java-version/java-11'
+    java-17:
+      windows: 'C:\Program Files\Java\jdk-17'
+      linux: '/home/cuongpv/ARROW/Java-version/java-17'
+    java-21:
+      windows: 'C:\Program Files\Java\jdk-21'
+      linux: '/home/cuongpv/ARROW/Java-version/java-21'
+
+
   test_timeout_seconds: 900
   maven:
     multi_module_strategy: root_with_pl_am # module_only = chạy đúng pom của module; root_with_pl_am = chạy từ root pom với -pl module và -am để build cả module phụ thuộc.
@@ -55,26 +67,30 @@ build:
 
 llm:
   provider: litellm
+  # Retry generation before build when the model response is truncated or has
+  # unbalanced Java structure. Works the same with LF (Ubuntu) and CRLF (Windows).
+  max_invalid_output_retries: 2
   # Secrets are read from environment variables named by api_key_env.
   # Do not write a real API key into this file.
   agents:
-    - name: qwen-coder-1.5b
-      model: ollama/qwen2.5-coder:1.5b
+    - name: Qwen-2.5-7b-v2
+      model: ollama/Qwen-2.5-7b-v2
       api_base: http://localhost:11434
       temperature: 0
       num_ctx: 32768
-      max_tokens: 2048
+      # 2048 can truncate medium-sized Java tests and cause javac EOF errors.
+      max_tokens: 8192
     - name: qwen-coder-2.5-7b
       model: ollama/qwen-unit-test-elite-dataset-07-07:latest
       api_base: http://localhost:11434
       temperature: 0
       num_ctx: 32768
-      max_tokens: 2048
+      max_tokens: 4096
     - name: gpt-4.1-mini
       model: openai/gpt-4.1-mini
       api_key_env: OPENAI_API_KEY
       temperature: 0
-      max_tokens: 2048
+      max_tokens: 4096
 
 prompts:
   generation_strategies:

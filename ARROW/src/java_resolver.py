@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import os
+import platform
 import re
+import shutil
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -43,6 +45,32 @@ def resolve_java_home(repository_root: Path, module_root: Path, config: dict[str
             source=source,
             reason=f"matched build.java_homes.{configured_key}",
         )
+    discovered_java_home = discover_java_home(normalized)
+    if discovered_java_home:
+        return JavaSelection(
+            requested_version=normalized,
+            java_home=discovered_java_home,
+            source=source,
+            reason=f"auto-discovered JDK {normalized}",
+        )
+    compatible_version = _compatible_jdk_version(normalized)
+    if compatible_version:
+        compatible_home, compatible_key = _configured_java_home_for_version(compatible_version, build_cfg.get("java_homes"))
+        if compatible_home:
+            return JavaSelection(
+                requested_version=normalized,
+                java_home=compatible_home,
+                source=source,
+                reason=f"using compatible JDK {compatible_version} from build.java_homes.{compatible_key} for Java {normalized}",
+            )
+        compatible_home = discover_java_home(compatible_version)
+        if compatible_home:
+            return JavaSelection(
+                requested_version=normalized,
+                java_home=compatible_home,
+                source=source,
+                reason=f"auto-discovered compatible JDK {compatible_version} for Java {normalized}",
+            )
     if default_java_home:
         return JavaSelection(
             requested_version=normalized,
@@ -51,6 +79,98 @@ def resolve_java_home(repository_root: Path, module_root: Path, config: dict[str
             reason=f"JDK {normalized} not mapped; using build.java_default",
         )
     return JavaSelection(requested_version=normalized, source=source, reason=f"JDK {normalized} not mapped; using system default Java")
+
+
+def current_platform_key() -> str:
+    system = platform.system().strip().lower()
+    if system.startswith("win"):
+        return "windows"
+    if system in {"darwin", "mac", "macos"}:
+        return "macos"
+    return "linux" if system == "linux" else system
+
+
+def _compatible_jdk_version(requested_version: str) -> str:
+    """Use JDK 8 for legacy Java levels whose build plugins reject modern JVMs."""
+    try:
+        version = int(normalize_java_version(requested_version))
+    except ValueError:
+        return ""
+    return "8" if version < 8 else ""
+
+
+def platform_config_value(value: Any) -> Any:
+    """Select the current OS value from a scalar or platform-keyed mapping."""
+    if not isinstance(value, dict):
+        return value
+    normalized = {str(key).strip().lower(): item for key, item in value.items()}
+    aliases = {
+        "windows": ("windows", "win", "win32", "nt"),
+        "linux": ("linux", "ubuntu", "posix"),
+        "macos": ("macos", "mac", "darwin"),
+    }.get(current_platform_key(), (current_platform_key(),))
+    for key in (*aliases, "default", "all"):
+        if key in normalized:
+            return normalized[key]
+    return ""
+
+
+def discover_java_home(version: str) -> str:
+    """Find an installed matching JDK without assuming a Windows/Linux path."""
+    wanted = normalize_java_version(version)
+    env_names = (
+        f"JAVA_{wanted}_HOME",
+        f"JAVA{wanted}_HOME",
+        f"JDK_{wanted}_HOME",
+        f"JDK{wanted}_HOME",
+        "JAVA_HOME",
+    )
+    candidates: list[Path] = []
+    for name in env_names:
+        if os.environ.get(name):
+            candidates.append(_expand_path(os.environ[name]))
+
+    java_executable = shutil.which("java")
+    if java_executable:
+        candidates.append(Path(java_executable).resolve().parent.parent)
+
+    roots = [Path.home() / ".jdks"]
+    versions_root = os.environ.get("JAVA_VERSIONS_HOME")
+    if versions_root:
+        roots.append(_expand_path(versions_root))
+    if current_platform_key() == "linux":
+        roots.extend([Path("/usr/lib/jvm"), Path("/opt/java")])
+    elif current_platform_key() == "windows":
+        for variable, suffix in (
+            ("ProgramFiles", "Java"),
+            ("ProgramFiles", "Eclipse Adoptium"),
+            ("ProgramFiles", "Microsoft"),
+            ("LOCALAPPDATA", "Programs/Eclipse Adoptium"),
+        ):
+            if os.environ.get(variable):
+                roots.append(Path(os.environ[variable]) / suffix)
+
+    for root in roots:
+        if not root.is_dir():
+            continue
+        candidates.append(root)
+        try:
+            candidates.extend(path for path in root.iterdir() if path.is_dir())
+        except OSError:
+            continue
+
+    seen: set[Path] = set()
+    for candidate in candidates:
+        try:
+            resolved = candidate.resolve()
+        except OSError:
+            continue
+        if resolved in seen or not resolved.is_dir():
+            continue
+        seen.add(resolved)
+        if _java_version_from_home(str(resolved)) == wanted:
+            return str(resolved)
+    return ""
 
 
 def normalize_java_version(version: str) -> str:
@@ -163,19 +283,28 @@ def _configured_java_home_for_version(version: str, java_homes: Any) -> tuple[st
     for key, value in java_homes.items():
         if not value or _normalize_java_map_key(key) != wanted:
             continue
-        home = _expand_path(value)
-        if home.is_dir() and _looks_like_java_home(home):
-            return str(home), str(key)
+        for raw_path in _configured_path_values(value):
+            home = _expand_path(raw_path)
+            if home.is_dir() and _looks_like_java_home(home):
+                return str(home), str(key)
     return "", ""
 
 
 def _configured_java_home_path(value: Any) -> str:
     if not value:
         return ""
-    home = _expand_path(value)
-    if home.is_dir() and _looks_like_java_home(home):
-        return str(home)
+    for raw_path in _configured_path_values(value):
+        home = _expand_path(raw_path)
+        if home.is_dir() and _looks_like_java_home(home):
+            return str(home)
     return ""
+
+
+def _configured_path_values(value: Any) -> list[Any]:
+    selected = platform_config_value(value)
+    if isinstance(selected, (list, tuple)):
+        return list(selected)
+    return [selected] if selected else []
 
 
 def _normalize_java_map_key(key: Any) -> str:

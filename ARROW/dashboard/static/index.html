@@ -84,6 +84,27 @@
               <input id="limit" name="limit" type="number" min="0" value="0" />
               <small>0 = all remaining</small>
             </label>
+            <fieldset id="rerunOptions" class="rerun-field wide hidden">
+              <legend>Run again</legend>
+              <div class="rerun-options">
+                <label class="radio-card">
+                  <input type="radio" name="rerun_mode" value="rerun_all" checked />
+                  <span><strong>Run all again</strong><small>Start the selected shard again from the beginning.</small></span>
+                </label>
+                <label class="radio-card">
+                  <input id="failedOnlyMode" type="radio" name="rerun_mode" value="failed_only" />
+                  <span><strong>Run failed projects</strong><small id="failedOnlyMeta">No failed projects in previous runs.</small></span>
+                </label>
+                <label class="radio-card">
+                  <input id="resumeMode" type="radio" name="rerun_mode" value="resume" />
+                  <span><strong>Continue stopped run</strong><small id="resumeMeta">No stopped run for this shard.</small></span>
+                </label>
+                <label class="radio-card">
+                  <input id="failedThenResumeMode" type="radio" name="rerun_mode" value="failed_then_resume" />
+                  <span><strong>Retry failed, then continue</strong><small id="failedThenResumeMeta">No stopped run for this shard.</small></span>
+                </label>
+              </div>
+            </fieldset>
             <fieldset class="agent-field wide">
               <legend>Models</legend>
               <div id="agentOptions" class="agent-options"></div>

@@ -272,15 +272,62 @@ textarea {
 }
 
 .agent-field,
-.prompt-field {
+.prompt-field,
+.rerun-field {
   min-width: 0;
   margin: 0;
   padding: 0;
   border: 0;
 }
 
+.rerun-options {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.radio-card {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr);
+  align-items: start;
+  gap: 9px;
+  min-height: 76px;
+  padding: 11px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  cursor: pointer;
+}
+
+.radio-card:has(input:checked) {
+  border-color: var(--blue);
+  box-shadow: 0 0 0 1px var(--blue);
+  background: #f7faff;
+}
+
+.radio-card:has(input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.55;
+}
+
+.radio-card input {
+  width: 16px;
+  height: 16px;
+  margin: 2px 0 0;
+}
+
+.radio-card > span {
+  display: grid;
+  gap: 4px;
+}
+
+.radio-card small {
+  line-height: 1.35;
+}
+
 .agent-field legend,
-.prompt-field legend {
+.prompt-field legend,
+.rerun-field legend {
   margin-bottom: 5px;
   color: var(--muted);
   font-size: 12px;
@@ -823,7 +870,8 @@ body.sidebar-collapsed .nav-link {
   .shell,
   .run-grid,
   .bounds-grid,
-  .run-status {
+  .run-status,
+  .rerun-options {
     grid-template-columns: 1fr;
   }
 

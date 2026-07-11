@@ -90,7 +90,10 @@ function bindEvents() {
   });
   $("#projectSelect").addEventListener("change", () => loadSamples($("#projectSelect").value));
   $("#runScope").addEventListener("change", toggleRunScope);
-  $("#shardSelect").addEventListener("change", updateShardMeta);
+  $("#shardSelect").addEventListener("change", () => {
+    updateShardMeta();
+    updateRerunOptions();
+  });
   $("#runForm").addEventListener("submit", startRun);
   $("#searchBox").addEventListener("input", renderExperiments);
   $("#statusFilter").addEventListener("change", renderExperiments);
@@ -293,6 +296,67 @@ function toggleRunScope() {
   const shardMode = $("#runScope").value === "shard";
   document.querySelectorAll(".single-field").forEach((item) => item.classList.toggle("hidden", shardMode));
   document.querySelectorAll(".shard-field").forEach((item) => item.classList.toggle("hidden", !shardMode));
+  updateRerunOptions();
+}
+
+function shardName(value) {
+  return String(value || "").split(/[\\/]/).pop();
+}
+
+function failedProjectCount(run) {
+  return (run?.project_logs || []).filter(
+    (project) => Number(project.failed_experiments || 0) > 0 || project.last_experiment_passed === false || project.status === "failed",
+  ).length;
+}
+
+function updateRerunOptions() {
+  const fieldset = $("#rerunOptions");
+  if (!fieldset) return;
+  const selectedShard = $("#shardSelect").value;
+  const matchingRuns = state.runs.filter((run) => {
+    const request = run.request || {};
+    return (
+      !["running", "stopping"].includes(run.status) &&
+      request.run_scope === "shard" &&
+      shardName(request.repo_shard) === selectedShard
+    );
+  });
+  const hasPreviousRun = $("#runScope").value === "shard" && matchingRuns.length > 0;
+  fieldset.classList.toggle("hidden", !hasPreviousRun);
+  if (!hasPreviousRun) return;
+
+  const newestFirst = matchingRuns.slice().reverse();
+  const latestRun = newestFirst[0];
+  const failedRun = failedProjectCount(latestRun) > 0 ? latestRun : null;
+  const stoppedRun = newestFirst.find((run) => run.status === "stopped");
+  const failedInput = $("#failedOnlyMode");
+  const resumeInput = $("#resumeMode");
+  const failedThenResumeInput = $("#failedThenResumeMode");
+
+  failedInput.disabled = !failedRun;
+  failedInput.dataset.sourceRun = failedRun?.id || "";
+  $("#failedOnlyMeta").textContent = failedRun
+    ? `${failedProjectCount(failedRun)} failed project(s) from run ${failedRun.id}.`
+    : "No failed projects in previous runs.";
+
+  resumeInput.disabled = !stoppedRun;
+  resumeInput.dataset.sourceRun = stoppedRun?.id || "";
+  const stoppedProject = (stoppedRun?.project_logs || []).at(-1)?.project_id;
+  $("#resumeMeta").textContent = stoppedRun
+    ? `Resume run ${stoppedRun.id}${stoppedProject ? ` from project ${stoppedProject}` : " from the beginning"}.`
+    : "No stopped run for this shard.";
+
+  failedThenResumeInput.disabled = !stoppedRun;
+  failedThenResumeInput.dataset.sourceRun = stoppedRun?.id || "";
+  const stoppedRunFailedCount = failedProjectCount(stoppedRun);
+  $("#failedThenResumeMeta").textContent = stoppedRun
+    ? `Retry ${stoppedRunFailedCount} failed project(s), then resume from ${stoppedProject || "the beginning"}.`
+    : "No stopped run for this shard.";
+
+  const selected = document.querySelector('input[name="rerun_mode"]:checked');
+  if (selected?.disabled) {
+    document.querySelector('input[name="rerun_mode"][value="rerun_all"]').checked = true;
+  }
 }
 
 async function loadSamples(projectId) {
@@ -594,6 +658,8 @@ async function startRun(event) {
     $("#runLog").textContent = "Select at least one prompt.";
     return;
   }
+  const rerunModeInput = document.querySelector('input[name="rerun_mode"]:checked');
+  const rerunMode = $("#rerunOptions").classList.contains("hidden") ? "new" : rerunModeInput?.value || "rerun_all";
   const payload = {
     run_scope: $("#runScope").value,
     project_id: $("#projectSelect").value,
@@ -604,6 +670,8 @@ async function startRun(event) {
     samples_per_project: $("#samplesPerProject").value,
     start_index: Number($("#startIndex").value || 0),
     limit: Number($("#limit").value || 0),
+    rerun_mode: rerunMode,
+    source_run_id: rerunModeInput?.dataset.sourceRun || "",
     agents,
     generation_prompts: generationPrompts,
     retry_mode: $("#retryMode").value,
@@ -634,6 +702,7 @@ async function loadRuns() {
   const payload = await api("/api/runs");
   const runs = payload.runs || [];
   state.runs = runs;
+  updateRerunOptions();
   const newlyFinished = runs.some((run) => {
     const done = ["completed", "failed"].includes(run.status);
     if (!done || state.finishedRunIds.has(run.id)) return false;

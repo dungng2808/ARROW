@@ -46,18 +46,93 @@ def test_resolve_uses_system_default_when_no_mapping_or_java_default(tmp_path):
     assert selection.reason == "JDK 99 not mapped; using system default Java"
 
 
-def test_resolve_uses_java_default_when_project_version_is_not_mapped(tmp_path):
+def test_resolve_uses_java_default_when_project_version_is_not_mapped(monkeypatch, tmp_path):
     repo = tmp_path / "repo"
     repo.mkdir()
     (repo / ".java-version").write_text("17", encoding="utf-8")
     default_jdk = tmp_path / "jdk-21"
     default_jdk.mkdir()
+    monkeypatch.setattr("src.java_resolver.discover_java_home", lambda _version: "")
 
     selection = resolve_java_home(repo, repo, {"build": {"java_default": str(default_jdk)}})
 
     assert selection.requested_version == "17"
     assert selection.java_home == str(default_jdk)
     assert selection.reason == "JDK 17 not mapped; using build.java_default"
+
+
+def test_resolve_selects_platform_specific_java_home(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / ".java-version").write_text("1.8", encoding="utf-8")
+    windows_jdk = tmp_path / "windows" / "jdk1.8.0_202"
+    linux_jdk = tmp_path / "linux" / "java-8"
+    windows_jdk.mkdir(parents=True)
+    linux_jdk.mkdir(parents=True)
+    monkeypatch.setattr("src.java_resolver.platform.system", lambda: "Linux")
+
+    selection = resolve_java_home(
+        repo,
+        repo,
+        {
+            "build": {
+                "java_homes": {
+                    "java-8": {
+                        "windows": str(windows_jdk),
+                        "linux": str(linux_jdk),
+                    }
+                }
+            }
+        },
+    )
+
+    assert selection.java_home == str(linux_jdk)
+    assert selection.reason == "matched build.java_homes.java-8"
+
+
+def test_resolve_auto_discovers_matching_jdk_before_incompatible_default(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / ".java-version").write_text("8", encoding="utf-8")
+    discovered = tmp_path / "jdk-8"
+    default_jdk = tmp_path / "jdk-17"
+    discovered.mkdir()
+    default_jdk.mkdir()
+    monkeypatch.setattr("src.java_resolver.discover_java_home", lambda version: str(discovered) if version == "8" else "")
+
+    selection = resolve_java_home(repo, repo, {"build": {"java_default": str(default_jdk)}})
+
+    assert selection.java_home == str(discovered)
+    assert selection.reason == "auto-discovered JDK 8"
+
+
+def test_resolve_uses_jdk8_for_legacy_java7_project(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / "pom.xml").write_text(
+        "<project><build><plugins><plugin><configuration><source>1.7</source><target>1.7</target></configuration></plugin></plugins></build></project>",
+        encoding="utf-8",
+    )
+    jdk8 = tmp_path / "java-8"
+    jdk17 = tmp_path / "java-17"
+    jdk8.mkdir()
+    jdk17.mkdir()
+    monkeypatch.setattr("src.java_resolver.discover_java_home", lambda _version: "")
+
+    selection = resolve_java_home(
+        repo,
+        repo,
+        {
+            "build": {
+                "java_homes": {"java-8": str(jdk8)},
+                "java_default": str(jdk17),
+            }
+        },
+    )
+
+    assert selection.requested_version == "7"
+    assert selection.java_home == str(jdk8)
+    assert selection.reason == "using compatible JDK 8 from build.java_homes.java-8 for Java 7"
 
 
 def test_resolve_uses_java_default_when_project_version_is_not_detected(tmp_path):

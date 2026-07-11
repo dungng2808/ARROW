@@ -21,6 +21,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
     yaml = None
 
 from src.llm_client import record_token_usage, token_usage_report
+from src.java_resolver import platform_config_value
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -28,6 +29,8 @@ DASHBOARD_ROOT = Path(__file__).resolve().parent
 STATIC_ROOT = DASHBOARD_ROOT / "static"
 LOG_ROOT = DASHBOARD_ROOT / "logs"
 RUNTIME_CONFIG_ROOT = DASHBOARD_ROOT / "runtime_configs"
+RUN_RECORD_ROOT = DASHBOARD_ROOT / "run_records"
+RUNTIME_SHARD_ROOT = DASHBOARD_ROOT / "runtime_shards"
 DATASET_ROOT = PROJECT_ROOT.parent / "classes2test" / "dataset"
 SHARD_ROOT = PROJECT_ROOT / "shards"
 
@@ -45,6 +48,50 @@ ERROR_MARKER_RE = re.compile(
 def _ensure_runtime_dirs() -> None:
     LOG_ROOT.mkdir(parents=True, exist_ok=True)
     RUNTIME_CONFIG_ROOT.mkdir(parents=True, exist_ok=True)
+    RUN_RECORD_ROOT.mkdir(parents=True, exist_ok=True)
+    RUNTIME_SHARD_ROOT.mkdir(parents=True, exist_ok=True)
+
+
+def _run_record_path(run_id: str) -> Path:
+    return RUN_RECORD_ROOT / f"{_safe_name(run_id)}.json"
+
+
+def _persist_run(run: dict[str, Any]) -> None:
+    path = _run_record_path(str(run.get("id") or ""))
+    path.parent.mkdir(parents=True, exist_ok=True)
+    temporary = path.with_suffix(".json.tmp")
+    temporary.write_text(json.dumps(run, ensure_ascii=False, indent=2, default=str) + "\n", encoding="utf-8")
+    os.replace(temporary, path)
+
+
+def _load_run_records() -> None:
+    _ensure_runtime_dirs()
+    loaded: dict[str, dict[str, Any]] = {}
+    for path in sorted(RUN_RECORD_ROOT.glob("*.json"), key=lambda item: item.name):
+        run = _read_json(path)
+        run_id = _safe_name(str(run.get("id") or path.stem))
+        if not run_id:
+            continue
+        run["id"] = run_id
+        if run.get("status") in {"running", "stopping"}:
+            run["status"] = "stopped"
+            run["finished_at"] = run.get("finished_at") or datetime.now().isoformat(timespec="seconds")
+            for project in run.get("project_logs", []):
+                if project.get("status") == "running":
+                    project["status"] = "stopped"
+            _persist_run(run)
+        loaded[run_id] = run
+    for log_path in sorted(LOG_ROOT.glob("*.log"), key=lambda item: item.name):
+        run_id = _safe_name(log_path.stem)
+        if not run_id or run_id in loaded:
+            continue
+        legacy = _legacy_run_record(run_id, log_path)
+        if legacy:
+            loaded[run_id] = legacy
+            _persist_run(legacy)
+    with RUN_LOCK:
+        RUNS.clear()
+        RUNS.update(loaded)
 
 
 def _json_response(handler: SimpleHTTPRequestHandler, payload: Any, status: int = 200) -> None:
@@ -383,7 +430,92 @@ def _finish_event(line: str) -> dict[str, str] | None:
     match = re.search(r"(?:^|\]\s*)FINISH\s+(\S+)\s+status=(\S+)", line.strip())
     if not match:
         return None
-    return {"sample_id": match.group(1), "status": match.group(2)}
+    fields = {"sample_id": match.group(1), "status": match.group(2)}
+    passed_match = re.search(r"\bpassed=(true|false|1|0)\b", line, flags=re.IGNORECASE)
+    if passed_match:
+        fields["passed"] = "true" if passed_match.group(1).lower() in {"true", "1"} else "false"
+    return fields
+
+
+def _legacy_run_record(run_id: str, log_path: Path) -> dict[str, Any] | None:
+    config_path = RUNTIME_CONFIG_ROOT / f"{run_id}.yaml"
+    config: dict[str, Any] = {}
+    if yaml is not None and config_path.is_file():
+        try:
+            config = yaml.safe_load(config_path.read_text(encoding="utf-8")) or {}
+        except Exception:
+            config = {}
+
+    project_logs: list[dict[str, Any]] = []
+    current: dict[str, Any] | None = None
+    active_experiment = False
+    for line in log_path.read_text(encoding="utf-8", errors="replace").splitlines():
+        start = _start_event(line)
+        if start:
+            project_id = _safe_name(start.get("project_id", ""))
+            if current is None or current.get("project_id") != project_id:
+                if current is not None:
+                    current["status"] = "completed"
+                current = {
+                    "project_id": project_id,
+                    "status": "running",
+                    "experiments_completed": 0,
+                    "failed_experiments": 0,
+                    "last_experiment_passed": None,
+                    "last_experiment_status": "",
+                    "sample_id": start.get("sample_id", ""),
+                    "agent": start.get("agent", ""),
+                    "prompt": start.get("prompt", ""),
+                }
+                project_logs.append(current)
+            else:
+                current["sample_id"] = start.get("sample_id", "")
+                current["agent"] = start.get("agent", "")
+                current["prompt"] = start.get("prompt", "")
+            active_experiment = True
+        finish = _finish_event(line)
+        if finish and current is not None:
+            current["experiments_completed"] = int(current.get("experiments_completed") or 0) + 1
+            current["last_experiment_status"] = finish["status"]
+            if "passed" in finish:
+                passed = finish["passed"] == "true"
+                current["last_experiment_passed"] = passed
+                if not passed:
+                    current["failed_experiments"] = int(current.get("failed_experiments") or 0) + 1
+            active_experiment = False
+
+    if not project_logs:
+        return None
+    status = "stopped" if active_experiment else "completed"
+    project_logs[-1]["status"] = "stopped" if active_experiment else "completed"
+    run_cfg = config.get("run", {})
+    shard_id = _safe_name(str(run_cfg.get("shard_id") or ""))
+    shard_name = shard_id if shard_id.endswith(".txt") else f"{shard_id}.txt"
+    shard_path = _safe_shard_file(shard_name)
+    input_cfg = config.get("input", {})
+    request = {
+        "run_scope": "shard" if shard_path else "single",
+        "repo_shard": shard_path.name if shard_path else "",
+        "shard_id": shard_id,
+        "input_mode": input_cfg.get("mode", "sample"),
+        "samples_per_project": input_cfg.get("samples_per_project", 1),
+        "rerun_mode": "new",
+    }
+    modified = datetime.fromtimestamp(log_path.stat().st_mtime).isoformat(timespec="seconds")
+    return {
+        "id": run_id,
+        "status": status,
+        "started_at": modified,
+        "finished_at": modified,
+        "return_code": None,
+        "command": [],
+        "log_path": str(log_path),
+        "config_path": str(config_path),
+        "pid": None,
+        "project_logs": project_logs,
+        "request": request,
+        "selection": {"mode": "new", "migrated_from_logs": True},
+    }
 
 
 def _project_log_path(run_id: str, project_id: str) -> Path:
@@ -404,6 +536,124 @@ def _safe_shard_file(value: str) -> Path | None:
     except OSError:
         return None
     return path
+
+
+def _safe_runtime_shard_file(value: Any) -> Path | None:
+    if not value:
+        return None
+    try:
+        path = Path(str(value)).resolve()
+        if RUNTIME_SHARD_ROOT.resolve() not in path.parents or not path.is_file() or path.suffix.lower() != ".txt":
+            return None
+    except OSError:
+        return None
+    return path
+
+
+def _shard_project_ids(path: Path) -> list[str]:
+    projects: list[str] = []
+    seen: set[str] = set()
+    for line in path.read_text(encoding="utf-8", errors="replace").splitlines():
+        project_id = _safe_name(line.strip())
+        if not project_id or project_id in seen:
+            continue
+        seen.add(project_id)
+        projects.append(project_id)
+    # input_selector.project_dirs sorts dataset directories, so the derived
+    # shard must use that same deterministic project order for resume semantics.
+    return sorted(projects)
+
+
+def _failed_project_ids(run: dict[str, Any]) -> list[str]:
+    failed: list[str] = []
+    for project in run.get("project_logs", []):
+        project_id = _safe_name(str(project.get("project_id") or ""))
+        failed_count = int(project.get("failed_experiments") or 0)
+        last_passed = project.get("last_experiment_passed")
+        if project_id and (failed_count > 0 or last_passed is False or project.get("status") == "failed"):
+            failed.append(project_id)
+    return sorted(set(failed))
+
+
+def _source_run(payload: dict[str, Any]) -> dict[str, Any]:
+    source_run_id = _safe_name(str(payload.get("source_run_id") or ""))
+    if not source_run_id:
+        raise ValueError("Select a previous run for this rerun mode")
+    with RUN_LOCK:
+        source = RUNS.get(source_run_id)
+    if not source:
+        raise ValueError("Previous run was not found")
+    requested_shard = Path(str(payload.get("repo_shard") or "")).name
+    source_shard = Path(str(source.get("request", {}).get("repo_shard") or "")).name
+    if requested_shard != source_shard:
+        raise ValueError("Previous run belongs to a different shard")
+    return source
+
+
+def _write_runtime_shard(run_id: str, mode: str, project_ids: list[str]) -> Path:
+    if not project_ids:
+        raise ValueError("No projects match the selected rerun mode")
+    path = RUNTIME_SHARD_ROOT / f"{_safe_name(run_id)}-{_safe_name(mode)}.txt"
+    path.write_text("\n".join(project_ids) + "\n", encoding="utf-8", newline="\n")
+    return path
+
+
+def _prepare_run_payload(payload: dict[str, Any], run_id: str) -> dict[str, Any]:
+    prepared = dict(payload)
+    mode = _safe_name(str(prepared.get("rerun_mode") or "new")) or "new"
+    prepared["rerun_mode"] = mode
+    if str(prepared.get("run_scope") or "single") != "shard" or mode == "new":
+        return prepared
+
+    original_shard = _safe_shard_file(str(prepared.get("repo_shard") or ""))
+    if original_shard is None:
+        raise ValueError("Invalid repo shard file")
+    all_projects = _shard_project_ids(original_shard)
+    selected_projects = all_projects
+    source_run_id = ""
+
+    if mode == "rerun_all":
+        prepared["start_index"] = 0
+        prepared["limit"] = 0
+    elif mode == "failed_only":
+        source = _source_run(prepared)
+        source_run_id = str(source["id"])
+        failed = set(_failed_project_ids(source))
+        selected_projects = [project_id for project_id in all_projects if project_id in failed]
+    elif mode in {"resume", "failed_then_resume"}:
+        source = _source_run(prepared)
+        source_run_id = str(source["id"])
+        if source.get("status") != "stopped":
+            raise ValueError("Continue mode requires a stopped previous run")
+        project_logs = source.get("project_logs", [])
+        if not project_logs:
+            selected_projects = all_projects
+        else:
+            last_project = project_logs[-1]
+            last_project_id = _safe_name(str(last_project.get("project_id") or ""))
+            if last_project_id not in all_projects:
+                raise ValueError("Stopped project is not present in the selected shard")
+            start = all_projects.index(last_project_id)
+            if last_project.get("status") == "completed":
+                start += 1
+            selected_projects = all_projects[start:]
+        if mode == "failed_then_resume":
+            failed = set(_failed_project_ids(source))
+            failed_projects = [project_id for project_id in all_projects if project_id in failed]
+            selected_projects = list(dict.fromkeys([*failed_projects, *selected_projects]))
+    else:
+        raise ValueError(f"Unknown rerun mode: {mode}")
+
+    prepared["start_index"] = 0
+    prepared["limit"] = 0
+    prepared["_resolved_repo_shard"] = str(_write_runtime_shard(run_id, mode, selected_projects))
+    prepared["selection"] = {
+        "mode": mode,
+        "source_run_id": source_run_id,
+        "project_count": len(selected_projects),
+        "first_project_id": selected_projects[0] if selected_projects else "",
+    }
+    return prepared
 
 
 def _parse_java_homes(value: Any) -> dict[str, str]:
@@ -469,6 +719,7 @@ def _write_runtime_config(payload: dict[str, Any], run_id: str) -> Path:
         input_cfg["samples_per_project"] = samples_per_project if samples_per_project == "all" else int(samples_per_project or 1)
     config["input"] = input_cfg
     run_cfg = dict(config.get("run", {}))
+    run_cfg["run_id"] = run_id
     if "shard_id" in payload:
         run_cfg["shard_id"] = _safe_name(str(payload.get("shard_id") or run_cfg.get("shard_id", "local"))) or "local"
     config["run"] = run_cfg
@@ -508,7 +759,9 @@ def _build_pipeline_command(payload: dict[str, Any], config_path: Path) -> list[
     agents = _selected_agents(payload)
     prompts = _selected_generation_prompts(payload)
     if run_scope == "shard":
-        shard_file = _safe_shard_file(str(payload.get("repo_shard", "")))
+        shard_file = _safe_runtime_shard_file(payload.get("_resolved_repo_shard"))
+        if shard_file is None:
+            shard_file = _safe_shard_file(str(payload.get("repo_shard", "")))
         if shard_file is None:
             raise ValueError("Invalid repo shard file")
         command.extend(["--repo-shard", str(shard_file)])
@@ -574,6 +827,8 @@ def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) 
                                         "project_id": project_id,
                                         "status": "running",
                                         "experiments_completed": 0,
+                                        "failed_experiments": 0,
+                                        "last_experiment_passed": None,
                                         "last_experiment_status": "",
                                     }
                                     run.setdefault("project_logs", []).append(entry)
@@ -582,6 +837,7 @@ def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) 
                                 entry["sample_id"] = start.get("sample_id", "")
                                 entry["agent"] = start.get("agent", "")
                                 entry["prompt"] = start.get("prompt", "")
+                                _persist_run(run)
                         current_project_id = project_id
                         project_path = _project_log_path(run_id, project_id)
                         project_path.parent.mkdir(parents=True, exist_ok=True)
@@ -600,6 +856,12 @@ def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) 
                             if entry:
                                 entry["experiments_completed"] = int(entry.get("experiments_completed") or 0) + 1
                                 entry["last_experiment_status"] = finish["status"]
+                                if "passed" in finish:
+                                    passed = finish["passed"] == "true"
+                                    entry["last_experiment_passed"] = passed
+                                    if not passed:
+                                        entry["failed_experiments"] = int(entry.get("failed_experiments") or 0) + 1
+                                _persist_run(run)
         finally:
             if project_log is not None:
                 project_log.close()
@@ -615,13 +877,15 @@ def _watch_process(run_id: str, process: subprocess.Popen[str], log_path: Path) 
             for item in run.get("project_logs", []):
                 if item.get("status") == "running":
                     item["status"] = final_project_status
+            _persist_run(run)
 
 
 def _start_run(payload: dict[str, Any]) -> dict[str, Any]:
     _ensure_runtime_dirs()
     run_id = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
-    config_path = _write_runtime_config(payload, run_id)
-    command = _build_pipeline_command(payload, config_path)
+    prepared_payload = _prepare_run_payload(payload, run_id)
+    config_path = _write_runtime_config(prepared_payload, run_id)
+    command = _build_pipeline_command(prepared_payload, config_path)
     log_path = LOG_ROOT / f"{run_id}.log"
     env = os.environ.copy()
     env["PYTHONIOENCODING"] = "utf-8"
@@ -649,9 +913,12 @@ def _start_run(payload: dict[str, Any]) -> dict[str, Any]:
         "config_path": str(config_path),
         "pid": process.pid,
         "project_logs": [],
+        "request": {key: value for key, value in prepared_payload.items() if not key.startswith("_")},
+        "selection": prepared_payload.get("selection", {"mode": prepared_payload.get("rerun_mode", "new")}),
     }
     with RUN_LOCK:
         RUNS[run_id] = run
+        _persist_run(run)
     threading.Thread(target=_watch_process, args=(run_id, process, log_path), daemon=True).start()
     return run
 
@@ -723,11 +990,20 @@ class DashboardHandler(SimpleHTTPRequestHandler):
 
     def _api_config(self) -> dict[str, Any]:
         config = _project_config()
+        build = dict(config.get("build", {}))
+        build["java_default"] = platform_config_value(build.get("java_default"))
+        java_homes = build.get("java_homes", {})
+        if isinstance(java_homes, dict):
+            build["java_homes"] = {
+                str(version): platform_config_value(value)
+                for version, value in java_homes.items()
+                if platform_config_value(value)
+            }
         return {
             "agents": config.get("llm", {}).get("agents", []),
             "generation_prompts": config.get("prompts", {}).get("generation_strategies", []),
             "adaptive_repair": config.get("adaptive_repair", {}),
-            "build": config.get("build", {}),
+            "build": build,
             "input": config.get("input", {}),
             "run": config.get("run", {}),
             "experiment": config.get("experiment", {}),
@@ -855,6 +1131,10 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             run["status"] = "stopped"
             run["finished_at"] = datetime.now().isoformat(timespec="seconds")
             run["return_code"] = run.get("return_code")
+            for project in run.get("project_logs", []):
+                if project.get("status") in {"running", "stopping"}:
+                    project["status"] = "stopped"
+            _persist_run(run)
             return run
 
 
@@ -864,6 +1144,7 @@ def main() -> None:
     parser.add_argument("--port", type=int, default=8765)
     args = parser.parse_args()
     _ensure_runtime_dirs()
+    _load_run_records()
     server = ThreadingHTTPServer((args.host, args.port), DashboardHandler)
     print(f"Dashboard running at http://{args.host}:{args.port}")
     server.serve_forever()

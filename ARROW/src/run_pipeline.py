@@ -164,6 +164,13 @@ def _verification_label(result: Any) -> str:
     return f"{state} ({origin}){suffix}"
 
 
+def _baseline_blocks_generation(result: Any) -> bool:
+    return result.state in {FailureState.COMPILE_FAILED, FailureState.BUILD_TIMEOUT, FailureState.TOOL_ERROR} or result.failure_origin in {
+        FailureOrigin.BUILD_CONFIGURATION,
+        FailureOrigin.INFRASTRUCTURE,
+    }
+
+
 def _experiment_dir(paths: OutputPaths, agent: AgentConfig, strategy: GenerationStrategy) -> Path:
     return paths.sample_root / agent.name / strategy.name
 
@@ -314,7 +321,7 @@ def _run_one_experiment(
         _log_event(f"BASELINE {_verification_label(baseline)}")
         atomic_write_json(exp_dir / "baseline_verification.json", baseline.to_dict())
         atomic_write_text(exp_dir / "baseline_build_output.txt", baseline.raw_output)
-        if baseline.state in {FailureState.COMPILE_FAILED, FailureState.BUILD_TIMEOUT, FailureState.TOOL_ERROR}:
+        if _baseline_blocks_generation(baseline):
             row.update(
                 {
                     "baseline_state": baseline.state.value if baseline.state else "",
@@ -352,38 +359,82 @@ def _run_one_experiment(
             llm = StaticLlmClient([args.mock_llm_output.read_text(encoding="utf-8")])
         else:
             llm = LiteLlmClient()
-        response = llm.complete(
-            LlmRequest(
-                model=agent.model,
-                messages=[{"role": "user", "content": prompt}],
-                temperature=agent.temperature,
-                api_base=agent.api_base,
-                api_key_env=agent.api_key_env,
-                num_ctx=agent.num_ctx,
-                max_tokens=agent.max_tokens,
+        max_invalid_retries = max(0, int(config.get("llm", {}).get("max_invalid_output_retries", 2)))
+        generation_errors: list[str] = []
+        response = None
+        code = ""
+        generation_usage = None
+        selected_attempt = 0
+        for generation_attempt in range(1, max_invalid_retries + 2):
+            retry_suffix = ""
+            if generation_errors:
+                retry_suffix = (
+                    "\n\nThe previous response was rejected before build because it was incomplete or invalid: "
+                    f"{generation_errors[-1]}. Generate the complete Java compilation unit again from the beginning. "
+                    "Close every declaration, block, literal, comment, parenthesis, and bracket. "
+                    "Prefer a smaller focused test class so the response finishes within the output limit."
+                )
+            request_prompt = prompt + retry_suffix
+            attempt_dir = exp_dir / "generation" / f"attempt_{generation_attempt}"
+            atomic_write_text(attempt_dir / "prompt.txt", request_prompt)
+            response = llm.complete(
+                LlmRequest(
+                    model=agent.model,
+                    messages=[{"role": "user", "content": request_prompt}],
+                    temperature=agent.temperature,
+                    api_base=agent.api_base,
+                    api_key_env=agent.api_key_env,
+                    num_ctx=agent.num_ctx,
+                    max_tokens=agent.max_tokens,
+                )
             )
-        )
-        generation_usage = record_token_usage(
-            token_usage_by_prompt,
-            f"generation:{strategy.name}",
-            response.metadata,
-        )
-        if generation_usage:
-            _log_event(
-                f"GENERATE tokens input={generation_usage['input_tokens']} "
-                f"output={generation_usage['output_tokens']} total={generation_usage['total_tokens']}"
+            generation_usage = record_token_usage(
+                token_usage_by_prompt,
+                f"generation:{strategy.name}",
+                response.metadata,
             )
-        _log_event("GENERATE response received; validating Java candidate")
+            if generation_usage:
+                _log_event(
+                    f"GENERATE attempt={generation_attempt} tokens input={generation_usage['input_tokens']} "
+                    f"output={generation_usage['output_tokens']} total={generation_usage['total_tokens']}"
+                )
+            _log_event(f"GENERATE attempt={generation_attempt} response received; validating Java candidate")
+            atomic_write_text(attempt_dir / "llm_response.txt", response.content)
+            atomic_write_json(
+                attempt_dir / "metadata.json",
+                {"model": agent.model, "metadata": response.metadata, "token_usage": generation_usage or {}},
+            )
+            try:
+                code, _digest = validate_java_candidate(
+                    response.content,
+                    expected_package=context.package_name,
+                    expected_class_name=context.generated_test_class_name,
+                    testing_framework=context.testing_framework,
+                )
+            except JavaValidationError as exc:
+                error = str(exc)
+                generation_errors.append(error)
+                atomic_write_text(attempt_dir / "validation_error.txt", error + "\n")
+                _log_event(f"GENERATE attempt={generation_attempt} invalid_output reason={error}")
+                if generation_attempt > max_invalid_retries:
+                    raise
+                continue
+            selected_attempt = generation_attempt
+            break
+
+        if response is None or not code:  # Defensive guard; the loop always sets or raises.
+            raise JavaValidationError("generation did not produce a Java candidate")
         atomic_write_text(exp_dir / "llm_response.txt", response.content)
         atomic_write_json(
             exp_dir / "generation_metadata.json",
-            {"model": agent.model, "metadata": response.metadata, "token_usage": generation_usage or {}},
-        )
-        code, _digest = validate_java_candidate(
-            response.content,
-            expected_package=context.package_name,
-            expected_class_name=context.generated_test_class_name,
-            testing_framework=context.testing_framework,
+            {
+                "model": agent.model,
+                "metadata": response.metadata,
+                "token_usage": generation_usage or {},
+                "selected_attempt": selected_attempt,
+                "invalid_output_retries": len(generation_errors),
+                "validation_errors": generation_errors,
+            },
         )
         row["NumberOfMethods"] = _count_generated_test_methods(code)
         experiment_id = f"{run_id}:{shard_id}:{sample.input_id}:{agent.name}:{strategy.name}"

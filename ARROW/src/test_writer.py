@@ -36,7 +36,10 @@ def code_hash(code: str) -> str:
 
 
 def strip_markdown_fences(content: str) -> str:
-    stripped = content.strip()
+    # Normalize at the boundary so validation, hashes, and files are identical
+    # whether the provider/pipeline is running with LF (Linux) or CRLF
+    # (Windows). A lone CR is also a valid historical line separator.
+    stripped = content.replace("\r\n", "\n").replace("\r", "\n").strip()
     match = re.fullmatch(r"```(?:java)?\s*(.*?)\s*```", stripped, re.DOTALL | re.IGNORECASE)
     if match:
         return match.group(1).strip() + "\n"
@@ -47,6 +50,116 @@ def strip_markdown_fences(content: str) -> str:
     if start:
         return stripped[start.start():].strip() + "\n"
     return stripped + "\n"
+
+
+def _validate_balanced_java_structure(code: str) -> None:
+    """Reject obviously truncated Java without being confused by literals/comments.
+
+    This is intentionally a small lexical check rather than a Java parser. Maven
+    remains the syntax authority, but incomplete LLM responses should never be
+    written and compiled when we can identify them deterministically first.
+    """
+    stack: list[tuple[str, int]] = []
+    matching = {")": "(", "]": "[", "}": "{"}
+    state = "code"
+    state_start = 0
+    escaped = False
+    index = 0
+
+    while index < len(code):
+        char = code[index]
+        following = code[index + 1] if index + 1 < len(code) else ""
+
+        if state == "line_comment":
+            if char == "\n":
+                state = "code"
+            index += 1
+            continue
+
+        if state == "block_comment":
+            if char == "*" and following == "/":
+                state = "code"
+                index += 2
+            else:
+                index += 1
+            continue
+
+        if state in {"string", "character"}:
+            if escaped:
+                escaped = False
+            elif char == "\\":
+                escaped = True
+            elif (state == "string" and char == '"') or (state == "character" and char == "'"):
+                state = "code"
+            elif char == "\n":
+                kind = "string literal" if state == "string" else "character literal"
+                raise JavaValidationError(f"unterminated {kind} starting at offset {state_start}")
+            index += 1
+            continue
+
+        if state == "text_block":
+            if code.startswith('"""', index) and not _is_escaped(code, index):
+                state = "code"
+                index += 3
+            else:
+                index += 1
+            continue
+
+        if char == "/" and following == "/":
+            state = "line_comment"
+            state_start = index
+            index += 2
+            continue
+        if char == "/" and following == "*":
+            state = "block_comment"
+            state_start = index
+            index += 2
+            continue
+        if code.startswith('"""', index):
+            state = "text_block"
+            state_start = index
+            index += 3
+            continue
+        if char == '"':
+            state = "string"
+            state_start = index
+            escaped = False
+            index += 1
+            continue
+        if char == "'":
+            state = "character"
+            state_start = index
+            escaped = False
+            index += 1
+            continue
+        if char in "([{":
+            stack.append((char, index))
+        elif char in ")]}":
+            if not stack or stack[-1][0] != matching[char]:
+                raise JavaValidationError(f"unexpected closing delimiter {char!r} at offset {index}")
+            stack.pop()
+        index += 1
+
+    if state == "block_comment":
+        raise JavaValidationError(f"unterminated block comment starting at offset {state_start}")
+    if state == "string":
+        raise JavaValidationError(f"unterminated string literal starting at offset {state_start}")
+    if state == "character":
+        raise JavaValidationError(f"unterminated character literal starting at offset {state_start}")
+    if state == "text_block":
+        raise JavaValidationError(f"unterminated text block starting at offset {state_start}")
+    if stack:
+        delimiter, offset = stack[-1]
+        raise JavaValidationError(f"unclosed delimiter {delimiter!r} starting at offset {offset}")
+
+
+def _is_escaped(code: str, index: int) -> bool:
+    backslashes = 0
+    cursor = index - 1
+    while cursor >= 0 and code[cursor] == "\\":
+        backslashes += 1
+        cursor -= 1
+    return backslashes % 2 == 1
 
 
 def validate_java_candidate(
@@ -64,6 +177,7 @@ def validate_java_candidate(
         raise JavaValidationError("candidate looks like a diff")
     if any(marker in code.lower() for marker in ("pom.xml", "build.gradle", "settings.gradle", "src/main/java")):
         raise JavaValidationError("candidate includes non-test file content")
+    _validate_balanced_java_structure(code)
     class_matches = re.findall(r"(?m)public\s+class\s+([A-Za-z_][A-Za-z0-9_]*)", code)
     code, class_matches = normalize_generated_class_name(code, class_matches, expected_class_name)
     if class_matches != [expected_class_name]:

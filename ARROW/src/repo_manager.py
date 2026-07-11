@@ -23,7 +23,10 @@ def safe_remove_tree(path: Path, allowed_root: Path) -> bool:
         raise ValueError(f"Refusing to remove path outside allowed root: {resolved_path}") from exc
     if not resolved_path.exists():
         return False
-    shutil.rmtree(resolved_path, onexc=_retry_remove_readonly)
+    # ``onexc`` only exists in newer Python releases. ``onerror`` keeps cleanup
+    # working on the Python 3.10/3.11 versions commonly shipped by Ubuntu while
+    # retaining the same read-only-file handling on Windows.
+    shutil.rmtree(resolved_path, onerror=_retry_remove_readonly)
     return True
 
 

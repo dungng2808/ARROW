@@ -116,6 +116,24 @@ def test_invalid_output_preserves_best_and_switches_prompt(monkeypatch, tmp_path
     assert summary.prompt_switch_count >= 1
 
 
+def test_truncated_output_preserves_best_and_skips_build(monkeypatch, tmp_path):
+    original = "package demo;\npublic class FooAgoneGeneratedTest_x {}\n"
+    rt = runtime(
+        tmp_path,
+        ["package demo;\npublic class FooAgoneGeneratedTest_x {\n    void broken() {\n"],
+    )
+    monkeypatch.setattr(ar, "_verify_candidate", lambda runtime: pytest.fail("build must not run"))
+
+    summary = ar.run_adaptive_repair(
+        rt,
+        initial_verification=vr(FailureState.COMPILE_FAILED, "reached end of file while parsing"),
+    )
+
+    assert rt.context.generated_test_path.read_text(encoding="utf-8") == original
+    assert summary.build_attempts == 0
+    assert summary.prompt_switch_count >= 1
+
+
 def test_target_pass_runs_module_suite(monkeypatch, tmp_path):
     rt = runtime(tmp_path, ["package demo;\npublic class FooAgoneGeneratedTest_x { public void pass(){} }\n"])
     monkeypatch.setattr(ar, "_verify_candidate", lambda runtime: vr(FailureState.TARGET_TEST_PASSED, ""))

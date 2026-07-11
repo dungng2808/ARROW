@@ -4,7 +4,8 @@ from argparse import Namespace
 
 import pytest
 
-from src.run_pipeline import _agents
+from src.models import FailureOrigin, FailureState, VerificationResult
+from src.run_pipeline import _agents, _baseline_blocks_generation
 
 
 CONFIG = {
@@ -51,3 +52,13 @@ def test_agent_api_key_env_overrides_global_value():
 def test_unknown_agent_reports_available_aliases():
     with pytest.raises(ValueError, match="Available agent/model aliases"):
         _agents(CONFIG, Namespace(agent=["missing"]))
+
+
+def test_build_configuration_baseline_failure_blocks_generation_even_when_parser_calls_it_assertion_failed():
+    baseline = VerificationResult(
+        state=FailureState.ASSERTION_FAILED,
+        failure_origin=FailureOrigin.BUILD_CONFIGURATION,
+        raw_output="JaCoCo agent failed and forked VM terminated",
+    )
+
+    assert _baseline_blocks_generation(baseline) is True
