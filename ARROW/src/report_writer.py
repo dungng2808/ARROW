@@ -1019,6 +1019,7 @@ def _rq1_prompt_summary_rows(
         if all(_rq1_initial_target_pass(triplet[strategy]) is not None for strategy in RQ1_PROMPT_STRATEGIES)
     ]
     all_items = [item for triplet in triplets for item in triplet.values()]
+    data_ready = bool(triplets) and len(complete) == len(triplets) and bool(compile_ready and execution_ready)
     common = {
         "scope": scope,
         "agent_name": agent,
@@ -1031,7 +1032,7 @@ def _rq1_prompt_summary_rows(
             "zero-shot-project-aware" in triplet for triplet in triplets
         ),
         "complete_triplets": len(complete),
-        "data_ready": bool(compile_ready and execution_ready),
+        "data_ready": data_ready,
     }
     comparison_specs = (
         ("repo_vs_zero_compile", compile_ready, "zero-shot", _rq1_initial_compile),
@@ -1054,7 +1055,11 @@ def _rq1_prompt_summary_rows(
             comparison["improvement_pp"],
             adjusted_p,
         )
-    conclusion = _rq1_conclusion([comparisons[name]["result"] for name, *_rest in comparison_specs])
+    conclusion = (
+        _rq1_conclusion([comparisons[name]["result"] for name, *_rest in comparison_specs])
+        if data_ready
+        else "INSUFFICIENT_DATA"
+    )
 
     comparison_columns: dict[str, Any] = {}
     for name, comparison in comparisons.items():

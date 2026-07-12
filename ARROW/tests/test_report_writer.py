@@ -150,6 +150,8 @@ def _rq1_row(
     final_state: str = "MODULE_TESTS_PASSED",
     input_id: str = "p1_0",
     build_tool: str = "maven",
+    agent_name: str = "agent",
+    model: str = "model",
 ) -> dict:
     return {
         "run_id": run_id,
@@ -158,8 +160,8 @@ def _rq1_row(
         "input_id": input_id,
         "sample_id": input_id,
         "focal_class": "Example",
-        "agent_name": "agent",
-        "model": "model",
+        "agent_name": agent_name,
+        "model": model,
         "build_tool": build_tool,
         "generation_prompt_strategy": strategy,
         "initial_failure_state": initial_state,
@@ -321,6 +323,25 @@ def test_rq1_summary_directly_answers_when_repository_aware_wins_all_pairs():
     }
     assert all(row["rq1_answer_vi"].startswith("CÓ:") for row in summary)
     assert all(row["rq1_answer_en"].startswith("YES:") for row in summary)
+
+
+def test_rq1_overall_is_not_ready_when_one_model_has_incomplete_triplets():
+    complete_model = [
+        _rq1_row(strategy, agent_name="agent-a", model="model-a")
+        for strategy in ("zero-shot", "few-shot", "zero-shot-project-aware")
+    ]
+    incomplete_model = [
+        _rq1_row("zero-shot", agent_name="agent-b", model="model-b"),
+    ]
+
+    summary = build_rq1_summary_rows([*complete_model, *incomplete_model])
+
+    overall = [row for row in summary if row["scope"] == "overall"]
+    assert len(overall) == 3
+    assert {row["total_samples"] for row in overall} == {2}
+    assert {row["complete_triplets"] for row in overall} == {1}
+    assert {row["data_ready"] for row in overall} == {False}
+    assert {row["rq1_conclusion"] for row in overall} == {"INSUFFICIENT_DATA"}
 
 
 def test_write_rq1_exports_writes_bom_clean_columns_and_metadata(tmp_path):

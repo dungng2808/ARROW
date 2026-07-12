@@ -40,6 +40,15 @@ def test_dashboard_contains_merge_button_and_api_binding():
     assert 'api("/api/reports/merge"' in javascript
 
 
+def test_dashboard_contains_shard05_export_button_and_api_binding():
+    html = (server.STATIC_ROOT / "index.html").read_text(encoding="utf-8")
+    javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
+
+    assert 'id="exportShard05Btn"' in html
+    assert "Xuất shard 05" in html
+    assert 'api("/api/reports/export/shard05"' in javascript
+
+
 def test_dashboard_links_to_rq1_preview_instead_of_direct_csv_buttons():
     html = (server.STATIC_ROOT / "index.html").read_text(encoding="utf-8")
     javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
@@ -127,6 +136,46 @@ def test_rq1_export_endpoint_rejects_unknown_type(monkeypatch):
 
     assert handler.response_status == 404
     assert b"Unknown CSV export type" in handler.wfile.getvalue()
+
+
+def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_path):
+    merged_dir = tmp_path / "runs" / "merged"
+    merged_dir.mkdir(parents=True)
+    merged_jsonl = merged_dir / "experiments_merged.jsonl"
+    merged_jsonl.write_text(
+        "\n".join(
+            [
+                '{"run_id":"r","shard_id":"repo_shard_05","input_id":"i1","agent_name":"a","generation_prompt_strategy":"zero-shot","test_passed":true}',
+                '{"run_id":"r","shard_id":"repo_shard_04","input_id":"i2","agent_name":"a","generation_prompt_strategy":"zero-shot","test_passed":true}',
+            ]
+        )
+        + "\n",
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(server, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(server, "SHARD_EXPORT_ROOT", tmp_path / "export" / "shards")
+    monkeypatch.setattr(
+        server,
+        "_merge_reports_now",
+        lambda: {
+            "output_dir": str(merged_dir),
+            "artifacts": {"merged_jsonl": str(merged_jsonl)},
+        },
+    )
+    handler = _bare_dashboard_handler("/api/reports/export/shard05")
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    saved_path = Path(payload["path"])
+    assert handler.response_status == 201
+    assert payload["rows"] == 1
+    assert payload["relative_path"].startswith("export/shards/repo_shard_05_runs_")
+    assert saved_path.parent == tmp_path / "export" / "shards"
+    exported = saved_path.read_text(encoding="utf-8")
+    assert "repo_shard_05" in exported
+    assert "repo_shard_04" not in exported
 
 
 def test_rq1_preview_endpoint_returns_latest_snapshot(monkeypatch):

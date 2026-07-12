@@ -80,6 +80,7 @@ async function init() {
 function bindEvents() {
   $("#refreshBtn").addEventListener("click", refreshAll);
   $("#mergeReportsBtn").addEventListener("click", mergeReports);
+  $("#exportShard05Btn").addEventListener("click", exportShard05);
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#copyLogsBtn").addEventListener("click", copyRunLogs);
   $("#copyErrorsBtn").addEventListener("click", copyExperimentErrors);
@@ -226,6 +227,24 @@ async function mergeReports() {
   } catch (error) {
     status.className = "error";
     status.textContent = error.message || "Merge failed";
+  } finally {
+    setReportActionsBusy(false);
+  }
+}
+
+async function exportShard05() {
+  const button = $("#exportShard05Btn");
+  const status = $("#mergeStatus");
+  setReportActionsBusy(true, button);
+  status.className = "";
+  status.textContent = "Đang xuất shard 05…";
+  try {
+    const result = await api("/api/reports/export/shard05", { method: "POST", body: "{}" });
+    status.className = "success";
+    status.textContent = `Đã xuất ${formatNumber(result.rows)} dòng · ${result.relative_path || result.path}`;
+  } catch (error) {
+    status.className = "error";
+    status.textContent = error.message || "Xuất shard 05 thất bại";
   } finally {
     setReportActionsBusy(false);
   }

@@ -22,7 +22,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
-from src.report_writer import load_experiment_jsonl, write_rq1_exports
+from src.report_writer import load_experiment_jsonl, write_class_report, write_rq1_exports
 from src.rq1_export import (
     RQ1ExcelLimitError,
     RQ1NoDataError,
@@ -42,6 +42,7 @@ RUNTIME_CONFIG_ROOT = DASHBOARD_ROOT / "runtime_configs"
 RUN_RECORD_ROOT = DASHBOARD_ROOT / "run_records"
 RUNTIME_SHARD_ROOT = DASHBOARD_ROOT / "runtime_shards"
 RQ1_EXPORT_ROOT = PROJECT_ROOT / "export" / "RQ1"
+SHARD_EXPORT_ROOT = PROJECT_ROOT / "export" / "shards"
 DATASET_ROOT = PROJECT_ROOT.parent / "classes2test" / "dataset"
 SHARD_ROOT = PROJECT_ROOT / "shards"
 
@@ -313,6 +314,51 @@ def _save_rq1_export(export_kind: str) -> dict[str, Any]:
         "path": str(destination),
         "relative_path": relative_path,
         "rows": int(metadata.get("rows") or 0),
+    }
+
+
+def _shard_id_matches(row: dict[str, Any], shard_id: str) -> bool:
+    normalized = _safe_name(shard_id)
+    candidates = {
+        normalized,
+        normalized.removesuffix(".txt"),
+        f"{normalized}.txt",
+    }
+    row_shard = _safe_name(str(row.get("shard_id") or ""))
+    return row_shard in candidates
+
+
+def _save_shard_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
+    merged = _merge_reports_now()
+    output_dir = Path(str(merged.get("output_dir") or PROJECT_ROOT / "runs" / "merged"))
+    merged_jsonl = Path(str(merged.get("artifacts", {}).get("merged_jsonl") or output_dir / "experiments_merged.jsonl"))
+    rows = [row for row in load_experiment_jsonl([merged_jsonl]) if _shard_id_matches(row, shard_id)]
+    if not rows:
+        raise ValueError(f"Không có dữ liệu đã chạy cho shard {shard_id}")
+
+    SHARD_EXPORT_ROOT.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    safe_shard = _safe_name(shard_id) or "shard"
+    base_name = f"{safe_shard}_runs_{timestamp}"
+    destination = SHARD_EXPORT_ROOT / f"{base_name}.csv"
+    suffix = 2
+    while destination.exists():
+        destination = SHARD_EXPORT_ROOT / f"{base_name}_{suffix}.csv"
+        suffix += 1
+    temporary = destination.with_suffix(".csv.tmp")
+    write_class_report(temporary, rows)
+    os.replace(temporary, destination)
+    try:
+        relative_path = destination.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        relative_path = str(destination)
+    return {
+        "export_type": "shard_runs",
+        "shard_id": shard_id,
+        "filename": destination.name,
+        "path": str(destination),
+        "relative_path": relative_path,
+        "rows": len(rows),
     }
 
 
@@ -1103,6 +1149,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                     if str(exc) == "Đang có yêu cầu xuất RQ1 khác chạy":
                         return _json_response(self, {"error": str(exc)}, status=409)
                     raise
+            if parsed.path == "/api/reports/export/shard05":
+                try:
+                    return _json_response(self, _save_shard_export("repo_shard_05"), status=201)
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=422)
             if parsed.path.startswith("/api/reports/export/"):
                 export_kind = parsed.path.removeprefix("/api/reports/export/").strip("/")
                 if export_kind not in RQ1_EXPORT_FILENAMES:
