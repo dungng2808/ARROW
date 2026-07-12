@@ -56,6 +56,7 @@ RQ1_EXPORT_FILENAMES = {
     "paired": "rq1_paired.csv",
     "details": "rq1_details.csv",
 }
+SHARD05_PROMPT_STRATEGIES = ("zero-shot", "few-shot", "zero-shot-project-aware")
 ANSI_ESCAPE_RE = re.compile(r"\x1b(?:\[[0-?]*[ -/]*[@-~]|\][^\x07]*(?:\x07|\x1b\\))")
 ERROR_MARKER_RE = re.compile(
     r"(?im)(?:\bERROR\b|BUILD FAILURE|COMPILATION (?:ERROR|FAILURE)|cannot find symbol|"
@@ -340,6 +341,35 @@ def _first_value(row: dict[str, Any], keys: tuple[str, ...]) -> str:
     return ""
 
 
+def _prompt_strategy(row: dict[str, Any]) -> str:
+    return str(row.get("generation_prompt_strategy") or row.get("Prompt_Technique") or "").strip()
+
+
+def _prompt_summary(rows: list[dict[str, Any]], prompt_strategy: str, log: dict[str, Any]) -> dict[str, Any]:
+    prompt_rows = [row for row in rows if _prompt_strategy(row) == prompt_strategy]
+    failed_rows = [row for row in prompt_rows if not _experiment_passed(row)]
+    latest_failed = failed_rows[0] if failed_rows else {}
+    if str(log.get("project_status") or "") == "running" and str(log.get("prompt") or "") == prompt_strategy:
+        status = "RUNNING"
+    elif not prompt_rows:
+        status = "NOT_RUN"
+    elif failed_rows:
+        status = "HAS_FAILURES"
+    else:
+        status = "DONE"
+    return {
+        "prompt_strategy": prompt_strategy,
+        "status": status,
+        "total": len(prompt_rows),
+        "passed": len(prompt_rows) - len(failed_rows),
+        "failed": len(failed_rows),
+        "latest_failed_experiment_id": latest_failed.get("dashboard_id", ""),
+        "latest_failed_sample_id": _first_value(latest_failed, ("sample_id", "input_id")) if latest_failed else "",
+        "latest_failed_agent": latest_failed.get("agent_name", "") if latest_failed else "",
+        "latest_failed_state": latest_failed.get("final_failure_state") or latest_failed.get("initial_failure_state") or "",
+    }
+
+
 def _save_shard_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
     merged = _merge_reports_now()
     output_dir = Path(str(merged.get("output_dir") or PROJECT_ROOT / "runs" / "merged"))
@@ -450,6 +480,10 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         failed = len(failed_rows)
         passed = completed - failed
         latest_failed = failed_rows[0] if failed_rows else {}
+        prompt_statuses = {
+            prompt: _prompt_summary(rows, prompt, log)
+            for prompt in SHARD05_PROMPT_STRATEGIES
+        }
         if str(log.get("project_status") or "") == "running":
             status = "RUNNING"
         elif completed == 0:
@@ -472,6 +506,7 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
                 "last_project_status": log.get("project_status", ""),
                 "last_agent": log.get("agent", ""),
                 "last_prompt": log.get("prompt", ""),
+                "prompt_statuses": prompt_statuses,
                 "latest_failed_experiment_id": latest_failed.get("dashboard_id", ""),
                 "latest_failed_sample_id": _first_value(latest_failed, ("sample_id", "input_id")) if latest_failed else "",
                 "latest_failed_agent": latest_failed.get("agent_name", "") if latest_failed else "",
@@ -522,12 +557,15 @@ def _fallback_error_summary(row: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _shard_project_errors(project_id: str, shard_id: str = "repo_shard_05") -> dict[str, Any]:
+def _shard_project_errors(project_id: str, shard_id: str = "repo_shard_05", prompt_strategy: str = "") -> dict[str, Any]:
     shard_file = _safe_shard_file(f"{_safe_name(shard_id).removesuffix('.txt')}.txt")
     safe_project = _safe_name(project_id)
     if shard_file is None or safe_project not in _shard_project_ids(shard_file):
         raise ValueError(f"Project {project_id} không nằm trong {shard_id}")
     failed_rows = [row for row in _shard_project_rows(safe_project, shard_id) if not _experiment_passed(row)]
+    prompt_strategy = _safe_name(prompt_strategy)
+    if prompt_strategy:
+        failed_rows = [row for row in failed_rows if _prompt_strategy(row) == prompt_strategy]
     experiments = []
     sections = []
     for row in failed_rows:
@@ -555,6 +593,7 @@ def _shard_project_errors(project_id: str, shard_id: str = "repo_shard_05") -> d
         )
     return {
         "project_id": safe_project,
+        "prompt_strategy": prompt_strategy,
         "failed_experiments": len(failed_rows),
         "experiments": experiments,
         "content": "\n\n".join(sections),
@@ -1340,8 +1379,9 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             if path.startswith("/api/shards/shard05/projects/") and path.endswith("/errors"):
                 parts = path.strip("/").split("/")
                 project_id = unquote(parts[4]) if len(parts) >= 6 else ""
+                prompt_strategy = parse_qs(parsed.query).get("prompt", [""])[0]
                 try:
-                    return _json_response(self, _shard_project_errors(project_id, "repo_shard_05"))
+                    return _json_response(self, _shard_project_errors(project_id, "repo_shard_05", prompt_strategy))
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=404)
             if path == "/api/experiments":

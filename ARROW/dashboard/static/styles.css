@@ -1038,7 +1038,7 @@ pre {
 }
 
 .shard05-table {
-  min-width: 1120px;
+  min-width: 1380px;
 }
 
 .shard05-run-page {
@@ -1127,14 +1127,70 @@ pre {
   gap: 10px;
 }
 
+.shard05-export-status {
+  min-height: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.shard05-export-status.success {
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  background: #f0fdf4;
+  color: #166534;
+  padding: 10px 12px;
+}
+
+.shard05-export-status.error {
+  border: 1px solid #fed7aa;
+  border-radius: 12px;
+  background: #fff7ed;
+  color: var(--red);
+  padding: 10px 12px;
+}
+
+.shard05-export-status code {
+  color: inherit;
+  font-weight: 800;
+  word-break: break-all;
+}
+
 .row-actions {
   display: inline-flex;
   align-items: center;
   gap: 8px;
 }
 
+.prompt-cell {
+  display: grid;
+  justify-items: start;
+  gap: 5px;
+  min-width: 142px;
+}
+
+.prompt-cell.selected {
+  border-radius: 10px;
+  background: #eef6ff;
+  padding: 6px;
+}
+
+.prompt-cell small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.prompt-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
 .row-actions .mini-secondary,
-.row-actions .danger-secondary {
+.row-actions .danger-secondary,
+.prompt-actions .mini-secondary,
+.prompt-actions .danger-secondary {
   min-height: 30px;
   padding: 5px 8px;
   font-size: 12px;

@@ -1,4 +1,9 @@
 const RQ1_PROMPTS = ["zero-shot", "few-shot", "zero-shot-project-aware"];
+const RQ1_PROMPT_LABELS = {
+  "zero-shot": "Zero-shot",
+  "few-shot": "Few-shot",
+  "zero-shot-project-aware": "Repository-aware",
+};
 const SHARD05_FILE = "repo_shard_05.txt";
 const SHARD05_ID = "repo_shard_05";
 
@@ -8,6 +13,7 @@ const state = {
   shard05: { summary: {}, projects: [] },
   selectedRunId: null,
   selectedProjectId: null,
+  selectedPrompt: "",
   projectErrorContent: "",
   finishedRunIds: new Set(),
 };
@@ -63,6 +69,7 @@ function bindEvents() {
   $("#shard05RunForm").addEventListener("submit", startShard05Run);
   $("#refreshShard05Btn").addEventListener("click", () => refreshAll(true));
   $("#stopShard05Btn").addEventListener("click", stopSelectedRun);
+  $("#exportShard05MetricsBtn").addEventListener("click", exportShard05Metrics);
   $("#selectRq1PromptsBtn").addEventListener("click", selectRq1Prompts);
   $("#copyProjectErrorsBtn").addEventListener("click", copyProjectErrors);
   $("#clearPromptsBtn").addEventListener("click", () => {
@@ -130,6 +137,34 @@ async function refreshAll(showStatus = false) {
   if (showStatus) setActionStatus("Đã tải lại.", "success");
 }
 
+function setExportStatus(message, kind = "") {
+  const node = $("#exportShard05MetricsStatus");
+  node.className = `shard05-export-status ${kind}`.trim();
+  node.innerHTML = message || "";
+}
+
+async function exportShard05Metrics() {
+  const button = $("#exportShard05MetricsBtn");
+  button.disabled = true;
+  setExportStatus("Đang export chỉ số shard 05...", "");
+  try {
+    const result = await api("/api/reports/export/shard05", { method: "POST", body: "{}" });
+    setExportStatus(
+      `
+        <div><strong>Đã export ${formatNumber(result.rows)} dòng chi tiết.</strong></div>
+        <div>Raw chi tiết: <code>${escapeHtml(result.relative_path || result.path)}</code></div>
+        <div>Mean trung bình: <code>${escapeHtml(result.mean_relative_path || result.mean_path || "N/A")}</code></div>
+        <small>Raw có chỉ số riêng từng run; Mean có compilation/pass rate, JaCoCo, PIT và tsDetect trung bình theo model + prompt + build tool.</small>
+      `,
+      "success",
+    );
+  } catch (error) {
+    setExportStatus(escapeHtml(error.message || "Export shard 05 thất bại."), "error");
+  } finally {
+    button.disabled = false;
+  }
+}
+
 async function loadShard05Status() {
   try {
     const payload = await api("/api/shards/shard05/status");
@@ -153,6 +188,32 @@ function shard05Label(status) {
   if (status === "HAS_FAILURES") return "Có lỗi";
   if (status === "NOT_RUN") return "Chưa chạy";
   return status || "N/A";
+}
+
+function promptCell(project, promptStrategy) {
+  const prompt = project.prompt_statuses?.[promptStrategy] || {
+    status: "NOT_RUN",
+    total: 0,
+    passed: 0,
+    failed: 0,
+  };
+  const selected = state.selectedProjectId === project.project_id && state.selectedPrompt === promptStrategy ? " selected" : "";
+  const counts = `${formatNumber(prompt.passed || 0)}/${formatNumber(prompt.total || 0)}`;
+  const failedText = Number(prompt.failed || 0) ? ` · lỗi ${formatNumber(prompt.failed)}` : "";
+  const actions =
+    prompt.status === "HAS_FAILURES"
+      ? `<div class="prompt-actions">
+          <button class="mini-secondary view-project-errors" type="button" data-project="${escapeHtml(project.project_id)}" data-prompt="${escapeHtml(promptStrategy)}">Xem lỗi</button>
+          <button class="danger-secondary rerun-project" type="button" data-project="${escapeHtml(project.project_id)}" data-prompt="${escapeHtml(promptStrategy)}">Chạy lại</button>
+        </div>`
+      : "";
+  return `
+    <div class="prompt-cell${selected}">
+      ${badge(shard05Label(prompt.status), shard05Kind(prompt.status))}
+      <small>${escapeHtml(counts + failedText)}</small>
+      ${actions}
+    </div>
+  `;
 }
 
 function renderShard05() {
@@ -202,6 +263,12 @@ function renderShard05() {
       project.status,
       project.last_agent,
       project.last_prompt,
+      ...Object.values(project.prompt_statuses || {}).flatMap((prompt) => [
+        prompt.prompt_strategy,
+        prompt.status,
+        prompt.latest_failed_agent,
+        prompt.latest_failed_state,
+      ]),
     ]
       .join(" ")
       .toLowerCase();
@@ -219,14 +286,14 @@ function renderShard05() {
               <td>${badge(shard05Label(project.status), shard05Kind(project.status))}</td>
               <td>${formatNumber(project.experiments_completed || 0)}</td>
               <td>${formatNumber(project.failed_experiments || 0)}</td>
-              <td>${escapeHtml(project.last_agent || "")}</td>
-              <td>${escapeHtml(project.last_prompt || "")}</td>
+              <td>${promptCell(project, "zero-shot")}</td>
+              <td>${promptCell(project, "few-shot")}</td>
+              <td>${promptCell(project, "zero-shot-project-aware")}</td>
               <td>
                 ${
                   project.status === "HAS_FAILURES"
                     ? `<div class="row-actions">
-                        <button class="mini-secondary view-project-errors" type="button" data-project="${escapeHtml(project.project_id)}">Xem lỗi</button>
-                        <button class="danger-secondary rerun-project" type="button" data-project="${escapeHtml(project.project_id)}">Chạy lại</button>
+                        <button class="mini-secondary view-project-errors" type="button" data-project="${escapeHtml(project.project_id)}" data-prompt="">Xem tất cả lỗi</button>
                       </div>`
                     : `<span class="muted-text">—</span>`
                 }
@@ -245,13 +312,13 @@ function renderShard05() {
   document.querySelectorAll(".view-project-errors").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
-      loadProjectErrors(button.dataset.project);
+      loadProjectErrors(button.dataset.project, button.dataset.prompt || "");
     });
   });
   document.querySelectorAll(".rerun-project").forEach((button) => {
     button.addEventListener("click", (event) => {
       event.stopPropagation();
-      rerunProject(button.dataset.project);
+      rerunProject(button.dataset.project, button.dataset.prompt || "");
     });
   });
 }
@@ -375,17 +442,20 @@ function validateModelAndPrompt(options) {
   return true;
 }
 
-async function loadProjectErrors(projectId) {
+async function loadProjectErrors(projectId, promptStrategy = "") {
   if (!projectId) return;
   state.selectedProjectId = projectId;
+  state.selectedPrompt = promptStrategy || "";
   state.projectErrorContent = "";
-  $("#projectErrorTitle").textContent = `Error của project ${projectId}`;
+  const promptLabel = promptStrategy ? ` · ${RQ1_PROMPT_LABELS[promptStrategy] || promptStrategy}` : " · tất cả prompt";
+  $("#projectErrorTitle").textContent = `Error của project ${projectId}${promptLabel}`;
   $("#projectErrorMeta").textContent = "Đang tải error artifact...";
   $("#projectErrorContent").textContent = "Đang tải...";
   $("#copyProjectErrorsBtn").disabled = true;
   renderShard05();
   try {
-    const payload = await api(`/api/shards/shard05/projects/${encodeURIComponent(projectId)}/errors`);
+    const query = promptStrategy ? `?prompt=${encodeURIComponent(promptStrategy)}` : "";
+    const payload = await api(`/api/shards/shard05/projects/${encodeURIComponent(projectId)}/errors${query}`);
     state.projectErrorContent = payload.content || "";
     $("#projectErrorMeta").textContent = `${formatNumber(payload.failed_experiments || 0)} experiment lỗi · ${
       payload.experiments?.length || 0
@@ -398,18 +468,22 @@ async function loadProjectErrors(projectId) {
   }
 }
 
-async function rerunProject(projectId) {
+async function rerunProject(projectId, promptStrategy = "") {
   if (!projectId) return;
   const options = currentRunOptions();
+  if (promptStrategy) {
+    options.generation_prompts = [promptStrategy];
+  }
   if (!validateModelAndPrompt(options)) return;
-  setActionStatus(`Đang chạy lại riêng project ${projectId}...`, "");
+  const promptLabel = promptStrategy ? ` (${RQ1_PROMPT_LABELS[promptStrategy] || promptStrategy})` : "";
+  setActionStatus(`Đang chạy lại riêng project ${projectId}${promptLabel}...`, "");
   try {
     const run = await api(`/api/shards/shard05/projects/${encodeURIComponent(projectId)}/rerun`, {
       method: "POST",
       body: JSON.stringify(options),
     });
     state.selectedRunId = run.id;
-    setActionStatus(`Đã bắt đầu chạy lại project ${projectId}: ${run.id}.`, "success");
+    setActionStatus(`Đã bắt đầu chạy lại project ${projectId}${promptLabel}: ${run.id}.`, "success");
     await refreshAll(false);
   } catch (error) {
     setActionStatus(error.message || `Không chạy lại được project ${projectId}.`, "error");

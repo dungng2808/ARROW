@@ -64,6 +64,11 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert 'id="startShard05Btn"' in html
     assert 'id="projectErrorContent"' in html
     assert 'id="copyProjectErrorsBtn"' in html
+    assert 'id="exportShard05MetricsBtn"' in html
+    assert 'id="exportShard05MetricsStatus"' in html
+    assert "Zero-shot" in html
+    assert "Few-shot" in html
+    assert "Repository-aware" in html
     assert 'const SHARD05_FILE = "repo_shard_05.txt"' in javascript
     assert 'const SHARD05_ID = "repo_shard_05"' in javascript
     assert 'run_scope: "shard"' in javascript
@@ -71,6 +76,10 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert "shard_id: SHARD05_ID" in javascript
     assert "rerunProject" in javascript
     assert "loadProjectErrors" in javascript
+    assert "promptCell" in javascript
+    assert "RQ1_PROMPT_LABELS" in javascript
+    assert "exportShard05Metrics" in javascript
+    assert "/api/reports/export/shard05" in javascript
     assert "/api/shards/shard05/projects/" in javascript
     assert 'api("/api/runs"' in javascript
     assert 'api("/api/shards/shard05/status"' in javascript
@@ -183,7 +192,11 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
     merged_jsonl.write_text(
         "\n".join(
             [
-                '{"run_id":"r","shard_id":"repo_shard_05","input_id":"i1","agent_name":"a","generation_prompt_strategy":"zero-shot","test_passed":true}',
+                '{"run_id":"r","shard_id":"repo_shard_05","input_id":"i1","agent_name":"a",'
+                '"model":"m","generation_prompt_strategy":"zero-shot","build_tool":"maven",'
+                '"compilation":true,"test_passed":true,"target_test_passed":true,"module_tests_passed":true,'
+                '"coverage_line":80,"coverage_branch":70,"coverage_method":90,"mutation_score":60,'
+                '"mutations_total":10,"mutations_killed":6,"test_smell_total":0}',
                 '{"run_id":"r","shard_id":"repo_shard_04","input_id":"i2","agent_name":"a","generation_prompt_strategy":"zero-shot","test_passed":true}',
             ]
         )
@@ -221,6 +234,16 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
     assert "total_inputs" in mean_exported
     assert "zero-shot" in mean_exported
     assert ",1," in mean_exported
+    assert "avg_line_coverage" in mean_exported
+    assert "avg_branch_coverage" in mean_exported
+    assert "avg_method_coverage" in mean_exported
+    assert "avg_mutation_score" in mean_exported
+    assert "avg_test_smell_total" in mean_exported
+    assert "smell_free_rate" in mean_exported
+    assert "80" in mean_exported
+    assert "70" in mean_exported
+    assert "90" in mean_exported
+    assert "60" in mean_exported
 
 
 def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
@@ -265,7 +288,49 @@ def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
     by_project = {item["project_id"]: item for item in payload["projects"]}
     assert by_project["100"]["status"] == "DONE"
     assert by_project["100"]["experiments_completed"] == 1
+    assert by_project["100"]["prompt_statuses"]["zero-shot"]["status"] == "DONE"
+    assert by_project["100"]["prompt_statuses"]["zero-shot"]["total"] == 1
+    assert by_project["100"]["prompt_statuses"]["few-shot"]["status"] == "NOT_RUN"
     assert by_project["200"]["status"] == "NOT_RUN"
+
+
+def test_shard05_status_reports_each_prompt_separately(monkeypatch, tmp_path):
+    shard_root = tmp_path / "shards"
+    shard_root.mkdir()
+    (shard_root / "repo_shard_05.txt").write_text("100\n", encoding="utf-8")
+    for prompt, passed in [("zero-shot", False), ("few-shot", True)]:
+        result = tmp_path / "runs" / "100" / "100_0" / "reports" / "records" / "100_0" / "a" / prompt
+        result.mkdir(parents=True)
+        (result / "result.json").write_text(
+            json.dumps(
+                {
+                    "run_id": f"r-{prompt}",
+                    "shard_id": "repo_shard_05",
+                    "project_id": "100",
+                    "input_id": "100_0",
+                    "agent_name": "a",
+                    "generation_prompt_strategy": prompt,
+                    "test_passed": passed,
+                    "module_tests_passed": passed,
+                    "final_failure_state": "MODULE_TESTS_PASSED" if passed else "COMPILE_FAILED",
+                }
+            ),
+            encoding="utf-8",
+        )
+
+    monkeypatch.setattr(server, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(server, "SHARD_ROOT", shard_root)
+    monkeypatch.setattr(server, "DATASET_ROOT", tmp_path / "dataset")
+    monkeypatch.setattr(server, "RUNS", {})
+
+    project = server._shard_status("repo_shard_05")["projects"][0]
+
+    assert project["status"] == "HAS_FAILURES"
+    assert project["prompt_statuses"]["zero-shot"]["status"] == "HAS_FAILURES"
+    assert project["prompt_statuses"]["zero-shot"]["failed"] == 1
+    assert project["prompt_statuses"]["few-shot"]["status"] == "DONE"
+    assert project["prompt_statuses"]["few-shot"]["passed"] == 1
+    assert project["prompt_statuses"]["zero-shot-project-aware"]["status"] == "NOT_RUN"
 
 
 def test_shard05_project_errors_return_copyable_artifacts(monkeypatch, tmp_path):
@@ -304,20 +369,30 @@ def test_shard05_project_errors_return_copyable_artifacts(monkeypatch, tmp_path)
     assert "cannot find symbol" in payload["content"]
     assert payload["experiments"][0]["error_files"][0]["relative_path"] == "baseline_build_output.txt"
 
+    filtered = server._shard_project_errors("100", prompt_strategy="few-shot")
+    assert filtered["prompt_strategy"] == "few-shot"
+    assert filtered["failed_experiments"] == 0
+    assert filtered["content"] == ""
+
 
 def test_shard05_project_error_endpoint(monkeypatch, tmp_path):
     monkeypatch.setattr(
         server,
         "_shard_project_errors",
-        lambda project_id, shard_id="repo_shard_05": {"project_id": project_id, "content": "copy me"},
+        lambda project_id, shard_id="repo_shard_05", prompt_strategy="": {
+            "project_id": project_id,
+            "prompt_strategy": prompt_strategy,
+            "content": "copy me",
+        },
     )
-    handler = _bare_dashboard_handler("/api/shards/shard05/projects/100/errors")
+    handler = _bare_dashboard_handler("/api/shards/shard05/projects/100/errors?prompt=zero-shot")
 
     handler.do_GET()
 
     payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
     assert handler.response_status == 200
     assert payload["project_id"] == "100"
+    assert payload["prompt_strategy"] == "zero-shot"
     assert payload["content"] == "copy me"
 
 

@@ -533,8 +533,9 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
     output_rows = []
     for (agent, model, prompt, build_tool), items in groups.items():
         total = len(items)
-        compiled = sum(1 for item in items if str(item.get("compilation")).lower() in {"true", "1"})
-        passed = sum(1 for item in items if str(item.get("test_passed")).lower() in {"true", "1"})
+        stats = _statistics_for_rows(items)
+        compiled = int(stats["compilation_success_count"])
+        passed = sum(1 for item in items if _truthy(item.get("test_passed")) or _truthy(item.get("module_tests_passed")))
         avg_elapsed = _average(items, "elapsed_seconds")
         avg_target_pass = _average(items, "target_pass_elapsed_seconds")
         avg_module_pass = _average(items, "module_pass_elapsed_seconds")
@@ -542,6 +543,8 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
         avg_llm_input_tokens = _average(items, "llm_input_tokens")
         avg_llm_output_tokens = _average(items, "llm_output_tokens")
         avg_llm_total_tokens = _average(items, "llm_total_tokens")
+        smell_free_count = _zero_numeric_count(items, ("test_smell_total",))
+        smell_count = int(stats["test_smell_count"])
         output_rows.append(
             {
                 "agent_name": agent,
@@ -551,8 +554,12 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
                 "total_inputs": total,
                 "compiled_count": compiled,
                 "test_passed_count": passed,
-                "compilation_rate": compiled / total if total else 0,
+                "target_passed_count": stats["target_pass_count"],
+                "module_passed_count": stats["module_pass_count"],
+                "compilation_rate": stats["compilation_success_rate"],
                 "test_pass_rate": passed / total if total else 0,
+                "target_pass_rate": stats["target_pass_rate"],
+                "module_pass_rate": stats["module_pass_rate"],
                 "avg_elapsed_seconds": avg_elapsed,
                 "avg_target_pass_elapsed_seconds": avg_target_pass,
                 "avg_module_pass_elapsed_seconds": avg_module_pass,
@@ -560,6 +567,20 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
                 "avg_llm_input_tokens": avg_llm_input_tokens,
                 "avg_llm_output_tokens": avg_llm_output_tokens,
                 "avg_llm_total_tokens": avg_llm_total_tokens,
+                "avg_line_coverage": stats["avg_line_coverage"],
+                "line_coverage_count": stats["line_coverage_count"],
+                "avg_branch_coverage": stats["avg_branch_coverage"],
+                "branch_coverage_count": stats["branch_coverage_count"],
+                "avg_method_coverage": stats["avg_method_coverage"],
+                "method_coverage_count": stats["method_coverage_count"],
+                "avg_mutation_score": stats["avg_mutation_score"],
+                "mutation_score_count": stats["mutation_score_count"],
+                "avg_mutations_total": stats["avg_mutations_total"],
+                "avg_mutations_killed": stats["avg_mutations_killed"],
+                "avg_test_smell_total": stats["avg_test_smell_total"],
+                "test_smell_count": smell_count,
+                "smell_free_count": smell_free_count,
+                "smell_free_rate": smell_free_count / smell_count if smell_count else "",
             }
         )
     ensure_dir(path.parent)
@@ -571,8 +592,12 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
         "total_inputs",
         "compiled_count",
         "test_passed_count",
+        "target_passed_count",
+        "module_passed_count",
         "compilation_rate",
         "test_pass_rate",
+        "target_pass_rate",
+        "module_pass_rate",
         "avg_elapsed_seconds",
         "avg_target_pass_elapsed_seconds",
         "avg_module_pass_elapsed_seconds",
@@ -580,6 +605,20 @@ def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
         "avg_llm_input_tokens",
         "avg_llm_output_tokens",
         "avg_llm_total_tokens",
+        "avg_line_coverage",
+        "line_coverage_count",
+        "avg_branch_coverage",
+        "branch_coverage_count",
+        "avg_method_coverage",
+        "method_coverage_count",
+        "avg_mutation_score",
+        "mutation_score_count",
+        "avg_mutations_total",
+        "avg_mutations_killed",
+        "avg_test_smell_total",
+        "test_smell_count",
+        "smell_free_count",
+        "smell_free_rate",
     ]
     with path.open("w", newline="", encoding="utf-8") as output_file:
         writer = csv.DictWriter(output_file, fieldnames=fieldnames)
@@ -783,6 +822,10 @@ def _average_multi(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> float |
 
 def _numeric_count(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> int:
     return sum(1 for row in rows if _float_value(row, keys) is not None)
+
+
+def _zero_numeric_count(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> int:
+    return sum(1 for row in rows if _float_value(row, keys) == 0)
 
 
 def _unique_count(rows: list[dict[str, Any]], keys: tuple[str, ...]) -> int:
