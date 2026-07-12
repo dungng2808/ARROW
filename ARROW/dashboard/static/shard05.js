@@ -154,7 +154,7 @@ async function exportShard05Metrics() {
         <div><strong>Đã export ${formatNumber(result.rows)} dòng chi tiết.</strong></div>
         <div>Raw chi tiết: <code>${escapeHtml(result.relative_path || result.path)}</code></div>
         <div>Mean trung bình: <code>${escapeHtml(result.mean_relative_path || result.mean_path || "N/A")}</code></div>
-        <small>Raw có chỉ số riêng từng run; Mean có compilation/pass rate, JaCoCo, PIT và tsDetect trung bình theo model + prompt + build tool.</small>
+        <small>Raw có chỉ số riêng từng run; Mean chỉ gồm Generator(LLM), Prompt_Technique, compilation count/rate, JaCoCo, PIT và tsDetect mean.</small>
       `,
       "success",
     );

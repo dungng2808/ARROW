@@ -32,12 +32,19 @@ def test_write_mean_report_groups_rows(tmp_path):
         path,
         [
             {"agent_name": "a", "model": "m", "generation_prompt_strategy": "zero", "build_tool": "maven", "compilation": True, "test_passed": True},
-            {"agent_name": "a", "model": "m", "generation_prompt_strategy": "zero", "build_tool": "maven", "compilation": True, "test_passed": False},
+            {"agent_name": "a", "model": "m", "generation_prompt_strategy": "zero", "build_tool": "gradle", "compilation": False, "test_passed": False},
         ],
     )
-    text = path.read_text(encoding="utf-8")
-    assert "compilation_rate" in text
-    assert "1.0" in text
+    with path.open("r", newline="", encoding="utf-8") as input_file:
+        rows = list(csv.DictReader(input_file))
+    assert len(rows) == 1
+    assert "build_tool" not in rows[0]
+    assert rows[0]["Generator(LLM)"] == "a"
+    assert rows[0]["Prompt_Technique"] == "zero"
+    assert rows[0]["Total_Samples"] == "2"
+    assert rows[0]["Compilation_0_Count"] == "1"
+    assert rows[0]["Compilation_1_Count"] == "1"
+    assert rows[0]["Compilation_Success_Rate"] == "0.5"
 
 
 def test_write_and_load_experiment_json_records(tmp_path):
@@ -67,19 +74,43 @@ def test_experiment_json_contains_all_paper_columns(tmp_path):
         assert f'"{column}"' in text
 
 
-def test_write_mean_report_includes_pass_time_averages(tmp_path):
+def test_write_mean_report_uses_paper_style_metric_means_only(tmp_path):
     path = tmp_path / "mean.csv"
     write_mean_report(
         path,
         [
-            {"agent_name": "a", "model": "m", "generation_prompt_strategy": "zero", "build_tool": "maven", "compilation": True, "test_passed": True, "target_pass_elapsed_seconds": 2},
-            {"agent_name": "a", "model": "m", "generation_prompt_strategy": "zero", "build_tool": "maven", "compilation": True, "test_passed": False, "target_pass_elapsed_seconds": ""},
-            {"agent_name": "a", "model": "m", "generation_prompt_strategy": "zero", "build_tool": "maven", "compilation": True, "test_passed": True, "target_pass_elapsed_seconds": 4},
+            {
+                "agent_name": "a",
+                "model": "m",
+                "generation_prompt_strategy": "zero",
+                "compilation": True,
+                "coverage_branch": 40,
+                "coverage_line": 60,
+                "coverage_method": 80,
+                "mutation_score": 20,
+                "Assertion Roulette": 2,
+            },
+            {
+                "agent_name": "a",
+                "model": "m",
+                "generation_prompt_strategy": "zero",
+                "compilation": True,
+                "coverage_branch": 60,
+                "coverage_line": 80,
+                "coverage_method": 100,
+                "mutation_score": 40,
+                "Assertion Roulette": 0,
+            },
         ],
     )
-    text = path.read_text(encoding="utf-8")
-    assert "avg_target_pass_elapsed_seconds" in text
-    assert "3.0" in text
+    with path.open("r", newline="", encoding="utf-8") as input_file:
+        rows = list(csv.DictReader(input_file))
+    assert "avg_target_pass_elapsed_seconds" not in rows[0]
+    assert rows[0]["Branch_Coverage%_Mean"] == "50.0"
+    assert rows[0]["Line_Coverage%_Mean"] == "70.0"
+    assert rows[0]["Method_Coverage%_Mean"] == "90.0"
+    assert rows[0]["Mutation_Score%_Mean"] == "30.0"
+    assert rows[0]["Assertion Roulette_Mean"] == "1.0"
 
 
 def test_experiment_statistics_include_repair_and_metric_rates(tmp_path):

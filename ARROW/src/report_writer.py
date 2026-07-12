@@ -521,104 +521,46 @@ def write_rq1_exports(output_dir: Path, rows: list[dict[str, Any]]) -> dict[str,
 
 
 def write_mean_report(path: Path, rows: list[dict[str, Any]]) -> None:
-    groups: dict[tuple[str, str, str, str], list[dict[str, Any]]] = {}
+    rows = [ensure_paper_report_fields(row) for row in rows]
+    groups: dict[tuple[str, str], list[dict[str, Any]]] = {}
     for row in rows:
         key = (
-            str(row.get("agent_name", "")),
-            str(row.get("model", "")),
-            str(row.get("generation_prompt_strategy", "")),
-            str(row.get("build_tool", "")),
+            str(row.get("Generator(LLM)", "")),
+            str(row.get("Prompt_Technique", "")),
         )
         groups.setdefault(key, []).append(row)
     output_rows = []
-    for (agent, model, prompt, build_tool), items in groups.items():
+    for (generator, prompt), items in groups.items():
         total = len(items)
-        stats = _statistics_for_rows(items)
-        compiled = int(stats["compilation_success_count"])
-        passed = sum(1 for item in items if _truthy(item.get("test_passed")) or _truthy(item.get("module_tests_passed")))
-        avg_elapsed = _average(items, "elapsed_seconds")
-        avg_target_pass = _average(items, "target_pass_elapsed_seconds")
-        avg_module_pass = _average(items, "module_pass_elapsed_seconds")
-        avg_first_pass = _average(items, "first_pass_elapsed_seconds")
-        avg_llm_input_tokens = _average(items, "llm_input_tokens")
-        avg_llm_output_tokens = _average(items, "llm_output_tokens")
-        avg_llm_total_tokens = _average(items, "llm_total_tokens")
-        smell_free_count = _zero_numeric_count(items, ("test_smell_total",))
-        smell_count = int(stats["test_smell_count"])
-        output_rows.append(
-            {
-                "agent_name": agent,
-                "model": model,
-                "generation_prompt_strategy": prompt,
-                "build_tool": build_tool,
-                "total_inputs": total,
-                "compiled_count": compiled,
-                "test_passed_count": passed,
-                "target_passed_count": stats["target_pass_count"],
-                "module_passed_count": stats["module_pass_count"],
-                "compilation_rate": stats["compilation_success_rate"],
-                "test_pass_rate": passed / total if total else 0,
-                "target_pass_rate": stats["target_pass_rate"],
-                "module_pass_rate": stats["module_pass_rate"],
-                "avg_elapsed_seconds": avg_elapsed,
-                "avg_target_pass_elapsed_seconds": avg_target_pass,
-                "avg_module_pass_elapsed_seconds": avg_module_pass,
-                "avg_first_pass_elapsed_seconds": avg_first_pass,
-                "avg_llm_input_tokens": avg_llm_input_tokens,
-                "avg_llm_output_tokens": avg_llm_output_tokens,
-                "avg_llm_total_tokens": avg_llm_total_tokens,
-                "avg_line_coverage": stats["avg_line_coverage"],
-                "line_coverage_count": stats["line_coverage_count"],
-                "avg_branch_coverage": stats["avg_branch_coverage"],
-                "branch_coverage_count": stats["branch_coverage_count"],
-                "avg_method_coverage": stats["avg_method_coverage"],
-                "method_coverage_count": stats["method_coverage_count"],
-                "avg_mutation_score": stats["avg_mutation_score"],
-                "mutation_score_count": stats["mutation_score_count"],
-                "avg_mutations_total": stats["avg_mutations_total"],
-                "avg_mutations_killed": stats["avg_mutations_killed"],
-                "avg_test_smell_total": stats["avg_test_smell_total"],
-                "test_smell_count": smell_count,
-                "smell_free_count": smell_free_count,
-                "smell_free_rate": smell_free_count / smell_count if smell_count else "",
-            }
-        )
+        compiled = sum(1 for item in items if _truthy(item.get("Compilation")))
+        output = {
+            "Generator(LLM)": generator,
+            "Prompt_Technique": prompt,
+            "Total_Samples": total,
+            "Compilation_0_Count": total - compiled,
+            "Compilation_1_Count": compiled,
+            "Compilation_Success_Rate": compiled / total if total else 0,
+            "Branch_Coverage%_Mean": _average_multi(items, ("Branch_Coverage%",)),
+            "Line_Coverage%_Mean": _average_multi(items, ("Line_Coverage%",)),
+            "Method_Coverage%_Mean": _average_multi(items, ("Method_Coverage%",)),
+            "Mutation_Score%_Mean": _average_multi(items, ("Mutation_Score%",)),
+        }
+        for smell in SMELL_COLUMNS:
+            output[f"{smell}_Mean"] = _average_multi(items, (smell,))
+        output_rows.append(output)
     ensure_dir(path.parent)
     fieldnames = [
-        "agent_name",
-        "model",
-        "generation_prompt_strategy",
-        "build_tool",
-        "total_inputs",
-        "compiled_count",
-        "test_passed_count",
-        "target_passed_count",
-        "module_passed_count",
-        "compilation_rate",
-        "test_pass_rate",
-        "target_pass_rate",
-        "module_pass_rate",
-        "avg_elapsed_seconds",
-        "avg_target_pass_elapsed_seconds",
-        "avg_module_pass_elapsed_seconds",
-        "avg_first_pass_elapsed_seconds",
-        "avg_llm_input_tokens",
-        "avg_llm_output_tokens",
-        "avg_llm_total_tokens",
-        "avg_line_coverage",
-        "line_coverage_count",
-        "avg_branch_coverage",
-        "branch_coverage_count",
-        "avg_method_coverage",
-        "method_coverage_count",
-        "avg_mutation_score",
-        "mutation_score_count",
-        "avg_mutations_total",
-        "avg_mutations_killed",
-        "avg_test_smell_total",
-        "test_smell_count",
-        "smell_free_count",
-        "smell_free_rate",
+        "Generator(LLM)",
+        "Prompt_Technique",
+        "Total_Samples",
+        "Compilation_0_Count",
+        "Compilation_1_Count",
+        "Compilation_Success_Rate",
+        "Branch_Coverage%_Mean",
+        "Line_Coverage%_Mean",
+        "Method_Coverage%_Mean",
+        "Mutation_Score%_Mean",
+        *[f"{smell}_Mean" for smell in SMELL_COLUMNS],
     ]
     with path.open("w", newline="", encoding="utf-8") as output_file:
         writer = csv.DictWriter(output_file, fieldnames=fieldnames)

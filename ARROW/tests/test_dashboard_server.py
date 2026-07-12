@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+import csv
 import io
 import json
 from pathlib import Path
@@ -196,7 +197,14 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
                 '"model":"m","generation_prompt_strategy":"zero-shot","build_tool":"maven",'
                 '"compilation":true,"test_passed":true,"target_test_passed":true,"module_tests_passed":true,'
                 '"coverage_line":80,"coverage_branch":70,"coverage_method":90,"mutation_score":60,'
-                '"mutations_total":10,"mutations_killed":6,"test_smell_total":0}',
+                '"mutations_total":10,"mutations_killed":6,"test_smell_total":0,'
+                '"Assertion Roulette":2,"Conditional Test Logic":4}',
+                '{"run_id":"r2","shard_id":"repo_shard_05","input_id":"i2","agent_name":"a",'
+                '"model":"m","generation_prompt_strategy":"zero-shot","build_tool":"gradle",'
+                '"compilation":false,"test_passed":false,"target_test_passed":false,"module_tests_passed":false,'
+                '"coverage_line":40,"coverage_branch":30,"coverage_method":50,"mutation_score":20,'
+                '"mutations_total":20,"mutations_killed":4,"test_smell_total":2,'
+                '"Assertion Roulette":0,"Conditional Test Logic":2}',
                 '{"run_id":"r","shard_id":"repo_shard_04","input_id":"i2","agent_name":"a","generation_prompt_strategy":"zero-shot","test_passed":true}',
             ]
         )
@@ -222,7 +230,7 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
     saved_path = Path(payload["path"])
     mean_path = Path(payload["mean_path"])
     assert handler.response_status == 201
-    assert payload["rows"] == 1
+    assert payload["rows"] == 2
     assert payload["relative_path"].startswith("export/shards/repo_shard_05_runs_")
     assert payload["mean_relative_path"].startswith("export/shards/repo_shard_05_mean_")
     assert saved_path.parent == tmp_path / "export" / "shards"
@@ -231,19 +239,54 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
     assert "repo_shard_04" not in exported
     assert mean_path.is_file()
     mean_exported = mean_path.read_text(encoding="utf-8")
-    assert "total_inputs" in mean_exported
-    assert "zero-shot" in mean_exported
-    assert ",1," in mean_exported
-    assert "avg_line_coverage" in mean_exported
-    assert "avg_branch_coverage" in mean_exported
-    assert "avg_method_coverage" in mean_exported
-    assert "avg_mutation_score" in mean_exported
-    assert "avg_test_smell_total" in mean_exported
-    assert "smell_free_rate" in mean_exported
-    assert "80" in mean_exported
-    assert "70" in mean_exported
-    assert "90" in mean_exported
-    assert "60" in mean_exported
+    mean_rows = list(csv.DictReader(io.StringIO(mean_exported)))
+    expected_mean_columns = [
+        "Generator(LLM)",
+        "Prompt_Technique",
+        "Total_Samples",
+        "Compilation_0_Count",
+        "Compilation_1_Count",
+        "Compilation_Success_Rate",
+        "Branch_Coverage%_Mean",
+        "Line_Coverage%_Mean",
+        "Method_Coverage%_Mean",
+        "Mutation_Score%_Mean",
+        "Assertion Roulette_Mean",
+        "Conditional Test Logic_Mean",
+        "Constructor Initialization_Mean",
+        "Default Test_Mean",
+        "EmptyTest_Mean",
+        "Exception Handling_Mean",
+        "General Fixture_Mean",
+        "Mystery Guest_Mean",
+        "Print Statement_Mean",
+        "Redundant Assertion_Mean",
+        "Sensitive Equality_Mean",
+        "Verbose Test_Mean",
+        "Sleepy Test_Mean",
+        "Eager Test_Mean",
+        "Lazy Test_Mean",
+        "Duplicate Assert_Mean",
+        "Unknown Test_Mean",
+        "IgnoredTest_Mean",
+        "Resource Optimism_Mean",
+        "Magic Number Test_Mean",
+        "Dependent Test_Mean",
+    ]
+    assert list(mean_rows[0].keys()) == expected_mean_columns
+    assert len(mean_rows) == 1
+    assert mean_rows[0]["Generator(LLM)"] == "a"
+    assert mean_rows[0]["Prompt_Technique"] == "zero-shot"
+    assert mean_rows[0]["Total_Samples"] == "2"
+    assert mean_rows[0]["Compilation_0_Count"] == "1"
+    assert mean_rows[0]["Compilation_1_Count"] == "1"
+    assert mean_rows[0]["Compilation_Success_Rate"] == "0.5"
+    assert mean_rows[0]["Line_Coverage%_Mean"] == "60.0"
+    assert mean_rows[0]["Branch_Coverage%_Mean"] == "50.0"
+    assert mean_rows[0]["Method_Coverage%_Mean"] == "70.0"
+    assert mean_rows[0]["Mutation_Score%_Mean"] == "40.0"
+    assert mean_rows[0]["Assertion Roulette_Mean"] == "1.0"
+    assert mean_rows[0]["Conditional Test Logic_Mean"] == "3.0"
 
 
 def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
