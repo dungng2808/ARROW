@@ -49,12 +49,12 @@ def run_maven_metrics(
     coverage = _run_jacoco(ctx)
     verifications["coverage"] = coverage
     if coverage.exit_code == 0:
-        coverage_csv = _find_first(
-            [
-                ctx.module_root / "target" / "site" / "jacoco" / "jacoco.csv",
-                ctx.module_root / "target" / "site" / "jacoco-ut" / "jacoco.csv",
-            ]
-        )
+        coverage_csv = _find_coverage_csv(ctx)
+        if coverage_csv is None and _pom_declares_jacoco(ctx):
+            coverage = _run_jacoco(ctx, force_prepare_agent=True)
+            verifications["coverage_retry_prepare_agent"] = coverage
+            if coverage.exit_code == 0:
+                coverage_csv = _find_coverage_csv(ctx)
         if coverage_csv:
             result.artifacts["coverage_csv"] = str(coverage_csv)
             _read_jacoco_csv(coverage_csv, focal_class_name, result)
@@ -120,10 +120,21 @@ def run_maven_metrics(
     return result, verifications
 
 
-def _run_jacoco(ctx: BuildContext) -> VerificationResult:
+def _coverage_csv_candidates(ctx: BuildContext) -> list[Path]:
+    return [
+        ctx.module_root / "target" / "site" / "jacoco" / "jacoco.csv",
+        ctx.module_root / "target" / "site" / "jacoco-ut" / "jacoco.csv",
+    ]
+
+
+def _find_coverage_csv(ctx: BuildContext) -> Path | None:
+    return _find_first(_coverage_csv_candidates(ctx))
+
+
+def _run_jacoco(ctx: BuildContext, force_prepare_agent: bool = False) -> VerificationResult:
     command = select_maven_command(ctx)
     goals = []
-    if not _pom_declares_jacoco(ctx):
+    if force_prepare_agent or not _pom_declares_jacoco(ctx):
         goals.append("org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent")
     goals.extend(["test", "org.jacoco:jacoco-maven-plugin:0.8.12:report"])
     command.extend(

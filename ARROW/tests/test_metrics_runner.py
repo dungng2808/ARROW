@@ -1,7 +1,7 @@
 from __future__ import annotations
 
 from src.build_runner import BuildContext
-from src.metrics_runner import MetricsResult, _metric_error, _pom_declares_jacoco, _read_jacoco_csv, _read_pitest_csv, _read_pitest_summary, _run_jacoco
+from src.metrics_runner import MetricsResult, _metric_error, _pom_declares_jacoco, _read_jacoco_csv, _read_pitest_csv, _read_pitest_summary, _run_jacoco, run_maven_metrics
 from src.metrics_runner import _find_test_smell_detector, _patch_pom_for_pitest_junit5, _patch_pom_for_pitest_testng, _read_smell_csv, _run_pitest, _run_pitest_dependency_prepare, _strip_repo_prefix
 from src.models import VerificationResult
 
@@ -67,6 +67,66 @@ def test_jacoco_prepare_agent_is_skipped_when_pom_already_declares_jacoco(monkey
 
     assert "org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent" not in captured["command"]
     assert "org.jacoco:jacoco-maven-plugin:0.8.12:report" in captured["command"]
+
+
+def test_jacoco_prepare_agent_can_be_forced_when_declared_plugin_does_not_emit_csv(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / "pom.xml").write_text("<artifactId>jacoco-maven-plugin</artifactId>", encoding="utf-8")
+    ctx = BuildContext(repo, repo, "maven", "GeneratedTest", "demo.GeneratedTest")
+    captured = {}
+
+    def fake_run_command(ctx, command, cwd, tool_name, target_only):
+        captured["command"] = command
+        return type("Result", (), {"exit_code": 0})()
+
+    monkeypatch.setattr("src.metrics_runner.run_command", fake_run_command)
+
+    _run_jacoco(ctx, force_prepare_agent=True)
+
+    assert "org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent" in captured["command"]
+    assert "org.jacoco:jacoco-maven-plugin:0.8.12:report" in captured["command"]
+
+
+def test_run_maven_metrics_retries_jacoco_with_prepare_agent_when_csv_is_missing(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / "pom.xml").write_text("<artifactId>jacoco-maven-plugin</artifactId>", encoding="utf-8")
+    ctx = BuildContext(repo, repo, "maven", "GeneratedTest", "demo.GeneratedTest")
+    commands = []
+
+    def fake_run_command(ctx, command, cwd, tool_name, target_only):
+        commands.append(command)
+        if len(commands) == 2:
+            coverage_csv = repo / "target" / "site" / "jacoco" / "jacoco.csv"
+            coverage_csv.parent.mkdir(parents=True)
+            coverage_csv.write_text(
+                "\n".join(
+                    [
+                        "GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED",
+                        "demo,demo,Focal,0,10,1,3,2,8,0,1,1,4",
+                    ]
+                ),
+                encoding="utf-8",
+            )
+        return VerificationResult(state=None, exit_code=0)
+
+    monkeypatch.setattr("src.metrics_runner.run_command", fake_run_command)
+    monkeypatch.setattr("src.metrics_runner._run_pitest_dependency_prepare", lambda ctx: None)
+    monkeypatch.setattr(
+        "src.metrics_runner._run_pitest",
+        lambda ctx, focal_class_fqcn, testing_framework: VerificationResult(state=None, exit_code=1, primary_error="pitest skipped in test"),
+    )
+
+    result, verifications = run_maven_metrics(ctx, "Focal", "demo.Focal")
+
+    assert "coverage_retry_prepare_agent" in verifications
+    assert "org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent" not in commands[0]
+    assert "org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent" in commands[1]
+    assert result.coverage_branch == "75.00"
+    assert result.coverage_line == "80.00"
+    assert result.coverage_method == "80.00"
+    assert result.coverage_error == ""
 
 
 def test_pitest_prepare_installs_multimodule_dependencies(monkeypatch, tmp_path):
