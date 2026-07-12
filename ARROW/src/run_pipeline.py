@@ -24,7 +24,7 @@ from .models import AgentConfig, FailureOrigin, FailureState, GenerationStrategy
 from .output_paths import OutputPaths, resolve_output_paths
 from .project_analyzer import analyze_experiment
 from .prompt_builder import build_generation_prompt, load_template
-from .repo_manager import clone_repo, ensure_experiment_workspace, safe_remove_tree
+from .repo_manager import checkout_dataset_revision, clone_repo, ensure_experiment_workspace, safe_remove_tree
 from .report_writer import (
     append_experiment_jsonl,
     ensure_paper_report_fields,
@@ -245,7 +245,10 @@ def _prepare_repo(sample: SampleInput, config: dict[str, Any]) -> Path:
         repos_dir = project_root() / repos_dir
     cached = repos_dir / sample.project_id
     if repo_cfg.get("clone_repo", True):
-        return clone_repo(sample.repository_url, cached)
+        repository = clone_repo(sample.repository_url, cached)
+        if repo_cfg.get("checkout_commit", False):
+            checkout_dataset_revision(repository, sample.focal_class_path, sample.test_class_path)
+        return repository
     if not cached.exists():
         raise FileNotFoundError(f"Local repo cache not found: {cached}")
     return cached

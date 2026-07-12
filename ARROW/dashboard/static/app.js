@@ -12,6 +12,7 @@ const state = {
   runs: [],
   selectedLogProjectByRun: new Map(),
   shards: [],
+  shard05: { summary: {}, projects: [] },
   sidebarCollapsed: localStorage.getItem("arrow.sidebarCollapsed") === "true",
 };
 
@@ -71,6 +72,7 @@ async function init() {
   renderConfig();
   await loadProjects();
   await loadShards();
+  await loadShard05Status();
   await loadExperiments();
   await loadRuns();
   bindEvents();
@@ -81,6 +83,8 @@ function bindEvents() {
   $("#refreshBtn").addEventListener("click", refreshAll);
   $("#mergeReportsBtn").addEventListener("click", mergeReports);
   $("#exportShard05Btn").addEventListener("click", exportShard05);
+  $("#shard05Search").addEventListener("input", renderShard05);
+  $("#shard05StatusFilter").addEventListener("change", renderShard05);
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#copyLogsBtn").addEventListener("click", copyRunLogs);
   $("#copyErrorsBtn").addEventListener("click", copyExperimentErrors);
@@ -202,6 +206,7 @@ async function copyExperimentErrors() {
 }
 
 async function refreshAll() {
+  await loadShard05Status();
   await loadExperiments();
   await loadRuns();
 }
@@ -241,13 +246,114 @@ async function exportShard05() {
   try {
     const result = await api("/api/reports/export/shard05", { method: "POST", body: "{}" });
     status.className = "success";
-    status.textContent = `Đã xuất ${formatNumber(result.rows)} dòng · ${result.relative_path || result.path}`;
+    status.textContent = `Đã xuất ${formatNumber(result.rows)} dòng · raw: ${result.relative_path || result.path} · mean: ${
+      result.mean_relative_path || result.mean_path || "N/A"
+    }`;
+    await loadShard05Status();
   } catch (error) {
     status.className = "error";
     status.textContent = error.message || "Xuất shard 05 thất bại";
   } finally {
     setReportActionsBusy(false);
   }
+}
+
+async function loadShard05Status() {
+  try {
+    const payload = await api("/api/shards/shard05/status");
+    state.shard05 = payload || { summary: {}, projects: [] };
+  } catch (error) {
+    state.shard05 = { summary: {}, projects: [], error: error.message || "Không tải được shard 05" };
+  }
+  renderShard05();
+}
+
+function shard05Kind(status) {
+  if (status === "DONE") return "pass";
+  if (status === "RUNNING") return "info";
+  if (status === "HAS_FAILURES") return "warn";
+  return "idle";
+}
+
+function shard05Label(status) {
+  if (status === "DONE") return "Đã chạy";
+  if (status === "RUNNING") return "Đang chạy";
+  if (status === "HAS_FAILURES") return "Có lỗi";
+  if (status === "NOT_RUN") return "Chưa chạy";
+  return status || "N/A";
+}
+
+function renderShard05() {
+  const summary = state.shard05.summary || {};
+  const projects = state.shard05.projects || [];
+  if (state.shard05.error) {
+    $("#shard05Meta").textContent = state.shard05.error;
+    $("#shard05Summary").innerHTML = "";
+    $("#shard05Rows").innerHTML = `<tr><td colspan="9">${escapeHtml(state.shard05.error)}</td></tr>`;
+    return;
+  }
+  const searchInput = $("#shard05Search");
+  const statusFilter = $("#shard05StatusFilter");
+  const query = (searchInput?.value || "").trim().toLowerCase();
+  const filter = statusFilter?.value || "";
+  $("#shard05Meta").textContent = `${formatNumber(summary.total_projects || projects.length)} project · ${formatNumber(
+    summary.experiments_completed || 0,
+  )} lượt chạy đã ghi nhận`;
+  const cards = [
+    ["Tổng project", summary.total_projects ?? projects.length, "idle"],
+    ["Chưa chạy", summary.not_run || 0, "idle"],
+    ["Đang chạy", summary.running || 0, "info"],
+    ["Có lỗi", summary.has_failures || 0, "warn"],
+    ["Đã chạy xong", summary.done || 0, "pass"],
+    ["Tổng lỗi", summary.failed_experiments || 0, "fail"],
+  ];
+  $("#shard05Summary").innerHTML = cards
+    .map(
+      ([label, value, kind]) => `
+        <div class="shard05-card ${kind}">
+          <span>${escapeHtml(label)}</span>
+          <strong>${formatNumber(value)}</strong>
+        </div>
+      `,
+    )
+    .join("");
+
+  const rows = projects.filter((project) => {
+    if (filter && project.status !== filter) return false;
+    if (!query) return true;
+    const haystack = [
+      project.project_id,
+      project.sample_id,
+      project.sample_file,
+      project.focal_class,
+      project.focal_class_path,
+      project.status,
+      project.last_agent,
+      project.last_prompt,
+    ]
+      .join(" ")
+      .toLowerCase();
+    return haystack.includes(query);
+  });
+  $("#shard05Rows").innerHTML = rows.length
+    ? rows
+        .map(
+          (project) => `
+            <tr>
+              <td>${escapeHtml(project.index)}</td>
+              <td title="${escapeHtml(project.project_id)}">${escapeHtml(project.project_id)}</td>
+              <td title="${escapeHtml(project.sample_file || project.sample_id)}">${escapeHtml(project.sample_id || project.sample_file || "")}</td>
+              <td title="${escapeHtml(project.focal_class_path || project.focal_class)}">${escapeHtml(project.focal_class || "")}</td>
+              <td>${badge(shard05Label(project.status), shard05Kind(project.status))}</td>
+              <td>${formatNumber(project.experiments_completed || 0)}</td>
+              <td>${formatNumber(project.failed_experiments || 0)}</td>
+              <td>${escapeHtml(project.last_agent || "")}</td>
+              <td>${escapeHtml(project.last_prompt || "")}</td>
+            </tr>
+          `,
+        )
+        .join("")
+    : `<tr><td colspan="9">Không có project nào khớp bộ lọc hiện tại.</td></tr>`;
 }
 
 function renderConfig() {
@@ -763,6 +869,7 @@ async function loadRuns() {
   renderRunList(runs);
   renderLogScope(runs.find((run) => run.id === state.selectedRunId));
   if (newlyFinished || runs.some((run) => ["running", "stopping"].includes(run.status))) {
+    await loadShard05Status();
     await loadExperiments();
   }
   await loadSelectedRunLog();

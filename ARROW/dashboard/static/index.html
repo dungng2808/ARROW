@@ -22,6 +22,7 @@
         </div>
         <nav>
           <a class="nav-link active" href="#launcher"><i data-lucide="play"></i><span>Launcher</span></a>
+          <a class="nav-link" href="#shard05"><i data-lucide="list-checks"></i><span>Shard 05</span></a>
           <a class="nav-link" href="#experiments"><i data-lucide="table-2"></i><span>Experiments</span></a>
           <a class="nav-link" href="#repair"><i data-lucide="git-branch"></i><span>Repair</span></a>
           <a class="nav-link" href="#metrics"><i data-lucide="bar-chart-3"></i><span>Metrics</span></a>
@@ -218,6 +219,44 @@
               </div>
               <pre id="runLog"></pre>
             </div>
+          </div>
+        </section>
+
+        <section id="shard05" class="panel shard05-panel">
+          <div class="section-title">
+            <div>
+              <h2>Shard 05</h2>
+              <span id="shard05Meta">Đang tải trạng thái shard 05...</span>
+            </div>
+            <div class="filters">
+              <input id="shard05Search" type="search" placeholder="Lọc project, sample, class" />
+              <select id="shard05StatusFilter">
+                <option value="">Tất cả</option>
+                <option value="NOT_RUN">Chưa chạy</option>
+                <option value="RUNNING">Đang chạy</option>
+                <option value="HAS_FAILURES">Có lỗi</option>
+                <option value="DONE">Đã chạy xong</option>
+              </select>
+            </div>
+          </div>
+          <div id="shard05Summary" class="shard05-summary"></div>
+          <div class="table-wrap shard05-table-wrap">
+            <table class="shard05-table">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Project</th>
+                  <th>Sample</th>
+                  <th>Focal class</th>
+                  <th>Trạng thái</th>
+                  <th>Đã chạy</th>
+                  <th>Lỗi</th>
+                  <th>Agent cuối</th>
+                  <th>Prompt cuối</th>
+                </tr>
+              </thead>
+              <tbody id="shard05Rows"></tbody>
+            </table>
           </div>
         </section>
 

@@ -1,5 +1,9 @@
 from __future__ import annotations
 
+import os
+import stat
+import subprocess
+
 import pytest
 
 from src.build_runner import (
@@ -12,7 +16,7 @@ from src.build_runner import (
 )
 from src.models import FailureOrigin, FailureState, VerificationResult
 from src import repo_manager
-from src.repo_manager import copy_isolated_workspace, safe_remove_tree
+from src.repo_manager import checkout_dataset_revision, copy_isolated_workspace, safe_remove_tree
 from src.test_writer import JavaValidationError, validate_java_candidate, write_owned_generated_test
 
 
@@ -441,6 +445,25 @@ def test_workspace_copy_preserves_source_package_named_build_but_skips_gradle_ou
     assert not (destination / "buildSrc" / "build").exists()
 
 
+@pytest.mark.skipif(os.name == "nt", reason="Windows does not expose POSIX executable bits")
+def test_workspace_copy_marks_build_wrappers_executable(tmp_path):
+    source = tmp_path / "cached-repo"
+    destination = tmp_path / "experiment" / "workspace"
+    source.mkdir()
+    for name in ("mvnw", "gradlew"):
+        wrapper = source / name
+        wrapper.write_text("#!/bin/sh\n", encoding="utf-8")
+        wrapper.chmod(wrapper.stat().st_mode & ~(stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH))
+
+    copy_isolated_workspace(source, destination)
+
+    for name in ("mvnw", "gradlew"):
+        mode = (destination / name).stat().st_mode
+        assert mode & stat.S_IXUSR
+        assert mode & stat.S_IXGRP
+        assert mode & stat.S_IXOTH
+
+
 def test_workspace_copy_includes_git_metadata_when_gradle_build_uses_git(tmp_path):
     source = tmp_path / "cached-repo"
     destination = tmp_path / "experiment" / "workspace"
@@ -476,3 +499,47 @@ def test_git_dependent_shallow_repo_fetches_history_and_tags(monkeypatch, tmp_pa
 
     assert ["git", "rev-parse", "--is-shallow-repository"] in calls
     assert ["git", "fetch", "--unshallow", "--tags"] in calls
+
+
+def test_checkout_dataset_revision_restores_historical_focal_path(tmp_path):
+    repository = tmp_path / "repo"
+    repository.mkdir()
+
+    def git(*args: str) -> str:
+        result = subprocess.run(
+            ["git", *args],
+            cwd=repository,
+            capture_output=True,
+            text=True,
+            encoding="utf-8",
+            errors="replace",
+            check=True,
+        )
+        return result.stdout.strip()
+
+    git("init")
+    git("config", "user.email", "arrow@example.test")
+    git("config", "user.name", "ARROW Test")
+    focal = repository / "client" / "src" / "main" / "java" / "demo" / "Focal.java"
+    test = repository / "client" / "src" / "test" / "java" / "demo" / "FocalTest.java"
+    focal.parent.mkdir(parents=True)
+    test.parent.mkdir(parents=True)
+    focal.write_text("package demo; public class Focal {}\n", encoding="utf-8")
+    test.write_text("package demo; public class FocalTest {}\n", encoding="utf-8")
+    git("add", ".")
+    git("commit", "-m", "dataset revision")
+    dataset_revision = git("rev-parse", "HEAD")
+    focal.unlink()
+    git("add", "-A")
+    git("commit", "-m", "remove focal")
+    assert not focal.exists()
+
+    checkout = checkout_dataset_revision(
+        repository,
+        "client/src/main/java/demo/Focal.java",
+        "client/src/test/java/demo/FocalTest.java",
+    )
+
+    assert checkout == dataset_revision
+    assert focal.is_file()
+    assert test.is_file()

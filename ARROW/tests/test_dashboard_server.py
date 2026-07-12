@@ -45,8 +45,10 @@ def test_dashboard_contains_shard05_export_button_and_api_binding():
     javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
 
     assert 'id="exportShard05Btn"' in html
-    assert "Xuất shard 05" in html
+    assert 'id="shard05Summary"' in html
+    assert 'id="shard05Rows"' in html
     assert 'api("/api/reports/export/shard05"' in javascript
+    assert 'api("/api/shards/shard05/status"' in javascript
 
 
 def test_dashboard_links_to_rq1_preview_instead_of_direct_csv_buttons():
@@ -169,13 +171,65 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
 
     payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
     saved_path = Path(payload["path"])
+    mean_path = Path(payload["mean_path"])
     assert handler.response_status == 201
     assert payload["rows"] == 1
     assert payload["relative_path"].startswith("export/shards/repo_shard_05_runs_")
+    assert payload["mean_relative_path"].startswith("export/shards/repo_shard_05_mean_")
     assert saved_path.parent == tmp_path / "export" / "shards"
     exported = saved_path.read_text(encoding="utf-8")
     assert "repo_shard_05" in exported
     assert "repo_shard_04" not in exported
+    assert mean_path.is_file()
+    mean_exported = mean_path.read_text(encoding="utf-8")
+    assert "total_inputs" in mean_exported
+    assert "zero-shot" in mean_exported
+    assert ",1," in mean_exported
+
+
+def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
+    shard_root = tmp_path / "shards"
+    shard_root.mkdir()
+    (shard_root / "repo_shard_05.txt").write_text("100\n200\n", encoding="utf-8")
+    for project_id, class_name in [("100", "com.example.A"), ("200", "com.example.B")]:
+        project_dir = tmp_path / "dataset" / project_id
+        project_dir.mkdir(parents=True)
+        (project_dir / f"{project_id}_0.json").write_text(
+            json.dumps({"focal_class": {"identifier": class_name, "file": f"src/{class_name}.java"}}),
+            encoding="utf-8",
+        )
+    result = tmp_path / "runs" / "100" / "100_0" / "reports" / "records" / "100_0" / "a" / "zero-shot"
+    result.mkdir(parents=True)
+    (result / "result.json").write_text(
+        json.dumps(
+            {
+                "run_id": "r",
+                "shard_id": "repo_shard_05",
+                "project_id": "100",
+                "input_id": "100_0",
+                "agent_name": "a",
+                "generation_prompt_strategy": "zero-shot",
+                "test_passed": True,
+                "module_tests_passed": True,
+            }
+        ),
+        encoding="utf-8",
+    )
+
+    monkeypatch.setattr(server, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(server, "SHARD_ROOT", shard_root)
+    monkeypatch.setattr(server, "DATASET_ROOT", tmp_path / "dataset")
+    monkeypatch.setattr(server, "RUNS", {})
+
+    payload = server._shard_status("repo_shard_05")
+
+    assert payload["summary"]["total_projects"] == 2
+    assert payload["summary"]["done"] == 1
+    assert payload["summary"]["not_run"] == 1
+    by_project = {item["project_id"]: item for item in payload["projects"]}
+    assert by_project["100"]["status"] == "DONE"
+    assert by_project["100"]["experiments_completed"] == 1
+    assert by_project["200"]["status"] == "NOT_RUN"
 
 
 def test_rq1_preview_endpoint_returns_latest_snapshot(monkeypatch):

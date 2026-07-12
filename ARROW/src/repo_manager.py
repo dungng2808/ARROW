@@ -64,6 +64,14 @@ def _repository_requires_git_metadata(repository: Path) -> bool:
     return False
 
 
+def _make_build_wrappers_executable(root: Path) -> None:
+    for wrapper_name in ("mvnw", "gradlew"):
+        for wrapper in root.glob(f"**/{wrapper_name}"):
+            if not wrapper.is_file() or ".git" in wrapper.parts:
+                continue
+            wrapper.chmod(wrapper.stat().st_mode | stat.S_IXUSR | stat.S_IXGRP | stat.S_IXOTH)
+
+
 def _ensure_git_history_for_build(repository: Path) -> None:
     if not _repository_requires_git_metadata(repository):
         return
@@ -80,6 +88,98 @@ def _ensure_git_history_for_build(repository: Path) -> None:
         subprocess.run(["git", "fetch", "--unshallow", "--tags"], cwd=repository, check=True)
 
 
+def _ensure_full_git_history(repository: Path) -> None:
+    if not (repository / ".git").exists():
+        return
+    result = subprocess.run(
+        ["git", "rev-parse", "--is-shallow-repository"],
+        cwd=repository,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=True,
+    )
+    if result.stdout.strip().lower() == "true":
+        subprocess.run(["git", "fetch", "--unshallow", "--tags"], cwd=repository, check=True)
+
+
+def _repo_relative_candidates(relative: str) -> list[Path]:
+    path = Path(relative)
+    candidates = [path]
+    if len(path.parts) > 1:
+        candidates.append(Path(*path.parts[1:]))
+    output: list[Path] = []
+    seen: set[str] = set()
+    for item in candidates:
+        key = item.as_posix()
+        if key not in seen:
+            output.append(item)
+            seen.add(key)
+    return output
+
+
+def _has_any_worktree_path(repository: Path, candidates: list[Path]) -> bool:
+    return any((repository / candidate).is_file() for candidate in candidates)
+
+
+def _git_lines(repository: Path, command: list[str]) -> list[str]:
+    result = subprocess.run(
+        command,
+        cwd=repository,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        check=True,
+    )
+    return [line.strip() for line in result.stdout.splitlines() if line.strip()]
+
+
+def _git_object_exists(repository: Path, revision: str, relative: Path) -> bool:
+    result = subprocess.run(
+        ["git", "cat-file", "-e", f"{revision}:{relative.as_posix()}"],
+        cwd=repository,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    return result.returncode == 0
+
+
+def checkout_dataset_revision(repository: Path, focal_class_path: str, test_class_path: str) -> str:
+    """Checkout a commit where dataset focal/test paths still exist.
+
+    Classes2Test samples were mined from historical repository revisions. Some
+    repositories no longer contain the recorded focal path on the default
+    branch, so the pipeline needs a best-effort history lookup before analysis.
+    """
+    if not (repository / ".git").exists():
+        return ""
+    focal_candidates = _repo_relative_candidates(focal_class_path)
+    test_candidates = _repo_relative_candidates(test_class_path)
+    if _has_any_worktree_path(repository, focal_candidates) and _has_any_worktree_path(repository, test_candidates):
+        return ""
+
+    _ensure_full_git_history(repository)
+    commits: list[str] = []
+    seen: set[str] = set()
+    for candidate in [*focal_candidates, *test_candidates]:
+        for commit in _git_lines(repository, ["git", "log", "--all", "--format=%H", "--", candidate.as_posix()]):
+            if commit not in seen:
+                commits.append(commit)
+                seen.add(commit)
+
+    for commit in commits:
+        focal_exists = any(_git_object_exists(repository, commit, candidate) for candidate in focal_candidates)
+        test_exists = any(_git_object_exists(repository, commit, candidate) for candidate in test_candidates)
+        if focal_exists and test_exists:
+            subprocess.run(["git", "checkout", commit], cwd=repository, check=True)
+            return commit
+    return ""
+
+
 def copy_isolated_workspace(source_repo: Path, experiment_workspace: Path) -> Path:
     """Create a writable per-experiment copy without depending on Git worktrees."""
     if experiment_workspace.exists():
@@ -87,12 +187,14 @@ def copy_isolated_workspace(source_repo: Path, experiment_workspace: Path) -> Pa
     shutil.copytree(source_repo, experiment_workspace, ignore=_workspace_copy_ignore)
     if _repository_requires_git_metadata(source_repo) and (source_repo / ".git").is_dir():
         shutil.copytree(source_repo / ".git", experiment_workspace / ".git")
+    _make_build_wrappers_executable(experiment_workspace)
     return experiment_workspace
 
 
 def clone_repo(repo_url: str, destination: Path, checkout: str | None = None) -> Path:
     if destination.exists():
         _ensure_git_history_for_build(destination)
+        _make_build_wrappers_executable(destination)
         return destination
     ensure_dir(destination.parent)
     try:
@@ -104,6 +206,7 @@ def clone_repo(repo_url: str, destination: Path, checkout: str | None = None) ->
     if checkout:
         subprocess.run(["git", "checkout", checkout], cwd=destination, check=True)
     _ensure_git_history_for_build(destination)
+    _make_build_wrappers_executable(destination)
     return destination
 
 

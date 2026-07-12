@@ -22,7 +22,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
-from src.report_writer import load_experiment_jsonl, write_class_report, write_rq1_exports
+from src.report_writer import load_experiment_jsonl, write_class_report, write_mean_report, write_rq1_exports
 from src.rq1_export import (
     RQ1ExcelLimitError,
     RQ1NoDataError,
@@ -341,25 +341,135 @@ def _save_shard_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
     safe_shard = _safe_name(shard_id) or "shard"
     base_name = f"{safe_shard}_runs_{timestamp}"
     destination = SHARD_EXPORT_ROOT / f"{base_name}.csv"
+    mean_destination = SHARD_EXPORT_ROOT / f"{safe_shard}_mean_{timestamp}.csv"
     suffix = 2
-    while destination.exists():
+    while destination.exists() or mean_destination.exists():
         destination = SHARD_EXPORT_ROOT / f"{base_name}_{suffix}.csv"
+        mean_destination = SHARD_EXPORT_ROOT / f"{safe_shard}_mean_{timestamp}_{suffix}.csv"
         suffix += 1
     temporary = destination.with_suffix(".csv.tmp")
+    mean_temporary = mean_destination.with_suffix(".csv.tmp")
     write_class_report(temporary, rows)
+    write_mean_report(mean_temporary, rows)
     os.replace(temporary, destination)
+    os.replace(mean_temporary, mean_destination)
     try:
         relative_path = destination.relative_to(PROJECT_ROOT).as_posix()
     except ValueError:
         relative_path = str(destination)
+    try:
+        mean_relative_path = mean_destination.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        mean_relative_path = str(mean_destination)
     return {
         "export_type": "shard_runs",
         "shard_id": shard_id,
         "filename": destination.name,
         "path": str(destination),
         "relative_path": relative_path,
+        "mean_filename": mean_destination.name,
+        "mean_path": str(mean_destination),
+        "mean_relative_path": mean_relative_path,
         "rows": len(rows),
     }
+
+
+def _sample_for_project(project_id: str) -> dict[str, str]:
+    project_dir = DATASET_ROOT / project_id
+    files = sorted(project_dir.glob("*.json"), key=lambda item: item.name) if project_dir.is_dir() else []
+    if not files:
+        return {"sample_id": "", "sample_file": "", "focal_class": "", "focal_class_path": ""}
+    sample_file = files[0]
+    payload = _read_json(sample_file)
+    focal = payload.get("focal_class") if isinstance(payload.get("focal_class"), dict) else {}
+    return {
+        "sample_id": sample_file.stem,
+        "sample_file": sample_file.name,
+        "focal_class": str(focal.get("identifier") or ""),
+        "focal_class_path": str(focal.get("file") or ""),
+    }
+
+
+def _latest_project_log_status(shard_id: str) -> dict[str, dict[str, Any]]:
+    statuses: dict[str, dict[str, Any]] = {}
+    normalized_shard = _safe_name(shard_id)
+    with RUN_LOCK:
+        runs = sorted(RUNS.values(), key=lambda item: str(item.get("started_at") or item.get("id") or ""))
+        for run in runs:
+            request = run.get("request") if isinstance(run.get("request"), dict) else {}
+            if _safe_name(str(request.get("shard_id") or Path(str(request.get("repo_shard") or "")).stem)) != normalized_shard:
+                continue
+            for project in run.get("project_logs", []):
+                project_id = _safe_name(str(project.get("project_id") or ""))
+                if not project_id:
+                    continue
+                statuses[project_id] = {
+                    "run_id": run.get("id", ""),
+                    "run_status": run.get("status", ""),
+                    "project_status": project.get("status", ""),
+                    "experiments_completed": int(project.get("experiments_completed") or 0),
+                    "failed_experiments": int(project.get("failed_experiments") or 0),
+                    "last_experiment_passed": project.get("last_experiment_passed"),
+                    "last_experiment_status": project.get("last_experiment_status", ""),
+                    "agent": project.get("agent", ""),
+                    "prompt": project.get("prompt", ""),
+                }
+    return statuses
+
+
+def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
+    shard_file = _safe_shard_file(f"{_safe_name(shard_id).removesuffix('.txt')}.txt")
+    if shard_file is None:
+        raise ValueError(f"Không tìm thấy shard {shard_id}")
+    projects = _shard_project_ids(shard_file)
+    rows_by_project: dict[str, list[dict[str, Any]]] = {project: [] for project in projects}
+    for row in _experiments():
+        project_id = _safe_name(str(row.get("project_id") or row.get("Project_ID") or ""))
+        if project_id in rows_by_project and _shard_id_matches(row, shard_id):
+            rows_by_project[project_id].append(row)
+    log_status = _latest_project_log_status(shard_id)
+    items = []
+    for index, project_id in enumerate(projects, start=1):
+        rows = rows_by_project.get(project_id, [])
+        sample = _sample_for_project(project_id)
+        log = log_status.get(project_id, {})
+        completed = len(rows)
+        failed = sum(1 for row in rows if not (row.get("module_tests_passed") is True or row.get("test_passed") is True))
+        passed = completed - failed
+        if str(log.get("project_status") or "") == "running":
+            status = "RUNNING"
+        elif completed == 0:
+            status = "NOT_RUN"
+        elif failed:
+            status = "HAS_FAILURES"
+        else:
+            status = "DONE"
+        items.append(
+            {
+                "index": index,
+                "project_id": project_id,
+                **sample,
+                "status": status,
+                "experiments_completed": completed,
+                "passed_experiments": passed,
+                "failed_experiments": failed,
+                "last_run_id": log.get("run_id", ""),
+                "last_run_status": log.get("run_status", ""),
+                "last_project_status": log.get("project_status", ""),
+                "last_agent": log.get("agent", ""),
+                "last_prompt": log.get("prompt", ""),
+            }
+        )
+    summary = {
+        "total_projects": len(items),
+        "not_run": sum(1 for item in items if item["status"] == "NOT_RUN"),
+        "running": sum(1 for item in items if item["status"] == "RUNNING"),
+        "done": sum(1 for item in items if item["status"] == "DONE"),
+        "has_failures": sum(1 for item in items if item["status"] == "HAS_FAILURES"),
+        "experiments_completed": sum(int(item["experiments_completed"]) for item in items),
+        "failed_experiments": sum(int(item["failed_experiments"]) for item in items),
+    }
+    return {"shard_id": shard_id, "shard_file": str(shard_file), "summary": summary, "projects": items}
 
 
 def _rq1_preview(query: str = "") -> dict[str, Any]:
@@ -1097,6 +1207,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 return _json_response(self, self._api_samples(project_id))
             if path == "/api/shards":
                 return _json_response(self, self._api_shards())
+            if path == "/api/shards/shard05/status":
+                try:
+                    return _json_response(self, _shard_status("repo_shard_05"))
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=404)
             if path == "/api/experiments":
                 return _json_response(self, {"experiments": _experiments()})
             if path.startswith("/api/experiments/"):

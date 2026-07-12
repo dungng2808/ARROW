@@ -996,6 +996,51 @@ pre {
   max-width: 100%;
 }
 
+.shard05-summary {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(120px, 1fr));
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.shard05-card {
+  border: 1px solid var(--line);
+  border-left: 4px solid #64748b;
+  border-radius: 12px;
+  background: #f8fafc;
+  padding: 12px;
+  min-width: 0;
+}
+
+.shard05-card span {
+  display: block;
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.shard05-card strong {
+  display: block;
+  margin-top: 6px;
+  color: var(--text);
+  font-size: 24px;
+  line-height: 1;
+}
+
+.shard05-card.pass { border-left-color: var(--green); }
+.shard05-card.fail { border-left-color: var(--red); }
+.shard05-card.warn { border-left-color: var(--amber); }
+.shard05-card.info { border-left-color: var(--blue); }
+.shard05-card.idle { border-left-color: #64748b; }
+
+.shard05-table-wrap {
+  max-height: 420px;
+}
+
+.shard05-table {
+  min-width: 1120px;
+}
+
 table {
   width: 100%;
   min-width: 980px;
