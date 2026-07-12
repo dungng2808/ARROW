@@ -1041,6 +1041,195 @@ pre {
   min-width: 1120px;
 }
 
+.shard05-run-page {
+  overflow-x: auto;
+}
+
+.shard05-run-shell {
+  width: min(1440px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 24px 0 40px;
+}
+
+.shard05-run-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(220px, 320px);
+  gap: 18px;
+  align-items: stretch;
+  margin-bottom: 18px;
+}
+
+.shard05-run-hero h1 {
+  margin: 8px 0;
+  font-size: clamp(28px, 4vw, 44px);
+  letter-spacing: -0.04em;
+}
+
+.shard05-run-hero p {
+  margin: 0;
+  color: var(--muted);
+}
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 800;
+}
+
+.back-link svg {
+  width: 18px;
+  height: 18px;
+}
+
+.shard-lock-card {
+  display: grid;
+  align-content: center;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: #111827;
+  color: #f9fafb;
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.shard-lock-card span,
+.shard-lock-card small {
+  color: #cbd5e1;
+}
+
+.shard-lock-card strong {
+  font-size: 24px;
+}
+
+.shard05-run-panel {
+  margin-bottom: 18px;
+}
+
+.shard05-run-form {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(180px, 1fr));
+  gap: 14px;
+}
+
+.shard05-run-form .wide {
+  grid-column: 1 / -1;
+}
+
+.prompt-toolbar,
+.shard05-run-actions {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.row-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.row-actions .mini-secondary,
+.row-actions .danger-secondary {
+  min-height: 30px;
+  padding: 5px 8px;
+  font-size: 12px;
+}
+
+.muted-text {
+  color: var(--muted);
+}
+
+.prompt-toolbar {
+  margin-bottom: 10px;
+}
+
+.mini-secondary,
+.danger-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 36px;
+  border: 1px solid var(--line);
+  border-radius: 10px;
+  background: #ffffff;
+  color: var(--ink);
+  padding: 8px 12px;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.danger-secondary {
+  border-color: #fed7aa;
+  color: var(--red);
+}
+
+.mini-secondary:hover,
+.danger-secondary:hover {
+  background: #f8fafc;
+}
+
+.danger-secondary:disabled,
+.primary:disabled {
+  opacity: 0.55;
+  cursor: not-allowed;
+}
+
+.shard05-advanced {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.shard05-advanced summary {
+  color: var(--ink);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.shard05-advanced-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(180px, 1fr));
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.shard05-advanced-grid .wide {
+  grid-column: 1 / -1;
+}
+
+.shard05-monitor-grid {
+  display: grid;
+  grid-template-columns: minmax(320px, 0.8fr) minmax(420px, 1.2fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.shard05-run-log {
+  min-height: 420px;
+  max-height: 620px;
+}
+
+.shard05-error-panel {
+  margin-top: 18px;
+}
+
+.shard05-project-error-content {
+  min-height: 280px;
+  max-height: 520px;
+}
+
+.empty-state {
+  border: 1px dashed var(--line);
+  border-radius: 12px;
+  color: var(--muted);
+  padding: 16px;
+}
+
 table {
   width: 100%;
   min-width: 980px;

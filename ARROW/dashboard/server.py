@@ -328,6 +328,18 @@ def _shard_id_matches(row: dict[str, Any], shard_id: str) -> bool:
     return row_shard in candidates
 
 
+def _experiment_passed(row: dict[str, Any]) -> bool:
+    return row.get("module_tests_passed") is True or row.get("test_passed") is True
+
+
+def _first_value(row: dict[str, Any], keys: tuple[str, ...]) -> str:
+    for key in keys:
+        value = row.get(key)
+        if value not in {None, ""}:
+            return str(value)
+    return ""
+
+
 def _save_shard_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
     merged = _merge_reports_now()
     output_dir = Path(str(merged.get("output_dir") or PROJECT_ROOT / "runs" / "merged"))
@@ -434,8 +446,10 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         sample = _sample_for_project(project_id)
         log = log_status.get(project_id, {})
         completed = len(rows)
-        failed = sum(1 for row in rows if not (row.get("module_tests_passed") is True or row.get("test_passed") is True))
+        failed_rows = [row for row in rows if not _experiment_passed(row)]
+        failed = len(failed_rows)
         passed = completed - failed
+        latest_failed = failed_rows[0] if failed_rows else {}
         if str(log.get("project_status") or "") == "running":
             status = "RUNNING"
         elif completed == 0:
@@ -458,6 +472,10 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
                 "last_project_status": log.get("project_status", ""),
                 "last_agent": log.get("agent", ""),
                 "last_prompt": log.get("prompt", ""),
+                "latest_failed_experiment_id": latest_failed.get("dashboard_id", ""),
+                "latest_failed_sample_id": _first_value(latest_failed, ("sample_id", "input_id")) if latest_failed else "",
+                "latest_failed_agent": latest_failed.get("agent_name", "") if latest_failed else "",
+                "latest_failed_prompt": latest_failed.get("generation_prompt_strategy", "") if latest_failed else "",
             }
         )
     summary = {
@@ -470,6 +488,77 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         "failed_experiments": sum(int(item["failed_experiments"]) for item in items),
     }
     return {"shard_id": shard_id, "shard_file": str(shard_file), "summary": summary, "projects": items}
+
+
+def _shard_project_rows(project_id: str, shard_id: str = "repo_shard_05") -> list[dict[str, Any]]:
+    safe_project = _safe_name(project_id)
+    return [
+        row
+        for row in _experiments()
+        if _safe_name(str(row.get("project_id") or row.get("Project_ID") or "")) == safe_project
+        and _shard_id_matches(row, shard_id)
+    ]
+
+
+def _fallback_error_summary(row: dict[str, Any]) -> str:
+    keys = [
+        "initial_failure_state",
+        "final_failure_state",
+        "initial_failure_origin",
+        "final_failure_origin",
+        "repair_status",
+        "repair_stopped_reason",
+        "test_fail_reason",
+        "error",
+        "coverage_error",
+        "mutation_error",
+        "smell_error",
+    ]
+    lines = []
+    for key in keys:
+        value = row.get(key)
+        if value not in {None, ""}:
+            lines.append(f"{key}: {value}")
+    return "\n".join(lines)
+
+
+def _shard_project_errors(project_id: str, shard_id: str = "repo_shard_05") -> dict[str, Any]:
+    shard_file = _safe_shard_file(f"{_safe_name(shard_id).removesuffix('.txt')}.txt")
+    safe_project = _safe_name(project_id)
+    if shard_file is None or safe_project not in _shard_project_ids(shard_file):
+        raise ValueError(f"Project {project_id} không nằm trong {shard_id}")
+    failed_rows = [row for row in _shard_project_rows(safe_project, shard_id) if not _experiment_passed(row)]
+    experiments = []
+    sections = []
+    for row in failed_rows:
+        experiment_dir = Path(str(row.get("experiment_dir") or ""))
+        error_files = _error_artifact_summaries(experiment_dir) if experiment_dir.is_dir() else []
+        content = _combined_error_artifacts(experiment_dir) if experiment_dir.is_dir() else ""
+        fallback = _fallback_error_summary(row)
+        if not content and fallback:
+            content = fallback
+        header = (
+            f"===== project={safe_project} sample={_first_value(row, ('sample_id', 'input_id'))} "
+            f"agent={row.get('agent_name', '')} prompt={row.get('generation_prompt_strategy', '')} ====="
+        )
+        if content:
+            sections.append(f"{header}\n{content}")
+        experiments.append(
+            {
+                "dashboard_id": row.get("dashboard_id", ""),
+                "sample_id": _first_value(row, ("sample_id", "input_id")),
+                "agent_name": row.get("agent_name", ""),
+                "generation_prompt_strategy": row.get("generation_prompt_strategy", ""),
+                "state": row.get("final_failure_state") or row.get("initial_failure_state") or "",
+                "error_files": error_files,
+            }
+        )
+    return {
+        "project_id": safe_project,
+        "failed_experiments": len(failed_rows),
+        "experiments": experiments,
+        "content": "\n\n".join(sections),
+    }
 
 
 def _rq1_preview(query: str = "") -> dict[str, Any]:
@@ -865,6 +954,42 @@ def _write_runtime_shard(run_id: str, mode: str, project_ids: list[str]) -> Path
     return path
 
 
+def _write_single_project_runtime_shard(project_id: str) -> Path:
+    _ensure_runtime_dirs()
+    safe_project = _safe_name(project_id)
+    timestamp = datetime.now().strftime("%Y%m%d-%H%M%S-%f")
+    path = RUNTIME_SHARD_ROOT / f"shard05-project-{safe_project}-{timestamp}.txt"
+    path.write_text(f"{safe_project}\n", encoding="utf-8", newline="\n")
+    return path
+
+
+def _start_shard05_project_run(project_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    safe_project = _safe_name(project_id)
+    shard_file = _safe_shard_file("repo_shard_05.txt")
+    if shard_file is None or safe_project not in _shard_project_ids(shard_file):
+        raise ValueError(f"Project {project_id} không nằm trong repo_shard_05")
+    runtime_shard = _write_single_project_runtime_shard(safe_project)
+    prepared = dict(payload)
+    prepared.update(
+        {
+            "run_scope": "shard",
+            "repo_shard": shard_file.name,
+            "shard_id": "repo_shard_05",
+            "start_index": 0,
+            "limit": 0,
+            "rerun_mode": "new",
+            "_resolved_repo_shard": str(runtime_shard),
+            "selection": {
+                "mode": "single_project",
+                "project_count": 1,
+                "first_project_id": safe_project,
+                "runtime_shard": str(runtime_shard),
+            },
+        }
+    )
+    return _start_run(prepared)
+
+
 def _prepare_run_payload(payload: dict[str, Any], run_id: str) -> dict[str, Any]:
     prepared = dict(payload)
     mode = _safe_name(str(prepared.get("rerun_mode") or "new")) or "new"
@@ -1212,6 +1337,13 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                     return _json_response(self, _shard_status("repo_shard_05"))
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=404)
+            if path.startswith("/api/shards/shard05/projects/") and path.endswith("/errors"):
+                parts = path.strip("/").split("/")
+                project_id = unquote(parts[4]) if len(parts) >= 6 else ""
+                try:
+                    return _json_response(self, _shard_project_errors(project_id, "repo_shard_05"))
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=404)
             if path == "/api/experiments":
                 return _json_response(self, {"experiments": _experiments()})
             if path.startswith("/api/experiments/"):
@@ -1267,6 +1399,15 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             if parsed.path == "/api/reports/export/shard05":
                 try:
                     return _json_response(self, _save_shard_export("repo_shard_05"), status=201)
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=422)
+            if parsed.path.startswith("/api/shards/shard05/projects/") and parsed.path.endswith("/rerun"):
+                parts = parsed.path.strip("/").split("/")
+                project_id = unquote(parts[4]) if len(parts) >= 6 else ""
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
+                try:
+                    return _json_response(self, _start_shard05_project_run(project_id, payload), status=201)
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=422)
             if parsed.path.startswith("/api/reports/export/"):

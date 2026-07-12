@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="vi">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Chạy Shard 05 - ARROW</title>
+    <link rel="stylesheet" href="/styles.css" />
+    <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
+  </head>
+  <body class="shard05-run-page">
+    <main class="shard05-run-shell">
+      <header class="shard05-run-hero">
+        <div>
+          <a class="back-link" href="/"><i data-lucide="arrow-left"></i><span>Về dashboard tổng</span></a>
+          <h1>Chạy riêng Shard 05</h1>
+          <p>Trang này chỉ khóa vào <strong>repo_shard_05.txt</strong>. Bạn chỉnh input, model, prompt rồi bấm chạy.</p>
+        </div>
+        <div class="shard-lock-card">
+          <span>Shard đang khóa</span>
+          <strong>repo_shard_05</strong>
+          <small id="shard05LockedMeta">Đang kiểm tra dữ liệu shard...</small>
+        </div>
+      </header>
+
+      <section class="panel shard05-run-panel">
+        <div class="section-title">
+          <div>
+            <h2>Input chạy</h2>
+            <span>Start/Limit được tính theo input mode: project hoặc sample.</span>
+          </div>
+          <small id="runActionStatus" aria-live="polite"></small>
+        </div>
+
+        <form id="shard05RunForm" class="shard05-run-form">
+          <label>
+            <span>Input mode</span>
+            <select id="inputMode">
+              <option value="project">Project</option>
+              <option value="sample">Sample</option>
+            </select>
+            <small>Project = chạy theo folder project; Sample = chạy từng JSON sample.</small>
+          </label>
+          <label>
+            <span>Samples/project</span>
+            <input id="samplesPerProject" type="text" value="1" />
+            <small>Dùng số như 1, 2 hoặc <code>all</code>.</small>
+          </label>
+          <label>
+            <span>Start index</span>
+            <input id="startIndex" type="number" min="0" value="0" />
+          </label>
+          <label>
+            <span>Limit</span>
+            <input id="limit" type="number" min="0" value="0" />
+            <small>0 = chạy toàn bộ phần còn lại.</small>
+          </label>
+          <label>
+            <span>Chế độ chạy</span>
+            <select id="rerunMode">
+              <option value="new">Chạy theo input bên trên</option>
+              <option value="rerun_all">Chạy lại toàn bộ shard 05</option>
+              <option value="failed_only">Chạy lại project lỗi từ run cũ</option>
+              <option value="resume">Tiếp tục run bị dừng</option>
+              <option value="failed_then_resume">Chạy lỗi trước, rồi tiếp tục</option>
+            </select>
+          </label>
+          <label>
+            <span>Run nguồn</span>
+            <select id="sourceRunId"></select>
+            <small>Dùng cho các chế độ chạy lại lỗi hoặc tiếp tục.</small>
+          </label>
+
+          <fieldset class="wide">
+            <legend>Model</legend>
+            <div id="agentOptions" class="agent-options"></div>
+          </fieldset>
+          <fieldset class="wide">
+            <legend>Prompt</legend>
+            <div class="prompt-toolbar">
+              <button id="selectRq1PromptsBtn" type="button" class="mini-secondary">Chọn 3 prompt RQ1</button>
+              <button id="clearPromptsBtn" type="button" class="mini-secondary">Bỏ chọn prompt</button>
+            </div>
+            <div id="promptOptions" class="prompt-options"></div>
+          </fieldset>
+
+          <details class="wide shard05-advanced">
+            <summary>Tùy chọn nâng cao</summary>
+            <div class="shard05-advanced-grid">
+              <label><span>Retry mode</span><select id="retryMode"><option value="bounded">Bounded</option><option value="unlimited">Unlimited guarded</option></select></label>
+              <label><span>Wall clock phút</span><input id="wallClock" type="number" min="1" value="120" /></label>
+              <label><span>Override JAVA_HOME</span><input id="javaHome" type="text" placeholder="Không bắt buộc" /></label>
+              <label><span>Java default</span><input id="javaDefault" type="text" placeholder="Fallback JAVA_HOME" /></label>
+              <label class="wide"><span>JDK version map</span><textarea id="javaHomes" rows="3" placeholder="java-17: C:\Program Files\Java\jdk-17"></textarea></label>
+              <div class="toggles wide">
+                <label><input id="skipMetrics" type="checkbox" /> <span>Skip metrics</span></label>
+                <label><input id="keepWorkspace" type="checkbox" /> <span>Keep workspace</span></label>
+                <label><input id="keepRepo" type="checkbox" /> <span>Keep repo</span></label>
+                <label><input id="mockSmoke" type="checkbox" /> <span>Mock LLM</span></label>
+              </div>
+            </div>
+          </details>
+
+          <div class="shard05-run-actions wide">
+            <button id="startShard05Btn" class="primary" type="submit"><i data-lucide="play"></i><span>Chạy Shard 05</span></button>
+            <button id="stopShard05Btn" class="danger-secondary" type="button" disabled><i data-lucide="square"></i><span>Dừng run đang chọn</span></button>
+            <button id="refreshShard05Btn" class="icon-btn" type="button" title="Refresh"><i data-lucide="refresh-cw"></i></button>
+          </div>
+        </form>
+      </section>
+
+      <section class="panel">
+        <div class="section-title">
+          <div>
+            <h2>Tiến độ Shard 05</h2>
+            <span id="shard05Meta">Đang tải trạng thái...</span>
+          </div>
+          <div class="filters">
+            <input id="shard05Search" type="search" placeholder="Lọc project, sample, class" />
+            <select id="shard05StatusFilter">
+              <option value="">Tất cả</option>
+              <option value="NOT_RUN">Chưa chạy</option>
+              <option value="RUNNING">Đang chạy</option>
+              <option value="HAS_FAILURES">Có lỗi</option>
+              <option value="DONE">Đã chạy</option>
+            </select>
+          </div>
+        </div>
+        <div id="shard05Summary" class="shard05-summary"></div>
+        <div class="table-wrap shard05-table-wrap">
+          <table class="shard05-table">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Project</th>
+                <th>Sample</th>
+                <th>Focal class</th>
+                <th>Trạng thái</th>
+                <th>Đã chạy</th>
+                <th>Lỗi</th>
+                <th>Agent cuối</th>
+                <th>Prompt cuối</th>
+                <th>Hành động</th>
+              </tr>
+            </thead>
+            <tbody id="shard05Rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="panel shard05-error-panel">
+        <div class="section-title">
+          <div>
+            <h2 id="projectErrorTitle">Error của project</h2>
+            <span id="projectErrorMeta">Nhấn vào project đang lỗi để xem error artifact.</span>
+          </div>
+          <div class="error-actions">
+            <small id="copyProjectErrorStatus"></small>
+            <button id="copyProjectErrorsBtn" class="icon-btn" type="button" title="Copy error" aria-label="Copy error" disabled>
+              <i data-lucide="copy"></i>
+            </button>
+          </div>
+        </div>
+        <pre id="projectErrorContent" class="error-content shard05-project-error-content">Chưa chọn project lỗi.</pre>
+      </section>
+
+      <section class="shard05-monitor-grid">
+        <div class="panel">
+          <div class="section-title">
+            <div>
+              <h2>Run shard 05</h2>
+              <span id="runCount">0 run</span>
+            </div>
+          </div>
+          <div id="runList" class="run-list"></div>
+        </div>
+        <div class="panel">
+          <div class="section-title">
+            <div>
+              <h2 id="logTitle">Log</h2>
+              <span>Log của run đang chọn.</span>
+            </div>
+          </div>
+          <pre id="runLog" class="shard05-run-log"></pre>
+        </div>
+      </section>
+    </main>
+
+    <script src="/shard05.js"></script>
+  </body>
+</html>

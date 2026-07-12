@@ -44,11 +44,47 @@ def test_dashboard_contains_shard05_export_button_and_api_binding():
     html = (server.STATIC_ROOT / "index.html").read_text(encoding="utf-8")
     javascript = (server.STATIC_ROOT / "app.js").read_text(encoding="utf-8")
 
+    assert 'href="/shard05.html"' in html
     assert 'id="exportShard05Btn"' in html
     assert 'id="shard05Summary"' in html
     assert 'id="shard05Rows"' in html
     assert 'api("/api/reports/export/shard05"' in javascript
     assert 'api("/api/shards/shard05/status"' in javascript
+
+
+def test_shard05_runner_page_locks_to_shard05_and_run_input():
+    html = (server.STATIC_ROOT / "shard05.html").read_text(encoding="utf-8")
+    javascript = (server.STATIC_ROOT / "shard05.js").read_text(encoding="utf-8")
+
+    assert 'id="shard05RunForm"' in html
+    assert 'id="inputMode"' in html
+    assert 'id="samplesPerProject"' in html
+    assert 'id="startIndex"' in html
+    assert 'id="limit"' in html
+    assert 'id="startShard05Btn"' in html
+    assert 'id="projectErrorContent"' in html
+    assert 'id="copyProjectErrorsBtn"' in html
+    assert 'const SHARD05_FILE = "repo_shard_05.txt"' in javascript
+    assert 'const SHARD05_ID = "repo_shard_05"' in javascript
+    assert 'run_scope: "shard"' in javascript
+    assert "repo_shard: SHARD05_FILE" in javascript
+    assert "shard_id: SHARD05_ID" in javascript
+    assert "rerunProject" in javascript
+    assert "loadProjectErrors" in javascript
+    assert "/api/shards/shard05/projects/" in javascript
+    assert 'api("/api/runs"' in javascript
+    assert 'api("/api/shards/shard05/status"' in javascript
+
+
+def test_static_serves_shard05_runner_page():
+    handler = _bare_dashboard_handler("/shard05.html")
+
+    handler.do_GET()
+
+    body = handler.wfile.getvalue().decode("utf-8")
+    assert handler.response_status == 200
+    assert handler.response_headers["Content-Type"] == "text/html; charset=utf-8"
+    assert 'id="shard05RunForm"' in body
 
 
 def test_dashboard_links_to_rq1_preview_instead_of_direct_csv_buttons():
@@ -230,6 +266,107 @@ def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
     assert by_project["100"]["status"] == "DONE"
     assert by_project["100"]["experiments_completed"] == 1
     assert by_project["200"]["status"] == "NOT_RUN"
+
+
+def test_shard05_project_errors_return_copyable_artifacts(monkeypatch, tmp_path):
+    shard_root = tmp_path / "shards"
+    shard_root.mkdir()
+    (shard_root / "repo_shard_05.txt").write_text("100\n", encoding="utf-8")
+    result_dir = tmp_path / "runs" / "100" / "100_0" / "reports" / "records" / "100_0" / "a" / "zero-shot"
+    experiment_dir = tmp_path / "runs" / "100" / "100_0" / "a" / "zero-shot"
+    result_dir.mkdir(parents=True)
+    experiment_dir.mkdir(parents=True)
+    (experiment_dir / "baseline_build_output.txt").write_text("BUILD FAILURE\n[ERROR] cannot find symbol", encoding="utf-8")
+    (result_dir / "result.json").write_text(
+        json.dumps(
+            {
+                "run_id": "r",
+                "shard_id": "repo_shard_05",
+                "project_id": "100",
+                "input_id": "100_0",
+                "agent_name": "a",
+                "generation_prompt_strategy": "zero-shot",
+                "test_passed": False,
+                "module_tests_passed": False,
+                "final_failure_state": "COMPILE_FAILED",
+                "experiment_dir": str(experiment_dir),
+            }
+        ),
+        encoding="utf-8",
+    )
+    monkeypatch.setattr(server, "PROJECT_ROOT", tmp_path)
+    monkeypatch.setattr(server, "SHARD_ROOT", shard_root)
+
+    payload = server._shard_project_errors("100")
+
+    assert payload["project_id"] == "100"
+    assert payload["failed_experiments"] == 1
+    assert "cannot find symbol" in payload["content"]
+    assert payload["experiments"][0]["error_files"][0]["relative_path"] == "baseline_build_output.txt"
+
+
+def test_shard05_project_error_endpoint(monkeypatch, tmp_path):
+    monkeypatch.setattr(
+        server,
+        "_shard_project_errors",
+        lambda project_id, shard_id="repo_shard_05": {"project_id": project_id, "content": "copy me"},
+    )
+    handler = _bare_dashboard_handler("/api/shards/shard05/projects/100/errors")
+
+    handler.do_GET()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    assert handler.response_status == 200
+    assert payload["project_id"] == "100"
+    assert payload["content"] == "copy me"
+
+
+def test_shard05_project_rerun_endpoint_writes_single_project_runtime_shard(monkeypatch, tmp_path):
+    shard_root = tmp_path / "shards"
+    runtime_root = tmp_path / "runtime_shards"
+    log_root = tmp_path / "logs"
+    config_root = tmp_path / "runtime_configs"
+    record_root = tmp_path / "run_records"
+    for path in (shard_root, runtime_root, log_root, config_root, record_root):
+        path.mkdir()
+    (shard_root / "repo_shard_05.txt").write_text("100\n200\n", encoding="utf-8")
+    captured = {}
+
+    def fake_start(payload):
+        captured.update(payload)
+        return {"id": "rerun-100", "request": payload}
+
+    monkeypatch.setattr(server, "SHARD_ROOT", shard_root)
+    monkeypatch.setattr(server, "RUNTIME_SHARD_ROOT", runtime_root)
+    monkeypatch.setattr(server, "LOG_ROOT", log_root)
+    monkeypatch.setattr(server, "RUNTIME_CONFIG_ROOT", config_root)
+    monkeypatch.setattr(server, "RUN_RECORD_ROOT", record_root)
+    monkeypatch.setattr(server, "_start_run", fake_start)
+    body = json.dumps(
+        {
+            "input_mode": "project",
+            "samples_per_project": "1",
+            "agents": ["a"],
+            "generation_prompts": ["zero-shot"],
+        }
+    ).encode("utf-8")
+    handler = _bare_dashboard_handler("/api/shards/shard05/projects/100/rerun")
+    handler.rfile = io.BytesIO(body)
+    handler.headers = {"Content-Length": str(len(body))}
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    runtime_shard = Path(captured["_resolved_repo_shard"])
+    assert handler.response_status == 201
+    assert payload["id"] == "rerun-100"
+    assert captured["run_scope"] == "shard"
+    assert captured["repo_shard"] == "repo_shard_05.txt"
+    assert captured["shard_id"] == "repo_shard_05"
+    assert captured["start_index"] == 0
+    assert captured["limit"] == 0
+    assert captured["selection"]["mode"] == "single_project"
+    assert runtime_shard.read_text(encoding="utf-8") == "100\n"
 
 
 def test_rq1_preview_endpoint_returns_latest_snapshot(monkeypatch):
