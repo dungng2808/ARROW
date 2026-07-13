@@ -16,6 +16,7 @@ except ImportError:  # pragma: no cover
 from .adaptive_repair import RepairRuntime, RepairTemplates, compare_module_to_baseline, run_adaptive_repair
 from .build_runner import BuildContext, verify_baseline, verify_module_tests, verify_target_test
 from .fs_utils import atomic_write_json, atomic_write_text, ensure_dir
+from .import_repair import repair_imports_for_context
 from .input_selector import count_dataset, select_inputs
 from .java_resolver import resolve_java_home
 from .llm_client import LiteLlmClient, LlmRequest, StaticLlmClient, record_token_usage, token_usage_report
@@ -26,7 +27,6 @@ from .project_analyzer import analyze_experiment
 from .prompt_builder import build_generation_prompt, load_template
 from .repo_manager import checkout_dataset_revision, clone_repo, ensure_experiment_workspace, safe_remove_tree
 from .report_writer import (
-    append_experiment_jsonl,
     ensure_paper_report_fields,
     load_experiment_jsonl,
     merge_rows,
@@ -175,6 +175,19 @@ def _experiment_dir(paths: OutputPaths, agent: AgentConfig, strategy: Generation
     return paths.sample_root / agent.name / strategy.name
 
 
+def _reset_experiment_dir(exp_dir: Path, sample_root: Path) -> bool:
+    """Start a rerun from a clean per-agent/per-prompt experiment directory.
+
+    The workspace copy is already recreated for every run, but verification and
+    repair artifacts live beside it (for example ``target_verification.json``
+    and ``repair/checkpoints``). If those files survive a rerun, dashboard error
+    views can combine the new log with stale failure artifacts from the previous
+    attempt. Removing the whole experiment directory keeps reruns auditable and
+    scoped to exactly one sample/agent/prompt.
+    """
+    return safe_remove_tree(exp_dir, sample_root)
+
+
 def _base_row(run_id: str, shard_id: str, sample: SampleInput, agent: AgentConfig, strategy: GenerationStrategy, paths: OutputPaths, exp_dir: Path) -> dict[str, Any]:
     return ensure_paper_report_fields({
         "run_id": run_id,
@@ -285,6 +298,12 @@ def _run_one_experiment(
     cached_repo: Path | None = None
     try:
         _log_event(f"START {sample.input_id} | project={sample.project_id} | agent={agent.name} | prompt={strategy.name}")
+        cleared_records = _clear_experiment_records(Path(str(row["reports_dir"])), row, config)
+        if cleared_records:
+            _log_event(f"CLEAN stale experiment records -> {', '.join(str(path) for path in cleared_records)}")
+        if _reset_experiment_dir(exp_dir, output_paths.sample_root):
+            _log_event(f"CLEAN previous experiment artifacts -> {exp_dir}")
+        ensure_dir(exp_dir)
         _log_event(f"CLONE/CACHE repo {sample.repository_url}")
         cached_repo = _prepare_repo(sample, config)
         row["repo_cache_path"] = str(cached_repo)
@@ -309,7 +328,6 @@ def _run_one_experiment(
                 "generated_test_path": str(context.generated_test_path),
             }
         )
-        ensure_dir(exp_dir)
         atomic_write_json(exp_dir / "context.json", {"context": context, "sample": sample.raw})
         build_cfg = config.get("build", {})
         maven_cfg = build_cfg.get("maven", {})
@@ -465,6 +483,18 @@ def _run_one_experiment(
             generated_test_class_name=context.generated_test_class_name,
             code=code,
         )
+        import_repair = repair_imports_for_context(code, context)
+        if import_repair.changed:
+            write_owned_generated_test(
+                experiment_id=experiment_id,
+                workspace=workspace,
+                generated_test_path=context.generated_test_path,
+                generated_test_class_name=context.generated_test_class_name,
+                code=import_repair.code,
+            )
+            code = import_repair.code
+            _log_event(f"IMPORT_REPAIR added={len(import_repair.added_imports)}")
+        atomic_write_json(exp_dir / "import_repair.json", import_repair.to_dict())
         _log_event(f"VERIFY target generated test {context.generated_test_class_name}")
         target = verify_target_test(build_context)
         _log_event(f"TARGET {_verification_label(target)}")
@@ -663,7 +693,44 @@ def _write_experiment_records(report_dir: Path, row: dict[str, Any], config: dic
     if report_cfg.get("write_per_experiment_json", True):
         write_experiment_json(result_path, row)
     if report_cfg.get("write_shard_jsonl", True):
-        append_experiment_jsonl(jsonl_path, row)
+        _upsert_experiment_jsonl(jsonl_path, row)
+
+
+def _clear_experiment_records(report_dir: Path, row: dict[str, Any], config: dict[str, Any]) -> list[Path]:
+    """Remove the previous logical result before a rerun starts.
+
+    The dashboard reads per-experiment ``result.json`` files directly. If a
+    rerun is in progress, the old result can otherwise remain visible until the
+    new attempt reaches report writing, which makes the shard error panel look
+    like it is showing a fresh failure when it is actually stale.
+    """
+    report_cfg = config.get("report", {})
+    result_path, jsonl_path = _report_records_paths(report_dir, row, config)
+    removed: list[Path] = []
+    if report_cfg.get("write_per_experiment_json", True) and result_path.is_file():
+        result_path.unlink()
+        removed.append(result_path)
+    if report_cfg.get("write_shard_jsonl", True) and jsonl_path.is_file():
+        existing = load_experiment_jsonl([jsonl_path])
+        kept = [item for item in existing if not _same_experiment_record(item, row)]
+        if len(kept) != len(existing):
+            write_merged_jsonl(jsonl_path, kept)
+            removed.append(jsonl_path)
+    return removed
+
+
+def _same_experiment_record(left: dict[str, Any], right: dict[str, Any]) -> bool:
+    keys = ("shard_id", "input_id", "agent_name", "generation_prompt_strategy")
+    return all(str(left.get(key, "")) == str(right.get(key, "")) for key in keys)
+
+
+def _upsert_experiment_jsonl(jsonl_path: Path, row: dict[str, Any]) -> None:
+    existing = [
+        item
+        for item in load_experiment_jsonl([jsonl_path])
+        if not _same_experiment_record(item, row)
+    ]
+    write_merged_jsonl(jsonl_path, [*existing, row])
 
 
 def _rewrite_experiment_records(rows: list[dict[str, Any]], config: dict[str, Any]) -> None:

@@ -6,6 +6,7 @@ from pathlib import Path
 
 from .build_runner import BuildContext, verify_module_tests, verify_target_test
 from .fs_utils import atomic_copy, atomic_write_json, atomic_write_text, ensure_dir, read_text_if_exists
+from .import_repair import repair_imports_for_context
 from .llm_client import LlmClient, LlmRequest, record_token_usage
 from .models import (
     ExperimentContext,
@@ -431,6 +432,20 @@ def run_adaptive_repair(
             generated_test_class_name=runtime.context.generated_test_class_name,
             code=candidate_code,
         )
+        import_repair = repair_imports_for_context(candidate_code, runtime.context)
+        if import_repair.changed:
+            write_owned_generated_test(
+                experiment_id=f"{runtime.context.run_id}:{runtime.context.shard_id}:{runtime.context.input_id}:{runtime.context.agent_name}:{runtime.context.generation_prompt}",
+                workspace=runtime.context.workspace,
+                generated_test_path=runtime.context.generated_test_path,
+                generated_test_class_name=runtime.context.generated_test_class_name,
+                code=import_repair.code,
+            )
+            candidate_code = import_repair.code
+            candidate_hash = code_hash(candidate_code)
+            atomic_write_text(path / "generated_test_after.java", candidate_code)
+            _repair_log(f"attempt={attempt_number} import_repair added={len(import_repair.added_imports)}")
+        atomic_write_json(path / "import_repair.json", import_repair.to_dict())
         runtime.attempted_hashes.add(candidate_hash)
         new = _verify_candidate(runtime)
         build_attempts += 1

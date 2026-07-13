@@ -51,4 +51,7 @@ Nếu bạn tải về dưới dạng zip hoặc folder khác, hãy giải nén 
 classes2test
 ```
 
-Pipeline sẽ đọc dữ liệu từ thư mục này để chạy. Nếu thư mục không tồn tại hoặc tên khác, chương trình sẽ không hoạt động đúng như mong đợi.
+Pipeline sẽ đọc dữ liệu từ thư mục này để chạy. Nếu thư mục không tồn tại hoặc tên khác, chương trình sẽ không hoạt động đúng như mong đợi
+
+
+

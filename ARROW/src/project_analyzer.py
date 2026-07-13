@@ -89,10 +89,29 @@ def _detect_testing_framework(deps: list[dict[str, str]]) -> str:
 
 def _detect_testing_framework_from_sources(sources: list[str]) -> str:
     source_text = "\n".join(sources)
-    if "org.junit.jupiter" in source_text or "@ExtendWith" in source_text:
-        return "junit5"
-    if "org.junit.Test" in source_text or "org.junit.Assert" in source_text or "@RunWith" in source_text or "junit.framework" in source_text:
+    junit4_markers = (
+        "org.junit.Test",
+        "org.junit.Before",
+        "org.junit.After",
+        "org.junit.BeforeClass",
+        "org.junit.AfterClass",
+        "org.junit.Assert",
+        "@RunWith",
+        "junit.framework",
+    )
+    junit5_markers = (
+        "org.junit.jupiter.api.Test",
+        "org.junit.jupiter.api.BeforeEach",
+        "org.junit.jupiter.api.AfterEach",
+        "org.junit.jupiter.api.BeforeAll",
+        "org.junit.jupiter.api.AfterAll",
+        "org.junit.jupiter.api.extension.ExtendWith",
+        "@ExtendWith",
+    )
+    if any(marker in source_text for marker in junit4_markers):
         return "junit4"
+    if any(marker in source_text for marker in junit5_markers):
+        return "junit5"
     if "org.testng" in source_text:
         return "testng"
     return "unknown"

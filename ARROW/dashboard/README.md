@@ -42,6 +42,16 @@ java-17: D:\Tools\jdk-17
 java-21: D:\Tools\jdk-21
 ```
 
+To download local Temurin JDKs into the repository folder `Java version` and
+generate a copy-ready map, run from the ARROW root:
+
+```powershell
+.\scripts\install-java-versions.ps1
+```
+
+The script installs `jdk-8`, `jdk-11`, `jdk-17`, and `jdk-21` by default and
+writes `Java version\java-version-map.txt`.
+
 This dashboard value is written to `build.java_homes` in the per-run runtime
 config. The `Java default` field is written to `build.java_default`.
 

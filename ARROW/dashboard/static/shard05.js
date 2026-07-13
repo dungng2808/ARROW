@@ -250,6 +250,36 @@ async function loadShard05Status() {
   renderShard05();
 }
 
+function clearProjectErrorPanel(message = "Không còn error artifact cho prompt đang chọn.") {
+  state.selectedProjectId = null;
+  state.selectedPrompt = "";
+  state.projectErrorContent = "";
+  $("#projectErrorTitle").textContent = "Error của project";
+  $("#projectErrorMeta").textContent = message;
+  $("#projectErrorContent").textContent = "Chưa chọn project lỗi.";
+  $("#copyProjectErrorsBtn").disabled = true;
+}
+
+function clearResolvedProjectErrorPanel(projects) {
+  if (!state.selectedProjectId) return;
+  const project = projects.find((item) => item.project_id === state.selectedProjectId);
+  if (!project) {
+    clearProjectErrorPanel("Project đang chọn không còn trong shard/status hiện tại.");
+    return;
+  }
+  if (!state.selectedPrompt) {
+    if (project.status !== "HAS_FAILURES") {
+      clearProjectErrorPanel("Project đang chọn hiện không còn lỗi.");
+    }
+    return;
+  }
+  const prompt = project.prompt_statuses?.[state.selectedPrompt];
+  if (!prompt || prompt.status !== "HAS_FAILURES") {
+    const label = RQ1_PROMPT_LABELS[state.selectedPrompt] || state.selectedPrompt;
+    clearProjectErrorPanel(`${label} hiện không còn lỗi trong dữ liệu mới nhất.`);
+  }
+}
+
 function shard05Kind(status) {
   if (status === "DONE") return "pass";
   if (status === "RUNNING") return "info";
@@ -306,6 +336,7 @@ function renderShard05() {
   $("#shard05Meta").textContent = `${formatNumber(summary.total_projects || projects.length)} project · ${formatNumber(
     summary.experiments_completed || 0,
   )} lượt chạy đã ghi nhận`;
+  clearResolvedProjectErrorPanel(projects);
   const cards = [
     ["Tổng project", summary.total_projects ?? projects.length, "idle"],
     ["Chưa chạy", summary.not_run || 0, "idle"],

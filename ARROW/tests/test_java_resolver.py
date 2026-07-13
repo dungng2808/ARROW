@@ -233,6 +233,21 @@ def test_resolve_accepts_plain_version_key_in_java_homes(tmp_path):
     assert selection.reason == "matched build.java_homes.11"
 
 
+def test_resolve_converts_relative_java_home_to_absolute(monkeypatch, tmp_path):
+    repo = tmp_path / "repo"
+    repo.mkdir()
+    (repo / ".java-version").write_text("11", encoding="utf-8")
+    configured_jdk = tmp_path / "Java version" / "jdk-11"
+    (configured_jdk / "bin").mkdir(parents=True)
+    (configured_jdk / "bin" / "java.exe").write_text("", encoding="utf-8")
+    monkeypatch.chdir(tmp_path)
+
+    selection = resolve_java_home(repo, repo, {"build": {"java_homes": {"java-11": "Java version\\jdk-11"}}})
+
+    assert selection.java_home == str(configured_jdk.resolve())
+    assert selection.reason == "matched build.java_homes.java-11"
+
+
 def test_resolve_manual_java_home_wins(tmp_path):
     repo = tmp_path / "repo"
     repo.mkdir()

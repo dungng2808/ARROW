@@ -84,6 +84,8 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert "copyRunLog" in javascript
     assert "state.runLogContent" in javascript
     assert "shard05DisplayRows" in javascript
+    assert "clearResolvedProjectErrorPanel" in javascript
+    assert "hiện không còn lỗi trong dữ liệu mới nhất" in javascript
     assert "state.shard05.experiments" in javascript
     assert "promptCell" in javascript
     assert "RQ1_PROMPT_LABELS" in javascript
@@ -885,6 +887,45 @@ def test_error_artifacts_include_every_failed_build_file(tmp_path):
     assert "\x1b" not in combined
     assert "===== mutation_prepare_build_output.txt =====" in combined
     assert "===== repair/checkpoints/attempt_1/build_output_after.txt =====" in combined
+
+
+def test_shard_project_errors_ignore_stale_logical_results(monkeypatch, tmp_path):
+    old_experiment = tmp_path / "old"
+    new_experiment = tmp_path / "new"
+    old_experiment.mkdir()
+    new_experiment.mkdir()
+    (old_experiment / "target_build_output.txt").write_text("BUILD FAILURE\nOLD ERROR", encoding="utf-8")
+    (new_experiment / "target_build_output.txt").write_text("BUILD SUCCESS", encoding="utf-8")
+    old_row = {
+        "run_id": "old-run",
+        "shard_id": "repo_shard_05",
+        "project_id": "101650961",
+        "input_id": "101650961_7",
+        "sample_id": "101650961_7",
+        "agent_name": "qwen-coder-2.5-7b",
+        "generation_prompt_strategy": "zero-shot-project-aware",
+        "test_passed": False,
+        "final_failure_state": "TEST_DISCOVERY_FAILED",
+        "finished_at": "2026-07-13T10:00:00+00:00",
+        "experiment_dir": str(old_experiment),
+    }
+    new_row = {
+        **old_row,
+        "run_id": "new-run",
+        "test_passed": True,
+        "final_failure_state": "MODULE_TESTS_PASSED",
+        "finished_at": "2026-07-13T11:00:00+00:00",
+        "experiment_dir": str(new_experiment),
+    }
+
+    monkeypatch.setattr(server, "_safe_shard_file", lambda name: tmp_path / name)
+    monkeypatch.setattr(server, "_shard_project_ids", lambda shard_file: ["101650961"])
+    monkeypatch.setattr(server, "_experiments", lambda: [old_row, new_row])
+
+    payload = server._shard_project_errors("101650961", prompt_strategy="zero-shot-project-aware")
+
+    assert payload["failed_experiments"] == 0
+    assert "OLD ERROR" not in payload["content"]
 
 
 def test_old_experiment_token_usage_is_read_from_generation_metadata(tmp_path):

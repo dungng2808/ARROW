@@ -254,6 +254,18 @@ def normalize_common_java_imports(code: str) -> str:
 
 
 def _normalize_junit5_imports(code: str) -> str:
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.Test\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.Before\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.After\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.BeforeClass\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.AfterClass\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.Ignore\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+static\s+org\.junit\.Assert\.\*\s*;\s*\n?", "", code)
+    code = re.sub(r"@\s*Before\b", "@BeforeEach", code)
+    code = re.sub(r"@\s*After\b", "@AfterEach", code)
+    code = re.sub(r"@\s*BeforeClass\b", "@BeforeAll", code)
+    code = re.sub(r"@\s*AfterClass\b", "@AfterAll", code)
+    code = re.sub(r"@\s*Ignore\b", "@Disabled", code)
     required: list[str] = []
     for annotation, import_line in {
         "Test": "import org.junit.jupiter.api.Test;",
@@ -271,10 +283,24 @@ def _normalize_junit5_imports(code: str) -> str:
 
 
 def _normalize_junit4_imports(code: str) -> str:
+    replacements = {
+        r"org\.junit\.jupiter\.api\.Test": "org.junit.Test",
+        r"org\.junit\.jupiter\.api\.BeforeEach": "org.junit.Before",
+        r"org\.junit\.jupiter\.api\.AfterEach": "org.junit.After",
+        r"org\.junit\.jupiter\.api\.BeforeAll": "org.junit.BeforeClass",
+        r"org\.junit\.jupiter\.api\.AfterAll": "org.junit.AfterClass",
+        r"org\.junit\.jupiter\.api\.Disabled": "org.junit.Ignore",
+        r"org\.junit\.jupiter\.api\.Assertions\.\*": "org.junit.Assert.*",
+    }
+    for old, new in replacements.items():
+        code = re.sub(old, new, code)
+    code = re.sub(r"(?m)^\s*import\s+org\.junit\.jupiter\.api\.[A-Za-z0-9_.*]+\s*;\s*\n?", "", code)
+    code = re.sub(r"(?m)^\s*import\s+static\s+org\.junit\.jupiter\.api\.Assertions\.[A-Za-z0-9_.*]+\s*;\s*\n?", "", code)
     code = re.sub(r"@\s*BeforeEach\b", "@Before", code)
     code = re.sub(r"@\s*AfterEach\b", "@After", code)
     code = re.sub(r"@\s*BeforeAll\b", "@BeforeClass", code)
     code = re.sub(r"@\s*AfterAll\b", "@AfterClass", code)
+    code = re.sub(r"@\s*Disabled\b", "@Ignore", code)
     required: list[str] = []
     for annotation, import_line in {
         "Test": "import org.junit.Test;",

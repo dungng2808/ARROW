@@ -42,20 +42,20 @@ build:
   # Exact Java version -> JDK home mapping.
   # The key can be java-8/java-11/java-17/java-21, jdk-17, or just "17".
   java_default:
-    windows: 'C:\Program Files\Java\jdk-17'
+    windows: 'Java version\jdk-17'
     linux: '/home/cuongpv/ARROW/Java-version/java-8'
   java_homes:
     java-8:
-      windows: 'C:\Program Files\Java\jdk1.8.0_202'
+      windows: 'Java version\jdk-8'
       linux: '/home/cuongpv/ARROW/Java-version/java-8'
     java-11:
-      windows: 'C:\Program Files\Java\jdk-11'
+      windows: 'Java version\jdk-11'
       linux: '/home/cuongpv/ARROW/Java-version/java-11'
     java-17:
-      windows: 'C:\Program Files\Java\jdk-17'
+      windows: 'Java version\jdk-17'
       linux: '/home/cuongpv/ARROW/Java-version/java-17'
     java-21:
-      windows: 'C:\Program Files\Java\jdk-21'
+      windows: 'Java version\jdk-21'
       linux: '/home/cuongpv/ARROW/Java-version/java-21'
 
 

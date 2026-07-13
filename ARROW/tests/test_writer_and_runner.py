@@ -188,6 +188,37 @@ public class FooTest_1234abcd {
     assert "import static org.junit.Assert.*;" in code
 
 
+def test_validate_java_converts_junit5_imports_to_junit4_when_context_is_junit4():
+    code, _digest = validate_java_candidate(
+        """package demo;
+
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
+import static org.junit.jupiter.api.Assertions.*;
+
+public class FooTest_1234abcd {
+    @BeforeEach
+    public void setUp() {
+    }
+
+    @Test
+    public void works() {
+        assertEquals(1, 1);
+    }
+}
+""",
+        expected_package="demo",
+        expected_class_name="FooTest_1234abcd",
+        testing_framework="junit4",
+    )
+
+    assert "junit.jupiter" not in code
+    assert "@Before" in code
+    assert "import org.junit.Before;" in code
+    assert "import org.junit.Test;" in code
+    assert "import static org.junit.Assert.*;" in code
+
+
 def test_validate_java_rejects_unrelated_class_name():
     with pytest.raises(JavaValidationError):
         validate_java_candidate(

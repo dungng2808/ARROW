@@ -360,7 +360,10 @@ def _normalize_java_map_key(key: Any) -> str:
 
 def _expand_path(value: Any) -> Path:
     text = str(value).strip().strip('"').strip("'")
-    return Path(os.path.expanduser(os.path.expandvars(text)))
+    path = Path(os.path.expanduser(os.path.expandvars(text)))
+    if not path.is_absolute():
+        path = Path.cwd() / path
+    return path.resolve()
 
 
 def _looks_like_java_home(path: Path) -> bool:

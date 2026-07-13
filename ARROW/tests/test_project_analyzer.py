@@ -53,3 +53,23 @@ def test_analyze_detects_junit4_from_existing_test_source(tmp_path):
     context, _module_root = analyze_experiment(sample=sample, workspace=workspace, run_id="r", shard_id="s", agent_name="a", generation_prompt="zero")
 
     assert context.testing_framework == "junit4"
+
+
+def test_analyze_prefers_junit4_annotations_over_junit5_assertion_import(tmp_path):
+    sample, workspace = make_sample(tmp_path, "pom.xml")
+    (workspace / "src/test/java/demo/FooTest.java").write_text(
+        """package demo;
+import org.junit.Before;
+import org.junit.Test;
+import static org.junit.jupiter.api.Assertions.*;
+public class FooTest {
+  @Before public void setUp() {}
+  @Test public void run() { assertTrue(true); }
+}
+""",
+        encoding="utf-8",
+    )
+
+    context, _module_root = analyze_experiment(sample=sample, workspace=workspace, run_id="r", shard_id="s", agent_name="a", generation_prompt="zero")
+
+    assert context.testing_framework == "junit4"

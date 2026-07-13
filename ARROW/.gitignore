@@ -1,0 +1,17 @@
+# Local downloaded JDKs. Recreate with:
+#   .\scripts\install-java-versions.ps1
+Java version/
+
+# Pipeline runtime artifacts
+runs/
+repos/
+export/
+dashboard/logs/
+dashboard/runtime_configs/
+dashboard/run_records/
+dashboard/runtime_shards/
+
+# Python generated files
+__pycache__/
+**/__pycache__/
+*.py[cod]

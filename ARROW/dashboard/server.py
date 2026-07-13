@@ -345,6 +345,33 @@ def _prompt_strategy(row: dict[str, Any]) -> str:
     return str(row.get("generation_prompt_strategy") or row.get("Prompt_Technique") or "").strip()
 
 
+def _experiment_logical_key(row: dict[str, Any]) -> tuple[str, str, str, str]:
+    return (
+        _safe_name(str(row.get("project_id") or row.get("Project_ID") or "")),
+        _first_value(row, ("sample_id", "input_id")),
+        str(row.get("agent_name") or row.get("Generator(LLM)") or ""),
+        _prompt_strategy(row),
+    )
+
+
+def _experiment_sort_key(row: dict[str, Any]) -> tuple[str, str, str, str]:
+    return (
+        str(row.get("finished_at") or ""),
+        str(row.get("started_at") or ""),
+        str(row.get("run_id") or ""),
+        str(row.get("result_path") or row.get("dashboard_id") or ""),
+    )
+
+
+def _latest_logical_experiment_rows(rows: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    latest: dict[tuple[str, str, str, str], dict[str, Any]] = {}
+    for row in rows:
+        key = _experiment_logical_key(row)
+        if key not in latest or _experiment_sort_key(row) > _experiment_sort_key(latest[key]):
+            latest[key] = row
+    return sorted(latest.values(), key=_experiment_sort_key, reverse=True)
+
+
 def _prompt_summary(rows: list[dict[str, Any]], prompt_strategy: str, log: dict[str, Any]) -> dict[str, Any]:
     prompt_rows = [row for row in rows if _prompt_strategy(row) == prompt_strategy]
     failed_rows = [row for row in prompt_rows if not _experiment_passed(row)]
@@ -466,7 +493,7 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
     projects = _shard_project_ids(shard_file)
     rows_by_project: dict[str, list[dict[str, Any]]] = {project: [] for project in projects}
     shard_experiments: list[dict[str, Any]] = []
-    for row in _experiments():
+    for row in _latest_logical_experiment_rows(_experiments()):
         project_id = _safe_name(str(row.get("project_id") or row.get("Project_ID") or ""))
         if project_id in rows_by_project and _shard_id_matches(row, shard_id):
             rows_by_project[project_id].append(row)
@@ -535,12 +562,12 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
 
 def _shard_project_rows(project_id: str, shard_id: str = "repo_shard_05") -> list[dict[str, Any]]:
     safe_project = _safe_name(project_id)
-    return [
+    return _latest_logical_experiment_rows([
         row
         for row in _experiments()
         if _safe_name(str(row.get("project_id") or row.get("Project_ID") or "")) == safe_project
         and _shard_id_matches(row, shard_id)
-    ]
+    ])
 
 
 def _fallback_error_summary(row: dict[str, Any]) -> str:
