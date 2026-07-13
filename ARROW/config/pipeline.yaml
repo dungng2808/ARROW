@@ -81,7 +81,7 @@ llm:
       # 2048 can truncate medium-sized Java tests and cause javac EOF errors.
       max_tokens: 8192
     - name: qwen-coder-2.5-7b
-      model: ollama/qwen-unit-test-elite-dataset-07-07:latest
+      model: ollama/qwen2.5-coder:1.5b
       api_base: http://localhost:11434
       temperature: 0
       num_ctx: 32768

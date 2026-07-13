@@ -65,11 +65,15 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert 'id="startShard05Btn"' in html
     assert 'id="projectErrorContent"' in html
     assert 'id="copyProjectErrorsBtn"' in html
+    assert 'id="copyRunLogBtn"' in html
+    assert 'id="copyRunLogStatus"' in html
     assert 'id="exportShard05MetricsBtn"' in html
     assert 'id="exportShard05MetricsStatus"' in html
-    assert "Zero-shot" in html
-    assert "Few-shot" in html
-    assert "Repository-aware" in html
+    for header in ["Sample", "Class", "Agent", "Prompt", "Tokens", "State", "Repair", "Coverage", "Mutation", "Time"]:
+        assert f"<th>{header}</th>" in html
+    assert "Zero-shot" in javascript
+    assert "Few-shot" in javascript
+    assert "Repository-aware" in javascript
     assert 'const SHARD05_FILE = "repo_shard_05.txt"' in javascript
     assert 'const SHARD05_ID = "repo_shard_05"' in javascript
     assert 'run_scope: "shard"' in javascript
@@ -77,6 +81,10 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert "shard_id: SHARD05_ID" in javascript
     assert "rerunProject" in javascript
     assert "loadProjectErrors" in javascript
+    assert "copyRunLog" in javascript
+    assert "state.runLogContent" in javascript
+    assert "shard05DisplayRows" in javascript
+    assert "state.shard05.experiments" in javascript
     assert "promptCell" in javascript
     assert "RQ1_PROMPT_LABELS" in javascript
     assert "exportShard05Metrics" in javascript
@@ -328,6 +336,10 @@ def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
     assert payload["summary"]["total_projects"] == 2
     assert payload["summary"]["done"] == 1
     assert payload["summary"]["not_run"] == 1
+    assert len(payload["experiments"]) == 1
+    assert (payload["experiments"][0].get("sample_id") or payload["experiments"][0].get("input_id")) == "100_0"
+    assert payload["experiments"][0]["agent_name"] == "a"
+    assert payload["experiments"][0]["generation_prompt_strategy"] == "zero-shot"
     by_project = {item["project_id"]: item for item in payload["projects"]}
     assert by_project["100"]["status"] == "DONE"
     assert by_project["100"]["experiments_completed"] == 1

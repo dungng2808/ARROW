@@ -15,6 +15,7 @@ const state = {
   selectedProjectId: null,
   selectedPrompt: "",
   projectErrorContent: "",
+  runLogContent: "",
   finishedRunIds: new Set(),
 };
 
@@ -36,6 +37,79 @@ function badge(text, kind = "idle") {
 function formatNumber(value) {
   const number = Number(value);
   return Number.isFinite(number) ? new Intl.NumberFormat("vi-VN").format(number) : "N/A";
+}
+
+function passKind(row) {
+  if (row.__status === "NOT_RUN") return "idle";
+  if (row.__status === "RUNNING") return "info";
+  if (row.module_tests_passed || row.final_failure_state === "MODULE_TESTS_PASSED") return "pass";
+  if (row.repair_status === "REPAIRED" || row.repair_status === "REGENERATED") return "warn";
+  if (row.target_test_passed || row.final_failure_state === "TARGET_TEST_PASSED") return "info";
+  return "fail";
+}
+
+function stateLabel(row) {
+  return row.__status || row.final_failure_state || row.initial_failure_state || (row.test_passed ? "PASSED" : "FAILED");
+}
+
+function repairKind(status) {
+  if (status === "NOT_NEEDED" || status === "REPAIRED") return "pass";
+  if (status === "REGENERATED") return "warn";
+  if (!status) return "idle";
+  return "fail";
+}
+
+function experimentProjectId(row) {
+  return String(row.project_id || row.Project_ID || row.__project_id || "").trim();
+}
+
+function experimentPrompt(row) {
+  return String(row.generation_prompt_strategy || row.Prompt_Technique || row.__prompt || "").trim();
+}
+
+function experimentSample(row) {
+  return String(row.sample_id || row.input_id || row.__sample_id || "").trim();
+}
+
+function experimentClass(row) {
+  return String(row.focal_class || row.Class_Under_Test || row.__focal_class || "").trim();
+}
+
+function isExperimentPassed(row) {
+  return row.module_tests_passed || row.test_passed || row.final_failure_state === "MODULE_TESTS_PASSED";
+}
+
+function shard05DisplayRows(projects, experiments) {
+  const byProject = new Map();
+  experiments.forEach((row) => {
+    const projectId = experimentProjectId(row);
+    if (!projectId) return;
+    if (!byProject.has(projectId)) byProject.set(projectId, []);
+    byProject.get(projectId).push(row);
+  });
+  return projects.flatMap((project) => {
+    const rows = byProject.get(project.project_id) || [];
+    if (rows.length) {
+      return rows.map((row) => ({
+        ...row,
+        __project_id: project.project_id,
+        __project_status: project.status,
+        __sample_id: experimentSample(row) || project.sample_id || project.sample_file,
+        __focal_class: experimentClass(row) || project.focal_class,
+      }));
+    }
+    return [
+      {
+        __project_id: project.project_id,
+        __project_status: project.status,
+        __status: project.status === "RUNNING" ? "RUNNING" : "NOT_RUN",
+        __sample_id: project.sample_id || project.sample_file,
+        __focal_class: project.focal_class,
+        agent_name: project.last_agent || "",
+        generation_prompt_strategy: project.last_prompt || "",
+      },
+    ];
+  });
 }
 
 async function api(path, options = {}) {
@@ -72,6 +146,7 @@ function bindEvents() {
   $("#exportShard05MetricsBtn").addEventListener("click", exportShard05Metrics);
   $("#selectRq1PromptsBtn").addEventListener("click", selectRq1Prompts);
   $("#copyProjectErrorsBtn").addEventListener("click", copyProjectErrors);
+  $("#copyRunLogBtn").addEventListener("click", copyRunLog);
   $("#clearPromptsBtn").addEventListener("click", () => {
     document.querySelectorAll('#promptOptions input[type="checkbox"]').forEach((input) => {
       input.checked = false;
@@ -219,6 +294,7 @@ function promptCell(project, promptStrategy) {
 function renderShard05() {
   const summary = state.shard05.summary || {};
   const projects = state.shard05.projects || [];
+  const experiments = state.shard05.experiments || [];
   if (state.shard05.error) {
     $("#shard05LockedMeta").textContent = state.shard05.error;
     $("#shard05Meta").textContent = state.shard05.error;
@@ -251,24 +327,22 @@ function renderShard05() {
 
   const query = ($("#shard05Search").value || "").trim().toLowerCase();
   const filter = $("#shard05StatusFilter").value;
-  const rows = projects.filter((project) => {
-    if (filter && project.status !== filter) return false;
+  const rows = shard05DisplayRows(projects, experiments).filter((row) => {
+    const projectStatus = row.__project_status || row.__status || "";
+    if (filter === "NOT_RUN" && row.__status !== "NOT_RUN") return false;
+    if (filter === "RUNNING" && projectStatus !== "RUNNING") return false;
+    if (filter === "HAS_FAILURES" && (row.__status === "NOT_RUN" || row.__status === "RUNNING" || isExperimentPassed(row))) return false;
+    if (filter === "DONE" && !isExperimentPassed(row)) return false;
     if (!query) return true;
     const haystack = [
-      project.project_id,
-      project.sample_id,
-      project.sample_file,
-      project.focal_class,
-      project.focal_class_path,
-      project.status,
-      project.last_agent,
-      project.last_prompt,
-      ...Object.values(project.prompt_statuses || {}).flatMap((prompt) => [
-        prompt.prompt_strategy,
-        prompt.status,
-        prompt.latest_failed_agent,
-        prompt.latest_failed_state,
-      ]),
+      experimentProjectId(row),
+      experimentSample(row),
+      experimentClass(row),
+      row.agent_name || row["Generator(LLM)"],
+      experimentPrompt(row),
+      row.repair_status,
+      stateLabel(row),
+      projectStatus,
     ]
       .join(" ")
       .toLowerCase();
@@ -276,49 +350,40 @@ function renderShard05() {
   });
   $("#shard05Rows").innerHTML = rows.length
     ? rows
-        .map(
-          (project) => `
-            <tr data-project="${escapeHtml(project.project_id)}" class="${state.selectedProjectId === project.project_id ? "selected" : ""}">
-              <td>${escapeHtml(project.index)}</td>
-              <td title="${escapeHtml(project.project_id)}">${escapeHtml(project.project_id)}</td>
-              <td title="${escapeHtml(project.sample_file || project.sample_id)}">${escapeHtml(project.sample_id || project.sample_file || "")}</td>
-              <td title="${escapeHtml(project.focal_class_path || project.focal_class)}">${escapeHtml(project.focal_class || "")}</td>
-              <td>${badge(shard05Label(project.status), shard05Kind(project.status))}</td>
-              <td>${formatNumber(project.experiments_completed || 0)}</td>
-              <td>${formatNumber(project.failed_experiments || 0)}</td>
-              <td>${promptCell(project, "zero-shot")}</td>
-              <td>${promptCell(project, "few-shot")}</td>
-              <td>${promptCell(project, "zero-shot-project-aware")}</td>
-              <td>
-                ${
-                  project.status === "HAS_FAILURES"
-                    ? `<div class="row-actions">
-                        <button class="mini-secondary view-project-errors" type="button" data-project="${escapeHtml(project.project_id)}" data-prompt="">Xem tất cả lỗi</button>
-                      </div>`
-                    : `<span class="muted-text">—</span>`
-                }
-              </td>
+        .map((row) => {
+          const coverage = row.coverage_line || row["Line_Coverage%"] || "";
+          const mutation = row.mutation_score || row["Mutation_Score%"] || "";
+          const projectId = experimentProjectId(row);
+          const prompt = experimentPrompt(row);
+          const failed = row.__status !== "NOT_RUN" && row.__status !== "RUNNING" && !isExperimentPassed(row);
+          return `
+            <tr
+              data-project="${escapeHtml(projectId)}"
+              data-prompt="${escapeHtml(prompt)}"
+              class="${state.selectedProjectId === projectId && (!state.selectedPrompt || state.selectedPrompt === prompt) ? "selected" : ""}${failed ? " clickable" : ""}"
+              title="${failed ? "Click để xem error artifact" : ""}"
+            >
+              <td>${escapeHtml(experimentSample(row))}</td>
+              <td>${escapeHtml(experimentClass(row))}</td>
+              <td>${escapeHtml(row.agent_name || row["Generator(LLM)"] || "")}</td>
+              <td>${escapeHtml(prompt)}</td>
+              <td>${row.llm_total_tokens ? escapeHtml(formatNumber(row.llm_total_tokens)) : ""}</td>
+              <td>${badge(stateLabel(row), passKind(row))}</td>
+              <td>${badge(row.repair_status || "", repairKind(row.repair_status))}</td>
+              <td>${escapeHtml(coverage ? `${coverage}%` : "")}</td>
+              <td>${escapeHtml(mutation ? `${mutation}%` : "")}</td>
+              <td>${escapeHtml(row.elapsed_seconds || "")}</td>
             </tr>
-          `,
-        )
+          `;
+        })
         .join("")
-    : `<tr><td colspan="10">Không có project nào khớp bộ lọc hiện tại.</td></tr>`;
+    : `<tr><td colspan="10">Không có experiment nào khớp bộ lọc hiện tại.</td></tr>`;
   document.querySelectorAll("#shard05Rows tr[data-project]").forEach((row) => {
     row.addEventListener("click", () => {
-      const project = rows.find((item) => item.project_id === row.dataset.project);
-      if (project?.status === "HAS_FAILURES") loadProjectErrors(project.project_id);
-    });
-  });
-  document.querySelectorAll(".view-project-errors").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      loadProjectErrors(button.dataset.project, button.dataset.prompt || "");
-    });
-  });
-  document.querySelectorAll(".rerun-project").forEach((button) => {
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      rerunProject(button.dataset.project, button.dataset.prompt || "");
+      const item = rows.find((candidate) => experimentProjectId(candidate) === row.dataset.project && experimentPrompt(candidate) === (row.dataset.prompt || ""));
+      if (item && item.__status !== "NOT_RUN" && item.__status !== "RUNNING" && !isExperimentPassed(item)) {
+        loadProjectErrors(row.dataset.project, row.dataset.prompt || "");
+      }
     });
   });
 }
@@ -502,14 +567,18 @@ function fallbackCopy(text) {
   textarea.remove();
 }
 
+async function copyText(text) {
+  if (navigator.clipboard?.writeText) {
+    await navigator.clipboard.writeText(text);
+  } else {
+    fallbackCopy(text);
+  }
+}
+
 async function copyProjectErrors() {
   if (!state.projectErrorContent.trim()) return;
   try {
-    if (navigator.clipboard?.writeText) {
-      await navigator.clipboard.writeText(state.projectErrorContent);
-    } else {
-      fallbackCopy(state.projectErrorContent);
-    }
+    await copyText(state.projectErrorContent);
     $("#copyProjectErrorStatus").textContent = "Đã copy";
   } catch (_error) {
     fallbackCopy(state.projectErrorContent);
@@ -518,6 +587,22 @@ async function copyProjectErrors() {
   window.clearTimeout(copyProjectErrors.timer);
   copyProjectErrors.timer = window.setTimeout(() => {
     $("#copyProjectErrorStatus").textContent = "";
+  }, 1800);
+}
+
+async function copyRunLog() {
+  const content = state.runLogContent || $("#runLog").textContent || "";
+  if (!content.trim()) return;
+  try {
+    await copyText(content);
+    $("#copyRunLogStatus").textContent = "Đã copy";
+  } catch (_error) {
+    fallbackCopy(content);
+    $("#copyRunLogStatus").textContent = "Đã copy";
+  }
+  window.clearTimeout(copyRunLog.timer);
+  copyRunLog.timer = window.setTimeout(() => {
+    $("#copyRunLogStatus").textContent = "";
   }, 1800);
 }
 
@@ -574,12 +659,18 @@ async function loadSelectedRunLog() {
   const run = selectedRun();
   if (!run) {
     $("#logTitle").textContent = "Log";
+    state.runLogContent = "";
     $("#runLog").textContent = "Chưa chọn run.";
+    $("#copyRunLogBtn").disabled = true;
+    $("#copyRunLogStatus").textContent = "";
     return;
   }
   const payload = await api(`/api/runs/${encodeURIComponent(run.id)}/logs`);
   $("#logTitle").textContent = `Log ${run.id}`;
-  $("#runLog").textContent = payload.logs || "Run chưa có log.";
+  state.runLogContent = payload.logs || "";
+  $("#runLog").textContent = state.runLogContent || "Run chưa có log.";
+  $("#copyRunLogBtn").disabled = !state.runLogContent.trim();
+  $("#copyRunLogStatus").textContent = "";
 }
 
 init().catch((error) => {

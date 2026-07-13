@@ -465,10 +465,12 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         raise ValueError(f"Không tìm thấy shard {shard_id}")
     projects = _shard_project_ids(shard_file)
     rows_by_project: dict[str, list[dict[str, Any]]] = {project: [] for project in projects}
+    shard_experiments: list[dict[str, Any]] = []
     for row in _experiments():
         project_id = _safe_name(str(row.get("project_id") or row.get("Project_ID") or ""))
         if project_id in rows_by_project and _shard_id_matches(row, shard_id):
             rows_by_project[project_id].append(row)
+            shard_experiments.append(row)
     log_status = _latest_project_log_status(shard_id)
     items = []
     for index, project_id in enumerate(projects, start=1):
@@ -522,7 +524,13 @@ def _shard_status(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         "experiments_completed": sum(int(item["experiments_completed"]) for item in items),
         "failed_experiments": sum(int(item["failed_experiments"]) for item in items),
     }
-    return {"shard_id": shard_id, "shard_file": str(shard_file), "summary": summary, "projects": items}
+    return {
+        "shard_id": shard_id,
+        "shard_file": str(shard_file),
+        "summary": summary,
+        "projects": items,
+        "experiments": shard_experiments,
+    }
 
 
 def _shard_project_rows(project_id: str, shard_id: str = "repo_shard_05") -> list[dict[str, Any]]:

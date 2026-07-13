@@ -132,17 +132,16 @@
           <table class="shard05-table">
             <thead>
               <tr>
-                <th>#</th>
-                <th>Project</th>
                 <th>Sample</th>
-                <th>Focal class</th>
-                <th>Trạng thái</th>
-                <th>Đã chạy</th>
-                <th>Lỗi</th>
-                <th>Zero-shot</th>
-                <th>Few-shot</th>
-                <th>Repository-aware</th>
-                <th>Hành động</th>
+                <th>Class</th>
+                <th>Agent</th>
+                <th>Prompt</th>
+                <th>Tokens</th>
+                <th>State</th>
+                <th>Repair</th>
+                <th>Coverage</th>
+                <th>Mutation</th>
+                <th>Time</th>
               </tr>
             </thead>
             <tbody id="shard05Rows"></tbody>
@@ -181,6 +180,12 @@
             <div>
               <h2 id="logTitle">Log</h2>
               <span>Log của run đang chọn.</span>
+            </div>
+            <div class="error-actions">
+              <small id="copyRunLogStatus"></small>
+              <button id="copyRunLogBtn" class="icon-btn" type="button" title="Copy log" aria-label="Copy log" disabled>
+                <i data-lucide="copy"></i>
+              </button>
             </div>
           </div>
           <pre id="runLog" class="shard05-run-log"></pre>
