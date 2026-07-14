@@ -262,7 +262,10 @@ async function exportRq2() {
     `;
   } catch (error) {
     status.className = "shard05-export-status error";
-    status.textContent = error.message || "Không xuất được RQ2.";
+    const message = error.message || "Không xuất được RQ2.";
+    status.textContent = message === "Unknown CSV export type"
+      ? "Backend dashboard chưa nạp API RQ2. Hãy dừng và khởi động lại dashboard rồi thử lại."
+      : message;
   } finally {
     button.disabled = false;
   }
