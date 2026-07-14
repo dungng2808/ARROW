@@ -34,6 +34,7 @@ from src.rq1_export import (
     save_rq1_workbook,
 )
 from src.run_pipeline import _merge_reports
+from src.metrics_recompute import recompute_metrics
 
 
 PROJECT_ROOT = Path(__file__).resolve().parents[1]
@@ -52,6 +53,7 @@ RUNS: dict[str, dict[str, Any]] = {}
 RUN_LOCK = threading.Lock()
 MERGE_LOCK = threading.Lock()
 RQ1_EXPORT_LOCK = threading.Lock()
+METRICS_RERUN_LOCK = threading.Lock()
 DISCONNECTED_ERRORS = (BrokenPipeError, ConnectionResetError, ConnectionAbortedError)
 RQ1_EXPORT_FILENAMES = {
     "summary": "rq1_summary.csv",
@@ -1563,6 +1565,24 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                     return _json_response(self, _start_shard05_project_run(project_id, payload), status=201)
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=422)
+            if parsed.path.startswith("/api/experiments/") and parsed.path.endswith("/recompute-metrics"):
+                parts = parsed.path.strip("/").split("/")
+                if len(parts) != 4 or not parts[2]:
+                    return _json_response(self, {"error": "Experiment not found"}, status=404)
+                if not METRICS_RERUN_LOCK.acquire(blocking=False):
+                    return _json_response(self, {"error": "Đang có một lượt đo lại metrics khác chạy"}, status=409)
+                try:
+                    result_path = _decode_result_path(parts[2])
+                    result = recompute_metrics(
+                        result_path=result_path,
+                        project_root=PROJECT_ROOT,
+                        config=_project_config(),
+                    )
+                    return _json_response(self, result, status=201)
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=422)
+                finally:
+                    METRICS_RERUN_LOCK.release()
             if parsed.path.startswith("/api/reports/export/"):
                 export_kind = parsed.path.removeprefix("/api/reports/export/").strip("/")
                 if export_kind not in RQ1_EXPORT_FILENAMES:

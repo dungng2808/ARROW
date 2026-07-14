@@ -97,6 +97,8 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert "/api/reports/export/shard05" in javascript
     assert "exportRq2" in javascript
     assert "/api/reports/export/rq2" in javascript
+    assert "recomputeExperimentMetrics" in javascript
+    assert "/recompute-metrics" in javascript
     assert "only_generated_failures" in javascript
     assert "/api/shards/shard05/projects/" in javascript
     assert 'api("/api/runs"' in javascript
@@ -329,6 +331,26 @@ def test_rq2_export_endpoint_calls_server_export(monkeypatch):
     assert payload["export_type"] == "rq2_repair"
     assert payload["rows"] == 2
     assert calls == [("repo_shard_05", {"only_generated_failures": True})]
+
+
+def test_recompute_metrics_endpoint_does_not_start_pipeline(monkeypatch, tmp_path):
+    calls = []
+    result_path = tmp_path / "result.json"
+    monkeypatch.setattr(server, "_decode_result_path", lambda token: result_path)
+    monkeypatch.setattr(
+        server,
+        "recompute_metrics",
+        lambda **kwargs: (calls.append(kwargs) or {"status": "completed", "metrics": {"coverage_line": "80.00"}}),
+    )
+    monkeypatch.setattr(server, "_project_config", lambda: {"metrics": {"coverage": True}})
+    handler = _bare_dashboard_handler("/api/experiments/token/recompute-metrics")
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    assert handler.response_status == 201
+    assert payload["status"] == "completed"
+    assert calls and calls[0]["result_path"] == result_path
 
 
 def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):

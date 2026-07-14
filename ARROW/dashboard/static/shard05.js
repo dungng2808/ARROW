@@ -428,6 +428,9 @@ function renderShard05() {
           const action = failed && prompt
             ? `<button class="danger-secondary mini-row-action rerun-row" type="button" data-project="${escapeHtml(projectId)}" data-prompt="${escapeHtml(prompt)}" data-agent="${escapeHtml(agent)}">Chạy lại</button>`
             : "";
+          const metricsAction = row.dashboard_id
+            ? `<button class="mini-secondary mini-row-action recompute-metrics-row" type="button" data-experiment="${escapeHtml(row.dashboard_id)}">\u0110o lại metrics</button>`
+            : "";
           return `
             <tr
               data-project="${escapeHtml(projectId)}"
@@ -445,7 +448,7 @@ function renderShard05() {
               <td>${escapeHtml(coverage ? `${coverage}%` : "")}</td>
               <td>${escapeHtml(mutation ? `${mutation}%` : "")}</td>
               <td>${escapeHtml(row.elapsed_seconds || "")}</td>
-              <td>${action}</td>
+              <td>${action}${metricsAction}</td>
             </tr>
           `;
         })
@@ -457,6 +460,12 @@ function renderShard05() {
       rerunProject(button.dataset.project || "", button.dataset.prompt || "", button.dataset.agent || "");
     });
   });
+  document.querySelectorAll("#shard05Rows .recompute-metrics-row").forEach((button) => {
+    button.addEventListener("click", async (event) => {
+      event.stopPropagation();
+      await recomputeExperimentMetrics(button.dataset.experiment || "", button);
+    });
+  });
   document.querySelectorAll("#shard05Rows tr[data-project]").forEach((row) => {
     row.addEventListener("click", () => {
       const item = rows.find((candidate) => experimentProjectId(candidate) === row.dataset.project && experimentPrompt(candidate) === (row.dataset.prompt || ""));
@@ -465,6 +474,30 @@ function renderShard05() {
       }
     });
   });
+}
+
+async function recomputeExperimentMetrics(experimentId, button) {
+  if (!experimentId) return;
+  const original = button.textContent;
+  button.disabled = true;
+  button.textContent = "\u0110ang đo...";
+  setActionStatus("\u0110ang đo lại Coverage/PIT/tsDetect, không gọi LLM...", "");
+  try {
+    const result = await api(`/api/experiments/${encodeURIComponent(experimentId)}/recompute-metrics`, {
+      method: "POST",
+      body: "{}",
+    });
+    const metrics = result.metrics || {};
+    const line = metrics.coverage_line || "N/A";
+    const mutation = metrics.mutation_score || "N/A";
+    setActionStatus(`\u0110ã đo lại metrics: Line ${line}% · Mutation ${mutation}%. Không gọi LLM.`, "success");
+    await loadShard05Status();
+  } catch (error) {
+    setActionStatus(error.message || "Không đo lại metrics được.", "error");
+  } finally {
+    button.disabled = false;
+    button.textContent = original;
+  }
 }
 
 async function loadRuns() {
