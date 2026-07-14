@@ -22,6 +22,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
+from src.experiment_filters import filter_label, filter_rows
 from src.report_writer import load_experiment_jsonl, write_class_report, write_mean_report, write_rq1_exports
 from src.rq2_export import build_rq2_rows, write_rq2_csv
 from src.rq1_export import (
@@ -444,22 +445,27 @@ def _save_shard_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
     }
 
 
-def _save_rq2_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
+def _save_rq2_export(shard_id: str = "repo_shard_05", *, only_generated_failures: bool = True) -> dict[str, Any]:
     """Export the RQ2 repair table for the latest logical shard results."""
     merged = _merge_reports_now()
     output_dir = Path(str(merged.get("output_dir") or PROJECT_ROOT / "runs" / "merged"))
     merged_jsonl = Path(str(merged.get("artifacts", {}).get("merged_jsonl") or output_dir / "experiments_merged.jsonl"))
     raw_rows = [row for row in load_experiment_jsonl([merged_jsonl]) if _shard_id_matches(row, shard_id)]
-    rows = _latest_logical_experiment_rows(raw_rows)
-    if not rows:
+    source_rows = _latest_logical_experiment_rows(raw_rows)
+    if not source_rows:
         raise ValueError(f"Không có dữ liệu đã chạy cho shard {shard_id}")
+    mode = "baseline_passed_generated_failed" if only_generated_failures else "all"
+    rows, filter_stats = filter_rows(source_rows, mode=mode)
+    if not rows:
+        raise ValueError("Không có experiment nào thỏa điều kiện lọc RQ2")
     summary_rows = build_rq2_rows(rows)
     if not summary_rows:
         raise ValueError(f"Không có dữ liệu repair hợp lệ cho shard {shard_id}")
 
     SHARD_EXPORT_ROOT.mkdir(parents=True, exist_ok=True)
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    base_name = f"{_safe_name(shard_id)}_rq2_{timestamp}"
+    suffix_label = "filtered" if only_generated_failures else "all"
+    base_name = f"{_safe_name(shard_id)}_rq2_{suffix_label}_{timestamp}"
     destination = SHARD_EXPORT_ROOT / f"{base_name}.csv"
     suffix = 2
     while destination.exists():
@@ -479,7 +485,11 @@ def _save_rq2_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         "path": str(destination),
         "relative_path": relative_path,
         "rows": len(summary_rows),
-        "source_experiments": len(rows),
+        "source_experiments": len(source_rows),
+        "selected_experiments": len(rows),
+        "excluded_experiments": len(source_rows) - len(rows),
+        "filter_mode": filter_label(mode),
+        "excluded_reasons": {key: value for key, value in filter_stats.items() if key not in {"selected", "excluded"}},
         "mechanisms": [row["Repair mechanism"] for row in summary_rows],
         "warning": "Repair time falls back to total experiment time for legacy records without repair_time_seconds.",
     }
@@ -682,7 +692,11 @@ def _rq1_preview(query: str = "") -> dict[str, Any]:
     paired_page = int(params.get("paired_page", ["1"])[0])
     details_page = int(params.get("details_page", ["1"])[0])
     page_size = int(params.get("page_size", ["50"])[0])
-    snapshot = load_rq1_snapshot(PROJECT_ROOT / "runs")
+    raw_filter = params.get("baseline_valid_only", ["true"])[0].strip().lower()
+    if raw_filter not in {"true", "false", "1", "0", "yes", "no"}:
+        raise ValueError("baseline_valid_only phải là boolean")
+    baseline_valid_only = raw_filter in {"true", "1", "yes"}
+    snapshot = load_rq1_snapshot(PROJECT_ROOT / "runs", baseline_valid_only=baseline_valid_only)
     return build_rq1_preview(
         snapshot,
         paired_page=paired_page,
@@ -691,11 +705,11 @@ def _rq1_preview(query: str = "") -> dict[str, Any]:
     )
 
 
-def _save_rq1_workbook(preview_revision: str = "") -> dict[str, Any]:
+def _save_rq1_workbook(preview_revision: str = "", *, baseline_valid_only: bool = True) -> dict[str, Any]:
     if not RQ1_EXPORT_LOCK.acquire(blocking=False):
         raise RuntimeError("Đang có yêu cầu xuất RQ1 khác chạy")
     try:
-        snapshot = load_rq1_snapshot(PROJECT_ROOT / "runs")
+        snapshot = load_rq1_snapshot(PROJECT_ROOT / "runs", baseline_valid_only=baseline_valid_only)
         return save_rq1_workbook(
             RQ1_EXPORT_ROOT,
             PROJECT_ROOT,
@@ -1492,7 +1506,13 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 length = int(self.headers.get("Content-Length", "0"))
                 payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
                 try:
-                    result = _save_rq1_workbook(str(payload.get("preview_revision") or ""))
+                    baseline_valid_only = payload.get("baseline_valid_only", True)
+                    if not isinstance(baseline_valid_only, bool):
+                        raise ValueError("baseline_valid_only phải là boolean")
+                    result = _save_rq1_workbook(
+                        str(payload.get("preview_revision") or ""),
+                        baseline_valid_only=baseline_valid_only,
+                    )
                     return _json_response(self, result, status=201)
                 except RQ1ExcelLimitError as exc:
                     return _json_response(
@@ -1507,6 +1527,8 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                     )
                 except RQ1NoDataError as exc:
                     return _json_response(self, {"error": str(exc)}, status=422)
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=422)
                 except RQ1SnapshotChangedError as exc:
                     return _json_response(self, {"error": str(exc)}, status=409)
                 except RuntimeError as exc:
@@ -1519,8 +1541,17 @@ class DashboardHandler(SimpleHTTPRequestHandler):
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=422)
             if parsed.path == "/api/reports/export/rq2":
+                length = int(self.headers.get("Content-Length", "0"))
+                payload = json.loads(self.rfile.read(length).decode("utf-8") or "{}")
                 try:
-                    return _json_response(self, _save_rq2_export("repo_shard_05"), status=201)
+                    only_generated_failures = payload.get("only_generated_failures", True)
+                    if not isinstance(only_generated_failures, bool):
+                        raise ValueError("only_generated_failures phải là boolean")
+                    return _json_response(
+                        self,
+                        _save_rq2_export("repo_shard_05", only_generated_failures=only_generated_failures),
+                        status=201,
+                    )
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=422)
             if parsed.path.startswith("/api/shards/shard05/projects/") and parsed.path.endswith("/rerun"):

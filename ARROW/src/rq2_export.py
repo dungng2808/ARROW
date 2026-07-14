@@ -13,6 +13,8 @@ import statistics
 from pathlib import Path
 from typing import Any
 
+from .experiment_filters import infrastructure_failure, initial_failed
+
 
 RQ2_COLUMNS = [
     "Repair mechanism",
@@ -32,8 +34,6 @@ _NON_COMPILE_STATES = {
     "BASELINE_BUILD_FAILED",
     "MODULE_BUILD_FAILED",
 }
-_NON_REPAIR_ORIGINS = {"INFRASTRUCTURE", "EXISTING_PROJECT"}
-_NON_REPAIR_STATES = {"TOOL_ERROR", "BASELINE_BUILD_FAILED", "MODULE_BUILD_FAILED"}
 _MECHANISM_ORDER = {"No Repair": 0, "Fixed Repair": 1, "Adaptive Repair": 2}
 
 
@@ -71,11 +71,7 @@ def _passed(row: dict[str, Any]) -> bool:
 
 
 def _initial_failure_is_repairable(row: dict[str, Any]) -> bool:
-    state = _state(row)
-    if not state or state in _PASS_STATES or state in _NON_REPAIR_STATES:
-        return False
-    origin = str(row.get("initial_failure_origin") or "").strip().upper()
-    return origin not in _NON_REPAIR_ORIGINS
+    return initial_failed(row) and not infrastructure_failure(row)
 
 
 def repair_attempted(row: dict[str, Any]) -> bool:

@@ -106,6 +106,40 @@ def test_preview_uses_complete_triplet_and_validates_pagination(tmp_path):
         build_rq1_preview(snapshot, page_size=10)
 
 
+def test_snapshot_strict_filter_keeps_baseline_valid_generated_pass_and_fail(tmp_path):
+    runs_dir = tmp_path / "runs"
+    rows = [
+        {
+            **_row("zero-shot", input_id="valid-pass"),
+            "baseline_state": "MODULE_TESTS_PASSED",
+            "initial_failure_origin": "UNKNOWN",
+        },
+        {
+            **_row("few-shot", input_id="valid-fail", initial_state="COMPILE_FAILED", final_state="COMPILE_FAILED"),
+            "baseline_state": "MODULE_TESTS_PASSED",
+            "initial_failure_origin": "GENERATED_TEST",
+        },
+        {
+            **_row("zero-shot-project-aware", input_id="infra"),
+            "baseline_state": "TOOL_ERROR",
+            "initial_failure_origin": "INFRASTRUCTURE",
+        },
+    ]
+    _write_jsonl(runs_dir, rows)
+
+    snapshot = load_rq1_snapshot(runs_dir, baseline_valid_only=True)
+    preview = build_rq1_preview(snapshot)
+
+    assert snapshot.filter_mode == "baseline_valid"
+    assert snapshot.filter_source_rows == 3
+    assert snapshot.selected_rows == 2
+    assert snapshot.excluded_rows == 1
+    assert preview["filter_mode"] == "baseline_valid"
+    assert preview["selected_rows"] == 2
+    assert preview["excluded_rows"] == 1
+    assert preview["details"]["total_rows"] == 2
+
+
 def test_preview_result_tables_include_model_breakdown(tmp_path):
     runs_dir = tmp_path / "runs"
     rows = [

@@ -252,11 +252,17 @@ async function exportRq2() {
   status.className = "shard05-export-status";
   status.textContent = "Đang xuất bảng RQ2 Repair...";
   try {
-    const result = await api("/api/reports/export/rq2", { method: "POST", body: "{}" });
+    const onlyGeneratedFailures = $("#rq2GeneratedOnly").checked;
+    const result = await api("/api/reports/export/rq2", {
+      method: "POST",
+      body: JSON.stringify({only_generated_failures: onlyGeneratedFailures}),
+    });
     status.className = "shard05-export-status success";
     status.innerHTML = `
       <div><strong>Đã xuất ${formatNumber(result.rows)} dòng RQ2.</strong></div>
       <div>File trên server: <code>${escapeHtml(result.relative_path || result.path)}</code></div>
+      <div>Đã chọn: <strong>${formatNumber(result.selected_experiments || 0)}</strong> / ${formatNumber(result.source_experiments || 0)} experiment · loại ${formatNumber(result.excluded_experiments || 0)}</div>
+      <div>Chế độ: <code>${escapeHtml(result.filter_mode || "all")}</code></div>
       <div>Cơ chế có dữ liệu: <code>${escapeHtml((result.mechanisms || []).join(", ") || "N/A")}</code></div>
       <small>${escapeHtml(result.warning || "")}</small>
     `;

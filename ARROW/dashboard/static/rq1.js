@@ -256,7 +256,12 @@ async function loadPreview() {
   status.className = "rq1-action-status";
   status.textContent = "Đang tải snapshot RQ1 mới nhất…";
   try {
-    const query = new URLSearchParams({paired_page: state.pairedPage, details_page: state.detailsPage, page_size: state.pageSize});
+    const query = new URLSearchParams({
+      paired_page: state.pairedPage,
+      details_page: state.detailsPage,
+      page_size: state.pageSize,
+      baseline_valid_only: $("#rq1BaselineValidOnly").checked ? "true" : "false",
+    });
     state.preview = await api(`/api/reports/rq1/preview?${query}`);
     renderPreview();
     status.textContent = "";
@@ -274,7 +279,10 @@ async function loadPreview() {
 function renderPreview() {
   const payload = state.preview;
   const generated = new Date(payload.generated_at);
-  $("#snapshotMeta").textContent = `${formatNumber(payload.source_files)} file JSONL · ${formatNumber(payload.source_rows)} dòng nguồn · snapshot ${Number.isNaN(generated.getTime()) ? payload.generated_at : generated.toLocaleString("vi-VN")}`;
+  const selected = payload.selected_rows ?? payload.filter_source_rows ?? payload.details?.total_rows ?? 0;
+  const source = payload.filter_source_rows ?? payload.source_rows ?? 0;
+  const excluded = payload.excluded_rows ?? Math.max(0, source - selected);
+  $("#snapshotMeta").textContent = `${formatNumber(payload.source_files)} file JSONL · ${formatNumber(payload.source_rows)} dòng nguồn · lọc ${payload.filter_mode || "all"} · chọn ${formatNumber(selected)} / ${formatNumber(source)} · loại ${formatNumber(excluded)} · snapshot ${Number.isNaN(generated.getTime()) ? payload.generated_at : generated.toLocaleString("vi-VN")}`;
   renderReadiness(payload.readiness);
   renderStrategies(payload.strategies, payload.primary_scope);
   renderResultTables(payload.result_tables || {});
@@ -306,9 +314,22 @@ function renderReadiness(readiness) {
   ];
   $("#readinessGrid").innerHTML = items.map(([label, value]) => `<div class="rq1-kpi"><span>${escapeHtml(label)}</span><strong>${escapeHtml(formatNumber(value))}</strong></div>`).join("");
   const warning = $("#readinessWarning");
-  if (readiness.warning) {
+  const filter = state.preview || {};
+  const filterReasons = filter.excluded_reasons || {};
+  const reasonText = [
+    ["baseline_failed", "baseline không đạt"],
+    ["infrastructure_error", "lỗi hạ tầng"],
+    ["baseline_unknown", "baseline không xác định"],
+  ]
+    .filter(([key]) => Number(filterReasons[key] || 0) > 0)
+    .map(([key, label]) => `${label}: ${formatNumber(filterReasons[key])}`)
+    .join(", ");
+  const filterText = Number(filter.excluded_rows || 0) > 0
+    ? `Đã loại ${formatNumber(filter.excluded_rows)} bản ghi theo bộ lọc${reasonText ? ` (${reasonText})` : ""}.`
+    : "";
+  if (readiness.warning || filterText) {
     const missing = readiness.missing_strategies?.length ? ` Thiếu dữ liệu cho: ${readiness.missing_strategies.join(", ")}.` : "";
-    warning.textContent = readiness.warning + "." + missing;
+    warning.textContent = [readiness.warning ? `${readiness.warning}.` : "", filterText, missing].filter(Boolean).join(" ");
     warning.classList.remove("hidden");
   } else {
     warning.textContent = "";
@@ -412,11 +433,17 @@ async function exportRq1() {
   status.className = "rq1-action-status";
   status.textContent = "Đang tạo workbook RQ1 mới nhất…";
   try {
-    const result = await api("/api/reports/export/rq1", {method: "POST", body: JSON.stringify({preview_revision: state.preview.source_revision})});
+    const result = await api("/api/reports/export/rq1", {
+      method: "POST",
+      body: JSON.stringify({
+        preview_revision: state.preview.source_revision,
+        baseline_valid_only: $("#rq1BaselineValidOnly").checked,
+      }),
+    });
     status.className = `rq1-action-status ${result.warning ? "warning" : "success"}`;
     const stale = result.preview_was_stale ? " Dữ liệu nguồn đã thay đổi sau khi xem trước, nên workbook dùng dữ liệu mới hơn." : "";
     const warning = result.warning ? ` ${result.warning}.` : "";
-    status.textContent = `Đã lưu ${result.relative_path}.${warning}${stale}`;
+    status.textContent = `Đã lưu ${result.relative_path}. Đã chọn ${formatNumber(result.selected_rows || 0)} / ${formatNumber(result.filter_source_rows || 0)} bản ghi.${warning}${stale}`;
   } catch (error) {
     status.className = "rq1-action-status error";
     status.textContent = error.message || "Xuất dữ liệu thất bại";
@@ -431,6 +458,11 @@ function bindEvents() {
   $("#sidebarToggle").addEventListener("click", toggleSidebar);
   $("#refreshRq1Btn").addEventListener("click", loadPreview);
   $("#exportRq1Btn").addEventListener("click", exportRq1);
+  $("#rq1BaselineValidOnly").addEventListener("change", async () => {
+    state.pairedPage = 1;
+    state.detailsPage = 1;
+    await loadPreview();
+  });
   $("#pageSize").addEventListener("change", async () => {
     state.pageSize = Number($("#pageSize").value);
     state.pairedPage = 1;

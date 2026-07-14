@@ -3,7 +3,7 @@ from __future__ import annotations
 import hashlib
 import json
 import os
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -21,6 +21,7 @@ from .report_writer import (
     load_experiment_jsonl,
     merge_rows,
 )
+from .experiment_filters import filter_rows
 
 
 EXCEL_MAX_ROWS = 1_048_576
@@ -83,6 +84,11 @@ class RQ1Snapshot:
     summary_rows: list[dict[str, Any]]
     paired_rows: list[dict[str, Any]]
     detail_rows: list[dict[str, Any]]
+    filter_mode: str = "all"
+    filter_source_rows: int = 0
+    selected_rows: int = 0
+    excluded_rows: int = 0
+    excluded_reasons: dict[str, int] = field(default_factory=dict)
 
 
 def find_rq1_source_paths(runs_dir: Path) -> list[Path]:
@@ -104,7 +110,7 @@ def source_revision(paths: list[Path], runs_dir: Path) -> str:
     return digest.hexdigest()
 
 
-def load_rq1_snapshot(runs_dir: Path, retries: int = 1) -> RQ1Snapshot:
+def load_rq1_snapshot(runs_dir: Path, retries: int = 1, *, baseline_valid_only: bool = False) -> RQ1Snapshot:
     attempts = max(0, retries) + 1
     for _attempt in range(attempts):
         paths_before = find_rq1_source_paths(runs_dir)
@@ -115,12 +121,14 @@ def load_rq1_snapshot(runs_dir: Path, retries: int = 1) -> RQ1Snapshot:
         revision_after = source_revision(paths_after, runs_dir)
         if revision_before != revision_after or paths_before != paths_after:
             continue
-        rq1_rows = [
+        all_rq1_rows = [
             row
             for row in merged
             if str(row.get("generation_prompt_strategy") or row.get("Prompt_Technique") or "").strip().lower()
             in RQ1_PROMPT_STRATEGIES
         ]
+        filter_mode = "baseline_valid" if baseline_valid_only else "all"
+        rq1_rows, filter_stats = filter_rows(all_rq1_rows, mode=filter_mode)
         return RQ1Snapshot(
             source_revision=revision_after,
             generated_at=datetime.now(timezone.utc).isoformat(),
@@ -131,6 +139,11 @@ def load_rq1_snapshot(runs_dir: Path, retries: int = 1) -> RQ1Snapshot:
             summary_rows=build_rq1_summary_rows(rq1_rows),
             paired_rows=build_rq1_paired_rows(rq1_rows),
             detail_rows=build_rq1_details_rows(rq1_rows),
+            filter_mode=filter_mode,
+            filter_source_rows=len(all_rq1_rows),
+            selected_rows=len(rq1_rows),
+            excluded_rows=len(all_rq1_rows) - len(rq1_rows),
+            excluded_reasons={key: value for key, value in filter_stats.items() if key not in {"selected", "excluded"}},
         )
     raise RQ1SnapshotChangedError("Dữ liệu nguồn RQ1 thay đổi trong lúc đọc; vui lòng thử lại")
 
@@ -313,6 +326,11 @@ def build_rq1_preview(
         "generated_at": snapshot.generated_at,
         "source_files": snapshot.source_files,
         "source_rows": snapshot.source_rows,
+        "filter_mode": snapshot.filter_mode,
+        "filter_source_rows": snapshot.filter_source_rows,
+        "selected_rows": snapshot.selected_rows,
+        "excluded_rows": snapshot.excluded_rows,
+        "excluded_reasons": snapshot.excluded_reasons,
         "duplicate_rows": snapshot.duplicate_rows,
         "readiness": _readiness(primary, len(snapshot.detail_rows)),
         "primary_scope": {
@@ -439,9 +457,12 @@ def _write_summary_sheet(
     metadata = (
         ("Thời điểm xuất (UTC)", datetime.now(timezone.utc).isoformat()),
         ("Revision nguồn", snapshot.source_revision),
-        ("Phạm vi", "Tất cả dữ liệu RQ1"),
+        ("Phạm vi", snapshot.filter_mode),
         ("Số file JSONL nguồn", snapshot.source_files),
-        ("Số bản ghi RQ1", len(snapshot.detail_rows)),
+        ("Số bản ghi RQ1 nguồn", snapshot.filter_source_rows),
+        ("Số bản ghi RQ1 được chọn", snapshot.selected_rows),
+        ("Số bản ghi RQ1 bị loại", snapshot.excluded_rows),
+        ("Lý do loại", json.dumps(snapshot.excluded_reasons, ensure_ascii=False, sort_keys=True)),
     )
     for label, value in metadata:
         worksheet.write(row, 0, label, formats["label"])
@@ -580,6 +601,11 @@ def save_rq1_workbook(
         "relative_path": relative_path,
         "source_revision": snapshot.source_revision,
         "preview_was_stale": bool(preview_revision and preview_revision != snapshot.source_revision),
+        "filter_mode": snapshot.filter_mode,
+        "filter_source_rows": snapshot.filter_source_rows,
+        "selected_rows": snapshot.selected_rows,
+        "excluded_rows": snapshot.excluded_rows,
+        "excluded_reasons": snapshot.excluded_reasons,
         "readiness": readiness,
         "warning": readiness["warning"],
         "rows": row_counts,

@@ -330,6 +330,21 @@ button svg {
   min-height: 42px;
 }
 
+.rq1-export-filter,
+.shard05-export-filter {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.35;
+}
+
+.rq1-export-filter input,
+.shard05-export-filter input {
+  accent-color: var(--blue);
+}
+
 .rq1-header-actions .busy svg,
 #refreshRq1Btn.busy svg {
   animation: merge-spin 0.9s linear infinite;
@@ -1138,6 +1153,10 @@ pre {
   color: var(--muted);
   font-size: 13px;
   line-height: 1.5;
+}
+
+.shard05-export-filter {
+  grid-column: 1 / -1;
 }
 
 .shard05-export-status.success {

@@ -71,6 +71,8 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert 'id="exportShard05MetricsStatus"' in html
     assert 'id="exportRq2Btn"' in html
     assert 'id="exportRq2Status"' in html
+    assert 'id="rq2GeneratedOnly"' in html
+    assert "Chỉ xuất baseline passed nhưng generated test failed" in html
     for header in ["Sample", "Class", "Agent", "Prompt", "Tokens", "State", "Repair", "Coverage", "Mutation", "Time", "Hành động"]:
         assert f"<th>{header}</th>" in html
     assert "Zero-shot" in javascript
@@ -95,6 +97,7 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert "/api/reports/export/shard05" in javascript
     assert "exportRq2" in javascript
     assert "/api/reports/export/rq2" in javascript
+    assert "only_generated_failures" in javascript
     assert "/api/shards/shard05/projects/" in javascript
     assert 'api("/api/runs"' in javascript
     assert 'api("/api/shards/shard05/status"' in javascript
@@ -143,6 +146,8 @@ def test_rq1_page_contains_preview_and_workbook_export_bindings():
 
     assert "Prompt Repository-aware có cải thiện" in html
     assert 'id="exportRq1Btn"' in html
+    assert 'id="rq1BaselineValidOnly"' in html
+    assert "Chỉ tính project có baseline/build hợp lệ" in html
     assert "Tổng hợp kết quả" in html
     assert 'id="overallResultsHead"' in html
     assert 'id="modelResultsHead"' in html
@@ -152,6 +157,7 @@ def test_rq1_page_contains_preview_and_workbook_export_bindings():
     assert "/api/reports/rq1/preview" in javascript
     assert "renderResultTables" in javascript
     assert 'api("/api/reports/export/rq1"' in javascript
+    assert "baseline_valid_only" in javascript
 
 
 def test_rq1_export_endpoint_merges_and_saves_csv(monkeypatch, tmp_path):
@@ -304,14 +310,15 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
 
 
 def test_rq2_export_endpoint_calls_server_export(monkeypatch):
+    calls = []
     monkeypatch.setattr(
         server,
         "_save_rq2_export",
-        lambda shard_id: {
+        lambda shard_id, **kwargs: (calls.append((shard_id, kwargs)) or {
             "export_type": "rq2_repair",
             "relative_path": "export/shards/repo_shard_05_rq2_20260714_000000.csv",
             "rows": 2,
-        },
+        }),
     )
     handler = _bare_dashboard_handler("/api/reports/export/rq2")
 
@@ -321,6 +328,7 @@ def test_rq2_export_endpoint_calls_server_export(monkeypatch):
     assert handler.response_status == 201
     assert payload["export_type"] == "rq2_repair"
     assert payload["rows"] == 2
+    assert calls == [("repo_shard_05", {"only_generated_failures": True})]
 
 
 def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):
@@ -544,14 +552,15 @@ def test_rq1_preview_endpoint_returns_latest_snapshot(monkeypatch):
 
 
 def test_rq1_workbook_export_endpoint_saves_server_file(monkeypatch):
+    calls = []
     monkeypatch.setattr(
         server,
         "_save_rq1_workbook",
-        lambda revision: {
+        lambda revision, **kwargs: (calls.append((revision, kwargs)) or {
             "relative_path": "export/RQ1/rq1_export_20260712_000000.xlsx",
             "preview_was_stale": revision != "current",
             "rows": {"Summary": 20, "Paired Samples": 2, "Raw Details": 4},
-        },
+        }),
     )
     body = json.dumps({"preview_revision": "old"}).encode("utf-8")
     handler = _bare_dashboard_handler("/api/reports/export/rq1")
@@ -564,10 +573,11 @@ def test_rq1_workbook_export_endpoint_saves_server_file(monkeypatch):
     assert handler.response_status == 201
     assert payload["preview_was_stale"] is True
     assert payload["relative_path"].endswith(".xlsx")
+    assert calls == [("old", {"baseline_valid_only": True})]
 
 
 def test_rq1_workbook_export_endpoint_reports_excel_limit(monkeypatch):
-    def fail(_revision):
+    def fail(_revision, **_kwargs):
         raise server.RQ1ExcelLimitError("Raw Details", 1_048_577)
 
     monkeypatch.setattr(server, "_save_rq1_workbook", fail)
