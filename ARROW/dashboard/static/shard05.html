@@ -104,9 +104,11 @@
             <button id="startShard05Btn" class="primary" type="submit"><i data-lucide="play"></i><span>Chạy Shard 05</span></button>
             <button id="stopShard05Btn" class="danger-secondary" type="button" disabled><i data-lucide="square"></i><span>Dừng run đang chọn</span></button>
             <button id="exportShard05MetricsBtn" class="mini-secondary" type="button"><i data-lucide="folder-output"></i><span>Export chỉ số shard 05</span></button>
+            <button id="exportRq2Btn" class="mini-secondary" type="button"><i data-lucide="file-chart-column"></i><span>Xuất bảng RQ2</span></button>
             <button id="refreshShard05Btn" class="icon-btn" type="button" title="Refresh"><i data-lucide="refresh-cw"></i></button>
           </div>
           <div id="exportShard05MetricsStatus" class="shard05-export-status wide"></div>
+          <div id="exportRq2Status" class="shard05-export-status wide"></div>
         </form>
       </section>
 
@@ -142,6 +144,7 @@
                 <th>Coverage</th>
                 <th>Mutation</th>
                 <th>Time</th>
+                <th>Hành động</th>
               </tr>
             </thead>
             <tbody id="shard05Rows"></tbody>

@@ -23,6 +23,7 @@ except ImportError:  # pragma: no cover - the project requirements include PyYAM
 from src.llm_client import record_token_usage, token_usage_report
 from src.java_resolver import platform_config_value
 from src.report_writer import load_experiment_jsonl, write_class_report, write_mean_report, write_rq1_exports
+from src.rq2_export import build_rq2_rows, write_rq2_csv
 from src.rq1_export import (
     RQ1ExcelLimitError,
     RQ1NoDataError,
@@ -440,6 +441,47 @@ def _save_shard_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
         "mean_path": str(mean_destination),
         "mean_relative_path": mean_relative_path,
         "rows": len(rows),
+    }
+
+
+def _save_rq2_export(shard_id: str = "repo_shard_05") -> dict[str, Any]:
+    """Export the RQ2 repair table for the latest logical shard results."""
+    merged = _merge_reports_now()
+    output_dir = Path(str(merged.get("output_dir") or PROJECT_ROOT / "runs" / "merged"))
+    merged_jsonl = Path(str(merged.get("artifacts", {}).get("merged_jsonl") or output_dir / "experiments_merged.jsonl"))
+    raw_rows = [row for row in load_experiment_jsonl([merged_jsonl]) if _shard_id_matches(row, shard_id)]
+    rows = _latest_logical_experiment_rows(raw_rows)
+    if not rows:
+        raise ValueError(f"Không có dữ liệu đã chạy cho shard {shard_id}")
+    summary_rows = build_rq2_rows(rows)
+    if not summary_rows:
+        raise ValueError(f"Không có dữ liệu repair hợp lệ cho shard {shard_id}")
+
+    SHARD_EXPORT_ROOT.mkdir(parents=True, exist_ok=True)
+    timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
+    base_name = f"{_safe_name(shard_id)}_rq2_{timestamp}"
+    destination = SHARD_EXPORT_ROOT / f"{base_name}.csv"
+    suffix = 2
+    while destination.exists():
+        destination = SHARD_EXPORT_ROOT / f"{base_name}_{suffix}.csv"
+        suffix += 1
+    temporary = destination.with_suffix(".csv.tmp")
+    write_rq2_csv(temporary, summary_rows)
+    os.replace(temporary, destination)
+    try:
+        relative_path = destination.relative_to(PROJECT_ROOT).as_posix()
+    except ValueError:
+        relative_path = str(destination)
+    return {
+        "export_type": "rq2_repair",
+        "shard_id": shard_id,
+        "filename": destination.name,
+        "path": str(destination),
+        "relative_path": relative_path,
+        "rows": len(summary_rows),
+        "source_experiments": len(rows),
+        "mechanisms": [row["Repair mechanism"] for row in summary_rows],
+        "warning": "Repair time falls back to total experiment time for legacy records without repair_time_seconds.",
     }
 
 
@@ -1474,6 +1516,11 @@ class DashboardHandler(SimpleHTTPRequestHandler):
             if parsed.path == "/api/reports/export/shard05":
                 try:
                     return _json_response(self, _save_shard_export("repo_shard_05"), status=201)
+                except ValueError as exc:
+                    return _json_response(self, {"error": str(exc)}, status=422)
+            if parsed.path == "/api/reports/export/rq2":
+                try:
+                    return _json_response(self, _save_rq2_export("repo_shard_05"), status=201)
                 except ValueError as exc:
                     return _json_response(self, {"error": str(exc)}, status=422)
             if parsed.path.startswith("/api/shards/shard05/projects/") and parsed.path.endswith("/rerun"):

@@ -1041,6 +1041,12 @@ pre {
   min-width: 1380px;
 }
 
+.mini-row-action {
+  white-space: nowrap;
+  padding: 0.35rem 0.55rem;
+  font-size: 0.78rem;
+}
+
 .shard05-run-page {
   overflow-x: auto;
 }

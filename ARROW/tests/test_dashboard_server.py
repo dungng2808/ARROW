@@ -69,7 +69,9 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert 'id="copyRunLogStatus"' in html
     assert 'id="exportShard05MetricsBtn"' in html
     assert 'id="exportShard05MetricsStatus"' in html
-    for header in ["Sample", "Class", "Agent", "Prompt", "Tokens", "State", "Repair", "Coverage", "Mutation", "Time"]:
+    assert 'id="exportRq2Btn"' in html
+    assert 'id="exportRq2Status"' in html
+    for header in ["Sample", "Class", "Agent", "Prompt", "Tokens", "State", "Repair", "Coverage", "Mutation", "Time", "Hành động"]:
         assert f"<th>{header}</th>" in html
     assert "Zero-shot" in javascript
     assert "Few-shot" in javascript
@@ -91,6 +93,8 @@ def test_shard05_runner_page_locks_to_shard05_and_run_input():
     assert "RQ1_PROMPT_LABELS" in javascript
     assert "exportShard05Metrics" in javascript
     assert "/api/reports/export/shard05" in javascript
+    assert "exportRq2" in javascript
+    assert "/api/reports/export/rq2" in javascript
     assert "/api/shards/shard05/projects/" in javascript
     assert 'api("/api/runs"' in javascript
     assert 'api("/api/shards/shard05/status"' in javascript
@@ -297,6 +301,26 @@ def test_shard05_export_endpoint_saves_filtered_class_report(monkeypatch, tmp_pa
     assert mean_rows[0]["Mutation_Score%_Mean"] == "40.0"
     assert mean_rows[0]["Assertion Roulette_Mean"] == "1.0"
     assert mean_rows[0]["Conditional Test Logic_Mean"] == "3.0"
+
+
+def test_rq2_export_endpoint_calls_server_export(monkeypatch):
+    monkeypatch.setattr(
+        server,
+        "_save_rq2_export",
+        lambda shard_id: {
+            "export_type": "rq2_repair",
+            "relative_path": "export/shards/repo_shard_05_rq2_20260714_000000.csv",
+            "rows": 2,
+        },
+    )
+    handler = _bare_dashboard_handler("/api/reports/export/rq2")
+
+    handler.do_POST()
+
+    payload = json.loads(handler.wfile.getvalue().decode("utf-8"))
+    assert handler.response_status == 201
+    assert payload["export_type"] == "rq2_repair"
+    assert payload["rows"] == 2
 
 
 def test_shard05_status_reports_run_and_not_run_projects(monkeypatch, tmp_path):

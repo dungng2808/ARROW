@@ -99,6 +99,7 @@ CLASS_REPORT_COLUMNS = [
     "module_pass_elapsed_seconds",
     "first_passed_at",
     "first_pass_elapsed_seconds",
+    "repair_time_seconds",
     "new_module_failures",
     "existing_baseline_failures",
     "best_candidate_hash",

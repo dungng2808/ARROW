@@ -75,6 +75,10 @@ function experimentClass(row) {
   return String(row.focal_class || row.Class_Under_Test || row.__focal_class || "").trim();
 }
 
+function experimentAgent(row) {
+  return String(row.agent_name || row["Generator(LLM)"] || "").trim();
+}
+
 function isExperimentPassed(row) {
   return row.module_tests_passed || row.test_passed || row.final_failure_state === "MODULE_TESTS_PASSED";
 }
@@ -144,6 +148,7 @@ function bindEvents() {
   $("#refreshShard05Btn").addEventListener("click", () => refreshAll(true));
   $("#stopShard05Btn").addEventListener("click", stopSelectedRun);
   $("#exportShard05MetricsBtn").addEventListener("click", exportShard05Metrics);
+  $("#exportRq2Btn").addEventListener("click", exportRq2);
   $("#selectRq1PromptsBtn").addEventListener("click", selectRq1Prompts);
   $("#copyProjectErrorsBtn").addEventListener("click", copyProjectErrors);
   $("#copyRunLogBtn").addEventListener("click", copyRunLog);
@@ -240,6 +245,29 @@ async function exportShard05Metrics() {
   }
 }
 
+async function exportRq2() {
+  const button = $("#exportRq2Btn");
+  button.disabled = true;
+  const status = $("#exportRq2Status");
+  status.className = "shard05-export-status";
+  status.textContent = "Đang xuất bảng RQ2 Repair...";
+  try {
+    const result = await api("/api/reports/export/rq2", { method: "POST", body: "{}" });
+    status.className = "shard05-export-status success";
+    status.innerHTML = `
+      <div><strong>Đã xuất ${formatNumber(result.rows)} dòng RQ2.</strong></div>
+      <div>File trên server: <code>${escapeHtml(result.relative_path || result.path)}</code></div>
+      <div>Cơ chế có dữ liệu: <code>${escapeHtml((result.mechanisms || []).join(", ") || "N/A")}</code></div>
+      <small>${escapeHtml(result.warning || "")}</small>
+    `;
+  } catch (error) {
+    status.className = "shard05-export-status error";
+    status.textContent = error.message || "Không xuất được RQ2.";
+  } finally {
+    button.disabled = false;
+  }
+}
+
 async function loadShard05Status() {
   try {
     const payload = await api("/api/shards/shard05/status");
@@ -329,7 +357,7 @@ function renderShard05() {
     $("#shard05LockedMeta").textContent = state.shard05.error;
     $("#shard05Meta").textContent = state.shard05.error;
     $("#shard05Summary").innerHTML = "";
-    $("#shard05Rows").innerHTML = `<tr><td colspan="10">${escapeHtml(state.shard05.error)}</td></tr>`;
+    $("#shard05Rows").innerHTML = `<tr><td colspan="11">${escapeHtml(state.shard05.error)}</td></tr>`;
     return;
   }
   $("#shard05LockedMeta").textContent = `${formatNumber(summary.total_projects || projects.length)} project trong shard`;
@@ -386,7 +414,11 @@ function renderShard05() {
           const mutation = row.mutation_score || row["Mutation_Score%"] || "";
           const projectId = experimentProjectId(row);
           const prompt = experimentPrompt(row);
+          const agent = experimentAgent(row);
           const failed = row.__status !== "NOT_RUN" && row.__status !== "RUNNING" && !isExperimentPassed(row);
+          const action = failed && prompt
+            ? `<button class="danger-secondary mini-row-action rerun-row" type="button" data-project="${escapeHtml(projectId)}" data-prompt="${escapeHtml(prompt)}" data-agent="${escapeHtml(agent)}">Chạy lại</button>`
+            : "";
           return `
             <tr
               data-project="${escapeHtml(projectId)}"
@@ -404,11 +436,18 @@ function renderShard05() {
               <td>${escapeHtml(coverage ? `${coverage}%` : "")}</td>
               <td>${escapeHtml(mutation ? `${mutation}%` : "")}</td>
               <td>${escapeHtml(row.elapsed_seconds || "")}</td>
+              <td>${action}</td>
             </tr>
           `;
         })
         .join("")
-    : `<tr><td colspan="10">Không có experiment nào khớp bộ lọc hiện tại.</td></tr>`;
+    : `<tr><td colspan="11">Không có experiment nào khớp bộ lọc hiện tại.</td></tr>`;
+  document.querySelectorAll("#shard05Rows .rerun-row").forEach((button) => {
+    button.addEventListener("click", (event) => {
+      event.stopPropagation();
+      rerunProject(button.dataset.project || "", button.dataset.prompt || "", button.dataset.agent || "");
+    });
+  });
   document.querySelectorAll("#shard05Rows tr[data-project]").forEach((row) => {
     row.addEventListener("click", () => {
       const item = rows.find((candidate) => experimentProjectId(candidate) === row.dataset.project && experimentPrompt(candidate) === (row.dataset.prompt || ""));
@@ -564,11 +603,14 @@ async function loadProjectErrors(projectId, promptStrategy = "") {
   }
 }
 
-async function rerunProject(projectId, promptStrategy = "") {
+async function rerunProject(projectId, promptStrategy = "", agentName = "") {
   if (!projectId) return;
   const options = currentRunOptions();
   if (promptStrategy) {
     options.generation_prompts = [promptStrategy];
+  }
+  if (agentName) {
+    options.agents = [agentName];
   }
   if (!validateModelAndPrompt(options)) return;
   const promptLabel = promptStrategy ? ` (${RQ1_PROMPT_LABELS[promptStrategy] || promptStrategy})` : "";

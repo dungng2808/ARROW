@@ -218,6 +218,7 @@ def _base_row(run_id: str, shard_id: str, sample: SampleInput, agent: AgentConfi
         "module_pass_elapsed_seconds": "",
         "first_passed_at": "",
         "first_pass_elapsed_seconds": "",
+        "repair_time_seconds": "",
         "error": "",
         "llm_input_tokens": 0,
         "llm_output_tokens": 0,
@@ -528,7 +529,9 @@ def _run_one_experiment(
                 max_tokens=agent.max_tokens,
                 token_usage_by_prompt=token_usage_by_prompt,
             )
+            repair_started = time.monotonic()
             repair_summary = run_adaptive_repair(repair_runtime, initial_verification=target, baseline_verification=baseline)
+            row["repair_time_seconds"] = round(time.monotonic() - repair_started, 3)
             _log_event(f"REPAIR done status={repair_summary.repair_status.value} attempts={repair_summary.repair_attempts} final={repair_summary.final_failure_state} reason={repair_summary.repair_stopped_reason}")
             repair_data = repair_summary.to_dict()
             repair_data.update(token_usage_report(token_usage_by_prompt))
