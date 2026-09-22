@@ -1,0 +1,157 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "vendor": "Azul Systems",
+  "distribution": "Zulu Builds of OpenJDK",
+  "platforms": {
+    "darwin-aarch64": {
+      "8": {
+        "vendor": "Azul Systems",
+        "version": "8.0.504",
+        "distro_version": "8.96.0.205",
+        "platform": "darwin",
+        "architecture": "aarch64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-jdk8.0.504-macosx_aarch64.tar.gz",
+        "sha256": "58bb3c08f2aa63d9743cf31899fa4b8c6c9effefce9479e7288c26621c3bb21b",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "11": {
+        "vendor": "Azul Systems",
+        "version": "11.0.32.1",
+        "distro_version": "11.90.205.0",
+        "platform": "darwin",
+        "architecture": "aarch64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu11.90.205-ca-jdk11.0.32.1-macosx_aarch64.tar.gz",
+        "sha256": "8d08d90f259a43a9b1a672fd6189eb8ee3c6a5e59d95f3cc5efe108e9cd7fd31",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "17": {
+        "vendor": "Azul Systems",
+        "version": "17.0.20.1",
+        "distro_version": "17.68.203.0",
+        "platform": "darwin",
+        "architecture": "aarch64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-jdk17.0.20.1-macosx_aarch64.tar.gz",
+        "sha256": "ed54397260c5994b2fc4e31c780f480b947e6532bc6a5ac7754355d5dd4c127d",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "21": {
+        "vendor": "Azul Systems",
+        "version": "21.0.12.1",
+        "distro_version": "21.52.203.0",
+        "platform": "darwin",
+        "architecture": "aarch64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jdk21.0.12.1-macosx_aarch64.tar.gz",
+        "sha256": "042093e0895c940a02d68e727bc37b59f3958e58aa1463ec9080845d77af0a45",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      }
+    },
+    "darwin-x64": {
+      "8": {
+        "vendor": "Azul Systems",
+        "version": "8.0.504",
+        "distro_version": "8.96.0.205",
+        "platform": "darwin",
+        "architecture": "x64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-jdk8.0.504-macosx_x64.tar.gz",
+        "sha256": "e35bc8a4401193aa670146762bbad132bf0651fee5e3f16acbb3a5db0e0b0cff",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "11": {
+        "vendor": "Azul Systems",
+        "version": "11.0.32.1",
+        "distro_version": "11.90.205.0",
+        "platform": "darwin",
+        "architecture": "x64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu11.90.205-ca-jdk11.0.32.1-macosx_x64.tar.gz",
+        "sha256": "a0309d26262328e4716b7cf65b70420444f054208ef769883f3aa245c5d894c2",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "17": {
+        "vendor": "Azul Systems",
+        "version": "17.0.20.1",
+        "distro_version": "17.68.203.0",
+        "platform": "darwin",
+        "architecture": "x64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-jdk17.0.20.1-macosx_x64.tar.gz",
+        "sha256": "ec1f9c98a9c1304230af23c565a3592c48314409e82ead75e3a98ee4fc94336f",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "21": {
+        "vendor": "Azul Systems",
+        "version": "21.0.12.1",
+        "distro_version": "21.52.203.0",
+        "platform": "darwin",
+        "architecture": "x64",
+        "archive": "tar.gz",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jdk21.0.12.1-macosx_x64.tar.gz",
+        "sha256": "6edaf4b72ec6c23d86a46d8b88d0cfed2aaf81645fee13fd852d37af23c4b9fb",
+        "java_home_relative_path": "Contents/Home",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      }
+    },
+    "windows-x64": {
+      "8": {
+        "vendor": "Azul Systems",
+        "version": "8.0.504",
+        "distro_version": "8.96.0.205",
+        "platform": "windows",
+        "architecture": "x64",
+        "archive": "zip",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu8.96.0.205-ca-jdk8.0.504-win_x64.zip",
+        "sha256": "510d00a6814ee576205cdfec7efd0c9f93b066b34bf3f841b8854594dc97476b",
+        "java_home_relative_path": "",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "11": {
+        "vendor": "Azul Systems",
+        "version": "11.0.32.1",
+        "distro_version": "11.90.205.0",
+        "platform": "windows",
+        "architecture": "x64",
+        "archive": "zip",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu11.90.205-ca-jdk11.0.32.1-win_x64.zip",
+        "sha256": "6be8ae0045404312e7e71c800cdaa03955b3b5951b0b7982de715fa03c71a1a6",
+        "java_home_relative_path": "",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "17": {
+        "vendor": "Azul Systems",
+        "version": "17.0.20.1",
+        "distro_version": "17.68.203.0",
+        "platform": "windows",
+        "architecture": "x64",
+        "archive": "zip",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu17.68.203-ca-jdk17.0.20.1-win_x64.zip",
+        "sha256": "552a335d5342c800fd03b45a23bb1136f5aa5562193542ece506d8c44b0c60d9",
+        "java_home_relative_path": "",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      },
+      "21": {
+        "vendor": "Azul Systems",
+        "version": "21.0.12.1",
+        "distro_version": "21.52.203.0",
+        "platform": "windows",
+        "architecture": "x64",
+        "archive": "zip",
+        "download_url": "https://cdn.azul.com/zulu/bin/zulu21.52.203-ca-jdk21.0.12.1-win_x64.zip",
+        "sha256": "ebfe6ccb94a1a7c8743ed270c6a96dbb22f5abc48b2cc4785dbf067e02dbed22",
+        "java_home_relative_path": "",
+        "license_url": "https://www.azul.com/terms-of-use/"
+      }
+    }
+  }
+}
