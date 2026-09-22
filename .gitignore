@@ -3,3 +3,15 @@
 
 # macOS Finder metadata
 .DS_Store
+
+# Local environment and generated artifacts for the standalone preflight tool
+/preflight_tool/.venv/
+/preflight_tool/.pytest_cache/
+/preflight_tool/*.egg-info/
+/preflight_tool/__pycache__/
+/preflight_tool/preflight/__pycache__/
+/preflight_tool/tests/__pycache__/
+/preflight_tool/runs/
+/preflight_tool/.coverage
+/preflight_tool/coverage.json
+__pycache__/

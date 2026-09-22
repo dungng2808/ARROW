@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "locked_input.schema.json",
+  "title": "Locked Class2Test input",
+  "type": "object",
+  "required": ["task_id", "project_id", "repo_url", "class_name", "class_path", "revision_status", "revision_sha"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string", "minLength": 1},
+    "repo_url": {"type": "string", "minLength": 1},
+    "class_name": {"type": "string", "minLength": 1},
+    "class_path": {"type": "string", "pattern": "^(?![A-Za-z]:|/|\\\\)(?!.*(^|[\\\\/])\\.\\.([\\\\/]|$)).+"},
+    "revision_status": {"enum": ["UPSTREAM_PINNED", "CONTENT_MATCHED", "UNVERIFIED"]},
+    "revision_sha": {"type": "string"}
+  },
+  "additionalProperties": true
+}

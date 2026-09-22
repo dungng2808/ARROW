@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "allOf": [
+    {"$ref": "preflight_result.schema.json"},
+    {
+      "type": "object",
+      "properties": {
+        "run_mode": {"const": "STRICT"},
+        "revision_verification_status": {"const": "UPSTREAM_PINNED"},
+        "preflight_status": {"const": "ELIGIBLE"},
+        "technical_eligible": {"const": true},
+        "strict_eligible": {"const": true}
+      }
+    }
+  ]
+}

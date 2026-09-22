@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "required": ["task_id", "source_json_sha256", "repo_url", "revision_verification_status", "run_mode", "class_path", "class_fqn", "module_path", "constructor_count", "method_count", "api_count", "probe_status", "preflight_status", "technical_eligible", "strict_eligible", "tags", "reason_codes", "duration_seconds", "log_paths"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "source_json_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+    "repo_url": {"type": "string", "minLength": 1},
+    "revision_verification_status": {"enum": ["UPSTREAM_PINNED", "CONTENT_MATCHED", "UNVERIFIED"]},
+    "run_mode": {"enum": ["STRICT", "DISCOVERY_ONLY"]},
+    "class_path": {"type": "string"},
+    "class_fqn": {"type": "string"},
+    "module_path": {"type": "string"},
+    "constructor_count": {"type": "integer", "minimum": 0},
+    "method_count": {"type": "integer", "minimum": 0},
+    "api_count": {"type": "integer", "minimum": 0},
+    "probe_status": {"enum": ["NOT_RUN", "PASSED", "FAILED"]},
+    "preflight_status": {"enum": ["ELIGIBLE", "PRECHECKED", "NEEDS_REVIEW", "CLONE_FAILED", "COMMIT_MISSING", "CHECKOUT_FAILED", "BUILD_TOOL_UNSUPPORTED", "JDK_UNSUPPORTED", "MAIN_BUILD_FAILED", "TEST_COMPILE_FAILED", "BUILD_TIMEOUT", "DEPENDENCY_UNAVAILABLE", "SOURCE_INVALID", "PROBE_FAILED", "EXCLUDED", "INTEGRATION_ONLY"]},
+    "technical_eligible": {"type": "boolean"},
+    "strict_eligible": {"type": "boolean"},
+    "tags": {"type": "array", "items": {"type": "string"}},
+    "reason_codes": {"type": "array", "items": {"type": "string"}},
+    "duration_seconds": {"type": "number", "minimum": 0},
+    "log_paths": {"type": "array", "items": {"type": "string"}}
+  }
+}

@@ -1,0 +1,27 @@
+[run]
+# "auto" writes runs/<UTC timestamp>; use an explicit ID to resume/audit a run.
+id = "auto"
+workers = 2
+max_revision_candidates = 500
+build_timeout_seconds = 900
+keep_workspaces = false
+
+[input]
+# The CLI resolves <root>/dataset automatically when it exists.
+root = "R:/Đồ án/DatasetClassToTest/classes2test-main"
+
+[java]
+# Leave empty to use the host JDK. Add version-to-home mappings for historical projects.
+default_home = ""
+[java.homes]
+# "8" = "C:/Java/jdk-8"
+# "11" = "C:/Java/jdk-11"
+# "17" = "C:/Java/jdk-17"
+# "21" = "C:/Java/jdk-21"
+
+[policy]
+# A raw Classes2Test record cannot establish UPSTREAM_PINNED by itself.  Only a
+# separate revision map may do so; otherwise matching source/test snippets is
+# recorded as CONTENT_MATCHED and remains DISCOVERY_ONLY.
+allow_content_matched_technical_manifest = true
+integration_rule_file = ""
