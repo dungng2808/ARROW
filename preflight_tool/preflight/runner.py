@@ -3,14 +3,15 @@ from __future__ import annotations
 import hashlib
 import os
 import re
+import signal
 import shutil
 import subprocess
 import time
 import threading
 import xml.etree.ElementTree as ET
-from concurrent.futures import ThreadPoolExecutor, as_completed
+from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from dataclasses import dataclass
-from pathlib import Path
+from pathlib import Path, PurePosixPath
 from typing import Any
 
 from .ingest import evidence_paths
@@ -55,13 +56,19 @@ class ToolConfig:
 
 
 def _path_candidates(workspace: Path, relative: str) -> list[Path]:
-    path = Path(relative)
-    if path.is_absolute() or ".." in path.parts:
+    raw = relative.strip().replace("\\", "/")
+    if not raw or raw.startswith("/") or re.match(r"^[A-Za-z]:", raw) or "\x00" in raw:
         return []
-    values = [workspace / path]
-    if len(path.parts) > 1:
-        values.append(workspace / Path(*path.parts[1:]))
-    return values
+    parts = PurePosixPath(raw).parts
+    if ".." in parts:
+        return []
+    base = workspace.resolve()
+    primary = (base / Path(*parts)).resolve()
+    if not primary.is_relative_to(base):
+        return []
+    variants = [parts, parts[1:]] if len(parts) > 1 else [parts]
+    values = [(base / Path(*variant)).resolve() for variant in variants]
+    return [path for path in values if path.is_relative_to(base)]
 
 
 def _resolve_path(workspace: Path, relative: str) -> Path | None:
@@ -76,18 +83,22 @@ def _run(command: list[str], cwd: Path, timeout_seconds: int, log_path: Path, en
     output = ""
     process: subprocess.Popen[str] | None = None
     try:
-        process = subprocess.Popen(command, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace")
+        process = subprocess.Popen(command, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace", start_new_session=os.name != "nt")
         stdout, stderr = process.communicate(timeout=timeout_seconds)
         code = process.returncode
         output = f"$ {' '.join(command)}\n\nSTDOUT\n{stdout}\n\nSTDERR\n{stderr}"
     except subprocess.TimeoutExpired as exc:
         timed_out = True
-        # Maven/Gradle launch descendants; taskkill /T makes the timeout a
-        # true process-tree boundary on the Windows certification platform.
+        # Build tools launch descendants, so a timeout must stop the process tree.
         if process is not None:
             if os.name == "nt":
                 subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"], capture_output=True, text=True, encoding="utf-8", errors="replace")
-            process.kill()
+                process.kill()
+            else:
+                try:
+                    os.killpg(process.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
             stdout, stderr = process.communicate()
         else:
             stdout, stderr = exc.stdout or "", exc.stderr or ""
@@ -130,8 +141,10 @@ def _find_up(start: Path, stop: Path, names: tuple[str, ...]) -> Path | None:
         current = current.parent
 
 
-def _wrapper(root: Path, names: tuple[str, ...], fallback: str) -> Path | str:
+def _wrapper(root: Path, names: tuple[str, ...], fallback: str, workspace: Path) -> Path | str:
     for directory in (root, *_ancestors(root)):
+        if not directory.resolve().is_relative_to(workspace.resolve()):
+            break
         for name in names:
             path = directory / name
             if path.is_file():
@@ -158,12 +171,14 @@ def detect_build(workspace: Path, class_file: Path) -> BuildPlan | None:
             if (parent / "pom.xml").is_file() and str(parent).startswith(str(workspace)):
                 root = parent
         rel = "." if module == root else module.relative_to(root).as_posix()
-        return BuildPlan("maven", module, root, rel, _wrapper(root, ("mvnw.cmd", "mvnw"), "mvn"))
+        wrapper = ("mvnw.cmd",) if os.name == "nt" else ("mvnw",)
+        return BuildPlan("maven", module, root, rel, _wrapper(root, wrapper, "mvn", workspace))
     module = _find_up(class_file, workspace, ("build.gradle", "build.gradle.kts"))
     if module:
         root = _find_up(module, workspace, ("settings.gradle", "settings.gradle.kts")) or module
         rel = "." if module == root else module.relative_to(root).as_posix()
-        return BuildPlan("gradle", module, root, rel, _wrapper(root, ("gradlew.bat", "gradlew"), "gradle"))
+        wrapper = ("gradlew.bat",) if os.name == "nt" else ("gradlew",)
+        return BuildPlan("gradle", module, root, rel, _wrapper(root, wrapper, "gradle", workspace))
     return None
 
 
@@ -197,12 +212,31 @@ def _java_env(target: str | None, config: ToolConfig) -> tuple[dict[str, str], s
     if selected:
         env["JAVA_HOME"] = selected
         env["PATH"] = str(Path(selected) / "bin") + os.pathsep + env.get("PATH", "")
-    java = "java"
+    bin_dir = Path(selected) / "bin" if selected else None
+    suffix = ".exe" if os.name == "nt" else ""
+    java = str(bin_dir / f"java{suffix}") if bin_dir else shutil.which("java", path=env.get("PATH"))
+    javac = str(bin_dir / f"javac{suffix}") if bin_dir else shutil.which("javac", path=env.get("PATH"))
+    if not java or (bin_dir and not Path(java).is_file()):
+        return {}, "", "JDK_JAVA_MISSING"
+    if not javac or (bin_dir and not Path(javac).is_file()):
+        return {}, "", "JDK_JAVAC_MISSING"
     try:
-        version = subprocess.run([java, "-version"], env=env, capture_output=True, text=True, encoding="utf-8", errors="replace").stderr.splitlines()
-    except FileNotFoundError:
-        return {}, "", "JDK_UNSUPPORTED"
-    return env, version[0] if version else "unknown", None
+        java_result = subprocess.run([java, "-version"], env=env, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        javac_result = subprocess.run([javac, "-version"], env=env, capture_output=True, text=True, encoding="utf-8", errors="replace")
+    except OSError:
+        return {}, "", "JDK_VERSION_COMMAND_FAILED"
+    if java_result.returncode != 0 or javac_result.returncode != 0:
+        return {}, "", "JDK_VERSION_COMMAND_FAILED"
+    java_output = "\n".join((java_result.stderr, java_result.stdout))
+    javac_output = "\n".join((javac_result.stdout, javac_result.stderr))
+    java_match = re.search(r"(?:openjdk|java)\s+(?:version\s+)?[\"']?(?:1\.)?(\d+)", java_output, re.I)
+    javac_match = re.search(r"\bjavac\s+(?:1\.)?(\d+)", javac_output, re.I)
+    if not java_match or not javac_match:
+        return {}, "", "JDK_VERSION_UNPARSEABLE"
+    java_version = next((line.strip() for line in java_output.splitlines() if java_match.group(0) in line), java_match.group(0))
+    if java_match.group(1) != javac_match.group(1) or (target and java_match.group(1) != str(target).removeprefix("1.")):
+        return {}, java_version, "JDK_VERSION_MISMATCH"
+    return env, java_version, None
 
 
 def _maven_commands(plan: BuildPlan, phase: str) -> tuple[list[str], Path, list[str], Path]:
@@ -287,7 +321,7 @@ def _resolve_parent_apis(java: JavaClass, class_file: Path, workspace: Path, see
             package = imported.rsplit(".", 1)[0]
             candidates.append(source_root / package.replace(".", "/") / f"{parent_simple}.java")
     for candidate in candidates:
-        if not candidate.is_file():
+        if not candidate.resolve().is_relative_to(workspace.resolve()) or not candidate.is_file():
             continue
         parent = parse_java_source(candidate.read_text(encoding="utf-8", errors="replace"), candidate.as_posix())
         if not parent:
@@ -343,7 +377,8 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
         result.run_mode = RunMode.STRICT if choice.status == RevisionStatus.UPSTREAM_PINNED else RunMode.DISCOVERY_ONLY
         if choice.status != RevisionStatus.UPSTREAM_PINNED: result.reason_codes.append(f"REVISION_{choice.status}")
         workspace = config.workspace_dir / candidate.task_id
-        _worktree(mirror, workspace, choice.checkout_sha)
+        with _mirror_lock(candidate.repo_url):
+            _worktree(mirror, workspace, choice.checkout_sha)
         result.working_directory = str(workspace)
         class_file = _resolve_path(workspace, candidate.class_path)
         if not class_file:
@@ -391,7 +426,10 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
         probe_api = next((api for api in methods if api.is_static), None) or next((api for api in methods if not api.is_static), None) or constructors[0]
         result.probed_api = probe_api.signature
         probe_name = f"PreflightProbe_{candidate.task_id[-8:]}"; probe_root = _test_source_root(class_file, plan.module_root); package_dir = probe_root / Path(*java.package.split(".")) if java.package else probe_root
-        probe_path = package_dir / f"{probe_name}.java"; probe_path.parent.mkdir(parents=True, exist_ok=True); probe_path.write_text(_probe_source(java, probe_api, probe_name, result.testing_framework), encoding="utf-8")
+        probe_path = package_dir / f"{probe_name}.java"
+        if not probe_path.resolve().is_relative_to(workspace.resolve()):
+            result.preflight_status = PreflightStatus.SOURCE_INVALID; result.reason_codes.append("PROBE_PATH_OUTSIDE_WORKSPACE"); return result
+        probe_path.parent.mkdir(parents=True, exist_ok=True); probe_path.write_text(_probe_source(java, probe_api, probe_name, result.testing_framework), encoding="utf-8")
         try:
             probe = _compile(plan, "probe_compile", config, candidate.task_id, env); result.build_attempts.extend(probe); result.log_paths.extend(item.log_path for item in probe)
         finally:
@@ -415,14 +453,24 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
     finally:
         result.duration_seconds = round(time.monotonic() - started, 3)
         if workspace and workspace.exists() and mirror and not config.keep_workspaces:
-            _remove_worktree(mirror, workspace)
+            with _mirror_lock(candidate.repo_url):
+                _remove_worktree(mirror, workspace)
     return result
 
 
 def run_all(candidates: list[ClassCandidate], config: ToolConfig) -> list[PreflightResult]:
     results: list[PreflightResult] = []
-    with ThreadPoolExecutor(max_workers=max(1, config.workers)) as executor:
-        futures = {executor.submit(preflight_one, candidate, config): candidate for candidate in candidates}
-        for future in as_completed(futures):
-            results.append(future.result())
+    workers = max(1, config.workers)
+    pending = iter(candidates)
+    with ThreadPoolExecutor(max_workers=workers) as executor:
+        futures = set()
+        for _ in range(min(len(candidates), workers * 2)):
+            futures.add(executor.submit(preflight_one, next(pending), config))
+        while futures:
+            done, futures = wait(futures, return_when=FIRST_COMPLETED)
+            for future in done:
+                results.append(future.result())
+                candidate = next(pending, None)
+                if candidate is not None:
+                    futures.add(executor.submit(preflight_one, candidate, config))
     return sorted(results, key=lambda item: item.task_id)

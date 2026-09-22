@@ -17,6 +17,12 @@ $env:RUN_PERFORMANCE = '1'
 .\.venv\Scripts\python.exe -m pytest -m performance
 ```
 
+For the real JDK matrix, set `PREFLIGHT_JDK_8`, `PREFLIGHT_JDK_11`,
+`PREFLIGHT_JDK_17`, and `PREFLIGHT_JDK_21` to the corresponding JDK homes
+before running pytest. Each configured version checks the actual `java` and
+`javac` launchers; an unconfigured version is skipped. Run the same tests on
+Windows, macOS, and Linux for cross-platform certification.
+
 Before approving an experiment run, require at least 90% statement coverage,
 85% branch coverage, and 100% branch coverage for `preflight.policy`. Run the
 mutation gate for revision and policy logic separately:

@@ -49,10 +49,16 @@ def test_fast_run_is_prechecked_and_never_strict(dataset_factory, git_repo_facto
 @pytest.mark.integration
 def test_parallel_workers_have_stable_nonduplicated_results(dataset_factory, git_repo_factory, tmp_path, monkeypatch):
     repo = git_repo_factory(with_pom=False)
+    (repo / "src/main/java/acme/Other.java").write_text("package acme; public class Other { public int total(int value) { return value; } }", encoding="utf-8")
+    (repo / "src/test/java/acme/OtherTest.java").write_text("package acme; class OtherTest { void verifiesTotal() { new Other().total(1); } }", encoding="utf-8")
+    subprocess.run(["git", "add", "."], cwd=repo, check=True, capture_output=True)
+    subprocess.run(["git", "commit", "-m", "add second CUT"], cwd=repo, check=True, capture_output=True)
     first = sample_payload(repo_url=str(repo), class_name="Thing", class_path="src/main/java/acme/Thing.java", test_path="src/test/java/acme/ThingTest.java")
-    second = sample_payload(repo_url=str(repo), class_name="Thing", class_path="src/main/java/acme/Thing.java", test_path="src/test/java/acme/OtherTest.java", test_body="void other() {}")
+    second = sample_payload(repo_url=str(repo), class_name="Other", class_path="src/main/java/acme/Other.java", test_path="src/test/java/acme/OtherTest.java", test_body="void verifiesTotal() { new Other().total(1); }")
     dataset = dataset_factory([first, second]); database = tmp_path / "index.sqlite"; build_index(dataset, database)
     selected = list(candidates(database)); config = _config(tmp_path, dataset, database)
-    one = run_all(selected, config); config = ToolConfig(*list(config.__dict__.values())[:11], config.default_java_home, config.java_homes, config.revision_map) if False else config
-    assert len(one) == len({result.task_id for result in one}) == 1
+    one = run_all(selected, config)
+    assert len(one) == len({result.task_id for result in one}) == 2
     assert one == sorted(one, key=lambda result: result.task_id)
+    assert all(result.preflight_status == PreflightStatus.BUILD_TOOL_UNSUPPORTED for result in one)
+    assert all(not (config.workspace_dir / result.task_id).exists() for result in one)
