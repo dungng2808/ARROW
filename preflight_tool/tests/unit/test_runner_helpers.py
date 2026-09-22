@@ -21,15 +21,52 @@ def _attempt(tmp_path: Path, output: str = "", *, timed_out: bool = False) -> Bu
     ("output", "stage", "expected"),
     [
         ("EXECUTABLE_NOT_FOUND", "main_compile", PreflightStatus.BUILD_TOOL_UNSUPPORTED),
+        ("'mvn' is not recognized as an internal or external command", "main_compile", PreflightStatus.BUILD_TOOL_UNSUPPORTED),
+        ("no such file or directory", "main_compile", PreflightStatus.BUILD_TOOL_UNSUPPORTED),
         ("Could not resolve dependency", "main_compile", PreflightStatus.DEPENDENCY_UNAVAILABLE),
-        ("invalid target release", "main_compile", PreflightStatus.JDK_UNSUPPORTED),
-        ("ordinary failure", "main_compile", PreflightStatus.MAIN_BUILD_FAILED),
-        ("ordinary failure", "test_compile", PreflightStatus.TEST_COMPILE_FAILED),
+        ("could not transfer artifact com.acme:lib:pom:1.0", "main_compile", PreflightStatus.DEPENDENCY_UNAVAILABLE),
+        ("unable to resolve dependency", "main_compile", PreflightStatus.DEPENDENCY_UNAVAILABLE),
+        ("connection timed out", "main_compile", PreflightStatus.DEPENDENCY_UNAVAILABLE),
+        ("unknown host repo.maven.apache.org", "main_compile", PreflightStatus.DEPENDENCY_UNAVAILABLE),
+        ("invalid target release: 17", "main_compile", PreflightStatus.JDK_UNSUPPORTED),
+        ("unsupported class file major version 61", "main_compile", PreflightStatus.JDK_UNSUPPORTED),
+        ("JAVA_HOME is set to an invalid directory", "main_compile", PreflightStatus.JDK_UNSUPPORTED),
+        ("ordinary compilation failure", "main_compile", PreflightStatus.MAIN_BUILD_FAILED),
+        ("ordinary compilation failure", "test_compile", PreflightStatus.TEST_COMPILE_FAILED),
     ],
 )
 def test_build_failure_classification(tmp_path, output, stage, expected):
     assert _failure_status(_attempt(tmp_path, output), stage) == expected
     assert _failure_status(_attempt(tmp_path, timed_out=True), stage) == PreflightStatus.BUILD_TIMEOUT
+
+
+@pytest.mark.unit
+def test_compile_triggers_fallback_when_reactor_project_not_found(tmp_path, monkeypatch):
+    from preflight.runner import _compile
+    root = tmp_path / "root"; child = root / "child"
+    root.mkdir(); child.mkdir()
+    plan = BuildPlan("maven", child, root, "child", "mvn")
+    config = ToolConfig(tmp_path, tmp_path, tmp_path / "db", tmp_path, tmp_path, tmp_path / "logs", 1, 1, 1, False, "", {}, {})
+
+    attempts_made = []
+    def mock_run(cmd, cwd, timeout, log, env=None):
+        log.parent.mkdir(parents=True, exist_ok=True)
+        if "-pl" in cmd:
+            log.write_text("could not find the selected project in the reactor", encoding="utf-8")
+            attempt = BuildAttempt("main_compile", str(cwd), cmd, 1, False, 0.1, str(log))
+        else:
+            log.write_text("BUILD SUCCESS", encoding="utf-8")
+            attempt = BuildAttempt("main_compile_fallback", str(cwd), cmd, 0, False, 0.1, str(log))
+        attempts_made.append(attempt)
+        return attempt
+
+    monkeypatch.setattr("preflight.runner._run", mock_run)
+    results = _compile(plan, "main_compile", config, "task_1", {})
+    assert len(results) == 2
+    assert results[0].exit_code == 1
+    assert results[1].stage == "main_compile_fallback"
+    assert results[1].exit_code == 0
+
 
 
 @pytest.mark.unit

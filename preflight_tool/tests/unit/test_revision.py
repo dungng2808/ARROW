@@ -71,3 +71,30 @@ def test_revision_head_fallback_and_safe_relative(tmp_path, monkeypatch):
 @pytest.mark.unit
 def test_normalization_handles_escaped_quotes_and_unterminated_comments():
     assert normalize_java('String s = "\\\"//"; /* unfinished') == 'Strings="\\\"//";'
+
+
+@pytest.mark.unit
+def test_load_revision_map_none_returns_empty_dict():
+    assert load_revision_map(None) == {}
+
+
+@pytest.mark.unit
+def test_matching_evidence_scores_correctly(tmp_path):
+    from preflight.revision import _matching_evidence
+    dataset_dir = tmp_path / "dataset"
+    (dataset_dir / "42").mkdir(parents=True)
+    json_path = dataset_dir / "42/sample.json"
+    json_path.write_text(json.dumps({
+        "focal_method": {"signature": "int f()", "body": "public int f() { return 42; }"},
+        "test_case": {"signature": "void testF()", "body": "void testF() { assertEquals(42, f()); }"},
+        "test_class": {"file": "src/test/java/Test.java"}
+    }), encoding="utf-8")
+
+    source_code = "package acme; public class X { public int f() { return 42; } }"
+    test_code = "package acme; class Test { void testF() { assertEquals(42, f()); } }"
+
+    matches = _matching_evidence(dataset_dir, ["42/sample.json"], source_code, lambda path: test_code)
+    assert len(matches) == 1
+    assert matches[0]["source_json_path"] == "42/sample.json"
+    assert matches[0]["focal_method"] == "int f()"
+

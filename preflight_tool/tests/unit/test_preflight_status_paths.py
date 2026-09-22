@@ -84,3 +84,26 @@ def test_preflight_clone_and_commit_errors_are_isolated(monkeypatch, tmp_path):
     monkeypatch.setattr("preflight.runner.ensure_mirror", lambda url, mirror: mirror)
     monkeypatch.setattr("preflight.runner.choose_revision", lambda *args: (_ for _ in ()).throw(LookupError("COMMIT_MISSING")))
     assert preflight_one(candidate, config).preflight_status == PreflightStatus.COMMIT_MISSING
+    monkeypatch.setattr("preflight.runner.choose_revision", lambda *args: RevisionChoice("a" * 40, "git_history", RevisionStatus.CONTENT_MATCHED))
+    monkeypatch.setattr("preflight.runner._worktree", lambda *args: (_ for _ in ()).throw(__import__("subprocess").CalledProcessError(1, "git")))
+    assert preflight_one(candidate, config).preflight_status == PreflightStatus.CHECKOUT_FAILED
+
+
+@pytest.mark.unit
+def test_preflight_build_tool_unsupported_when_no_plan(monkeypatch, tmp_path):
+    _wire(monkeypatch, tmp_path, "package x; public class X { public void run() {} }", test_source="import org.junit.jupiter.api.Test;")
+    monkeypatch.setattr("preflight.runner.detect_build", lambda workspace, class_file: None)
+    result = preflight_one(_candidate(), _config(tmp_path))
+    assert result.preflight_status == PreflightStatus.BUILD_TOOL_UNSUPPORTED
+    assert "BUILD_TOOL_UNSUPPORTED" in result.reason_codes
+
+
+@pytest.mark.unit
+def test_preflight_strict_eligible_when_pinned_and_eligible(monkeypatch, tmp_path):
+    _wire(monkeypatch, tmp_path, "package x; public class X { public void run() {} }", test_source="import org.junit.jupiter.api.Test;")
+    monkeypatch.setattr("preflight.runner.choose_revision", lambda *args: RevisionChoice("a" * 40, "upstream_metadata", RevisionStatus.UPSTREAM_PINNED, evidence_ref="test:1"))
+    result = preflight_one(_candidate(), _config(tmp_path))
+    assert result.preflight_status == PreflightStatus.ELIGIBLE
+    assert result.technical_eligible is True
+    assert result.strict_eligible is True
+
