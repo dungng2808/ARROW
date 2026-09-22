@@ -1,10 +1,6 @@
 # Local Class2Test dataset and cloned repositories
 /classes2test/
 
-# Local communication documents and test plans
-/giaotiep/
-TEST_PLAN.md
-
 # macOS Finder metadata
 .DS_Store
 
