@@ -20,9 +20,4 @@
 /Java-version/.cache/
 /Java-version/runtime/
 /Java-version/java-*/
-/Java-version/*.tar.gz
-/Java-version/*.zip
-*.tar.gz
-*.zip
-/Java-version/*report*.json
 __pycache__/
