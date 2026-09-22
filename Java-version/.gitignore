@@ -1,0 +1,19 @@
+# Downloaded JDKs and installation workspaces
+/runtime/
+/.cache/
+/.local/
+/java-*/
+
+# Machine-specific configuration and evidence
+/*.local.toml
+/*.local.json
+/*.local.log
+
+# Downloaded archives
+*.zip
+*.tar.gz
+*.tgz
+*.tar.xz
+*.7z
+*.part
+.DS_Store
