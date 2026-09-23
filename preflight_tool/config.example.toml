@@ -1,7 +1,7 @@
 [run]
 # "auto" writes runs/<UTC timestamp>; use an explicit ID to resume/audit a run.
 id = "auto"
-workers = 2
+workers = 5
 max_revision_candidates = 500
 build_timeout_seconds = 900
 keep_workspaces = false

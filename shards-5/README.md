@@ -17,7 +17,7 @@ Tổng: **85.819 class candidate**, **9.410 repository**, từ **362.414 JSON** 
 1. Pull cùng phiên bản ARROW **có hỗ trợ `--shard`** và folder này.
 2. Có dataset Classes2Test cùng snapshot ở `ARROW/classes2test/dataset/` (hoặc đường dẫn riêng truyền bằng `--input-root`). Pull Git ARROW không tải dataset gốc do dataset đang bị ignore. Có thể dùng toàn dataset hoặc bản con chứa đầy đủ mọi evidence JSON của shard, giữ nguyên `dataset/<project-id>/<file>.json`.
 3. Cài Python environment/dependency của `preflight_tool`; chuẩn bị JDK đúng hệ điều hành theo `Java-version/README.md`. `Java-version/config.local.toml` là config riêng của mỗi máy, không sao chép đường dẫn Java của người khác.
-4. Chuẩn bị Git, Maven/Gradle theo repository; build code bên ngoài trong môi trường cô lập phù hợp, không cấp secrets. Windows vẫn cần kiểm thử thực tế; hỗ trợ cú pháp CLI không đồng nghĩa mọi build đã được chứng nhận trên Windows.
+4. Chuẩn bị Git, Maven/Gradle theo repository. Theo yêu cầu của người dùng, được chạy trực tiếp trên host; Docker/VM không bắt buộc và thiếu Docker không chặn chạy. Build script bên ngoài có quyền của tiến trình, không được coi là sandbox: dùng tài khoản thường, không chủ động cấp secrets hoặc quyền admin. Môi trường cô lập vẫn được khuyến nghị nếu có. Windows vẫn cần kiểm thử thực tế; hỗ trợ cú pháp CLI không đồng nghĩa mọi build đã được chứng nhận trên Windows.
 
 ## Lệnh dùng chung cho macOS / Windows
 
@@ -34,10 +34,10 @@ Kết quả phải có **17.164 class selected**. `raw_json_indexed` và `dedupl
 Khi môi trường build đã sẵn sàng, chạy phần được giao:
 
 ```text
-python -m preflight.cli --config ../Java-version/config.local.toml --input-root ../classes2test --shard ../shards-5/shard-01.json --workers 2 --output-dir runs/machine-01
+python -m preflight.cli --config ../Java-version/config.local.toml --input-root ../classes2test --shard ../shards-5/shard-01.json --workers 5 --output-dir runs/machine-01
 ```
 
-Máy 2–5 thay `shard-01.json` bằng file tương ứng và đổi tên output. Máy 5 có 17.163 class. Output phải mới/rỗng; không dùng chung thư mục output giữa các máy. Điều chỉnh workers theo tài nguyên.
+Máy 2–5 thay `shard-01.json` bằng file tương ứng và đổi tên output. Máy 5 có 17.163 class. Output phải mới/rỗng; không dùng chung thư mục output giữa các máy. Cả 5 máy dùng `--workers 5`, ghi đè giá trị workers trong config local. Nếu máy thiếu tài nguyên, báo người dùng trước khi đổi cấu hình hoặc chạy tiếp.
 
 Tool hiện index input local trước, sau đó chọn shard; chỉ class được chọn mới được chuyển đến runner clone/checkout/build/probe. `--shard` không cho kết hợp `--limit` hoặc `--max-classes`, tránh chạy thiếu mà tưởng đã xong cả phần.
 

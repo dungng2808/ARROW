@@ -12,7 +12,7 @@ Kiểm tra trên chính môi trường sẽ thực thi:
 - Có Python >=3.11 và interpreter chạy được trong `preflight_tool/.venv` (macOS: `bin/python`; Windows: `Scripts/python.exe`), package preflight và dependency runtime import được. Thiếu venv/package thì báo tên thành phần và đường dẫn; không tự pip install.
 - Có `Java-version/config.local.toml`, parse TOML thành công; đủ mapping JDK 8/11/17/21 và default_home hợp lệ. Đường dẫn phải thuộc máy/môi trường hiện tại, đúng OS/CPU, có cả java/javac chạy được và đúng major. Có folder JDK nhưng binary thiếu/sai version vẫn là chưa đạt.
 - Có Git hoạt động và công cụ build cần thiết đã được chuẩn bị. Ghi rõ Maven/Gradle đang có; nếu thiếu fallback và chưa có phương án wrapper phù hợp được xác nhận thì báo để người dùng bổ sung, không tự cài hoặc giả định repo nào cũng có wrapper. File build/wrapper bên trong repo chưa clone không phải file local bắt buộc có ngay đầu.
-- Có môi trường build cô lập an toàn sẵn sàng theo mục 2; các path Python/JDK/dataset/config phải dùng được bên trong môi trường đó, không chỉ trên host. Thiếu môi trường này cũng phải dừng **trước index-only**.
+- Docker/VM/container **không phải điều kiện bắt buộc**. Được chạy trực tiếp trên macOS/Windows của người dùng; các path Python/JDK/dataset/config phải dùng được trong môi trường thực chạy. Không kiểm Docker như prerequisite, không dừng chỉ vì thiếu Docker, daemon không chạy hoặc chưa có VM. Nếu chủ động dùng môi trường cô lập đã có thì kiểm đường dẫn và binary bên trong môi trường đó.
 - Đường dẫn output có quyền ghi, tài nguyên và kết nối đáp ứng yêu cầu. Nếu không xác minh được điều kiện bắt buộc, ghi là chưa xác minh và hỏi người dùng, không coi là PASS.
 
 Khi không đạt, trả lời trực tiếp bằng tiếng Việt với trạng thái **BLOCKED_ENVIRONMENT**:
@@ -46,13 +46,13 @@ Agent hãy đọc **toàn bộ file này**, các AGENTS.md áp dụng và tài l
 5. Dùng virtualenv đã kiểm tra tại mục 0. Nếu phát hiện Python/dependency thiếu hoặc hỏng, dừng và báo người dùng; không tự tạo venv hoặc cài package.
 6. Đọc đầy đủ `Java-version/AGENTS.md` để đối chiếu JDK/config đã có. Chỉ tái sử dụng JDK 8/11/17/21 được xác minh; không tự setup/tải JDK hay tạo/sửa `Java-version/config.local.toml` trong nhiệm vụ chạy shard. Thiếu hoặc sai thì dừng theo mục 0.
 7. Kiểm `java` và `javac` từng major; Git và build tool/wrapper cần thiết. Trong môi trường tiến trình chạy tool, đặt JAVA_HOME/PATH về JDK 17 đã xác minh để lệnh kiểm version build tool không dùng Java khác ngoài ý muốn; không đổi cấu hình hệ thống. Runner vẫn dùng mapping JDK theo project.
-8. Kiểm dung lượng trống, RAM và kết nối mạng. Bắt đầu `--workers 2`; ghi cấu hình thực tế. Giữ timeout chung 900 giây/command và max revision candidates 500 nếu nhóm chưa thống nhất cấu hình khác. Không tự tăng workers để chạy nhanh khi thiếu RAM.
+8. Kiểm dung lượng trống, RAM và kết nối mạng. Nhóm dùng `--workers 5` cho mỗi máy; ghi cấu hình thực tế. Tham số CLI này ghi đè workers trong config local. Giữ timeout chung 900 giây/command và max revision candidates 500 nếu nhóm chưa thống nhất cấu hình khác. Nếu máy không đủ tài nguyên cho 5 worker, báo người dùng để quyết định, không tự đổi số worker hoặc tiếp tục khi thiếu tài nguyên.
 
-### Điều kiện an toàn cho clone/build
+### Chế độ chạy và cảnh báo khi build
 
-Build của repository bên ngoài có thể thực thi script/plugin tùy ý. Chỉ chạy phần clone/build trong môi trường cô lập phù hợp (VM/container dùng để chạy dataset), không có secrets hoặc quyền truy cập tài liệu cá nhân/SSH agent/credential của host; không mount Docker socket hay toàn bộ home. Không tắt TLS hoặc tải executable không xác minh để vượt lỗi.
+Theo yêu cầu của người dùng, cho phép chạy clone/build trực tiếp trên host khi các prerequisite khác đạt. Trước full run, thông báo ngắn rằng build script/plugin của repo bên ngoài có thể thực thi với quyền của tiến trình và đọc/ghi dữ liệu mà tài khoản đó truy cập được; đây không phải môi trường sandbox. Không coi việc thiếu Docker/VM là blocker và không yêu cầu cài Docker để tiếp tục.
 
-Nếu chưa có môi trường an toàn, dừng ngay ở cổng mục 0 và báo **BLOCKED_ENVIRONMENT: cần môi trường build cô lập**, không chạy index-only trước. Nếu chạy trong Linux container/VM, phải có sẵn JDK và đường dẫn phù hợp **bên trong** môi trường đó; không dùng binary JDK macOS/Windows của host. Rule Java hiện mô tả macOS/Windows; nền tảng chưa được mô tả cần người dùng xác nhận cách chuẩn bị, không tự coi là đã được hỗ trợ.
+Chạy bằng tài khoản thường, không sudo/admin; không chủ động cấp secrets/token hoặc chuyển tiếp SSH agent cho build subprocess. Không tắt TLS hay tải executable không xác minh để vượt lỗi. Môi trường cô lập vẫn là lựa chọn được khuyến nghị nếu đã có, không phải yêu cầu bắt buộc. Khi chọn container/VM, dùng JDK và config phù hợp bên trong nó; không dùng binary macOS/Windows trong Linux. Nếu gặp yêu cầu quyền cao, credentials hoặc hành vi đáng ngờ cụ thể thì dừng và báo, không tự bỏ qua. Các điều kiện thiếu dataset/Python/JDK/config/công cụ ở mục 0 vẫn áp dụng.
 
 ## 3. Chọn thư mục output duy nhất
 
@@ -84,10 +84,10 @@ Nếu thiếu class hoặc hash mismatch, giữ log và báo cần đúng snapsh
 
 ## 5. Chạy hết shard được giao
 
-Chỉ tiếp tục khi bước 4 đạt và môi trường build an toàn đã sẵn sàng. Không dùng `--fast`, `--limit` hoặc `--max-classes`.
+Chỉ tiếp tục khi bước 4 và các prerequisite bắt buộc ở mục 0 đạt; cho phép chạy trực tiếp trên host theo mục 2. Không dùng `--fast`, `--limit` hoặc `--max-classes`.
 
 ```text
-python -m preflight.cli --config ../Java-version/config.local.toml --input-root ../classes2test --shard ../shards-5/shard-03.json --workers 2 --output-dir runs/quang-shard-03-<RUN_ID>
+python -m preflight.cli --config ../Java-version/config.local.toml --input-root ../classes2test --shard ../shards-5/shard-03.json --workers 5 --output-dir runs/quang-shard-03-<RUN_ID>
 ```
 
 - Không có revision map upstream được audit trong giao việc này: mặc định chạy **DISCOVERY_ONLY**; không tự tạo SHA/provenance upstream để có strict eligible.
@@ -143,7 +143,7 @@ Tạo `HANDOFF.md` trong output full run; nếu đã chạy index-only rồi m�
 Nội dung:
 
 - Người phụ trách **Quang**, shard **03**, RUN_ID, Git HEAD và thay đổi local ảnh hưởng code.
-- OS/CPU, Python, Git, Maven/Gradle nếu có, vendor/full build của JDK 8/11/17/21; config, input và môi trường cô lập thực dùng.
+- OS/CPU, Python, Git, Maven/Gradle nếu có, vendor/full build của JDK 8/11/17/21; config, input và chế độ thực chạy (host trực tiếp hoặc VM/container). Nếu chạy host, ghi rõ không có sandbox.
 - Command, workers, timeout, start/end, exit code, shard SHA-256 và config SHA-256.
 - Expected **17164**, actual total, số missing/extra/duplicate và kết quả từng phép đối soát mục 6.
 - Bảng count theo preflight_status, technical eligible, strict eligible; top reason_codes và ví dụ task/log cho lỗi nổi bật.
