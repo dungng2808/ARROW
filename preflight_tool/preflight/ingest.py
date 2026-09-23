@@ -3,6 +3,7 @@ from __future__ import annotations
 import json
 import sqlite3
 import hashlib
+import re
 from pathlib import Path
 from typing import Iterator
 
@@ -40,6 +41,13 @@ def resolve_dataset_dir(input_root: Path) -> Path:
     return candidate if candidate.is_dir() else input_root
 
 
+def _unsafe_source_path(value: str) -> bool:
+    # Check both OS path syntaxes on every host, before stripping any slashes.
+    normalized = value.replace("\\", "/")
+    return (normalized.startswith("/") or bool(re.match(r"^[A-Za-z]:", normalized))
+            or "\x00" in normalized or ".." in normalized.split("/"))
+
+
 def _record_identity(path: Path) -> tuple[tuple[str, str, str, str, str] | None, dict | None, str | None, str | None]:
     try:
         content = path.read_bytes()
@@ -52,7 +60,11 @@ def _record_identity(path: Path) -> tuple[tuple[str, str, str, str, str] | None,
     focal = raw.get("focal_class") or {}
     project_id = path.parent.name
     repo_url = str(repo.get("url") or "").strip()
-    class_path = str(focal.get("file") or "").replace("\\", "/").strip("/")
+    raw_class_path = str(focal.get("file") or "")
+    raw_test_path = str((raw.get("test_class") or {}).get("file") or "")
+    if _unsafe_source_path(raw_class_path) or _unsafe_source_path(raw_test_path):
+        return None, raw, "INPUT_PATH_INVALID", None
+    class_path = raw_class_path.replace("\\", "/").strip("/")
     class_name = str(focal.get("identifier") or "").strip()
     if not repo_url or not class_path or not class_name:
         return None, raw, "INPUT_SCHEMA_INVALID", None

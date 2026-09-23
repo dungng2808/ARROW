@@ -293,9 +293,11 @@ def test_run_all_limits_submissions_between_completion_waits(tmp_path, monkeypat
 
     monkeypatch.setattr(runner, "ThreadPoolExecutor", CheckedExecutor)
     monkeypatch.setattr(runner, "wait", checked_wait)
-    monkeypatch.setattr(runner, "preflight_one", lambda candidate, config: SimpleNamespace(task_id=candidate))
+    monkeypatch.setattr(runner, "preflight_one", lambda candidate, config: SimpleNamespace(task_id=candidate.task_id))
+    monkeypatch.setattr(runner, "_cleanup_repo", lambda *args: None)
     config = ToolConfig(tmp_path, tmp_path, tmp_path / "db", tmp_path, tmp_path, tmp_path, 2, 1, 1, False, "", {}, {})
-    assert [result.task_id for result in run_all(list(reversed(range(20))), config)] == list(range(20))
+    selected = [SimpleNamespace(task_id=i, repo_url="fixture") for i in reversed(range(20))]
+    assert [result.task_id for result in run_all(selected, config)] == list(range(20))
 
 
 @pytest.mark.unit

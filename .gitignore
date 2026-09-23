@@ -14,4 +14,5 @@
 /preflight_tool/runs/
 /preflight_tool/.coverage
 /preflight_tool/coverage.json
+/preflight_tool/config.local.toml
 __pycache__/

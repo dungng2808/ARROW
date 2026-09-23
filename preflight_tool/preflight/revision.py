@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import csv
 import json
+import re
 import subprocess
 from dataclasses import dataclass
 from pathlib import Path
@@ -36,13 +37,16 @@ def load_revision_map(path: Path | None) -> dict[str, RevisionChoice]:
         status = str(entry.get("revision_verification_status") or "")
         provenance = str(entry.get("revision_provenance") or "")
         evidence_ref = str(entry.get("evidence_ref") or "").strip()
-        if not task_id or len(sha) != 40 or status != RevisionStatus.UPSTREAM_PINNED:
-            raise ValueError("revision map requires task_id, full checkout_sha, and UPSTREAM_PINNED status")
+        if not task_id or not re.fullmatch(r"[0-9a-fA-F]{40}", sha) or status != RevisionStatus.UPSTREAM_PINNED:
+            raise ValueError("revision map requires task_id, full 40-character hexadecimal checkout_sha, and UPSTREAM_PINNED status")
         if provenance not in {"upstream_metadata", "dataset_record"}:
             raise ValueError(f"{task_id}: UPSTREAM_PINNED requires upstream_metadata or dataset_record provenance")
         if not evidence_ref:
             raise ValueError(f"{task_id}: UPSTREAM_PINNED requires a non-empty evidence_ref")
-        result[task_id] = RevisionChoice(sha, provenance, status, evidence_ref=evidence_ref)
+        choice = RevisionChoice(sha.lower(), provenance, status, evidence_ref=evidence_ref)
+        if task_id in result and result[task_id] != choice:
+            raise ValueError(f"{task_id}: conflicting duplicate revision map entry")
+        result[task_id] = choice
     return result
 
 

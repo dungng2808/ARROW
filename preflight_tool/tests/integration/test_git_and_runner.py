@@ -1,18 +1,21 @@
 from __future__ import annotations
 
 import subprocess
+import json
+import sys
 from pathlib import Path
 
 import pytest
 
 from preflight.ingest import build_index, candidates
+from preflight import cli
 from preflight.models import BuildAttempt, PreflightStatus
 from preflight.runner import ToolConfig, preflight_one, run_all
 from tests.conftest import sample_payload
 
 
 def _config(tmp_path: Path, dataset: Path, database: Path, *, fast: bool = False) -> ToolConfig:
-    return ToolConfig(tmp_path / "run", dataset, database, tmp_path / "cache", tmp_path / "workspaces", tmp_path / "logs", 2, 30, 30, False, "", {}, {}, fast)
+    return ToolConfig(tmp_path / "run", dataset, database, tmp_path / "run/cache/mirrors", tmp_path / "workspaces", tmp_path / "logs", 2, 30, 30, False, "", {}, {}, fast)
 
 
 @pytest.mark.integration
@@ -62,3 +65,29 @@ def test_parallel_workers_have_stable_nonduplicated_results(dataset_factory, git
     assert one == sorted(one, key=lambda result: result.task_id)
     assert all(result.preflight_status == PreflightStatus.BUILD_TOOL_UNSUPPORTED for result in one)
     assert all(not (config.workspace_dir / result.task_id).exists() for result in one)
+    assert not list(config.cache_dir.glob("*.git"))
+    cleanup = [json.loads(line) for line in (config.run_root / "reports/repo_cleanup.jsonl").read_text().splitlines()]
+    assert len(cleanup) == 1 and cleanup[0]["status"] == "DELETED"
+    assert (repo / ".git").is_dir()
+    assert subprocess.run(["git", "status", "--porcelain"], cwd=repo, capture_output=True, text=True, check=True).stdout == ""
+
+
+@pytest.mark.integration
+@pytest.mark.parametrize("keep_flag", [None, "--keep-repo-cache", "--keep-workspaces"])
+def test_cli_local_git_cleanup_preserves_evidence_and_reports_status(dataset_factory, git_repo_factory, tmp_path, monkeypatch, keep_flag):
+    repo = git_repo_factory(with_pom=False)
+    dataset = dataset_factory([sample_payload(repo_url=str(repo), class_name="Thing", class_path="src/main/java/acme/Thing.java", test_path="src/test/java/acme/ThingTest.java")])
+    output = tmp_path / "cli-run"
+    argv = ["preflight", "--input-root", str(dataset), "--output-dir", str(output)]
+    if keep_flag:
+        argv.append(keep_flag)
+    monkeypatch.setattr(sys, "argv", argv)
+    cli.main()
+    summary = json.loads((output / "reports/summary.json").read_text())
+    assert summary["total"] == 1
+    assert summary["repo_cleanup"] == {"KEPT" if keep_flag else "DELETED": 1}
+    assert bool(list((output / "cache/mirrors").glob("*.git"))) == bool(keep_flag)
+    assert bool(list((output / "workspaces").iterdir())) == (keep_flag == "--keep-workspaces")
+    for relative in ["provenance.json", "reports/preflight_results.jsonl", "manifests/locked_input_manifest.jsonl", "reports/repo_cleanup.jsonl"]:
+        assert (output / relative).is_file()
+    assert (repo / ".git").is_dir()

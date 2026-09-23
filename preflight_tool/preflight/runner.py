@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import hashlib
+import json
 import os
 import re
 import signal
@@ -8,6 +9,8 @@ import shutil
 import subprocess
 import time
 import threading
+import stat
+from collections import Counter, defaultdict
 import xml.etree.ElementTree as ET
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from dataclasses import dataclass
@@ -53,6 +56,7 @@ class ToolConfig:
     java_homes: dict[str, str]
     revision_map: dict[str, RevisionChoice]
     fast_mode: bool = False
+    keep_repo_cache: bool = False
 
 
 def _path_candidates(workspace: Path, relative: str) -> list[Path]:
@@ -364,12 +368,52 @@ def _remove_worktree(mirror: Path, destination: Path) -> None:
         shutil.rmtree(destination, ignore_errors=True)
 
 
+def _mirror_path(repo_url: str, config: ToolConfig) -> Path:
+    return config.cache_dir / f"{hashlib.sha256(repo_url.encode()).hexdigest()}.git"
+
+
+def _cleanup_repo(repo_url: str, tasks: list[str], config: ToolConfig) -> None:
+    """Called by the coordinator only after every future for this repo finishes."""
+    mirror = _mirror_path(repo_url, config)
+    event = {"repo_url": repo_url, "mirror_path": str(mirror), "class_count": len(tasks)}
+    with _mirror_lock(repo_url):
+        try:
+            if config.keep_repo_cache or config.keep_workspaces:
+                event["status"] = "KEPT"
+                event["reason"] = "keep_workspaces" if config.keep_workspaces else "keep_repo_cache"
+            else:
+                root = config.run_root.absolute()
+                expected = root / "cache" / "mirrors"
+                if (config.cache_dir.absolute() != expected or
+                        any(p.is_symlink() for p in (root, root / "cache", expected, mirror)) or
+                        mirror.resolve().parent != expected.resolve()):
+                    raise ValueError("UNSAFE_CACHE_PATH: only the run-owned cache/mirrors child may be deleted")
+                leftovers = [task for task in tasks if (config.workspace_dir / task).exists() or (config.workspace_dir / task).is_symlink()]
+                if leftovers:
+                    event.update(status="KEPT", reason="WORKSPACE_CLEANUP_INCOMPLETE", remaining_tasks=leftovers)
+                elif not mirror.exists():
+                    event["status"] = "ABSENT"
+                else:
+                    def retry_readonly(function, path, exc_info):
+                        if not isinstance(exc_info[1], PermissionError) or Path(path).is_symlink():
+                            raise exc_info[1]
+                        os.chmod(path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR)
+                        function(path)
+                    shutil.rmtree(mirror, onerror=retry_readonly)
+                    event["status"] = "DELETED"
+        except (OSError, ValueError) as exc:
+            event.update(status="FAILED", error=str(exc))
+    report = config.run_root / "reports" / "repo_cleanup.jsonl"
+    report.parent.mkdir(parents=True, exist_ok=True)
+    with report.open("a", encoding="utf-8") as handle:
+        handle.write(json.dumps(event, ensure_ascii=False) + "\n")
+
+
 def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightResult:
     started = time.monotonic(); result = _result_from(candidate); workspace: Path | None = None; mirror: Path | None = None
     try:
-        cache_name = hashlib.sha256(candidate.repo_url.encode()).hexdigest()
         with _mirror_lock(candidate.repo_url):
-            mirror = ensure_mirror(candidate.repo_url, config.cache_dir / f"{cache_name}.git")
+            mirror = ensure_mirror(candidate.repo_url, _mirror_path(candidate.repo_url, config))
         choice = choose_revision(mirror, candidate, config.dataset_dir, evidence_paths(config.database, candidate.task_id), config.revision_map.get(candidate.task_id), config.max_revision_candidates)
         result.checkout_sha, result.revision_provenance, result.revision_verification_status, result.content_match = choice.checkout_sha, choice.provenance, choice.status, choice.content_match
         if choice.evidence_ref:
@@ -461,16 +505,25 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
 def run_all(candidates: list[ClassCandidate], config: ToolConfig) -> list[PreflightResult]:
     results: list[PreflightResult] = []
     workers = max(1, config.workers)
+    remaining = Counter(candidate.repo_url for candidate in candidates)
+    repo_tasks = defaultdict(list)
+    for candidate in candidates:
+        repo_tasks[candidate.repo_url].append(candidate.task_id)
     pending = iter(candidates)
     with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = set()
+        futures = {}
         for _ in range(min(len(candidates), workers * 2)):
-            futures.add(executor.submit(preflight_one, next(pending), config))
+            candidate = next(pending)
+            futures[executor.submit(preflight_one, candidate, config)] = candidate
         while futures:
-            done, futures = wait(futures, return_when=FIRST_COMPLETED)
+            done, _ = wait(futures, return_when=FIRST_COMPLETED)
             for future in done:
+                completed = futures.pop(future)
                 results.append(future.result())
+                remaining[completed.repo_url] -= 1
+                if remaining[completed.repo_url] == 0:
+                    _cleanup_repo(completed.repo_url, repo_tasks[completed.repo_url], config)
                 candidate = next(pending, None)
                 if candidate is not None:
-                    futures.add(executor.submit(preflight_one, candidate, config))
+                    futures[executor.submit(preflight_one, candidate, config)] = candidate
     return sorted(results, key=lambda item: item.task_id)

@@ -5,6 +5,9 @@ workers = 2
 max_revision_candidates = 500
 build_timeout_seconds = 900
 keep_workspaces = false
+# Delete each repository mirror after its last selected class finishes.
+# keep_workspaces=true also preserves mirrors, so retained worktrees remain usable.
+keep_repo_cache = false
 
 [input]
 # The CLI resolves <root>/dataset automatically when it exists.

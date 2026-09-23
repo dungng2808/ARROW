@@ -1,0 +1,42 @@
+{
+  "schema_version": 1,
+  "class_count": 85819,
+  "repository_count": 9410,
+  "shards": [
+    {
+      "file": "shard-01.json",
+      "class_count": 17164,
+      "repository_count": 1882,
+      "sha256": "e675cfe505bce48b51055dfdde5d3716be9a85ddbf5b32b0663b58e98484a6d0",
+      "bytes": 5831756
+    },
+    {
+      "file": "shard-02.json",
+      "class_count": 17164,
+      "repository_count": 1882,
+      "sha256": "6498f4d2886fbfb18116d6cbd903ee7938aaf0a56c56b97c8903d2e56de9fc06",
+      "bytes": 5732816
+    },
+    {
+      "file": "shard-03.json",
+      "class_count": 17164,
+      "repository_count": 1882,
+      "sha256": "2a642d6aeb8653b6b08e86235b140f90cc6950c5b2630e07d3430a2cfe5d8d1a",
+      "bytes": 5730760
+    },
+    {
+      "file": "shard-04.json",
+      "class_count": 17164,
+      "repository_count": 1882,
+      "sha256": "2130e181d5d070efa473e6182f2c78e2b9aba4aab606a70a1d7dadcea817a273",
+      "bytes": 5771230
+    },
+    {
+      "file": "shard-05.json",
+      "class_count": 17163,
+      "repository_count": 1882,
+      "sha256": "361a696cc2f97ba88b884103ed3dbbc8d108fdda377034aa6263cd724e960ea8",
+      "bytes": 5796855
+    }
+  ]
+}
