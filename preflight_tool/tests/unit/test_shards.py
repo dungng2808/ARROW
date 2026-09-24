@@ -65,7 +65,7 @@ def test_cli_shard_only_sends_assigned_class_to_runner(shard_fixture, tmp_path, 
     monkeypatch.setattr(sys, "argv", ["preflight", "--input-root", str(dataset), "--output-dir", str(output), "--shard", str(path)])
     cli.main()
     assert received == [items[1]]
-    provenance = json.loads((output / "provenance.json").read_text())
+    provenance = json.loads((output / "provenance.json").read_text(encoding="utf-8"))
     assert provenance["classes_selected"] == 1
     assert provenance["deduplicated_classes"] == 2
     assert provenance["shard_id"] == "shard-01"

@@ -182,7 +182,9 @@ dataset chạy theo lịch hoặc trước experiment chính thức.
    đã verify; config `Java-version/config.local.toml` map tới JAVA_HOME thực
    (macOS có thể có `Contents/Home`). CLI không tự tìm runtime này.
 3. Dataset có cấu trúc `dataset/<project-id>/*.json`; cấu hình input trỏ đúng
-   máy. Output mỗi run dùng thư mục mới; tool chưa có resume.
+   máy. Lệnh khởi tạo dùng output mới; full run có checkpoint có thể tiếp tục
+   bằng `--resume --output-dir <output-cũ>` khi code/schema và các đường dẫn
+   dataset/JDK tuyệt đối vẫn giữ nguyên.
 4. Muốn build cần wrapper trong repo hoặc Maven/Gradle trên máy, phiên bản
    tương thích với JDK và project lịch sử. Không ép một Gradle mới chạy với
    mọi JDK cũ; phiên bản build tool là thành phần của fixture.

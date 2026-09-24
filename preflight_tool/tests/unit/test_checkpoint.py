@@ -1,6 +1,9 @@
 from __future__ import annotations
 
 import json
+import subprocess
+import sys
+from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -38,6 +41,34 @@ def test_checkpoint_recovers_abandoned_and_preserves_completed_results(tmp_path)
         assert [row["task_id"] for row in store.results()] == ["a", "b"]
         assert store.status_counts() == {"BUILD_TIMEOUT": 1, "ELIGIBLE": 1}
         assert store.counts()["completed"] == 2
+
+
+@pytest.mark.unit
+def test_checkpoint_recovers_after_hard_process_exit(tmp_path):
+    database = tmp_path / "hard-exit" / "run_state.sqlite"
+    script = f"""
+import os
+from types import SimpleNamespace
+from pathlib import Path
+from preflight.checkpoint import CheckpointStore
+
+path = Path({str(database)!r})
+items = [SimpleNamespace(task_id='done', repo_url='repo'), SimpleNamespace(task_id='inflight', repo_url='repo')]
+store = CheckpointStore.create(path, {{'name': 'hard-exit'}}, items)
+session = store.begin_session(2)
+attempt = store.start_task('done', session)
+store.complete_task('done', attempt, {{'task_id': 'done', 'preflight_status': 'ELIGIBLE'}})
+store.start_task('inflight', session)
+os._exit(17)
+"""
+    completed = subprocess.run([sys.executable, "-c", script], cwd=Path(__file__).parents[2], check=False)
+    assert completed.returncode == 17
+
+    with CheckpointStore.open(database) as store:
+        assert store.recover_abandoned() == 1
+        assert store.completed_task_ids() == {"done"}
+        assert store.pending_task_ids() == ["inflight"]
+        assert store.sessions()[0]["status"] == "ABANDONED"
 
 
 @pytest.mark.unit
@@ -98,9 +129,15 @@ def test_checkpointed_runner_commits_all_repo_tasks_before_cleanup(tmp_path, mon
     monkeypatch.setattr("preflight.runner._cleanup_repo", fake_cleanup)
     config = ToolConfig(tmp_path, tmp_path, tmp_path / "index.sqlite", tmp_path / "cache" / "mirrors",
                         tmp_path / "workspaces", tmp_path / "logs", 2, 1, 1, False, "", {}, {})
+    progress_snapshots = []
     with CheckpointStore.create(database, {"name": "fixture"}, candidates) as store:
         session = store.begin_session(2)
-        run_all(candidates, config, checkpoint=store, session_id=session)
+        run_all(
+            candidates, config, checkpoint=store, session_id=session,
+            on_checkpoint=lambda: progress_snapshots.append(store.counts()),
+        )
         assert store.counts()["completed"] == 2
         assert cleaned == [("repo", ["a", "b"])]
         assert store.cleanup_events() == [{"repo_url": "repo", "status": "ABSENT"}]
+    assert progress_snapshots[0] == {"total": 2, "completed": 0, "running": 2, "pending": 0}
+    assert progress_snapshots[-1] == {"total": 2, "completed": 2, "running": 0, "pending": 0}

@@ -18,7 +18,7 @@ def config(tmp_path):
 
 
 def events(config):
-    return [json.loads(line) for line in (config.run_root / "reports/repo_cleanup.jsonl").read_text().splitlines()]
+    return [json.loads(line) for line in (config.run_root / "reports/repo_cleanup.jsonl").read_text(encoding="utf-8").splitlines()]
 
 
 def mirror(config, repo="repo"):
@@ -57,7 +57,7 @@ def test_cleanup_only_after_all_active_queued_and_unscheduled_classes_finish(con
     assert not any(path.exists() for path in paths.values())
     assert len(events(config)) == 3
     assert {event["status"] for event in events(config)} == {"DELETED"}
-    assert sentinel.read_text() == "preserve"
+    assert sentinel.read_text(encoding="utf-8") == "preserve"
 
 
 @pytest.mark.unit
@@ -112,7 +112,7 @@ def test_symlink_mirror_is_never_followed(config, tmp_path):
     except OSError:
         pytest.skip("Host does not permit directory symlink creation")
     runner._cleanup_repo("repo", ["a"], config)
-    assert sentinel.read_text() == "preserve"
+    assert sentinel.read_text(encoding="utf-8") == "preserve"
     assert target.is_symlink()
     assert events(config)[0]["status"] == "FAILED"
 

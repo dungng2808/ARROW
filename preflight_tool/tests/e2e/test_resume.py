@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import json
+import sqlite3
 import sys
 
 import pytest
@@ -83,6 +84,25 @@ def test_cli_interrupt_then_resume_runs_only_unfinished_task(dataset_factory, tm
 @pytest.mark.e2e
 def test_resume_rejects_non_runtime_options(tmp_path, monkeypatch):
     monkeypatch.setattr(sys, "argv", ["preflight", "--resume", "--output-dir", str(tmp_path), "--fast"])
+    with pytest.raises(SystemExit) as exc:
+        cli.main()
+    assert exc.value.code == 2
+
+
+@pytest.mark.e2e
+def test_resume_rejects_changed_candidate_fields(dataset_factory, tmp_path, monkeypatch):
+    dataset = dataset_factory([sample_payload()])
+    output = tmp_path / "candidate-contract"
+    monkeypatch.setattr(cli, "_run_checkpointed", lambda *args: None)
+    monkeypatch.setattr(sys, "argv", ["preflight", "--input-root", str(dataset), "--output-dir", str(output)])
+    cli.main()
+
+    database = output / "state" / "class_index.sqlite"
+    with sqlite3.connect(database) as connection:
+        connection.execute("UPDATE classes SET class_name='TamperedName'")
+        connection.commit()
+
+    monkeypatch.setattr(sys, "argv", ["preflight", "--resume", "--output-dir", str(output)])
     with pytest.raises(SystemExit) as exc:
         cli.main()
     assert exc.value.code == 2

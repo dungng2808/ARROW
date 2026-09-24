@@ -2,7 +2,10 @@ from __future__ import annotations
 
 import csv
 import json
+import os
 import re
+import shutil
+import stat
 import subprocess
 import threading
 from dataclasses import dataclass
@@ -66,16 +69,66 @@ def _git_cancel(repo: Path, args: list[str], *, check: bool, cancel_event: threa
     return _git(repo, args, check=check)
 
 
+def _clone_mirror(repo_url: str, mirror: Path, cancel_event: threading.Event | None) -> None:
+    command = ["git", "clone", "--mirror", repo_url, str(mirror)]
+    if cancel_event:
+        run_capture(command, check=True, cancel_event=cancel_event)
+    else:
+        subprocess.run(command, check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
+
+
+def _mirror_is_valid(repo_url: str, mirror: Path, cancel_event: threading.Event | None) -> bool:
+    bare = _git_cancel(mirror, ["rev-parse", "--is-bare-repository"], check=False, cancel_event=cancel_event)
+    if bare.returncode != 0 or bare.stdout.strip().lower() != "true":
+        return False
+    origin = _git_cancel(mirror, ["remote", "get-url", "origin"], check=False, cancel_event=cancel_event)
+    return origin.returncode == 0 and origin.stdout.strip() == repo_url
+
+
+def _mirror_objects_are_healthy(mirror: Path, cancel_event: threading.Event | None) -> bool:
+    result = _git_cancel(mirror, ["fsck", "--connectivity-only"], check=False, cancel_event=cancel_event)
+    return result.returncode == 0
+
+
+def _discard_invalid_mirror(mirror: Path) -> None:
+    """Remove only the exact, non-linked mirror path supplied by the run cache."""
+    parent = mirror.parent.resolve()
+    target = mirror.resolve(strict=False)
+    guarded = (mirror, mirror.parent, mirror.parent.parent, mirror.parent.parent.parent)
+    linked = any(path.is_symlink() or bool(getattr(path, "is_junction", lambda: False)()) for path in guarded)
+    if linked or target.parent != parent:
+        raise ValueError(f"UNSAFE_MIRROR_PATH: refusing to replace {mirror}")
+    if mirror.is_dir():
+        def retry_readonly(function, path, exc_info):
+            if not isinstance(exc_info[1], PermissionError) or Path(path).is_symlink():
+                raise exc_info[1]
+            os.chmod(path, stat.S_IRUSR | stat.S_IWUSR | stat.S_IXUSR)
+            function(path)
+        shutil.rmtree(mirror, onerror=retry_readonly)
+    elif mirror.exists():
+        mirror.unlink()
+
+
 def ensure_mirror(repo_url: str, mirror: Path, cancel_event: threading.Event | None = None) -> Path:
     mirror.parent.mkdir(parents=True, exist_ok=True)
     if not mirror.exists():
-        command = ["git", "clone", "--mirror", repo_url, str(mirror)]
-        if cancel_event:
-            run_capture(command, check=True, cancel_event=cancel_event)
-        else:
-            subprocess.run(command, check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        _clone_mirror(repo_url, mirror, cancel_event)
     else:
-        _git_cancel(mirror, ["remote", "update", "--prune"], check=True, cancel_event=cancel_event)
+        if (not _mirror_is_valid(repo_url, mirror, cancel_event) or
+                not _mirror_objects_are_healthy(mirror, cancel_event)):
+            _discard_invalid_mirror(mirror)
+            _clone_mirror(repo_url, mirror, cancel_event)
+        else:
+            try:
+                _git_cancel(mirror, ["remote", "update", "--prune"], check=True, cancel_event=cancel_event)
+            except subprocess.CalledProcessError:
+                # Preserve ordinary network/authentication failures as task
+                # evidence. Reclone only when the local object database itself
+                # is damaged, which can happen after a hard interruption.
+                if _mirror_objects_are_healthy(mirror, cancel_event):
+                    raise
+                _discard_invalid_mirror(mirror)
+                _clone_mirror(repo_url, mirror, cancel_event)
     return mirror
 
 

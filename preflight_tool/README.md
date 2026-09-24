@@ -59,12 +59,19 @@ class2test-preflight --resume --output-dir runs\discovery --workers 3
 Task đã có kết quả terminal, kể cả clone/build/timeout failure, sẽ không chạy
 lại. Task đang chạy dở khi process bị dừng sẽ chạy lại từ đầu trong
 `logs/<task_id>/attempt-<NNN>/`; log attempt cũ vẫn được giữ. Xem tiến độ tại
-`reports/progress.json`. Bộ report/manifest chính thức chỉ được sinh khi đủ toàn
-bộ task.
+`reports/progress.json`; đây là snapshot checkpoint, có thể cũ sau hard kill.
+Mirror local không hợp lệ hoặc có object database hỏng sẽ được thay bằng clone
+mới khi resume. Lỗi mạng, quyền hoặc authentication trên mirror khỏe vẫn là kết
+quả terminal và không tự retry. Bộ report/manifest chính thức chỉ được sinh khi
+đủ toàn bộ task.
 
 Resume không nhận lại config, input, shard, revision map hay các cờ thay đổi
-kết quả: execution contract đã được khóa trong checkpoint. Output `--index-only`
-và output tạo bởi phiên bản tool cũ không có checkpoint không thể resume.
+kết quả: execution contract đã được khóa trong checkpoint. Phải giữ nguyên code
+và schema tạo run, cùng các đường dẫn tuyệt đối tới dataset/JDK; thay đổi tool
+fingerprint sẽ bị từ chối. Output `--index-only` và output tạo bởi phiên bản tool
+cũ không có checkpoint không thể resume. Nếu một sự cố môi trường đã tạo ra hàng
+loạt kết quả terminal sai lệch, không dùng resume để kỳ vọng chúng chạy lại; đánh
+dấu run không hợp lệ và khởi tạo run mới sau khi xử lý nguyên nhân.
 
 Mỗi historical project cần Maven/Gradle (hoặc wrapper), Git và JDK đúng version.
 Khai báo đường dẫn JDK 8/11/17/21 trong `config.example.toml`; tool không đổi

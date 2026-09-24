@@ -12,7 +12,7 @@ import stat
 from collections import Counter, defaultdict
 import xml.etree.ElementTree as ET
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
-from dataclasses import dataclass
+from dataclasses import dataclass, field
 from pathlib import Path, PurePosixPath
 from typing import Any, Callable
 
@@ -60,6 +60,7 @@ class ToolConfig:
     fast_mode: bool = False
     keep_repo_cache: bool = False
     cancel_event: threading.Event | None = None
+    prepared_repos: set[str] = field(default_factory=set, compare=False, repr=False)
 
 
 def _path_candidates(workspace: Path, relative: str) -> list[Path]:
@@ -441,8 +442,12 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig, attempt_number:
     try:
         with _mirror_lock(candidate.repo_url):
             mirror_path = _mirror_path(candidate.repo_url, config)
-            mirror = (ensure_mirror(candidate.repo_url, mirror_path, config.cancel_event)
-                      if config.cancel_event else ensure_mirror(candidate.repo_url, mirror_path))
+            if candidate.repo_url not in config.prepared_repos:
+                mirror = (ensure_mirror(candidate.repo_url, mirror_path, config.cancel_event)
+                          if config.cancel_event else ensure_mirror(candidate.repo_url, mirror_path))
+                config.prepared_repos.add(candidate.repo_url)
+            else:
+                mirror = mirror_path
         choice_args = (mirror, candidate, config.dataset_dir, evidence_paths(config.database, candidate.task_id), config.revision_map.get(candidate.task_id), config.max_revision_candidates)
         choice = choose_revision(*choice_args, config.cancel_event) if config.cancel_event else choose_revision(*choice_args)
         result.checkout_sha, result.revision_provenance, result.revision_verification_status, result.content_match = choice.checkout_sha, choice.provenance, choice.status, choice.content_match
@@ -565,8 +570,11 @@ def run_all(candidates: list[ClassCandidate], config: ToolConfig, checkpoint: Ch
             if config.cancel_event and config.cancel_event.is_set():
                 break
             submit(next(pending))
+        if checkpoint and on_checkpoint and futures:
+            on_checkpoint()
         while futures:
             done, _ = wait(futures, return_when=FIRST_COMPLETED)
+            checkpoint_changed = False
             for future in done:
                 completed, attempt = futures.pop(future)
                 try:
@@ -574,12 +582,12 @@ def run_all(candidates: list[ClassCandidate], config: ToolConfig, checkpoint: Ch
                 except RunCancelled:
                     if checkpoint:
                         checkpoint.interrupt_task(completed.task_id, attempt)
+                        checkpoint_changed = True
                     continue
                 results.append(result)
                 if checkpoint:
                     checkpoint.complete_task(completed.task_id, attempt, result.to_dict())
-                    if on_checkpoint:
-                        on_checkpoint()
+                    checkpoint_changed = True
                 remaining[completed.repo_url] -= 1
                 repo_finished = (completed.repo_url in checkpoint.completed_repos()) if checkpoint else remaining[completed.repo_url] == 0
                 if repo_finished:
@@ -591,11 +599,15 @@ def run_all(candidates: list[ClassCandidate], config: ToolConfig, checkpoint: Ch
                     candidate = next(pending, None)
                     if candidate is not None:
                         submit(candidate)
+                        checkpoint_changed = True
             if config.cancel_event and config.cancel_event.is_set():
                 for future, (candidate, attempt) in list(futures.items()):
                     if future.cancel() and checkpoint:
                         checkpoint.interrupt_task(candidate.task_id, attempt)
                         futures.pop(future)
+                        checkpoint_changed = True
+            if checkpoint_changed and on_checkpoint:
+                on_checkpoint()
     finally:
         executor.shutdown(wait=True, cancel_futures=True)
     return sorted(results, key=lambda item: item.task_id)

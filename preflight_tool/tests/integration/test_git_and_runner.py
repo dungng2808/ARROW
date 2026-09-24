@@ -66,7 +66,7 @@ def test_parallel_workers_have_stable_nonduplicated_results(dataset_factory, git
     assert all(result.preflight_status == PreflightStatus.BUILD_TOOL_UNSUPPORTED for result in one)
     assert all(not (config.workspace_dir / result.task_id).exists() for result in one)
     assert not list(config.cache_dir.glob("*.git"))
-    cleanup = [json.loads(line) for line in (config.run_root / "reports/repo_cleanup.jsonl").read_text().splitlines()]
+    cleanup = [json.loads(line) for line in (config.run_root / "reports/repo_cleanup.jsonl").read_text(encoding="utf-8").splitlines()]
     assert len(cleanup) == 1 and cleanup[0]["status"] == "DELETED"
     assert (repo / ".git").is_dir()
     assert subprocess.run(["git", "status", "--porcelain"], cwd=repo, capture_output=True, text=True, check=True).stdout == ""
@@ -83,7 +83,7 @@ def test_cli_local_git_cleanup_preserves_evidence_and_reports_status(dataset_fac
         argv.append(keep_flag)
     monkeypatch.setattr(sys, "argv", argv)
     cli.main()
-    summary = json.loads((output / "reports/summary.json").read_text())
+    summary = json.loads((output / "reports/summary.json").read_text(encoding="utf-8"))
     assert summary["total"] == 1
     assert summary["repo_cleanup"] == {"KEPT" if keep_flag else "DELETED": 1}
     assert bool(list((output / "cache/mirrors").glob("*.git"))) == bool(keep_flag)

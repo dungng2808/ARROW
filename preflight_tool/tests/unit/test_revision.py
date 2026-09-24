@@ -6,7 +6,7 @@ import subprocess
 import pytest
 
 from preflight.models import ClassCandidate, RevisionStatus
-from preflight.revision import RevisionChoice, choose_revision, load_revision_map
+from preflight.revision import RevisionChoice, choose_revision, ensure_mirror, load_revision_map
 from preflight.util import normalize_java, safe_relative
 
 
@@ -79,6 +79,86 @@ def test_load_revision_map_none_returns_empty_dict():
 
 
 @pytest.mark.unit
+def test_ensure_mirror_replaces_interrupted_clone(tmp_path):
+    source = tmp_path / "source"
+    source.mkdir()
+    subprocess.run(["git", "init"], cwd=source, check=True, capture_output=True)
+    subprocess.run(["git", "config", "user.email", "test@example.test"], cwd=source, check=True)
+    subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
+    (source / "README.md").write_text("fixture\n", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md"], cwd=source, check=True)
+    subprocess.run(["git", "commit", "-m", "fixture"], cwd=source, check=True, capture_output=True)
+
+    mirror = tmp_path / "cache" / "broken.git"
+    mirror.mkdir(parents=True)
+    (mirror / "partial-clone-marker").write_text("incomplete", encoding="utf-8")
+
+    assert ensure_mirror(str(source), mirror) == mirror
+    bare = subprocess.run(
+        ["git", "-C", str(mirror), "rev-parse", "--is-bare-repository"],
+        check=True, capture_output=True, text=True, encoding="utf-8",
+    )
+    assert bare.stdout.strip() == "true"
+    assert not (mirror / "partial-clone-marker").exists()
+
+
+@pytest.mark.unit
+def test_ensure_mirror_preserves_healthy_cache_on_remote_failure(tmp_path):
+    source = tmp_path / "source"
+    source.mkdir()
+    subprocess.run(["git", "init"], cwd=source, check=True, capture_output=True)
+    subprocess.run(["git", "config", "user.email", "test@example.test"], cwd=source, check=True)
+    subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
+    (source / "README.md").write_text("fixture\n", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md"], cwd=source, check=True)
+    subprocess.run(["git", "commit", "-m", "fixture"], cwd=source, check=True, capture_output=True)
+    mirror = ensure_mirror(str(source), tmp_path / "cache" / "mirror.git")
+    head_before = subprocess.run(
+        ["git", "-C", str(mirror), "rev-parse", "HEAD"],
+        check=True, capture_output=True, text=True, encoding="utf-8",
+    ).stdout.strip()
+    source.rename(tmp_path / "source-gone")
+
+    with pytest.raises(subprocess.CalledProcessError):
+        ensure_mirror(str(source), mirror)
+
+    head_after = subprocess.run(
+        ["git", "-C", str(mirror), "rev-parse", "HEAD"],
+        check=True, capture_output=True, text=True, encoding="utf-8",
+    ).stdout.strip()
+    assert head_after == head_before
+
+
+@pytest.mark.unit
+def test_ensure_mirror_reclones_corrupt_object_database(tmp_path):
+    source = tmp_path / "source"
+    source.mkdir()
+    subprocess.run(["git", "init"], cwd=source, check=True, capture_output=True)
+    subprocess.run(["git", "config", "user.email", "test@example.test"], cwd=source, check=True)
+    subprocess.run(["git", "config", "user.name", "Test"], cwd=source, check=True)
+    (source / "README.md").write_text("fixture\n", encoding="utf-8")
+    subprocess.run(["git", "add", "README.md"], cwd=source, check=True)
+    subprocess.run(["git", "commit", "-m", "fixture"], cwd=source, check=True, capture_output=True)
+    mirror = ensure_mirror(str(source), tmp_path / "cache" / "mirror.git")
+    blob = subprocess.run(
+        ["git", "-C", str(source), "rev-parse", "HEAD:README.md"],
+        check=True, capture_output=True, text=True, encoding="utf-8",
+    ).stdout.strip()
+    corrupt_object = mirror / "objects" / blob[:2] / blob[2:]
+    assert corrupt_object.is_file()
+    corrupt_object.chmod(0o600)
+    corrupt_object.unlink()
+
+    ensure_mirror(str(source), mirror)
+
+    healthy = subprocess.run(
+        ["git", "-C", str(mirror), "fsck", "--connectivity-only"],
+        check=False, capture_output=True, text=True, encoding="utf-8",
+    )
+    assert healthy.returncode == 0
+
+
+@pytest.mark.unit
 def test_matching_evidence_scores_correctly(tmp_path):
     from preflight.revision import _matching_evidence
     dataset_dir = tmp_path / "dataset"
@@ -97,4 +177,3 @@ def test_matching_evidence_scores_correctly(tmp_path):
     assert len(matches) == 1
     assert matches[0]["source_json_path"] == "42/sample.json"
     assert matches[0]["focal_method"] == "int f()"
-

@@ -101,7 +101,7 @@ def test_cli_unsafe_input_never_reaches_runner(dataset_factory, tmp_path, monkey
     monkeypatch.setattr(sys, "argv", ["preflight", "--input-root", str(dataset), "--output-dir", str(output)])
     cli.main()
     assert received == []
-    rejected = json.loads((output / "reports/input_rejections.jsonl").read_text())
+    rejected = json.loads((output / "reports/input_rejections.jsonl").read_text(encoding="utf-8"))
     assert rejected["reason_code"] == "INPUT_PATH_INVALID"
 
 

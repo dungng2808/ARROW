@@ -128,11 +128,14 @@ def _restore_revision_map(entries: list[dict[str, Any]]) -> dict[str, RevisionCh
     }
 
 
-def _evidence_digest(selected: list[Any]) -> str:
+def _candidate_digest(selected: list[Any]) -> str:
+    """Bind every execution-relevant candidate field loaded from the index."""
     digest = hashlib.sha256()
     for item in selected:
-        value = [item.task_id, list(item.source_json_paths), list(item.source_json_sha256s)]
-        digest.update(json.dumps(value, ensure_ascii=True, separators=(",", ":")).encode("utf-8"))
+        value = _candidate_record(item)
+        payload = json.dumps(value, ensure_ascii=True, separators=(",", ":"), sort_keys=True).encode("utf-8")
+        digest.update(len(payload).to_bytes(8, "big"))
+        digest.update(payload)
     return digest.hexdigest()
 
 
@@ -346,8 +349,8 @@ def _resume(args: argparse.Namespace) -> None:
             if not manifest.is_file() or sha256_file(manifest) != contract.get("candidate_manifest_sha256"):
                 raise CheckpointError("Candidate manifest changed since the run started")
             selected = _load_selected(run_root / "state" / "class_index.sqlite", store.task_ids())
-            if _evidence_digest(selected) != contract.get("evidence_digest"):
-                raise CheckpointError("Class index evidence does not match the run contract")
+            if _candidate_digest(selected) != contract.get("candidate_digest"):
+                raise CheckpointError("Class index candidates do not match the run contract")
             cancel_event = threading.Event()
             workers = args.workers if args.workers is not None else int(contract["workers_default"])
             if workers < 1:
@@ -426,7 +429,7 @@ def _fresh(args: argparse.Namespace) -> None:
         "tool_fingerprint": tool_fingerprint(ROOT),
         "input_root": str(input_root), "dataset_dir": str(dataset_dir),
         "candidate_manifest_sha256": sha256_file(manifests / "class_candidates.jsonl"),
-        "evidence_digest": _evidence_digest(selected),
+        "candidate_digest": _candidate_digest(selected),
         "selection": {"limit": args.limit, "max_classes": args.max_classes, **shard_info},
         "revision_map": _revision_entries(revision_map),
         "effective": effective,

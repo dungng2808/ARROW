@@ -96,14 +96,14 @@ Nếu cần dừng, nhấn `Ctrl+C` một lần và chờ tool thoát mã `130`.
 python -m preflight.cli --resume --output-dir runs/quang-shard-03-<RUN_ID> --workers 5
 ```
 
-Resume chỉ nhận `--output-dir` và tùy chọn `--workers`; không truyền lại config/input/shard. Kiểm `reports/progress.json` để biết `completed`, `pending`, `running` và trạng thái run.
+Resume chỉ nhận `--output-dir` và tùy chọn `--workers`; không truyền lại config/input/shard. Phải giữ nguyên checkout/code/schema đã tạo run và các đường dẫn tuyệt đối tới dataset/JDK; tool sẽ từ chối khi fingerprint thay đổi. `reports/progress.json` là snapshot checkpoint để xem `completed`, `pending`, `running` và trạng thái run; sau hard kill snapshot có thể cũ, nên đối chiếu thêm process/run lock trước khi kết luận.
 
 - Không có revision map upstream được audit trong giao việc này: mặc định chạy **DISCOVERY_ONLY**; không tự tạo SHA/provenance upstream để có strict eligible.
 - Nếu nhóm cung cấp revision map được audit, cần xác nhận thay đổi chế độ trước khi bổ sung `--revision-map`; không tự chuyển nhiệm vụ discovery thành strict experiment.
 - Lưu command, start/end UTC, stdout/stderr và exit code vào artifact local. Nếu dùng tee/pipeline, phải giữ exit code thật của Python, không lấy exit code của tee.
 - Theo dõi tiến trình cho đến khi hoàn tất hoặc có blocker thật. Tool có thể chưa in summary trong lúc chạy; không kết luận treo chỉ vì stdout im lặng. Kiểm process/log đang thay đổi; không khởi động trùng lượt.
 - Các trạng thái như CLONE_FAILED, MAIN_BUILD_FAILED, JDK_UNSUPPORTED, EXCLUDED, NEEDS_REVIEW là kết quả candidate cần ghi nhận, không tự sửa repo để đổi status.
-- Nếu process chết, hết dung lượng hoặc mất môi trường: giữ output, xử lý blocker rồi dùng `--resume`. Task đã checkpoint, kể cả status lỗi hợp lệ, không chạy lại; task đang dở chạy lại từ đầu trong attempt log mới. Không xóa bằng chứng hoặc khởi tạo lại trên output cũ.
+- Nếu dừng có kiểm soát bằng `Ctrl+C`, giữ output rồi dùng `--resume`; task đang dở chạy lại từ đầu trong attempt log mới. Task đã checkpoint, kể cả status lỗi môi trường, không chạy lại sau khi sửa blocker. Nếu mất mạng/JDK/dung lượng đã tạo ra hàng loạt kết quả terminal sai lệch, đánh dấu run không hợp lệ và khởi tạo output mới sau khi xử lý nguyên nhân; không dùng resume để kỳ vọng các task đó tự retry. Không xóa bằng chứng hoặc khởi tạo lệnh fresh trên output cũ.
 - Không chỉ khởi động nền rồi báo hoàn thành. Nếu agent/môi trường không thể theo dõi tiếp, bàn giao PID/session, output và tình trạng thực tế.
 
 ## 6. Kiểm tra hoàn tất
@@ -114,7 +114,7 @@ Resume chỉ nhận `--output-dir` và tùy chọn `--workers`; không truyền 
 - Tool tự dọn workspace từng class, rồi xóa đúng mirror trong `runs/<run-id>/cache/mirrors/` khi mọi class được chọn của repo đã kết thúc; không xóa khi còn worker/việc chờ của repo. Không xóa dataset, JDK, log, report hoặc manifest.
 - Kiểm `reports/repo_cleanup.jsonl` và `summary.repo_cleanup`: DELETED là đã xóa, ABSENT là không có mirror để xóa, KEPT là giữ có lý do, FAILED là không dọn được. Có workspace còn sót thì mirror được giữ để không làm hỏng worktree.
 - Ghi số lượng theo trạng thái cleanup và repo còn cache trong HANDOFF. Nếu KEPT/FAILED ngoài dự kiến, báo riêng **cleanup chưa hoàn tất**, không tuyên bố đã dọn sạch. Không tự xóa đường dẫn ngoài cache của run hoặc xóa repo gốc.
-- Process bị kill/tắt máy có thể để lại workspace/cache. Khi resume, tool dọn workspace của task dở, tái sử dụng mirror an toàn và reconcile cleanup sau khi mọi task của repo hoàn tất. Không xóa evidence để che lỗi.
+- Process bị kill/tắt máy có thể để lại workspace/cache. Khi resume, tool dọn workspace của task dở, kiểm tra mirror và reclone nếu mirror không hợp lệ hoặc object database hỏng, rồi reconcile cleanup sau khi mọi task của repo hoàn tất. Lỗi mạng/quyền/authentication trên mirror khỏe vẫn là kết quả terminal, không tự retry. Không xóa evidence để che lỗi.
 
 Trong output full run, cần có:
 
@@ -126,6 +126,8 @@ reports/summary.json
 reports/input_rejections.jsonl
 reports/repo_cleanup.jsonl
 reports/progress.json
+state/run_state.sqlite
+state/class_index.sqlite
 manifests/class_candidates.jsonl
 manifests/locked_input_manifest.jsonl
 manifests/technical_eligible_manifest.jsonl
@@ -159,6 +161,6 @@ Nội dung:
 - Kết luận duy nhất phù hợp: **COMPLETED_DISCOVERY**, **BLOCKED_ENVIRONMENT**, **BLOCKED**, **INCOMPLETE** hoặc **FAILED_VALIDATION**. Không gọi là strict experiment hoàn tất.
 - Đường dẫn output/evidence; phần chưa chạy, blocker và hành động người dùng cần làm nếu có.
 
-Giữ output trên máy. Nếu cần đóng gói bàn giao, chỉ đóng gói reports/manifests/provenance/logs/HANDOFF/stdout-stderr của lượt này; không kèm JDK, source dataset, cache mirror, workspaces hoặc secrets. Không xóa output sau đóng gói; không tự upload/gửi bên ngoài hoặc push Git khi chưa được yêu cầu.
+Giữ output trên máy. Nếu cần đóng gói run đã hoàn tất, chỉ đóng gói reports/manifests/provenance/logs/HANDOFF/stdout-stderr. Nếu bàn giao run chưa hoàn tất để resume, phải kèm thêm `state/run_state.sqlite` và `state/class_index.sqlite`, đồng thời bên nhận phải có đúng code/schema và khôi phục dataset/JDK tại cùng đường dẫn tuyệt đối; nếu không đáp ứng được thì không tuyên bố có thể resume. Không kèm JDK, source dataset, cache mirror, workspaces hoặc secrets. Không xóa output sau đóng gói; không tự upload/gửi bên ngoài hoặc push Git khi chưa được yêu cầu.
 
 Cuối cùng trả lời người dùng bằng tiếng Việt: đã xử lý bao nhiêu/17164 class, phân bố trạng thái chính, kết quả đối soát, đường dẫn HANDOFF và phần còn chặn. Nếu mọi điều kiện đạt, kết thúc với COMPLETED_DISCOVERY.
