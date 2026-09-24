@@ -59,10 +59,9 @@ def test_cli_shard_only_sends_assigned_class_to_runner(shard_fixture, tmp_path, 
     dataset, items, _, path = shard_fixture
     output = tmp_path / "output"
     received = []
-    def fake_run(selected, config):
+    def fake_run(run_root, store, selected, config):
         received.extend(selected)
-        return []
-    monkeypatch.setattr(cli, "run_all", fake_run)
+    monkeypatch.setattr(cli, "_run_checkpointed", fake_run)
     monkeypatch.setattr(sys, "argv", ["preflight", "--input-root", str(dataset), "--output-dir", str(output), "--shard", str(path)])
     cli.main()
     assert received == [items[1]]
@@ -78,8 +77,9 @@ def test_cli_shard_only_sends_assigned_class_to_runner(shard_fixture, tmp_path, 
 def test_cli_shard_forbids_partial_selection(shard_fixture, monkeypatch, option):
     _, _, _, path = shard_fixture
     monkeypatch.setattr(sys, "argv", ["preflight", "--shard", str(path), option, "1"])
-    with pytest.raises(SystemExit, match="cannot be combined"):
+    with pytest.raises(SystemExit) as exc:
         cli.main()
+    assert exc.value.code == 2
 
 
 @pytest.mark.unit

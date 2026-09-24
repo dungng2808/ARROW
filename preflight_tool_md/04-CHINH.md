@@ -64,7 +64,7 @@ Từ `ARROW/preflight_tool`, mọi lệnh `python` bên dưới phải là inter
 - Windows: `.venv\Scripts\python.exe` (PowerShell dùng call operator `&` nếu đường dẫn có khoảng trắng);
 - Hoặc kích hoạt venv rồi dùng `python`.
 
-Không dùng output đã có dữ liệu. Tool hiện **không hỗ trợ resume** dù có comment cấu hình nhắc resume; không xóa output cũ để chạy lại cùng tên.
+Không dùng output đã có dữ liệu cho lệnh khởi tạo. Sau khi full run đã tạo checkpoint, chỉ dùng lại đúng output đó với `--resume`; output `-check` từ `--index-only` không thể resume.
 
 ## 4. Kiểm tra shard trước, chưa clone/build
 
@@ -90,12 +90,20 @@ Chỉ tiếp tục khi bước 4 và các prerequisite bắt buộc ở mục 0 
 python -m preflight.cli --config ../Java-version/config.local.toml --input-root ../classes2test --shard ../shards-5/shard-04.json --workers 5 --output-dir runs/chinh-shard-04-<RUN_ID>
 ```
 
+Nếu cần dừng, nhấn `Ctrl+C` một lần và chờ tool thoát mã `130`. Session sau tiếp tục bằng:
+
+```text
+python -m preflight.cli --resume --output-dir runs/chinh-shard-04-<RUN_ID> --workers 5
+```
+
+Resume chỉ nhận `--output-dir` và tùy chọn `--workers`; không truyền lại config/input/shard. Kiểm `reports/progress.json` để biết `completed`, `pending`, `running` và trạng thái run.
+
 - Không có revision map upstream được audit trong giao việc này: mặc định chạy **DISCOVERY_ONLY**; không tự tạo SHA/provenance upstream để có strict eligible.
 - Nếu nhóm cung cấp revision map được audit, cần xác nhận thay đổi chế độ trước khi bổ sung `--revision-map`; không tự chuyển nhiệm vụ discovery thành strict experiment.
 - Lưu command, start/end UTC, stdout/stderr và exit code vào artifact local. Nếu dùng tee/pipeline, phải giữ exit code thật của Python, không lấy exit code của tee.
 - Theo dõi tiến trình cho đến khi hoàn tất hoặc có blocker thật. Tool có thể chưa in summary trong lúc chạy; không kết luận treo chỉ vì stdout im lặng. Kiểm process/log đang thay đổi; không khởi động trùng lượt.
 - Các trạng thái như CLONE_FAILED, MAIN_BUILD_FAILED, JDK_UNSUPPORTED, EXCLUDED, NEEDS_REVIEW là kết quả candidate cần ghi nhận, không tự sửa repo để đổi status.
-- Nếu process chết, hết dung lượng hoặc mất môi trường: giữ output, ghi số lượng evidence còn lại và blocker. Không tuyên bố xong; không tự retry toàn bộ phần trên output cũ. Muốn chạy lại dùng ID mới sau khi nguyên nhân đã xử lý, không xóa bằng chứng.
+- Nếu process chết, hết dung lượng hoặc mất môi trường: giữ output, xử lý blocker rồi dùng `--resume`. Task đã checkpoint, kể cả status lỗi hợp lệ, không chạy lại; task đang dở chạy lại từ đầu trong attempt log mới. Không xóa bằng chứng hoặc khởi tạo lại trên output cũ.
 - Không chỉ khởi động nền rồi báo hoàn thành. Nếu agent/môi trường không thể theo dõi tiếp, bàn giao PID/session, output và tình trạng thực tế.
 
 ## 6. Kiểm tra hoàn tất
@@ -106,7 +114,7 @@ python -m preflight.cli --config ../Java-version/config.local.toml --input-root 
 - Tool tự dọn workspace từng class, rồi xóa đúng mirror trong `runs/<run-id>/cache/mirrors/` khi mọi class được chọn của repo đã kết thúc; không xóa khi còn worker/việc chờ của repo. Không xóa dataset, JDK, log, report hoặc manifest.
 - Kiểm `reports/repo_cleanup.jsonl` và `summary.repo_cleanup`: DELETED là đã xóa, ABSENT là không có mirror để xóa, KEPT là giữ có lý do, FAILED là không dọn được. Có workspace còn sót thì mirror được giữ để không làm hỏng worktree.
 - Ghi số lượng theo trạng thái cleanup và repo còn cache trong HANDOFF. Nếu KEPT/FAILED ngoài dự kiến, báo riêng **cleanup chưa hoàn tất**, không tuyên bố đã dọn sạch. Không tự xóa đường dẫn ngoài cache của run hoặc xóa repo gốc.
-- Process bị kill/tắt máy có thể để lại cache; không có cơ chế resume hoặc tự dọn toàn bộ cache cũ. Không xóa evidence để che lỗi. Mirror đã xóa không vào thùng rác; có thể cần clone lại nếu muốn debug/tái chạy.
+- Process bị kill/tắt máy có thể để lại workspace/cache. Khi resume, tool dọn workspace của task dở, tái sử dụng mirror an toàn và reconcile cleanup sau khi mọi task của repo hoàn tất. Không xóa evidence để che lỗi.
 
 Trong output full run, cần có:
 
@@ -117,6 +125,7 @@ reports/preflight_results.csv
 reports/summary.json
 reports/input_rejections.jsonl
 reports/repo_cleanup.jsonl
+reports/progress.json
 manifests/class_candidates.jsonl
 manifests/locked_input_manifest.jsonl
 manifests/technical_eligible_manifest.jsonl
@@ -144,7 +153,7 @@ Nội dung:
 
 - Người phụ trách **Chính**, shard **04**, RUN_ID, Git HEAD và thay đổi local ảnh hưởng code.
 - OS/CPU, Python, Git, Maven/Gradle nếu có, vendor/full build của JDK 8/11/17/21; config, input và chế độ thực chạy (host trực tiếp hoặc VM/container). Nếu chạy host, ghi rõ không có sandbox.
-- Command, workers, timeout, start/end, exit code, shard SHA-256 và config SHA-256.
+- Command khởi tạo và resume, số session/resume, completed trước/sau từng session, workers, timeout, start/end, exit code, shard SHA-256 và config SHA-256.
 - Expected **17164**, actual total, số missing/extra/duplicate và kết quả từng phép đối soát mục 6.
 - Bảng count theo preflight_status, technical eligible, strict eligible; top reason_codes và ví dụ task/log cho lỗi nổi bật.
 - Kết luận duy nhất phù hợp: **COMPLETED_DISCOVERY**, **BLOCKED_ENVIRONMENT**, **BLOCKED**, **INCOMPLETE** hoặc **FAILED_VALIDATION**. Không gọi là strict experiment hoàn tất.

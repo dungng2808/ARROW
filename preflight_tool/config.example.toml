@@ -1,5 +1,7 @@
 [run]
-# "auto" writes runs/<UTC timestamp>; use an explicit ID to resume/audit a run.
+# "auto" writes runs/<UTC timestamp>. Resume always uses --resume together
+# with the exact existing --output-dir; the stored execution contract supplies
+# every immutable setting, while --workers may be overridden.
 id = "auto"
 workers = 5
 max_revision_candidates = 500

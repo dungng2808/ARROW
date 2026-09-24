@@ -95,10 +95,9 @@ def test_cli_unsafe_input_never_reaches_runner(dataset_factory, tmp_path, monkey
     dataset = dataset_factory([payload])
     output = tmp_path / "output"
     received = []
-    def fake_run(selected, config):
+    def fake_run(run_root, store, selected, config):
         received.extend(selected)
-        return []
-    monkeypatch.setattr(cli, "run_all", fake_run)
+    monkeypatch.setattr(cli, "_run_checkpointed", fake_run)
     monkeypatch.setattr(sys, "argv", ["preflight", "--input-root", str(dataset), "--output-dir", str(output)])
     cli.main()
     assert received == []

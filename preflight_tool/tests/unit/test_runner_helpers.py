@@ -3,6 +3,7 @@ from __future__ import annotations
 import os
 import sys
 import subprocess
+import threading
 import time
 from concurrent.futures import ThreadPoolExecutor, wait
 from pathlib import Path
@@ -12,6 +13,7 @@ import pytest
 
 from preflight.models import BuildAttempt, PreflightStatus
 from preflight.java_ast import JavaApi, parse_java_source
+from preflight.process import RunCancelled
 from preflight.runner import BuildPlan, ToolConfig, _class_policy, _failure_status, _framework, _gradle_commands, _java_env, _java_target, _maven_commands, _path_candidates, _probe_source, _resolve_parent_apis, _run, _wrapper, detect_build, run_all
 
 
@@ -195,6 +197,20 @@ def test_process_runner_handles_timeout_before_process_creation(tmp_path, monkey
     monkeypatch.setattr("preflight.runner.subprocess.Popen", lambda *args, **kwargs: (_ for _ in ()).throw(subprocess.TimeoutExpired(args[0], 1, output="partial", stderr="error")))
     result = _run(["tool"], tmp_path, 1, tmp_path / "early-timeout.log")
     assert result.timed_out and "partial" in (tmp_path / "early-timeout.log").read_text(encoding="utf-8")
+
+
+@pytest.mark.unit
+def test_process_runner_cancellation_kills_process_and_keeps_log(tmp_path):
+    cancelled = threading.Event()
+    timer = threading.Timer(0.2, cancelled.set)
+    timer.start()
+    log = tmp_path / "cancelled.log"
+    try:
+        with pytest.raises(RunCancelled):
+            _run([sys.executable, "-c", "import time; time.sleep(30)"], tmp_path, 60, log, cancel_event=cancelled)
+    finally:
+        timer.cancel()
+    assert "CANCELLED" in log.read_text(encoding="utf-8")
 
 
 @pytest.mark.unit

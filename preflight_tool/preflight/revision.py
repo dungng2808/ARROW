@@ -4,11 +4,13 @@ import csv
 import json
 import re
 import subprocess
+import threading
 from dataclasses import dataclass
 from pathlib import Path
 from typing import Any
 
 from .models import ClassCandidate, RevisionStatus
+from .process import run_capture
 from .util import normalize_java
 
 
@@ -50,25 +52,39 @@ def load_revision_map(path: Path | None) -> dict[str, RevisionChoice]:
     return result
 
 
-def _git(repo: Path, args: list[str], *, check: bool = True) -> subprocess.CompletedProcess[str]:
-    return subprocess.run(["git", "-C", str(repo), *args], capture_output=True, text=True, encoding="utf-8", errors="replace", check=check)
+def _git(repo: Path, args: list[str], *, check: bool = True,
+         cancel_event: threading.Event | None = None) -> subprocess.CompletedProcess[str]:
+    command = ["git", "-C", str(repo), *args]
+    if cancel_event:
+        return run_capture(command, check=check, cancel_event=cancel_event)
+    return subprocess.run(command, capture_output=True, text=True, encoding="utf-8", errors="replace", check=check)
 
 
-def ensure_mirror(repo_url: str, mirror: Path) -> Path:
+def _git_cancel(repo: Path, args: list[str], *, check: bool, cancel_event: threading.Event | None):
+    if cancel_event:
+        return _git(repo, args, check=check, cancel_event=cancel_event)
+    return _git(repo, args, check=check)
+
+
+def ensure_mirror(repo_url: str, mirror: Path, cancel_event: threading.Event | None = None) -> Path:
     mirror.parent.mkdir(parents=True, exist_ok=True)
     if not mirror.exists():
-        subprocess.run(["git", "clone", "--mirror", repo_url, str(mirror)], check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        command = ["git", "clone", "--mirror", repo_url, str(mirror)]
+        if cancel_event:
+            run_capture(command, check=True, cancel_event=cancel_event)
+        else:
+            subprocess.run(command, check=True, capture_output=True, text=True, encoding="utf-8", errors="replace")
     else:
-        _git(mirror, ["remote", "update", "--prune"], check=True)
+        _git_cancel(mirror, ["remote", "update", "--prune"], check=True, cancel_event=cancel_event)
     return mirror
 
 
-def _object_exists(mirror: Path, sha: str, path: str) -> bool:
-    return _git(mirror, ["cat-file", "-e", f"{sha}:{path}"], check=False).returncode == 0
+def _object_exists(mirror: Path, sha: str, path: str, cancel_event: threading.Event | None = None) -> bool:
+    return _git_cancel(mirror, ["cat-file", "-e", f"{sha}:{path}"], check=False, cancel_event=cancel_event).returncode == 0
 
 
-def _show(mirror: Path, sha: str, path: str) -> str | None:
-    result = _git(mirror, ["show", f"{sha}:{path}"], check=False)
+def _show(mirror: Path, sha: str, path: str, cancel_event: threading.Event | None = None) -> str | None:
+    result = _git_cancel(mirror, ["show", f"{sha}:{path}"], check=False, cancel_event=cancel_event)
     return result.stdout if result.returncode == 0 else None
 
 
@@ -91,26 +107,27 @@ def _matching_evidence(dataset_dir: Path, evidence_paths: list[str], source: str
 
 def choose_revision(
     mirror: Path, candidate: ClassCandidate, dataset_dir: Path, evidence_paths: list[str], pinned: RevisionChoice | None, max_candidates: int,
+    cancel_event: threading.Event | None = None,
 ) -> RevisionChoice:
     if pinned:
-        if _git(mirror, ["rev-parse", "--verify", f"{pinned.checkout_sha}^{{commit}}"], check=False).returncode != 0:
+        if _git_cancel(mirror, ["rev-parse", "--verify", f"{pinned.checkout_sha}^{{commit}}"], check=False, cancel_event=cancel_event).returncode != 0:
             raise LookupError("COMMIT_MISSING")
         return pinned
     paths = [candidate.class_path, *candidate.test_class_paths]
-    result = _git(mirror, ["log", "--all", "--format=%H", "--", *paths], check=False)
+    result = _git_cancel(mirror, ["log", "--all", "--format=%H", "--", *paths], check=False, cancel_event=cancel_event)
     commits = list(dict.fromkeys(line.strip() for line in result.stdout.splitlines() if line.strip()))[:max_candidates]
     first_pair = ""
     best: tuple[int, str, list[dict[str, str]]] | None = None
     for sha in commits:
-        if not _object_exists(mirror, sha, candidate.class_path):
+        if not _object_exists(mirror, sha, candidate.class_path, cancel_event):
             continue
-        existing_tests = [path for path in candidate.test_class_paths if _object_exists(mirror, sha, path)]
+        existing_tests = [path for path in candidate.test_class_paths if _object_exists(mirror, sha, path, cancel_event)]
         if not existing_tests:
             continue
         if not first_pair:
             first_pair = sha
-        source = _show(mirror, sha, candidate.class_path) or ""
-        matches = _matching_evidence(dataset_dir, evidence_paths, source, lambda path: _show(mirror, sha, path))
+        source = _show(mirror, sha, candidate.class_path, cancel_event) or ""
+        matches = _matching_evidence(dataset_dir, evidence_paths, source, lambda path: _show(mirror, sha, path, cancel_event))
         score = len(matches)
         if score and (best is None or score > best[0] or (score == best[0] and sha < best[1])):
             best = (score, sha, matches)
@@ -119,7 +136,7 @@ def choose_revision(
         return RevisionChoice(sha, "git_history", RevisionStatus.CONTENT_MATCHED, {"normalization": "strip Java comments then collapse whitespace", "matched_evidence": matches, "matched_evidence_count": score})
     if first_pair:
         return RevisionChoice(first_pair, "git_history", RevisionStatus.UNVERIFIED, {"selection_method": "latest_commit_with_focal_and_test_paths"})
-    head = _git(mirror, ["rev-parse", "HEAD"], check=False).stdout.strip()
+    head = _git_cancel(mirror, ["rev-parse", "HEAD"], check=False, cancel_event=cancel_event).stdout.strip()
     if head:
         return RevisionChoice(head, "git_history", RevisionStatus.UNVERIFIED, {"selection_method": "mirror_HEAD_no_path_pair"})
     raise LookupError("COMMIT_MISSING")

@@ -4,7 +4,6 @@ import hashlib
 import json
 import os
 import re
-import signal
 import shutil
 import subprocess
 import time
@@ -15,12 +14,15 @@ import xml.etree.ElementTree as ET
 from concurrent.futures import FIRST_COMPLETED, ThreadPoolExecutor, wait
 from dataclasses import dataclass
 from pathlib import Path, PurePosixPath
-from typing import Any
+from typing import Any, Callable
+
+from .checkpoint import CheckpointStore
 
 from .ingest import evidence_paths
 from .java_ast import JavaApi, JavaClass, parse_java_source, primitive_arguments
 from .models import BuildAttempt, ClassCandidate, PreflightResult, PreflightStatus, RevisionStatus, RunMode
 from .policy import derive_eligibility
+from .process import RunCancelled, terminate_process_tree
 from .revision import RevisionChoice, choose_revision, ensure_mirror
 from .util import safe_relative
 
@@ -57,6 +59,7 @@ class ToolConfig:
     revision_map: dict[str, RevisionChoice]
     fast_mode: bool = False
     keep_repo_cache: bool = False
+    cancel_event: threading.Event | None = None
 
 
 def _path_candidates(workspace: Path, relative: str) -> list[Path]:
@@ -79,7 +82,8 @@ def _resolve_path(workspace: Path, relative: str) -> Path | None:
     return next((path for path in _path_candidates(workspace, relative) if path.is_file()), None)
 
 
-def _run(command: list[str], cwd: Path, timeout_seconds: int, log_path: Path, env: dict[str, str] | None = None) -> BuildAttempt:
+def _run(command: list[str], cwd: Path, timeout_seconds: int, log_path: Path, env: dict[str, str] | None = None,
+         cancel_event: threading.Event | None = None) -> BuildAttempt:
     started = time.monotonic()
     log_path.parent.mkdir(parents=True, exist_ok=True)
     timed_out = False
@@ -87,8 +91,25 @@ def _run(command: list[str], cwd: Path, timeout_seconds: int, log_path: Path, en
     output = ""
     process: subprocess.Popen[str] | None = None
     try:
+        if cancel_event and cancel_event.is_set():
+            raise RunCancelled()
         process = subprocess.Popen(command, cwd=cwd, env=env, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True, encoding="utf-8", errors="replace", start_new_session=os.name != "nt")
-        stdout, stderr = process.communicate(timeout=timeout_seconds)
+        deadline = time.monotonic() + timeout_seconds
+        while True:
+            if cancel_event and cancel_event.is_set():
+                terminate_process_tree(process)
+                stdout, stderr = process.communicate()
+                output = f"$ {' '.join(command)}\n\nCANCELLED\n{stdout}\n{stderr}"
+                log_path.write_text(output, encoding="utf-8")
+                raise RunCancelled()
+            remaining = deadline - time.monotonic()
+            if remaining <= 0:
+                raise subprocess.TimeoutExpired(command, timeout_seconds)
+            try:
+                stdout, stderr = process.communicate(timeout=min(1.0, remaining))
+                break
+            except subprocess.TimeoutExpired:
+                continue
         code = process.returncode
         output = f"$ {' '.join(command)}\n\nSTDOUT\n{stdout}\n\nSTDERR\n{stderr}"
     except subprocess.TimeoutExpired as exc:
@@ -96,13 +117,9 @@ def _run(command: list[str], cwd: Path, timeout_seconds: int, log_path: Path, en
         # Build tools launch descendants, so a timeout must stop the process tree.
         if process is not None:
             if os.name == "nt":
-                subprocess.run(["taskkill", "/PID", str(process.pid), "/T", "/F"], capture_output=True, text=True, encoding="utf-8", errors="replace")
-                process.kill()
+                terminate_process_tree(process)
             else:
-                try:
-                    os.killpg(process.pid, signal.SIGKILL)
-                except ProcessLookupError:
-                    pass
+                terminate_process_tree(process)
             stdout, stderr = process.communicate()
         else:
             stdout, stderr = exc.stdout or "", exc.stderr or ""
@@ -263,15 +280,23 @@ def _gradle_commands(plan: BuildPlan, phase: str) -> tuple[list[str], Path, list
     return [executable, "--no-daemon", f"{project}:{task}"], plan.invocation_root, [executable, "--no-daemon", task], plan.module_root
 
 
-def _compile(plan: BuildPlan, phase: str, config: ToolConfig, task_id: str, env: dict[str, str]) -> list[BuildAttempt]:
+def _attempt_log(config: ToolConfig, task_id: str, attempt_number: int, name: str) -> Path:
+    return config.log_dir / task_id / f"attempt-{attempt_number:03d}" / name
+
+
+def _compile(plan: BuildPlan, phase: str, config: ToolConfig, task_id: str, env: dict[str, str], attempt_number: int = 1) -> list[BuildAttempt]:
     commands = _maven_commands(plan, "compile" if phase == "main_compile" else "test-compile") if plan.tool == "maven" else _gradle_commands(plan, phase)
     primary, primary_cwd, fallback, fallback_cwd = commands
-    first = _run(primary, primary_cwd, config.timeout_seconds, config.log_dir / task_id / f"{phase}.log", env); first.stage = phase
+    log = _attempt_log(config, task_id, attempt_number, f"{phase}.log")
+    first = (_run(primary, primary_cwd, config.timeout_seconds, log, env, config.cancel_event)
+             if config.cancel_event else _run(primary, primary_cwd, config.timeout_seconds, log, env)); first.stage = phase
     attempts = [first]
     if first.exit_code not in (0, None) and fallback != primary:
         text = _output_of(first)
         if "could not find the selected project" in text or "project" in text and "not found" in text:
-            retry = _run(fallback, fallback_cwd, config.timeout_seconds, config.log_dir / task_id / f"{phase}_fallback.log", env); retry.stage = f"{phase}_fallback"; attempts.append(retry)
+            retry_log = _attempt_log(config, task_id, attempt_number, f"{phase}_fallback.log")
+            retry = (_run(fallback, fallback_cwd, config.timeout_seconds, retry_log, env, config.cancel_event)
+                     if config.cancel_event else _run(fallback, fallback_cwd, config.timeout_seconds, retry_log, env)); retry.stage = f"{phase}_fallback"; attempts.append(retry)
     return attempts
 
 
@@ -372,7 +397,7 @@ def _mirror_path(repo_url: str, config: ToolConfig) -> Path:
     return config.cache_dir / f"{hashlib.sha256(repo_url.encode()).hexdigest()}.git"
 
 
-def _cleanup_repo(repo_url: str, tasks: list[str], config: ToolConfig) -> None:
+def _cleanup_repo(repo_url: str, tasks: list[str], config: ToolConfig, *, write_report: bool = True) -> dict[str, Any]:
     """Called by the coordinator only after every future for this repo finishes."""
     mirror = _mirror_path(repo_url, config)
     event = {"repo_url": repo_url, "mirror_path": str(mirror), "class_count": len(tasks)}
@@ -403,18 +428,23 @@ def _cleanup_repo(repo_url: str, tasks: list[str], config: ToolConfig) -> None:
                     event["status"] = "DELETED"
         except (OSError, ValueError) as exc:
             event.update(status="FAILED", error=str(exc))
-    report = config.run_root / "reports" / "repo_cleanup.jsonl"
-    report.parent.mkdir(parents=True, exist_ok=True)
-    with report.open("a", encoding="utf-8") as handle:
-        handle.write(json.dumps(event, ensure_ascii=False) + "\n")
+    if write_report:
+        report = config.run_root / "reports" / "repo_cleanup.jsonl"
+        report.parent.mkdir(parents=True, exist_ok=True)
+        with report.open("a", encoding="utf-8") as handle:
+            handle.write(json.dumps(event, ensure_ascii=False) + "\n")
+    return event
 
 
-def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightResult:
+def preflight_one(candidate: ClassCandidate, config: ToolConfig, attempt_number: int = 1) -> PreflightResult:
     started = time.monotonic(); result = _result_from(candidate); workspace: Path | None = None; mirror: Path | None = None
     try:
         with _mirror_lock(candidate.repo_url):
-            mirror = ensure_mirror(candidate.repo_url, _mirror_path(candidate.repo_url, config))
-        choice = choose_revision(mirror, candidate, config.dataset_dir, evidence_paths(config.database, candidate.task_id), config.revision_map.get(candidate.task_id), config.max_revision_candidates)
+            mirror_path = _mirror_path(candidate.repo_url, config)
+            mirror = (ensure_mirror(candidate.repo_url, mirror_path, config.cancel_event)
+                      if config.cancel_event else ensure_mirror(candidate.repo_url, mirror_path))
+        choice_args = (mirror, candidate, config.dataset_dir, evidence_paths(config.database, candidate.task_id), config.revision_map.get(candidate.task_id), config.max_revision_candidates)
+        choice = choose_revision(*choice_args, config.cancel_event) if config.cancel_event else choose_revision(*choice_args)
         result.checkout_sha, result.revision_provenance, result.revision_verification_status, result.content_match = choice.checkout_sha, choice.provenance, choice.status, choice.content_match
         if choice.evidence_ref:
             result.content_match = {"evidence_ref": choice.evidence_ref}
@@ -422,6 +452,11 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
         if choice.status != RevisionStatus.UPSTREAM_PINNED: result.reason_codes.append(f"REVISION_{choice.status}")
         workspace = config.workspace_dir / candidate.task_id
         with _mirror_lock(candidate.repo_url):
+            workspace_root = config.workspace_dir.resolve()
+            if workspace.is_symlink() or not workspace.resolve().is_relative_to(workspace_root):
+                raise ValueError("UNSAFE_STALE_WORKSPACE")
+            if workspace.exists():
+                _remove_worktree(mirror, workspace)
             _worktree(mirror, workspace, choice.checkout_sha)
         result.working_directory = str(workspace)
         class_file = _resolve_path(workspace, candidate.class_path)
@@ -437,16 +472,19 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
         if not plan:
             result.preflight_status = PreflightStatus.BUILD_TOOL_UNSUPPORTED; result.reason_codes.append("BUILD_TOOL_UNSUPPORTED"); return result
         result.build_tool, result.module_path = plan.tool, plan.module_path
-        version = _run([str(plan.executable), "--version"], plan.invocation_root, min(60, config.timeout_seconds), config.log_dir / candidate.task_id / "tool_version.log")
+        version_args = ([str(plan.executable), "--version"], plan.invocation_root, min(60, config.timeout_seconds), _attempt_log(config, candidate.task_id, attempt_number, "tool_version.log"))
+        version = _run(*version_args, cancel_event=config.cancel_event) if config.cancel_event else _run(*version_args)
         version.stage = "tool_version"; result.build_attempts.append(version); result.log_paths.append(version.log_path)
         result.build_tool_version = _output_of(version).splitlines()[2] if len(_output_of(version).splitlines()) > 2 else "unknown"
         env, result.java_version, java_error = _java_env(_java_target(plan.module_root, plan.tool), config)
         if java_error:
             result.preflight_status = PreflightStatus.JDK_UNSUPPORTED; result.reason_codes.append(java_error); return result
-        main = _compile(plan, "main_compile", config, candidate.task_id, env); result.build_attempts.extend(main); result.log_paths.extend(item.log_path for item in main)
+        main = (_compile(plan, "main_compile", config, candidate.task_id, env, attempt_number)
+                if attempt_number != 1 else _compile(plan, "main_compile", config, candidate.task_id, env)); result.build_attempts.extend(main); result.log_paths.extend(item.log_path for item in main)
         if main[-1].exit_code != 0:
             result.preflight_status = _failure_status(main[-1], "main_compile"); result.reason_codes.append(result.preflight_status); return result
-        test = _compile(plan, "test_compile", config, candidate.task_id, env); result.build_attempts.extend(test); result.log_paths.extend(item.log_path for item in test)
+        test = (_compile(plan, "test_compile", config, candidate.task_id, env, attempt_number)
+                if attempt_number != 1 else _compile(plan, "test_compile", config, candidate.task_id, env)); result.build_attempts.extend(test); result.log_paths.extend(item.log_path for item in test)
         if test[-1].exit_code != 0:
             result.preflight_status = _failure_status(test[-1], "test_compile"); result.reason_codes.append(result.preflight_status); return result
         if policy:
@@ -475,7 +513,8 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
             result.preflight_status = PreflightStatus.SOURCE_INVALID; result.reason_codes.append("PROBE_PATH_OUTSIDE_WORKSPACE"); return result
         probe_path.parent.mkdir(parents=True, exist_ok=True); probe_path.write_text(_probe_source(java, probe_api, probe_name, result.testing_framework), encoding="utf-8")
         try:
-            probe = _compile(plan, "probe_compile", config, candidate.task_id, env); result.build_attempts.extend(probe); result.log_paths.extend(item.log_path for item in probe)
+            probe = (_compile(plan, "probe_compile", config, candidate.task_id, env, attempt_number)
+                     if attempt_number != 1 else _compile(plan, "probe_compile", config, candidate.task_id, env)); result.build_attempts.extend(probe); result.log_paths.extend(item.log_path for item in probe)
         finally:
             probe_path.unlink(missing_ok=True)
         if probe[-1].exit_code != 0:
@@ -487,6 +526,8 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
             result.preflight_status = PreflightStatus.NEEDS_REVIEW; result.reason_codes.append("TEST_FRAMEWORK_UNKNOWN"); return result
         result.preflight_status = PreflightStatus.ELIGIBLE
         result.technical_eligible, result.strict_eligible = derive_eligibility(result.preflight_status, result.run_mode, result.revision_verification_status)
+    except RunCancelled:
+        raise
     except subprocess.CalledProcessError as exc:
         result.preflight_status = PreflightStatus.CLONE_FAILED if mirror is None else PreflightStatus.CHECKOUT_FAILED
         result.reason_codes.append(result.preflight_status)
@@ -502,28 +543,59 @@ def preflight_one(candidate: ClassCandidate, config: ToolConfig) -> PreflightRes
     return result
 
 
-def run_all(candidates: list[ClassCandidate], config: ToolConfig) -> list[PreflightResult]:
+def run_all(candidates: list[ClassCandidate], config: ToolConfig, checkpoint: CheckpointStore | None = None,
+            session_id: int | None = None, on_checkpoint: Callable[[], None] | None = None) -> list[PreflightResult]:
     results: list[PreflightResult] = []
     workers = max(1, config.workers)
     remaining = Counter(candidate.repo_url for candidate in candidates)
-    repo_tasks = defaultdict(list)
-    for candidate in candidates:
-        repo_tasks[candidate.repo_url].append(candidate.task_id)
+    repo_tasks = checkpoint.all_tasks_for_repos() if checkpoint else defaultdict(list)
+    if checkpoint is None:
+        for candidate in candidates:
+            repo_tasks[candidate.repo_url].append(candidate.task_id)
     pending = iter(candidates)
-    with ThreadPoolExecutor(max_workers=workers) as executor:
-        futures = {}
+    executor = ThreadPoolExecutor(max_workers=workers)
+    futures = {}
+    try:
+        def submit(candidate: ClassCandidate) -> None:
+            attempt = checkpoint.start_task(candidate.task_id, session_id) if checkpoint and session_id is not None else 1
+            future = executor.submit(preflight_one, candidate, config, attempt) if checkpoint else executor.submit(preflight_one, candidate, config)
+            futures[future] = (candidate, attempt)
+
         for _ in range(min(len(candidates), workers * 2)):
-            candidate = next(pending)
-            futures[executor.submit(preflight_one, candidate, config)] = candidate
+            if config.cancel_event and config.cancel_event.is_set():
+                break
+            submit(next(pending))
         while futures:
             done, _ = wait(futures, return_when=FIRST_COMPLETED)
             for future in done:
-                completed = futures.pop(future)
-                results.append(future.result())
+                completed, attempt = futures.pop(future)
+                try:
+                    result = future.result()
+                except RunCancelled:
+                    if checkpoint:
+                        checkpoint.interrupt_task(completed.task_id, attempt)
+                    continue
+                results.append(result)
+                if checkpoint:
+                    checkpoint.complete_task(completed.task_id, attempt, result.to_dict())
+                    if on_checkpoint:
+                        on_checkpoint()
                 remaining[completed.repo_url] -= 1
-                if remaining[completed.repo_url] == 0:
-                    _cleanup_repo(completed.repo_url, repo_tasks[completed.repo_url], config)
-                candidate = next(pending, None)
-                if candidate is not None:
-                    futures[executor.submit(preflight_one, candidate, config)] = candidate
+                repo_finished = (completed.repo_url in checkpoint.completed_repos()) if checkpoint else remaining[completed.repo_url] == 0
+                if repo_finished:
+                    event = (_cleanup_repo(completed.repo_url, repo_tasks[completed.repo_url], config, write_report=False)
+                             if checkpoint else _cleanup_repo(completed.repo_url, repo_tasks[completed.repo_url], config))
+                    if checkpoint and event is not None:
+                        checkpoint.put_cleanup_event(event)
+                if not (config.cancel_event and config.cancel_event.is_set()):
+                    candidate = next(pending, None)
+                    if candidate is not None:
+                        submit(candidate)
+            if config.cancel_event and config.cancel_event.is_set():
+                for future, (candidate, attempt) in list(futures.items()):
+                    if future.cancel() and checkpoint:
+                        checkpoint.interrupt_task(candidate.task_id, attempt)
+                        futures.pop(future)
+    finally:
+        executor.shutdown(wait=True, cancel_futures=True)
     return sorted(results, key=lambda item: item.task_id)

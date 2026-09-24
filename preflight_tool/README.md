@@ -43,6 +43,29 @@ Smoke test không clone toàn bộ dataset:
 class2test-preflight --config config.example.toml --limit 20 --max-classes 5 --output-dir runs\smoke
 ```
 
+## Dừng và resume một full run
+
+Full run ghi checkpoint nguyên tử sau mỗi `task_id` hoàn tất. Có thể nhấn
+`Ctrl+C` để dừng có kiểm soát; tool ngừng cấp việc mới, dừng process con, giữ
+checkpoint/log và thoát với mã `130`. Resume bằng đúng output cũ:
+
+```powershell
+class2test-preflight --resume --output-dir runs\discovery
+
+# Chỉ số worker được phép thay đổi giữa các session.
+class2test-preflight --resume --output-dir runs\discovery --workers 3
+```
+
+Task đã có kết quả terminal, kể cả clone/build/timeout failure, sẽ không chạy
+lại. Task đang chạy dở khi process bị dừng sẽ chạy lại từ đầu trong
+`logs/<task_id>/attempt-<NNN>/`; log attempt cũ vẫn được giữ. Xem tiến độ tại
+`reports/progress.json`. Bộ report/manifest chính thức chỉ được sinh khi đủ toàn
+bộ task.
+
+Resume không nhận lại config, input, shard, revision map hay các cờ thay đổi
+kết quả: execution contract đã được khóa trong checkpoint. Output `--index-only`
+và output tạo bởi phiên bản tool cũ không có checkpoint không thể resume.
+
 Mỗi historical project cần Maven/Gradle (hoặc wrapper), Git và JDK đúng version.
 Khai báo đường dẫn JDK 8/11/17/21 trong `config.example.toml`; tool không đổi
 dependency, build file hay source để ép build pass.
@@ -64,6 +87,8 @@ tránh việc một SHA tự nhập tay bị diễn giải thành provenance ups
 - `reports/preflight_results.jsonl` là audit chuẩn, chứa states độc lập, tags,
   reason codes, content-match evidence và mọi build attempt/log path.
 - `reports/preflight_results.csv` là bản phẳng để thống kê.
+- `reports/progress.json` là trạng thái checkpoint hiện tại, kể cả khi run chưa
+  hoàn tất.
 - `manifests/locked_input_manifest.jsonl` giữ revision đã chọn cho mọi CUT.
 - `manifests/technical_eligible_manifest.jsonl` chỉ phục vụ khảo sát khi revision
   chưa upstream-pinned.
