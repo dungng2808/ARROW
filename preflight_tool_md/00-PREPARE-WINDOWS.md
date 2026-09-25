@@ -15,6 +15,7 @@ Trước khi bắt đầu, người dùng chỉ cần cung cấp các giá trị
 | `<SHARD_NO>` | Hai chữ số: `01`, `02`, `03`, `04` hoặc `05` |
 | `<ARROW_ROOT>` | Root repository ARROW trên máy đó; nếu chưa biết, agent phải tự tìm |
 | `<INPUT_ROOT>` | Root dataset Classes2Test trên máy đó; nếu chưa biết, agent phải tự tìm rồi xác minh |
+| `<REPO_URL_CÔNG_KHAI_TRONG_SHARD>` | Agent chọn một URL công khai thật từ shard để kiểm Git/network; không dùng URL ví dụ |
 
 Không sao chép đường dẫn `R:\Đồ án`, `C:\Users\acer`, JDK hoặc config từ máy
 của Hán sang máy khác. Mỗi đường dẫn phải được phát hiện và kiểm chứng trên
@@ -67,21 +68,75 @@ Giới hạn bắt buộc:
    preflight_tool_md/01-DUNG.md ... 05-HAN.md
    ```
 
-2. Đọc đầy đủ file này, `<ARROW_ROOT>/Java-version/AGENTS.md`,
-   `<ARROW_ROOT>/shards-5/README.md` và runbook ứng với `<SHARD_NO>`.
+2. Đọc đầy đủ file này, `06-DIAGNOSE-AND-RECOVER.md`,
+   `<ARROW_ROOT>/Java-version/AGENTS.md`, `<ARROW_ROOT>/shards-5/README.md` và
+   runbook ứng với `<SHARD_NO>`.
 3. Ghi lại `git rev-parse HEAD` và `git status --short`. Không tự thay đổi Git
    state. Nếu code đang ở commit khác bản nhóm đã thống nhất thì báo người dùng
    trước khi setup tiếp.
 4. Kiểm tra `preflight/runner.py`: fallback Windows khi không có wrapper phải là
-   `mvn.cmd` và `gradle.bat`, không phải tên trần `mvn`/`gradle`. Test unit phải
-   kiểm cả hai trường hợp. Nếu code chưa có bản sửa này, kết luận
-   `BLOCKED_CODE_VERSION`; không sửa nóng hoặc chạy full trên checkout cũ trong
-   task setup máy.
+   `mvn.cmd` và `gradle.bat`, không phải tên trần `mvn`/`gradle`. Commit
+   `e84af81` phải là tổ tiên của HEAD hoặc agent phải xác minh bản sửa tương
+   đương; test unit phải kiểm cả hai trường hợp. Nếu code cũ, chỉ cập nhật
+   fast-forward từ remote đã thống nhất khi không có run hoạt động và đã kiểm
+   mọi thay đổi local sẽ được giữ nguyên, không bị ghi đè. Nếu có tracked
+   changes chồng lấn hoặc xung đột, giữ nguyên và báo `BLOCKED_CODE_VERSION`;
+   không reset/stash/ghi đè/sửa nóng checkout đang chạy.
 5. Kiểm tra có tiến trình `preflight.cli` đang chạy hay không. Nếu có, không cài
    chồng, không kill và không chạy song song; báo PID, command line và output của
    tiến trình đó rồi dừng để người dùng quyết định.
 
-## 3. Xác minh OS, tài nguyên và dataset
+## 3. Kiểm kê trên tất cả ổ đĩa trước khi tải/cài
+
+**Bắt buộc trước các mục 5–7.** Không kết luận “chưa cài” chỉ vì `Get-Command`
+không thấy, hoặc vì không có ở `C:\tools`. Kiểm kê **tất cả ổ FileSystem đang
+gắn và truy cập được** trên máy (ổ cố định, ổ rời, ổ mạng được map nếu đang
+online). Ghi danh sách ổ đã kiểm, ổ không truy cập được và lý do. Không tự
+kết nối ổ mạng/đăng nhập tài khoản khác.
+
+1. Lấy danh sách bằng `Get-PSDrive -PSProvider FileSystem` và đối chiếu
+   `Get-CimInstance Win32_LogicalDisk`; không mặc định chỉ có `C:`/`D:`.
+2. Trên **mỗi ổ**, kiểm PATH, `Get-Command`, `where.exe`, Python launcher
+   `py -0p`, registry `App Paths`/Uninstall (nếu có), rồi các vị trí thường
+   dùng: root ARROW, `tools`, `Program Files`, `Users/<user>`, `.local`,
+   `Java-version/runtime`, SDK manager/cache và các thư mục cài portable.
+3. Nếu chưa tìm đủ, quét **tên file/thư mục có mục tiêu** trên từng ổ:
+   `java.exe`, `javac.exe`, `mvn.cmd`, `gradle.bat`, `python.exe`, `git.exe`,
+   thư mục dataset Classes2Test và `config.local.toml`. Ưu tiên `rg --files
+   --hidden --no-ignore` với `--glob` cho từng tên trên một ổ mỗi lần; nếu
+   không có `rg`, dùng `Get-ChildItem -Recurse` với filter cụ thể. Không quét
+   nội dung mọi file JSON/source, không theo junction/symlink sang ổ khác,
+   không xóa/di chuyển gì trong lúc tìm. Ghi mọi lỗi quyền truy cập; nếu một
+   vùng quan trọng chưa đọc được thì trạng thái là “chưa xác minh”, không phải
+   “không tồn tại”.
+
+   Ví dụ lệnh chỉ đọc cho **từng** `<DRIVE_ROOT>` (thay bằng root ổ đã liệt
+   kê, như `D:\`):
+
+   ```powershell
+   rg --files --hidden --no-ignore -g 'java.exe' -g 'javac.exe' `
+     -g 'mvn.cmd' -g 'gradle.bat' -g 'python.exe' -g 'git.exe' `
+     -g 'config.local.toml' -- '<DRIVE_ROOT>'
+   ```
+
+   Sau đó tìm riêng tên thư mục dataset theo từng ổ và xác minh vài JSON thật;
+   không coi thư mục tên `dataset` bất kỳ là đúng snapshot. Nếu `rg` báo lỗi
+   quyền hoặc ổ offline, ghi rõ ổ/vùng chưa xác minh.
+4. Với **mọi bản tìm được**, xác minh OS/CPU, version đầy đủ, chữ ký/checksum
+   hoặc nguồn tin cậy khi có, `java` **và** `javac` cùng major, Maven/Gradle
+   chạy được bằng đường dẫn tuyệt đối và từ Python subprocess. Chỉ tái dùng
+   bản hợp lệ; không chọn bản đầu tiên theo tên folder. Ghi bảng `đã tìm ở đâu
+   → phiên bản → dùng/không dùng → lý do` vào báo cáo.
+5. **Chỉ khi kết thúc kiểm kê tất cả ổ mà vẫn thiếu bản hợp lệ**, mới tải phần
+   thiếu từ nguồn chính thức, kiểm checksum rồi cài local. Nếu dataset thiếu,
+   chỉ lấy đúng snapshot được nhóm cung cấp/xác minh bằng shard hash và
+   index-only; không tự lấy một bản Classes2Test bất kỳ trên Internet.
+
+Nếu việc quét rộng quá lâu, ghi tiến độ theo từng ổ và tiếp tục; không đánh dấu
+`READY_FOR_FULL_RUN` khi chưa kiểm hết các ổ truy cập được. Không chạy binary
+không rõ nguồn chỉ để thử version.
+
+## 4. Xác minh OS, tài nguyên và dataset
 
 Agent phải ghi bằng chứng vào báo cáo cuối:
 
@@ -105,12 +160,13 @@ nguồn chuẩn:
 | 01–04 | 17.164 mỗi shard |
 | 05 | 17.163 |
 
-## 4. Chuẩn bị Python và package preflight
+## 5. Chuẩn bị Python và package preflight
 
 1. Tìm Python >=3.11 x64 đã có bằng `py -0p`, `py -3.11`, `python` và đường dẫn
    tuyệt đối. Kiểm cả version lẫn architecture.
-2. Nếu chưa có, cài bản Python ổn định x64 từ nguồn chính thức cho **Current
-   User**, không cần quyền admin. Không dùng package/mirror không xác minh.
+2. Nếu không tìm được Python hợp lệ sau kiểm kê mục 3, cài bản ổn định x64 từ
+   nguồn chính thức cho **Current User**, không cần quyền admin. Không dùng
+   package/mirror không xác minh.
 3. Tại `<ARROW_ROOT>/preflight_tool`, nếu `.venv` chưa có thì tạo bằng Python đã
    xác minh. Nếu `.venv` có nhưng hỏng hoặc dùng Python <3.11, không xóa âm thầm;
    ghi tình trạng, đổi tên nó sang `.venv.broken-<UTC>` để có thể khôi phục rồi
@@ -129,7 +185,7 @@ nguồn chuẩn:
 Không chấp nhận việc `python` ở một terminal chạy được nhưng interpreter dùng
 cho full run lại là Python khác.
 
-## 5. Chuẩn bị và xác minh JDK 8/11/17/21
+## 6. Chuẩn bị và xác minh JDK 8/11/17/21
 
 Thực hiện đúng toàn bộ quy trình trong `<ARROW_ROOT>/Java-version/AGENTS.md`.
 Việc người dùng giao file chuẩn bị này được coi là yêu cầu setup JDK rõ ràng theo
@@ -139,7 +195,9 @@ Yêu cầu tối thiểu:
 
 - Dùng JDK portable từ nguồn OpenJDK chính thức, đúng Windows x64; khóa URL và
   checksum trước khi dùng.
-- Cài/tái sử dụng bốn major 8, 11, 17, 21 trong vùng local đã được Git ignore.
+- Ưu tiên tái sử dụng JDK hợp lệ đã tìm thấy trên bất kỳ ổ nào, kể cả ngoài
+  repository; tải/cài major còn thiếu vào vùng local bị Git ignore. Ghi rõ
+  đường dẫn và nguồn của từng bản.
 - Gọi `java.exe -version` và `javac.exe -version` bằng đường dẫn tuyệt đối cho
   từng JDK; cả hai phải exit code 0 và cùng major.
 - Ghi vendor, full version/build, JAVA_HOME và checksum vào các báo cáo local
@@ -152,12 +210,16 @@ Yêu cầu tối thiểu:
   nhất giá trị khác.
 - Parse lại TOML và xác nhận mọi đường dẫn trong config tồn tại. Không copy
   `config.local.toml` của máy khác.
+- Bốn major này là baseline. Nếu log của run cho thấy project thật sự cần
+  major khác, làm theo mục JDK trong `06-DIAGNOSE-AND-RECOVER.md`: tìm trên mọi
+  ổ trước, chỉ tải artifact được xác minh, thêm mapping tường minh và ghi rõ
+  ma trận mở rộng cho run mới.
 
-## 6. Chuẩn bị Maven và Gradle fallback
+## 7. Chuẩn bị Maven và Gradle fallback
 
 Repository có `mvnw.cmd` hoặc `gradlew.bat` sẽ ưu tiên wrapper. Tuy nhiên nhiều
-repository không có wrapper; khi đó runner gọi thẳng `mvn` hoặc `gradle`. Vì vậy
-hai fallback này là bắt buộc cho full run của nhóm.
+repository không có wrapper; khi đó runner trên Windows gọi `mvn.cmd` hoặc
+`gradle.bat`. Vì vậy hai fallback này là bắt buộc cho full run của nhóm.
 
 ### 6.1 Phiên bản chuẩn
 
@@ -169,9 +231,10 @@ khi dùng; không tự chọn `latest`.
 
 ### 6.2 Cài local
 
-1. Nếu version chuẩn đã tồn tại và chạy được thì tái sử dụng.
-2. Nếu thiếu, tải binary distribution từ nguồn chính thức của Apache Maven và
-   Gradle. Tải checksum từ nguồn chính thức, đối chiếu trước khi giải nén.
+1. Nếu version chuẩn đã tìm được trên bất kỳ ổ nào và chạy được thì tái sử dụng.
+2. Nếu thiếu sau kiểm kê mục 3, tải binary distribution từ nguồn chính thức
+   của Apache Maven và Gradle. Tải checksum từ nguồn chính thức, đối chiếu
+   trước khi giải nén.
 3. Cài vào vùng user-local hoặc vùng local của repository đã được Git ignore,
    ví dụ:
 
@@ -184,7 +247,7 @@ khi dùng; không tự chọn `latest`.
    Persistent PATH mới không cập nhật môi trường của agent/terminal đang chạy và
    chính điều này có thể tạo hàng nghìn kết quả exit code 127.
 
-## 7. Tạo môi trường tiến trình dùng chung
+## 8. Tạo môi trường tiến trình dùng chung
 
 Tạo file local, bị Git ignore:
 
@@ -220,7 +283,7 @@ Nếu dùng `Start-Process`, phải dot-source trong tiến trình cha trước;
 kế thừa environment tại thời điểm được tạo. Mở terminal mới sau đó cũng phải
 dot-source lại. Không coi User PATH là bằng chứng thay thế.
 
-## 8. Cổng kiểm chứng toolchain — bắt buộc đạt hết
+## 9. Cổng kiểm chứng toolchain — bắt buộc đạt hết
 
 Sau khi dot-source `Enter-PreflightEnv.ps1`, chạy và lưu stdout, stderr, exit
 code của tất cả lệnh sau:
@@ -242,6 +305,9 @@ gradle --version
   PATH hệ thống.
 - Không lệnh nào có exit code 127, `CommandNotFoundException`, “not recognized”
   hoặc lỗi không tìm thấy executable.
+- `git ls-remote <REPO_URL_CÔNG_KHAI_TRONG_SHARD> HEAD` chạy được từ chính môi
+  trường này. Nếu một repo lỗi, thử repo công khai thứ hai trước khi quy thành
+  lỗi mạng; ghi DNS/TLS/proxy/credential thực tế, không tự tắt xác minh TLS.
 
 Tiếp theo, dùng **đúng Python của venv** kiểm từ trong subprocess:
 
@@ -252,7 +318,7 @@ Tiếp theo, dùng **đúng Python của venv** kiểm từ trong subprocess:
 Đây là cổng quan trọng nhất để ngăn lặp lại trường hợp hàng nghìn task bị đánh
 `BUILD_TOOL_UNSUPPORTED` chỉ vì tiến trình Python không thấy build tool.
 
-## 9. Smoke build thật cho Maven và Gradle
+## 10. Smoke build thật cho Maven và Gradle
 
 Agent tạo hai project Java tối giản trong một thư mục tạm riêng dưới `%TEMP%`,
 không tạo trong dataset hay repository ARROW:
@@ -263,14 +329,14 @@ không tạo trong dataset hay repository ARROW:
   compatibility 17 và một class Java tối giản; chạy
   `gradle --no-daemon classes`.
 
-Cả hai lệnh phải chạy bằng environment ở mục 7, exit code 0 và thực sự tạo file
+Cả hai lệnh phải chạy bằng environment ở mục 8, exit code 0 và thực sự tạo file
 `.class`. Chỉ kiểm `--version` là chưa đủ. Có thể xóa đúng thư mục smoke tạm sau
 khi đã lưu log và xác minh thành công; nếu lỗi thì giữ để chẩn đoán.
 
 Nếu lỗi do mạng tải plugin/dependency, proxy, TLS hoặc quyền ghi cache, kết luận
 `BLOCKED_TOOLCHAIN_SMOKE`; không chuyển sang full run.
 
-## 10. Chạy test của preflight với đủ bốn JDK
+## 11. Chạy test của preflight với đủ bốn JDK
 
 Từ `<ARROW_ROOT>/preflight_tool`, sau khi dot-source environment:
 
@@ -286,7 +352,7 @@ Yêu cầu:
 - Các skip khác do platform/remote/performance có thể hợp lệ; agent phải đọc lý
   do và ghi vào báo cáo, không đánh đồng `skipped` với `failed`.
 
-## 11. Kiểm tra dataset và đúng shard bằng index-only
+## 12. Kiểm tra dataset và đúng shard bằng index-only
 
 Tạo `RUN_ID` UTC mới. Output check phải là thư mục chưa tồn tại:
 
@@ -312,10 +378,12 @@ Agent phải parse output, không chỉ thấy exit code 0:
 `--index-only` không clone/build và không chứng minh candidate eligible; nhiệm vụ
 của nó ở đây là xác minh dataset, shard và config input.
 
-## 12. Quy tắc cho run tiếp theo
+## 13. Quy tắc cho run tiếp theo
 
 Chỉ sau khi báo cáo kết luận `READY_FOR_FULL_RUN`, agent chạy shard mới được
-dùng runbook cá nhân tương ứng trong `preflight_tool_md/`.
+dùng runbook cá nhân tương ứng trong `preflight_tool_md/`. Khi có status bất
+thường, thực hiện `06-DIAGNOSE-AND-RECOVER.md`; không suy nguyên nhân từ tên
+status hoặc tỷ lệ `ELIGIBLE`.
 
 Khi chạy full:
 
@@ -325,15 +393,17 @@ Khi chạy full:
    checkpoint ở trạng thái terminal sẽ không tự chạy lại sau khi sửa PATH.
 4. Resume chỉ dùng cho đúng run mới, khi môi trường và execution contract không
    đổi, để tiếp tục sau dừng máy/`Ctrl+C`.
-5. Trong 20–50 kết quả đầu, kiểm log và phân bố status. Nếu thấy hàng loạt exit
-   code 127, `mvn/gradle not found`, `JDK_*_MISSING` hoặc cùng một lỗi môi trường,
-   dừng sớm, giữ evidence và sửa blocker; không để chạy đến hàng nghìn task.
+5. Trong 20–50 kết quả đầu, kiểm checkpoint JSON, log và phân bố status theo
+   **class lẫn repo**. Điều tra mọi exit 127, `JDK_*_MISSING`, lỗi DNS/TLS,
+   `CHECKOUT_FAILED` lặp nhiều repo, và `MAIN_BUILD_FAILED` có chung signature.
+   Nếu xác nhận blocker môi trường lặp lại, dừng sớm, giữ evidence và sửa;
+   không để chạy đến hàng nghìn task.
 6. Không kết luận lỗi chỉ vì có `BUILD_TOOL_UNSUPPORTED`: record không có
    `pom.xml`/Gradle build file có thể thật sự unsupported. Dấu hiệu lỗi môi
    trường là có build plan/attempt nhưng executable không chạy được, đặc biệt
    exit code 127 hoặc thông báo command not found.
 
-## 13. Báo cáo bàn giao bắt buộc
+## 14. Báo cáo bàn giao bắt buộc
 
 Tạo:
 
@@ -343,6 +413,8 @@ Báo cáo phải có:
 
 - `<TEN_NGUOI_CHAY>`, `<SHARD_NO>`, đường dẫn ARROW/input thực tế, Git HEAD và
   git status.
+- Danh sách **tất cả ổ đã tìm**, vị trí từng bản Python/Git/JDK/Maven/Gradle
+  tìm được, kết quả xác minh, lý do chọn/từ chối và phần thực sự phải tải.
 - OS/CPU/RAM/disk.
 - Python/venv/package version và CLI help check.
 - Bảng JDK 8/11/17/21: vendor, full version, JAVA_HOME, java/javac, checksum.
@@ -357,7 +429,8 @@ Báo cáo phải có:
 Kết luận phải là đúng một trong các trạng thái:
 
 - `READY_FOR_FULL_RUN`: mọi cổng bắt buộc ở trên đều pass.
-- `BLOCKED_ENVIRONMENT`: thiếu/hỏng Python, Git, JDK, Maven hoặc Gradle.
+- `BLOCKED_ENVIRONMENT`: thiếu/hỏng Python, Git, JDK, Maven hoặc Gradle sau khi
+  đã kiểm kê mọi ổ truy cập được.
 - `BLOCKED_CODE_VERSION`: checkout chưa có fallback Windows
   `mvn.cmd`/`gradle.bat` hoặc thiếu tính năng CLI cần thiết.
 - `BLOCKED_TOOLCHAIN_SMOKE`: version check pass nhưng Maven/Gradle build thật

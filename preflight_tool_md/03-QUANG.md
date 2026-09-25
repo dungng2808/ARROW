@@ -1,27 +1,27 @@
 # Giao việc preflight — Quang — shard 03
 
-## 0. Cổng kiểm tra bắt buộc — thiếu môi trường thì dừng ngay
+## 0. Cổng chuẩn bị bắt buộc — tìm trên mọi ổ trước khi tải
 
-Đây là bước đầu tiên, trước khi tạo run, index, clone hoặc build. Chỉ thực hiện kiểm tra đọc file, parse config, hash và lệnh kiểm version/import cần thiết. **Nếu thiếu hoặc không dùng được bất kỳ thành phần bắt buộc nào, dừng tác vụ và báo người dùng bổ sung. Không tự cài, tải, tạo config/venv, dùng đường dẫn giả hoặc chạy tiếp để thử.** Chỉ setup khi người dùng yêu cầu riêng sau khi nhận báo cáo; yêu cầu setup trong tài liệu tham chiếu không tự cấp quyền setup cho lượt chạy này.
+Đây là bước đầu tiên, trước khi tạo run, index, clone hoặc build. Đọc đầy đủ `00-PREPARE-WINDOWS.md` và `06-DIAGNOSE-AND-RECOVER.md`. Theo yêu cầu hiện tại của người dùng, agent **được setup phần còn thiếu**: trước hết kiểm kê có mục tiêu trên **tất cả ổ đĩa đang gắn và truy cập được**, xác minh bản tìm thấy bằng version/binary/smoke test; chỉ sau đó mới tải đúng phần thiếu từ nguồn tin cậy. Không dùng đường dẫn giả, không dùng binary của máy khác và không bắt đầu full run trước khi báo cáo setup đạt `READY_FOR_FULL_RUN`. Trên macOS, áp dụng cùng nguyên tắc tìm mọi volume đã mount và xác minh OS/CPU; phần PowerShell trong file 00 chỉ dành cho Windows.
 
 Kiểm tra trên chính môi trường sẽ thực thi:
 
 - Có root ARROW, `preflight_tool/preflight/cli.py`, `preflight_tool/preflight/shards.py`, `preflight_tool/pyproject.toml`; code hỗ trợ `--shard` và dọn cache repo.
 - Có `shards-5/shard-03.json`, `shards-5/summary.json`, `shards-5/README.md`, `preflight.md`, `preflight_tool/TEST_REPORT_FIX_FOUR_20260923.md`, `Java-version/AGENTS.md`. File phân công parse được và hash khớp summary.
-- Có `ARROW/classes2test/dataset/` chứa JSON theo cấu trúc `<project-id>/<sample>.json`, không chỉ folder rỗng hoặc file nén chưa giải nén. Nếu người dùng đã cung cấp vị trí khác thì kiểm vị trí đó; nếu chưa rõ vị trí, hỏi, không tự tải/di chuyển dataset.
-- Có Python >=3.11 và interpreter chạy được trong `preflight_tool/.venv` (macOS: `bin/python`; Windows: `Scripts/python.exe`), package preflight và dependency runtime import được. Thiếu venv/package thì báo tên thành phần và đường dẫn; không tự pip install.
+- Có dataset chứa JSON theo cấu trúc `dataset/<project-id>/<sample>.json`, không chỉ folder rỗng hoặc file nén chưa giải nén. Tìm trên mọi ổ trước; nếu thiếu, chỉ tải/nhận đúng snapshot nhóm đã xác minh rồi đối chiếu hash/count shard và index-only. Không dùng dataset bất kỳ trên Internet.
+- Có Python >=3.11 và interpreter chạy được trong `preflight_tool/.venv` (macOS: `bin/python`; Windows: `Scripts/python.exe`), package preflight và dependency runtime import được. Tìm Python/venv trên mọi ổ trước; nếu thiếu, setup local theo file 00.
 - Có `Java-version/config.local.toml`, parse TOML thành công; đủ mapping JDK 8/11/17/21 và default_home hợp lệ. Đường dẫn phải thuộc máy/môi trường hiện tại, đúng OS/CPU, có cả java/javac chạy được và đúng major. Có folder JDK nhưng binary thiếu/sai version vẫn là chưa đạt.
-- Có Git hoạt động và công cụ build cần thiết đã được chuẩn bị. Ghi rõ Maven/Gradle đang có; nếu thiếu fallback và chưa có phương án wrapper phù hợp được xác nhận thì báo để người dùng bổ sung, không tự cài hoặc giả định repo nào cũng có wrapper. File build/wrapper bên trong repo chưa clone không phải file local bắt buộc có ngay đầu.
+- Có Git, Maven và Gradle fallback hoạt động từ **chính Python subprocess** sẽ chạy tool; wrapper trong repo không thay thế kiểm tra fallback chung. Tìm trên mọi ổ và xác minh trước khi tải/cài local theo file 00. File build/wrapper bên trong repo chưa clone không phải file local bắt buộc có ngay đầu.
 - Docker/VM/container **không phải điều kiện bắt buộc**. Được chạy trực tiếp trên macOS/Windows của người dùng; các path Python/JDK/dataset/config phải dùng được trong môi trường thực chạy. Không kiểm Docker như prerequisite, không dừng chỉ vì thiếu Docker, daemon không chạy hoặc chưa có VM. Nếu chủ động dùng môi trường cô lập đã có thì kiểm đường dẫn và binary bên trong môi trường đó.
 - Đường dẫn output có quyền ghi, tài nguyên và kết nối đáp ứng yêu cầu. Nếu không xác minh được điều kiện bắt buộc, ghi là chưa xác minh và hỏi người dùng, không coi là PASS.
 
-Khi không đạt, trả lời trực tiếp bằng tiếng Việt với trạng thái **BLOCKED_ENVIRONMENT**:
+Nếu sau khi kiểm kê mọi ổ, setup phần thiếu và kiểm lại mà vẫn không đạt, trả lời trực tiếp bằng tiếng Việt với trạng thái **BLOCKED_ENVIRONMENT** (hoặc trạng thái blocker cụ thể trong file 00):
 
 | Thành phần thiếu/hỏng | Đường dẫn/lệnh đã kiểm | Bằng chứng lỗi | Người dùng cần bổ sung |
 | --- | --- | --- | --- |
 | Liệt kê từng mục thực tế | Dùng path của máy hiện tại | Không bịa kết quả | Hướng dẫn ngắn, không tự thực hiện |
 
-Nêu rõ **chưa chạy index/clone/build**, người phụ trách và shard, đề nghị người dùng bổ sung rồi yêu cầu chạy lại. Không tạo run giả hoặc HANDOFF báo hoàn thành chỉ để đủ file. Có thể gom các lỗi bằng kiểm tra read-only an toàn; không thực thi binary chưa xác minh. Sau khi người dùng bổ sung, kiểm lại toàn bộ cổng này; chỉ khi đạt mới làm các mục dưới.
+Nêu rõ **chưa chạy index/clone/build**, người phụ trách và shard, các ổ đã tìm, phần đã tái sử dụng/cài thêm và blocker còn lại. Không tạo run giả hoặc HANDOFF báo hoàn thành chỉ để đủ file. Không thực thi binary chưa xác minh; chỉ khi cổng setup đạt mới làm các mục dưới.
 
 
 ## 1. Nhiệm vụ và phạm vi
@@ -35,16 +35,16 @@ Agent hãy đọc **toàn bộ file này**, các AGENTS.md áp dụng và tài l
 - Đây là class candidate, chưa phải class chắc chắn build hoặc sinh test được.
 - Không chạy shard của người khác. Không sửa manifest, source dataset, code tool hay build file của repo được kiểm tra để ép pass.
 - Không commit/push, reset/clean/stash worktree, xóa evidence hoặc thay đổi Java/PATH toàn máy.
-- Chỉ kiểm tra môi trường, chạy phần được giao và tạo output/report local khi cổng mục 0 đã đạt. Nếu cần setup, quyền, credentials hoặc quyết định ngoài phạm vi này, dừng và hỏi người dùng.
+- Agent được tìm trên mọi ổ, tái sử dụng hoặc tải/cài dependency local còn thiếu theo file 00 trước khi chạy phần được giao. Nếu cần quyền admin, credentials, thay đổi chính sách experiment hoặc quyết định ngoài phạm vi này, dừng và hỏi người dùng.
 
 ## 2. Kiểm tra trước khi chạy
 
-1. Đọc `shards-5/README.md`, `preflight.md`, `preflight_tool/TEST_REPORT_FIX_FOUR_20260923.md`. Nếu một file chưa có, báo cần nhận đủ bản code mới; không tự suy đoán tính năng.
-2. Ghi Git HEAD, `git status --short`, OS/CPU, Python/Git/build-tool version. Không tự pull/checkout khi có thay đổi local; giữ nguyên dữ liệu của người dùng. Các máy phải dùng cùng bản code đã thống nhất.
+1. Đọc `00-PREPARE-WINDOWS.md`, `06-DIAGNOSE-AND-RECOVER.md`, `shards-5/README.md`, `preflight.md`, `preflight_tool/TEST_REPORT_FIX_FOUR_20260923.md`. Nếu một file chưa có, báo cần nhận đủ bản code mới; không tự suy đoán tính năng.
+2. Ghi Git HEAD, `git status --short`, OS/CPU, Python/Git/build-tool version. Chỉ cập nhật code bằng fast-forward an toàn theo file 00 khi không có run hoạt động và không ghi đè thay đổi local; không reset/stash/checkout để vượt conflict. Các máy phải dùng cùng bản code đã thống nhất.
 3. Xác nhận CLI có `--shard`. Kiểm SHA-256 file `shard-03.json` với entry tương ứng trong `shards-5/summary.json`; số class phải đúng 17164. Nếu thiếu/mismatch thì dừng trước build và báo lỗi.
 4. Xác định input root thật trên máy. Nếu không nằm ở vị trí mặc định, thay `--input-root` trong lệnh bên dưới bằng đường dẫn đúng; không sửa shard.
-5. Dùng virtualenv đã kiểm tra tại mục 0. Nếu phát hiện Python/dependency thiếu hoặc hỏng, dừng và báo người dùng; không tự tạo venv hoặc cài package.
-6. Đọc đầy đủ `Java-version/AGENTS.md` để đối chiếu JDK/config đã có. Chỉ tái sử dụng JDK 8/11/17/21 được xác minh; không tự setup/tải JDK hay tạo/sửa `Java-version/config.local.toml` trong nhiệm vụ chạy shard. Thiếu hoặc sai thì dừng theo mục 0.
+5. Dùng virtualenv đã kiểm tra tại mục 0. Nếu Python/dependency thiếu hoặc hỏng, tìm trên mọi ổ rồi setup local theo file 00; không dùng interpreter khác với interpreter sẽ chạy full run.
+6. Đọc đầy đủ `Java-version/AGENTS.md` để đối chiếu JDK/config đã có. Tìm JDK 8/11/17/21 trên mọi ổ, xác minh cả java/javac và chỉ tải major còn thiếu; tạo/sửa `Java-version/config.local.toml` local theo đường dẫn thật trên máy.
 7. Kiểm `java` và `javac` từng major; Git và build tool/wrapper cần thiết. Trong môi trường tiến trình chạy tool, đặt JAVA_HOME/PATH về JDK 17 đã xác minh để lệnh kiểm version build tool không dùng Java khác ngoài ý muốn; không đổi cấu hình hệ thống. Runner vẫn dùng mapping JDK theo project.
 8. Kiểm dung lượng trống, RAM và kết nối mạng. Nhóm dùng `--workers 5` cho mỗi máy; ghi cấu hình thực tế. Tham số CLI này ghi đè workers trong config local. Giữ timeout chung 900 giây/command và max revision candidates 500 nếu nhóm chưa thống nhất cấu hình khác. Nếu máy không đủ tài nguyên cho 5 worker, báo người dùng để quyết định, không tự đổi số worker hoặc tiếp tục khi thiếu tài nguyên.
 
@@ -68,6 +68,11 @@ Không dùng output đã có dữ liệu cho lệnh khởi tạo. Sau khi full r
 
 ## 4. Kiểm tra shard trước, chưa clone/build
 
+Nếu `00-PREPARE-WINDOWS.md` vừa tạo output `setup-check` và đã đối soát đủ
+shard, config, dataset và Git HEAD đúng như lượt này, **dùng lại bằng chứng
+index-only đó**; không chạy lại chỉ để có output tên khác. Nếu chưa có bằng
+chứng hợp lệ, chạy lệnh dưới với output mới:
+
 ```text
 python -m preflight.cli --config ../Java-version/config.local.toml --input-root ../classes2test --shard ../shards-5/shard-03.json --index-only --output-dir runs/quang-shard-03-<RUN_ID>-check
 ```
@@ -79,6 +84,8 @@ Phải kiểm tra:
 - `reports/input_rejections.jsonl` rỗng với dataset chuẩn hiện tại. Nếu có rejection, ghi rõ và dừng để đối soát trước full run.
 - Với dataset đầy đủ như bản chia: `raw_json_indexed = 362414`, `deduplicated_classes = 85819`. Nếu số khác, kiểm snapshot và báo khác biệt; không tự coi tương đương. Tool đã kiểm metadata/evidence hash của class thuộc shard trước khi chọn.
 - Index-only không tạo kết luận eligible/build pass và không đòi `summary.json`.
+- Full run mới vẫn tự indexing lại toàn dataset; tool hiện không hỗ trợ copy
+  `class_index.sqlite` từ output check hoặc run cũ để bỏ qua bước này.
 
 Nếu thiếu class hoặc hash mismatch, giữ log và báo cần đúng snapshot; không sửa manifest, task ID hoặc hash để bypass.
 
@@ -102,7 +109,8 @@ Resume chỉ nhận `--output-dir` và tùy chọn `--workers`; không truyền 
 - Nếu nhóm cung cấp revision map được audit, cần xác nhận thay đổi chế độ trước khi bổ sung `--revision-map`; không tự chuyển nhiệm vụ discovery thành strict experiment.
 - Lưu command, start/end UTC, stdout/stderr và exit code vào artifact local. Nếu dùng tee/pipeline, phải giữ exit code thật của Python, không lấy exit code của tee.
 - Theo dõi tiến trình cho đến khi hoàn tất hoặc có blocker thật. Tool có thể chưa in summary trong lúc chạy; không kết luận treo chỉ vì stdout im lặng. Kiểm process/log đang thay đổi; không khởi động trùng lượt.
-- Các trạng thái như CLONE_FAILED, MAIN_BUILD_FAILED, JDK_UNSUPPORTED, EXCLUDED, NEEDS_REVIEW là kết quả candidate cần ghi nhận, không tự sửa repo để đổi status.
+- Sau 20–50 kết quả đầu và mỗi 10–15 phút, áp dụng `06-DIAGNOSE-AND-RECOVER.md`: đọc checkpoint/result_json, reason_codes, build_attempts và log; đếm theo class **và repo**, lấy mẫu nhiều repo. Điều tra exit 127 ở mọi status, JDK sai/missing, lỗi DNS/TLS/dependency, CHECKOUT_FAILED lặp lại và MAIN_BUILD_FAILED có cùng signature. Nếu xác nhận lỗi máy/tool lặp trên nhiều repo, dừng có kiểm soát để sửa trước khi checkpoint thêm; không suy nguyên nhân chỉ từ tên status.
+- Các trạng thái như CLONE_FAILED, MAIN_BUILD_FAILED, JDK_UNSUPPORTED, EXCLUDED, NEEDS_REVIEW cần evidence để phân biệt lỗi môi trường/tool với kết quả candidate; không tự sửa repo để đổi status.
 - Nếu dừng có kiểm soát bằng `Ctrl+C`, giữ output rồi dùng `--resume`; task đang dở chạy lại từ đầu trong attempt log mới. Task đã checkpoint, kể cả status lỗi môi trường, không chạy lại sau khi sửa blocker. Nếu mất mạng/JDK/dung lượng đã tạo ra hàng loạt kết quả terminal sai lệch, đánh dấu run không hợp lệ và khởi tạo output mới sau khi xử lý nguyên nhân; không dùng resume để kỳ vọng các task đó tự retry. Không xóa bằng chứng hoặc khởi tạo lệnh fresh trên output cũ.
 - Không chỉ khởi động nền rồi báo hoàn thành. Nếu agent/môi trường không thể theo dõi tiếp, bàn giao PID/session, output và tình trạng thực tế.
 
@@ -157,7 +165,7 @@ Nội dung:
 - OS/CPU, Python, Git, Maven/Gradle nếu có, vendor/full build của JDK 8/11/17/21; config, input và chế độ thực chạy (host trực tiếp hoặc VM/container). Nếu chạy host, ghi rõ không có sandbox.
 - Command khởi tạo và resume, số session/resume, completed trước/sau từng session, workers, timeout, start/end, exit code, shard SHA-256 và config SHA-256.
 - Expected **17164**, actual total, số missing/extra/duplicate và kết quả từng phép đối soát mục 6.
-- Bảng count theo preflight_status, technical eligible, strict eligible; top reason_codes và ví dụ task/log cho lỗi nổi bật.
+- Bảng count theo preflight_status **theo class và repo**, technical eligible, strict eligible; số exit 127, top reason_codes và ít nhất 3 task/log từ 3 repo khác nhau cho mỗi nhóm lỗi lớn (nếu có đủ 3 repo). Ghi lỗi đã xác nhận, lỗi còn là giả thuyết và bước sửa/kiểm lại theo file 06.
 - Kết luận duy nhất phù hợp: **COMPLETED_DISCOVERY**, **BLOCKED_ENVIRONMENT**, **BLOCKED**, **INCOMPLETE** hoặc **FAILED_VALIDATION**. Không gọi là strict experiment hoàn tất.
 - Đường dẫn output/evidence; phần chưa chạy, blocker và hành động người dùng cần làm nếu có.
 
