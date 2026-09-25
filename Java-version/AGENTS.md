@@ -2,8 +2,8 @@
 
 ## Phạm vi và kết quả cần đạt
 
-Khi người dùng yêu cầu setup Java theo file này, agent phải có đủ **JDK 6, 7,
-8, 11, 17, 21** cho máy hiện tại. **Tìm và xác minh bản đã có trên tất cả ổ đang gắn
+Khi người dùng yêu cầu setup Java theo file này, agent phải có đủ **JDK 8, 11,
+17, 21** cho máy hiện tại. **Tìm và xác minh bản đã có trên tất cả ổ đang gắn
 trước khi tải**; chỉ cài bản còn thiếu vào `Java-version/runtime/`. Mỗi JDK cần
 cả `java` và `javac`, không chỉ JRE. File này là hướng dẫn cho agent, không phải
 script tự chạy khi git pull.
@@ -30,12 +30,8 @@ thống installer chung, không commit/push trong quá trình setup cục bộ.
 
 ## 2. Chọn nguồn và khóa artifact trước khi tải
 
-- Tra cứu website/API chính thức của nhà cung cấp OpenJDK, ví dụ Azul cho
-  JDK 6/7 và Eclipse Adoptium hoặc Azul cho các major mới hơn. Ưu tiên cùng
-  vendor nếu có đủ major cho platform; không giả định vendor nào cũng phát
-  hành JDK 6/7 trên OS/CPU đang dùng. Đối chiếu
-  [ma trận OS/JDK của Azul](https://docs.azul.com/core/supported-platforms)
-  trước khi chọn artifact legacy.
+- Tra cứu website/API chính thức của nhà cung cấp OpenJDK, ví dụ Eclipse
+  Adoptium hoặc Azul. Ưu tiên cùng vendor nếu có đủ major cho platform.
 - Chọn bản phát hành ổn định, portable archive; không chọn EA, installer cần
   admin hoặc nguồn mirror không xác minh được.
 - Nếu có lock manifest được nhóm cung cấp thì ưu tiên dùng chính xác artifact
@@ -70,7 +66,7 @@ thống installer chung, không commit/push trong quá trình setup cục bộ.
    thể là `runtime/jdk-<major>/Contents/Home`; Windows thường là
    `runtime/jdk-<major>/`.
 5. Gọi java và javac bằng đường dẫn tuyệt đối, kiểm exit code 0 và major đúng
-   6/7/8/11/17/21; Java 6/7/8 có thể báo `1.6.0_...`/`1.7.0_...`/`1.8.0_...`. Kiểm full version/build với metadata
+   8/11/17/21; Java 8 có thể báo `1.8.0_...`. Kiểm full version/build với metadata
    và file `release` khi có. Lưu stdout/stderr cùng kết quả vào
    `Java-version/verification.local.json`.
 6. Sau khi xác minh và hoàn tất cài đặt, xóa **đúng file archive đã tải** trong
@@ -84,8 +80,6 @@ Cấu trúc JDK **mới cài** trên cả macOS và Windows:
 
 ```text
 Java-version/runtime/
-  jdk-6/
-  jdk-7/
   jdk-8/
   jdk-11/
   jdk-17/
@@ -93,7 +87,7 @@ Java-version/runtime/
 ```
 
 Nội dung mỗi JDK phải đúng OS/CPU của máy, dù tên folder giống nhau.
-Nếu tái dùng JDK đã cài ở nơi khác, không bắt buộc có đủ sáu folder dưới
+Nếu tái dùng JDK đã cài ở nơi khác, không bắt buộc có đủ bốn folder dưới
 `runtime/`; config và báo cáo phải trỏ đúng đường dẫn thực tế của từng JDK.
 
 ## 4. Cấu hình preflight
@@ -101,7 +95,7 @@ Nếu tái dùng JDK đã cài ở nơi khác, không bắt buộc có đủ sá
 - Sinh `Java-version/config.local.toml` bằng cách lấy cấu hình hiện có của máy
   (nếu có) hoặc dùng `preflight_tool/config.example.toml` làm mẫu. Giữ các thiết
   lập run/policy/input hợp lệ đã có; không ghi đè lựa chọn người dùng.
-- Điền `[java.homes]` cho `"6"`, `"7"`, `"8"`, `"11"`, `"17"`, `"21"` bằng đường dẫn tuyệt đối
+- Điền `[java.homes]` cho `"8"`, `"11"`, `"17"`, `"21"` bằng đường dẫn tuyệt đối
   tới JAVA_HOME vừa xác minh. Không map một major sang JDK khác major.
 - `[java].default_home` chỉ chọn JDK đã xác minh và ghi rõ lựa chọn trong báo
   cáo; không thay thế mapping thiếu một cách âm thầm.
@@ -109,7 +103,7 @@ Nếu tái dùng JDK đã cài ở nơi khác, không bắt buộc có đủ sá
   tương ứng. Nếu chưa có dataset, báo rõ cần truyền `--input-root`; không giữ
   đường dẫn ví dụ Windows như thể dataset tồn tại trên mọi máy.
 - Trên Windows dùng slash `/` hoặc literal string TOML để tránh lỗi escape.
-- Kiểm parse TOML và xác nhận đủ sáu đường dẫn. Nếu môi trường Python của
+- Kiểm parse TOML và xác nhận đủ bốn đường dẫn. Nếu môi trường Python của
   preflight sẵn sàng, gọi `_java_env()` cho từng major để kiểm tương thích;
   báo riêng nếu chưa có dependency Python. Không cần chạy toàn dataset để
   xác minh setup JDK, không tự clone/build repository bên ngoài.
@@ -120,15 +114,6 @@ root ARROW bằng:
 ```text
 class2test-preflight --config Java-version/config.local.toml --input-root <dataset-local> --index-only
 ```
-
-JDK 6/7 trong mapping **không đồng nghĩa** Maven 3.9.9 hoặc Gradle 8.10.2 chạy
-được bằng `JAVA_HOME` đó: cả hai fallback cần JVM từ 8 trở lên. Agent phải
-kiểm phiên bản wrapper/build tool của repo và log build; không tự đổi
-`JAVA_HOME` sang JDK 17 để ép qua cổng version, không sửa build file của repo.
-Nếu cần compiler 6/7 nhưng build tool chạy trên JDK mới, chỉ dùng cơ chế
-toolchain đã khai báo và xác minh bằng smoke build riêng; chưa chứng minh được
-thì báo giới hạn, không gọi là PASS. JDK 6/7 cũ cũng chỉ chạy trong môi trường
-ít quyền và không nhận secrets.
 
 `--index-only` chỉ kiểm tra luồng input, không chứng minh JDK build được mọi
 repository; kết quả xác minh JDK dựa trên các bước java/javac ở trên.
@@ -144,5 +129,5 @@ và báo cáo local. Không dùng `git add -f` để đưa chúng vào Git.
 Báo cáo gồm: OS/CPU, danh sách ổ đã kiểm, mỗi JDK đã cài/tái sử dụng, vị trí
 gốc, vendor/full version, JAVA_HOME,
 checksum đã khớp hay chưa, kết quả java/javac, archive đã xóa, đường dẫn config
-và phần còn lỗi. Chỉ kết luận hoàn tất khi đủ cả sáu JDK được xác minh và config
+và phần còn lỗi. Chỉ kết luận hoàn tất khi đủ cả bốn JDK được xác minh và config
 local hợp lệ. Không commit/push theo prompt setup cho thành viên.

@@ -27,7 +27,7 @@
 ### 1.1. Bằng chứng rà soát baseline
 
 Kết quả lần rà soát trước trên cùng HEAD: macOS, Python 3.12.13, đủ JDK local
-6/7/8/11/17/21, `RUN_PERFORMANCE=1`, `PREFLIGHT_JDK_*` được nạp từ config và JDK 17
+8/11/17/21, `RUN_PERFORMANCE=1`, `PREFLIGHT_JDK_*` được nạp từ config và JDK 17
 được thêm vào PATH của tiến trình test: **175 passed**, lines **96.32%**, branches
 **89.69%**, policy branch **100%**. Đây là bằng chứng của suite hiện có, không
 phải toàn bộ ca dự kiến trong tài liệu này; lần sửa tài liệu không tạo một kết
@@ -35,7 +35,7 @@ quả thực thi mới.
 
 Nếu không cấu hình Java cho tiến trình test, ca
 `test_fast_run_is_prechecked_and_never_strict` có thể nhận `JDK_UNSUPPORTED`:
-fixture mock build nhưng vẫn gọi `_java_env()` thật với mapping rỗng. Sáu ca
+fixture mock build nhưng vẫn gọi `_java_env()` thật với mapping rỗng. Bốn ca
 `test_real_jdk_version_matrix_when_configured` chỉ đọc `PREFLIGHT_JDK_*`, không
 tự đọc config TOML; thiếu biến thì skip. Xem mục 19 để chạy đúng.
 
@@ -162,7 +162,7 @@ dataset chạy theo lịch hoặc trước experiment chính thức.
 | Git | Bản stable hiện hành, long-path bật trên Windows | Bản stable Linux/macOS |
 | Maven | Wrapper dự án và Maven 3.8/3.9 | Historical Maven nếu project yêu cầu |
 | Gradle | Wrapper dự án | Gradle host chỉ khi không có wrapper |
-| JDK | 6, 7, 8, 11, 17, 21, từng full version/build được ghi lại | Code không whitelist chỉ sáu major; Maven 3.9.9/Gradle 8.10.2 cần JVM >=8 để chạy, nên legacy 6/7 vẫn cần wrapper/toolchain tương thích |
+| JDK | 8, 11, 17, 21, từng full version/build được ghi lại | Tool không hard-code whitelist, nhưng task chuẩn bị/chạy này không tự tải hay cấu hình major ngoài ma trận; ghi status và bằng chứng thực tế |
 | Filesystem | NTFS, đường dẫn có dấu và khoảng trắng | Case-sensitive filesystem |
 
 ### 6.2. An toàn môi trường
@@ -178,7 +178,7 @@ dataset chạy theo lịch hoặc trước experiment chính thức.
 ### 6.3. Điều kiện máy thành viên sau khi tải Java
 
 1. Python >=3.11, Git và dependency `.[test]` của tool đã cài trong venv.
-2. `Java-version/runtime/jdk-{6,7,8,11,17,21}/` có JDK đúng OS/CPU, java/javac
+2. `Java-version/runtime/jdk-{8,11,17,21}/` có JDK đúng OS/CPU, java/javac
    đã verify; config `Java-version/config.local.toml` map tới JAVA_HOME thực
    (macOS có thể có `Contents/Home`). CLI không tự tìm runtime này.
 3. Dataset có cấu trúc `dataset/<project-id>/*.json`; cấu hình input trỏ đúng
@@ -278,7 +278,7 @@ name hoặc HEAD động làm expected baseline.
 | UT-BLD-001 | Maven single/multi-module | Đúng root, module, `-pl/-am` và fallback | P0 |
 | UT-BLD-002 | Gradle root/subproject | Đúng `classes`/`testClasses` task | P0 |
 | UT-BLD-003 | Có `.cmd`/shell wrapper | Chọn wrapper đúng OS trước host tool | P0 |
-| UT-BLD-004 | JDK release 6/7/8/11/17/21 | Chọn đúng home và ghi version thực chạy | P0 |
+| UT-BLD-004 | JDK release 8/11/17/21 | Chọn đúng home và ghi version thực chạy | P0 |
 | UT-BLD-005 | Không có executable | `BUILD_TOOL_UNSUPPORTED` | P0 |
 | UT-BLD-006 | Main fail/test compile fail | Phân biệt hai trạng thái | P0 |
 | UT-BLD-007 | Dependency resolve fail | `DEPENDENCY_UNAVAILABLE` | P1 |
@@ -511,7 +511,7 @@ expected/actual, status/reason codes, log path, môi trường và khả năng t
 | UT-BLD-009, IT-008 | `test_timeout_stops_child_process_on_host_platform` trong file helper | Process thật trên host đang chạy; chưa chứng nhận mọi build tool/OS |
 | UT-BLD-015, IT-002 | `test_run_all_limits_submissions_between_completion_waits`; `tests/integration/test_git_and_runner.py::test_parallel_workers_have_stable_nonduplicated_results` | Bounded queue bằng test helper; hai CUT thật chung repo nhưng fixture không build |
 | IT-001, fast mode | `tests/integration/test_git_and_runner.py` | Git/worktree thật; fast build được mock, còn Java môi trường chưa được cô lập |
-| JDK launcher matrix | `test_real_jdk_version_matrix_when_configured` trong file helper, marker `toolchain` | Sáu launcher thật nếu PREFLIGHT_JDK_* được set; chưa compile project |
+| JDK launcher matrix | `test_real_jdk_version_matrix_when_configured` trong file helper, marker `toolchain` | Bốn launcher thật nếu PREFLIGHT_JDK_* được set; chưa compile project |
 | UT-PRB-001..003 | `test_probe_source_covers_constructor_static_and_instance_calls` | Kiểm chuỗi source; chưa chứng minh compile thật |
 | UT-OUT, E2E-001/006 | `tests/unit/test_output.py`, `tests/e2e/test_cli_portfolio.py` | CLI index-only thật và output contract; test strict output mock `cli.run_all` |
 | E2E-002..005, IT-004..007 | Chưa có portfolio compile thật tương ứng | Cần bổ sung |
@@ -539,7 +539,7 @@ quy thay vì ghi còn fail. Không vì sửa helper mà đóng GAP-05 ở ingest
 ### 18.3. Các khoảng trống còn lại trước full experiment
 
 1. Maven/Gradle **thật** cho single-module và multi-module, không chỉ mock process.
-2. Build fixture trên JDK 6/7/8/11/17/21 và OS matrix; bản báo cáo cũ chỉ xác nhận bốn major 8/11/17/21.
+2. Build fixture trên JDK 8/11/17/21 và OS matrix; launcher matrix macOS đã pass ở lần rà soát trước.
 3. Content-match nhiều commit, tie-break và text block/string edge cases.
 4. Probe compile thật cho JUnit4/JUnit5/TestNG với complex signatures.
 5. Chạy lại process-tree test trên Windows/Linux; mirror recovery sau network failure.
@@ -589,7 +589,7 @@ python -m pytest -m e2e -ra
 ```
 
 Marker integration/toolchain cần Java của tiến trình test được cấu hình.
-Gate tổng dưới đây nạp cả sáu PREFLIGHT_JDK_* và JDK 17 vào PATH chỉ cho process
+Gate tổng dưới đây nạp cả bốn PREFLIGHT_JDK_* và JDK 17 vào PATH chỉ cho process
 con; không đổi Java toàn máy. Không dùng suite marker riêng làm coverage gate.
 
 ### 19.3. Gate tổng gồm integration, JDK thật và performance
@@ -599,7 +599,7 @@ Các path JDK lấy trực tiếp từ `Java-version/config.local.toml`, không 
 `Contents/Home` cho Windows. Coverage và JUnit XML nằm trong thư mục run mới.
 
 ```text
-python -c 'import os,pathlib,subprocess,sys,tomllib; c=tomllib.loads(pathlib.Path("../Java-version/config.local.toml").read_text(encoding="utf-8")); homes=c["java"]["homes"]; e=os.environ.copy(); e.update({"PREFLIGHT_JDK_"+v:homes[v] for v in ("6","7","8","11","17","21")}); e["JAVA_HOME"]=homes["17"]; e["PATH"]=str(pathlib.Path(homes["17"])/"bin")+os.pathsep+e.get("PATH",""); e["RUN_PERFORMANCE"]="1"; out=pathlib.Path("runs/qa-20260923-01"); out.mkdir(parents=True,exist_ok=False); raise SystemExit(subprocess.call([sys.executable,"-m","pytest","--cov=preflight","--cov-branch","--cov-report=term-missing","--cov-report=json:"+str(out/"coverage.json"),"--junitxml="+str(out/"pytest.xml"),"-ra"],env=e))'
+python -c 'import os,pathlib,subprocess,sys,tomllib; c=tomllib.loads(pathlib.Path("../Java-version/config.local.toml").read_text(encoding="utf-8")); homes=c["java"]["homes"]; e=os.environ.copy(); e.update({"PREFLIGHT_JDK_"+v:homes[v] for v in ("8","11","17","21")}); e["JAVA_HOME"]=homes["17"]; e["PATH"]=str(pathlib.Path(homes["17"])/"bin")+os.pathsep+e.get("PATH",""); e["RUN_PERFORMANCE"]="1"; out=pathlib.Path("runs/qa-20260923-01"); out.mkdir(parents=True,exist_ok=False); raise SystemExit(subprocess.call([sys.executable,"-m","pytest","--cov=preflight","--cov-branch","--cov-report=term-missing","--cov-report=json:"+str(out/"coverage.json"),"--junitxml="+str(out/"pytest.xml"),"-ra"],env=e))'
 python scripts/check_coverage.py runs/qa-20260923-01/coverage.json
 python -c 'import json,pathlib; c=json.loads(pathlib.Path("runs/qa-20260923-01/coverage.json").read_text()); s=next(v["summary"] for k,v in c["files"].items() if k.replace(chr(92),"/").endswith("preflight/policy.py")); assert s["missing_branches"]==0, s; print("policy branch gate PASS")'
 ```

@@ -74,7 +74,7 @@ loạt kết quả terminal sai lệch, không dùng resume để kỳ vọng ch
 dấu run không hợp lệ và khởi tạo run mới sau khi xử lý nguyên nhân.
 
 Mỗi historical project cần Maven/Gradle (hoặc wrapper), Git và JDK đúng version.
-Khai báo đường dẫn JDK 6/7/8/11/17/21 trong `config.example.toml`; tool không đổi
+Khai báo đường dẫn JDK 8/11/17/21 trong `config.example.toml`; tool không đổi
 dependency, build file hay source để ép build pass.
 
 ## Revision map audit

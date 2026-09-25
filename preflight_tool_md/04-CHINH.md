@@ -10,7 +10,7 @@ Kiểm tra trên chính môi trường sẽ thực thi:
 - Có `shards-5/shard-04.json`, `shards-5/summary.json`, `shards-5/README.md`, `preflight.md`, `preflight_tool/TEST_REPORT_FIX_FOUR_20260923.md`, `Java-version/AGENTS.md`. File phân công parse được và hash khớp summary.
 - Có dataset chứa JSON theo cấu trúc `dataset/<project-id>/<sample>.json`, không chỉ folder rỗng hoặc file nén chưa giải nén. Tìm trên mọi ổ trước; nếu thiếu, chỉ tải/nhận đúng snapshot nhóm đã xác minh rồi đối chiếu hash/count shard và index-only. Không dùng dataset bất kỳ trên Internet.
 - Có Python >=3.11 và interpreter chạy được trong `preflight_tool/.venv` (macOS: `bin/python`; Windows: `Scripts/python.exe`), package preflight và dependency runtime import được. Tìm Python/venv trên mọi ổ trước; nếu thiếu, setup local theo file 00.
-- Có `Java-version/config.local.toml`, parse TOML thành công; đủ mapping JDK 6/7/8/11/17/21 và default_home hợp lệ. Đường dẫn phải thuộc máy/môi trường hiện tại, đúng OS/CPU, có cả java/javac chạy được và đúng major. Có folder JDK nhưng binary thiếu/sai version vẫn là chưa đạt.
+- Có `Java-version/config.local.toml`, parse TOML thành công; đủ mapping JDK 8/11/17/21 và default_home hợp lệ. Đường dẫn phải thuộc máy/môi trường hiện tại, đúng OS/CPU, có cả java/javac chạy được và đúng major. Có folder JDK nhưng binary thiếu/sai version vẫn là chưa đạt.
 - Có Git, Maven và Gradle fallback hoạt động từ **chính Python subprocess** sẽ chạy tool; wrapper trong repo không thay thế kiểm tra fallback chung. Tìm trên mọi ổ và xác minh trước khi tải/cài local theo file 00. File build/wrapper bên trong repo chưa clone không phải file local bắt buộc có ngay đầu.
 - Docker/VM/container **không phải điều kiện bắt buộc**. Được chạy trực tiếp trên macOS/Windows của người dùng; các path Python/JDK/dataset/config phải dùng được trong môi trường thực chạy. Không kiểm Docker như prerequisite, không dừng chỉ vì thiếu Docker, daemon không chạy hoặc chưa có VM. Nếu chủ động dùng môi trường cô lập đã có thì kiểm đường dẫn và binary bên trong môi trường đó.
 - Đường dẫn output có quyền ghi, tài nguyên và kết nối đáp ứng yêu cầu. Nếu không xác minh được điều kiện bắt buộc, ghi là chưa xác minh và hỏi người dùng, không coi là PASS.
@@ -44,7 +44,7 @@ Agent hãy đọc **toàn bộ file này**, các AGENTS.md áp dụng và tài l
 3. Xác nhận CLI có `--shard`. Kiểm SHA-256 file `shard-04.json` với entry tương ứng trong `shards-5/summary.json`; số class phải đúng 17164. Nếu thiếu/mismatch thì dừng trước build và báo lỗi.
 4. Xác định input root thật trên máy. Nếu không nằm ở vị trí mặc định, thay `--input-root` trong lệnh bên dưới bằng đường dẫn đúng; không sửa shard.
 5. Dùng virtualenv đã kiểm tra tại mục 0. Nếu Python/dependency thiếu hoặc hỏng, tìm trên mọi ổ rồi setup local theo file 00; không dùng interpreter khác với interpreter sẽ chạy full run.
-6. Đọc đầy đủ `Java-version/AGENTS.md` để đối chiếu JDK/config đã có. Tìm JDK 6/7/8/11/17/21 trên mọi ổ, xác minh cả java/javac và chỉ tải major còn thiếu; tạo/sửa `Java-version/config.local.toml` local theo đường dẫn thật trên máy. JDK 6/7 không tự làm Maven 3.9.9 hoặc Gradle 8.10.2 chạy được; phải kiểm wrapper/build tool thực tế theo file 00.
+6. Đọc đầy đủ `Java-version/AGENTS.md` để đối chiếu JDK/config đã có. Tìm JDK 8/11/17/21 trên mọi ổ, xác minh cả java/javac và chỉ tải major còn thiếu; tạo/sửa `Java-version/config.local.toml` local theo đường dẫn thật trên máy. Không tự tải/cấu hình JDK ngoài ma trận, kể cả 6/7; ghi nhận các repo đó theo file 06.
 7. Kiểm `java` và `javac` từng major; Git và build tool/wrapper cần thiết. Trong môi trường tiến trình chạy tool, đặt JAVA_HOME/PATH về JDK 17 đã xác minh để lệnh kiểm version build tool không dùng Java khác ngoài ý muốn; không đổi cấu hình hệ thống. Runner vẫn dùng mapping JDK theo project.
 8. Kiểm dung lượng trống, RAM và kết nối mạng. Nhóm dùng `--workers 5` cho mỗi máy; ghi cấu hình thực tế. Tham số CLI này ghi đè workers trong config local. Giữ timeout chung 900 giây/command và max revision candidates 500 nếu nhóm chưa thống nhất cấu hình khác. Nếu máy không đủ tài nguyên cho 5 worker, báo người dùng để quyết định, không tự đổi số worker hoặc tiếp tục khi thiếu tài nguyên.
 
@@ -162,7 +162,7 @@ Tạo `HANDOFF.md` trong output full run; nếu đã chạy index-only rồi m�
 Nội dung:
 
 - Người phụ trách **Chính**, shard **04**, RUN_ID, Git HEAD và thay đổi local ảnh hưởng code.
-- OS/CPU, Python, Git, Maven/Gradle nếu có, vendor/full build của JDK 6/7/8/11/17/21; config, input và chế độ thực chạy (host trực tiếp hoặc VM/container). Nếu chạy host, ghi rõ không có sandbox.
+- OS/CPU, Python, Git, Maven/Gradle nếu có, vendor/full build của JDK 8/11/17/21; config, input và chế độ thực chạy (host trực tiếp hoặc VM/container). Nếu chạy host, ghi rõ không có sandbox.
 - Command khởi tạo và resume, số session/resume, completed trước/sau từng session, workers, timeout, start/end, exit code, shard SHA-256 và config SHA-256.
 - Expected **17164**, actual total, số missing/extra/duplicate và kết quả từng phép đối soát mục 6.
 - Bảng count theo preflight_status **theo class và repo**, technical eligible, strict eligible; số exit 127, top reason_codes và ít nhất 3 task/log từ 3 repo khác nhau cho mỗi nhóm lỗi lớn (nếu có đủ 3 repo). Ghi lỗi đã xác nhận, lỗi còn là giả thuyết và bước sửa/kiểm lại theo file 06.

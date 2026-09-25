@@ -141,16 +141,15 @@ def test_detect_build_skips_incomplete_gradle_wrapper(tmp_path, missing):
 
 @pytest.mark.unit
 @pytest.mark.parametrize(("build_file", "expected"), [
-    ("sourceCompatibility = 1.6", "6"),
-    ("sourceCompatibility = '1.7'", "7"),
     ("sourceCompatibility = 1.8", "8"),
+    ("sourceCompatibility = '1.8'", "8"),
     ("sourceCompatibility = JavaVersion.VERSION_1_8", "8"),
-    ("targetCompatibility = JavaVersion.VERSION_1_7", "7"),
+    ("targetCompatibility = JavaVersion.VERSION_1_8", "8"),
     ("sourceCompatibility = JavaVersion.VERSION_17", "17"),
     ("sourceCompatibility = JavaVersion.VERSION_21", "21"),
     ("val version = JavaVersion.VERSION_1_8", "8"),
 ])
-def test_gradle_java_target_normalizes_legacy_versions(tmp_path, build_file, expected):
+def test_gradle_java_target_normalizes_1_8(tmp_path, build_file, expected):
     (tmp_path / "build.gradle").write_text(build_file, encoding="utf-8")
     assert _java_target(tmp_path, "gradle") == expected
 
@@ -163,17 +162,6 @@ def test_java_target_and_workspace_path_security(tmp_path):
     assert _path_candidates(tmp_path, "C:/secret.java") == []
     assert _path_candidates(tmp_path, "src/main/X.java")
     assert _path_candidates(tmp_path, "X.java") == [tmp_path / "X.java"]
-
-
-@pytest.mark.unit
-@pytest.mark.parametrize(("property_name", "value", "expected"), [
-    ("maven.compiler.target", "1.6", "6"),
-    ("maven.compiler.target", "1.7", "7"),
-    ("maven.compiler.release", "8", "8"),
-])
-def test_maven_java_target_normalizes_legacy_versions(tmp_path, property_name, value, expected):
-    (tmp_path / "pom.xml").write_text(f"<{property_name}>{value}</{property_name}>", encoding="utf-8")
-    assert _java_target(tmp_path, "maven") == expected
 
 
 @pytest.mark.unit
@@ -302,8 +290,6 @@ def test_java_environment_mapping_and_parent_api_resolution(tmp_path, monkeypatc
 
 @pytest.mark.unit
 @pytest.mark.parametrize(("target", "java_version", "javac_version", "exit_code", "expected"), [
-    ("6", 'java version "1.6.0_45"', "javac 1.6.0_45", 0, None),
-    ("7", 'java version "1.7.0_80"', "javac 1.7.0_80", 0, None),
     ("8", 'java version "1.8.0_402"', "javac 1.8.0_402", 0, None),
     ("11", 'openjdk version "11.0.22"', "javac 11.0.22", 0, None),
     ("17", 'openjdk version "17.0.10"', "javac 17.0.10", 0, None),
@@ -334,7 +320,7 @@ def test_java_environment_rejects_missing_compiler(tmp_path):
 
 
 @pytest.mark.toolchain
-@pytest.mark.parametrize("target", ["6", "7", "8", "11", "17", "21"])
+@pytest.mark.parametrize("target", ["8", "11", "17", "21"])
 def test_real_jdk_version_matrix_when_configured(tmp_path, target):
     home = os.environ.get(f"PREFLIGHT_JDK_{target}")
     if not home:
