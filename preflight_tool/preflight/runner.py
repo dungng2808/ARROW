@@ -194,13 +194,15 @@ def detect_build(workspace: Path, class_file: Path) -> BuildPlan | None:
                 root = parent
         rel = "." if module == root else module.relative_to(root).as_posix()
         wrapper = ("mvnw.cmd",) if os.name == "nt" else ("mvnw",)
-        return BuildPlan("maven", module, root, rel, _wrapper(root, wrapper, "mvn", workspace))
+        fallback = "mvn.cmd" if os.name == "nt" else "mvn"
+        return BuildPlan("maven", module, root, rel, _wrapper(root, wrapper, fallback, workspace))
     module = _find_up(class_file, workspace, ("build.gradle", "build.gradle.kts"))
     if module:
         root = _find_up(module, workspace, ("settings.gradle", "settings.gradle.kts")) or module
         rel = "." if module == root else module.relative_to(root).as_posix()
         wrapper = ("gradlew.bat",) if os.name == "nt" else ("gradlew",)
-        return BuildPlan("gradle", module, root, rel, _wrapper(root, wrapper, "gradle", workspace))
+        fallback = "gradle.bat" if os.name == "nt" else "gradle"
+        return BuildPlan("gradle", module, root, rel, _wrapper(root, wrapper, fallback, workspace))
     return None
 
 

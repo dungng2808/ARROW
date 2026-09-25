@@ -110,7 +110,16 @@ def test_detect_build_does_not_use_wrapper_outside_workspace(tmp_path):
     (workspace / "pom.xml").write_text("<project/>", encoding="utf-8")
     (tmp_path / ("mvnw.cmd" if os.name == "nt" else "mvnw")).touch()
     plan = detect_build(workspace, source)
-    assert plan and plan.executable == "mvn"
+    assert plan and plan.executable == ("mvn.cmd" if os.name == "nt" else "mvn")
+
+
+@pytest.mark.unit
+def test_detect_build_uses_platform_gradle_fallback_without_wrapper(tmp_path):
+    workspace = tmp_path / "project"; source = workspace / "src/main/java/X.java"
+    source.parent.mkdir(parents=True); source.write_text("class X {}", encoding="utf-8")
+    (workspace / "build.gradle").write_text("plugins { id 'java' }", encoding="utf-8")
+    plan = detect_build(workspace, source)
+    assert plan and plan.executable == ("gradle.bat" if os.name == "nt" else "gradle")
 
 
 @pytest.mark.unit
