@@ -66,8 +66,8 @@ chỉ lưu status tổng quát cho một số ngoại lệ Git.
 
 | Status | Bằng chứng cần đọc | Có thể sửa khi | Không được kết luận vội |
 | --- | --- | --- | --- |
-| `BUILD_TOOL_UNSUPPORTED` | Có/không có build attempt; exit code; `tool_version.log`, `main_compile.log`; repo có `pom.xml`/Gradle file không | Exit `127`, `EXECUTABLE_NOT_FOUND`, `WinError 2`: kiểm bản code gọi `mvn.cmd`/`gradle.bat`, PATH của tiến trình, cài fallback theo file 00 | Không có build plan/file Maven hoặc Gradle, hoặc repo dùng Ant/Bazel/SBT có thể là unsupported thật |
-| `JDK_UNSUPPORTED` | `reason_codes`, `java_version`, command và log build | `JDK_HOME_MISSING`, `JDK_JAVA_MISSING`, `JDK_JAVAC_MISSING`, sai major/path, Maven/Gradle dùng JDK khác; tìm JDK trước, sửa config và process env | Repo đòi Java 6/7 có thể cần JDK bổ sung đã xác minh; không map giả sang JDK 17 |
+| `BUILD_TOOL_UNSUPPORTED` | Có/không có build attempt; exit code; `tool_version.log`, `main_compile.log`; repo có `pom.xml`/Gradle file không | Exit `127`, `EXECUTABLE_NOT_FOUND`, `WinError 2`: kiểm bản code gọi `mvn.cmd`/`gradle.bat`, PATH của tiến trình, cài fallback theo file 00; nếu `gradlew.bat` có mà thiếu `gradle-wrapper.jar`/properties, code mới phải dùng fallback | Không có build plan/file Maven hoặc Gradle, hoặc repo dùng Ant/Bazel/SBT có thể là unsupported thật |
+| `JDK_UNSUPPORTED` | `reason_codes`, `java_version`, command và log build | `JDK_HOME_MISSING`, `JDK_JAVA_MISSING`, `JDK_JAVAC_MISSING`, sai major/path, Maven/Gradle dùng JDK khác; với Gradle `1.6`/`1.7`/`1.8` hoặc `VERSION_1_8`, xác minh parser trả 6/7/8 chứ không phải `1` | Có JDK 6/7 không bảo đảm Maven 3.9.9/Gradle 8.10.2 chạy được trên JVM đó; không map giả sang JDK 17 |
 | `DEPENDENCY_UNAVAILABLE` | `main_compile.log`/`test_compile.log`, URL/artifact, DNS/TLS/proxy và exit code | Mạng/proxy/certificate/cache/config `settings.xml` hoặc Gradle sai; sửa kết nối/cấu hình local rồi smoke build lại | Artifact đã xóa, repo private hoặc kho cũ ngừng phục vụ là vấn đề upstream; không tắt TLS hay thêm credential tuỳ tiện |
 | `MAIN_BUILD_FAILED`, `TEST_COMPILE_FAILED` | Dòng lỗi đầu tiên và nguyên nhân gốc trong log, command, JDK, module path | Thiếu executable/JDK/plugin, path Windows quá dài, config local sai, plugin tải lỗi nhưng marker chưa bắt được | Lỗi cú pháp/compile của checkout thật là kết quả candidate; không sửa source repo để ép pass |
 | `CHECKOUT_FAILED`, `CLONE_FAILED` | `repo_url`, `checkout_sha`, Git command/exit/stderr nếu còn, lỗi lặp theo repo | DNS/proxy/TLS/quyền, Git `longpaths`, quyền ghi, antivirus khóa file, mirror/worktree lỗi; xác minh bằng Git trong thư mục chẩn đoán riêng | Repo xóa/private, SHA không còn hoặc lịch sử upstream đổi không thể sửa bằng PATH; không xóa cache/evidence đang chạy |
@@ -86,15 +86,20 @@ trong bất kỳ status nào vẫn phải điều tra.
    xuất hiện trong `main_compile.log`. Đọc Java target trong `pom.xml` hoặc
    `build.gradle[.kts]`, so với `[java.homes]` và `default_home` của config
    lúc run. Gọi `java -version` **và** `javac -version` bằng đường dẫn tuyệt
-   đối, rồi thử từ Python subprocess. Nếu target thuộc 8/11/17/21 nhưng
+   đối, rồi thử từ Python subprocess. Nếu target thuộc 6/7/8/11/17/21 nhưng
    mapping thiếu/sai, tìm trên mọi ổ và sửa theo file 00. Nếu target thật sự
-   là 6/7 hoặc major khác: tìm JDK đúng major trên **mọi ổ** trước; nếu không
+   là major khác: tìm JDK đúng major trên **mọi ổ** trước; nếu không
    có, quyền tải phần thiếu trong task này cho phép lấy artifact chính thức
    đúng OS/CPU có checksum kiểm được, cài local rồi thêm mapping major đó vào
    config cho **run mới**. Ghi rõ ma trận đã mở rộng và kiểm `java`/`javac`
    cùng smoke build; nếu không có artifact tin cậy/tương thích thì giữ
    `JDK_UNSUPPORTED`. Nếu parser nhận sai target, báo bug tool, không cài JDK
-   theo target sai hoặc sửa code khi run đang chạy.
+   theo target sai hoặc sửa code khi run đang chạy. Với target 6/7, kiểm
+   build tool/wrapper tương thích: fallback Maven 3.9.9 và Gradle 8.10.2
+   yêu cầu JVM ít nhất 8, nên không kết luận cài JDK 6/7 là đã sửa xong.
+   Nếu run được tạo bởi code parser cũ và đã checkpoint hàng loạt mismatch
+   target `1`, sửa code không làm các task đó chạy lại khi resume; giữ evidence,
+   đánh dấu run không hợp lệ và tạo run mới sau khi test parser/build smoke đạt.
 2. **Dependency/mạng:** lấy artifact URL và dòng nguyên nhân đầu tiên trong log.
    Kiểm DNS, TLS, proxy, quyền truy cập và disk; so sánh `~/.m2/settings.xml`,
    Gradle user home/init scripts và biến proxy trên máy với cấu hình nhóm đã

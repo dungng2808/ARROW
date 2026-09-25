@@ -19,6 +19,8 @@ root = "R:/Đồ án/DatasetClassToTest/classes2test-main"
 # Leave empty to use the host JDK. Add version-to-home mappings for historical projects.
 default_home = ""
 [java.homes]
+# "6" = "C:/Java/jdk-6"
+# "7" = "C:/Java/jdk-7"
 # "8" = "C:/Java/jdk-8"
 # "11" = "C:/Java/jdk-11"
 # "17" = "C:/Java/jdk-17"

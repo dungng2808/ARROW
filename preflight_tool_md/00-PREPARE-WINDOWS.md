@@ -27,7 +27,7 @@ Agent phải chuẩn bị và kiểm chứng đủ các thành phần sau trên 
 
 - Git hoạt động và truy cập được repository từ xa cần thiết.
 - Python **>= 3.11**, virtualenv riêng của `preflight_tool` và toàn bộ dependency.
-- JDK **8, 11, 17, 21**, có cả `java.exe` và `javac.exe`, đúng major.
+- JDK **6, 7, 8, 11, 17, 21**, có cả `java.exe` và `javac.exe`, đúng major.
 - Apache Maven **3.9.9** và Gradle **8.10.2** làm fallback khi repository không
   có wrapper.
 - `Java-version/config.local.toml` dùng đúng đường dẫn trên máy hiện tại.
@@ -77,7 +77,11 @@ Giới hạn bắt buộc:
 4. Kiểm tra `preflight/runner.py`: fallback Windows khi không có wrapper phải là
    `mvn.cmd` và `gradle.bat`, không phải tên trần `mvn`/`gradle`. Commit
    `e84af81` phải là tổ tiên của HEAD hoặc agent phải xác minh bản sửa tương
-   đương; test unit phải kiểm cả hai trường hợp. Nếu code cũ, chỉ cập nhật
+   đương; test unit phải kiểm cả hai trường hợp. Kiểm thêm parser Gradle:
+   `sourceCompatibility = 1.8` và `JavaVersion.VERSION_1_8` phải trả target
+   `8`, không phải `1`; wrapper Gradle thiếu `gradle-wrapper.jar` hoặc
+   `gradle-wrapper.properties` phải dùng fallback, không gọi script hỏng.
+   Nếu code cũ, chỉ cập nhật
    fast-forward từ remote đã thống nhất khi không có run hoạt động và đã kiểm
    mọi thay đổi local sẽ được giữ nguyên, không bị ghi đè. Nếu có tracked
    changes chồng lấn hoặc xung đột, giữ nguyên và báo `BLOCKED_CODE_VERSION`;
@@ -185,7 +189,7 @@ nguồn chuẩn:
 Không chấp nhận việc `python` ở một terminal chạy được nhưng interpreter dùng
 cho full run lại là Python khác.
 
-## 6. Chuẩn bị và xác minh JDK 8/11/17/21
+## 6. Chuẩn bị và xác minh JDK 6/7/8/11/17/21
 
 Thực hiện đúng toàn bộ quy trình trong `<ARROW_ROOT>/Java-version/AGENTS.md`.
 Việc người dùng giao file chuẩn bị này được coi là yêu cầu setup JDK rõ ràng theo
@@ -202,7 +206,7 @@ Yêu cầu tối thiểu:
   từng JDK; cả hai phải exit code 0 và cùng major.
 - Ghi vendor, full version/build, JAVA_HOME và checksum vào các báo cáo local
   theo `Java-version/AGENTS.md`.
-- Tạo hoặc cập nhật `Java-version/config.local.toml`; `[java.homes]` phải đủ bốn
+- Tạo hoặc cập nhật `Java-version/config.local.toml`; `[java.homes]` phải đủ sáu
   major và `[java].default_home` trỏ tới JDK 17 đã xác minh.
 - `[input].root` phải là `<INPUT_ROOT>` thật. Giữ `workers=5`,
   `max_revision_candidates=500`, `build_timeout_seconds=900`,
@@ -210,14 +214,25 @@ Yêu cầu tối thiểu:
   nhất giá trị khác.
 - Parse lại TOML và xác nhận mọi đường dẫn trong config tồn tại. Không copy
   `config.local.toml` của máy khác.
-- Bốn major này là baseline. Nếu log của run cho thấy project thật sự cần
+- Sáu major này là baseline. Nếu log của run cho thấy project thật sự cần
   major khác, làm theo mục JDK trong `06-DIAGNOSE-AND-RECOVER.md`: tìm trên mọi
   ổ trước, chỉ tải artifact được xác minh, thêm mapping tường minh và ghi rõ
   ma trận mở rộng cho run mới.
+- JDK 6/7 là compiler/runtime cũ để thử repo legacy, **không** là JVM chạy
+  Maven 3.9.9 hoặc Gradle 8.10.2: hai fallback cần ít nhất JDK 8. Có đủ JDK
+  6/7 vẫn chưa bảo đảm build được; xác minh wrapper và build smoke thực tế,
+  không đổi sang JDK 17 hay sửa source để ép PASS. Tham khảo tài liệu chính
+  thức: [Maven 3.9](https://maven.apache.org/docs/3.9.0/release-notes.html),
+  [Gradle 8.10.2](https://docs.gradle.org/8.10.2/userguide/compatibility.html).
 
 ## 7. Chuẩn bị Maven và Gradle fallback
 
-Repository có `mvnw.cmd` hoặc `gradlew.bat` sẽ ưu tiên wrapper. Tuy nhiên nhiều
+Repository có `mvnw.cmd` sẽ ưu tiên Maven Wrapper; Gradle Wrapper chỉ được chọn
+khi có `gradlew.bat`, `gradle/wrapper/gradle-wrapper.jar` và
+`gradle/wrapper/gradle-wrapper.properties` cùng trong repo. Thiếu JAR/properties
+thì dùng Gradle fallback đã xác minh; không tự sinh, tải hoặc commit wrapper
+vào repo được khảo sát. Tham khảo [cấu trúc Gradle Wrapper chính thức](https://docs.gradle.org/current/userguide/gradle_wrapper.html).
+Tuy nhiên nhiều
 repository không có wrapper; khi đó runner trên Windows gọi `mvn.cmd` hoặc
 `gradle.bat`. Vì vậy hai fallback này là bắt buộc cho full run của nhóm.
 
@@ -258,6 +273,8 @@ minh trên **máy hiện tại**:
 
 ```powershell
 $env:JAVA_HOME = '<JDK17_HOME>'
+$env:PREFLIGHT_JDK_6 = '<JDK6_HOME>'
+$env:PREFLIGHT_JDK_7 = '<JDK7_HOME>'
 $env:PREFLIGHT_JDK_8 = '<JDK8_HOME>'
 $env:PREFLIGHT_JDK_11 = '<JDK11_HOME>'
 $env:PREFLIGHT_JDK_17 = '<JDK17_HOME>'
@@ -336,7 +353,7 @@ khi đã lưu log và xác minh thành công; nếu lỗi thì giữ để chẩ
 Nếu lỗi do mạng tải plugin/dependency, proxy, TLS hoặc quyền ghi cache, kết luận
 `BLOCKED_TOOLCHAIN_SMOKE`; không chuyển sang full run.
 
-## 11. Chạy test của preflight với đủ bốn JDK
+## 11. Chạy test của preflight với đủ sáu JDK
 
 Từ `<ARROW_ROOT>/preflight_tool`, sau khi dot-source environment:
 
@@ -347,7 +364,7 @@ Từ `<ARROW_ROOT>/preflight_tool`, sau khi dot-source environment:
 Yêu cầu:
 
 - Không có test failed/error.
-- Bốn case `test_real_jdk_version_matrix_when_configured` cho 8/11/17/21 phải
+- Sáu case `test_real_jdk_version_matrix_when_configured` cho 6/7/8/11/17/21 phải
   chạy và pass, không được skip vì thiếu `PREFLIGHT_JDK_*`.
 - Các skip khác do platform/remote/performance có thể hợp lệ; agent phải đọc lý
   do và ghi vào báo cáo, không đánh đồng `skipped` với `failed`.
@@ -417,11 +434,11 @@ Báo cáo phải có:
   tìm được, kết quả xác minh, lý do chọn/từ chối và phần thực sự phải tải.
 - OS/CPU/RAM/disk.
 - Python/venv/package version và CLI help check.
-- Bảng JDK 8/11/17/21: vendor, full version, JAVA_HOME, java/javac, checksum.
+- Bảng JDK 6/7/8/11/17/21: vendor, full version, JAVA_HOME, java/javac, checksum.
 - Maven/Gradle: version, install root, checksum, đường dẫn `Get-Command`, JVM
   thực dùng.
 - Kết quả kiểm từ Python subprocess và hai smoke build thật.
-- Kết quả pytest; nêu rõ bốn JDK toolchain test đã chạy hay bị skip.
+- Kết quả pytest; nêu rõ sáu JDK toolchain test đã chạy hay bị skip.
 - Hash/count shard và kết quả index-only.
 - Đường dẫn `Enter-PreflightEnv.ps1`, config local và output setup-check.
 - Mọi thay đổi local đã thực hiện; xác nhận không sửa User/Machine PATH.

@@ -163,13 +163,17 @@ def _find_up(start: Path, stop: Path, names: tuple[str, ...]) -> Path | None:
         current = current.parent
 
 
-def _wrapper(root: Path, names: tuple[str, ...], fallback: str, workspace: Path) -> Path | str:
+def _wrapper(root: Path, names: tuple[str, ...], fallback: str, workspace: Path,
+             required_files: tuple[str, ...] = ()) -> Path | str:
+    workspace_root = workspace.resolve()
     for directory in (root, *_ancestors(root)):
-        if not directory.resolve().is_relative_to(workspace.resolve()):
+        if not directory.resolve().is_relative_to(workspace_root):
             break
         for name in names:
             path = directory / name
-            if path.is_file():
+            dependencies = (directory / required for required in required_files)
+            if (path.is_file() and path.resolve().is_relative_to(workspace_root)
+                    and all(item.is_file() and item.resolve().is_relative_to(workspace_root) for item in dependencies)):
                 return path
     return fallback
 
@@ -202,7 +206,10 @@ def detect_build(workspace: Path, class_file: Path) -> BuildPlan | None:
         rel = "." if module == root else module.relative_to(root).as_posix()
         wrapper = ("gradlew.bat",) if os.name == "nt" else ("gradlew",)
         fallback = "gradle.bat" if os.name == "nt" else "gradle"
-        return BuildPlan("gradle", module, root, rel, _wrapper(root, wrapper, fallback, workspace))
+        # A script without the Wrapper JAR/properties cannot launch Gradle.
+        # Use the verified host fallback instead of failing every class in that repo.
+        required = ("gradle/wrapper/gradle-wrapper.jar", "gradle/wrapper/gradle-wrapper.properties")
+        return BuildPlan("gradle", module, root, rel, _wrapper(root, wrapper, fallback, workspace, required))
     return None
 
 
@@ -222,9 +229,17 @@ def _java_target(module_root: Path, tool: str) -> str | None:
             path = module_root / "build.gradle.kts"
         if path.is_file():
             text = path.read_text(encoding="utf-8", errors="replace")
-            match = re.search(r"(?:sourceCompatibility|targetCompatibility|JavaVersion\.VERSION_)[^0-9]*(?:VERSION_)?(\d+)", text)
+            # Gradle accepts both 1.8 and JavaVersion.VERSION_1_8. Capture the
+            # complete version token before normalizing; capturing only \d+ here
+            # incorrectly identifies both forms as Java 1.
+            match = re.search(
+                r"\b(?:sourceCompatibility|targetCompatibility)\b\s*(?:=\s*)?"
+                r"(?:JavaVersion\.VERSION_)?[\"']?(1[._]\d+|\d+)", text,
+            )
+            if not match:
+                match = re.search(r"\bJavaVersion\.VERSION_(1_\d+|\d+)\b", text)
             if match:
-                return match.group(1)
+                return re.sub(r"^1[._]", "", match.group(1))
     return None
 
 

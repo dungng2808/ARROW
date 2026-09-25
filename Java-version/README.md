@@ -1,6 +1,6 @@
 # Setup JDK cho từng máy
 
-Folder này chứa rule cho agent cài JDK 8, 11, 17, 21 phục vụ `preflight_tool`.
+Folder này chứa rule cho agent cài JDK 6, 7, 8, 11, 17, 21 phục vụ `preflight_tool`.
 Mỗi máy tải đúng bộ cho OS/CPU của mình; JDK được lưu trong `runtime/` và không
 đưa vào Git. Hiện đây là quy trình do agent thực hiện, chưa có script installer
 chung. Git pull không tự tải Java.
@@ -9,6 +9,8 @@ Cả macOS và Windows dùng chung cấu trúc thư mục:
 
 ```text
 Java-version/runtime/
+  jdk-6/
+  jdk-7/
   jdk-8/
   jdk-11/
   jdk-17/
@@ -24,8 +26,9 @@ JAVA_HOME thực tế vào config local (gói macOS có thể chứa `Contents/H
 Trong repository ARROW, hãy đọc đầy đủ Java-version/AGENTS.md và thực hiện
 setup JDK trên máy hiện tại theo rule đó.
 
-Tự nhận diện OS/CPU, tải JDK 8, 11, 17, 21 từ nguồn chính thức vào
-Java-version/runtime/jdk-8/, jdk-11/, jdk-17/, jdk-21/ với binary đúng OS/CPU,
+Tự nhận diện OS/CPU, tìm JDK 6, 7, 8, 11, 17, 21 trên mọi ổ trước; chỉ tải
+những major còn thiếu từ nguồn chính thức vào Java-version/runtime/jdk-6/,
+jdk-7/, jdk-8/, jdk-11/, jdk-17/, jdk-21/ với binary đúng OS/CPU,
 không tạo thêm tầng folder platform. Nếu chưa có lock manifest hoặc script,
 hãy tự tra cứu metadata chính thức và thực hiện cài đặt theo rule; lưu thông
 tin artifact/checksum vào install.local.json.
