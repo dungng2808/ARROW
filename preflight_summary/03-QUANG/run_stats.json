@@ -1,0 +1,227 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "checkpoint_schema_version": 2,
+    "classes_selected": 17164,
+    "config_sha256": "ec32695e26138c27e403d286d2c41d4dc9c643b160564b56f96b11b369313672",
+    "deduplicated_classes": 85819,
+    "keep_repo_cache": false,
+    "keep_workspaces": false,
+    "raw_json_indexed": 362414,
+    "resume_count": 13,
+    "revision_policy": "Raw Classes2Test carries no source commit. History matches are CONTENT_MATCHED/DISCOVERY_ONLY; only an audited revision map may produce UPSTREAM_PINNED/STRICT output.",
+    "run_status": "COMPLETED",
+    "sessions": [
+      {
+        "completed_after": 725,
+        "completed_before": 0,
+        "ended_at_utc": "2026-09-26T02:04:07.572352+00:00",
+        "session_id": 1,
+        "started_at_utc": "2026-09-25T13:23:13.416938+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 2643,
+        "completed_before": 725,
+        "ended_at_utc": "2026-09-26T09:58:25.307684+00:00",
+        "session_id": 2,
+        "started_at_utc": "2026-09-26T02:04:07.615385+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": null,
+        "completed_before": 2643,
+        "ended_at_utc": null,
+        "session_id": 3,
+        "started_at_utc": "2026-09-26T09:58:25.367342+00:00",
+        "status": "INTERRUPTED",
+        "workers": 2
+      },
+      {
+        "completed_after": null,
+        "completed_before": 2670,
+        "ended_at_utc": null,
+        "session_id": 4,
+        "started_at_utc": "2026-09-26T10:32:49.585050+00:00",
+        "status": "INTERRUPTED",
+        "workers": 2
+      },
+      {
+        "completed_after": 5363,
+        "completed_before": 3194,
+        "ended_at_utc": "2026-09-26T17:10:59.565937+00:00",
+        "session_id": 5,
+        "started_at_utc": "2026-09-26T11:49:25.161397+00:00",
+        "status": "FAILED",
+        "workers": 2
+      },
+      {
+        "completed_after": 5979,
+        "completed_before": 5363,
+        "ended_at_utc": "2026-09-27T02:15:44.367364+00:00",
+        "session_id": 6,
+        "started_at_utc": "2026-09-26T17:15:24.484307+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 8472,
+        "completed_before": 5979,
+        "ended_at_utc": "2026-09-27T17:24:47.452314+00:00",
+        "session_id": 7,
+        "started_at_utc": "2026-09-27T02:15:44.471356+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 9310,
+        "completed_before": 8472,
+        "ended_at_utc": "2026-09-28T06:20:09.052370+00:00",
+        "session_id": 8,
+        "started_at_utc": "2026-09-27T17:24:47.556279+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 12849,
+        "completed_before": 9310,
+        "ended_at_utc": "2026-09-28T16:43:54.207430+00:00",
+        "session_id": 9,
+        "started_at_utc": "2026-09-28T06:20:09.119062+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 15522,
+        "completed_before": 12849,
+        "ended_at_utc": "2026-09-29T00:29:14.922239+00:00",
+        "session_id": 10,
+        "started_at_utc": "2026-09-28T16:43:54.290780+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 15522,
+        "completed_before": 15522,
+        "ended_at_utc": "2026-09-29T00:50:18.258925+00:00",
+        "session_id": 11,
+        "started_at_utc": "2026-09-29T00:29:14.993837+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 15522,
+        "completed_before": 15522,
+        "ended_at_utc": "2026-09-29T01:52:01.567547+00:00",
+        "session_id": 12,
+        "started_at_utc": "2026-09-29T00:50:18.335938+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 15525,
+        "completed_before": 15522,
+        "ended_at_utc": "2026-09-29T05:56:25.160299+00:00",
+        "session_id": 13,
+        "started_at_utc": "2026-09-29T01:52:01.636542+00:00",
+        "status": "ABANDONED",
+        "workers": 2
+      },
+      {
+        "completed_after": 17164,
+        "completed_before": 15525,
+        "ended_at_utc": "2026-09-29T09:55:59.962701+00:00",
+        "session_id": 14,
+        "started_at_utc": "2026-09-29T05:56:25.298664+00:00",
+        "status": "COMPLETED",
+        "workers": 2
+      }
+    ],
+    "shard_class_count": 17164,
+    "shard_id": "shard-03",
+    "shard_sha256": "2a642d6aeb8653b6b08e86235b140f90cc6950c5b2630e07d3430a2cfe5d8d1a",
+    "started_at_utc": "2026-09-25T13:23:13.026167+00:00",
+    "tool": "class2test-preflight"
+  },
+  "source_files_sha256": {
+    "reports/summary.json": "8d986af2f0ae1d28e77cbdd55836dc560d998477e1b597983e1cd947ec82b074",
+    "reports/preflight_results.jsonl": "5b5abe77ceb485701ade2bb467a1cc21dec3da5f0bc62115fcd75425f364800e",
+    "provenance.json": "acf557c31ff9198124cd99b7d1e7f4e10baa84a4d6a8feebd97221589c112c2d"
+  },
+  "all_classes": {
+    "total": 17164,
+    "repositories": 1882,
+    "by_preflight_status": {
+      "BUILD_TIMEOUT": 6,
+      "BUILD_TOOL_UNSUPPORTED": 134,
+      "CHECKOUT_FAILED": 5886,
+      "CLONE_FAILED": 962,
+      "DEPENDENCY_UNAVAILABLE": 2752,
+      "ELIGIBLE": 1602,
+      "EXCLUDED": 95,
+      "JDK_UNSUPPORTED": 1279,
+      "MAIN_BUILD_FAILED": 3891,
+      "NEEDS_REVIEW": 5,
+      "PROBE_FAILED": 435,
+      "SOURCE_INVALID": 6,
+      "TEST_COMPILE_FAILED": 111
+    },
+    "by_reason_code": {
+      "BUILD_TIMEOUT": 6,
+      "BUILD_TOOL_UNSUPPORTED": 134,
+      "CHECKOUT_FAILED": 5886,
+      "CLONE_FAILED": 962,
+      "DEPENDENCY_UNAVAILABLE": 2752,
+      "EXCLUDE_ABSTRACT_CLASS": 470,
+      "EXCLUDE_GENERATED_SOURCE": 134,
+      "EXCLUDE_NON_PRODUCTION_SOURCE": 85,
+      "EXCLUDE_UNSUPPORTED_DECLARATION": 1,
+      "JDK_UNSUPPORTED": 763,
+      "JDK_VERSION_MISMATCH": 516,
+      "MAIN_BUILD_FAILED": 3891,
+      "PROBE_FAILED": 435,
+      "REVISION_CONTENT_MATCHED": 16193,
+      "REVISION_UNVERIFIED": 9,
+      "SOURCE_FQN_MISMATCH": 3,
+      "SOURCE_PATH_NOT_FOUND": 1,
+      "TEST_COMPILE_FAILED": 111,
+      "TEST_FRAMEWORK_UNKNOWN": 5,
+      "UNHANDLED_OSError": 2
+    },
+    "by_revision_verification_status": {
+      "CONTENT_MATCHED": 16193,
+      "UNVERIFIED": 971
+    },
+    "by_run_mode": {
+      "DISCOVERY_ONLY": 17164
+    }
+  },
+  "technical_eligible": {
+    "total": 1602,
+    "repositories": 296,
+    "by_revision_verification_status": {
+      "CONTENT_MATCHED": 1602
+    },
+    "by_build_tool": {
+      "gradle": 69,
+      "maven": 1533
+    },
+    "by_testing_framework": {
+      "junit4": 1278,
+      "junit5": 243,
+      "testng": 81
+    },
+    "by_tag": {
+      "CONSTRUCTOR_ONLY": 1,
+      "DB_DEPENDENT": 50,
+      "EXTERNAL_DEPENDENT": 438,
+      "LOW_LOGIC": 132,
+      "PACKAGE_PRIVATE": 111,
+      "REQUIRES_MOCK": 477,
+      "STATIC_UTILITY": 239
+    }
+  },
+  "strict_eligible": 0
+}
