@@ -1,0 +1,126 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "checkpoint_schema_version": 2,
+    "classes_selected": 17164,
+    "config_sha256": "2803edffe8014e4162cbfe42382bfccafc238c186a28fb35b402b41efe1555cd",
+    "deduplicated_classes": 85819,
+    "keep_repo_cache": false,
+    "keep_workspaces": false,
+    "raw_json_indexed": 362414,
+    "resume_count": 2,
+    "revision_policy": "Raw Classes2Test carries no source commit. History matches are CONTENT_MATCHED/DISCOVERY_ONLY; only an audited revision map may produce UPSTREAM_PINNED/STRICT output.",
+    "run_status": "COMPLETED",
+    "sessions": [
+      {
+        "completed_after": 1834,
+        "completed_before": 0,
+        "ended_at_utc": "2026-09-24T17:31:10.012413+00:00",
+        "session_id": 1,
+        "started_at_utc": "2026-09-24T15:10:46.704847+00:00",
+        "status": "INTERRUPTED",
+        "workers": 7
+      },
+      {
+        "completed_after": 6302,
+        "completed_before": 1834,
+        "ended_at_utc": "2026-09-24T22:30:02.677460+00:00",
+        "session_id": 2,
+        "started_at_utc": "2026-09-24T17:32:37.607231+00:00",
+        "status": "INTERRUPTED",
+        "workers": 5
+      },
+      {
+        "completed_after": 17164,
+        "completed_before": 6302,
+        "ended_at_utc": "2026-09-25T10:35:51.503568+00:00",
+        "session_id": 3,
+        "started_at_utc": "2026-09-25T01:57:26.993080+00:00",
+        "status": "COMPLETED",
+        "workers": 5
+      }
+    ],
+    "shard_class_count": 17164,
+    "shard_id": "shard-01",
+    "shard_sha256": "e675cfe505bce48b51055dfdde5d3716be9a85ddbf5b32b0663b58e98484a6d0",
+    "started_at_utc": "2026-09-24T15:10:46.541295+00:00",
+    "tool": "class2test-preflight"
+  },
+  "source_files_sha256": {
+    "reports/summary.json": "0995fa31d3c6d795023dbddb7e5b7fb69f9d2f8f734e8a9d79ffe1192aaab228",
+    "reports/preflight_results.jsonl": "3023c78ad2187ae1b95a15c7d6c36fb44d5c4fe9dd990d350555f03d272e0bab",
+    "provenance.json": "67717f01c11fcaaebcf14fa34e88df3d05cec60706e93ea3869ec1964ee0a901"
+  },
+  "all_classes": {
+    "total": 17164,
+    "repositories": 1882,
+    "by_preflight_status": {
+      "BUILD_TIMEOUT": 23,
+      "BUILD_TOOL_UNSUPPORTED": 359,
+      "CLONE_FAILED": 1232,
+      "DEPENDENCY_UNAVAILABLE": 5392,
+      "ELIGIBLE": 1461,
+      "EXCLUDED": 126,
+      "JDK_UNSUPPORTED": 2279,
+      "MAIN_BUILD_FAILED": 5242,
+      "NEEDS_REVIEW": 8,
+      "PROBE_FAILED": 446,
+      "SOURCE_INVALID": 433,
+      "TEST_COMPILE_FAILED": 163
+    },
+    "by_reason_code": {
+      "BUILD_TIMEOUT": 23,
+      "BUILD_TOOL_UNSUPPORTED": 359,
+      "CLONE_FAILED": 1232,
+      "DEPENDENCY_UNAVAILABLE": 5392,
+      "DIRECT_CONNECTION_NEEDS_REVIEW": 2,
+      "EXCLUDE_ABSTRACT_CLASS": 656,
+      "EXCLUDE_GENERATED_SOURCE": 171,
+      "EXCLUDE_NON_PRODUCTION_SOURCE": 134,
+      "EXCLUDE_UNSUPPORTED_DECLARATION": 2,
+      "JDK_UNSUPPORTED": 1143,
+      "JDK_VERSION_MISMATCH": 1136,
+      "MAIN_BUILD_FAILED": 5242,
+      "PROBE_FAILED": 446,
+      "REVISION_CONTENT_MATCHED": 15810,
+      "REVISION_UNVERIFIED": 122,
+      "SOURCE_FQN_MISMATCH": 2,
+      "SOURCE_PATH_NOT_FOUND": 118,
+      "TEST_COMPILE_FAILED": 163,
+      "TEST_FRAMEWORK_UNKNOWN": 6,
+      "UNHANDLED_PermissionError": 313
+    },
+    "by_revision_verification_status": {
+      "CONTENT_MATCHED": 15810,
+      "UNVERIFIED": 1354
+    },
+    "by_run_mode": {
+      "DISCOVERY_ONLY": 17164
+    }
+  },
+  "technical_eligible": {
+    "total": 1461,
+    "repositories": 302,
+    "by_revision_verification_status": {
+      "CONTENT_MATCHED": 1461
+    },
+    "by_build_tool": {
+      "gradle": 49,
+      "maven": 1412
+    },
+    "by_testing_framework": {
+      "junit4": 1001,
+      "junit5": 336,
+      "testng": 124
+    },
+    "by_tag": {
+      "DB_DEPENDENT": 43,
+      "EXTERNAL_DEPENDENT": 363,
+      "LOW_LOGIC": 158,
+      "PACKAGE_PRIVATE": 49,
+      "REQUIRES_MOCK": 391,
+      "STATIC_UTILITY": 241
+    }
+  },
+  "strict_eligible": 0
+}
