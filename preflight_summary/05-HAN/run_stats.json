@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "checkpoint_schema_version": 2,
+    "classes_selected": 17163,
+    "config_sha256": "2d765795ad24759c8534830cd4780d1499217631eba833a0433da2dc7d501bd8",
+    "deduplicated_classes": 85819,
+    "keep_repo_cache": false,
+    "keep_workspaces": false,
+    "raw_json_indexed": 362414,
+    "resume_count": 3,
+    "revision_policy": "Raw Classes2Test carries no source commit. History matches are CONTENT_MATCHED/DISCOVERY_ONLY; only an audited revision map may produce UPSTREAM_PINNED/STRICT output.",
+    "run_status": "COMPLETED",
+    "sessions": [
+      {
+        "completed_after": 477,
+        "completed_before": 0,
+        "ended_at_utc": "2026-09-26T01:59:57.079295+00:00",
+        "session_id": 1,
+        "started_at_utc": "2026-09-25T15:03:19.992751+00:00",
+        "status": "ABANDONED",
+        "workers": 5
+      },
+      {
+        "completed_after": 12951,
+        "completed_before": 477,
+        "ended_at_utc": "2026-09-27T13:34:45.278530+00:00",
+        "session_id": 2,
+        "started_at_utc": "2026-09-26T01:59:57.114770+00:00",
+        "status": "ABANDONED",
+        "workers": 5
+      },
+      {
+        "completed_after": 13600,
+        "completed_before": 12951,
+        "ended_at_utc": "2026-09-27T16:45:40.337302+00:00",
+        "session_id": 3,
+        "started_at_utc": "2026-09-27T13:34:45.415279+00:00",
+        "status": "ABANDONED",
+        "workers": 5
+      },
+      {
+        "completed_after": 17163,
+        "completed_before": 13600,
+        "ended_at_utc": "2026-09-27T23:23:21.211493+00:00",
+        "session_id": 4,
+        "started_at_utc": "2026-09-27T16:45:40.418869+00:00",
+        "status": "COMPLETED",
+        "workers": 5
+      }
+    ],
+    "shard_class_count": 17163,
+    "shard_id": "shard-05",
+    "shard_sha256": "361a696cc2f97ba88b884103ed3dbbc8d108fdda377034aa6263cd724e960ea8",
+    "started_at_utc": "2026-09-25T15:03:19.228586+00:00",
+    "tool": "class2test-preflight"
+  },
+  "source_files_sha256": {
+    "reports/summary.json": "328ac007b68eee61ea47e50b79b759f9736522ea5d308b6612d2491530b3d28f",
+    "reports/preflight_results.jsonl": "14865ddf931a0f3d54ed4221dd07d239e1aac5050776524faf5cf501d438ef28",
+    "provenance.json": "5b5149859d73f1970d2fe9547fec085d1a5cd5109f4279e7d4f6a0c1a92b6082"
+  },
+  "all_classes": {
+    "total": 17163,
+    "repositories": 1882,
+    "by_preflight_status": {
+      "BUILD_TIMEOUT": 5,
+      "BUILD_TOOL_UNSUPPORTED": 224,
+      "CHECKOUT_FAILED": 4889,
+      "CLONE_FAILED": 751,
+      "DEPENDENCY_UNAVAILABLE": 2472,
+      "ELIGIBLE": 1207,
+      "EXCLUDED": 213,
+      "JDK_UNSUPPORTED": 1129,
+      "MAIN_BUILD_FAILED": 5568,
+      "NEEDS_REVIEW": 9,
+      "PROBE_FAILED": 367,
+      "SOURCE_INVALID": 24,
+      "TEST_COMPILE_FAILED": 305
+    },
+    "by_reason_code": {
+      "BUILD_TIMEOUT": 5,
+      "BUILD_TOOL_UNSUPPORTED": 224,
+      "CHECKOUT_FAILED": 4889,
+      "CLONE_FAILED": 751,
+      "DEPENDENCY_UNAVAILABLE": 2472,
+      "DIRECT_CONNECTION_NEEDS_REVIEW": 1,
+      "EXCLUDE_ABSTRACT_CLASS": 421,
+      "EXCLUDE_GENERATED_SOURCE": 111,
+      "EXCLUDE_NON_PRODUCTION_SOURCE": 248,
+      "EXCLUDE_STRICT_COHORT": 5,
+      "EXCLUDE_UNSUPPORTED_DECLARATION": 1,
+      "JDK_UNSUPPORTED": 826,
+      "JDK_VERSION_MISMATCH": 303,
+      "MAIN_BUILD_FAILED": 5568,
+      "PROBE_FAILED": 367,
+      "REVISION_CONTENT_MATCHED": 16378,
+      "REVISION_UNVERIFIED": 34,
+      "SOURCE_FQN_MISMATCH": 3,
+      "SOURCE_PATH_NOT_FOUND": 21,
+      "TEST_COMPILE_FAILED": 305,
+      "TEST_FRAMEWORK_UNKNOWN": 8
+    },
+    "by_revision_verification_status": {
+      "CONTENT_MATCHED": 16378,
+      "UNVERIFIED": 785
+    },
+    "by_run_mode": {
+      "DISCOVERY_ONLY": 17163
+    }
+  },
+  "technical_eligible": {
+    "total": 1207,
+    "repositories": 248,
+    "by_revision_verification_status": {
+      "CONTENT_MATCHED": 1207
+    },
+    "by_build_tool": {
+      "maven": 1207
+    },
+    "by_testing_framework": {
+      "junit4": 866,
+      "junit5": 260,
+      "testng": 81
+    },
+    "by_tag": {
+      "DB_DEPENDENT": 39,
+      "EXTERNAL_DEPENDENT": 266,
+      "LOW_LOGIC": 146,
+      "PACKAGE_PRIVATE": 105,
+      "REQUIRES_MOCK": 297,
+      "STATIC_UTILITY": 225
+    }
+  },
+  "strict_eligible": 0
+}

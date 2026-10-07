@@ -1,0 +1,25 @@
+{
+  "by_status": {
+    "BUILD_TIMEOUT": 5,
+    "BUILD_TOOL_UNSUPPORTED": 224,
+    "CHECKOUT_FAILED": 4889,
+    "CLONE_FAILED": 751,
+    "DEPENDENCY_UNAVAILABLE": 2472,
+    "ELIGIBLE": 1207,
+    "EXCLUDED": 213,
+    "JDK_UNSUPPORTED": 1129,
+    "MAIN_BUILD_FAILED": 5568,
+    "NEEDS_REVIEW": 9,
+    "PROBE_FAILED": 367,
+    "SOURCE_INVALID": 24,
+    "TEST_COMPILE_FAILED": 305
+  },
+  "repo_cleanup": {
+    "ABSENT": 74,
+    "DELETED": 1783,
+    "KEPT": 25
+  },
+  "strict_eligible": 0,
+  "technical_eligible": 1207,
+  "total": 17163
+}
