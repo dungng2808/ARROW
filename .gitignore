@@ -1,6 +1,9 @@
 # Local Class2Test dataset and cloned repositories
 /classes2test/
 
+# Local clone of the GitBug-Java benchmark (https://github.com/gitbugactions/gitbug-java)
+/gitbug-java/
+
 # macOS Finder metadata
 .DS_Store
 
