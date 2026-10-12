@@ -162,6 +162,14 @@ public sealed class GitRepositoryProvider(string gitPath, string workDir, RepoPo
         return result.StdOut.Replace("\r\n", "\n");
     }
 
+    /// <summary>Mọi file tại commit (<c>git ls-tree -r --name-only</c>), đường dẫn dùng '/'.</summary>
+    public async Task<List<string>> ListFilesAsync(string repoUrl, string sha, CancellationToken cancellationToken)
+    {
+        await EnsureCommitAsync(repoUrl, sha, cancellationToken).ConfigureAwait(false);
+        var result = await RunGitAsync(MirrorPath(repoUrl), ["ls-tree", "-r", "--name-only", sha], cancellationToken).ConfigureAwait(false);
+        return result.Succeeded ? result.StdOut.Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList() : [];
+    }
+
     public async Task RemoveWorktreeAsync(string repoUrl, string workspace, CancellationToken cancellationToken)
     {
         var mirror = MirrorPath(repoUrl);

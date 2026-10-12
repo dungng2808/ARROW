@@ -1,6 +1,6 @@
 # pilot_tool: công cụ chạy pilot của ARROW
 
-**Trạng thái:** đang code; mốc M1–M4 xong, M5 code xong (smoke với model thật còn dở) (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
+**Trạng thái:** đang code; mốc M1–M4 xong, M5–M6 code xong (smoke với model thật còn dở vì ví provider hết tiền) (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
 
 Tài liệu liên quan: `ARCHITECTURE.md` (kiến trúc code), `CLI_DASHBOARD.md` (dashboard trong terminal), `SETUP.md` (cài đặt máy, chia shard, gom kết quả), `specs/` (spec chi tiết để code; các điểm chờ xác nhận ở `specs/00-INDEX.md`).
 

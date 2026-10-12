@@ -44,6 +44,14 @@ Commit: `960e346` (M4), đã push lên `main`.
   - Lần 2: 3 lượt gọi thật thành công, model id `gpt-6-luna` (prompt/completion token: 970/656, 1272/884, 440/270): jpa2ddl `zero_shot` → COMPILE (`cannot find symbol | class`), `zero_shot_project_aware` → VALID; `159422409` `zero_shot` → COMPILE. Lượt thứ 4: HTTP 400 **"Your TeamoRouter wallet balance is insufficient"** → run tạm dừng, đã dừng hẳn. **Smoke còn dở: cần nạp tiền ví TeamoRouter** rồi chạy lại đúng lệnh trên (3 job còn lại; job đã xong không gọi lại).
 - Cột "Xong khi" của M5 (sinh và xác minh 177 ứng viên pilot): để lại cho lần chạy pilot thật.
 
+Commit: `f02b2d6` (M5), đã push lên `main`.
+
+## 5. M6: Fixed Repair, Adaptive Repair, S2, quy tắc N
+
+- Code: `Arrow.Core/Repair` (`CheckpointComparer`, `FixedRepairPolicy`, `AdaptiveRepairPolicy` theo specs/05 Mục 4–5, dựng lại từ `decision.json`; `RepairSummary`; `RepairPrompts`: khối lỗi mức 1, phần thuần của mức 2 cho DISCOVERY, ASSERTION, REGRESSION, UNKNOWN [D6], COMPILE), `Arrow.Core/Report/NRules` (`share95`, `report2`, cộng dồn), `Arrow.Infrastructure/Repair` (`RepairService`: c0 dựng lại và build lại một lần cho hai cơ chế, loại khỏi bước sửa có `excluded.json`, mỗi vòng ghi prompt/response/usage/normalization/cand/verify/decision và một dòng ledger `round=t`, lỗi hạ tầng mở attempt mới; `RepairContextBuilder`: API thật của CUT và class liên quan, method bị gọi, mock, expected/actual, cấu hình bước test), stage S2 với thứ tự xen kẽ.
+- Test: Core 108/108 (`RepairPolicyTests`: kịch bản 5 vòng của specs/05 Mục 9, Tie khác signature giữ mức, output không hợp lệ tính một vòng, mức 3 lùi về 2 cho DISCOVERY và khi không xác định được method, Fixed sửa từ bản mới nhất và build lại mã trùng, dựng lại từ sự kiện cho kết quả giống chạy liền, bộ đếm của summary; `NRuleTests`: ví dụ README → `share95` N = 5, `report2` N = 8, S(10) = 0 → 10). Infrastructure 28/28, trong đó `RepairEndToEndTests` (`arrow run --stages prepare,generate,repair --fake-llm`, n_max 3): RUNTIME — Fixed build lại cùng mã 3 vòng không thành công, Adaptive vòng 1 mã trùng → mức 2 (có mã method bị gọi) → VALID vòng 2; ASSERTION — Fixed 3 vòng output không hợp lệ, Adaptive: không hợp lệ → mức 2 → lặp signature → mức 3 ghép `adds`, giữ `divides` của checkpoint → VALID vòng 3; COMPILE (Gradle) cả hai VALID vòng 1; thứ tự xen kẽ đúng; GitBug-Java không có job sửa.
+- S2 với model thật: chưa chạy (ví TeamoRouter hết tiền, xem Việc còn mở).
+
 ## Việc còn mở
 
 - **Ví TeamoRouter hết tiền (13/10/2026, 03:51):** smoke với model thật dừng sau 3/6 lượt sinh; S2 smoke (sửa 2 vòng × 2 cơ chế) chưa chạy được. Sau khi nạp tiền: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6 --rerun-infra`.
