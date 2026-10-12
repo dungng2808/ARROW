@@ -1,0 +1,100 @@
+{
+  "schema_version": 1,
+  "rule": "runs oldest first; for each task_id keep the record of the latest run that processed it; records copied unchanged",
+  "runs": [
+    {
+      "run_id": "gitbug-full-20261011",
+      "classes_selected": 180,
+      "revision_map_sha256": "b4b58c0f0823d3c559c8daa9d2a56d486b0c93b91391eb0d39e69d4f236cb87e",
+      "shard_sha256": null,
+      "patches": null,
+      "manifest_sha256": {
+        "class_candidates": "e07f90eac908b80c7ad75492d2aabd9bbd8527ccc31ae484b4de8e73213067e6",
+        "locked_input_manifest": "2f13329dae5b2feff4c4ea0c1f9ebebaf9019f2b59e4e6a19132e5799692a70b",
+        "technical_eligible_manifest": "b8f047ea3adeb1df16052829f512b5f188fe11130360e29c406227f1bd3b970d",
+        "strict_eligible_manifest": "b8f047ea3adeb1df16052829f512b5f188fe11130360e29c406227f1bd3b970d"
+      }
+    },
+    {
+      "run_id": "gitbug-rerun-20261011",
+      "classes_selected": 71,
+      "revision_map_sha256": "b4b58c0f0823d3c559c8daa9d2a56d486b0c93b91391eb0d39e69d4f236cb87e",
+      "shard_sha256": "0881373144664e27956ba22361d820c5da20f7633994c9e8f0c1503e7ef87c66",
+      "patches": {
+        "patch_version": "2026-10-11.1",
+        "script_sha256": "b50aff35753aee616a10c4ec75053bbfb2f8e4352ac96f116b3898dd11b73908",
+        "previous_run": "gitbug-full-20261011",
+        "patched_functions": [
+          "preflight.runner._probe_source",
+          "preflight.runner.parse_java_source",
+          "preflight.runner._java_target",
+          "preflight.runner._compile",
+          "preflight.runner._maven_commands"
+        ],
+        "probe_skip_flags": [
+          "-Dcheckstyle.skip=true",
+          "-Dspring-javaformat.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dformatter.skip=true",
+          "-Djacoco.skip=true"
+        ]
+      },
+      "manifest_sha256": {
+        "class_candidates": "a64928820c1a4a9f1a4ce0d3f5df9cd91e97c759f67f8f13080049e03a75fc11",
+        "locked_input_manifest": "84f58feea928354cd4d110d90b69124aa51b63cecb2d1f4d2098b93fa79ae392",
+        "technical_eligible_manifest": "79ed5316e27e17c4e2bb9055760021b9ab21cb74584710450f5f11db46cc3091",
+        "strict_eligible_manifest": "79ed5316e27e17c4e2bb9055760021b9ab21cb74584710450f5f11db46cc3091"
+      }
+    },
+    {
+      "run_id": "gitbug-labeled-20261012",
+      "classes_selected": 22,
+      "revision_map_sha256": "fef09a69a174bc30de490dafdf475df075768129f4fbacf895e00400b3829888",
+      "shard_sha256": "c158fc5b97f72d774af07d2b1295bee45f03d5dd891b15c0c0a8cf17a3b5c9e4",
+      "patches": {
+        "patch_version": "2026-10-11.1",
+        "script_sha256": "49504b2ab3059897efd5577e3d58d0e7b40b6a127ed1457ca477cbc8e68091f7",
+        "previous_run": "gitbug-rerun-20261011",
+        "patched_functions": [
+          "preflight.runner._probe_source",
+          "preflight.runner.parse_java_source",
+          "preflight.runner._java_target",
+          "preflight.runner._compile",
+          "preflight.runner._maven_commands"
+        ],
+        "probe_skip_flags": [
+          "-Dcheckstyle.skip=true",
+          "-Dspring-javaformat.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dformatter.skip=true",
+          "-Djacoco.skip=true"
+        ]
+      },
+      "manifest_sha256": {
+        "class_candidates": "2074c95c7cfaa38224aca2c3d81602047dd5ec0c8496c23aa9d3bf52e725db7d",
+        "locked_input_manifest": "837a4f9ba51f401c3c2e63d517c713dc05403152374bff4225e9d10cbc8fc939",
+        "technical_eligible_manifest": "949ecdc1b1c305c90acf7ae594a96960a6e7c9af256b74c9704eaf9a7ec7770a",
+        "strict_eligible_manifest": "949ecdc1b1c305c90acf7ae594a96960a6e7c9af256b74c9704eaf9a7ec7770a"
+      }
+    }
+  ],
+  "final_record_source": {
+    "gitbug-full-20261011": 109,
+    "gitbug-rerun-20261011": 71,
+    "gitbug-labeled-20261012": 22
+  },
+  "record_counts": {
+    "class_candidates": 202,
+    "locked_input_manifest": 202,
+    "technical_eligible_manifest": 168,
+    "strict_eligible_manifest": 168
+  },
+  "output_sha256": {
+    "class_candidates": "93b2209b13f63c8c843e03ddc9cb15918d8cbf17c990c5f8de9dfb06d2edc0e7",
+    "locked_input_manifest": "44ac6fe80852fb37f6dfdc25e917e72c81ef66c311bdcbc22286d4fbe91c476e",
+    "technical_eligible_manifest": "13a91210c3ae9e6008049b4e98c5d1ac042e3643fcd67eb42f3991e4d8b96b2b",
+    "strict_eligible_manifest": "13a91210c3ae9e6008049b4e98c5d1ac042e3643fcd67eb42f3991e4d8b96b2b"
+  }
+}
