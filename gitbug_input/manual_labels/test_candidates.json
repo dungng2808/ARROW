@@ -1,0 +1,3244 @@
+[
+ {
+  "task_id": "",
+  "project_id": "Bindambc-whatsapp-business-java-api-362caf5eb33c",
+  "repository": "Bindambc/whatsapp-business-java-api",
+  "checkout_sha": "362caf5eb33c0f23bbb29ba689112dee3750b30c",
+  "class_path": "src/main/java/com/whatsapp/api/domain/messages/Language.java",
+  "cut_fqn": "com.whatsapp.api.domain.messages.Language",
+  "test_files_scanned": 32,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/whatsapp/api/examples/SendTemplateButtonMessageExample.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": ".setLanguage(new Language(LanguageType.PT_BR))//"
+   },
+   {
+    "test_path": "src/test/java/com/whatsapp/api/examples/SendTemplateTextMessageExample.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": ".setLanguage(new Language(LanguageType.PT_BR)).setName(\"number_confirmation\")//"
+   },
+   {
+    "test_path": "src/test/java/com/whatsapp/api/impl/WhatsappBusinessCloudApiTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": ".setLanguage(new Language(LanguageType.PT_BR))//"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "Bindambc-whatsapp-business-java-api-fd321cb63437",
+  "repository": "Bindambc/whatsapp-business-java-api",
+  "checkout_sha": "fd321cb6343781a129c19b23df293f1b858b64cc",
+  "class_path": "src/main/java/com/whatsapp/api/domain/templates/QuickReplyButton.java",
+  "cut_fqn": "com.whatsapp.api.domain.templates.QuickReplyButton",
+  "test_files_scanned": 48,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/whatsapp/api/impl/WhatsappBusinessManagementApiTest.java",
+    "lang": "java",
+    "mentions": 8,
+    "direct_uses": 8,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 32,
+    "example": ".addButton(new QuickReplyButton(\"SIM\"))//"
+   },
+   {
+    "test_path": "src/test/java/com/whatsapp/api/examples/CreateMessageTemplate3Example.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 12,
+    "example": ".addButton(new QuickReplyButton(\"SIM\"))//"
+   },
+   {
+    "test_path": "src/test/java/com/whatsapp/api/examples/CreateMessageTemplate4Example.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 8,
+    "example": ".addButton(new QuickReplyButton(\"Shop Now\")"
+   },
+   {
+    "test_path": "src/test/java/com/whatsapp/api/examples/CreateMessageTemplate6Example.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 8,
+    "example": ".addButton(new QuickReplyButton(\"Saiba mais\")"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "Bindambc-whatsapp-business-java-api-fd321cb63437",
+  "repository": "Bindambc/whatsapp-business-java-api",
+  "checkout_sha": "fd321cb6343781a129c19b23df293f1b858b64cc",
+  "class_path": "src/main/java/com/whatsapp/api/domain/templates/UrlButton.java",
+  "cut_fqn": "com.whatsapp.api.domain.templates.UrlButton",
+  "test_files_scanned": 48,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/whatsapp/api/examples/CreateMessageTemplate5Example.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": ".addButton(new UrlButton(\"Assistir agora\")//"
+   },
+   {
+    "test_path": "src/test/java/com/whatsapp/api/impl/WhatsappBusinessManagementApiTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": ".addButton(new UrlButton(\"Assistir agora\")//"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "BrightSpots-rcv-688920f27706",
+  "repository": "BrightSpots/rcv",
+  "checkout_sha": "688920f277061ec880f3ed343a6d690dc98dd6de",
+  "class_path": "src/main/java/network/brightspots/rcv/Logger.java",
+  "cut_fqn": "network.brightspots.rcv.Logger",
+  "test_files_scanned": 1,
+  "candidates": [
+   {
+    "test_path": "src/test/java/network/brightspots/rcv/TabulatorTests.java",
+    "lang": "java",
+    "mentions": 13,
+    "direct_uses": 13,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 54,
+    "example": "Logger.severe(\"Files are unequal lengths!\");"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "BrightSpots-rcv-688920f27706",
+  "repository": "BrightSpots/rcv",
+  "checkout_sha": "688920f277061ec880f3ed343a6d690dc98dd6de",
+  "class_path": "src/main/java/network/brightspots/rcv/ResultsWriter.java",
+  "cut_fqn": "network.brightspots.rcv.ResultsWriter",
+  "test_files_scanned": 1,
+  "candidates": [
+   {
+    "test_path": "src/test/java/network/brightspots/rcv/TabulatorTests.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 10,
+    "example": "ResultsWriter.getOutputFilePath("
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "BrightSpots-rcv-c80e6272c83a",
+  "repository": "BrightSpots/rcv",
+  "checkout_sha": "c80e6272c83a67999bce67e3a5c9b5a9120fe2c2",
+  "class_path": "src/main/java/network/brightspots/rcv/ResultsWriter.java",
+  "cut_fqn": "network.brightspots.rcv.ResultsWriter",
+  "test_files_scanned": 2,
+  "candidates": [
+   {
+    "test_path": "src/test/java/network/brightspots/rcv/TabulatorTests.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 10,
+    "example": "ResultsWriter.getOutputFilePath("
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "GoSimpleLLC-nbvcxz-ee8d5c62f4fb",
+  "repository": "GoSimpleLLC/nbvcxz",
+  "checkout_sha": "ee8d5c62f4fbba1b975a1e8675abb5dff3ef4cb6",
+  "class_path": "src/main/java/me/gosimple/nbvcxz/resources/ConfigurationBuilder.java",
+  "cut_fqn": "me.gosimple.nbvcxz.resources.ConfigurationBuilder",
+  "test_files_scanned": 20,
+  "candidates": [
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/NbvcxzTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 12,
+    "example": "List<Dictionary> dictionaryList = ConfigurationBuilder.getDefaultDictionaries();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/DictionaryMatcherTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 8,
+    "example": "for (Dictionary dictionary : ConfigurationBuilder.getDefaultDictionaries())"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/DateMatcherTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/RepeatMatcherTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/SequenceMatcherTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/SpacialMatcherTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/YearMatcherTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/BaseMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "super(s, new ConfigurationBuilder().createConfiguration(), 0, s == null ? 0 : s.length() - 1);"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/DateMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/DictionaryMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/RepeatMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/SequenceMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/SpacialMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/match/YearMatchTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "double computed = new YearMatch(password, new ConfigurationBuilder().createConfiguration(), 0, password.length() - 1).calculateEntropy();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/scoring/ScoreTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Configuration configuration = new ConfigurationBuilder().createConfiguration();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/scoring/TimeEstimateTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Configuration configuration = new ConfigurationBuilder().setGuessTypes(guessTypes).createConfiguration();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "GoSimpleLLC-nbvcxz-ee8d5c62f4fb",
+  "repository": "GoSimpleLLC/nbvcxz",
+  "checkout_sha": "ee8d5c62f4fbba1b975a1e8675abb5dff3ef4cb6",
+  "class_path": "src/main/java/me/gosimple/nbvcxz/resources/Dictionary.java",
+  "cut_fqn": "me.gosimple.nbvcxz.resources.Dictionary",
+  "test_files_scanned": 20,
+  "candidates": [
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/matching/DictionaryMatcherTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 7,
+    "example": "final List<Dictionary> dictionaries = new ArrayList<>();"
+   },
+   {
+    "test_path": "src/test/java/me/gosimple/nbvcxz/NbvcxzTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "List<Dictionary> dictionaryList = ConfigurationBuilder.getDefaultDictionaries();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "IBM-JSONata4Java-1485a41ccf50",
+  "repository": "IBM/JSONata4Java",
+  "checkout_sha": "1485a41ccf50f6f35a3a260a13df184990a347bb",
+  "class_path": "src/main/java/com/api/jsonata4java/expressions/OrderByOperator.java",
+  "cut_fqn": "com.api.jsonata4java.expressions.OrderByOperator",
+  "test_files_scanned": 72,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "Moderocky-ByteSkript-1dce2997df7f",
+  "repository": "Moderocky/ByteSkript",
+  "checkout_sha": "1dce2997df7f55536293234a04b666de3d6b2a85",
+  "class_path": "src/main/java/org/byteskript/skript/compiler/DebugSkriptCompiler.java",
+  "cut_fqn": "org.byteskript.skript.compiler.DebugSkriptCompiler",
+  "test_files_scanned": 11,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/byteskript/skript/test/SyntaxTreeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "final Skript skript = new Skript(new DebugSkriptCompiler(stream));"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "Netflix-frigga-126b52a55863",
+  "repository": "Netflix/frigga",
+  "checkout_sha": "126b52a5586381684c0ac975ac3d2ab37b6f7596",
+  "class_path": "src/main/java/com/netflix/frigga/ami/AppVersion.java",
+  "cut_fqn": "com.netflix.frigga.ami.AppVersion",
+  "test_files_scanned": 8,
+  "candidates": [
+   {
+    "test_path": "src/test/groovy/com/netflix/frigga/ami/AppVersionTest.groovy",
+    "lang": "groovy",
+    "mentions": 8,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 21,
+    "example": "AppVersion appVersion = newAppVersion(\"app\", \"1.2.3\", \"WE-WAPP-app\", \"456\", \"1234567\")"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "YehiaFarghaly-database-engine-8314bfdec0aa",
+  "repository": "YehiaFarghaly/database-engine",
+  "checkout_sha": "8314bfdec0aa431561d903d788ecdf31fd3c6c5c",
+  "class_path": "src/main/java/util/validation/Validator.java",
+  "cut_fqn": "util.validation.Validator",
+  "test_files_scanned": 1,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "YehiaFarghaly-database-engine-c5f961f27373",
+  "repository": "YehiaFarghaly/database-engine",
+  "checkout_sha": "c5f961f27373a552d506ba0380d3898188971523",
+  "class_path": "src/main/java/util/validation/Validator.java",
+  "cut_fqn": "util.validation.Validator",
+  "test_files_scanned": 1,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "adoble-adr-j-7fe616c55a5b",
+  "repository": "adoble/adr-j",
+  "checkout_sha": "7fe616c55a5b9d8c17f0e69a5aaf8daca9d78abd",
+  "class_path": "src/main/java/org/doble/commands/CommandADR.java",
+  "cut_fqn": "org.doble.commands.CommandADR",
+  "test_files_scanned": 18,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "adoble-adr-j-7fe616c55a5b",
+  "repository": "adoble/adr-j",
+  "checkout_sha": "7fe616c55a5b9d8c17f0e69a5aaf8daca9d78abd",
+  "class_path": "src/main/java/org/doble/commands/CommandVersion.java",
+  "cut_fqn": "org.doble.commands.CommandVersion",
+  "test_files_scanned": 18,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "assertj-assertj-vavr-f4d7f276e87c",
+  "repository": "assertj/assertj-vavr",
+  "checkout_sha": "f4d7f276e87c5612bd743d0fd21f947d059170f8",
+  "class_path": "src/main/java/org/assertj/vavr/api/AbstractSeqAssert.java",
+  "cut_fqn": "org.assertj.vavr.api.AbstractSeqAssert",
+  "test_files_scanned": 137,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "beanshell-beanshell-7a60a06bb567",
+  "repository": "beanshell/beanshell",
+  "checkout_sha": "7a60a06bb56774d1f6b1188ee66e712073b90a81",
+  "class_path": "src/main/java/bsh/This.java",
+  "cut_fqn": "bsh.This",
+  "test_files_scanned": 72,
+  "candidates": [
+   {
+    "test_path": "src/test/java/bsh/InterpreterConcurrencyTest.java",
+    "lang": "java",
+    "mentions": 8,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 10,
+    "example": "final This callable = (This) interpreter.eval(script);"
+   },
+   {
+    "test_path": "src/test/java/bsh/ReflectTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "* This test checks the resolving of PrintStream.println(null)."
+   },
+   {
+    "test_path": "src/test/java/bsh/TestBshScriptEngine.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 5,
+    "example": "assertThat( scriptedObject, instanceOf( This.class ) );"
+   },
+   {
+    "test_path": "src/test/java/bsh/PreparsedScriptTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 4,
+    "example": "thrown.expectMessage(containsString(\"This is an error\"));"
+   },
+   {
+    "test_path": "src/test/java/bsh/BshSerializationTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "* This tests serialization of the beanshell interpreter"
+   },
+   {
+    "test_path": "src/test/java/bsh/ConsoleInterfaceTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "* This file is part of the BeanShell Java Scripting distribution.           *"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "beanshell-beanshell-f345606a29bd",
+  "repository": "beanshell/beanshell",
+  "checkout_sha": "f345606a29bd6a9485dfcf395f40191af5c5c9ef",
+  "class_path": "src/main/java/bsh/Operators.java",
+  "cut_fqn": "bsh.Operators",
+  "test_files_scanned": 72,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "bhlangonijr-chesslib-cf68677eac6d",
+  "repository": "bhlangonijr/chesslib",
+  "checkout_sha": "cf68677eac6d6a84c8ef286aadbddf11d3155e4c",
+  "class_path": "src/main/java/com/github/bhlangonijr/chesslib/pgn/GameLoader.java",
+  "cut_fqn": "com.github.bhlangonijr.chesslib.pgn.GameLoader",
+  "test_files_scanned": 10,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "cdimascio-dotenv-java-bbfbcfa63e3a",
+  "repository": "cdimascio/dotenv-java",
+  "checkout_sha": "bbfbcfa63e3ab0bb76fbacb51833daec9f6c4fa9",
+  "class_path": "src/main/java/io/github/cdimascio/dotenv/internal/DotenvParser.java",
+  "cut_fqn": "io.github.cdimascio.dotenv.internal.DotenvParser",
+  "test_files_scanned": 2,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "cloudsimplus-cloudsimplus-61c8b942d1ec",
+  "repository": "cloudsimplus/cloudsimplus",
+  "checkout_sha": "61c8b942d1ec07ff6e7369326450d22086a2678e",
+  "class_path": "src/main/java/org/cloudsimplus/hosts/HostAbstract.java",
+  "cut_fqn": "org.cloudsimplus.hosts.HostAbstract",
+  "test_files_scanned": 57,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "crowdin-crowdin-api-client-java-f0f22b2b56d7",
+  "repository": "crowdin/crowdin-api-client-java",
+  "checkout_sha": "f0f22b2b56d76d631224688193feed6eb501af30",
+  "class_path": "src/main/java/com/crowdin/client/core/http/impl/json/JacksonJsonTransformer.java",
+  "cut_fqn": "com.crowdin.client.core.http.impl.json.JacksonJsonTransformer",
+  "test_files_scanned": 29,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/crowdin/client/framework/TestHttpClient.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "private JsonTransformer jsonTransformer = new JacksonJsonTransformer();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "ezylang-EvalEx-7c39c5478a39",
+  "repository": "ezylang/EvalEx",
+  "checkout_sha": "7c39c5478a3934ae862aa5d86718d7414ecb3a3c",
+  "class_path": "src/main/java/com/ezylang/evalex/parser/Tokenizer.java",
+  "cut_fqn": "com.ezylang.evalex.parser.Tokenizer",
+  "test_files_scanned": 60,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerArrayTest.java",
+    "lang": "java",
+    "mentions": 9,
+    "direct_uses": 9,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 43,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\"a[2+4\", configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerStructureTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 19,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\".\", configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerBracesTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 15,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\"(2+4\", configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerStringLiteralTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 15,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\"\\\"hello\", configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerExpressionTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\"a $ b\", configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerFunctionsTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\"a(b)\", configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerImplicitMultiplicationTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "assertThatThrownBy(() -> new Tokenizer(\"2(x+y)\", config).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerNumberLiteralTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "assertThatThrownBy(() -> new Tokenizer(expression, configuration).parse())"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/TokenizerPrefixPostfixTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "assertThatThrownBy(new Tokenizer(\"?a\", configuration)::parse)"
+   },
+   {
+    "test_path": "src/test/java/com/ezylang/evalex/parser/BaseParserTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 10,
+    "example": "List<Token> tokensParsed = new Tokenizer(input, configuration).parse();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "giraud-reasonml-idea-plugin-11d991db162a",
+  "repository": "giraud/reasonml-idea-plugin",
+  "checkout_sha": "11d991db162a2d61de7c1b24a45246d09d6b2e86",
+  "class_path": "src/main/java/com/reason/ide/structure/StructureViewElement.java",
+  "cut_fqn": "com.reason.ide.structure.StructureViewElement",
+  "test_files_scanned": 184,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "giraud-reasonml-idea-plugin-11d991db162a",
+  "repository": "giraud/reasonml-idea-plugin",
+  "checkout_sha": "11d991db162a2d61de7c1b24a45246d09d6b2e86",
+  "class_path": "src/main/java/com/reason/lang/core/psi/impl/RPsiModuleSignature.java",
+  "cut_fqn": "com.reason.lang.core.psi.impl.RPsiModuleSignature",
+  "test_files_scanned": 184,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/reason/lang/ocaml/ModuleParsingTest.java",
+    "lang": "java",
+    "mentions": 9,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 9,
+    "example": "RPsiModuleSignature modType = module.getModuleSignature();"
+   },
+   {
+    "test_path": "src/test/java/com/reason/ide/search/reference/ORModuleResolutionPsiGistRMLTest.java",
+    "lang": "java",
+    "mentions": 8,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 8,
+    "example": "RPsiModuleSignature emt = PsiTreeUtil.findChildOfType(e, RPsiModuleSignature.class);"
+   },
+   {
+    "test_path": "src/test/java/com/reason/ide/search/reference/ORModuleResolutionPsiGistRESTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 2,
+    "example": "RPsiModuleSignature emt = PsiTreeUtil.findChildOfType(e, RPsiModuleSignature.class);"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "giraud-reasonml-idea-plugin-11d991db162a",
+  "repository": "giraud/reasonml-idea-plugin",
+  "checkout_sha": "11d991db162a2d61de7c1b24a45246d09d6b2e86",
+  "class_path": "src/main/java/com/reason/lang/ocaml/OclParser.java",
+  "cut_fqn": "com.reason.lang.ocaml.OclParser",
+  "test_files_scanned": 184,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "giraud-reasonml-idea-plugin-69749af01bcf",
+  "repository": "giraud/reasonml-idea-plugin",
+  "checkout_sha": "69749af01bcfcd7cfaff33837f2776b7d37d906a",
+  "class_path": "src/main/java/com/reason/lang/ocaml/OclParser.java",
+  "cut_fqn": "com.reason.lang.ocaml.OclParser",
+  "test_files_scanned": 184,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "giraud-reasonml-idea-plugin-f665f0fc21e6",
+  "repository": "giraud/reasonml-idea-plugin",
+  "checkout_sha": "f665f0fc21e68d9b18df66ccfed299e898d8ee93",
+  "class_path": "src/main/java/com/reason/lang/rescript/ResParser.java",
+  "cut_fqn": "com.reason.lang.rescript.ResParser",
+  "test_files_scanned": 183,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "gitbucket-markedj-2dce74e12083",
+  "repository": "gitbucket/markedj",
+  "checkout_sha": "2dce74e1208340c7738970613f435185d71f640e",
+  "class_path": "src/main/java/io/github/gitbucket/markedj/Grammer.java",
+  "cut_fqn": "io.github.gitbucket.markedj.Grammer",
+  "test_files_scanned": 1,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-0121311b1bd5",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "0121311b1bd56cbbd29e9b291d42564d5135afa5",
+  "class_path": "src/main/java/org/jsoup/helper/UrlBuilder.java",
+  "cut_fqn": "org.jsoup.helper.UrlBuilder",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/helper/HttpConnectionTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 14,
+    "example": "URL url2 = new UrlBuilder(url1).build();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-1657e8fd6588",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "1657e8fd65889cd4a60052ed31f9cb245c02dfad",
+  "class_path": "src/main/java/org/jsoup/nodes/DataNode.java",
+  "cut_fqn": "org.jsoup.nodes.DataNode",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/nodes/ElementTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "List<DataNode> scriptData = script.dataNodes();"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/parser/HtmlParserTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 6,
+    "example": "DataNode dataNode = (DataNode) script.childNode(0);"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/nodes/PositionTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 4,
+    "example": "DataNode data = (DataNode) script.firstChild();"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/select/ElementsTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 3,
+    "example": "List<DataNode> dataNodes = doc.select(\"p, script, style\").dataNodes();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-1e69577e358c",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "1e69577e358c75a85b769583f0cf860eedb18a5e",
+  "class_path": "src/main/java/org/jsoup/helper/UrlBuilder.java",
+  "cut_fqn": "org.jsoup.helper.UrlBuilder",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/helper/HttpConnectionTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 14,
+    "example": "URL url2 = new UrlBuilder(url1).build();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-2a4a9cf83dea",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "2a4a9cf83dea46aff9fc97fc6da808948f5086e0",
+  "class_path": "src/main/java/org/jsoup/select/StructuralEvaluator.java",
+  "cut_fqn": "org.jsoup.select.StructuralEvaluator",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/select/QueryParserTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "StructuralEvaluator.ImmediateParentRun run = (StructuralEvaluator.ImmediateParentRun) eval1;"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/select/SelectorTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 4,
+    "example": "StructuralEvaluator.PreviousSibling prevEval = (StructuralEvaluator.PreviousSibling) andEval.evaluators.get(0);"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-6ccd158754e2",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "6ccd158754e21a749b2390ca27282a8dda7fb4f6",
+  "class_path": "src/main/java/org/jsoup/helper/UrlBuilder.java",
+  "cut_fqn": "org.jsoup.helper.UrlBuilder",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/helper/HttpConnectionTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 6,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 26,
+    "example": "URL url2 = new UrlBuilder(url1).build();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-9de27fa7cd82",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "9de27fa7cd823f6d26e33e48b36ef010c05f977c",
+  "class_path": "src/main/java/org/jsoup/Connection.java",
+  "cut_fqn": "org.jsoup.Connection",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/integration/ConnectTest.java",
+    "lang": "java",
+    "mentions": 57,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 59,
+    "example": "Connection con = Jsoup.connect(echoUrl + \"#with whitespaces\");"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/helper/HttpConnectionTest.java",
+    "lang": "java",
+    "mentions": 36,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 43,
+    "example": "assertEquals(Connection.Method.GET, con.request().method());"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/integration/UrlConnectTest.java",
+    "lang": "java",
+    "mentions": 41,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 43,
+    "example": "Connection.Response res = Jsoup.connect(\"http://www.baidu.com/\").timeout(10*1000).execute();"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/nodes/FormElementTest.java",
+    "lang": "java",
+    "mentions": 12,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 14,
+    "example": "List<Connection.KeyVal> data = form.formData();"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/integration/SessionTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 8,
+    "example": "final Connection session = Jsoup.newSession();"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/integration/SessionIT.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 5,
+    "example": "/** Integration tests to test longer running Connection */"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/integration/ConnectIT.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 4,
+    "example": "Connection.Response res = Jsoup.connect(SlowRider.Url)"
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/nodes/BuildEntities.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "Connection.Response res = Jsoup.connect(url)"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jhy-jsoup-c93ea51dabfb",
+  "repository": "jhy/jsoup",
+  "checkout_sha": "c93ea51dabfbfd34d6b979f5cc876ed3b5d093a4",
+  "class_path": "src/main/java/org/jsoup/parser/Token.java",
+  "cut_fqn": "org.jsoup.parser.Token",
+  "test_files_scanned": 62,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/jsoup/parser/TokenQueueTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 8,
+    "example": "* Token queue tests."
+   },
+   {
+    "test_path": "src/test/java/org/jsoup/parser/HtmlParserTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "// The issue was that the normalization in Tag.valueOf did a trim which the Token.Tag did not"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jitterted-ensembler-14a39138787f",
+  "repository": "jitterted/ensembler",
+  "checkout_sha": "14a39138787f8aa597c84f734844dd270f8c35a6",
+  "class_path": "src/main/java/com/jitterted/mobreg/domain/Ensemble.java",
+  "cut_fqn": "com.jitterted.mobreg.domain.Ensemble",
+  "test_files_scanned": 67,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleEditTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 8,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 47,
+    "example": "Ensemble before = new Ensemble(\"before\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleRepositoryDataJdbcAdapterTest.java",
+    "lang": "java",
+    "mentions": 18,
+    "direct_uses": 5,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 38,
+    "example": "Ensemble ensemble = createWithRegisteredMemberEnsembleNamed(\"test ensemble\");"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleFactory.java",
+    "lang": "java",
+    "mentions": 13,
+    "direct_uses": 4,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 32,
+    "example": "public static Ensemble withStartTimeNow() {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleStateTest.java",
+    "lang": "java",
+    "mentions": 15,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 31,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/AdminDashboardControllerTest.java",
+    "lang": "java",
+    "mentions": 11,
+    "direct_uses": 5,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 26,
+    "example": "ensembleRepository.save(new Ensemble(\"Name\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendEnsembleScheduledNotifierTest.java",
+    "lang": "java",
+    "mentions": 15,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 26,
+    "example": "Ensemble ensemble = new Ensemble(\"Ensemble #314\", URI.create(\"https://zoom.us\"), ZonedDateTime.of(2021, 12, 3, 17, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceEditExistingTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 24,
+    "example": "Ensemble ensemble = new Ensemble(\"Before\", URI.create(\"https://zoom.us/before\"),"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberStatusTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 23,
+    "example": "Ensemble pastEnsemble = EnsembleFactory.withStartTime(startDateTime);"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceScheduleTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 18,
+    "example": ".extracting(Ensemble::meetingLink)"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/DashboardEnsembleViewTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 17,
+    "example": "Ensemble savedEnsemble = ensembleRepository.save(new Ensemble(\"Ensemble #1\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMembersTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 17,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceFindTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 16,
+    "example": "Ensemble savedEnsemble = ensembleRepository.save(new Ensemble(\"test\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/EnsembleDetailViewTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryViewTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = EnsembleFactory.withIdOf1AndOneDayInTheFuture();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/MemberControllerTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 15,
+    "example": "ensembleRepository.save(new Ensemble(\"GET Test\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendMembersWhenEnsembleCompletedTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "// emails are only sent to Ensemble.acceptedMembers()"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceCompletedTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = new Ensemble(\"Completed\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendMemberAcceptedNotifierTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 13,
+    "example": "Ensemble ensemble = new Ensemble(\"Ensemble #123\", URI.create(\"https://zoom.us\"), ZonedDateTime.of(2021, 10, 20, 16, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceMemberRegistrationNotificationTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 13,
+    "example": "Ensemble ensemble = new Ensemble(\"scheduled\","
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/TestEnsembleServiceBuilder.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 13,
+    "example": "private Ensemble lastEnsemble;"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberRsvpTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 12,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleDboMappingTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "Ensemble ensemble = ensembleDbo.asEnsemble();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleServiceMemberTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceEnsembleScheduledNotificationTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "ensembleService.scheduleEnsemble(\"Notifying Ensemble\", ZonedDateTime.of(2021, 11, 10, 17, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleBuilderAndSaviour.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 10,
+    "example": "private Ensemble ensemble;"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceCancelTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 8,
+    "example": "Ensemble ensemble = new EnsembleBuilderAndSaviour().build();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/GoogleCalendarLinkCreatorTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 7,
+    "example": "Ensemble calendarEnsemble = new Ensemble(\"Calendar Ensemble\","
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/ScheduleEnsembleFormTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 6,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTime(2021, 12, 15, 21);"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/AdminEndpointConfigurationTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble dummyEnsemble = new Ensemble(\"dummy\", URI.create(\"https://dummy.link\"), ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/PostgresqlEntityTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble original = new Ensemble(\"entity\", ZonedDateTime.of(2021, 1, 3, 0, 0, 0, 0, ZoneId.systemDefault()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/mobtimer/MobParticipantsDtoCreationTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/mobtimer/MobTimerMessageSenderTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/port/DummyNotifier.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 3,
+    "example": "public int ensembleScheduled(Ensemble ensemble, URI registrationLink) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/DeleteMeetingConferenceSchedulerMock.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/FailsToCreateMeetingConferenceScheduler.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/ZoomConferenceSchedulerDeletesExpectedMeetingId.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/port/DummyVideoConferenceScheduler.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jitterted-ensembler-60ec3bf0273b",
+  "repository": "jitterted/ensembler",
+  "checkout_sha": "60ec3bf0273b63c210e1b7b6802c4f5f3c33710d",
+  "class_path": "src/main/java/com/jitterted/mobreg/domain/Ensemble.java",
+  "cut_fqn": "com.jitterted.mobreg.domain.Ensemble",
+  "test_files_scanned": 67,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleEditTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 8,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 47,
+    "example": "Ensemble before = new Ensemble(\"before\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleRepositoryDataJdbcAdapterTest.java",
+    "lang": "java",
+    "mentions": 18,
+    "direct_uses": 5,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 38,
+    "example": "Ensemble ensemble = createWithRegisteredMemberEnsembleNamed(\"test ensemble\");"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleFactory.java",
+    "lang": "java",
+    "mentions": 13,
+    "direct_uses": 4,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 32,
+    "example": "public static Ensemble withStartTimeNow() {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleStateTest.java",
+    "lang": "java",
+    "mentions": 15,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 31,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/AdminDashboardControllerTest.java",
+    "lang": "java",
+    "mentions": 11,
+    "direct_uses": 5,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 26,
+    "example": "ensembleRepository.save(new Ensemble(\"Name\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendEnsembleScheduledNotifierTest.java",
+    "lang": "java",
+    "mentions": 15,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 26,
+    "example": "Ensemble ensemble = new Ensemble(\"Ensemble #314\", URI.create(\"https://zoom.us\"), ZonedDateTime.of(2021, 12, 3, 17, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceEditExistingTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 24,
+    "example": "Ensemble ensemble = new Ensemble(\"Before\", URI.create(\"https://zoom.us/before\"),"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberStatusTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 23,
+    "example": "Ensemble pastEnsemble = EnsembleFactory.withStartTime(startDateTime);"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceScheduleTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 18,
+    "example": ".extracting(Ensemble::meetingLink)"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/DashboardEnsembleViewTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 17,
+    "example": "Ensemble savedEnsemble = ensembleRepository.save(new Ensemble(\"Ensemble #1\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceFindTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 16,
+    "example": "Ensemble savedEnsemble = ensembleRepository.save(new Ensemble(\"test\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMembersTest.java",
+    "lang": "java",
+    "mentions": 9,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 16,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/EnsembleDetailViewTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryViewTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = EnsembleFactory.withIdOf1AndOneDayInTheFuture();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/MemberControllerTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 15,
+    "example": "ensembleRepository.save(new Ensemble(\"GET Test\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendMembersWhenEnsembleCompletedTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "// emails are only sent to Ensemble.acceptedMembers()"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceCompletedTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = new Ensemble(\"Completed\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendMemberAcceptedNotifierTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 13,
+    "example": "Ensemble ensemble = new Ensemble(\"Ensemble #123\", URI.create(\"https://zoom.us\"), ZonedDateTime.of(2021, 10, 20, 16, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceMemberRegistrationNotificationTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 13,
+    "example": "Ensemble ensemble = new Ensemble(\"scheduled\","
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/TestEnsembleServiceBuilder.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 13,
+    "example": "private Ensemble lastEnsemble;"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberRsvpTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 12,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleDboMappingTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "Ensemble ensemble = ensembleDbo.asEnsemble();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleServiceMemberTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceEnsembleScheduledNotificationTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "ensembleService.scheduleEnsemble(\"Notifying Ensemble\", ZonedDateTime.of(2021, 11, 10, 17, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleBuilderAndSaviour.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 10,
+    "example": "private Ensemble ensemble;"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceCancelTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 8,
+    "example": "Ensemble ensemble = new EnsembleBuilderAndSaviour().build();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/GoogleCalendarLinkCreatorTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 7,
+    "example": "Ensemble calendarEnsemble = new Ensemble(\"Calendar Ensemble\","
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/ScheduleEnsembleFormTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 6,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTime(2021, 12, 15, 21);"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/AdminEndpointConfigurationTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble dummyEnsemble = new Ensemble(\"dummy\", URI.create(\"https://dummy.link\"), ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/PostgresqlEntityTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble original = new Ensemble(\"entity\", ZonedDateTime.of(2021, 1, 3, 0, 0, 0, 0, ZoneId.systemDefault()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/mobtimer/MobParticipantsDtoCreationTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/mobtimer/MobTimerMessageSenderTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/port/DummyNotifier.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 3,
+    "example": "public int ensembleScheduled(Ensemble ensemble, URI registrationLink) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/DeleteMeetingConferenceSchedulerMock.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/FailsToCreateMeetingConferenceScheduler.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/ZoomConferenceSchedulerDeletesExpectedMeetingId.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/port/DummyVideoConferenceScheduler.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "jitterted-ensembler-6207c9d46460",
+  "repository": "jitterted/ensembler",
+  "checkout_sha": "6207c9d46460fd0ce2d67305ea250c50672bce80",
+  "class_path": "src/main/java/com/jitterted/mobreg/domain/Ensemble.java",
+  "cut_fqn": "com.jitterted.mobreg.domain.Ensemble",
+  "test_files_scanned": 67,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleEditTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 8,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 47,
+    "example": "Ensemble before = new Ensemble(\"before\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleRepositoryDataJdbcAdapterTest.java",
+    "lang": "java",
+    "mentions": 18,
+    "direct_uses": 5,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 38,
+    "example": "Ensemble ensemble = createWithRegisteredMemberEnsembleNamed(\"test ensemble\");"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleFactory.java",
+    "lang": "java",
+    "mentions": 13,
+    "direct_uses": 4,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 32,
+    "example": "public static Ensemble withStartTimeNow() {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleStateTest.java",
+    "lang": "java",
+    "mentions": 15,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 31,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/AdminDashboardControllerTest.java",
+    "lang": "java",
+    "mentions": 11,
+    "direct_uses": 5,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 26,
+    "example": "ensembleRepository.save(new Ensemble(\"Name\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendEnsembleScheduledNotifierTest.java",
+    "lang": "java",
+    "mentions": 15,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 26,
+    "example": "Ensemble ensemble = new Ensemble(\"Ensemble #314\", URI.create(\"https://zoom.us\"), ZonedDateTime.of(2021, 12, 3, 17, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceEditExistingTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 24,
+    "example": "Ensemble ensemble = new Ensemble(\"Before\", URI.create(\"https://zoom.us/before\"),"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberStatusTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 23,
+    "example": "Ensemble pastEnsemble = EnsembleFactory.withStartTime(startDateTime);"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceScheduleTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 3,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 18,
+    "example": ".extracting(Ensemble::meetingLink)"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMembersTest.java",
+    "lang": "java",
+    "mentions": 11,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 18,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/DashboardEnsembleViewTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 17,
+    "example": "Ensemble savedEnsemble = ensembleRepository.save(new Ensemble(\"Ensemble #1\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceFindTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 16,
+    "example": "Ensemble savedEnsemble = ensembleRepository.save(new Ensemble(\"test\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/EnsembleDetailViewTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 2,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryViewTest.java",
+    "lang": "java",
+    "mentions": 10,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = EnsembleFactory.withIdOf1AndOneDayInTheFuture();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/MemberControllerTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 15,
+    "example": "ensembleRepository.save(new Ensemble(\"GET Test\", ZonedDateTime.now()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendMembersWhenEnsembleCompletedTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "// emails are only sent to Ensemble.acceptedMembers()"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceCompletedTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 15,
+    "example": "Ensemble ensemble = new Ensemble(\"Completed\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/email/EmailToSendMemberAcceptedNotifierTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 13,
+    "example": "Ensemble ensemble = new Ensemble(\"Ensemble #123\", URI.create(\"https://zoom.us\"), ZonedDateTime.of(2021, 10, 20, 16, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceMemberRegistrationNotificationTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 13,
+    "example": "Ensemble ensemble = new Ensemble(\"scheduled\","
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/TestEnsembleServiceBuilder.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 13,
+    "example": "private Ensemble lastEnsemble;"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberRsvpTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 12,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTimeNow();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleDboMappingTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "Ensemble ensemble = ensembleDbo.asEnsemble();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/EnsembleServiceMemberTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceEnsembleScheduledNotificationTest.java",
+    "lang": "java",
+    "mentions": 6,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 11,
+    "example": "ensembleService.scheduleEnsemble(\"Notifying Ensemble\", ZonedDateTime.of(2021, 11, 10, 17, 0, 0, 0, ZoneOffset.UTC));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/domain/EnsembleBuilderAndSaviour.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 10,
+    "example": "private Ensemble ensemble;"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/EnsembleServiceCancelTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 8,
+    "example": "Ensemble ensemble = new EnsembleBuilderAndSaviour().build();"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/GoogleCalendarLinkCreatorTest.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 7,
+    "example": "Ensemble calendarEnsemble = new Ensemble(\"Calendar Ensemble\","
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/ScheduleEnsembleFormTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": true,
+    "same_package": false,
+    "score": 6,
+    "example": "Ensemble ensemble = EnsembleFactory.withStartTime(2021, 12, 15, 21);"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/in/web/admin/AdminEndpointConfigurationTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble dummyEnsemble = new Ensemble(\"dummy\", URI.create(\"https://dummy.link\"), ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/jdbc/PostgresqlEntityTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble original = new Ensemble(\"entity\", ZonedDateTime.of(2021, 1, 3, 0, 0, 0, 0, ZoneId.systemDefault()));"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/mobtimer/MobParticipantsDtoCreationTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/adapter/out/mobtimer/MobTimerMessageSenderTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 5,
+    "example": "Ensemble ensemble = new Ensemble(\"test\", ZonedDateTime.now());"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/port/DummyNotifier.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 3,
+    "example": "public int ensembleScheduled(Ensemble ensemble, URI registrationLink) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/DeleteMeetingConferenceSchedulerMock.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/FailsToCreateMeetingConferenceScheduler.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/ZoomConferenceSchedulerDeletesExpectedMeetingId.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   },
+   {
+    "test_path": "src/test/java/com/jitterted/mobreg/application/port/DummyVideoConferenceScheduler.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "public ConferenceDetails createMeeting(Ensemble ensemble) {"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/BuildrOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.BuildrOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new BuildrOutput(), BUILDR_OUTPUT, RESPONSE)"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"buildr\", BuildrOutput.class)"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/GradleGroovyOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.GradleGroovyOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new GradleGroovyOutput(), GRADLE_GROOVY_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 2,
+    "example": "assertThat(printer.getClass()).isEqualTo(GradleGroovyOutput.class);"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/GradleGroovyShortOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.GradleGroovyShortOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new GradleGroovyShortOutput(), GRADLE_GROOVY_SHORT_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"gradle-short\", GradleGroovyShortOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/GradleKotlinOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.GradleKotlinOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new GradleKotlinOutput(), GRADLE_KOTLIN_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"gradle-kotlin\", GradleKotlinOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/GrapeOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.GrapeOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new GrapeOutput(), GRAPE_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"grape\", GrapeOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/IvyXmlOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.IvyXmlOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new IvyXmlOutput(), IVY_XML_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"ivy\", IvyXmlOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/LeiningenOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.LeiningenOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new LeiningenOutput(), LEININGEN_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"leiningen\", LeiningenOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/PomXmlOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.PomXmlOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 10,
+    "example": "Arguments.of(new PomXmlOutput(), POM_XML_DEPENDENCY_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"maven\", PomXmlOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "mthmulders-mcs-7c8b5bc9c7f2",
+  "repository": "mthmulders/mcs",
+  "checkout_sha": "7c8b5bc9c7f26865d6785e06051e73317c06af2c",
+  "class_path": "src/main/java/it/mulders/mcs/search/printer/SbtOutput.java",
+  "cut_fqn": "it.mulders.mcs.search.printer.SbtOutput",
+  "test_files_scanned": 18,
+  "candidates": [
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/printer/CoordinatePrinterTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "Arguments.of(new SbtOutput(), SBT_OUTPUT, RESPONSE),"
+   },
+   {
+    "test_path": "src/test/java/it/mulders/mcs/search/FormatTypeTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 1,
+    "example": "Arguments.of(\"sbt\", SbtOutput.class),"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "semver4j-semver4j-beb7e5d466c7",
+  "repository": "semver4j/semver4j",
+  "checkout_sha": "beb7e5d466c708721740f6fe99ca33ca9f4ed9ea",
+  "class_path": "src/main/java/org/semver4j/internal/range/processor/XRangeProcessor.java",
+  "cut_fqn": "org.semver4j.internal.range.processor.XRangeProcessor",
+  "test_files_scanned": 9,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "slub-urnlib-106be8d1b804",
+  "repository": "slub/urnlib",
+  "checkout_sha": "106be8d1b8047f93a715edc03fdc1b17c3aacc4b",
+  "class_path": "src/main/java/de/slub/urn/RQF_RFC8141.java",
+  "cut_fqn": "de.slub.urn.RQF_RFC8141",
+  "test_files_scanned": 17,
+  "candidates": [
+   {
+    "test_path": "src/test/java/de/slub/urn/RQFRFC8141Test.java",
+    "lang": "java",
+    "mentions": 14,
+    "direct_uses": 5,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 31,
+    "example": "RQF_RFC8141 n = RQF_RFC8141.NULL;"
+   },
+   {
+    "test_path": "src/test/java/de/slub/urn/RFC8141ParserTest.java",
+    "lang": "java",
+    "mentions": 12,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 14,
+    "example": "RQF_RFC8141 rqf = urn.getRQFComponents();"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "snowflakedb-snowflake-jdbc-002bc9bb528a",
+  "repository": "snowflakedb/snowflake-jdbc",
+  "checkout_sha": "002bc9bb528a71b0233742240d02ce4677fb75d6",
+  "class_path": "src/main/java/net/snowflake/client/jdbc/SnowflakeConnectString.java",
+  "cut_fqn": "net.snowflake.client.jdbc.SnowflakeConnectString",
+  "test_files_scanned": 183,
+  "candidates": [
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/SnowflakeConnectionV1Test.java",
+    "lang": "java",
+    "mentions": 14,
+    "direct_uses": 13,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 55,
+    "example": "SnowflakeConnectString conStr;"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/ConnectStringParseTest.java",
+    "lang": "java",
+    "mentions": 9,
+    "direct_uses": 7,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 32,
+    "example": "SnowflakeConnectString cstring = SnowflakeConnectString.parse(jdbcConnectString, info);"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/SnowflakeDriverTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "void match(String url, SnowflakeConnectString sc) {"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/MockConnectionTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "public SnowflakeConnectString getSnowflakeConnectionString() {"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "snowflakedb-snowflake-jdbc-15a45aca6bcd",
+  "repository": "snowflakedb/snowflake-jdbc",
+  "checkout_sha": "15a45aca6bcd42e354ee6cb6ccd822b75647351d",
+  "class_path": "src/main/java/net/snowflake/client/jdbc/SnowflakeFileTransferAgent.java",
+  "cut_fqn": "net.snowflake.client.jdbc.SnowflakeFileTransferAgent",
+  "test_files_scanned": 189,
+  "candidates": [
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/FileUploaderLatestIT.java",
+    "lang": "java",
+    "mentions": 66,
+    "direct_uses": 44,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 200,
+    "example": "/** Tests for SnowflakeFileTransferAgent that require an active connection */"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/SnowflakeDriverLatestIT.java",
+    "lang": "java",
+    "mentions": 37,
+    "direct_uses": 25,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 114,
+    "example": "SnowflakeFileTransferAgent agent ="
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/FileUploaderSessionlessTest.java",
+    "lang": "java",
+    "mentions": 16,
+    "direct_uses": 15,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 63,
+    "example": "/** Tests for SnowflakeFileTransferAgent.expandFileNames. */"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/FileUploaderExpandFileNamesTest.java",
+    "lang": "java",
+    "mentions": 5,
+    "direct_uses": 4,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 19,
+    "example": "/** Tests for SnowflakeFileTransferAgent.expandFileNames */"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/FileUploaderMimeTypeToCompressionTypeTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "* Tests for SnowflakeFileTransferAgent.mimeTypeToCompressionType See"
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/SnowflakeAzureClientHandleExceptionLatestIT.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "SnowflakeFileTransferAgent agent ="
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/SnowflakeGcsClientHandleExceptionLatestIT.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "SnowflakeFileTransferAgent agent ="
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/SnowflakeS3ClientHandleExceptionLatestIT.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "SnowflakeFileTransferAgent agent ="
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/cloud/storage/SnowflakeAzureClientLatestIT.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "SnowflakeFileTransferAgent sfAgent ="
+   },
+   {
+    "test_path": "src/test/java/net/snowflake/client/jdbc/cloud/storage/SnowflakeS3ClientLatestIT.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "SnowflakeFileTransferAgent sfAgent ="
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "spring-projects-spring-guice-ce15b8e5802a",
+  "repository": "spring-projects/spring-guice",
+  "checkout_sha": "ce15b8e5802ad435ab296693ac84dd41d64106f1",
+  "class_path": "src/main/java/org/springframework/guice/module/SpringModule.java",
+  "cut_fqn": "org.springframework.guice.module.SpringModule",
+  "test_files_scanned": 36,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/springframework/guice/module/SpringModuleGuiceBindingAwareTests.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "new SpringModule(BeanFactoryProvider.from(GuiceProjectWithSpringLibraryTestSpringConfig.class)));"
+   },
+   {
+    "test_path": "src/test/java/org/springframework/guice/module/SpringModuleMetadataTests.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "Injector injector = Guice.createInjector(new SpringModule(context));"
+   },
+   {
+    "test_path": "src/test/java/org/springframework/guice/module/SpringModuleWiringTests.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "return Guice.createInjector(new SpringModule(new AnnotationConfigApplicationContext(TestConfig.class)));"
+   },
+   {
+    "test_path": "src/test/java/org/springframework/guice/module/SpringModuleWrappedTests.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": true,
+    "same_package": true,
+    "score": 11,
+    "example": "new SpringModule(BeanFactoryProvider.from(TestConfig.class, ModuleProviderConfig.class)));"
+   },
+   {
+    "test_path": "src/test/java/org/springframework/guice/PartialInjectionTests.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "return Guice.createInjector(new SpringModule(beanFactoryProvider), new ExampleGuiceModule());"
+   },
+   {
+    "test_path": "src/test/java/org/springframework/guice/annotation/GuiceModuleAnnotationTests.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "Injector injector = Guice.createInjector(new SpringModule(new AnnotationConfigApplicationContext(config)));"
+   },
+   {
+    "test_path": "src/test/java/org/springframework/guice/MapBindingDeduplicationTests.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 2,
+    "example": "assertThat(someDependency.getSource()).isEqualTo(SpringModule.SPRING_GUICE_SOURCE);"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "st-tu-dresden-salespoint-85a764f892aa",
+  "repository": "st-tu-dresden/salespoint",
+  "checkout_sha": "85a764f892aaca4cfcb6749e55f3131a23cc8f66",
+  "class_path": "src/main/java/org/salespointframework/accountancy/PersistentAccountancy.java",
+  "cut_fqn": "org.salespointframework.accountancy.PersistentAccountancy",
+  "test_files_scanned": 68,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-1c91d35263f1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "1c91d35263f1d00c00db44f7b2ff373aacb28478",
+  "class_path": "src/main/java/org/traccar/helper/StringUtil.java",
+  "cut_fqn": "org.traccar.helper.StringUtil",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-8ae0436e5edb",
+  "repository": "traccar/traccar",
+  "checkout_sha": "8ae0436e5edb76243e59ee6e9b2c1a6132fd9464",
+  "class_path": "src/main/java/org/traccar/helper/Parser.java",
+  "cut_fqn": "org.traccar.helper.Parser",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-adbe25e9daa1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "adbe25e9daa125e989c853068bc600c61234c342",
+  "class_path": "src/main/java/org/traccar/api/MediaFilter.java",
+  "cut_fqn": "org.traccar.api.MediaFilter",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-adbe25e9daa1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "adbe25e9daa125e989c853068bc600c61234c342",
+  "class_path": "src/main/java/org/traccar/model/ExtendedModel.java",
+  "cut_fqn": "org.traccar.model.ExtendedModel",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-adbe25e9daa1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "adbe25e9daa125e989c853068bc600c61234c342",
+  "class_path": "src/main/java/org/traccar/web/CharResponseWrapper.java",
+  "cut_fqn": "org.traccar.web.CharResponseWrapper",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-adbe25e9daa1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "adbe25e9daa125e989c853068bc600c61234c342",
+  "class_path": "src/main/java/org/traccar/web/ModernDefaultServlet.java",
+  "cut_fqn": "org.traccar.web.ModernDefaultServlet",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-adbe25e9daa1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "adbe25e9daa125e989c853068bc600c61234c342",
+  "class_path": "src/main/java/org/traccar/web/OverrideFilter.java",
+  "cut_fqn": "org.traccar.web.OverrideFilter",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-adbe25e9daa1",
+  "repository": "traccar/traccar",
+  "checkout_sha": "adbe25e9daa125e989c853068bc600c61234c342",
+  "class_path": "src/main/java/org/traccar/web/WebModule.java",
+  "cut_fqn": "org.traccar.web.WebModule",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/api/resource/CommandResource.java",
+  "cut_fqn": "org.traccar.api.resource.CommandResource",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/api/resource/ReportResource.java",
+  "cut_fqn": "org.traccar.api.resource.ReportResource",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/handler/ComputedAttributesHandler.java",
+  "cut_fqn": "org.traccar.handler.ComputedAttributesHandler",
+  "test_files_scanned": 382,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/traccar/handler/ComputedAttributesTest.java",
+    "lang": "java",
+    "mentions": 2,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 7,
+    "example": "ComputedAttributesHandler handler = new ComputedAttributesHandler(new Config(), null);"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/helper/ClassScanner.java",
+  "cut_fqn": "org.traccar.helper.ClassScanner",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/helper/StringUtil.java",
+  "cut_fqn": "org.traccar.helper.StringUtil",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/model/Report.java",
+  "cut_fqn": "org.traccar.model.Report",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/reports/common/ReportExecutor.java",
+  "cut_fqn": "org.traccar.reports.common.ReportExecutor",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/reports/common/ReportMailer.java",
+  "cut_fqn": "org.traccar.reports.common.ReportMailer",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/schedule/ScheduleManager.java",
+  "cut_fqn": "org.traccar.schedule.ScheduleManager",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-b4934e05aab6",
+  "repository": "traccar/traccar",
+  "checkout_sha": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+  "class_path": "src/main/java/org/traccar/schedule/TaskReports.java",
+  "cut_fqn": "org.traccar.schedule.TaskReports",
+  "test_files_scanned": 382,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-c68e92043cb5",
+  "repository": "traccar/traccar",
+  "checkout_sha": "c68e92043cb52f859de724781f2e5774c60d465b",
+  "class_path": "src/main/java/org/traccar/protocol/HuaShengProtocol.java",
+  "cut_fqn": "org.traccar.protocol.HuaShengProtocol",
+  "test_files_scanned": 384,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "traccar-traccar-d244b4bc4999",
+  "repository": "traccar/traccar",
+  "checkout_sha": "d244b4bc4999ba3e3dca607bf797c3f7d7f578ff",
+  "class_path": "src/main/java/org/traccar/model/ExtendedModel.java",
+  "cut_fqn": "org.traccar.model.ExtendedModel",
+  "test_files_scanned": 386,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "vmzakharov-dataframe-ec-12af99192d24",
+  "repository": "vmzakharov/dataframe-ec",
+  "checkout_sha": "12af99192d241ff9e4dcf78e92cef31117b7d05a",
+  "class_path": "src/main/java/io/github/vmzakharov/ecdataframe/dsl/value/StringValue.java",
+  "cut_fqn": "io.github.vmzakharov.ecdataframe.dsl.value.StringValue",
+  "test_files_scanned": 65,
+  "candidates": [
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/dsl/ObjectValueCompareOpTest.java",
+    "lang": "java",
+    "mentions": 32,
+    "direct_uses": 32,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 128,
+    "example": "Assert.assertTrue(ExpressionTestUtil.evaluate(ComparisonOp.EQ, new StringValue(\"Foo\"), new StringValue(\"Foo\")));"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/dsl/ObjectValueContainsOpTest.java",
+    "lang": "java",
+    "mentions": 21,
+    "direct_uses": 21,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 84,
+    "example": "Assert.assertTrue(ExpressionTestUtil.evaluate(ContainsOp.IN, new StringValue(\"Foo\"), this.vectorOfStrings(\"Foo\", \"Bar\", null, \"Baz\")));"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/dsl/ValueCompareTest.java",
+    "lang": "java",
+    "mentions": 7,
+    "direct_uses": 4,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 19,
+    "example": "StringValue abc = new StringValue(\"abc\");"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/dsl/function/BuiltInFormatterTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 3,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 12,
+    "example": "context.setVariable(\"formatWithDecimal\", new StringValue(\"#,##0.0##;(#,##0.0##)\"));"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/HandcraftedExpressionTreeTest.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 2,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 9,
+    "example": "new StringValue(\"Oompa\"),"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/dsl/value/ValueTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "new StringValue(null);"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/ExpressionWithNullValuesTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "context.setVariable(\"a\", new StringValue(\"abc\"));"
+   },
+   {
+    "test_path": "src/test/java/io/github/vmzakharov/ecdataframe/TypeInferenceTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": "context.setVariable(\"y\", new StringValue(\"abc\"));"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "vmzakharov-dataframe-ec-e9eb4dbe0e70",
+  "repository": "vmzakharov/dataframe-ec",
+  "checkout_sha": "e9eb4dbe0e703e13f8597be61fde10e604de127d",
+  "class_path": "src/main/java/io/github/vmzakharov/ecdataframe/dataframe/compare/ComparisonResult.java",
+  "cut_fqn": "io.github.vmzakharov.ecdataframe.dataframe.compare.ComparisonResult",
+  "test_files_scanned": 68,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "w3c-epubcheck-0759a82ae407",
+  "repository": "w3c/epubcheck",
+  "checkout_sha": "0759a82ae40706269aa3c88e9a175bf8ce7a2f54",
+  "class_path": "src/main/java/com/adobe/epubcheck/opf/OPFChecker30.java",
+  "cut_fqn": "com.adobe.epubcheck.opf.OPFChecker30",
+  "test_files_scanned": 29,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/w3c/epubcheck/test/ExecutionSteps.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 4,
+    "example": ": new OPFChecker30(context);"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "w3c-epubcheck-0759a82ae407",
+  "repository": "w3c/epubcheck",
+  "checkout_sha": "0759a82ae40706269aa3c88e9a175bf8ce7a2f54",
+  "class_path": "src/main/java/com/adobe/epubcheck/ops/OPSHandler30.java",
+  "cut_fqn": "com.adobe.epubcheck.ops.OPSHandler30",
+  "test_files_scanned": 29,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "w3c-epubcheck-49aacb238c3e",
+  "repository": "w3c/epubcheck",
+  "checkout_sha": "49aacb238c3edddedb45abba813bbf7c9efa54de",
+  "class_path": "src/main/java/com/adobe/epubcheck/tool/EpubChecker.java",
+  "cut_fqn": "com.adobe.epubcheck.tool.EpubChecker",
+  "test_files_scanned": 30,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "w3c-epubcheck-7804c78a53f2",
+  "repository": "w3c/epubcheck",
+  "checkout_sha": "7804c78a53f25d98de9457e12d2bdbd4b40e682b",
+  "class_path": "src/main/java/org/w3c/epubcheck/core/references/ResourceReferencesChecker.java",
+  "cut_fqn": "org.w3c.epubcheck.core.references.ResourceReferencesChecker",
+  "test_files_scanned": 30,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "wmixvideo-nfe-67518e14db7e",
+  "repository": "wmixvideo/nfe",
+  "checkout_sha": "67518e14db7e1c5b910cadb3bd902e99b79bec4c",
+  "class_path": "src/main/java/com/fincatto/documentofiscal/mdfe3/classes/nota/MDFInfoModalRodoviarioVeiculoReboque.java",
+  "cut_fqn": "com.fincatto.documentofiscal.mdfe3.classes.nota.MDFInfoModalRodoviarioVeiculoReboque",
+  "test_files_scanned": 495,
+  "candidates": [
+   {
+    "test_path": "src/test/java/com/fincatto/documentofiscal/mdfe3/FabricaDeObjetosFakeMDFe.java",
+    "lang": "java",
+    "mentions": 3,
+    "direct_uses": 1,
+    "name_contains_cut": false,
+    "same_package": false,
+    "score": 6,
+    "example": "public static MDFInfoModalRodoviarioVeiculoReboque getMDFInfoModalRodoviarioVeiculoReboque() {"
+   }
+  ]
+ },
+ {
+  "task_id": "",
+  "project_id": "xtremexp-UT4X-Converter-e16bad18b562",
+  "repository": "xtremexp/UT4X-Converter",
+  "checkout_sha": "e16bad18b562c554a0db5bfab6496553d9ba8349",
+  "class_path": "src/main/java/org/xtx/ut4converter/t3d/T3DSimpleProperty.java",
+  "cut_fqn": "org.xtx.ut4converter.t3d.T3DSimpleProperty",
+  "test_files_scanned": 26,
+  "candidates": []
+ },
+ {
+  "task_id": "",
+  "project_id": "xtremexp-UT4X-Converter-e719841eb260",
+  "repository": "xtremexp/UT4X-Converter",
+  "checkout_sha": "e719841eb2603a1db7d33d2e922fcb42a13e608f",
+  "class_path": "src/main/java/org/xtx/ut4converter/t3d/T3DActor.java",
+  "cut_fqn": "org.xtx.ut4converter.t3d.T3DActor",
+  "test_files_scanned": 25,
+  "candidates": [
+   {
+    "test_path": "src/test/java/org/xtx/ut4converter/t3d/T3DTestUtils.java",
+    "lang": "java",
+    "mentions": 4,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 6,
+    "example": "public static T3DActor parseFromT3d(final MapConverter mc, final String inputClassName, final Class<? extends T3DActor> utActorClass, final String t3dFilePath) throws ReflectiveOperationException, IOE"
+   },
+   {
+    "test_path": "src/test/java/org/xtx/ut4converter/t3d/T3DUE2TerrainTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "final T3DActor actor = parseFromT3d( this.mc, \"TerrainInfo\", T3DUE2Terrain.class, T3DUE2Terrain.class.getResource(\"/t3d/ue2/\" + t3dFile).getPath());"
+   },
+   {
+    "test_path": "src/test/java/org/xtx/ut4converter/t3d/T3DUE3TerrainTest.java",
+    "lang": "java",
+    "mentions": 1,
+    "direct_uses": 0,
+    "name_contains_cut": false,
+    "same_package": true,
+    "score": 3,
+    "example": "final T3DActor actor = T3DTestUtils.parseFromT3d(this.mc, \"TerrainActor\", T3DUE3Terrain.class, T3DUE3TerrainTest.class.getResource(\"/t3d/ue3/UT3-Terrain-Sandstorm.t3d\").getPath());"
+   }
+  ]
+ }
+]
