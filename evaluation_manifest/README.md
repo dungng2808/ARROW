@@ -11,7 +11,7 @@ Tập đánh giá được chọn theo đặc tả tại `preflight.md` và mã 
 1. **Pool đầu vào đã qua kiểm chứng kỹ thuật (`technical_eligible`):**
    - Chỉ lấy các class từ kết quả preflight của cả 5 shards (`preflight_manifest/*/technical_eligible_manifest.jsonl`).
    - Tổng pool: **6.342 classes** (thuộc **1.324 repositories**) đạt trạng thái `preflight_status == ELIGIBLE`.
-   - Tất cả đều có `revision_verification_status == CONTENT_MATCHED` (mã nguồn và test case khớp chính xác với snapshot của dataset Classes2Test).
+   - Tất cả đều có `revision_verification_status == CONTENT_MATCHED`: preflight tìm được trong lịch sử repository một commit mà phần thân focal method và test case khớp với bản ghi Classes2Test sau khi bỏ chú thích và chuẩn hóa khoảng trắng. Commit này tái lập được nhưng không bảo đảm là commit tác giả dataset đã dùng; các file khác như cấu hình build và dependencies có thể khác.
 
 2. **Đảm bảo tính đa dạng và độc lập (Repository Diversity):**
    - Mỗi repository chỉ được chọn tối đa **đúng 1 focal class** (`unique_repositories == 200`).
