@@ -32,7 +32,7 @@ app.Configure(config =>
     config.SetApplicationName("arrow");
     config.AddCommand<SetupCommand>("setup").WithDescription("Cài đặt máy (8 bước)");
     config.AddCommand<DoctorCommand>("doctor").WithDescription("Kiểm tra môi trường");
-    config.AddCommand<RunCommand>("run").WithDescription("Chạy shard của máy này (mốc M2: S0 chuẩn bị; --demo: job giả)");
+    config.AddCommand<RunCommand>("run").WithDescription("Chạy shard của máy này: S0 chuẩn bị → S1 sinh test → S2 sửa → S3 EvoSuite → S4 chất lượng (--demo: job giả)");
     config.AddCommand<StatusCommand>("status").WithDescription("Xem trạng thái một run");
     config.AddCommand<RunsCommand>("runs").WithDescription("Danh sách run trên máy");
     config.AddCommand<ControlCmd>("control").WithDescription("Tạm dừng / tiếp tục / dừng run đang chạy: control <pause|resume|stop>");
@@ -40,6 +40,11 @@ app.Configure(config =>
     {
         shard.SetDescription("Chia shard (người điều phối)");
         shard.AddCommand<ShardPlanCommand>("plan").WithDescription("Chia task cho các máy");
+    });
+    config.AddBranch("fewshot", fewshot =>
+    {
+        fewshot.SetDescription("Ví dụ few-shot (người điều phối)");
+        fewshot.AddCommand<FewShotSelectCommand>("select").WithDescription("Chọn 2 ví dụ few-shot cố định, ghi prompts/fewshot/examples.json");
     });
 });
 
@@ -151,6 +156,22 @@ public sealed class RunCommand : AsyncCommand<RunCommand.Settings>
         [CommandOption("--plain")]
         [Description("Không vẽ màn hình, in từng dòng sự kiện")]
         public bool Plain { get; init; }
+
+        [CommandOption("--experiment <FILE>")]
+        [Description("Cấu hình thực nghiệm khác cấu hình của máy (ví dụ experiments/smoke-v1.json); chạy mọi task của nó")]
+        public string? Experiment { get; init; }
+
+        [CommandOption("--stages <LIST>")]
+        [Description("Chỉ chạy các bước: prepare,generate,repair,evosuite,quality (mặc định: tất cả)")]
+        public string? Stages { get; init; }
+
+        [CommandOption("--fake-llm <FILE>")]
+        [Description("Dùng model giả theo file luật (không gọi API, không tốn tiền)")]
+        public string? FakeLlm { get; init; }
+
+        [CommandOption("--max-llm-calls <N>")]
+        [Description("Giới hạn số lượt gọi API thật; vượt thì tạm dừng run")]
+        public int? MaxLlmCalls { get; init; }
     }
 
     public override async Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken)
@@ -161,8 +182,16 @@ public sealed class RunCommand : AsyncCommand<RunCommand.Settings>
         }
 
         var tasks = settings.Tasks?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToHashSet();
+        var stages = settings.Stages?.Split(',', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToHashSet();
+        var unknown = stages?.Where(s => !ShardRunScreen.AllStages.Contains(s)).ToList();
+        if (unknown is { Count: > 0 })
+        {
+            throw new ArrowException("BAD_STAGE", $"Bước không có: {string.Join(", ", unknown)} (có: {string.Join(", ", ShardRunScreen.AllStages)})");
+        }
+
         return await new ShardRunScreen(settings.CreateSession())
-            .RunAsync(new ShardRunScreen.Options(settings.RunId, settings.Plain, settings.RerunInfra, tasks, settings.AllTasks), cancellationToken);
+            .RunAsync(new ShardRunScreen.Options(settings.RunId, settings.Plain, settings.RerunInfra, tasks, settings.AllTasks,
+                settings.Experiment, stages, settings.FakeLlm, settings.MaxLlmCalls), cancellationToken);
     }
 }
 
@@ -239,4 +268,26 @@ public sealed class ShardPlanCommand : Command<ShardPlanCommand.Settings>
 
     public override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken) =>
         new ShardPlanScreen(settings.CreateSession()).Run(settings.Experiment, settings.Owners, settings.PlanId, settings.Out, settings.Coordinator, settings.Yes);
+}
+
+public sealed class FewShotSelectCommand : AsyncCommand<FewShotSelectCommand.Settings>
+{
+    public sealed class Settings : GlobalSettings
+    {
+        [CommandOption("--pool-glob <GLOB>")]
+        [Description("File pool preflight, tương đối so với ARROW (mặc định preflight_manifest/0*/technical_eligible_manifest.jsonl)")]
+        public string PoolGlob { get; init; } = "preflight_manifest/0*/technical_eligible_manifest.jsonl";
+
+        [CommandOption("--exclude <FILES>")]
+        [Description("Manifest có repository bị loại, tương đối so với ARROW, cách nhau bởi dấu phẩy")]
+        public string Exclude { get; init; } =
+            "evaluation_manifest/classes2test_200_seed42.jsonl,evaluation_manifest/pilot/classes2test_pilot_50_seed42.jsonl,"
+            + "evaluation_manifest/pilot/classes2test_pilot_50_seed42_v2.jsonl,evaluation_manifest/pilot/classes2test_pilot_reserve_50_seed42.jsonl";
+
+        [CommandOption("--seed <N>")]
+        public int Seed { get; init; } = 42;
+    }
+
+    public override Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken) =>
+        new FewShotScreen(settings.CreateSession()).RunAsync(settings.PoolGlob, settings.Exclude, settings.Seed, cancellationToken);
 }

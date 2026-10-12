@@ -32,6 +32,9 @@ public sealed record LiteLlmConfigFile
               model: {ProviderModel}
               api_base: {ApiBase}
               api_key: {ApiKey}
+              # Cho LiteLLM chuyển reasoning_effort tới provider (LiteLLM chưa biết model này hỗ trợ tham số đó);
+              # không dùng drop_params vì sẽ âm thầm bỏ tham số của cấu hình thực nghiệm (specs/04 Mục 1).
+              allowed_openai_params: ["reasoning_effort"]
         general_settings:
           master_key: {MasterKey}
 

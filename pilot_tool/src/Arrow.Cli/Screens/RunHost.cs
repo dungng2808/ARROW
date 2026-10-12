@@ -17,6 +17,9 @@ public sealed record JobResult
     public List<string> Outputs { get; init; } = [];
     public long PromptTokens { get; init; }
     public long CompletionTokens { get; init; }
+
+    /// <summary>Lỗi cấu hình model (401, sai model id): tạm dừng cả run (specs/04 Mục 1).</summary>
+    public bool PauseRun { get; init; }
 }
 
 /// <summary>Worker đang chạy job; <see cref="Step"/> báo bước hiện tại lên dashboard.</summary>
@@ -38,7 +41,14 @@ public sealed record StageSpec(
 public sealed class RunHost(RunStore store, DashboardView.Header header, bool plain, bool rerunInfra)
 {
     /// <summary>Chạy lần lượt các stage. Trả về true nếu dừng vì lệnh dừng hẳn.</summary>
-    public async Task<bool> RunAsync(IReadOnlyList<StageSpec> stages, CancellationToken cancellationToken)
+    public Task<bool> RunAsync(IReadOnlyList<StageSpec> stages, CancellationToken cancellationToken) =>
+        RunAsync(stages.Select(s => (Func<StageSpec?>)(() => s)).ToList(), cancellationToken);
+
+    /// <summary>
+    /// Chạy lần lượt các stage; mỗi stage được dựng ngay trước khi chạy (danh sách job của stage sau phụ thuộc kết quả
+    /// stage trước), null thì bỏ qua. Trả về true nếu dừng vì lệnh dừng hẳn.
+    /// </summary>
+    public async Task<bool> RunAsync(IReadOnlyList<Func<StageSpec?>> stageFactories, CancellationToken cancellationToken)
     {
         var gate = new ControlGate(store);
         gate.ResetForNewSession();
@@ -57,8 +67,15 @@ public sealed class RunHost(RunStore store, DashboardView.Header header, bool pl
         };
 
         var stopped = false;
-        foreach (var stage in stages)
+        foreach (var factory in stageFactories)
         {
+            var stage = factory();
+            if (stage is null || stage.Jobs.Count == 0)
+            {
+                continue;
+            }
+
+            latest = store.LatestByJob();
             var done = stage.Jobs.Count(j => RunStore.IsFinished(latest.GetValueOrDefault(j.Canonical), rerunInfra));
             var infra = stage.Jobs.Count(j => latest.GetValueOrDefault(j.Canonical)?.Status == JobStatus.Infra && !rerunInfra);
             tracker.SetStage(stage.Stage, stage.Jobs.Count, done, infra);
@@ -213,6 +230,20 @@ public sealed class RunHost(RunStore store, DashboardView.Header header, bool pl
             LlmSeconds = result.LlmSeconds,
             BuildSeconds = result.BuildSeconds,
         });
+        if (result.PauseRun)
+        {
+            // Sau khi đã ghi ledger: lỗi khi ghi control.json không làm mất kết quả của job.
+            ToolLog.Warn($"run {store.RunId}: {result.Reason} ở job {job.Canonical}, tạm dừng run");
+            try
+            {
+                ControlGate.Request(store, ControlCommand.Pause, "tool");
+            }
+            catch (IOException ex)
+            {
+                ToolLog.Error($"run {store.RunId}: không ghi được control.json", ex);
+            }
+        }
+
         ToolLog.Info($"run {store.RunId}: {stage.Stage} {job.TaskId} → {result.Outcome}{(result.Reason is null ? "" : " " + result.Reason)} ({(DateTimeOffset.UtcNow - started).TotalSeconds:0.0}s) {ToolLog.Redact(result.Message)}");
         tracker.JobFinished(worker, stage.Stage, result.Outcome, infra, result.PromptTokens, result.CompletionTokens);
     }

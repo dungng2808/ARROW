@@ -1,6 +1,6 @@
 # 01. Cấu hình và định dạng dữ liệu
 
-Mọi file JSON dùng UTF-8, không BOM, xuống dòng LF, tên trường `snake_case`. JSONL: mỗi dòng một object. Mọi file do tool ghi phải ghi **nguyên tử** (ghi `<file>.tmp` rồi đổi tên), trừ `ledger.jsonl` (chỉ ghi thêm, flush sau mỗi dòng). Hash là SHA-256 hex chữ thường của **byte** của file.
+Mọi file JSON dùng UTF-8, không BOM, xuống dòng LF, tên trường `snake_case`. JSONL: mỗi dòng một object. Mọi file do tool ghi phải ghi **nguyên tử** (ghi `<file>.<pid>.<n>.tmp` rồi đổi tên; tên tạm riêng cho mỗi lần ghi để hai luồng ghi cùng file không giẫm lên nhau), trừ `ledger.jsonl` (chỉ ghi thêm, flush sau mỗi dòng). Hash là SHA-256 hex chữ thường của **byte** của file.
 
 ## 1. Cấu hình thực nghiệm (`experiments/<experiment_id>.json`, commit)
 
@@ -72,6 +72,7 @@ model_list:
       model: openai/gpt-6-luna
       api_base: https://api.openai.com/v1
       api_key: sk-…            # khóa của máy này
+      allowed_openai_params: ["reasoning_effort"]   # LiteLLM chưa biết model này nhận reasoning_effort (00-INDEX P5)
 general_settings:
   master_key: sk-local-…       # khóa bảo vệ proxy, sinh ngẫu nhiên khi setup
 ```

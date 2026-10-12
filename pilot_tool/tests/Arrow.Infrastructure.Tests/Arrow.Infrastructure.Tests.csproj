@@ -18,6 +18,7 @@
   <ItemGroup>
     <ProjectReference Include="..\..\src\Arrow.Core\Arrow.Core.csproj" />
     <ProjectReference Include="..\..\src\Arrow.Infrastructure\Arrow.Infrastructure.csproj" />
+    <ProjectReference Include="..\..\src\Arrow.Cli\Arrow.Cli.csproj" />
   </ItemGroup>
 
   <ItemGroup>

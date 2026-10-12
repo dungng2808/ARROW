@@ -1,0 +1,38 @@
+{
+  "schema_version": 1,
+  "rule": "pool: technical_eligible + CONTENT_MATCHED of Classes2Test preflight, minus every repository of the excluded manifests; per framework (junit4, junit5): candidates sorted by task_id, shuffled with System.Random(seed) (Fisher-Yates), first candidate that meets all conditions is chosen: CUT 30-150 lines, human test 20-120 lines, >= 2 test methods and >= 2 assertions (java-analyzer), no Mockito, no external service or container markers in the test (Spring/Micronaut/Quarkus context, @ExtendWith, @RunWith, injection, Testcontainers, JDBC, SQL, database, HTTP URL, sockets, temporary folders, environment variables, sleeps)",
+  "seed": 42,
+  "excluded_manifests": [
+    "classes2test_200_seed42.jsonl",
+    "classes2test_pilot_50_seed42.jsonl",
+    "classes2test_pilot_50_seed42_v2.jsonl",
+    "classes2test_pilot_reserve_50_seed42.jsonl"
+  ],
+  "candidates": 4805,
+  "examples": [
+    {
+      "task_id": "166116543_f6b6c10d343d5bb1",
+      "repo_url": "https://github.com/shekhargulati/conduit-on-kubernetes",
+      "checkout_sha": "2e2aed6daf3fc420f650a3ccd19423a8cb856cb0",
+      "testing_framework": "junit4",
+      "cut_path": "conduit-api/src/main/java/io/spring/infrastructure/service/DefaultJwtService.java",
+      "test_path": "conduit-api/src/test/java/io/spring/infrastructure/service/DefaultJwtServiceTest.java",
+      "cut_source": "package io.spring.infrastructure.service;\n\nimport io.jsonwebtoken.Claims;\nimport io.jsonwebtoken.Jws;\nimport io.jsonwebtoken.Jwts;\nimport io.jsonwebtoken.SignatureAlgorithm;\nimport io.spring.core.service.JwtService;\nimport io.spring.core.user.User;\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.beans.factory.annotation.Value;\nimport org.springframework.stereotype.Component;\n\nimport java.util.Date;\nimport java.util.Optional;\n\n@Component\npublic class DefaultJwtService implements JwtService {\n    private String secret;\n    private int sessionTime;\n\n    @Autowired\n    public DefaultJwtService(@Value(\"${jwt.secret}\") String secret,\n                             @Value(\"${jwt.sessionTime}\") int sessionTime) {\n        this.secret = secret;\n        this.sessionTime = sessionTime;\n    }\n\n    @Override\n    public String toToken(User user) {\n        return Jwts.builder()\n            .setSubject(user.getId())\n            .setExpiration(expireTimeFromNow())\n            .signWith(SignatureAlgorithm.HS512, secret)\n            .compact();\n    }\n\n    @Override\n    public Optional<String> getSubFromToken(String token) {\n        try {\n            Jws<Claims> claimsJws = Jwts.parser().setSigningKey(secret).parseClaimsJws(token);\n            return Optional.ofNullable(claimsJws.getBody().getSubject());\n        } catch (Exception e) {\n            return Optional.empty();\n        }\n    }\n\n    private Date expireTimeFromNow() {\n        return new Date(System.currentTimeMillis() + sessionTime * 1000);\n    }\n}\n",
+      "test_source": "package io.spring.infrastructure.service;\n\nimport io.spring.core.service.JwtService;\nimport io.spring.core.user.User;\nimport org.junit.Before;\nimport org.junit.Test;\n\nimport java.util.Optional;\n\nimport static org.hamcrest.CoreMatchers.is;\nimport static org.hamcrest.core.IsNull.notNullValue;\nimport static org.junit.Assert.assertThat;\n\npublic class DefaultJwtServiceTest {\n\n    private JwtService jwtService;\n\n    @Before\n    public void setUp() throws Exception {\n        jwtService = new DefaultJwtService(\"123123\", 3600);\n    }\n\n    @Test\n    public void should_generate_and_parse_token() throws Exception {\n        User user = new User(\"email@email.com\", \"username\", \"123\", \"\", \"\");\n        String token = jwtService.toToken(user);\n        assertThat(token, notNullValue());\n        Optional<String> optional = jwtService.getSubFromToken(token);\n        assertThat(optional.isPresent(), is(true));\n        assertThat(optional.get(), is(user.getId()));\n    }\n\n    @Test\n    public void should_get_null_with_wrong_jwt() throws Exception {\n        Optional<String> optional = jwtService.getSubFromToken(\"123\");\n        assertThat(optional.isPresent(), is(false));\n    }\n\n    @Test\n    public void should_get_null_with_expired_jwt() throws Exception {\n        String token = \"eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhaXNlbnNpeSIsImV4cCI6MTUwMjE2MTIwNH0.SJB-U60WzxLYNomqLo4G3v3LzFxJKuVrIud8D8Lz3-mgpo9pN1i7C8ikU_jQPJGm8HsC1CquGMI-rSuM7j6LDA\";\n        assertThat(jwtService.getSubFromToken(token).isPresent(), is(false));\n    }\n}\n",
+      "cut_sha256": "56c6397ba55ff5369c7e3c6b80865ff088d0429c8bac3edeb4b5d8de92ae389d",
+      "test_sha256": "89be35b77f979ff12f321fbbf67b565f9e78613779f0e0cf625ad15418c826a4"
+    },
+    {
+      "task_id": "48880766_962a909932e57aca",
+      "repo_url": "https://github.com/jtablesaw/tablesaw",
+      "checkout_sha": "93f7dd53f172e855b8ea8a9ba56bcb256c271d70",
+      "testing_framework": "junit5",
+      "cut_path": "saw/src/main/java/tech/tablesaw/io/saw/ReadOptions.java",
+      "test_path": "saw/src/test/java/tech/tablesaw/io/saw/ReadOptionsTest.java",
+      "cut_source": "package tech.tablesaw.io.saw;\n\nimport com.google.common.base.Preconditions;\nimport com.google.common.collect.Lists;\nimport java.util.ArrayList;\nimport java.util.List;\n\n/**\n * Specifies options for reading a table from Saw storage\n *\n * <p>Note: There is no CompressionType option for reading. The CompressionType is read from the Saw\n * metadata file as it must match what was used when the data was written\n */\npublic class ReadOptions {\n\n  private static final int READER_POOL_SIZE = 8;\n\n  private List<String> selectedColumns = new ArrayList<>();\n  private int threadPoolSize = READER_POOL_SIZE;\n\n  public static ReadOptions defaultOptions() {\n    return new ReadOptions();\n  }\n\n  public ReadOptions threadPoolSize(int size) {\n    Preconditions.checkArgument(size > 0);\n    this.threadPoolSize = size;\n    return this;\n  }\n\n  public ReadOptions selectedColumns(String... columnNames) {\n    this.selectedColumns = Lists.newArrayList(columnNames);\n    return this;\n  }\n\n  public ReadOptions selectedColumns(List<String> columnNames) {\n    this.selectedColumns = columnNames;\n    return this;\n  }\n\n  public List<String> getSelectedColumns() {\n    return selectedColumns;\n  }\n\n  public int getThreadPoolSize() {\n    return threadPoolSize;\n  }\n}\n",
+      "test_source": "package tech.tablesaw.io.saw;\n\nimport static org.junit.jupiter.api.Assertions.*;\n\nimport com.google.common.collect.Lists;\nimport java.util.List;\nimport org.junit.jupiter.api.Test;\n\nclass ReadOptionsTest {\n\n  @Test\n  void threadPoolSize() {\n    ReadOptions options = new ReadOptions().threadPoolSize(10001);\n    assertEquals(10001, options.getThreadPoolSize());\n  }\n\n  @Test\n  void selectedColumns() {\n    String[] names = {\"foo\", \"bar\"};\n    List<String> nameList = Lists.newArrayList(names);\n    ReadOptions options = new ReadOptions().selectedColumns(names);\n    assertEquals(nameList, options.getSelectedColumns());\n  }\n\n  @Test\n  void testSelectedColumns() {\n    String[] names = {\"foo\", \"bar\"};\n    List<String> nameList = Lists.newArrayList(names);\n    ReadOptions options = new ReadOptions().selectedColumns(nameList);\n    assertEquals(nameList, options.getSelectedColumns());\n  }\n}\n",
+      "cut_sha256": "863776b954cd3a27fbd8af3658e43160464d0a022305421e7a3990e15597b96a",
+      "test_sha256": "fb43529f118a928905bf85cf757b9e634ed43dc0b290c9c30fc1fbc645b5949f"
+    }
+  ]
+}

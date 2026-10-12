@@ -1,6 +1,6 @@
 # Kiến trúc code của pilot_tool
 
-**Trạng thái:** đang code; M1–M4 xong (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. `README.md` mô tả tool làm gì; tài liệu này mô tả code được tổ chức và viết như thế nào. Sửa tài liệu trước, sửa code sau.
+**Trạng thái:** đang code; M1–M4 xong, M5 code xong (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. `README.md` mô tả tool làm gì; tài liệu này mô tả code được tổ chức và viết như thế nào. Sửa tài liệu trước, sửa code sau.
 
 ## 1. Kiểu kiến trúc
 

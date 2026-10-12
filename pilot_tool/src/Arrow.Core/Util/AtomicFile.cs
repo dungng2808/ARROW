@@ -6,6 +6,7 @@ namespace Arrow.Core.Util;
 public static class AtomicFile
 {
     private static readonly UTF8Encoding Utf8NoBom = new(encoderShouldEmitUTF8Identifier: false);
+    private static long _counter;
 
     public static void WriteAllText(string path, string content)
     {
@@ -15,7 +16,8 @@ public static class AtomicFile
             Directory.CreateDirectory(directory);
         }
 
-        var temp = path + ".tmp";
+        // Tên tạm riêng cho mỗi lần ghi: hai luồng ghi cùng file (ví dụ control.json) không giẫm lên nhau.
+        var temp = $"{path}.{Environment.ProcessId}.{Interlocked.Increment(ref _counter)}.tmp";
         File.WriteAllText(temp, content.Replace("\r\n", "\n"), Utf8NoBom);
         File.Move(temp, path, overwrite: true);
     }

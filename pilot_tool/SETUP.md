@@ -284,3 +284,7 @@ Kết quả được chia sẻ qua **một thư mục riêng trên GitHub** (ch�
 | 4 | Nơi chia sẻ kết quả | Thư mục `pilot_results/pilot-6/` trên GitHub (repository ARROW) |
 | 5 | Thư mục repository (13/10/2026) | Không dấu cách, không chữ có dấu; mặc định `ARROW/repo`, nếu đường dẫn ARROW có dấu cách thì `~/arrow-repo` (Mac), `C:\arrow-repo` (Windows); hoặc đổi tên thư mục cha cho hết dấu cách. Đường dẫn có dấu cách làm test fail vì môi trường (specs/02 §3b) |
 | 6 | Chọn JDK (13/10/2026) | Theo mức Java khai trong file build, quay về JDK của manifest nếu không biên dịch được (specs/02 §3) |
+
+## Ghi chú LiteLLM (13/10/2026)
+
+`litellm.config.local.yaml` phải có dòng `allowed_openai_params: ["reasoning_effort"]` trong `litellm_params` của model (bản do `arrow setup` ghi từ 13/10/2026 đã có). Thiếu dòng này thì LiteLLM 1.91.0 trả HTTP 400 `UnsupportedParamsError` cho `reasoning_effort` và run tự tạm dừng. Máy đã cài trước ngày này: chạy lại bước khóa API của `arrow setup`, hoặc thêm dòng đó dưới `api_key:` (cùng thụt lề). Không dùng `drop_params: true` vì LiteLLM sẽ âm thầm bỏ `reasoning_effort` của cấu hình thực nghiệm.

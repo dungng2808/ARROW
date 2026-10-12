@@ -111,7 +111,13 @@ public sealed record FixtureRepo(string Name, string Dir, string Url, string Sha
 
     private static string Run(string program, string[] args, string cwd)
     {
-        var result = ProcessRunner.RunAsync(program, args, cwd, null, TimeSpan.FromMinutes(2), CancellationToken.None).GetAwaiter().GetResult();
+        // Ngày giờ cố định: cùng nội dung fixture cho cùng commit SHA ở mọi lần chạy test.
+        var env = new Dictionary<string, string?>
+        {
+            ["GIT_AUTHOR_DATE"] = "2026-01-01T00:00:00Z",
+            ["GIT_COMMITTER_DATE"] = "2026-01-01T00:00:00Z",
+        };
+        var result = ProcessRunner.RunAsync(program, args, cwd, env, TimeSpan.FromMinutes(2), CancellationToken.None).GetAwaiter().GetResult();
         if (!result.Succeeded)
         {
             throw new InvalidOperationException($"{program} {string.Join(' ', args)}: {result.Output}");

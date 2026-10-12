@@ -148,10 +148,16 @@ Dependencies đưa vào prompt: các thư viện scope test liên quan tới tes
 ## 5. Ví dụ few-shot `[D4]`
 
 - Lệnh `arrow fewshot select` (người điều phối chạy một lần, commit kết quả `prompts/fewshot/examples.json`).
-- Pool: `technical_eligible` + `CONTENT_MATCHED` của Classes2Test, bỏ 200 repository đánh giá, bỏ 50 repository pilot.
-- Điều kiện: CUT 30–150 dòng, test người viết 20–120 dòng, test có ít nhất 2 test method và 2 assertion, không dùng Mockito (ví dụ đơn giản).
-- Chọn **2 ví dụ**: một JUnit 4, một JUnit 5, rút ngẫu nhiên seed 42 từ danh sách đã sắp xếp theo `task_id`. Cùng 2 ví dụ dùng cho mọi CUT.
-- `examples.json` lưu mã CUT và mã test (đã checkout đúng commit), kèm `task_id`, `repo_url`, `checkout_sha`, hash.
+- Pool: `technical_eligible` + `CONTENT_MATCHED` của Classes2Test, bỏ mọi repository của tập 200 class, pilot v1, pilot v2 và 50 CUT dự bị (`--exclude` mặc định gồm 4 manifest này). Pool còn 4.805 bản ghi.
+- Điều kiện: CUT 30–150 dòng, test người viết 20–120 dòng, test có ít nhất 2 test method và 2 assertion (java-analyzer), không dùng Mockito (ví dụ đơn giản). **Thêm (13/10/2026, chờ xác nhận):** test chạy độc lập, không cần dịch vụ ngoài: không chứa dấu hiệu Spring/Micronaut/Quarkus context, `@ExtendWith`, `@RunWith`, `@Inject`, Testcontainers, JDBC, SQL, `Database`, URL HTTP, socket, thư mục tạm, biến môi trường, `Thread.sleep` (danh sách đầy đủ trong `FewShotSelector.ExternalMarkers`). Lần chọn đầu không có điều kiện này lấy ví dụ JUnit 5 là test Micronaut cần cơ sở dữ liệu.
+- Chọn **2 ví dụ**: một JUnit 4, một JUnit 5. Với mỗi framework: danh sách ứng viên sắp theo `task_id`, xáo bằng `System.Random(42)` (Fisher–Yates), lấy ứng viên đầu tiên đạt mọi điều kiện. Cùng 2 ví dụ dùng cho mọi CUT.
+- `examples.json` lưu mã CUT và mã test (đọc bằng `git show` tại đúng commit), kèm `task_id`, `repo_url`, `checkout_sha`, hash, quy tắc và các manifest bị loại.
+- **Kết quả (13/10/2026):**
+
+| Framework | task_id | Repository | CUT | Lý do đạt |
+| --- | --- | --- | --- | --- |
+| JUnit 4 | `166116543_f6b6c10d343d5bb1` | shekhargulati/conduit-on-kubernetes | `DefaultJwtService` (50 dòng) | test 44 dòng, 3 test method, 5 assertion, tạo đối tượng trực tiếp, không cần Spring |
+| JUnit 5 | `48880766_962a909932e57aca` | jtablesaw/tablesaw | `ReadOptions` (48 dòng) | test 32 dòng, 3 test method, 3 assertion, chỉ dùng Guava `Lists` |
 
 ## 6. Prompt sửa test
 

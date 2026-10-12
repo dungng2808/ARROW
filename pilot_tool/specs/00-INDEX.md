@@ -37,6 +37,17 @@ Quy ước: `MUST` là bắt buộc, `SHOULD` là nên làm. Nhãn `[Dn]` trong 
 | D5 | Prompt sửa có kèm 6 thông tin repository không | **Không.** Mức 1 (và Fixed) = lỗi + mã test + source focal class; mức 2 của COMPILE mới thêm dependencies và Java version (AR 3.1) |
 | D7 | Mức 3 có được xóa test method không | LLM trả cả class; ARROW ghép các method lỗi vào checkpoint; method lỗi không còn trong response thì bị bỏ; method bị bỏ = có trong c0 mà không còn ở bản cuối (AR 3.1) |
 
+## Chờ xác nhận (tool tự quyết khi code, 13/10/2026)
+
+| Mã | Điểm | Tool đang làm | Ở file |
+| --- | --- | --- | --- |
+| P1 | Bước chuẩn hóa tên class chỉ nói `public class`; test JUnit 5 thường không public | Không có `public class` thì lấy class cấp cao nhất không public; vẫn phải đúng một class tên `<CUT>_ArrowTest` | 04 Mục 3 |
+| P2 | Test kiểu JUnit 5 (class/method không public) bị đổi import sang JUnit 4 | Không tự thêm `public`; JUnit 4 báo `InvalidTestClassError` → RUNTIME (đúng spec, không sửa thêm) | 04 Mục 3 |
+| P3 | JUnit 4 báo class không có `@Test` bằng test case `initializationError` "No runnable methods" | Coi là DISCOVERY, không phải RUNTIME | 03 Mục 2 |
+| P4 | Few-shot: điều kiện "chạy độc lập, không cần dịch vụ ngoài" | Lọc theo danh sách dấu hiệu trong mã test (không chạy test) | 04 Mục 5 |
+| P5 | LiteLLM 1.91.0 từ chối `reasoning_effort` với model `gpt-6-luna` (`UnsupportedParamsError`) | `litellm.config.local.yaml` thêm `allowed_openai_params: ["reasoning_effort"]` cho model; không dùng `drop_params` vì sẽ bỏ tham số | 04 Mục 1 |
+| P6 | Ghi nguyên tử khi nhiều luồng cùng ghi một file (`control.json`) | Tên file tạm riêng `<file>.<pid>.<n>.tmp` | 01 |
+
 ## Nguồn của thiết kế
 
 - **`draft/Adaptive repair.md`** (viết tắt "AR" trong spec) là nguồn chuẩn cho thuật toán sửa, khớp với bảng Adaptive Repair trong `ARROW/CLAUDE.md`. Nhóm không dùng lại code cũ (`src/repair_v2` không có); tool .NET là bản triển khai mới theo AR và các spec này. Chỗ AR không nói rõ, spec quyết định và ghi thành điểm chờ xác nhận (D6, D10–D12).

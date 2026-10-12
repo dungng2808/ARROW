@@ -32,7 +32,21 @@ Commit: `15378b5` (M3), đã push lên `main`.
 - `dotnet test tests/Arrow.Infrastructure.Tests --filter AnalyzerTests` → 6/6 pass: đếm assertion đúng từng quy tắc của specs/03 Mục 8 (JUnit, AssertJ, Mockito `verify`, `assertThrows`, `@Test(expected)`, `fail` trong `try`, RestAssured `.then().statusCode().body()` = 2, `.then().assertThat()` không tính, `.extract()` không tính, assertion tầm thường không tính); bỏ comment theo AST giữ nguyên `"http://…/*…*/"` và text block; mã không parse được thì bỏ comment theo lexer; ghép method mức 3: thay method lỗi, bỏ method lỗi không có trong response, thêm import/field/helper mới, không thêm test mới, method khác giữ từng ký tự; API của CUT và method bị gọi.
 - `dotnet test ArrowRunner.sln` → Core 76/76, Infrastructure 20/20. Build 0 warning.
 
+Commit: `960e346` (M4), đã push lên `main`.
+
+## 4. M5: model, prompt, S1 sinh test
+
+- Code: `Arrow.Core/Prompts` (template engine `{{x}}`/`#if`/`#each`, biến thiếu → lỗi; `PromptLibrary`, hash từng template vào `run_config.lock.json`; khối `repo_context`), `Arrow.Core/Generation/OutputNormalizer` (specs/04 Mục 3), `Arrow.Core/Llm`, `Arrow.Infrastructure/Llm` (`LiteLlmClient` thử lại 20/60/120 giây, 400/401/403/404 → tạm dừng run; `CachingLlmClient` `llm_cache/`; `LlmGateway` giới hạn đồng thời, rpm, kiểm tra model id, `--max-llm-calls`; `FakeLlmClient`; `LiteLlmProxy` tự bật/tắt proxy), `Arrow.Infrastructure/Generation` (`GenerateService` S1, `FewShotSelector`), `prompts/` (câu chữ của specs/04 Mục 4, 6). Lệnh mới: `arrow run --experiment … --stages … --fake-llm … --max-llm-calls …`, `arrow fewshot select`.
+- Few-shot: `dotnet run --project src/Arrow.Cli -- fewshot select` → JUnit 4 `166116543_f6b6c10d343d5bb1` (conduit-on-kubernetes, `DefaultJwtService`), JUnit 5 `48880766_962a909932e57aca` (tablesaw, `ReadOptions`); pool 4.805 bản ghi; chi tiết specs/04 Mục 5.
+- Test: Core 96/96 (`TemplateEngineTests`, `OutputNormalizerTests`, `LlmRequestTests`); Infrastructure 27/27 (`LlmClientTests`: 429 rồi 200, 401 tạm dừng, 5xx hết lượt gọi lại, sai model id, cache hit không gọi HTTP, giới hạn lượt gọi; `GenerateEndToEndTests`: `arrow run --stages prepare,generate --fake-llm` trên 3 fixture → VALID, ASSERTION, COMPILE (output không hợp lệ, không build), chạy lại không thêm dòng ledger).
+- Smoke với GPT-6 Luna thật: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate --max-llm-calls 6 --run-id smoke-gpt6 --rerun-infra` (run `runs/smoke-gpt6`).
+  - Lần 1: LiteLLM 1.91.0 trả 400 `UnsupportedParamsError: reasoning_effort` → run tự tạm dừng đúng thiết kế; lộ lỗi ghi `control.json` khi hai job cùng yêu cầu tạm dừng (đã sửa: tên file tạm riêng, yêu cầu tạm dừng sau khi ghi ledger). Sửa cấu hình: `allowed_openai_params: ["reasoning_effort"]` (00-INDEX P5).
+  - Lần 2: 3 lượt gọi thật thành công, model id `gpt-6-luna` (prompt/completion token: 970/656, 1272/884, 440/270): jpa2ddl `zero_shot` → COMPILE (`cannot find symbol | class`), `zero_shot_project_aware` → VALID; `159422409` `zero_shot` → COMPILE. Lượt thứ 4: HTTP 400 **"Your TeamoRouter wallet balance is insufficient"** → run tạm dừng, đã dừng hẳn. **Smoke còn dở: cần nạp tiền ví TeamoRouter** rồi chạy lại đúng lệnh trên (3 job còn lại; job đã xong không gọi lại).
+- Cột "Xong khi" của M5 (sinh và xác minh 177 ứng viên pilot): để lại cho lần chạy pilot thật.
+
 ## Việc còn mở
+
+- **Ví TeamoRouter hết tiền (13/10/2026, 03:51):** smoke với model thật dừng sau 3/6 lượt sinh; S2 smoke (sửa 2 vòng × 2 cơ chế) chưa chạy được. Sau khi nạp tiền: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6 --rerun-infra`.
 
 - Tiêu chí M1 trên Windows (tạm dừng/tiếp tục trên Windows): chưa kiểm được trên máy này.
 - `evaluation_manifest/gitbug_java_32_seed42.*` (tập đánh giá GitBug-Java, nguồn rút pilot GitBug-Java) và thay đổi trong `evaluation_manifest/README.md` chưa commit: ngoài phạm vi goal, để người dùng commit.

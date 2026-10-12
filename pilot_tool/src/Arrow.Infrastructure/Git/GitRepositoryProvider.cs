@@ -51,6 +51,17 @@ public sealed class GitRepositoryProvider(string gitPath, string workDir, RepoPo
                 return;
             }
 
+            if (Directory.Exists(mirror) && File.Exists(Path.Combine(mirror, "HEAD")))
+            {
+                // Repository đổi chỗ (URL khác nhưng cùng tên mirror): trỏ origin sang URL hiện tại.
+                var remote = await RunGitAsync(mirror, ["remote", "get-url", "origin"], cancellationToken).ConfigureAwait(false);
+                if (remote.Succeeded && remote.StdOut.Trim() != repoUrl)
+                {
+                    await RunGitAsync(mirror, ["remote", "set-url", "origin", repoUrl], cancellationToken, ensureSuccess: true).ConfigureAwait(false);
+                    ToolLog.Info($"git: {Path.GetFileName(mirror)} đổi origin sang {repoUrl}");
+                }
+            }
+
             if (!Directory.Exists(mirror) || !File.Exists(Path.Combine(mirror, "HEAD")))
             {
                 await CreateMirrorAsync(repoUrl, mirror, cancellationToken).ConfigureAwait(false);
@@ -135,6 +146,20 @@ public sealed class GitRepositoryProvider(string gitPath, string workDir, RepoPo
         }
 
         return workspace;
+    }
+
+    /// <summary>Nội dung một file tại commit (<c>git show sha:path</c>), không cần workspace. Commit phải có trong mirror.</summary>
+    public async Task<string> ReadFileAsync(string repoUrl, string sha, string path, CancellationToken cancellationToken)
+    {
+        await EnsureCommitAsync(repoUrl, sha, cancellationToken).ConfigureAwait(false);
+        var mirror = MirrorPath(repoUrl);
+        var result = await RunGitAsync(mirror, ["show", $"{sha}:{path.Replace('\\', '/')}"], cancellationToken).ConfigureAwait(false);
+        if (!result.Succeeded)
+        {
+            throw new PrepareException("FILE_MISSING", $"{path} không có ở commit {sha[..Math.Min(12, sha.Length)]}: {LastLine(result.Output)}");
+        }
+
+        return result.StdOut.Replace("\r\n", "\n");
     }
 
     public async Task RemoveWorktreeAsync(string repoUrl, string workspace, CancellationToken cancellationToken)
