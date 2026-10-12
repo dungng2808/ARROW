@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "BufferUtil",
+    "file": "src/main/java/org/traccar/helper/BufferUtil.java"
+  },
+  "test_class": {
+    "identifier": "BufferUtilTest",
+    "file": "src/test/java/org/traccar/helper/BufferUtilTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-7325030436e5",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "7325030436e5fc42b6998240a0c5696a1d4fed5a",
+    "previous_commit_hash": "b3c6e22fc19ceeceb0f318131538b5e1d260450c",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

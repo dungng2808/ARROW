@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "TokeniserState",
+    "file": "src/main/java/org/jsoup/parser/TokeniserState.java"
+  },
+  "test_class": {
+    "identifier": "TokeniserStateTest",
+    "file": "src/test/java/org/jsoup/parser/TokeniserStateTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-f0ae81b13eb3",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "f0ae81b13eb3dee39d4b93e73913e5072bf5debd",
+    "previous_commit_hash": "78aeac18c6e9a7bc9294e0575bce8e465e5223ac",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

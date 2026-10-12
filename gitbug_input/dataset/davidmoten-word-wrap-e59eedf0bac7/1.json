@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/davidmoten/word-wrap",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "WordWrap",
+    "file": "src/main/java/org/davidmoten/text/utils/WordWrap.java"
+  },
+  "test_class": {
+    "identifier": "WordWrapTest",
+    "file": "src/test/java/org/davidmoten/text/utils/WordWrapTest.java"
+  },
+  "gitbug": {
+    "bug_id": "davidmoten-word-wrap-e59eedf0bac7",
+    "bug_file": "davidmoten-word-wrap.json",
+    "commit_hash": "e59eedf0bac7d5ca7ee0062f3816c7ac5c3de4e0",
+    "previous_commit_hash": "930eb5e91a40f00a6782e939606d6c1d397629e0",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

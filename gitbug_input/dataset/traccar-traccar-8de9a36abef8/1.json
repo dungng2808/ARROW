@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "GoSafeProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/GoSafeProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "GoSafeProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/GoSafeProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-8de9a36abef8",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "8de9a36abef8e66be4fcc248b49045ffd3b5f7ae",
+    "previous_commit_hash": "854afb13bd8115a17b9c6c4cf739707313a709cf",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

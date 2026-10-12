@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jitterted/ensembler",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "EnsembleSummaryView",
+    "file": "src/main/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryView.java"
+  },
+  "test_class": {
+    "identifier": "EnsembleSummaryViewTest",
+    "file": "src/test/java/com/jitterted/mobreg/adapter/in/web/member/EnsembleSummaryViewTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jitterted-ensembler-0963194c9ebc",
+    "bug_file": "jitterted-ensembler.json",
+    "commit_hash": "0963194c9ebcb9998b912a2f78e232de2282709a",
+    "previous_commit_hash": "4ce609fbc4780d465fa748783034c0ea06a98784",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

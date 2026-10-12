@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/spring-projects/spring-retry",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "BackOffPolicyBuilder",
+    "file": "src/main/java/org/springframework/retry/backoff/BackOffPolicyBuilder.java"
+  },
+  "test_class": {
+    "identifier": "BackOffPolicyBuilderTests",
+    "file": "src/test/java/org/springframework/retry/backoff/BackOffPolicyBuilderTests.java"
+  },
+  "gitbug": {
+    "bug_id": "spring-projects-spring-retry-e6091f790c64",
+    "bug_file": "spring-projects-spring-retry.json",
+    "commit_hash": "e6091f790c64394508591052f962b833e2459346",
+    "previous_commit_hash": "cfa5550e9cce149a569ad71eeeec374f36137a9b",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

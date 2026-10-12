@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Tag",
+    "file": "src/main/java/org/jsoup/parser/Tag.java"
+  },
+  "test_class": {
+    "identifier": "TagTest",
+    "file": "src/test/java/org/jsoup/parser/TagTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-dea49696e976",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "dea49696e976b389864cd2926f93c6ff07bdcfa6",
+    "previous_commit_hash": "21aac91219f44ed8f9a33266271bce9972719d6c",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

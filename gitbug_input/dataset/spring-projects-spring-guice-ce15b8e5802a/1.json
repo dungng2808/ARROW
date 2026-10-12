@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/spring-projects/spring-guice",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "SpringModule",
+    "file": "src/main/java/org/springframework/guice/module/SpringModule.java"
+  },
+  "test_class": {
+    "identifier": "SpringModuleGuiceBindingAwareTests",
+    "file": "src/test/java/org/springframework/guice/module/SpringModuleGuiceBindingAwareTests.java"
+  },
+  "gitbug": {
+    "bug_id": "spring-projects-spring-guice-ce15b8e5802a",
+    "bug_file": "spring-projects-spring-guice.json",
+    "commit_hash": "ce15b8e5802ad435ab296693ac84dd41d64106f1",
+    "previous_commit_hash": "e133fee483ec614a6de0e977fbc6b685b2a99d24",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "SpringModuleGuiceBindingAwareTests.java: 1/1 test method gọi trực tiếp SpringModule (testAllDependenciesInjectedAndLifeycleMethodsCalledOnce); ví dụ: new SpringModule(BeanFactoryProvider.from(GuiceProjectWithSpringLibraryTestSpringConfig.class)));. Chọn file này vì nhiều test method gọi trực tiếp nhất trong 2 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

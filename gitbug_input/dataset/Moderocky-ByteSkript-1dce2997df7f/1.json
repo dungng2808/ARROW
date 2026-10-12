@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/Moderocky/ByteSkript",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "DebugSkriptCompiler",
+    "file": "src/main/java/org/byteskript/skript/compiler/DebugSkriptCompiler.java"
+  },
+  "test_class": {
+    "identifier": "SyntaxTreeTest",
+    "file": "src/test/java/org/byteskript/skript/test/SyntaxTreeTest.java"
+  },
+  "gitbug": {
+    "bug_id": "Moderocky-ByteSkript-1dce2997df7f",
+    "bug_file": "Moderocky-ByteSkript.json",
+    "commit_hash": "1dce2997df7f55536293234a04b666de3d6b2a85",
+    "previous_commit_hash": "65ea545567a680bc0062572f48500d9e061e1b35",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "SyntaxTreeTest.java: 1/1 test method gọi trực tiếp DebugSkriptCompiler (testRecompile); ví dụ: final Skript skript = new Skript(new DebugSkriptCompiler(stream));"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

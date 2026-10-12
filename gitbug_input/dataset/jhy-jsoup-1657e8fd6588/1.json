@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "DataNode",
+    "file": "src/main/java/org/jsoup/nodes/DataNode.java"
+  },
+  "test_class": {
+    "identifier": "ElementTest",
+    "file": "src/test/java/org/jsoup/nodes/ElementTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-1657e8fd6588",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "1657e8fd65889cd4a60052ed31f9cb245c02dfad",
+    "previous_commit_hash": "13f7ef9241017d331a512e2ed85b0f51a7d8c398",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "ElementTest.java: 1/198 test method gọi trực tiếp DataNode (datanodesOutputCdataInXhtml); ví dụ: assertEquals(\"1 && 2\", scriptDataNode.getWholeData());. Chọn file này vì nhiều test method gọi trực tiếp nhất trong 4 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

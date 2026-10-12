@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "W3CDom",
+    "file": "src/main/java/org/jsoup/helper/W3CDom.java"
+  },
+  "test_class": {
+    "identifier": "W3CDomTest",
+    "file": "src/test/java/org/jsoup/helper/W3CDomTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-4a278e9b8e9c",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "4a278e9b8e9c0515ee005775703a40d7b0a86d2f",
+    "previous_commit_hash": "23ea77ef4b0b79b7a0033ea218a45c0d4e45af83",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

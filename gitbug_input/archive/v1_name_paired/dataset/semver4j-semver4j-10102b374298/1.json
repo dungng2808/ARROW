@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/semver4j/semver4j",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "RangesList",
+    "file": "src/main/java/org/semver4j/RangesList.java"
+  },
+  "test_class": {
+    "identifier": "RangesListTest",
+    "file": "src/test/java/org/semver4j/RangesListTest.java"
+  },
+  "gitbug": {
+    "bug_id": "semver4j-semver4j-10102b374298",
+    "bug_file": "semver4j-semver4j.json",
+    "commit_hash": "10102b3742981d6a554972abfc525a1cf848feb8",
+    "previous_commit_hash": "28823cff38b6f7dc029fded9dc02cc4e421a9ca5",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

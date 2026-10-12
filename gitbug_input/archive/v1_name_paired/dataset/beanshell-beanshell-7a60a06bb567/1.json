@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/beanshell/beanshell",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Reflect",
+    "file": "src/main/java/bsh/Reflect.java"
+  },
+  "test_class": {
+    "identifier": "ReflectTest",
+    "file": "src/test/java/bsh/ReflectTest.java"
+  },
+  "gitbug": {
+    "bug_id": "beanshell-beanshell-7a60a06bb567",
+    "bug_file": "beanshell-beanshell.json",
+    "commit_hash": "7a60a06bb56774d1f6b1188ee66e712073b90a81",
+    "previous_commit_hash": "1d2f031741890ed05ec9dbe7eb56e7e9ca28154d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

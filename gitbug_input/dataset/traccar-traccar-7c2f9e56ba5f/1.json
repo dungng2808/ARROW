@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "WialonProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/WialonProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "WialonProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/WialonProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-7c2f9e56ba5f",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "7c2f9e56ba5f699d22ec2939408357b5a220bacc",
+    "previous_commit_hash": "f73263da4800f86203e1aa425b0b7d3243d4b7c3",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

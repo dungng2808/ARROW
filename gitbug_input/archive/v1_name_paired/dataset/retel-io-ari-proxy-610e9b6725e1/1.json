@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/retel-io/ari-proxy",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "AriCommandResponseProcessing",
+    "file": "src/main/java/io/retel/ariproxy/boundary/commandsandresponses/AriCommandResponseProcessing.java"
+  },
+  "test_class": {
+    "identifier": "AriCommandResponseProcessingTest",
+    "file": "src/test/java/io/retel/ariproxy/boundary/commandsandresponses/AriCommandResponseProcessingTest.java"
+  },
+  "gitbug": {
+    "bug_id": "retel-io-ari-proxy-610e9b6725e1",
+    "bug_file": "retel-io-ari-proxy.json",
+    "commit_hash": "610e9b6725e1aab80abb5866a07d50aabc4e8874",
+    "previous_commit_hash": "f9fde350e2b08bd2ae7e40d07bd6449c434a78cd",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

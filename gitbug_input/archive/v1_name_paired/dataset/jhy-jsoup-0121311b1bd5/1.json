@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "StringUtil",
+    "file": "src/main/java/org/jsoup/internal/StringUtil.java"
+  },
+  "test_class": {
+    "identifier": "StringUtilTest",
+    "file": "src/test/java/org/jsoup/internal/StringUtilTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-0121311b1bd5",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "0121311b1bd56cbbd29e9b291d42564d5135afa5",
+    "previous_commit_hash": "5afef3ecc0d183fa6f6a9c168ae1287a33bc72ac",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

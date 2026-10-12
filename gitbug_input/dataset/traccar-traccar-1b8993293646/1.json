@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "FifotrackProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/FifotrackProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "FifotrackProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/FifotrackProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-1b8993293646",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "1b899329364619cbdc4213e2fd065955a94f5c6c",
+    "previous_commit_hash": "3b6900a95342ae87861cfcae8870ac790da7a504",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

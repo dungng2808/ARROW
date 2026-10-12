@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/klausbrunner/solarpositioning",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "SPA",
+    "file": "src/main/java/net/e175/klaus/solarpositioning/SPA.java"
+  },
+  "test_class": {
+    "identifier": "SPATest",
+    "file": "src/test/java/net/e175/klaus/solarpositioning/SPATest.java"
+  },
+  "gitbug": {
+    "bug_id": "klausbrunner-solarpositioning-79c0044373b4",
+    "bug_file": "klausbrunner-solarpositioning.json",
+    "commit_hash": "79c0044373b483e625b42fa8513000cb719651b9",
+    "previous_commit_hash": "2756287e64dacf48eea353e035e544ba21176558",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

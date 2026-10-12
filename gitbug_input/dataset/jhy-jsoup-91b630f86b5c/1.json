@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Attributes",
+    "file": "src/main/java/org/jsoup/nodes/Attributes.java"
+  },
+  "test_class": {
+    "identifier": "AttributesTest",
+    "file": "src/test/java/org/jsoup/nodes/AttributesTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-91b630f86b5c",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "91b630f86b5ca0f3540ed0347029cb52c3228ad9",
+    "previous_commit_hash": "9170b1d17b3b0c953c0a07b3d62a7884f3a7e019",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

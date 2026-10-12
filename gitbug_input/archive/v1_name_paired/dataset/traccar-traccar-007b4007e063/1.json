@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "TopinProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/TopinProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "TopinProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/TopinProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-007b4007e063",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "007b4007e063cfb966a4024ef267992a4f1f9ccb",
+    "previous_commit_hash": "104e8a4a7829b4b4a4723a715cc2b15899fa8b9f",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

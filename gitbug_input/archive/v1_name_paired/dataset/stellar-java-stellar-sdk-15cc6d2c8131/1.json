@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/stellar/java-stellar-sdk",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "KeyPair",
+    "file": "src/main/java/org/stellar/sdk/KeyPair.java"
+  },
+  "test_class": {
+    "identifier": "KeyPairTest",
+    "file": "src/test/java/org/stellar/sdk/KeyPairTest.java"
+  },
+  "gitbug": {
+    "bug_id": "stellar-java-stellar-sdk-15cc6d2c8131",
+    "bug_file": "stellar-java-stellar-sdk.json",
+    "commit_hash": "15cc6d2c813117a27e23ed571b1842258968c049",
+    "previous_commit_hash": "06641953c4603f70ba2a0274f2e367bdb8c3da03",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

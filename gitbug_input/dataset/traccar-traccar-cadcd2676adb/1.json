@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "KhdProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/KhdProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "KhdProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/KhdProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-cadcd2676adb",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "cadcd2676adbc1974265acb9ec6d43fc06932824",
+    "previous_commit_hash": "9df5d93ba0482b628d05b10c29100144beed5b5d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/jitterted/ensembler",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Ensemble",
+    "file": "src/main/java/com/jitterted/mobreg/domain/Ensemble.java"
+  },
+  "test_class": {
+    "identifier": "EnsembleMemberStatusTest",
+    "file": "src/test/java/com/jitterted/mobreg/domain/EnsembleMemberStatusTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jitterted-ensembler-14a39138787f",
+    "bug_file": "jitterted-ensembler.json",
+    "commit_hash": "14a39138787f8aa597c84f734844dd270f8c35a6",
+    "previous_commit_hash": "60ec3bf0273b63c210e1b7b6802c4f5f3c33710d",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "EnsembleMemberStatusTest.java: 13/13 test method gọi trực tiếp Ensemble (unknownMemberAndPastEnsembleThenStatusHidden, unknownMemberAndFutureEnsembleAndHasSpaceThenStatusUnknown, unknownMemberAndFutureEnsembleAndIsFullThenStatusFull); ví dụ: assertThat(pastEnsemble.statusFor(memberId, startDateTime.plusHours(3))) // duration defaults to 1h55m, so 3 h. Chọn file này vì nhiều test method gọi trực tiếp nhất trong 26 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

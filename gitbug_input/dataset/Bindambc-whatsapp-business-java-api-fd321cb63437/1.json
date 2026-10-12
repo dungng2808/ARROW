@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/Bindambc/whatsapp-business-java-api",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "QuickReplyButton",
+    "file": "src/main/java/com/whatsapp/api/domain/templates/QuickReplyButton.java"
+  },
+  "test_class": {
+    "identifier": "WhatsappBusinessManagementApiTest",
+    "file": "src/test/java/com/whatsapp/api/impl/WhatsappBusinessManagementApiTest.java"
+  },
+  "gitbug": {
+    "bug_id": "Bindambc-whatsapp-business-java-api-fd321cb63437",
+    "bug_file": "Bindambc-whatsapp-business-java-api.json",
+    "commit_hash": "fd321cb6343781a129c19b23df293f1b858b64cc",
+    "previous_commit_hash": "b6e5f7d58726e61a80751cc4bdf984239c5c498d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "WhatsappBusinessManagementApiTest.java: 4/21 test method gọi trực tiếp QuickReplyButton (testCreateMessageTemplate3, testCreateMessageTemplate4, testCreateMessageTemplateAuthentication); ví dụ: .addButton(new QuickReplyButton(\"SIM\"))//"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

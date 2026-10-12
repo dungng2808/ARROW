@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Gt06ProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/Gt06ProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "Gt06ProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/Gt06ProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-95fdfd770130",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "95fdfd770130b774e6201ddc88bba9241c95e3cc",
+    "previous_commit_hash": "230f629c3dce039aa8856fe2fb4c447a086d72e4",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

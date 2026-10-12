@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/Bindambc/whatsapp-business-java-api",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Language",
+    "file": "src/main/java/com/whatsapp/api/domain/messages/Language.java"
+  },
+  "test_class": {
+    "identifier": "WhatsappBusinessCloudApiTest",
+    "file": "src/test/java/com/whatsapp/api/impl/WhatsappBusinessCloudApiTest.java"
+  },
+  "gitbug": {
+    "bug_id": "Bindambc-whatsapp-business-java-api-362caf5eb33c",
+    "bug_file": "Bindambc-whatsapp-business-java-api.json",
+    "commit_hash": "362caf5eb33c0f23bbb29ba689112dee3750b30c",
+    "previous_commit_hash": "dec4ca17d1194c063e63197d214322f2149c4ee5",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "WhatsappBusinessCloudApiTest.java: 1/14 test method gọi trực tiếp Language (testSendTemplateTextMessage); ví dụ: .setLanguage(new Language(LanguageType.PT_BR))//"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

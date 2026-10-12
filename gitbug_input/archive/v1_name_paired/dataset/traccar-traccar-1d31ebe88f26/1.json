@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Tk103ProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/Tk103ProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "Tk103ProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/Tk103ProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-1d31ebe88f26",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "1d31ebe88f2674252fc2ab043349b900db5e5e2d",
+    "previous_commit_hash": "ab801e856521356ff7a33250e1abdb8857ef84b3",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

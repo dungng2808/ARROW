@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "ComputedAttributesHandler",
+    "file": "src/main/java/org/traccar/handler/ComputedAttributesHandler.java"
+  },
+  "test_class": {
+    "identifier": "ComputedAttributesTest",
+    "file": "src/test/java/org/traccar/handler/ComputedAttributesTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-b4934e05aab6",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "b4934e05aab6c875cd1c2d412102e041a79b9210",
+    "previous_commit_hash": "080c289a8a29244bd46cf029eefabbe426ddd00b",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "ComputedAttributesTest.java: 1/1 test method gọi trực tiếp ComputedAttributesHandler (testComputedAttributes); ví dụ: ComputedAttributesHandler handler = new ComputedAttributesHandler(new Config(), null);"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

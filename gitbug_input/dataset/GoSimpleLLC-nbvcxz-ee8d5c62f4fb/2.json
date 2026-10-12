@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/GoSimpleLLC/nbvcxz",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "ConfigurationBuilder",
+    "file": "src/main/java/me/gosimple/nbvcxz/resources/ConfigurationBuilder.java"
+  },
+  "test_class": {
+    "identifier": "NbvcxzTest",
+    "file": "src/test/java/me/gosimple/nbvcxz/NbvcxzTest.java"
+  },
+  "gitbug": {
+    "bug_id": "GoSimpleLLC-nbvcxz-ee8d5c62f4fb",
+    "bug_file": "GoSimpleLLC-nbvcxz.json",
+    "commit_hash": "ee8d5c62f4fbba1b975a1e8675abb5dff3ef4cb6",
+    "previous_commit_hash": "122c97d9eb71575bd12cf5c22e2ccd70ce826e62",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "NbvcxzTest.java: 2/4 test method gọi trực tiếp ConfigurationBuilder (testExcludeDictionary, testMaxLength); ví dụ: List<Dictionary> dictionaryList = ConfigurationBuilder.getDefaultDictionaries();. Chọn file này vì nhiều test method gọi trực tiếp nhất trong 7 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

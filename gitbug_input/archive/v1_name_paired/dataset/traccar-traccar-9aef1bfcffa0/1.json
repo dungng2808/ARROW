@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "T55ProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/T55ProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "T55ProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/T55ProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-9aef1bfcffa0",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "9aef1bfcffa0750ba0771dd1af2ffe8667547b3a",
+    "previous_commit_hash": "2ac77554f7771a014d62a6e5eeb381b4650dc4f4",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

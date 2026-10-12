@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "RuptelaProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/RuptelaProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "RuptelaProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/RuptelaProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-230f629c3dce",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "230f629c3dce039aa8856fe2fb4c447a086d72e4",
+    "previous_commit_hash": "28440b7726f186d08073acf7b9b119ec995b1ab7",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

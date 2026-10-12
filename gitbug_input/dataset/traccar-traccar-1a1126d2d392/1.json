@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "SuntechProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/SuntechProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "SuntechProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/SuntechProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-1a1126d2d392",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "1a1126d2d39220f3f28d98662a8c3d5fd4c1cfee",
+    "previous_commit_hash": "6e5481ebb1858726604706d011e5c5f509ac5306",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

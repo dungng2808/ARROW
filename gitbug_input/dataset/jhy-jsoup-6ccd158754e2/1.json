@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "UrlBuilder",
+    "file": "src/main/java/org/jsoup/helper/UrlBuilder.java"
+  },
+  "test_class": {
+    "identifier": "HttpConnectionTest",
+    "file": "src/test/java/org/jsoup/helper/HttpConnectionTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-6ccd158754e2",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "6ccd158754e21a749b2390ca27282a8dda7fb4f6",
+    "previous_commit_hash": "f0eb6bd1ccced79ee04256e9aeb457f65bc7ea30",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "HttpConnectionTest.java: 4/35 test method gọi trực tiếp UrlBuilder (encodeUrl, encodeUrlSupplementary, encodedUrlDoesntDoubleEncode); ví dụ: URL url2 = new UrlBuilder(url1).build();"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

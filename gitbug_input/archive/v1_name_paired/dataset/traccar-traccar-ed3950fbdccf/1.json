@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "GatorProtocolEncoder",
+    "file": "src/main/java/org/traccar/protocol/GatorProtocolEncoder.java"
+  },
+  "test_class": {
+    "identifier": "GatorProtocolEncoderTest",
+    "file": "src/test/java/org/traccar/protocol/GatorProtocolEncoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-ed3950fbdccf",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "ed3950fbdccfbd118ed898066fc74c93e7542ec4",
+    "previous_commit_hash": "2dd48fa51b39489aff03e4d0ede2e4be196283ec",
+    "strategy": "FAIL_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

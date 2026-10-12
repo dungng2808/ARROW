@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "MiniFinderProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/MiniFinderProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "MiniFinderProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/MiniFinderProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-8b4d3ee0b964",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "8b4d3ee0b96407ad3c889bc3bb0261e5ebe60532",
+    "previous_commit_hash": "5e18cb586d34aa3db0417cef9635bf1d9cae6e18",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

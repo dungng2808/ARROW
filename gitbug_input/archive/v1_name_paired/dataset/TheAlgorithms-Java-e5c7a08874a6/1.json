@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/TheAlgorithms/Java",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "StackPostfixNotation",
+    "file": "src/main/java/com/thealgorithms/others/StackPostfixNotation.java"
+  },
+  "test_class": {
+    "identifier": "StackPostfixNotationTest",
+    "file": "src/test/java/com/thealgorithms/others/StackPostfixNotationTest.java"
+  },
+  "gitbug": {
+    "bug_id": "TheAlgorithms-Java-e5c7a08874a6",
+    "bug_file": "TheAlgorithms-Java.json",
+    "commit_hash": "e5c7a08874a6c7ff043ec5e3f44b3aac553f4e53",
+    "previous_commit_hash": "44dcebb6996b39b5a1a67a8633f95b6e4c1bd0f0",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

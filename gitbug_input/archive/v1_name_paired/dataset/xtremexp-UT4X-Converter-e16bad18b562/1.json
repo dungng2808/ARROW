@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/xtremexp/UT4X-Converter",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "T3DUtils",
+    "file": "src/main/java/org/xtx/ut4converter/t3d/T3DUtils.java"
+  },
+  "test_class": {
+    "identifier": "T3DUtilsTest",
+    "file": "src/test/java/org/xtx/ut4converter/t3d/T3DUtilsTest.java"
+  },
+  "gitbug": {
+    "bug_id": "xtremexp-UT4X-Converter-e16bad18b562",
+    "bug_file": "xtremexp-UT4X-Converter.json",
+    "commit_hash": "e16bad18b562c554a0db5bfab6496553d9ba8349",
+    "previous_commit_hash": "1ac372fdc83c7e3e1f6121832d054d7e6fba2873",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

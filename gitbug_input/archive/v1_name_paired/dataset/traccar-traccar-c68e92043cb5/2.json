@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "HuaShengProtocolEncoder",
+    "file": "src/main/java/org/traccar/protocol/HuaShengProtocolEncoder.java"
+  },
+  "test_class": {
+    "identifier": "HuaShengProtocolEncoderTest",
+    "file": "src/test/java/org/traccar/protocol/HuaShengProtocolEncoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-c68e92043cb5",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "c68e92043cb52f859de724781f2e5774c60d465b",
+    "previous_commit_hash": "1d1fc57b3dd44013bd467a825b970ac06749e125",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

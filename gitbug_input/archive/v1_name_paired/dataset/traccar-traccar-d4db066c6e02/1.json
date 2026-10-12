@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "WatchProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/WatchProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "WatchProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/WatchProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-d4db066c6e02",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "d4db066c6e0295a4c8646d82a982cd82e42c84c4",
+    "previous_commit_hash": "2561c3340719089518ef095dd7497c660351eb64",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

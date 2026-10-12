@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/awslabs/aws-java-nio-spi-for-s3",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "S3Path",
+    "file": "src/main/java/software/amazon/nio/spi/s3/S3Path.java"
+  },
+  "test_class": {
+    "identifier": "S3PathTest",
+    "file": "src/test/java/software/amazon/nio/spi/s3/S3PathTest.java"
+  },
+  "gitbug": {
+    "bug_id": "awslabs-aws-java-nio-spi-for-s3-8ae86f85f328",
+    "bug_file": "awslabs-aws-java-nio-spi-for-s3.json",
+    "commit_hash": "8ae86f85f32877e8eb8230582cae7a058b251879",
+    "previous_commit_hash": "890fdddf3049695ce0e9ea1f44f6e067e316d33b",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

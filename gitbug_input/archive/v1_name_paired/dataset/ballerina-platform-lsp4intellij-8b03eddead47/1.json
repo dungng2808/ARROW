@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/ballerina-platform/lsp4intellij",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "FileUtils",
+    "file": "src/main/java/org/wso2/lsp4intellij/utils/FileUtils.java"
+  },
+  "test_class": {
+    "identifier": "FileUtilsTest",
+    "file": "src/test/java/org/wso2/lsp4intellij/utils/FileUtilsTest.java"
+  },
+  "gitbug": {
+    "bug_id": "ballerina-platform-lsp4intellij-8b03eddead47",
+    "bug_file": "ballerina-platform-lsp4intellij.json",
+    "commit_hash": "8b03eddead47f04da18c51534a558654206eeae6",
+    "previous_commit_hash": "e194fe9ff5f079b81dd9ba48520524d1757900ab",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

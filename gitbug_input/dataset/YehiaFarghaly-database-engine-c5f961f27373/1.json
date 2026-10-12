@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/YehiaFarghaly/database-engine",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "DBApp",
+    "file": "src/main/java/app/DBApp.java"
+  },
+  "test_class": {
+    "identifier": "DBAppTest",
+    "file": "src/test/java/app/DBAppTest.java"
+  },
+  "gitbug": {
+    "bug_id": "YehiaFarghaly-database-engine-c5f961f27373",
+    "bug_file": "YehiaFarghaly-database-engine.json",
+    "commit_hash": "c5f961f27373a552d506ba0380d3898188971523",
+    "previous_commit_hash": "403a4c0b3b6ce9c1890524224b210fc619cf057d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/Enigmatis/graphql-java-annotations",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "DirectivesBuilder",
+    "file": "src/main/java/graphql/annotations/processor/retrievers/fieldBuilders/DirectivesBuilder.java"
+  },
+  "test_class": {
+    "identifier": "DirectivesBuilderTest",
+    "file": "src/test/java/graphql/annotations/processor/retrievers/fieldBuilders/DirectivesBuilderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "Enigmatis-graphql-java-annotations-183752ce8b9a",
+    "bug_file": "Enigmatis-graphql-java-annotations.json",
+    "commit_hash": "183752ce8b9ab64dfd43b0679336b28faf7c03b9",
+    "previous_commit_hash": "6d9d7a79de7b1a8f25aef7850e4666c864557ae9",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

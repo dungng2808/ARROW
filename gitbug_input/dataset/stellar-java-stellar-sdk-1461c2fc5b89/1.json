@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/stellar/java-stellar-sdk",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Transaction",
+    "file": "src/main/java/org/stellar/sdk/Transaction.java"
+  },
+  "test_class": {
+    "identifier": "TransactionTest",
+    "file": "src/test/java/org/stellar/sdk/TransactionTest.java"
+  },
+  "gitbug": {
+    "bug_id": "stellar-java-stellar-sdk-1461c2fc5b89",
+    "bug_file": "stellar-java-stellar-sdk.json",
+    "commit_hash": "1461c2fc5b89ab2210237bcabb9d4fe0c0d2fa97",
+    "previous_commit_hash": "d6379e961557ac3d86609c26141d2c0dad376ac3",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

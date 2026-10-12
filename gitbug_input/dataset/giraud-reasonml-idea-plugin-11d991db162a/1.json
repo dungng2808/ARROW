@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/giraud/reasonml-idea-plugin",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "RPsiModuleSignature",
+    "file": "src/main/java/com/reason/lang/core/psi/impl/RPsiModuleSignature.java"
+  },
+  "test_class": {
+    "identifier": "ModuleParsingTest",
+    "file": "src/test/java/com/reason/lang/ocaml/ModuleParsingTest.java"
+  },
+  "gitbug": {
+    "bug_id": "giraud-reasonml-idea-plugin-11d991db162a",
+    "bug_file": "giraud-reasonml-idea-plugin.json",
+    "commit_hash": "11d991db162a2d61de7c1b24a45246d09d6b2e86",
+    "previous_commit_hash": "7f6720a579eeed961903899210f52e0b9902a6bc",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "ModuleParsingTest.java: 13/15 test method gọi trực tiếp RPsiModuleSignature (test_empty, test_alias, test_alias_path); ví dụ: assertEquals(\"M\", e.getName());"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

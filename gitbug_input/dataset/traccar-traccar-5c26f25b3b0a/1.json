@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "MeitrackProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/MeitrackProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "MeitrackProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/MeitrackProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-5c26f25b3b0a",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "5c26f25b3b0afc509c76bfc4a111dbc383efee26",
+    "previous_commit_hash": "c2dad387cb769284b279d8f0738a3f5b04c7819b",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

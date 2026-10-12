@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/slub/urnlib",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "RQF_RFC8141",
+    "file": "src/main/java/de/slub/urn/RQF_RFC8141.java"
+  },
+  "test_class": {
+    "identifier": "RFC8141ParserTest",
+    "file": "src/test/java/de/slub/urn/RFC8141ParserTest.java"
+  },
+  "gitbug": {
+    "bug_id": "slub-urnlib-106be8d1b804",
+    "bug_file": "slub-urnlib.json",
+    "commit_hash": "106be8d1b8047f93a715edc03fdc1b17c3aacc4b",
+    "previous_commit_hash": "b80e5e252a53248c8db0d042fce90065eede0ab0",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "RFC8141ParserTest.java: 12/14 test method gọi trực tiếp RQF_RFC8141 (R_component_get_parsed_into_resolution_parameter_map, R_component_can_hold_multiple_parameters, Q_component_get_parsed_into_query_parameter_map); ví dụ: Map<String, String> resolutionParameters = rqf.resolutionParameters();. Chọn file này vì nhiều test method gọi trực tiếp nhất trong 2 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

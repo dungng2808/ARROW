@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/vmzakharov/dataframe-ec",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "StringValue",
+    "file": "src/main/java/io/github/vmzakharov/ecdataframe/dsl/value/StringValue.java"
+  },
+  "test_class": {
+    "identifier": "ObjectValueCompareOpTest",
+    "file": "src/test/java/io/github/vmzakharov/ecdataframe/dsl/ObjectValueCompareOpTest.java"
+  },
+  "gitbug": {
+    "bug_id": "vmzakharov-dataframe-ec-12af99192d24",
+    "bug_file": "vmzakharov-dataframe-ec.json",
+    "commit_hash": "12af99192d241ff9e4dcf78e92cef31117b7d05a",
+    "previous_commit_hash": "1109752c4e8a4e9574343e8c6df9bed78a5160ec",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "ObjectValueCompareOpTest.java: 5/11 test method gọi trực tiếp StringValue (stringEq, stringGt, stringLt); ví dụ: Assert.assertTrue(ExpressionTestUtil.evaluate(ComparisonOp.EQ, new StringValue(\"Foo\"), new StringValue(\"Foo\")). Chọn file này vì nhiều test method gọi trực tiếp nhất trong 8 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

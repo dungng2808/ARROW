@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/mthmulders/mcs",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "SearchCommandHandler",
+    "file": "src/main/java/it/mulders/mcs/search/SearchCommandHandler.java"
+  },
+  "test_class": {
+    "identifier": "SearchCommandHandlerTest",
+    "file": "src/test/java/it/mulders/mcs/search/SearchCommandHandlerTest.java"
+  },
+  "gitbug": {
+    "bug_id": "mthmulders-mcs-12a39786d753",
+    "bug_file": "mthmulders-mcs.json",
+    "commit_hash": "12a39786d7533a368462d3c46be77072948c6e48",
+    "previous_commit_hash": "d7fbf8eaf58c416bf5fd861a005f47dd3d0d2d09",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

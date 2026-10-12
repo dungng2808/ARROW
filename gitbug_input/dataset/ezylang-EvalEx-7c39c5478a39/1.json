@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/ezylang/EvalEx",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Tokenizer",
+    "file": "src/main/java/com/ezylang/evalex/parser/Tokenizer.java"
+  },
+  "test_class": {
+    "identifier": "TokenizerArrayTest",
+    "file": "src/test/java/com/ezylang/evalex/parser/TokenizerArrayTest.java"
+  },
+  "gitbug": {
+    "bug_id": "ezylang-EvalEx-7c39c5478a39",
+    "bug_file": "ezylang-EvalEx.json",
+    "commit_hash": "7c39c5478a3934ae862aa5d86718d7414ecb3a3c",
+    "previous_commit_hash": "df8eeeb85e2402bb88784729c497d9b3cfcfa27d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "TokenizerArrayTest.java: 9/11 test method gọi trực tiếp Tokenizer (testMissingClosingArray, testUnexpectedClosingArray, testOpenArrayNotAllowedBeginning); ví dụ: assertThatThrownBy(() -> new Tokenizer(\"a[2+4\", configuration).parse()). Chọn file này vì nhiều test method gọi trực tiếp nhất trong 9 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

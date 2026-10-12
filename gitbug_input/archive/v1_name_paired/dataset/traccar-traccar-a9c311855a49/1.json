@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "PuiProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/PuiProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "PuiProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/PuiProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-a9c311855a49",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "a9c311855a495901935c2cb70252fa917fd88232",
+    "previous_commit_hash": "7ce4fb9a628f1875ee7b616bbd3a03a6be008a0d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

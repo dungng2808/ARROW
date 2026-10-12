@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/gradle/common-custom-user-data-gradle-plugin",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Utils",
+    "file": "src/main/java/com/gradle/Utils.java"
+  },
+  "test_class": {
+    "identifier": "UtilsTest",
+    "file": "src/test/java/com/gradle/UtilsTest.java"
+  },
+  "gitbug": {
+    "bug_id": "gradle-common-custom-user-data-gradle-plugin-982c77984b5e",
+    "bug_file": "gradle-common-custom-user-data-gradle-plugin.json",
+    "commit_hash": "982c77984b5e263fe8abf40fb0b8ed7dfd0a5b82",
+    "previous_commit_hash": "ffb66dd7b41dd42ffef3b5f1c2a9b388b737f6e6",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

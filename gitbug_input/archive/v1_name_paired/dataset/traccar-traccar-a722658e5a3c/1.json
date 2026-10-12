@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "TotemProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/TotemProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "TotemProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/TotemProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-a722658e5a3c",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "a722658e5a3c2c15ceffa51a80b63bda758264bd",
+    "previous_commit_hash": "9ceecf357132989390e8bb18160338b27539eaaa",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

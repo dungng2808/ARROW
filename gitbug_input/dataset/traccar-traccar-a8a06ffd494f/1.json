@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Gl200TextProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/Gl200TextProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "Gl200TextProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/Gl200TextProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-a8a06ffd494f",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "a8a06ffd494fc7161ca0edca39ae35be865a383f",
+    "previous_commit_hash": "957a68d4a378c0f9d5000bc00599427fd78e663d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

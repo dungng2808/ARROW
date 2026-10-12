@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "StartekProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/StartekProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "StartekProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/StartekProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-52799453e0ee",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "52799453e0ee9a9db3cbad58138712c8c40c458f",
+    "previous_commit_hash": "8b4d3ee0b96407ad3c889bc3bb0261e5ebe60532",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

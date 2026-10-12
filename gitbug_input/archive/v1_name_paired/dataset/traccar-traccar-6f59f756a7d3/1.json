@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "T800xProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/T800xProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "T800xProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/T800xProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-6f59f756a7d3",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "6f59f756a7d3e86924e762919dbbe13940a6511f",
+    "previous_commit_hash": "d5bc3cc9d97be0df8e0ce46b000556efb08a9451",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

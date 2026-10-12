@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/AuthMe/ConfigMe",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "CommentsConfiguration",
+    "file": "src/main/java/ch/jalu/configme/configurationdata/CommentsConfiguration.java"
+  },
+  "test_class": {
+    "identifier": "CommentsConfigurationTest",
+    "file": "src/test/java/ch/jalu/configme/configurationdata/CommentsConfigurationTest.java"
+  },
+  "gitbug": {
+    "bug_id": "AuthMe-ConfigMe-aa91a6b315ec",
+    "bug_file": "AuthMe-ConfigMe.json",
+    "commit_hash": "aa91a6b315ec1ca94780459cc9d697218aea24cb",
+    "previous_commit_hash": "7449db4901c1464177fc2835ad543abb51a0b7ad",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/aws/aws-secretsmanager-jdbc",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "AWSSecretsManagerPostgreSQLDriver",
+    "file": "src/main/java/com/amazonaws/secretsmanager/sql/AWSSecretsManagerPostgreSQLDriver.java"
+  },
+  "test_class": {
+    "identifier": "AWSSecretsManagerPostgreSQLDriverTest",
+    "file": "src/test/java/com/amazonaws/secretsmanager/sql/AWSSecretsManagerPostgreSQLDriverTest.java"
+  },
+  "gitbug": {
+    "bug_id": "aws-aws-secretsmanager-jdbc-d25e52d637cf",
+    "bug_file": "aws-aws-secretsmanager-jdbc.json",
+    "commit_hash": "d25e52d637cff0b8fc971738d514522074ba4e6e",
+    "previous_commit_hash": "42dc301cc7e1a47b148f8526392be9fe8ecdaff2",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "HuabaoProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/HuabaoProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "HuabaoProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/HuabaoProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-d4efbfa2a7d9",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "d4efbfa2a7d9d8410540fd2b6409c4086da9cec5",
+    "previous_commit_hash": "b083371beb7b5d32b8ce91da60e10dd3cf8b4c6b",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

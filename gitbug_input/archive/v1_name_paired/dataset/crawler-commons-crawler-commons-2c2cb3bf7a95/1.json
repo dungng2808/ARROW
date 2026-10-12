@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/crawler-commons/crawler-commons",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "SimpleRobotRulesParser",
+    "file": "src/main/java/crawlercommons/robots/SimpleRobotRulesParser.java"
+  },
+  "test_class": {
+    "identifier": "SimpleRobotRulesParserTest",
+    "file": "src/test/java/crawlercommons/robots/SimpleRobotRulesParserTest.java"
+  },
+  "gitbug": {
+    "bug_id": "crawler-commons-crawler-commons-2c2cb3bf7a95",
+    "bug_file": "crawler-commons-crawler-commons.json",
+    "commit_hash": "2c2cb3bf7a95c9dde49f8f9b93abc858b8c9311f",
+    "previous_commit_hash": "d8a61263654a4b3b5c3f726943f2fc8cdacc579d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

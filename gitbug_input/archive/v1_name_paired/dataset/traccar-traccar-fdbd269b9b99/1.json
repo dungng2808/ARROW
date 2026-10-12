@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "FreematicsProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/FreematicsProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "FreematicsProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/FreematicsProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-fdbd269b9b99",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "fdbd269b9b99de074e2fd9d99d1702620102801b",
+    "previous_commit_hash": "a24d7d5d7a61946b45ed5d344fee0a0e27bd3144",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

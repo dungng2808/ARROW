@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "TeltonikaProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/TeltonikaProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "TeltonikaProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/TeltonikaProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-65f54c200cf0",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "65f54c200cf0dcadaa9a1ce685e3eaeb88ce7506",
+    "previous_commit_hash": "fae601aa36d83828cba16e3405ada179ce7d1e57",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

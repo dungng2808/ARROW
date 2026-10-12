@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/snowflakedb/snowflake-jdbc",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "RestRequest",
+    "file": "src/main/java/net/snowflake/client/jdbc/RestRequest.java"
+  },
+  "test_class": {
+    "identifier": "RestRequestTest",
+    "file": "src/test/java/net/snowflake/client/jdbc/RestRequestTest.java"
+  },
+  "gitbug": {
+    "bug_id": "snowflakedb-snowflake-jdbc-f2c8eba73535",
+    "bug_file": "snowflakedb-snowflake-jdbc.json",
+    "commit_hash": "f2c8eba735350e574c4831637c5e6554be46bfdd",
+    "previous_commit_hash": "fcdae49626ffda223ec9c79cf045dbf553e2b615",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

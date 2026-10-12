@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/dmak/jaxb-xew-plugin",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "XmlElementWrapperPlugin",
+    "file": "src/main/java/com/sun/tools/xjc/addon/xew/XmlElementWrapperPlugin.java"
+  },
+  "test_class": {
+    "identifier": "XmlElementWrapperPluginTest",
+    "file": "src/test/java/com/sun/tools/xjc/addon/xew/XmlElementWrapperPluginTest.java"
+  },
+  "gitbug": {
+    "bug_id": "dmak-jaxb-xew-plugin-f48935133d6a",
+    "bug_file": "dmak-jaxb-xew-plugin.json",
+    "commit_hash": "f48935133d6ad30ad31613fca3b64db50f77fd26",
+    "previous_commit_hash": "f2320aaa24d70d087ff24edc326912ac22d1acb8",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

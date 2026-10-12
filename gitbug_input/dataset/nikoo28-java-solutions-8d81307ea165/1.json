@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/nikoo28/java-solutions",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "OnlineStockSpan",
+    "file": "src/main/java/leetcode/medium/OnlineStockSpan.java"
+  },
+  "test_class": {
+    "identifier": "OnlineStockSpanTest",
+    "file": "src/test/java/leetcode/medium/OnlineStockSpanTest.java"
+  },
+  "gitbug": {
+    "bug_id": "nikoo28-java-solutions-8d81307ea165",
+    "bug_file": "nikoo28-java-solutions.json",
+    "commit_hash": "8d81307ea1651f3dffe2d9d620378c08f04463ee",
+    "previous_commit_hash": "7a73ea56d05ff1f0fa085da259d02cb247b29db8",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

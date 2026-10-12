@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "TextNode",
+    "file": "src/main/java/org/jsoup/nodes/TextNode.java"
+  },
+  "test_class": {
+    "identifier": "TextNodeTest",
+    "file": "src/test/java/org/jsoup/nodes/TextNodeTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-e52224fbfe66",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "e52224fbfe6632248cc58c593efae9a22ba2e622",
+    "previous_commit_hash": "9d104b7ea2a715c62553559a9869356913eb87c1",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Safelist",
+    "file": "src/main/java/org/jsoup/safety/Safelist.java"
+  },
+  "test_class": {
+    "identifier": "SafelistTest",
+    "file": "src/test/java/org/jsoup/safety/SafelistTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-5f20fcc2f728",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "5f20fcc2f728a930444c2ba9252ec26b20587a80",
+    "previous_commit_hash": "4864af45affc8598dada9a8f970cbc04a793c460",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

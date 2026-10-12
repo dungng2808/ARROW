@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/adoble/adr-j",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "CommandNew",
+    "file": "src/main/java/org/doble/commands/CommandNew.java"
+  },
+  "test_class": {
+    "identifier": "CommandNewTest",
+    "file": "src/test/java/org/doble/adr/CommandNewTest.java"
+  },
+  "gitbug": {
+    "bug_id": "adoble-adr-j-7fe616c55a5b",
+    "bug_file": "adoble-adr-j.json",
+    "commit_hash": "7fe616c55a5b9d8c17f0e69a5aaf8daca9d78abd",
+    "previous_commit_hash": "13d472a0a6c56795027b9a45047fa0c2549a248c",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "unique_name_in_module",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

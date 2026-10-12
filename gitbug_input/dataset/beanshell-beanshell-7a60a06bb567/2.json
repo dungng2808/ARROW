@@ -1,0 +1,29 @@
+{
+  "repository": {
+    "url": "https://github.com/beanshell/beanshell",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "This",
+    "file": "src/main/java/bsh/This.java"
+  },
+  "test_class": {
+    "identifier": "InterpreterConcurrencyTest",
+    "file": "src/test/java/bsh/InterpreterConcurrencyTest.java"
+  },
+  "gitbug": {
+    "bug_id": "beanshell-beanshell-7a60a06bb567",
+    "bug_file": "beanshell-beanshell.json",
+    "commit_hash": "7a60a06bb56774d1f6b1188ee66e712073b90a81",
+    "previous_commit_hash": "1d2f031741890ed05ec9dbe7eb56e7e9ca28154d",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "manual",
+    "manual_label": {
+      "labeler": "dungnthe180616",
+      "reviewer": "",
+      "rationale": "InterpreterConcurrencyTest.java: 4/4 test method gọi trực tiếp This (single_threaded, multi_threaded_callable, multi_threaded_class_generation_garbage_collected); ví dụ: assertEquals(\"foo\", callable.invokeMethod(\"call\", new Object[] { \"foo\" }));. Chọn file này vì nhiều test method gọi trực tiếp nhất trong 2 file thỏa tiêu chí"
+    },
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

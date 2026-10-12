@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/TheAlgorithms/Java",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "FindMax",
+    "file": "src/main/java/com/thealgorithms/maths/FindMax.java"
+  },
+  "test_class": {
+    "identifier": "FindMaxTest",
+    "file": "src/test/java/com/thealgorithms/maths/FindMaxTest.java"
+  },
+  "gitbug": {
+    "bug_id": "TheAlgorithms-Java-96c1a96647c9",
+    "bug_file": "TheAlgorithms-Java.json",
+    "commit_hash": "96c1a96647c947f8f0c531ade3bc18967359e0ea",
+    "previous_commit_hash": "4f1514980495c4daaae2eb060228a87e14cbae11",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

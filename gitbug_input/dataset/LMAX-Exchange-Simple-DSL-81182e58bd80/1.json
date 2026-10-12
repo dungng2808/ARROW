@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/LMAX-Exchange/Simple-DSL",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "DslParamsParser",
+    "file": "src/main/java/com/lmax/simpledsl/internal/DslParamsParser.java"
+  },
+  "test_class": {
+    "identifier": "DslParamsParserTest",
+    "file": "src/test/java/com/lmax/simpledsl/internal/DslParamsParserTest.java"
+  },
+  "gitbug": {
+    "bug_id": "LMAX-Exchange-Simple-DSL-81182e58bd80",
+    "bug_file": "LMAX-Exchange-Simple-DSL.json",
+    "commit_hash": "81182e58bd8036e09ac7cea8c169ec427133d0eb",
+    "previous_commit_hash": "1e06e149f67828abaabf1b393f530b0ab0f37c5f",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "StarcomProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/StarcomProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "StarcomProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/StarcomProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-4a5b8d79b560",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "4a5b8d79b560c7941960cc47c551d87b1a942320",
+    "previous_commit_hash": "eb2021058ae754cf75ce2c303581de98e9f0f53f",
+    "strategy": "FAIL_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

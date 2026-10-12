@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/semver4j/semver4j",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Semver",
+    "file": "src/main/java/org/semver4j/Semver.java"
+  },
+  "test_class": {
+    "identifier": "SemverTest",
+    "file": "src/test/java/org/semver4j/SemverTest.java"
+  },
+  "gitbug": {
+    "bug_id": "semver4j-semver4j-de7dadc7ece6",
+    "bug_file": "semver4j-semver4j.json",
+    "commit_hash": "de7dadc7ece69328c712c239ae9671000df57d20",
+    "previous_commit_hash": "bf853ab2691e22186c1bc9b3e541639da09939e6",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

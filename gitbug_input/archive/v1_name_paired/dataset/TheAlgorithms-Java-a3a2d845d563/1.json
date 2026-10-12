@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/TheAlgorithms/Java",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "Armstrong",
+    "file": "src/main/java/com/thealgorithms/maths/Armstrong.java"
+  },
+  "test_class": {
+    "identifier": "ArmstrongTest",
+    "file": "src/test/java/com/thealgorithms/maths/ArmstrongTest.java"
+  },
+  "gitbug": {
+    "bug_id": "TheAlgorithms-Java-a3a2d845d563",
+    "bug_file": "TheAlgorithms-Java.json",
+    "commit_hash": "a3a2d845d563a901946e052eeebba2f6e51e37d8",
+    "previous_commit_hash": "4fab7adfaa3679d8b41360d169b40ee18b9ed735",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

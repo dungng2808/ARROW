@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/jhy/jsoup",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "HttpConnection",
+    "file": "src/main/java/org/jsoup/helper/HttpConnection.java"
+  },
+  "test_class": {
+    "identifier": "HttpConnectionTest",
+    "file": "src/test/java/org/jsoup/helper/HttpConnectionTest.java"
+  },
+  "gitbug": {
+    "bug_id": "jhy-jsoup-a96ebc95f9ad",
+    "bug_file": "jhy-jsoup.json",
+    "commit_hash": "a96ebc95f9ad681c3a8bb70a4d83020bf8812395",
+    "previous_commit_hash": "da5e9778e4e28bcf12086e7a5e057b39a16f2618",
+    "strategy": "PASS_PASS",
+    "change_type": "MIXED",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "repository": {
+    "url": "https://github.com/traccar/traccar",
+    "language": "Java"
+  },
+  "focal_class": {
+    "identifier": "TramigoProtocolDecoder",
+    "file": "src/main/java/org/traccar/protocol/TramigoProtocolDecoder.java"
+  },
+  "test_class": {
+    "identifier": "TramigoProtocolDecoderTest",
+    "file": "src/test/java/org/traccar/protocol/TramigoProtocolDecoderTest.java"
+  },
+  "gitbug": {
+    "bug_id": "traccar-traccar-782fd787d14b",
+    "bug_file": "traccar-traccar.json",
+    "commit_hash": "782fd787d14bd041c818e25b06f5ebe844854163",
+    "previous_commit_hash": "33af2928a581eba6a1ba580b5da051612c7b7860",
+    "strategy": "PASS_PASS",
+    "change_type": "SOURCE_ONLY",
+    "test_pairing": "same_package",
+    "benchmark_commit": "fe986fb7919be62c2a6f611ee16659e849646798"
+  }
+}
