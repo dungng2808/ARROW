@@ -81,6 +81,25 @@ luôn đặt `strict_eligible=false`. Kết quả chỉ dùng để khảo sát 
 build và cấu trúc repository; không được trộn vào strict cohort, bảng kết quả
 paper hoặc kết quả tái lập.
 
+### 3.3. Sai lệch đã khai báo cho Classes2Test (chốt 09/10/2026)
+
+Classes2Test không lưu commit SHA nên lượt preflight đầy đủ không có entry
+`UPSTREAM_PINNED` nào: 6.346 class `technical_eligible`, trong đó 6.342 class
+`CONTENT_MATCHED` từ 1.324 repository và 4 class `UNVERIFIED`. Nhóm chấp nhận
+dùng `CONTENT_MATCHED` cho tập đánh giá Classes2Test như một sai lệch đã khai
+báo so với quy tắc `strict_eligible` ở mục 8; quy tắc đó giữ nguyên, và trường
+`strict_eligible` của các entry này vẫn là `false`.
+
+- Pool rút mẫu: `technical_eligible=true` và
+  `revision_verification_status=CONTENT_MATCHED`; entry `UNVERIFIED` bị loại.
+  Manifest `evaluation_manifest/classes2test_200_seed42.jsonl` ghi quy tắc này
+  trong file `.meta.json` đi kèm.
+- Commit content-matched tái lập được nhưng không bảo đảm là commit tác giả
+  dataset đã dùng; file khác như build file hoặc dependency có thể khác.
+- Kết quả Classes2Test được gắn nhãn content-matched và báo cáo tách riêng với
+  GitBug-Java (`UPSTREAM_PINNED`, provenance `dataset_record`); không trình bày
+  như kết quả upstream-pinned.
+
 ## 4. Quy trình preflight
 
 1. Kiểm tra schema, hash JSON nguồn và revision provenance của locked manifest.
