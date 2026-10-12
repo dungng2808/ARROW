@@ -17,7 +17,7 @@ import java.util.Map;
  * {@code {"error": "..."}} with exit code 0 so the caller always gets JSON; exit code 2 only for bad usage.
  *
  * <p>Commands (specs/03 Mục 7–8, specs/05 Mục 5.3, specs/04 Mục 6.2):
- * analyze_test, strip_comments, count_assertions, method_at_line, cut_api, method_source, called_methods, splice_methods.
+ * analyze_test, strip_comments, count_assertions, list_test_methods, method_at_line, cut_api, method_source, called_methods, splice_methods.
  */
 public final class Main {
 
@@ -54,6 +54,8 @@ public final class Main {
                 return Commands.stripComments(request);
             case "count_assertions":
                 return Commands.countAssertions(request);
+            case "list_test_methods":
+                return Commands.listTestMethods(request);
             case "method_at_line":
                 return Commands.methodAtLine(request);
             case "cut_api":

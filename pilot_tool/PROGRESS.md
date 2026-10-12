@@ -24,6 +24,14 @@ Commit: `79315db` (M1, M2, nợ M2, pilot v2), đã push lên `main`.
 - `dotnet test tests/Arrow.Core.Tests` → 76/76 pass (thêm `FailureClassifierTests`, `CodeHasherTests`).
 - `dotnet build ArrowRunner.sln` → 0 warning, 0 error.
 
+Commit: `15378b5` (M3), đã push lên `main`.
+
+## 3. M4: java-analyzer
+
+- `tools/java-analyzer` (Maven, JavaParser 3.26.2, Java 11, jar shade), lệnh: `analyze_test`, `strip_comments`, `count_assertions`, `list_test_methods`, `method_at_line`, `cut_api`, `method_source`, `called_methods`, `splice_methods`. `JavaAnalyzer` (.NET) tự build jar bằng Maven khi chưa có hoặc mã nguồn mới hơn jar; chạy bằng JDK 17 (rồi 21, 11).
+- `dotnet test tests/Arrow.Infrastructure.Tests --filter AnalyzerTests` → 6/6 pass: đếm assertion đúng từng quy tắc của specs/03 Mục 8 (JUnit, AssertJ, Mockito `verify`, `assertThrows`, `@Test(expected)`, `fail` trong `try`, RestAssured `.then().statusCode().body()` = 2, `.then().assertThat()` không tính, `.extract()` không tính, assertion tầm thường không tính); bỏ comment theo AST giữ nguyên `"http://…/*…*/"` và text block; mã không parse được thì bỏ comment theo lexer; ghép method mức 3: thay method lỗi, bỏ method lỗi không có trong response, thêm import/field/helper mới, không thêm test mới, method khác giữ từng ký tự; API của CUT và method bị gọi.
+- `dotnet test ArrowRunner.sln` → Core 76/76, Infrastructure 20/20. Build 0 warning.
+
 ## Việc còn mở
 
 - Tiêu chí M1 trên Windows (tạm dừng/tiếp tục trên Windows): chưa kiểm được trên máy này.

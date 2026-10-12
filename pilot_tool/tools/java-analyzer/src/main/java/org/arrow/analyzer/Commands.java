@@ -270,6 +270,14 @@ final class Commands {
                 .map(MethodDeclaration::getNameAsString).distinct().collect(Collectors.toList());
     }
 
+    static Map<String, Object> listTestMethods(JsonObject request) {
+        Optional<CompilationUnit> unit = parse(text(request, "source"));
+        Map<String, Object> result = new LinkedHashMap<>();
+        result.put("parsed", unit.isPresent());
+        result.put("test_methods", unit.map(Commands::testMethods).orElseGet(ArrayList::new));
+        return result;
+    }
+
     // ── method_at_line ─────────────────────────────────────────────────
 
     static Map<String, Object> methodAtLine(JsonObject request) {
@@ -316,7 +324,7 @@ final class Commands {
                 for (TypeDeclaration<?> type : unit.findAll(TypeDeclaration.class)) {
                     Map<String, Object> entry = new LinkedHashMap<>();
                     entry.put("name", type.getFullyQualifiedName().orElse(type.getNameAsString()));
-                    entry.put("kind", type.getClass().getSimpleName().replace("Declaration", "").toLowerCase());
+                    entry.put("kind", kindOf(type));
                     List<String> members = new ArrayList<>();
                     for (BodyDeclaration<?> member : type.getMembers()) {
                         if (member instanceof ConstructorDeclaration && !((ConstructorDeclaration) member).isPrivate()) {
@@ -326,8 +334,9 @@ final class Commands {
                         } else if (member instanceof FieldDeclaration && ((FieldDeclaration) member).isPublic()) {
                             FieldDeclaration field = (FieldDeclaration) member;
                             for (VariableDeclarator variable : field.getVariables()) {
-                                members.add(field.getModifiers().toString().trim().replace("[", "").replace("]", "").replace(",", "")
-                                        + " " + variable.getTypeAsString() + " " + variable.getNameAsString());
+                                StringBuilder line = new StringBuilder();
+                                field.getModifiers().forEach(m -> line.append(m.getKeyword().asString()).append(' '));
+                                members.add(line + variable.getTypeAsString() + " " + variable.getNameAsString());
                             }
                         }
                     }
@@ -339,6 +348,19 @@ final class Commands {
         Map<String, Object> result = new LinkedHashMap<>();
         result.put("types", types);
         return result;
+    }
+
+    private static String kindOf(TypeDeclaration<?> type) {
+        if (type.isClassOrInterfaceDeclaration()) {
+            return type.asClassOrInterfaceDeclaration().isInterface() ? "interface" : "class";
+        }
+        if (type.isEnumDeclaration()) {
+            return "enum";
+        }
+        if (type.isRecordDeclaration()) {
+            return "record";
+        }
+        return "annotation";
     }
 
     static String signature(CallableDeclaration<?> callable) {

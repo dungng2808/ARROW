@@ -54,6 +54,7 @@ public sealed class JavaAnalyzer(string pilotToolDir, MachineConfig machine)
 {
     private static readonly SemaphoreSlim BuildLock = new(1, 1);
     private static readonly TimeSpan CallTimeout = TimeSpan.FromMinutes(2);
+    private bool _checked;
 
     public string ProjectDir => Path.Combine(pilotToolDir, "tools", "java-analyzer");
     public string JarPath => Path.Combine(ProjectDir, "target", "java-analyzer.jar");
@@ -63,23 +64,38 @@ public sealed class JavaAnalyzer(string pilotToolDir, MachineConfig machine)
         new[] { "17", "21", "11" }.Select(v => machine.JdkHomes.GetValueOrDefault(v)).FirstOrDefault(h => !string.IsNullOrEmpty(h))
         ?? throw new ArrowException("JDK_MISSING", "java-analyzer cần JDK 11, 17 hoặc 21 trong jdk_homes");
 
+    /// <summary>Jar có và mới hơn mọi file nguồn (sau <c>git pull</c> mã nguồn mới thì build lại).</summary>
+    public bool IsUpToDate()
+    {
+        if (!File.Exists(JarPath))
+        {
+            return false;
+        }
+
+        var jarTime = File.GetLastWriteTimeUtc(JarPath);
+        var sources = Directory.EnumerateFiles(Path.Combine(ProjectDir, "src"), "*.java", SearchOption.AllDirectories).Append(Path.Combine(ProjectDir, "pom.xml"));
+        return sources.All(f => File.GetLastWriteTimeUtc(f) <= jarTime);
+    }
+
     public async Task EnsureBuiltAsync(CancellationToken cancellationToken)
     {
-        if (File.Exists(JarPath))
+        if (_checked || IsUpToDate())
         {
+            _checked = true;
             return;
         }
 
         await BuildLock.WaitAsync(cancellationToken).ConfigureAwait(false);
         try
         {
-            if (File.Exists(JarPath))
+            if (IsUpToDate())
             {
+                _checked = true;
                 return;
             }
 
             var env = new Dictionary<string, string?> { ["JAVA_HOME"] = JavaHome, ["JAVA_TOOL_OPTIONS"] = null, ["MAVEN_ARGS"] = null };
-            var result = await ProcessRunner.RunAsync(machine.MavenPath, ["-B", "-ntp", "-q", "-f", Path.Combine(ProjectDir, "pom.xml"), "package"],
+            var result = await ProcessRunner.RunAsync(machine.MavenPath, ["-B", "-ntp", "-q", "-f", Path.Combine(ProjectDir, "pom.xml"), "clean", "package"],
                 ProjectDir, env, TimeSpan.FromMinutes(10), cancellationToken).ConfigureAwait(false);
             if (!result.Succeeded || !File.Exists(JarPath))
             {
@@ -87,6 +103,7 @@ public sealed class JavaAnalyzer(string pilotToolDir, MachineConfig machine)
             }
 
             ToolLog.Info("java-analyzer: đã build " + JarPath);
+            _checked = true;
         }
         finally
         {
