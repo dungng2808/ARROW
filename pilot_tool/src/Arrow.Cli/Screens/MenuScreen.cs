@@ -1,0 +1,169 @@
+using Arrow.Cli.Ui;
+using Arrow.Core.Config;
+using Arrow.Core.Runs;
+using Arrow.Infrastructure.Llm;
+using Arrow.Infrastructure.Tooling;
+using Spectre.Console;
+
+namespace Arrow.Cli.Screens;
+
+/// <summary>Màn hình đầu và menu chính (CLI_DASHBOARD.md, SETUP.md §2).</summary>
+public sealed class MenuScreen(Session session)
+{
+    private const string RunMine = "Chạy shard của tôi (mốc M2: S0 chuẩn bị)";
+    private const string RunDemo = "Chạy thử dashboard (job giả, mốc M1)";
+    private const string Status = "Xem trạng thái run";
+    private const string Control = "Tạm dừng / tiếp tục run đang chạy";
+    private const string Setup = "Cài đặt máy";
+    private const string Doctor = "Kiểm tra môi trường";
+    private const string Export = "Xuất kết quả để gửi người điều phối";
+    private const string ShardPlan = "Chia shard";
+    private const string Merge = "Gom kết quả các máy";
+    private const string Report = "Báo cáo pilot";
+    private const string Quit = "Thoát";
+
+    public async Task<int> RunAsync(CancellationToken cancellationToken)
+    {
+        if (session.Machine is null)
+        {
+            AnsiConsole.Clear();
+            Theme.Logo();
+            AnsiConsole.Write(new Panel(new Markup(
+                    "Không tìm thấy [bold]pilot_tool/machine.local.json[/].\nCần cài đặt một lần: chọn máy, shard, thư mục, JDK, khóa API (8 bước)."))
+                .Header(" Chưa cài đặt máy này ").Border(BoxBorder.Rounded).Expand());
+            if (AnsiConsole.Prompt(new SelectionPrompt<string>().AddChoices("Bắt đầu cài đặt", Quit)) == Quit)
+            {
+                return 0;
+            }
+
+            if (!await new SetupScreen(session).RunAsync(cancellationToken))
+            {
+                return 1;
+            }
+
+            await new DoctorScreen(session).RunAsync(cancellationToken);
+            WaitKey();
+        }
+
+        while (true)
+        {
+            AnsiConsole.Clear();
+            Theme.Logo();
+            RenderHome();
+            var choice = AnsiConsole.Prompt(new SelectionPrompt<string>()
+                .Title("Chọn việc ([grey]↑/↓, Enter[/]):")
+                .PageSize(14)
+                .AddChoices(RunMine, RunDemo, Status, Control, Setup, Doctor, Export)
+                .AddChoiceGroup("── Người điều phối ──", ShardPlan, Merge, Report)
+                .AddChoices(Quit));
+
+            AnsiConsole.Clear();
+            switch (choice)
+            {
+                case Quit:
+                    return 0;
+                case RunMine:
+                    try
+                    {
+                        await new ShardRunScreen(session).RunAsync(new ShardRunScreen.Options(null, false, false, null), cancellationToken);
+                    }
+                    catch (Arrow.Core.Util.ArrowException ex)
+                    {
+                        AnsiConsole.MarkupLine($"[red]{Markup.Escape(ex.Code)}[/]: {Markup.Escape(ex.Message)}");
+                    }
+
+                    break;
+                case Export or Merge or Report:
+                    AnsiConsole.MarkupLine("[yellow]Chức năng này có ở mốc M8.[/]");
+                    break;
+                case RunDemo:
+                    await new DemoRunScreen(session).RunAsync(null, null, plain: false, cancellationToken);
+                    break;
+                case Status:
+                    await PickRunAsync(runId => new RunScreens(session).ShowStatusAsync(runId, cancellationToken));
+                    break;
+                case Control:
+                    await PickRunAsync(runId =>
+                    {
+                        var command = AnsiConsole.Prompt(new SelectionPrompt<string>().Title("Lệnh:").AddChoices("Tạm dừng", "Tiếp tục", "Dừng hẳn"));
+                        var control = command switch { "Tạm dừng" => ControlCommand.Pause, "Tiếp tục" => ControlCommand.Resume, _ => ControlCommand.Stop };
+                        return Task.FromResult(new RunScreens(session).Control(runId, control, "menu"));
+                    });
+                    break;
+                case Setup:
+                    if (await new SetupScreen(session).RunAsync(cancellationToken))
+                    {
+                        await new DoctorScreen(session).RunAsync(cancellationToken);
+                    }
+
+                    break;
+                case Doctor:
+                    await new DoctorScreen(session).RunAsync(cancellationToken);
+                    break;
+                case ShardPlan:
+                    new ShardPlanScreen(session).Run(null, null, null, null, null, assumeYes: false);
+                    break;
+            }
+
+            WaitKey();
+        }
+    }
+
+    private void RenderHome()
+    {
+        var machine = session.Machine!;
+        var shard = session.TryLoadShard();
+        var litellm = LiteLlmConfigFile.TryLoad(session.Paths.LiteLlmConfigPath);
+        var doctor = machine.LastDoctor is null
+            ? $"{Theme.Warn} chưa kiểm tra"
+            : machine.LastDoctor.Status == "READY"
+                ? $"{Theme.Ok} READY ({machine.LastDoctor.At.ToLocalTime():dd/MM HH:mm})"
+                : $"{Theme.Fail} {machine.LastDoctor.Status}";
+        var workDir = session.Paths.Resolve(machine.WorkDir);
+        var free = MachineInfo.FreeGb(workDir);
+        var grid = new Grid().AddColumn().AddColumn().AddColumn().AddColumn();
+        grid.AddRow("Máy", Markup.Escape(machine.MachineName), "Shard",
+            shard is null ? $"{Theme.Warn} chưa có" : Markup.Escape($"{shard.PlanId}/{shard.ShardId} ({shard.Tasks.Count} CUT)"));
+        grid.AddRow("Thực nghiệm", Markup.Escape(Path.GetFileNameWithoutExtension(machine.Experiment)), "Môi trường", doctor);
+        grid.AddRow("Khóa API", litellm is { HasApiKey: true } ? $"{Theme.Ok} {Markup.Escape(machine.Llm.KeyAlias)} · {Markup.Escape(litellm.EndpointHost)}" : $"{Theme.Fail} chưa có",
+            "Thư mục repo", Markup.Escape(workDir) + (free < 20 ? $" [yellow]{free} GB ⚠[/]" : $" [grey]{free} GB trống[/]"));
+        AnsiConsole.Write(new Panel(grid).Header(" Máy này ").Border(BoxBorder.Rounded).Expand());
+
+        var runs = RunStore.ListRuns(session.RunsDir).Select(r => (r.RunId, Status: r.ReadStatus())).Where(r => r.Status is not null).ToList();
+        if (runs.Count > 0)
+        {
+            var now = DateTimeOffset.UtcNow;
+            var lines = runs.TakeLast(3).Select(r =>
+            {
+                var stage = r.Status!.Stages.FirstOrDefault(s => s.Stage == r.Status.Stage);
+                var alive = r.Status.IsAlive(now) ? "" : r.Status.State is RunState.Done or RunState.Stopped ? "" : " [grey](không còn chạy)[/]";
+                return $"{Markup.Escape(r.RunId)}   {r.Status.State.ToString().ToUpperInvariant()}{alive}   {Markup.Escape(r.Status.Stage)} {stage?.Done}/{stage?.Total}   đã chạy {Theme.Duration(r.Status.ElapsedSeconds)}";
+            });
+            AnsiConsole.Write(new Panel(new Markup(string.Join("\n", lines))).Header(" Run gần đây ").Border(BoxBorder.Rounded).Expand());
+        }
+    }
+
+    private async Task PickRunAsync(Func<string, Task<int>> action)
+    {
+        var runs = RunStore.ListRuns(session.RunsDir).Select(r => r.RunId).ToList();
+        if (runs.Count == 0)
+        {
+            AnsiConsole.MarkupLine("[grey]Chưa có run nào.[/]");
+            return;
+        }
+
+        var runId = AnsiConsole.Prompt(new SelectionPrompt<string>().Title("Run:").AddChoices(runs.AsEnumerable().Reverse()));
+        await action(runId);
+    }
+
+    private static void WaitKey()
+    {
+        if (Console.IsInputRedirected)
+        {
+            return;
+        }
+
+        AnsiConsole.MarkupLine("\n[grey]Nhấn phím bất kỳ để về menu…[/]");
+        Console.ReadKey(intercept: true);
+    }
+}

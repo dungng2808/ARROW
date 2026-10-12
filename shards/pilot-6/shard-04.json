@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "plan_id": "pilot-6",
+  "shard_id": "shard-04",
+  "owner": "Quang",
+  "owner_display": "Quang",
+  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "tasks": [
+    {
+      "dataset": "classes2test",
+      "task_id": "195297601_a5e0c91d1682adea",
+      "repo_url": "https://github.com/bhegmanns/tdd"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "21242302_b87798ae510b7533",
+      "repo_url": "https://github.com/R2RML-api/R2RML-api"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "44382767_06e5761089b941b8",
+      "repo_url": "https://github.com/liveontologies/elk-reasoner"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "45997449_a1746470f60e6983",
+      "repo_url": "https://github.com/eBay/WebRex"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "49206166_64074728cbbd9bea",
+      "repo_url": "https://github.com/bytefish/JTinyCsvParser"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "85692970_df3142743f0a0b66",
+      "repo_url": "https://github.com/ThorbenKuck/NetCom2"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "9577793_0bf8b45c6ff1ed61",
+      "repo_url": "https://github.com/Eldelshell/amforeas"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "97291552_bcf81d987f226f03",
+      "repo_url": "https://github.com/lastrix/asn1s"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "jhy-jsoup-2f48a617fe48_5117e12bab8e7710",
+      "repo_url": "https://github.com/jhy/jsoup"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "jitterted-ensembler-14a39138787f_0ae29db88b6f916e",
+      "repo_url": "https://github.com/jitterted/ensembler"
+    }
+  ]
+}

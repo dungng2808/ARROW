@@ -1,10 +1,11 @@
 """Draw the frozen evaluation manifest from the preflight technical-eligible pool.
 
 Usage (from ARROW/preflight_tool):
-    python scripts/sample_manifest.py --pool-glob "../preflight_manifest/*/technical_eligible_manifest.jsonl" \
+    python scripts/sample_manifest.py --pool-glob "../preflight_manifest/0*/technical_eligible_manifest.jsonl" \
         --size 200 --seed 42 --output-dir ../evaluation_manifest
 
-Rule: keep CONTENT_MATCHED records only, group them by repository, randomly select
+Rule: keep records with --revision-status (default CONTENT_MATCHED; UPSTREAM_PINNED for
+GitBug-Java) only, group them by repository, randomly select
 --size distinct repositories without replacement, then randomly select one focal class
 from each. Repositories and classes are sorted before sampling, so the result depends
 only on the pool content and the seed, not on file or line order. No result column is
@@ -35,12 +36,25 @@ def main() -> int:
     parser.add_argument("--seed", type=int, default=42)
     parser.add_argument("--output-dir", required=True, type=Path)
     parser.add_argument("--name", default=None, help="output base name; default classes2test_<size>_seed<seed>")
+    parser.add_argument("--revision-status", default=ALLOWED_STATUS,
+                        help="revision_verification_status kept in the pool (CONTENT_MATCHED for Classes2Test, "
+                             "UPSTREAM_PINNED for GitBug-Java)")
+    parser.add_argument("--exclude-repos-from", action="append", type=Path, default=[],
+                        help="manifest JSONL whose repositories are removed from the pool, e.g. the evaluation "
+                             "manifest when drawing a pilot (repeatable)")
     args = parser.parse_args()
 
     pool_files = sorted(Path(path) for path in glob.glob(args.pool_glob))
     if not pool_files:
         print(f"ERROR no pool files match {args.pool_glob}", file=sys.stderr)
         return 1
+
+    excluded_repos: set[str] = set()
+    exclude_sha = {}
+    for path in args.exclude_repos_from:
+        raw = path.read_bytes()
+        exclude_sha[path.as_posix()] = sha256_bytes(raw)
+        excluded_repos |= {json.loads(line)["repo_url"] for line in raw.decode("utf-8").splitlines() if line.strip()}
 
     records: dict[str, dict] = {}
     pool_sha = {}
@@ -55,8 +69,11 @@ def main() -> int:
             if record["task_id"] in records:
                 print(f"ERROR duplicate task_id {record['task_id']}", file=sys.stderr)
                 return 1
-            if not record.get("technical_eligible") or record.get("revision_verification_status") != ALLOWED_STATUS:
+            if not record.get("technical_eligible") or record.get("revision_verification_status") != args.revision_status:
                 excluded[str(record.get("revision_verification_status"))] += 1
+                continue
+            if record["repo_url"] in excluded_repos:
+                excluded["REPOSITORY_EXCLUDED"] += 1
                 continue
             records[record["task_id"]] = record
 
@@ -85,7 +102,7 @@ def main() -> int:
         "size": args.size,
         "seed": args.seed,
         "rng": f"python random.Random (Python {sys.version_info.major}.{sys.version_info.minor})",
-        "rule": "technical_eligible and CONTENT_MATCHED; group by repo_url; sample repositories without "
+        "rule": f"technical_eligible and {args.revision_status}; group by repo_url; sample repositories without "
                 "replacement from the sorted repository list; choose one task_id per repository from its "
                 "sorted task_id list; no result columns used",
         "pool_files_sha256": pool_sha,
@@ -94,6 +111,10 @@ def main() -> int:
         "excluded_from_pool_by_revision_status": dict(sorted(excluded.items())),
         "selected_task_ids": [record["task_id"] for record in chosen],
     }
+    if args.exclude_repos_from:
+        meta["rule"] += "; repositories of the --exclude-repos-from manifests are removed from the pool first"
+        meta["exclude_repos_from_sha256"] = exclude_sha
+        meta["excluded_repositories"] = len(excluded_repos)
     meta_path = args.output_dir / f"{name}.meta.json"
     meta_path.write_text(json.dumps(meta, indent=2, ensure_ascii=False) + "\n", encoding="utf-8", newline="\n")
     print(f"OK pool={len(records)} classes / {len(repos)} repos -> {len(chosen)} selected; "

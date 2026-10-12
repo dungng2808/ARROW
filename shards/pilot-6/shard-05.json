@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "plan_id": "pilot-6",
+  "shard_id": "shard-05",
+  "owner": "Chinh",
+  "owner_display": "Chinh",
+  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "tasks": [
+    {
+      "dataset": "classes2test",
+      "task_id": "107165228_0924785415323560",
+      "repo_url": "https://github.com/Devskiller/jpa2ddl"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "127163887_04144881dfacfd18",
+      "repo_url": "https://github.com/dbatalov/reinforcement-learning"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "1757703_0030db2c6d01b08d",
+      "repo_url": "https://github.com/grove/presto"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "36429443_47b2fe81f09d03bb",
+      "repo_url": "https://github.com/zalando-stups/stups-spring-oauth2-support"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "618492_84817cb58ba58f96",
+      "repo_url": "https://github.com/brianfrankcooper/YCSB"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "62391407_0f2c3a9fb84d4214",
+      "repo_url": "https://github.com/howtoprogram/Java-Examples"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "70147050_b6c149f291acd36b",
+      "repo_url": "https://github.com/REMEXLabs/OpenAPE"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "81226206_eb60e303b6c03e58",
+      "repo_url": "https://github.com/intuit/karate"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "95752629_8dc2b44ccbb8b9bb",
+      "repo_url": "https://github.com/microsoft/azure-maven-plugins"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "TheAlgorithms-Java-e5c7a08874a6_0bc8a5a559202e54",
+      "repo_url": "https://github.com/TheAlgorithms/Java"
+    }
+  ]
+}

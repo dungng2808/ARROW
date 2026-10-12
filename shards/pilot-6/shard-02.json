@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "plan_id": "pilot-6",
+  "shard_id": "shard-02",
+  "owner": "Dung-win",
+  "owner_display": "Dũng-win",
+  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "tasks": [
+    {
+      "dataset": "classes2test",
+      "task_id": "103760642_364ad336a5269a81",
+      "repo_url": "https://github.com/intendia-oss/qualifier"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "145256500_f188481f8c302ba2",
+      "repo_url": "https://github.com/Electroid/intake"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "149270308_ec8a7ae3bae40bc2",
+      "repo_url": "https://github.com/AmaronUI/amaronui-layouts"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "152415097_aa76c8d5b9d8770f",
+      "repo_url": "https://github.com/Ericsson/ecchronos"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "159422409_9d630c4556038ca7",
+      "repo_url": "https://github.com/Snailclimb/springboot-guide"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "208317627_f57fa257f8ef6ca9",
+      "repo_url": "https://github.com/awslabs/disco"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "217172162_41bede8a69e537c6",
+      "repo_url": "https://github.com/egnaf/spring-boot-vue-docker-example"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "38597960_207d2e64407f8bca",
+      "repo_url": "https://github.com/fappel/Testing-with-JUnit"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "AuthMe-ConfigMe-7bf10c513479_5db35da89b9d8088",
+      "repo_url": "https://github.com/AuthMe/ConfigMe"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "klausbrunner-solarpositioning-79c0044373b4_6c6c6e36381211b1",
+      "repo_url": "https://github.com/klausbrunner/solarpositioning"
+    }
+  ]
+}

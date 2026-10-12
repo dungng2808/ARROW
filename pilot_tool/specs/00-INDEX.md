@@ -1,0 +1,44 @@
+# Spec chi tiết của pilot_tool
+
+**Trạng thái:** bản nháp 1 (12/10/2026). Đây là spec để code. Mỗi file mô tả đủ để viết code và test cho một phần. Khi spec và tài liệu tổng quan (`README.md`, `ARCHITECTURE.md`, `CLI_DASHBOARD.md`, `SETUP.md`) khác nhau, **spec thắng**; sửa tài liệu tổng quan cho khớp.
+
+| File | Phần | Dùng cho mốc |
+| --- | --- | --- |
+| `01-config-and-data.md` | Cấu hình thực nghiệm, cấu hình máy, shard, thư mục run, ledger, file điều khiển, bundle export | M1 |
+| `02-prepare-and-build.md` | S0: tải repository, chọn JDK, lệnh Maven/Gradle, baseline, trích 6 thông tin repository | M2 |
+| `03-verification.md` | Xác minh 5 bước, trạng thái, phân loại lỗi, error signature, code hash, đếm assertion | M3, M4 |
+| `04-llm-and-prompts.md` | Gọi model qua LiteLLM, lấy mã từ response, nội dung các prompt sinh test và sửa test | M5 |
+| `05-repair.md` | Thuật toán Fixed Repair và Adaptive Repair (bản thống nhất), checkpoint, mức, log từng vòng | M6 |
+| `06-evosuite-and-quality.md` | EvoSuite, JaCoCo, PIT, tsDetect | M7 |
+| `07-report-and-n.md` | Báo cáo phần 1, đường cộng dồn, quy tắc chọn N | M8 |
+| `08-logging.md` | Log của tool, log thực nghiệm, log build: ở đâu, định dạng, giữ và xuất | M1–M8 |
+
+Quy ước: `MUST` là bắt buộc, `SHOULD` là nên làm. Nhãn `[Dn]` trong các spec trỏ tới quyết định ở bảng dưới; mọi quyết định D1–D12 đã được người dùng chốt ngày 12/10/2026 theo giá trị trong bảng.
+
+## Các điểm đã chốt (12/10/2026)
+
+| Mã | Điểm | Mặc định trong spec | Ở file |
+| --- | --- | --- | --- |
+| D1 | Tên class test sinh ra | `<TênCUT>_ArrowTest`, cùng package với CUT, trong test path của module | 03 |
+| D2 | Bỏ qua plugin kiểm tra định dạng, giấy phép, coverage tối thiểu của chính repository khi build | Có (danh sách cờ ở `02` Mục 4.3); áp dụng như nhau cho mọi hệ thống, ghi vào cấu hình thực nghiệm. JaCoCo của tool chạy riêng ở bước đo chất lượng | 02 |
+| D3 | Prompt quy trình thông thường có cho biết test framework không | **Không**: zero-shot và few-shot chỉ có mã CUT, tên class test và package; framework, Java version, dependencies, cấu trúc, test path chỉ có ở zero-shot-project-aware. Bước sửa import JUnit 4↔5 của code (áp dụng cho mọi quy trình) vẫn giữ theo bản chuẩn | 04 |
+| D4 | Ví dụ few-shot | 2 cặp (CUT + test người viết) **cố định cho mọi CUT**, không chọn theo framework của CUT; lấy từ pool Classes2Test ngoài 200 repository đánh giá và 50 repository pilot | 04 |
+| D6 | Nội dung mức 2 của trạng thái UNKNOWN | Khối lỗi của goal/task kèm `Caused by`; cấu hình bước test (Surefire/compiler hoặc task `test` của Gradle); test engine trên classpath và Java version; dấu hiệu nhận ra trong log (`04` Mục 6.2) | 04 |
+| D8 | Quy tắc chọn N | `share95` (≥ 95% số ca thành công của 10 vòng, 3 ≤ N ≤ 10); `report2` vẫn được cài | 07 |
+| D9 | Ngân sách EvoSuite | Cấu hình mặc định của EvoSuite 1.2.0 (`search_budget` 60 giây, criterion mặc định), seed cố định 42 | 06 |
+| D10 | Timeout khi chạy test (bước 2–4) | Là lỗi hạ tầng như build timeout: build lại 1 lần, vẫn lỗi thì `INFRA`. Test tự đặt `@Timeout` thì vẫn là lỗi của test | 03 |
+| D11 | Error signature của UNKNOWN | `UNKNOWN \| <plugin id trong "Failed to execute goal", hoặc dòng ERROR đầu tiên đã chuẩn hóa> \| -` | 03 |
+| D12 | Câu chữ prompt sửa và cách hiển thị các lần đã thử | Câu chữ tiếng Anh trong `04` Mục 6; lần đã thử chỉ ghi kết quả và signature, không kèm mã | 04 |
+
+## Đã giải quyết theo bản chuẩn (12/10/2026)
+
+| Mã cũ | Điểm | Theo `draft/Adaptive repair.md` |
+| --- | --- | --- |
+| D5 | Prompt sửa có kèm 6 thông tin repository không | **Không.** Mức 1 (và Fixed) = lỗi + mã test + source focal class; mức 2 của COMPILE mới thêm dependencies và Java version (AR 3.1) |
+| D7 | Mức 3 có được xóa test method không | LLM trả cả class; ARROW ghép các method lỗi vào checkpoint; method lỗi không còn trong response thì bị bỏ; method bị bỏ = có trong c0 mà không còn ở bản cuối (AR 3.1) |
+
+## Nguồn của thiết kế
+
+- **`draft/Adaptive repair.md`** (viết tắt "AR" trong spec) là nguồn chuẩn cho thuật toán sửa, khớp với bảng Adaptive Repair trong `ARROW/CLAUDE.md`. Nhóm không dùng lại code cũ (`src/repair_v2` không có); tool .NET là bản triển khai mới theo AR và các spec này. Chỗ AR không nói rõ, spec quyết định và ghi thành điểm chờ xác nhận (D6, D10–D12).
+- Report 2 (Mục 2.2, 2.3, 3, 7.1) cho định nghĩa 5 bước xác minh, pilot, RQ.
+- Code Python cũ (`ARROW-paper/ARROW/src`) và `preflight_tool` cho các lệnh Maven/Gradle đã chạy được.

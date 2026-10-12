@@ -1,0 +1,20 @@
+# Local configuration with API keys: never commit
+*.local.json
+*.local.yaml
+*.local.yml
+.env
+.env.*
+
+# Run outputs and tool logs
+runs/
+logs/
+
+# .NET build outputs
+bin/
+obj/
+*.user
+.vs/
+.idea/
+
+# Java analyzer build output
+tools/java-analyzer/target/

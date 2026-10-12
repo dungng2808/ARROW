@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "plan_id": "pilot-6",
+  "shard_id": "shard-06",
+  "owner": "Han",
+  "owner_display": "Hán",
+  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "tasks": [
+    {
+      "dataset": "classes2test",
+      "task_id": "105876502_933fea3e73cb5849",
+      "repo_url": "https://github.com/ec4j/ec4j"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "149780295_10c8f7952b8fa03a",
+      "repo_url": "https://github.com/SonarSource/sonar-training-examples"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "192942452_cec4fa16291b8ed3",
+      "repo_url": "https://github.com/Nuvalence/kinesis-quality-toolkit"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "235957092_e2100021d76ad284",
+      "repo_url": "https://github.com/sameerreddy13/rlcheck"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "235979171_979209e42695c879",
+      "repo_url": "https://github.com/DivLoic/ccloud-registry-action"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "26653760_600c009d17f2808c",
+      "repo_url": "https://github.com/drissamri/linkshortener"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "43258821_153c5db63941b4b0",
+      "repo_url": "https://github.com/sherman/blobkeeper"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "50326811_396b36bfca940716",
+      "repo_url": "https://github.com/WaterfallMC/Waterfall-Old"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "62638166_7a9d09a1c03db3e8",
+      "repo_url": "https://github.com/I8C/sonar-flow-plugin"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "78464881_530e218bf03d9086",
+      "repo_url": "https://github.com/SolaceProducts/solace-jms-spring-boot"
+    }
+  ]
+}

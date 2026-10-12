@@ -1,0 +1,79 @@
+{
+  "schema_version": 1,
+  "manifest_file": "gitbug_java_pilot_9_seed42.jsonl",
+  "manifest_sha256": "6754b1a52e142813fe0a6be9530cd031da9f73bfe7f024bf0dc0dc94a34ea9b4",
+  "size": 9,
+  "seed": 42,
+  "rng": "python random.Random (Python 3.12)",
+  "rule": "only repositories of the evaluation manifest that have at least one eligible CUT on a bug (checkout_sha) other than their evaluation CUT take part. For each such repository, the candidates are the eligible CUTs on other bugs whose class file differs from the evaluation CUT; if there is none, CUTs on other bugs with the same class file are used instead (recorded as same_class_other_bug). One candidate per repository is drawn with random.Random(seed) from the sorted task_id list, repositories in sorted order. No result column is read. The pilot never contains an evaluation task, nor a task on an evaluation bug.",
+  "pool_sha256": "13a91210c3ae9e6008049b4e98c5d1ac042e3643fcd67eb42f3991e4d8b96b2b",
+  "evaluation_manifest": "gitbug_java_32_seed42.jsonl",
+  "evaluation_sha256": "e0a333f80413d7d0d02114306548ef62f0a594e23563529a65f654e2ec1c8080",
+  "selection": {
+    "AuthMe-ConfigMe-7bf10c513479_5db35da89b9d8088": {
+      "repository": "https://github.com/AuthMe/ConfigMe",
+      "selection": "other_class_other_bug",
+      "candidates": 1,
+      "evaluation_task_id": "AuthMe-ConfigMe-aa91a6b315ec_ae60ceb030e8d3fc"
+    },
+    "LMAX-Exchange-Simple-DSL-81182e58bd80_e74e99fe1e0db330": {
+      "repository": "https://github.com/LMAX-Exchange/Simple-DSL",
+      "selection": "same_class_other_bug",
+      "candidates": 1,
+      "evaluation_task_id": "LMAX-Exchange-Simple-DSL-7d81cd9e2951_e8167ea0b2c73a87"
+    },
+    "TheAlgorithms-Java-e5c7a08874a6_0bc8a5a559202e54": {
+      "repository": "https://github.com/TheAlgorithms/Java",
+      "selection": "other_class_other_bug",
+      "candidates": 3,
+      "evaluation_task_id": "TheAlgorithms-Java-4f1514980495_c7254d933a173a38"
+    },
+    "awslabs-aws-java-nio-spi-for-s3-ea1044d51bb4_c33aa3c891119328": {
+      "repository": "https://github.com/awslabs/aws-java-nio-spi-for-s3",
+      "selection": "other_class_other_bug",
+      "candidates": 1,
+      "evaluation_task_id": "awslabs-aws-java-nio-spi-for-s3-8ae86f85f328_8bdf6adfd7816b9f"
+    },
+    "jhy-jsoup-2f48a617fe48_5117e12bab8e7710": {
+      "repository": "https://github.com/jhy/jsoup",
+      "selection": "other_class_other_bug",
+      "candidates": 27,
+      "evaluation_task_id": "jhy-jsoup-dea49696e976_606de34ebd288cd9"
+    },
+    "jitterted-ensembler-14a39138787f_0ae29db88b6f916e": {
+      "repository": "https://github.com/jitterted/ensembler",
+      "selection": "same_class_other_bug",
+      "candidates": 2,
+      "evaluation_task_id": "jitterted-ensembler-6207c9d46460_454c2da38dd320da"
+    },
+    "klausbrunner-solarpositioning-79c0044373b4_6c6c6e36381211b1": {
+      "repository": "https://github.com/klausbrunner/solarpositioning",
+      "selection": "other_class_other_bug",
+      "candidates": 2,
+      "evaluation_task_id": "klausbrunner-solarpositioning-4d35aecb4840_a267cdc91744db73"
+    },
+    "mthmulders-mcs-12a39786d753_019cec74ec7b63d3": {
+      "repository": "https://github.com/mthmulders/mcs",
+      "selection": "other_class_other_bug",
+      "candidates": 1,
+      "evaluation_task_id": "mthmulders-mcs-eff905bef8d8_92aac359fd7a86e4"
+    },
+    "traccar-traccar-fdbd269b9b99_b27b55733bef0a29": {
+      "repository": "https://github.com/traccar/traccar",
+      "selection": "other_class_other_bug",
+      "candidates": 87,
+      "evaluation_task_id": "traccar-traccar-bc99846b0c88_e79c0830fbabe84e"
+    }
+  },
+  "selected_task_ids": [
+    "AuthMe-ConfigMe-7bf10c513479_5db35da89b9d8088",
+    "LMAX-Exchange-Simple-DSL-81182e58bd80_e74e99fe1e0db330",
+    "TheAlgorithms-Java-e5c7a08874a6_0bc8a5a559202e54",
+    "awslabs-aws-java-nio-spi-for-s3-ea1044d51bb4_c33aa3c891119328",
+    "jhy-jsoup-2f48a617fe48_5117e12bab8e7710",
+    "jitterted-ensembler-14a39138787f_0ae29db88b6f916e",
+    "klausbrunner-solarpositioning-79c0044373b4_6c6c6e36381211b1",
+    "mthmulders-mcs-12a39786d753_019cec74ec7b63d3",
+    "traccar-traccar-fdbd269b9b99_b27b55733bef0a29"
+  ]
+}

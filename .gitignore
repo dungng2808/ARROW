@@ -1,6 +1,15 @@
 # Local Class2Test dataset and cloned repositories
 /classes2test/
 
+# Repository tải về và workspace build của pilot_tool (mặc định ARROW/repo)
+/repo/
+
+# Công cụ tải về cho pilot_tool (EvoSuite, JaCoCo, PIT, tsDetect), xem pilot_tool/SETUP.md
+/tools/
+
+# LiteLLM proxy cài bằng pilot_tool/install/install-litellm.* (môi trường Python riêng)
+/litellm/
+
 # Local clone of the GitBug-Java benchmark (https://github.com/gitbugactions/gitbug-java)
 /gitbug-java/
 

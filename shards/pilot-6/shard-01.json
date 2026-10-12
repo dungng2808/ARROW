@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "plan_id": "pilot-6",
+  "shard_id": "shard-01",
+  "owner": "Dung-mac",
+  "owner_display": "Dũng-mac",
+  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "tasks": [
+    {
+      "dataset": "classes2test",
+      "task_id": "109327955_cfeadfc4edae9fcb",
+      "repo_url": "https://github.com/esanchezros/quickfixj-spring-boot-starter"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "188574042_2d56f35323c0332c",
+      "repo_url": "https://github.com/qianxingchuan/doraemon"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "40563017_fd9d8af30efaa3c8",
+      "repo_url": "https://github.com/Diorite/Diorite"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "49945501_cfefe1734435f64f",
+      "repo_url": "https://github.com/neoteric-eu/neo-starters"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "67934497_84a481d74206381c",
+      "repo_url": "https://github.com/networknt/light-example-4j"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "73380577_8f370ba08beb233e",
+      "repo_url": "https://github.com/xebia-france/xebicon"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "93861612_de06f576710292e9",
+      "repo_url": "https://github.com/trivago/cucable-plugin"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "LMAX-Exchange-Simple-DSL-81182e58bd80_e74e99fe1e0db330",
+      "repo_url": "https://github.com/LMAX-Exchange/Simple-DSL"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "mthmulders-mcs-12a39786d753_019cec74ec7b63d3",
+      "repo_url": "https://github.com/mthmulders/mcs"
+    }
+  ]
+}

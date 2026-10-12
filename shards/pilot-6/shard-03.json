@@ -1,0 +1,60 @@
+{
+  "schema_version": 1,
+  "plan_id": "pilot-6",
+  "shard_id": "shard-03",
+  "owner": "KieuAnh",
+  "owner_display": "Kiều Anh",
+  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "tasks": [
+    {
+      "dataset": "classes2test",
+      "task_id": "110584604_008c10412f4a2291",
+      "repo_url": "https://github.com/ftrossbach/club-topicana"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "118477931_429246acc7725217",
+      "repo_url": "https://github.com/aionnetwork/aion"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "19069584_82226a0f1fb923a9",
+      "repo_url": "https://github.com/esigate/esigate"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "221155810_d488326aa5dd0b17",
+      "repo_url": "https://github.com/HaydiKodlayalim/spring-examples"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "53073438_b4b2d2d3b0803f18",
+      "repo_url": "https://github.com/devnull-tools/boteco"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "54252267_eb77bd67a330c027",
+      "repo_url": "https://github.com/apache/nifi-minifi"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "72283823_50470710c2efa865",
+      "repo_url": "https://github.com/V1toss/JavaPA"
+    },
+    {
+      "dataset": "classes2test",
+      "task_id": "74704643_a95be1fd22a6d5af",
+      "repo_url": "https://github.com/merapar/graphql-spring-boot-starter"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "awslabs-aws-java-nio-spi-for-s3-ea1044d51bb4_c33aa3c891119328",
+      "repo_url": "https://github.com/awslabs/aws-java-nio-spi-for-s3"
+    },
+    {
+      "dataset": "gitbug-java",
+      "task_id": "traccar-traccar-fdbd269b9b99_b27b55733bef0a29",
+      "repo_url": "https://github.com/traccar/traccar"
+    }
+  ]
+}
