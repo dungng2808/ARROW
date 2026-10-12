@@ -19,7 +19,7 @@ import sys
 from collections import Counter
 from pathlib import Path
 
-PATH_KEYS = {"config_path", "dataset_dir", "input_root", "shard_path"}
+PATH_KEYS = {"config_path", "dataset_dir", "input_root", "shard_path", "revision_map"}
 
 
 def sha256(path: Path) -> str:

@@ -1,0 +1,18 @@
+{
+  "by_status": {
+    "BUILD_TIMEOUT": 2,
+    "DEPENDENCY_UNAVAILABLE": 3,
+    "ELIGIBLE": 96,
+    "EXCLUDED": 13,
+    "JDK_UNSUPPORTED": 3,
+    "MAIN_BUILD_FAILED": 5,
+    "PROBE_FAILED": 55,
+    "TEST_COMPILE_FAILED": 3
+  },
+  "repo_cleanup": {
+    "DELETED": 35
+  },
+  "strict_eligible": 96,
+  "technical_eligible": 96,
+  "total": 180
+}

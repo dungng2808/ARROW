@@ -1,0 +1,62 @@
+{
+  "total": 202,
+  "eligible_classes": 168,
+  "eligible_repositories": 32,
+  "repositories_with_two_or_more_eligible_bugs": 9,
+  "by_status": {
+    "ELIGIBLE": 168,
+    "EXCLUDED": 15,
+    "TEST_COMPILE_FAILED": 5,
+    "JDK_UNSUPPORTED": 4,
+    "DEPENDENCY_UNAVAILABLE": 3,
+    "MAIN_BUILD_FAILED": 3,
+    "BUILD_TIMEOUT": 2,
+    "NEEDS_REVIEW": 1,
+    "PROBE_FAILED": 1
+  },
+  "rerun": {
+    "classes": 22,
+    "recovered": 16,
+    "by_status": {
+      "ELIGIBLE": 16,
+      "EXCLUDED": 2,
+      "TEST_COMPILE_FAILED": 2,
+      "JDK_UNSUPPORTED": 1,
+      "NEEDS_REVIEW": 1
+    }
+  },
+  "eligible_classes_by_repository": {
+    "AuthMe/ConfigMe": 2,
+    "Bindambc/whatsapp-business-java-api": 2,
+    "GoSimpleLLC/nbvcxz": 2,
+    "LMAX-Exchange/Simple-DSL": 2,
+    "Moderocky/ByteSkript": 1,
+    "TheAlgorithms/Java": 4,
+    "adoble/adr-j": 1,
+    "aws/aws-secretsmanager-jdbc": 1,
+    "awslabs/aws-java-nio-spi-for-s3": 2,
+    "c-rack/cbor-java": 2,
+    "crawler-commons/crawler-commons": 1,
+    "damianszczepanik/cucumber-reporting": 1,
+    "davidmoten/openapi-to-plantuml": 1,
+    "davidmoten/word-wrap": 1,
+    "ezylang/EvalEx": 1,
+    "fishercoder1534/Leetcode": 1,
+    "fusesource/jansi": 1,
+    "gradle/common-custom-user-data-gradle-plugin": 1,
+    "jhy/jsoup": 30,
+    "jitterted/ensembler": 3,
+    "klausbrunner/solarpositioning": 3,
+    "mthmulders/mcs": 2,
+    "nikoo28/java-solutions": 1,
+    "retel-io/ari-proxy": 1,
+    "revelc/formatter-maven-plugin": 1,
+    "salesforce/grammaticus": 1,
+    "slub/urnlib": 1,
+    "spring-projects/spring-guice": 1,
+    "spring-projects/spring-retry": 3,
+    "stellar/java-stellar-sdk": 1,
+    "traccar/traccar": 92,
+    "vmzakharov/dataframe-ec": 1
+  }
+}

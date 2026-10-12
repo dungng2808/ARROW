@@ -1,0 +1,87 @@
+{
+  "schema_version": 1,
+  "provenance": {
+    "checkpoint_schema_version": 2,
+    "classes_selected": 71,
+    "config_sha256": "57e507ddd46fc765fed794faf97cb85f56e67dae1b054aa04c79f34f37da7b5b",
+    "deduplicated_classes": 180,
+    "keep_repo_cache": false,
+    "keep_workspaces": false,
+    "raw_json_indexed": 180,
+    "resume_count": 0,
+    "revision_map_sha256": "b4b58c0f0823d3c559c8daa9d2a56d486b0c93b91391eb0d39e69d4f236cb87e",
+    "revision_policy": "Raw Classes2Test carries no source commit. History matches are CONTENT_MATCHED/DISCOVERY_ONLY; only an audited revision map may produce UPSTREAM_PINNED/STRICT output.",
+    "run_status": "COMPLETED",
+    "sessions": [
+      {
+        "completed_after": 71,
+        "completed_before": 0,
+        "ended_at_utc": "2026-10-11T15:06:29.682677+00:00",
+        "session_id": 1,
+        "started_at_utc": "2026-10-11T14:49:35.391926+00:00",
+        "status": "COMPLETED",
+        "workers": 4
+      }
+    ],
+    "shard_class_count": 71,
+    "shard_id": "rerun-fixed-probe-gitbug-full-20261011",
+    "shard_sha256": "0881373144664e27956ba22361d820c5da20f7633994c9e8f0c1503e7ef87c66",
+    "started_at_utc": "2026-10-11T14:49:35.387204+00:00",
+    "tool": "class2test-preflight"
+  },
+  "source_files_sha256": {
+    "reports/summary.json": "6a5410c186a0865b9355d8c5302f8bae8c5eaa9a8c42994ac9512b101e19f68e",
+    "reports/preflight_results.jsonl": "b21cb99245b801668f273aea029f0639d4f6c29ff74411f86959739efabbd81d",
+    "provenance.json": "1d2cb55114fd256de46507228a28cb5f79bad5d984b9bfae60da67a2978a2832"
+  },
+  "all_classes": {
+    "total": 71,
+    "repositories": 18,
+    "by_preflight_status": {
+      "BUILD_TIMEOUT": 2,
+      "DEPENDENCY_UNAVAILABLE": 3,
+      "ELIGIBLE": 56,
+      "JDK_UNSUPPORTED": 3,
+      "MAIN_BUILD_FAILED": 3,
+      "PROBE_FAILED": 1,
+      "TEST_COMPILE_FAILED": 3
+    },
+    "by_reason_code": {
+      "BUILD_TIMEOUT": 2,
+      "DEPENDENCY_UNAVAILABLE": 3,
+      "JDK_UNSUPPORTED": 1,
+      "JDK_VERSION_MISMATCH": 2,
+      "MAIN_BUILD_FAILED": 3,
+      "PROBE_FAILED": 1,
+      "TEST_COMPILE_FAILED": 3
+    },
+    "by_revision_verification_status": {
+      "UPSTREAM_PINNED": 71
+    },
+    "by_run_mode": {
+      "STRICT": 71
+    }
+  },
+  "technical_eligible": {
+    "total": 56,
+    "repositories": 10,
+    "by_revision_verification_status": {
+      "UPSTREAM_PINNED": 56
+    },
+    "by_build_tool": {
+      "gradle": 44,
+      "maven": 12
+    },
+    "by_testing_framework": {
+      "junit4": 21,
+      "junit5": 35
+    },
+    "by_tag": {
+      "DB_DEPENDENT": 2,
+      "EXTERNAL_DEPENDENT": 46,
+      "REQUIRES_MOCK": 47,
+      "STATIC_UTILITY": 3
+    }
+  },
+  "strict_eligible": 56
+}
