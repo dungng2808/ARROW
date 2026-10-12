@@ -1,6 +1,6 @@
 # pilot_tool: công cụ chạy pilot của ARROW
 
-**Trạng thái:** đang code; mốc M1, M2 xong (13/10/2026). Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
+**Trạng thái:** đang code; mốc M1, M2, M3 xong (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
 
 Tài liệu liên quan: `ARCHITECTURE.md` (kiến trúc code), `CLI_DASHBOARD.md` (dashboard trong terminal), `SETUP.md` (cài đặt máy, chia shard, gom kết quả), `specs/` (spec chi tiết để code; các điểm chờ xác nhận ở `specs/00-INDEX.md`).
 
@@ -17,6 +17,7 @@ Cần .NET SDK 8 trở lên (máy chỉ có SDK mới hơn vẫn được). Từ
 | Chạy shard của máy (M2: bước S0 chuẩn bị) | `dotnet run --project src/Arrow.Cli -- run` |
 | Chạy lại task lỗi hạ tầng | `dotnet run --project src/Arrow.Cli -- run --rerun-infra` |
 | Unit test | `dotnet test tests/Arrow.Core.Tests` |
+| Integration test (Maven, Gradle thật trên `tests/fixtures`, cần `machine.local.json`) | `dotnet test tests/Arrow.Infrastructure.Tests` |
 
 Chép đúng phần lệnh; không chép kèm chú thích (zsh trên macOS mặc định không coi `#` là chú thích).
 

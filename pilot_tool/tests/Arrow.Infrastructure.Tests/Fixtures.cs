@@ -3,9 +3,12 @@ using Arrow.Core.Config;
 using Arrow.Core.Manifest;
 using Arrow.Core.Runs;
 using Arrow.Infrastructure;
+using Arrow.Core.Prepare;
 using Arrow.Infrastructure.Git;
+using Arrow.Infrastructure.Java;
 using Arrow.Infrastructure.Prepare;
 using Arrow.Infrastructure.Processes;
+using Arrow.Infrastructure.Verify;
 
 namespace Arrow.Infrastructure.Tests;
 
@@ -39,7 +42,26 @@ public static class Env
     public static FixtureRepo Repo(string fixture) => Repos.GetOrAdd(fixture, f => new Lazy<FixtureRepo>(() => FixtureRepo.Create(f))).Value;
 
     public static PrepareService Prepare() => new(Git, Machine, Experiment, WorkDir);
+
+    public static JavaAnalyzer Analyzer => new(Paths.PilotToolDir, Machine);
+
+    public static CandidateRunner Candidates => new(Git, WorkDir, Machine, new FiveStepVerifier(Experiment, Machine, Analyzer));
+
+    private static readonly ConcurrentDictionary<string, Lazy<Task<PreparedTask>>> Prepared = new();
+
+    /// <summary>S0 của một task mẫu, chạy một lần cho cả lần chạy test.</summary>
+    public static Task<PreparedTask> PreparedAsync(ManifestRecord record) =>
+        Prepared.GetOrAdd(record.TaskId, _ => new Lazy<Task<PreparedTask>>(async () =>
+        {
+            var store = NewStore("prepared");
+            store.EnsureCreated();
+            var job = new JobKey { Dataset = record.Dataset, TaskId = record.TaskId, Stage = "prepare" };
+            var result = await Prepare().RunAsync(record, store, job, _ => { }, CancellationToken.None);
+            return new PreparedTask(record, store, result.Task, result.Baseline, result.Context, store.TaskDir(record.Dataset, record.TaskId));
+        })).Value;
 }
+
+public sealed record PreparedTask(ManifestRecord Record, RunStore Store, TaskInfo Task, Baseline Baseline, RepoContext Context, string TaskDir);
 
 /// <summary>Repository git tạo từ một thư mục fixture; <see cref="Url"/> dạng <c>file://</c>.</summary>
 public sealed record FixtureRepo(string Name, string Dir, string Url, string Sha)

@@ -183,6 +183,19 @@ public sealed class PrepareService(GitRepositoryProvider git, MachineConfig mach
             // 6 thông tin repository.
             var context = await ExtractContextAsync(record, plan, jdk, toolVersion, workspace, moduleAbsolute, Run, cancellationToken).ConfigureAwait(false);
 
+            // Không ghi đè file sẵn có: tên trùng (hiếm) thì thêm hậu tố số _ArrowTest2… (specs/03 Mục 1).
+            var testClassFqn = record.ClassFqn + experiment.TestClassSuffix;
+            var suffixFile = experiment.TestClassSuffix + ".java";
+            var testPath = context.TestPath;
+            for (var n = 2; File.Exists(Path.Combine(workspace, testPath)); n++)
+            {
+                testPath = context.TestPath[..^suffixFile.Length] + experiment.TestClassSuffix + n + ".java";
+                testClassFqn = record.ClassFqn + experiment.TestClassSuffix + n;
+                ToolLog.Warn($"{record.TaskId}: {context.TestPath} đã có trong repository, dùng {Path.GetFileName(testPath)}");
+            }
+
+            context = context with { TestPath = testPath };
+
             var info = new TaskInfo
             {
                 Dataset = record.Dataset,
@@ -204,7 +217,7 @@ public sealed class PrepareService(GitRepositoryProvider git, MachineConfig mach
                 BuildToolVersion = toolVersion,
                 GradleTasks = gradleTasks?.Order(StringComparer.Ordinal).ToList(),
                 RepoHistory = repoHistory,
-                GeneratedTestClassFqn = record.ClassFqn + experiment.TestClassSuffix,
+                GeneratedTestClassFqn = testClassFqn,
                 GeneratedTestPath = context.TestPath,
                 Steps = steps,
                 PreparedAt = DateTimeOffset.UtcNow,

@@ -1,6 +1,6 @@
 # Kiến trúc code của pilot_tool
 
-**Trạng thái:** thiết kế, chưa có code (12/10/2026). `README.md` mô tả tool làm gì; tài liệu này mô tả code được tổ chức và viết như thế nào. Sửa tài liệu trước, sửa code sau.
+**Trạng thái:** đang code; M1, M2, M3 xong (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. `README.md` mô tả tool làm gì; tài liệu này mô tả code được tổ chức và viết như thế nào. Sửa tài liệu trước, sửa code sau.
 
 ## 1. Kiểu kiến trúc
 
@@ -65,7 +65,7 @@ pilot_tool/
   tests/
     Arrow.Core.Tests/            unit test logic thuần
     Arrow.Infrastructure.Tests/  integration test trên repository mẫu
-    fixtures/{sample-maven-junit4,sample-maven-junit5,sample-gradle-junit5}/
+    fixtures/{sample-maven-junit4,sample-maven-multimodule-junit5,sample-gradle-junit5}/
   runs/                          output (trong .gitignore)
 ```
 

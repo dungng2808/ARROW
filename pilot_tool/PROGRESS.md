@@ -15,6 +15,15 @@ Bằng chứng cho từng mốc của `ARCHITECTURE.md` Mục 16: lệnh đã ch
 - `tests/Arrow.Infrastructure.Tests/PrepareIntegrationTests.cs`: S0 thật trên 3 fixture (fixture được commit thành repository git tạm, tải qua `file://`).
 - `dotnet build ArrowRunner.sln` → 0 warning, 0 error. `dotnet test ArrowRunner.sln` → Core 50/50, Infrastructure 3/3 pass.
 
+Commit: `79315db` (M1, M2, nợ M2, pilot v2), đã push lên `main`.
+
+## 2. M3: xác minh 5 bước
+
+- Code: `Arrow.Core/Verify` (`VerificationState`, `VerifyResult` = `verify.json`, `FailureClassifier`: lỗi javac Maven/Gradle, loại lỗi javac cố định, RUNTIME/ASSERTION, regression, signature theo specs/03 Mục 6, D11; `CodeHasher`), `Arrow.Infrastructure/Verify` (`FiveStepVerifier`, `CandidateRunner`: workspace sạch mỗi ứng viên, build lại 1 lần khi timeout/lỗi công cụ/lỗi tải dependency rồi INFRA, `-Dsurefire.includesFile` hoặc init script Gradle khi module không chạy test sinh ra), `Arrow.Infrastructure/Java/JavaAnalyzer` + `tools/java-analyzer` (JavaParser: bỏ comment theo AST, đếm assertion, method chứa dòng lỗi). S0 thêm hậu tố `_ArrowTest2` khi tên trùng file sẵn có.
+- `dotnet test tests/Arrow.Infrastructure.Tests` → 14/14 pass (`VerifierIntegrationTests`: lỗi compile trong method → `COMPILE | cannot find symbol | method` + method lỗi; lỗi import → `COMPILE | package does not exist | -`; không có `@Test` và mọi method `@Ignore` → DISCOVERY; NPE từ CUT → `RUNTIME | NullPointerException | Calculator.labelLength`; assertion sai giá trị → ASSERTION (không phải COMPILE); `assertThrows` không ném → ASSERTION; ghi file dùng chung → `REGRESSION | existing tests fail | SharedStoreTest`; test đúng → VALID với 2 assertion; module có `<includes>` riêng → VALID, `module_run_includes_target=false`; Gradle VALID và COMPILE).
+- `dotnet test tests/Arrow.Core.Tests` → 76/76 pass (thêm `FailureClassifierTests`, `CodeHasherTests`).
+- `dotnet build ArrowRunner.sln` → 0 warning, 0 error.
+
 ## Việc còn mở
 
 - Tiêu chí M1 trên Windows (tạm dừng/tiếp tục trên Windows): chưa kiểm được trên máy này.
