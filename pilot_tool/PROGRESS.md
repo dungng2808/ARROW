@@ -69,6 +69,16 @@ Commit: `3728e24` (M7), đã push lên `main`.
 - Test: Core 114/114 (`PilotReportTests`); Infrastructure 37/37, trong đó `FullPipelineEndToEndTests` (`arrow run` đủ S0→S5 với `--fake-llm`, n_max 3, trên 3 fixture): EvoSuite VALID trên fixture JUnit 4 (task Java 17 → `UNSUPPORTED_JDK` đúng specs/06), mọi bộ test VALID (ARROW sau sinh, sau sửa, EvoSuite) có JaCoCo/PIT/tsDetect `OK`, `part1_cost.csv` có đủ 10 bước, `part2_cumulative.csv` = `1,2 / 2,3 / 3,4`, `pilot_report.md` ghi **N theo `share95` = 3** (độ nhạy `report2` = 3); `export` không chứa `llm_cache/`; `merge` gom lại cho cùng N; `merge` từ chối plan có shard thiếu gói. `LoggingTests` (specs/08 Mục 7): che khóa, dòng ledger ghi dở và file tạm sót lại bị bỏ qua, log > 5 MB giữ đầu/cuối, log bước đạt trong gói chỉ giữ 200 dòng cuối.
 - `dotnet build ArrowRunner.sln` → 0 warning, 0 error.
 
+## 8. Smoke với GPT-6 Luna thật (điều kiện 3, 7)
+
+| Run | Lệnh | Kết quả |
+| --- | --- | --- |
+| `runs/smoke-gpt6` | `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate --max-llm-calls 6 --run-id smoke-gpt6 --rerun-infra` | S0: 2 READY. S1: 3 lượt gọi thật thành công, model id `gpt-6-luna` (jpa2ddl `zero_shot` → COMPILE, `zero_shot_project_aware` → VALID; `159422409` `zero_shot` → COMPILE); lượt 4: HTTP 400 `enterprise_insufficient_balance` → run tự tạm dừng, đã dừng |
+| `runs/smoke-gpt6-b` (13/10 10:19) | như trên, `--stages prepare,generate,repair --max-llm-calls 36` (run mới vì commit tool đổi → `RUN_CONFIG_MISMATCH`) | S0: 2 READY; lượt gọi đầu: HTTP 400 `enterprise_insufficient_balance` (`source: enterprise_wallet`) → tạm dừng, đã dừng; 0 lượt bị tính |
+| `runs/smoke-gpt6-c` (13/10 10:27) | như trên | như `smoke-gpt6-b` |
+
+**Smoke S1 + S2 chưa đạt.** Lỗi đến từ TeamoRouter (ví enterprise gắn với khóa API của máy), không phải từ tool; người dùng thấy ví cá nhân còn 0,37 USD, nên có thể khóa đang dùng thuộc ví team đã hết tiền, hoặc router giữ trước chi phí theo `max_tokens = 8192`. Không đổi model, tham số hay gọi thêm ngoài smoke (điều kiện 3). Tổng lượt gọi thật đã dùng: 3 / 40.
+
 ## Trạng thái
 
 **Code M1–M8 và test tự động đã xong; sẵn sàng chạy pilot theo shard** sau khi giải quyết hai việc đầu trong danh sách dưới (ví provider, smoke).
