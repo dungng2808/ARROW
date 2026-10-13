@@ -45,7 +45,7 @@ So với Fixed Repair (dùng cùng một prompt sửa ở mọi vòng), Adaptive
 - Hệ quả khi viết báo cáo: **không** quy hiệu quả cho từng thành phần riêng lẻ (không viết "nhờ rollback…", "error signature giúp…").
 - Nên ghi log số lần mỗi cơ chế được kích hoạt (rollback, mã trùng theo hash, lỗi lặp theo signature, đổi strategy, dừng sớm) để báo cáo mô tả, không phải chứng minh nhân quả.
 - Thực nghiệm chạy **một lần** cho mỗi cấu hình. Không dùng lý do "giá rẻ cho phép lặp lại thực nghiệm" khi giải thích việc chọn GPT-6 Luna.
-**Thiết kế chi tiết (chốt 08/10/2026, cần đối chiếu với code repair khi có).** Bản đầy đủ (thuật toán, ví dụ, log, câu hỏi hội đồng): `draft/Adaptive repair.md`.
+**Thiết kế chi tiết (chốt 08/10/2026, cần đối chiếu với code repair khi có).** Bản đầy đủ (thuật toán, ví dụ, log, câu hỏi hội đồng): `ARROW/Adaptive repair.md`.
 
 | # | Hạng mục | Quyết định | Cách biện minh |
 |---|----------|------------|----------------|

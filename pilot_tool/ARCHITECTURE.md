@@ -131,10 +131,10 @@ interface IRepairPolicy
 ```
 
 - `FixedRepairPolicy`: luôn prompt mức 1, luôn sửa từ bản mới nhất, không dùng hash, signature, checkpoint; mã trùng vẫn build lại.
-- `AdaptiveRepairPolicy`: đúng thuật toán mục 4 của `draft/Adaptive repair.md` (checkpoint, rollback, leo mức 1→2→3, mã trùng không build, prompt lấy lỗi của checkpoint).
+- `AdaptiveRepairPolicy`: đúng thuật toán mục 4 của `ARROW/Adaptive repair.md` (checkpoint, rollback, leo mức 1→2→3, mã trùng không build, prompt lấy lỗi của checkpoint).
 - `CheckpointComparer`: so sánh theo thứ tự bước xác minh → số test method pass → số assertion → vòng sớm hơn.
 
-Hai policy là code thuần, nhận lịch sử và trả quyết định. Các ví dụ trong `draft/Adaptive repair.md` (vòng 1 RUNTIME, vòng 2 COMPILE → rollback, vòng 3 ASSERTION…) được viết thành unit test trước khi viết policy.
+Hai policy là code thuần, nhận lịch sử và trả quyết định. Các ví dụ trong `ARROW/Adaptive repair.md` (vòng 1 RUNTIME, vòng 2 COMPILE → rollback, vòng 3 ASSERTION…) được viết thành unit test trước khi viết policy.
 
 `RepairRunner` không dừng sớm (P không bật), chạy tới VALID hoặc hết `N_max`. Mỗi vòng là một job riêng trong ledger, nên tạm dừng giữa các vòng được và chạy tiếp đúng vòng kế tiếp.
 
@@ -234,7 +234,7 @@ Chi tiết từng màn hình và từng lệnh: `CLI_DASHBOARD.md`. Về code:
 
 | Loại | Nội dung | Cần gì |
 | --- | --- | --- |
-| Unit (`Arrow.Core.Tests`) | Thứ tự trạng thái, phân loại lỗi, chuẩn hóa signature, hash, so sánh checkpoint, Fixed và Adaptive policy (theo ví dụ trong `draft/Adaptive repair.md`), quy tắc N (cả `report2` và `share95`), ControlGate | Không cần gì ngoài .NET |
+| Unit (`Arrow.Core.Tests`) | Thứ tự trạng thái, phân loại lỗi, chuẩn hóa signature, hash, so sánh checkpoint, Fixed và Adaptive policy (theo ví dụ trong `ARROW/Adaptive repair.md`), quy tắc N (cả `report2` và `share95`), ControlGate | Không cần gì ngoài .NET |
 | Integration (`Arrow.Infrastructure.Tests`) | Chạy Maven và Gradle thật trên 3 repository mẫu trong `tests/fixtures`: test đúng → VALID; lỗi compile, test không được phát hiện, exception, assertion, phá test có sẵn → đúng trạng thái | JDK, Maven, Gradle |
 | End-to-end | Chạy cả pipeline trên repository mẫu với `FakeLlmClient` trả response soạn sẵn; kiểm tra ledger, chạy tiếp sau khi dừng, tạm dừng/tiếp tục | Không tốn tiền API |
 | Smoke với model thật | 1–2 class pilot, gọi GPT-6 Luna thật | Khóa API, LiteLLM proxy |

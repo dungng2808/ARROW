@@ -32,7 +32,7 @@ Quy ước: `MUST` là bắt buộc, `SHOULD` là nên làm. Nhãn `[Dn]` trong 
 
 ## Đã giải quyết theo bản chuẩn (12/10/2026)
 
-| Mã cũ | Điểm | Theo `draft/Adaptive repair.md` |
+| Mã cũ | Điểm | Theo `ARROW/Adaptive repair.md` |
 | --- | --- | --- |
 | D5 | Prompt sửa có kèm 6 thông tin repository không | **Không.** Mức 1 (và Fixed) = lỗi + mã test + source focal class; mức 2 của COMPILE mới thêm dependencies và Java version (AR 3.1) |
 | D7 | Mức 3 có được xóa test method không | LLM trả cả class; ARROW ghép các method lỗi vào checkpoint; method lỗi không còn trong response thì bị bỏ; method bị bỏ = có trong c0 mà không còn ở bản cuối (AR 3.1) |
@@ -55,6 +55,6 @@ Quy ước: `MUST` là bắt buộc, `SHOULD` là nên làm. Nhãn `[Dn]` trong 
 
 ## Nguồn của thiết kế
 
-- **`draft/Adaptive repair.md`** (viết tắt "AR" trong spec) là nguồn chuẩn cho thuật toán sửa, khớp với bảng Adaptive Repair trong `ARROW/CLAUDE.md`. Nhóm không dùng lại code cũ (`src/repair_v2` không có); tool .NET là bản triển khai mới theo AR và các spec này. Chỗ AR không nói rõ, spec quyết định và ghi thành điểm chờ xác nhận (D6, D10–D12).
+- **`ARROW/Adaptive repair.md`** (viết tắt "AR" trong spec) là nguồn chuẩn cho thuật toán sửa, khớp với bảng Adaptive Repair trong `ARROW/CLAUDE.md`. Nhóm không dùng lại code cũ (`src/repair_v2` không có); tool .NET là bản triển khai mới theo AR và các spec này. Chỗ AR không nói rõ, spec quyết định và ghi thành điểm chờ xác nhận (D6, D10–D12).
 - Report 2 (Mục 2.2, 2.3, 3, 7.1) cho định nghĩa 5 bước xác minh, pilot, RQ.
 - Code Python cũ (`ARROW-paper/ARROW/src`) và `preflight_tool` cho các lệnh Maven/Gradle đã chạy được.

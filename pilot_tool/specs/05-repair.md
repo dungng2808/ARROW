@@ -2,7 +2,7 @@
 
 ## 1. Nguồn
 
-Spec này theo **`draft/Adaptive repair.md`** (viết tắt AR), khớp với bảng Adaptive Repair trong `CLAUDE.md`. Số mục trong ngoặc, ví dụ "(AR 3.1)", là mục của tài liệu đó. Nhóm không dùng lại code cũ: tool .NET là bản triển khai mới theo AR và spec. Chỗ AR không nói rõ, spec tự quyết định và ghi thành điểm chờ xác nhận ở `00-INDEX.md`.
+Spec này theo **`ARROW/Adaptive repair.md`** (viết tắt AR), khớp với bảng Adaptive Repair trong `CLAUDE.md`. Số mục trong ngoặc, ví dụ "(AR 3.1)", là mục của tài liệu đó. Nhóm không dùng lại code cũ: tool .NET là bản triển khai mới theo AR và spec. Chỗ AR không nói rõ, spec tự quyết định và ghi thành điểm chờ xác nhận ở `00-INDEX.md`.
 
 ## 2. Đầu vào
 

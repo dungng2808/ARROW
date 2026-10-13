@@ -108,7 +108,7 @@ Lỗi ở S0 là **lỗi hạ tầng**: ghi lý do, không gọi model, không t
 ### S2. Sửa test để chọn N (phần 2, chỉ Classes2Test)
 
 - Đầu vào: mọi ứng viên S1 của Classes2Test không đạt VALID. Mỗi cơ chế nhận một bản sao độc lập của cùng ứng viên và cùng trạng thái repository.
-- Fixed Repair và Adaptive Repair chạy theo thiết kế đã chốt (CLAUDE.md, `draft/Adaptive repair.md`), **không dừng sớm**, tối đa `N_max = 10` vòng; dừng sớm hơn chỉ khi đạt VALID.
+- Fixed Repair và Adaptive Repair chạy theo thiết kế đã chốt (CLAUDE.md, `ARROW/Adaptive repair.md`), **không dừng sớm**, tối đa `N_max = 10` vòng; dừng sớm hơn chỉ khi đạt VALID.
 - Ghi log từng vòng (Mục 5).
 - Tính N theo quy tắc chốt trước (Mục 4) trên **tỷ lệ cộng dồn chung của hai cơ chế**. Báo cáo pilot **không** in kết quả so sánh Fixed với Adaptive; số liệu theo từng cơ chế vẫn được lưu trong log nhưng không tổng hợp.
 
@@ -161,7 +161,7 @@ Tool chạy tiếp được sau khi bị dừng: job đã có trong `ledger.json
 | --- | --- | --- |
 | Ngôn ngữ, runtime | **.NET 8 (LTS)**, C# | Chạy trên macOS (arm64) và Windows (x64) |
 | Phạm vi | Toàn bộ phần chạy thực nghiệm (pilot và thực nghiệm chính) viết bằng .NET | Pilot và thực nghiệm chính chạy cùng một code. Preflight giữ nguyên bằng Python (đã chạy xong, manifest đã đóng băng) |
-| ARROW core | Viết mới theo thiết kế đã chốt (CLAUDE.md, `draft/Adaptive repair.md`) | Code Python cũ ở `ARROW-paper/ARROW/src` chỉ để tham khảo cách gọi Maven/Gradle |
+| ARROW core | Viết mới theo thiết kế đã chốt (CLAUDE.md, `ARROW/Adaptive repair.md`) | Code Python cũ ở `ARROW-paper/ARROW/src` chỉ để tham khảo cách gọi Maven/Gradle |
 | Gọi model | Qua **LiteLLM proxy** (`litellm --config litellm.config.yaml`, HTTP chuẩn OpenAI) | Giữ đúng mô tả "gọi qua LiteLLM" trong báo cáo; Qwen qua Ollama sau này dùng cùng đường gọi |
 | Phân tích Java | Một jar nhỏ dùng **JavaParser** (`tools/java-analyzer`), .NET gọi qua tiến trình | Đếm assertion, tìm method lỗi cho mức 3, trích API của CUT; .NET không có parser Java tốt |
 | Dashboard | **Dashboard trong terminal** (Spectre.Console), nằm ngay trong CLI; phím tắt tạm dừng, tiếp tục, dừng hẳn (Mục 6b). Chi tiết màn hình: `CLI_DASHBOARD.md` (chốt 12/10/2026) | Một chương trình duy nhất, ít code, chạy được qua SSH; chi tiết từng task xem trong `runs/` hoặc báo cáo |
