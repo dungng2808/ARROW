@@ -2,7 +2,7 @@
 
 ## 1. EvoSuite (S3)
 
-Công cụ: `ARROW/tools/evosuite/evosuite-1.2.0.jar`, `evosuite-standalone-runtime-1.2.0.jar` (tải từ release chính thức của EvoSuite, kiểm SHA-256, ghi vào `run_config.lock.json`). EvoSuite 1.2.0 chỉ chạy trên Java ≤ 11: chạy EvoSuite bằng **JDK 11** khi task dùng JDK 8 hoặc 11; task dùng JDK 17/21 → vẫn thử bằng JDK 11 với classpath đã biên dịch; lỗi do phiên bản class (`Unsupported class file major version`) được ghi `evosuite_status=UNSUPPORTED_JDK`, không phải lỗi hạ tầng của tool.
+Công cụ: `ARROW/tools/evosuite/evosuite-1.2.0.jar`, `evosuite-standalone-runtime-1.2.0.jar` (tải từ release chính thức của EvoSuite, kiểm SHA-256, ghi vào `run_config.lock.json`). EvoSuite 1.2.0 (bytecode Java 8) chỉ chạy trên Java ≤ 11: chạy EvoSuite bằng **đúng JDK của task** khi task dùng JDK 8 hoặc 11 (13/10/2026, 00-INDEX P11: chạy bằng JDK 11 cho task Java 8 làm EvoSuite sinh lời gọi API Java 9+ như `ClassLoader.getPlatformClassLoader()`, test không biên dịch được bằng JDK 8); task dùng JDK 17/21 → vẫn thử bằng JDK 11 với classpath đã biên dịch; lỗi do phiên bản class (`Unsupported class file major version`) được ghi `evosuite_status=UNSUPPORTED_JDK`, không phải lỗi hạ tầng của tool.
 
 Các bước cho mỗi task:
 
@@ -28,10 +28,8 @@ Chỉ đo trên bộ test có `state = VALID` (của ARROW: ứng viên VALID �
 
 ### 2.1. JaCoCo 0.8.12
 
-- Maven: `org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent` + lệnh `target_test` (chỉ chạy class test sinh ra) + `org.jacoco:jacoco-maven-plugin:0.8.12:report`; đọc `target/site/jacoco/jacoco.csv`.
-- Gradle: init script áp plugin `jacoco` phiên bản 0.8.12, chạy `<p>:test --tests <T>` rồi `<p>:jacocoTestReport` với CSV bật (`build/reports/jacoco/test/jacocoTestReport.csv`).
+- **Cách chạy (13/10/2026, 00-INDEX P9):** JaCoCo riêng của project luôn tắt (giữ cờ chung `-Djacoco.skip=true` như bước xác minh); agent JaCoCo 0.8.12 của tool (`ARROW/tools/jacoco/jacocoagent-0.8.12.jar`) gắn qua `JAVA_TOOL_OPTIONS` (`-javaagent:…=destfile=<module>/.arrow-jacoco.exec,append=true,includes=<CUT FQN>*`) vào mọi JVM của lệnh chạy riêng test sinh ra (Maven `-Dtest=<T> test`, Gradle `<p>:test --tests <T>`); báo cáo lập bằng `jacococli-0.8.12 report <exec> --classfiles <class main của module> --sourcefiles <module>/src/main/java --csv`. Lý do: pilot shard-01 có project tự cấu hình JaCoCo (0.7.4 với `surefireArgLine` riêng làm agent của plugin không được gắn; 0.8.4 làm hai agent cùng chạy và JVM test chết), nên cách gắn qua plugin Maven không dùng được cho mọi project. Cách mới giống nhau cho Maven và Gradle.
 - Lấy dòng của CUT (khớp package và class, gồm cả inner class `CUT$…`): line, branch, method coverage = covered / (covered + missed). Mẫu số 0 (ví dụ không có nhánh) → ghi `null`, không ghi 0.
-- Cờ `-Djacoco.skip=true` của bước xác minh **không** dùng ở bước này.
 
 ### 2.2. PIT 1.17.4
 

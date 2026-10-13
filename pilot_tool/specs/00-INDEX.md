@@ -48,6 +48,9 @@ Quy ước: `MUST` là bắt buộc, `SHOULD` là nên làm. Nhãn `[Dn]` trong 
 | P5 | LiteLLM 1.91.0 từ chối `reasoning_effort` với model `gpt-6-luna` (`UnsupportedParamsError`) | `litellm.config.local.yaml` thêm `allowed_openai_params: ["reasoning_effort"]` cho model; không dùng `drop_params` vì sẽ bỏ tham số | 04 Mục 1 |
 | P6 | Ghi nguyên tử khi nhiều luồng cùng ghi một file (`control.json`) | Tên file tạm riêng `<file>.<pid>.<n>.tmp` | 01 |
 | P7 | PIT: spec ghi Maven plugin và plugin Gradle `info.solidsoft.pitest` 1.15.0; plugin Gradle không chạy trên Gradle 9 | PIT bản dòng lệnh 1.17.4 cho cả Maven và Gradle, classpath test lấy từ build tool, không sửa POM; JUnit 5 thêm plugin 1.2.1 và `junit-platform-launcher` cùng phiên bản platform | 06 Mục 2.2 |
+| P9 | JaCoCo: spec ghi `jacoco-maven-plugin:0.8.12` / plugin Gradle; project tự cấu hình JaCoCo làm đụng agent | Agent 0.8.12 của tool gắn qua `JAVA_TOOL_OPTIONS`, JaCoCo của project tắt bằng `-Djacoco.skip=true`, báo cáo bằng `jacococli`, cho cả Maven và Gradle | 06 Mục 2.1 |
+| P11 | EvoSuite: spec ghi chạy bằng JDK 11 cho task Java 8 và 11 | Chạy bằng đúng JDK của task nếu ≤ 11 (EvoSuite 1.2.0 chạy được trên JDK 8); task 17/21 thử bằng JDK 11 | 06 Mục 1 |
+| P10 | Sửa tool giữa pilot: run cũ khóa commit tool (`RUN_CONFIG_MISMATCH`) | `arrow run --import-from <run cũ>` tạo run mới, chép kết quả S0–S2 và cache model, ghi nguồn vào `imported.json`, chạy lại các bước sau | 01 Mục 4.1 |
 | P8 | EvoSuite: test sinh ra dùng JUnit 4; module chỉ có JUnit 5 sẽ COMPILE/DISCOVERY | Giữ như spec (không thêm vintage); runtime EvoSuite thêm vào scope test chỉ ở job EvoSuite và job đo bộ test EvoSuite | 06 Mục 1 |
 
 ## Nguồn của thiết kế

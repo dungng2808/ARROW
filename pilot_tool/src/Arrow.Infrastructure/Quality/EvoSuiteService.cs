@@ -57,15 +57,18 @@ public sealed class EvoSuiteService(ToolPaths paths, ExperimentConfig experiment
         var dir = Dir(data.TaskDir);
         Directory.CreateDirectory(dir);
         var rel = Path.GetRelativePath(store.Root, dir).Replace('\\', '/');
-        var jdk11 = machine.JdkHomes.GetValueOrDefault("11");
-        if (string.IsNullOrEmpty(jdk11))
+        // EvoSuite 1.2.0 (bytecode Java 8) chạy trên JDK ≤ 11: dùng đúng JDK của task (8 hoặc 11) để test sinh ra chỉ dùng API
+        // mà task biên dịch được; task 17/21 vẫn thử bằng JDK 11 (00-INDEX P11).
+        var evoMajor = task.JdkMajor <= 11 ? task.JdkMajor : 11;
+        var evoHome = evoMajor == task.JdkMajor ? task.JdkHome : machine.JdkHomes.GetValueOrDefault("11");
+        if (string.IsNullOrEmpty(evoHome))
         {
-            return new StageOutcome { Status = JobStatus.Infra, Outcome = "INFRA", Reason = "JDK_MISSING", Message = "EvoSuite 1.2.0 cần JDK 11 (jdk_homes.11)" };
+            return new StageOutcome { Status = JobStatus.Infra, Outcome = "INFRA", Reason = "JDK_MISSING", Message = $"EvoSuite 1.2.0 cần JDK {evoMajor} (jdk_homes.{evoMajor})" };
         }
 
         var stats = new EvoSuiteStats
         {
-            JdkMajor = 11,
+            JdkMajor = evoMajor,
             DeclaredDeviations =
             [
                 "evosuite-standalone-runtime-1.2.0.jar thêm vào scope test chỉ trong workspace của job EvoSuite (Maven: dependency scope system; Gradle: testImplementation files(...) qua init script)",
@@ -98,7 +101,7 @@ public sealed class EvoSuiteService(ToolPaths paths, ExperimentConfig experiment
             Directory.CreateDirectory(outDir);
             reportStep("evosuite");
             var watch = Stopwatch.StartNew();
-            var (result, log) = await toolkit.RunJavaAsync(jdk11, "evosuite", "generate",
+            var (result, log) = await toolkit.RunJavaAsync(evoHome, "evosuite", "generate",
             [
                 // Classpath của project cũng đưa vào JVM chính của EvoSuite: chạy "-jar" thì tiến trình chính không nạp được
                 // class của project khi nhận test từ tiến trình con qua RMI, nên sinh xong mà không ghi được file test

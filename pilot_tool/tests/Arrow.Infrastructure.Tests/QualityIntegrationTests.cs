@@ -137,7 +137,7 @@ public class QualityIntegrationTests
         var data = PreparedTaskData.Load(prepared.Store, prepared.Record.Dataset, prepared.Record.TaskId);
         var stats = Json.Read<EvoSuiteStats>(Path.Combine(EvoSuiteService.Dir(data.TaskDir), "evosuite_stats.json"));
         Assert.Equal("com.example.calc.Calculator", stats.Statistics["TARGET_CLASS"]);
-        Assert.Equal(11, stats.JdkMajor);
+        Assert.Equal(8, stats.JdkMajor); // task Java 8 → EvoSuite chạy bằng JDK 8 (00-INDEX P11)
         var verify = Json.Read<VerifyResult>(Path.Combine(EvoSuiteService.Dir(data.TaskDir), "verify.json"));
         Assert.True(verify.TestMethods.Passed > 0);
 
