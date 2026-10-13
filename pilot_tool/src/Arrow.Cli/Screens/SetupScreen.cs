@@ -24,7 +24,6 @@ public sealed class SetupScreen(Session session)
 
     private MachineConfig _draft = new();
     private LiteLlmConfigFile _llm = new();
-    private string _apiKeyInput = "";
 
     public async Task<bool> RunAsync(CancellationToken cancellationToken)
     {
@@ -36,7 +35,7 @@ public sealed class SetupScreen(Session session)
             WorkDir = DefaultWorkDir,
             Workers = new WorkersConfig { Build = MachineInfo.SuggestedBuildWorkers(), Llm = 2 },
         };
-        _llm = LiteLlmConfigFile.TryLoad(paths.LiteLlmConfigPath) ?? new LiteLlmConfigFile { MasterKey = LiteLlmConfigFile.NewMasterKey() };
+        _llm = new ModelScreen(session).LoadLlm();
         RemapMovedArrow();
 
         var steps = new Func<CancellationToken, Task<Step>>[]
@@ -68,13 +67,10 @@ public sealed class SetupScreen(Session session)
 
         _draft = _draft with { Os = MachineInfo.RuntimeId, ArrowRoot = paths.ArrowRoot };
         _draft.Save(paths.MachineConfigPath);
-        if (_apiKeyInput.Length > 0)
-        {
-            _llm = _llm with { ApiKey = _apiKeyInput };
-        }
-
+        // Provider và khóa đã lưu ở bước 6 (ModelScreen); ở đây chỉ bảo đảm file có master_key.
+        _llm = new ModelScreen(session).LoadLlm();
         _llm.Save(paths.LiteLlmConfigPath);
-        ToolLog.Info($"setup: đã lưu cấu hình máy {_draft.MachineName}, shard {_draft.Shard}, thư mục {_draft.WorkDir}, repo {_draft.RepoPolicy}, worker build {_draft.Workers.Build}/model {_draft.Workers.Llm}, proxy {_draft.Llm.ProxyMode}, endpoint {_llm.EndpointHost}, khóa {_draft.Llm.KeyAlias}{(_apiKeyInput.Length > 0 ? " (khóa mới)" : "")}");
+        ToolLog.Info($"setup: đã lưu cấu hình máy {_draft.MachineName}, shard {_draft.Shard}, thư mục {_draft.WorkDir}, repo {_draft.RepoPolicy}, worker build {_draft.Workers.Build}/model {_draft.Workers.Llm}, proxy {_draft.Llm.ProxyMode}, endpoint {_llm.EndpointHosts()}, khóa {_draft.Llm.KeyAlias}");
         AnsiConsole.MarkupLine($"{Theme.Ok} Đã lưu [bold]{Markup.Escape(paths.Relative(paths.MachineConfigPath))}[/] và [bold]{Markup.Escape(paths.Relative(paths.LiteLlmConfigPath))}[/] (hai file không commit).");
         return true;
     }
@@ -410,10 +406,10 @@ public sealed class SetupScreen(Session session)
     private async Task<Step> StepApiAsync(CancellationToken cancellationToken)
     {
         Title(6, "Gọi model");
-        Explain("Cài cách máy này gọi model GPT-6 Luna: qua LiteLLM proxy, tới endpoint (địa chỉ) của provider, bằng khóa API của bạn.",
-            "Mọi lượt sinh test và sửa test đều gọi model. Model và tham số giống nhau trên mọi máy (lấy từ cấu hình thực nghiệm); chỉ khóa API và endpoint là của riêng máy bạn. Khóa lưu trong file litellm.config.local.yaml trên máy, không bao giờ lên Git.",
-            "Chọn \"Tool tự bật LiteLLM proxy\". Giữ endpoint mặc định trừ khi bạn dùng cổng trung gian khác. Dán khóa API của bạn (màn hình chỉ hiện ****). Đặt tên gợi nhớ cho khóa.");
-        Info("Model của thực nghiệm (không sửa ở đây): gpt-6-luna, reasoning_effort: none");
+        Explain("Cài cách máy này gọi các model của thực nghiệm: qua LiteLLM proxy, mỗi model tới provider (endpoint) của nó, bằng khóa API của bạn.",
+            "Mọi lượt sinh test và sửa test đều gọi model. Model, tham số và giá giống nhau trên mọi máy (lấy từ cấu hình thực nghiệm); chỉ provider, endpoint và khóa API là của riêng máy bạn. Khóa lưu trong file litellm.config.local.yaml trên máy, không bao giờ lên Git.",
+            "Chọn \"Tool tự bật LiteLLM proxy\". Với mỗi model: chọn provider, giữ endpoint mặc định trừ khi bạn dùng cổng trung gian khác, dán khóa API (màn hình chỉ hiện ****). Đặt tên gợi nhớ cho khóa. Sửa sau bằng arrow models.");
+        Info("Model, tham số, giá của thực nghiệm: xem và sửa bằng arrow models (menu \"Model, provider, khóa API, giá\").");
         var modes = new Dictionary<string, string>
         {
             ["Tool tự bật LiteLLM proxy khi chạy"] = "auto_start",
@@ -445,23 +441,43 @@ public sealed class SetupScreen(Session session)
             proxyUrl = AnsiConsole.Prompt(new TextPrompt<string>("Địa chỉ proxy:").DefaultValue(proxyUrl));
         }
 
-        var apiBase = AnsiConsole.Prompt(new TextPrompt<string>("Endpoint của provider (api_base):").DefaultValue(_llm.ApiBase)
-            .Validate(v => Uri.TryCreate(v, UriKind.Absolute, out _) ? ValidationResult.Success() : ValidationResult.Error("Địa chỉ không hợp lệ")));
-        var keyLabel = _llm.HasApiKey ? $"Khóa API của bạn ({LiteLlmConfigFile.Mask(_llm.ApiKey)}; Enter để giữ):" : "Khóa API của bạn:";
-        var keyPrompt = new TextPrompt<string>(keyLabel).Secret();
-        if (_llm.HasApiKey)
-        {
-            keyPrompt.AllowEmpty();
-        }
-
-        _apiKeyInput = AnsiConsole.Prompt(keyPrompt).Trim();
+        ConfigureModels();
         var alias = AnsiConsole.Prompt(new TextPrompt<string>("Tên gợi nhớ của khóa (ghi vào kết quả, không ghi khóa):")
             .DefaultValue(string.IsNullOrEmpty(_draft.Llm.KeyAlias) ? _draft.MachineName.ToLowerInvariant() : _draft.Llm.KeyAlias));
-        AnsiConsole.MarkupLine("[grey]Gọi thử model bằng smoke: arrow run --experiment experiments/smoke-v1.json --max-llm-calls 6 (xem README Mục 0).[/]");
+        AnsiConsole.MarkupLine("[grey]Gọi thử từng model (1 lượt): arrow models → \"Gọi thử\". Chạy thử cả pipeline: menu \"Chạy smoke\".[/]");
 
-        _llm = _llm with { ApiBase = apiBase.Trim() };
         _draft = _draft with { Llm = _draft.Llm with { ProxyMode = modes[modeChoice], ProxyUrl = proxyUrl, KeyAlias = alias } };
         return Step.Next;
+    }
+
+    /// <summary>Hỏi provider và khóa cho từng model của cấu hình thực nghiệm đã chọn ở bước 2.</summary>
+    private void ConfigureModels()
+    {
+        var screen = new ModelScreen(session);
+        foreach (var model in ExperimentModels())
+        {
+            var route = screen.LoadLlm().Route(model);
+            var status = route is { IsComplete: true }
+                ? $"{Theme.Ok} {Markup.Escape($"{route.ProviderModel} · {route.EndpointHost}")}" + (route.HasApiKey ? $" · khóa {Markup.Escape(LiteLlmConfigFile.Mask(route.ApiKey))}" : "")
+                : $"{Theme.Fail} chưa có provider hoặc khóa";
+            AnsiConsole.MarkupLine($"Model [bold]{Markup.Escape(model)}[/]: {status}");
+            if (AnsiConsole.Confirm($"Cài provider và khóa API cho {Markup.Escape(model)}?", route is not { IsComplete: true }))
+            {
+                screen.ConfigureRoute(model);
+            }
+        }
+    }
+
+    private List<string> ExperimentModels()
+    {
+        try
+        {
+            return ExperimentLoader.Load(session.Paths.Resolve(_draft.Experiment)).Config.Models.Select(m => m.Name).ToList();
+        }
+        catch (Exception ex) when (ex is ArrowException or IOException)
+        {
+            return [];
+        }
     }
 
     // ── Bước 7: tài nguyên ───────────────────────────────────────────────
@@ -497,7 +513,10 @@ public sealed class SetupScreen(Session session)
         table.AddRow("Thư mục", Markup.Escape($"repository: {_draft.WorkDir} · runs: {_draft.RunsDir}"));
         table.AddRow("Repository", Markup.Escape($"{_draft.RepoPolicy} · giữ workspace lỗi: {(_draft.KeepFailedWorkspaces ? "có" : "không")}"));
         table.AddRow("JDK", string.Join(" / ", ToolProbe.RequiredJdkMajors.Select(m => $"{m} {(_draft.JdkHomes.ContainsKey(m.ToString()) ? Theme.Ok : Theme.Fail)}")));
-        table.AddRow("Model", Markup.Escape($"gpt-6-luna qua LiteLLM ({_draft.Llm.ProxyMode}) · endpoint {_llm.EndpointHost} · khóa: {_draft.Llm.KeyAlias}"));
+        var routes = new ModelScreen(session).LoadLlm();
+        table.AddRow("Model", string.Join("\n", ExperimentModels().Select(m => routes.Route(m) is { IsComplete: true } r
+            ? $"{Theme.Ok} {Markup.Escape($"{m} · {r.ProviderModel} · {r.EndpointHost}")}"
+            : $"{Theme.Fail} {Markup.Escape(m)} chưa có provider/khóa")) + Markup.Escape($"\nLiteLLM {_draft.Llm.ProxyMode} · khóa: {_draft.Llm.KeyAlias}"));
         table.AddRow("Worker", Markup.Escape($"build {_draft.Workers.Build} · model {_draft.Workers.Llm} · {_draft.Llm.RpmLimit} lượt/phút"));
         AnsiConsole.Write(table);
         return AnsiConsole.Confirm("Lưu vào machine.local.json?");

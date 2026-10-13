@@ -17,6 +17,7 @@ public sealed class MenuScreen(Session session)
     private const string Show = "Xem kết quả run (sinh test, vòng sửa, đường cộng dồn)";
     private const string Control = "Tạm dừng / tiếp tục run đang chạy";
     private const string Setup = "Cài đặt máy";
+    private const string Models = "Model, provider, khóa API, giá";
     private const string Doctor = "Kiểm tra môi trường";
     private const string Export = "Xuất kết quả để gửi người điều phối";
     private const string ShardPlan = "Chia shard";
@@ -58,8 +59,8 @@ public sealed class MenuScreen(Session session)
             RenderHome();
             var choice = AnsiConsole.Prompt(new SelectionPrompt<string>()
                 .Title("Chọn việc ([grey]↑/↓, Enter[/]):")
-                .PageSize(14)
-                .AddChoices(RunMine, RunSmoke, RunDemo, Status, Show, Control, Setup, Doctor, Export)
+                .PageSize(16)
+                .AddChoices(RunMine, RunSmoke, RunDemo, Status, Show, Control, Setup, Models, Doctor, Export)
                 .AddChoiceGroup("── Người điều phối ──", ShardPlan, Merge, Report)
                 .AddChoices(Quit));
 
@@ -142,6 +143,9 @@ public sealed class MenuScreen(Session session)
                 case Doctor:
                     await new DoctorScreen(session).RunAsync(cancellationToken);
                     break;
+                case Models:
+                    await new ModelScreen(session).RunAsync(null, cancellationToken);
+                    continue;
                 case ShardPlan:
                     new ShardPlanScreen(session).Run(null, null, null, null, null, assumeYes: false);
                     break;
@@ -167,7 +171,7 @@ public sealed class MenuScreen(Session session)
         grid.AddRow("Máy", Markup.Escape(machine.MachineName), "Shard",
             shard is null ? $"{Theme.Warn} chưa có" : Markup.Escape($"{shard.PlanId}/{shard.ShardId} ({shard.Tasks.Count} CUT)"));
         grid.AddRow("Thực nghiệm", Markup.Escape(Path.GetFileNameWithoutExtension(machine.Experiment)), "Môi trường", doctor);
-        grid.AddRow("Khóa API", litellm is { HasApiKey: true } ? $"{Theme.Ok} {Markup.Escape(machine.Llm.KeyAlias)} · {Markup.Escape(litellm.EndpointHost)}" : $"{Theme.Fail} chưa có",
+        grid.AddRow("Model", ModelStatus(machine, litellm),
             "Thư mục repo", Markup.Escape(workDir) + (free < 20 ? $" [yellow]{free} GB ⚠[/]" : $" [grey]{free} GB trống[/]"));
         AnsiConsole.Write(new Panel(grid).Header(" Máy này ").Border(BoxBorder.Rounded).Expand());
 
@@ -182,6 +186,22 @@ public sealed class MenuScreen(Session session)
                 return $"{Markup.Escape(r.RunId)}   {r.Status.State.ToString().ToUpperInvariant()}{alive}   {Markup.Escape(r.Status.Stage)} {stage?.Done}/{stage?.Total}   đã chạy {Theme.Duration(r.Status.ElapsedSeconds)}";
             });
             AnsiConsole.Write(new Panel(new Markup(string.Join("\n", lines))).Header(" Run gần đây ").Border(BoxBorder.Rounded).Expand());
+        }
+    }
+
+    /// <summary>Mỗi model của thực nghiệm: đã có provider và khóa trên máy này chưa.</summary>
+    private string ModelStatus(MachineConfig machine, LiteLlmConfigFile? litellm)
+    {
+        try
+        {
+            var models = Arrow.Core.Config.ExperimentLoader.Load(session.Paths.Resolve(machine.Experiment)).Config.Models;
+            return string.Join("\n", models.Select(m => litellm?.Route(m.Name) is { IsComplete: true } r
+                ? $"{Theme.Ok} {Markup.Escape(m.Name)} [grey]{Markup.Escape(r.EndpointHost)}[/]"
+                : $"{Theme.Fail} {Markup.Escape(m.Name)} [grey]chưa có provider/khóa[/]"));
+        }
+        catch (Exception ex) when (ex is Arrow.Core.Util.ArrowException or IOException)
+        {
+            return $"{Theme.Warn} không đọc được cấu hình thực nghiệm";
         }
     }
 

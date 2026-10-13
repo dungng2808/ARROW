@@ -158,6 +158,12 @@ public sealed partial class Pipeline : IAsyncDisposable
             {
                 var config = LiteLlmConfigFile.TryLoad(_paths.LiteLlmConfigPath)
                              ?? throw new ArrowException("LLM_CONFIG_MISSING", "Chưa có litellm.config.local.yaml: chạy arrow setup");
+                var incomplete = _experiment.Models.Where(m => config.Route(m.Name) is not { IsComplete: true }).Select(m => m.Name).ToList();
+                if (incomplete.Count > 0)
+                {
+                    throw new ArrowException("LLM_CONFIG_MISSING", $"Chưa có provider hoặc khóa API cho {string.Join(", ", incomplete)} trên máy này: chạy arrow models");
+                }
+
                 _proxy = await LiteLlmProxy.EnsureRunningAsync(_paths.ArrowRoot, _paths.PilotToolDir, _machine, cancellationToken).ConfigureAwait(false);
                 inner = new LiteLlmClient(new SocketsHttpHandler(), _machine.Llm.ProxyUrl, config.MasterKey);
             }

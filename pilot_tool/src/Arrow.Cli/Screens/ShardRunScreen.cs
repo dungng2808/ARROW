@@ -232,7 +232,7 @@ public sealed class ShardRunScreen(Session session)
             MavenVersion = maven?.Version,
             GradleVersion = gradle?.Version,
             GitVersion = gitInfo?.Version,
-            LlmEndpointHost = llm?.EndpointHost,
+            LlmEndpointHost = llm?.EndpointHosts(experiment.Config.Models.Select(m => m.Name)),
             LlmKeyAlias = machine.Llm.KeyAlias,
             BuildFlags = new Dictionary<string, List<string>>
             {

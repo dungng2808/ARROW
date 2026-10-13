@@ -32,6 +32,7 @@ app.Configure(config =>
     config.SetApplicationName("arrow");
     config.AddCommand<SetupCommand>("setup").WithDescription("Cài đặt máy (8 bước)");
     config.AddCommand<DoctorCommand>("doctor").WithDescription("Kiểm tra môi trường");
+    config.AddCommand<ModelsCommand>("models").WithDescription("Model chạy, provider, khóa API, giá; gọi thử từng model");
     config.AddCommand<RunCommand>("run").WithDescription("Chạy shard của máy này: S0 chuẩn bị → S1 sinh test → S2 sửa → S3 EvoSuite → S4 chất lượng (--demo: job giả)");
     config.AddCommand<StatusCommand>("status").WithDescription("Xem trạng thái một run");
     config.AddCommand<RunsCommand>("runs").WithDescription("Danh sách run trên máy");
@@ -133,6 +134,19 @@ public sealed class DoctorCommand : AsyncCommand<GlobalSettings>
 {
     public override async Task<int> ExecuteAsync(CommandContext context, GlobalSettings settings, CancellationToken cancellationToken) =>
         (await new DoctorScreen(settings.CreateSession()).RunAsync(cancellationToken)).Status == "READY" ? 0 : 1;
+}
+
+public sealed class ModelsCommand : AsyncCommand<ModelsCommand.Settings>
+{
+    public sealed class Settings : GlobalSettings
+    {
+        [CommandOption("--experiment <FILE>")]
+        [Description("Cấu hình thực nghiệm cần sửa (mặc định: của máy này)")]
+        public string? Experiment { get; init; }
+    }
+
+    public override Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken) =>
+        new ModelScreen(settings.CreateSession()).RunAsync(settings.Experiment, cancellationToken);
 }
 
 public sealed class RunCommand : AsyncCommand<RunCommand.Settings>

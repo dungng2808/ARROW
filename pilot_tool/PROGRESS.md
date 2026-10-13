@@ -87,6 +87,13 @@ Commit: `3728e24` (M7), đã push lên `main`.
 
 Nguyên nhân các lỗi trước (kiểm tra bằng API `GET /v1/billing/balance`, `/v1/billing/costs`, `/v1/usage` của TeamoRouter): số dư của khóa còn 0,3609 USD, mỗi lượt gọi chỉ khoảng 0,0002 USD, không có lỗi 429 hay header rate limit. Lỗi `enterprise_insufficient_balance` và `routing_strategy_resource_unavailable` (`low_price`) xuất hiện khi có nhiều lượt gọi cùng lúc (`workers.llm` = 4); với `workers.llm` = 2 không còn lỗi. Request trả lỗi 400 vẫn bị TeamoRouter tính tiền (22 request, 0,0053 USD): nên báo hỗ trợ TeamoRouter. Khuyến nghị cho pilot: `workers.llm` ≤ 2 trên mọi máy.
 
+## 9. Màn hình model, provider, khóa API, giá (13/10/2026)
+
+- `arrow models` (menu "Model, provider, khóa API, giá"; bước 6 của `arrow setup` dùng chung): xem và sửa model chạy, tham số, giá (cấu hình thực nghiệm, commit), provider, endpoint, khóa API từng model (`litellm.config.local.yaml`, không commit), gọi thử 1 lượt. Mô tả: `SETUP.md` Mục 5a.
+- `litellm.config.local.yaml` chứa nhiều model (OpenAI-compatible, Ollama không cần khóa, chuỗi LiteLLM khác); đọc được file cũ một model. Sửa cấu hình thực nghiệm giữ thứ tự khóa (`ExperimentModelEditor`), cảnh báo sha256 đổi, đề xuất chia lại shard gắn sha cũ.
+- `arrow doctor` một dòng mỗi model; `arrow run` dừng với `LLM_CONFIG_MISSING` nếu model nào thiếu provider/khóa; `run_config.lock.json` ghi endpoint của mọi model.
+- Test: `LiteLlmConfigFileTests` (3), `ExperimentModelEditorTests` (2). Gọi thử thật gpt-6-luna qua màn hình: trả "OK", model id `gpt-6-luna`, 13/5 token, 0,000002 USD; proxy tắt sau khi gọi, log không chứa khóa.
+
 ## Trạng thái
 
 **Code M1–M8 và test tự động đã xong; smoke với GPT-6 Luna thật qua S1 và S2; sẵn sàng chạy pilot theo shard.**
@@ -95,7 +102,9 @@ Nguyên nhân các lỗi trước (kiểm tra bằng API `GET /v1/billing/balanc
 
 - TeamoRouter từ chối khi nhiều lượt gọi cùng lúc: đặt `workers.llm` ≤ 2 trên mọi máy trước khi chạy pilot; báo hỗ trợ TeamoRouter việc request lỗi vẫn bị tính tiền (trace_id trong `logs/litellm-20261013.log`).
 - Cột "Xong khi" của M5 (177 ứng viên), M6 (S2 với GPT-6 Luna trên pilot), M8 (`pilot_report.md` của pilot thật): để lại cho lần chạy pilot theo shard `shards/pilot-6` (mỗi máy `arrow run`, `arrow export`; người điều phối `arrow merge`).
-- Giá token GPT-6 Luna (`price_usd_per_million`) chưa điền: cột chi phí của báo cáo là 0 cho tới khi điền (token vẫn đủ).
+- Giá token GPT-6 Luna đã điền trong `pilot-v1.json` (0,05 / 0,25 USD mỗi 1M token); `smoke-v1.json` chưa có giá (chủ ý). Sửa giá bằng `arrow models`.
+- Shard-01 (`pilot-6-shard-01-Dung-mac-v3`): EvoSuite đạt VALID 2/7 Classes2Test, 0/2 GitBug-Java. Không VALID vì hành vi của EvoSuite: test EvoSuite làm vỡ test sẵn có (REGRESSION, 2 CUT), assertion sai khi chạy lại (1), lỗi runtime/sandbox (1), module JUnit 5 (EvoSuite 1.2.0 chỉ sinh JUnit 4), JDK > 11, 73380577 không sinh test sau 480 s. Ghi vào phần RQ3 khi viết báo cáo.
+- Chữ ký lỗi của run lấy S0–S2 bằng `--import-from` từ run cũ (trước khi sửa `ExceptionType`) vẫn có thể chứa thông điệp lỗi: chỉ làm bảng lỗi thường gặp bị tách dòng, không ảnh hưởng N và tỷ lệ VALID.
 - Tiêu chí M1 trên Windows (tạm dừng/tiếp tục trên Windows): chưa kiểm được trên máy này.
 - Các máy khác cần: `git pull`, `arrow tools install`, sửa `litellm.config.local.yaml` thêm `allowed_openai_params` (hoặc nhập lại khóa), `arrow doctor`.
 - `evaluation_manifest/gitbug_java_32_seed42.*` và thay đổi trong `evaluation_manifest/README.md` chưa commit: ngoài phạm vi goal, để người dùng commit.

@@ -174,13 +174,23 @@ public sealed class DoctorService(ToolPaths paths)
 
         // 9. LiteLLM
         var litellmConfig = LiteLlmConfigFile.TryLoad(paths.LiteLlmConfigPath);
-        if (litellmConfig is null || !litellmConfig.HasApiKey)
+        var modelNames = experiment?.Config.Models.Select(m => m.Name).ToList() ?? [];
+        if (litellmConfig is null || litellmConfig.Routes.Count == 0)
         {
-            Add(new DoctorCheck("Khóa API và endpoint", CheckStatus.Fail, "Chưa có khóa API của máy này", "Nhập khóa ngay, hoặc arrow setup bước 6", DoctorFix.EnterApiKey));
+            Add(new DoctorCheck("Khóa API và endpoint", CheckStatus.Fail, "Chưa có provider và khóa API của máy này", "Nhập ngay, hoặc arrow models", DoctorFix.EnterApiKey));
         }
         else
         {
-            Add(new DoctorCheck("Khóa API và endpoint", CheckStatus.Pass, $"{LiteLlmConfigFile.Mask(litellmConfig.ApiKey)} · {litellmConfig.EndpointHost}"));
+            foreach (var name in modelNames)
+            {
+                var route = litellmConfig.Route(name);
+                Add(route is null
+                    ? new DoctorCheck($"Model {name}", CheckStatus.Fail, "Chưa cài provider cho model này", "Nhập ngay, hoặc arrow models", DoctorFix.EnterApiKey)
+                    : !route.IsComplete
+                        ? new DoctorCheck($"Model {name}", CheckStatus.Fail, $"{route.ProviderModel} · {route.EndpointHost}: thiếu khóa API", "Nhập ngay, hoặc arrow models", DoctorFix.EnterApiKey)
+                        : new DoctorCheck($"Model {name}", CheckStatus.Pass,
+                            $"{route.ProviderModel} · {route.EndpointHost}" + (route.HasApiKey ? $" · {LiteLlmConfigFile.Mask(route.ApiKey)}" : " · không cần khóa")));
+            }
         }
 
         if (machine.Llm.ProxyMode == "auto_start")
@@ -196,8 +206,8 @@ public sealed class DoctorService(ToolPaths paths)
                     : new DoctorCheck("LiteLLM", CheckStatus.Pass, $"{litellm.Version} · {litellm.Path}"));
         }
 
-        Add(new DoctorCheck("Gọi thử model", CheckStatus.Skip, "Gọi thử bằng lệnh smoke: arrow run --experiment experiments/smoke-v1.json --max-llm-calls 6"));
-        if (litellmConfig is not null && litellmConfig.HasApiKey && !File.ReadAllText(paths.LiteLlmConfigPath).Contains("allowed_openai_params", StringComparison.Ordinal))
+        Add(new DoctorCheck("Gọi thử model", CheckStatus.Skip, "Gọi thử từng model (1 lượt): arrow models → \"Gọi thử\""));
+        if (litellmConfig is { Routes.Count: > 0 } && !File.ReadAllText(paths.LiteLlmConfigPath).Contains("allowed_openai_params", StringComparison.Ordinal))
         {
             Add(new DoctorCheck("LiteLLM nhận reasoning_effort", CheckStatus.Fail, "litellm.config.local.yaml thiếu allowed_openai_params: [\"reasoning_effort\"]",
                 "Nhập lại khóa (tool ghi lại file đúng mẫu), hoặc thêm dòng đó dưới api_key (SETUP.md, Ghi chú LiteLLM)", DoctorFix.EnterApiKey));

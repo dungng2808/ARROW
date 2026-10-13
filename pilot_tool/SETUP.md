@@ -32,6 +32,7 @@ Chạy `arrow` (hoặc `dotnet run --project src/Arrow.Cli`) không kèm lệnh 
    Xem trạng thái run
    Tạm dừng / tiếp tục run đang chạy
    Cài đặt máy (setup)
+   Model, provider, khóa API, giá (models)
    Kiểm tra môi trường (doctor)
    Xuất kết quả để gửi người điều phối (export)
    ── Người điều phối ──
@@ -224,6 +225,37 @@ Mục nào ✘ thì cho nhập đường dẫn hoặc chỉ dẫn cài (theo `Ja
  Lưu vào machine.local.json và chạy kiểm tra môi trường? [Y/n]
 ```
 
+## 5a. Model, provider, khóa API, giá (`arrow models`, 13/10/2026)
+
+Menu `arrow` → "Model, provider, khóa API, giá", hoặc `arrow models [--experiment <file>]`. Bước 6 của `arrow setup` dùng cùng màn hình này để cài provider cho từng model.
+
+```
+╭────────────────────────┬────────────────────┬─────────────────────┬──────────╮
+│ Model (tên trong thực  │ Giá USD / 1M token │ Provider (máy này)  │ Khóa API │
+│ nghiệm) · tham số      │                    │                     │          │
+├────────────────────────┼────────────────────┼─────────────────────┼──────────┤
+│ gpt-6-luna             │ vào 0.05           │ tương thích OpenAI  │ ✔ …2a4b  │
+│ reasoning_effort=none, │ ra 0.25            │ openai/gpt-6-luna   │          │
+│ temperature=0, …       │                    │ api.teamorouter.com │          │
+╰────────────────────────┴────────────────────┴─────────────────────┴──────────╯
+ > Provider và khóa API của gpt-6-luna
+   Giá của gpt-6-luna
+   Gọi thử gpt-6-luna (1 lượt)
+   Thêm model vào cấu hình thực nghiệm
+   …
+```
+
+| Việc | Lưu ở đâu | Ai thấy | Hệ quả khi sửa |
+| --- | --- | --- | --- |
+| Provider, tên model ở provider, endpoint, khóa API của từng model | `litellm.config.local.yaml` (mỗi model một mục trong `model_list`, không commit) | Chỉ máy này | Áp dụng từ lần chạy sau; không đổi sha256 |
+| Model nào chạy, tham số, tiền tố model id, giá USD / 1M token | `experiments/<file>.json` (commit) | Cả nhóm | sha256 đổi: tool hỏi chia lại shard đang gắn với sha cũ; run chưa xong của sha cũ không chạy tiếp được; commit, push, các máy `git pull` |
+
+- Provider: **tương thích OpenAI** (TeamoRouter, OpenRouter, OpenAI…; `openai/<model>`, cần khóa), **Ollama tự host** (`ollama_chat/<model>`, mặc định `http://localhost:11434`, không cần khóa; dùng cho Qwen3-Coder-30B), hoặc **khác** (nhập chuỗi model LiteLLM). Hai model cùng endpoint có thể dùng chung khóa.
+- **Gọi thử** gửi 1 lượt rất nhỏ (`max_tokens` 16) qua LiteLLM, hiện câu trả lời, model id (đối chiếu tiền tố), token, thời gian và chi phí theo giá đã đặt. Lỗi 401/403: khóa sai hoặc hết tiền; 404: tên model ở provider sai.
+- Giá chỉ dùng để tính chi phí trong báo cáo (`part1_cost.csv`, ước tính thực nghiệm chính), không ảnh hưởng kết quả. Model tự host để 0.
+- Trước khi gọi model, `arrow run` kiểm tra mọi model của cấu hình thực nghiệm đã có provider và khóa (`LLM_CONFIG_MISSING` nếu thiếu); `arrow doctor` hiện một dòng cho mỗi model.
+- Pilot đã chốt chỉ chạy GPT-6 Luna (12/10/2026); màn hình cảnh báo nếu cấu hình `kind: pilot` có nhiều hơn một model.
+
 ## 6. Kiểm tra môi trường (`arrow doctor`)
 
 ```
@@ -267,6 +299,7 @@ Kết quả được chia sẻ qua **một thư mục riêng trên GitHub** (ch�
 | `arrow` | Menu chính |
 | `arrow setup` | Cài đặt máy (Mục 5); `--from <file>` để cài không tương tác |
 | `arrow doctor` | Kiểm tra môi trường (Mục 6) |
+| `arrow models` | Model chạy, provider, khóa API, giá; gọi thử từng model (Mục 5a) |
 | `arrow shard plan …` | Tạo phân công (người điều phối) |
 | `arrow run` | Chạy shard của máy này theo `machine.local.json` |
 | `arrow status`, `arrow control …` | Xem trạng thái, tạm dừng, tiếp tục, dừng (xem `CLI_DASHBOARD.md`) |
@@ -287,7 +320,7 @@ Kết quả được chia sẻ qua **một thư mục riêng trên GitHub** (ch�
 
 ## Ghi chú LiteLLM (13/10/2026)
 
-`litellm.config.local.yaml` phải có dòng `allowed_openai_params: ["reasoning_effort"]` trong `litellm_params` của model (bản do `arrow setup` ghi từ 13/10/2026 đã có). Thiếu dòng này thì LiteLLM 1.91.0 trả HTTP 400 `UnsupportedParamsError` cho `reasoning_effort` và run tự tạm dừng. Máy đã cài trước ngày này: chạy lại bước khóa API của `arrow setup`, hoặc thêm dòng đó dưới `api_key:` (cùng thụt lề). Không dùng `drop_params: true` vì LiteLLM sẽ âm thầm bỏ `reasoning_effort` của cấu hình thực nghiệm.
+`litellm.config.local.yaml` phải có dòng `allowed_openai_params: ["reasoning_effort"]` trong `litellm_params` của model (bản do `arrow setup` ghi từ 13/10/2026 đã có). Thiếu dòng này thì LiteLLM 1.91.0 trả HTTP 400 `UnsupportedParamsError` cho `reasoning_effort` và run tự tạm dừng. Máy đã cài trước ngày này: mở `arrow models` và lưu lại provider của model (tool ghi lại file đúng mẫu), hoặc thêm dòng đó dưới `api_key:` (cùng thụt lề). Không dùng `drop_params: true` vì LiteLLM sẽ âm thầm bỏ `reasoning_effort` của cấu hình thực nghiệm.
 
 ## Công cụ của S3, S4 (13/10/2026)
 

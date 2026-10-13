@@ -14,6 +14,7 @@ Cần .NET SDK 8 trở lên (máy chỉ có SDK mới hơn vẫn được). Từ
 | Mở menu (lần đầu tự vào cài đặt 8 bước) | `dotnet run --project src/Arrow.Cli` |
 | Danh sách lệnh | `dotnet run --project src/Arrow.Cli -- --help` |
 | Thử dashboard với job giả (P tạm dừng, R tiếp tục, S dừng) | `dotnet run --project src/Arrow.Cli -- run --demo` |
+| Model chạy, provider, khóa API, giá; gọi thử từng model (hoặc menu `arrow` → "Model, provider, khóa API, giá") | `dotnet run --project src/Arrow.Cli -- models` |
 | Tải công cụ S3/S4 (EvoSuite, JaCoCo, PIT, tsDetect) vào `ARROW/tools` | `dotnet run --project src/Arrow.Cli -- tools install` |
 | Chạy shard của máy: S0 → S1 → S2 → S3 → S4 → S5 báo cáo | `dotnet run --project src/Arrow.Cli -- run` |
 | Chỉ chạy một số bước | `dotnet run --project src/Arrow.Cli -- run --stages prepare,generate` |

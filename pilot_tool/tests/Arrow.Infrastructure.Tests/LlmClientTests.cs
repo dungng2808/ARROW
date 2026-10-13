@@ -113,3 +113,57 @@ public class LlmClientTests
         Assert.Equal("LLM_CALL_LIMIT", ex.Reason);
     }
 }
+
+/// <summary>litellm.config.local.yaml nhiều model: đọc bản cũ một model, ghi và đọc lại, Ollama không cần khóa.</summary>
+public class LiteLlmConfigFileTests
+{
+    [Fact]
+    public void ReadsOldSingleModelFile()
+    {
+        var config = LiteLlmConfigFile.Parse("""
+            # Cấu hình LiteLLM proxy của máy này. KHÔNG commit file này (chứa khóa API).
+            model_list:
+              - model_name: gpt-6-luna
+                litellm_params:
+                  model: openai/gpt-6-luna
+                  api_base: https://api.example.com/v1
+                  api_key: sk-test-1234
+                  allowed_openai_params: ["reasoning_effort"]
+            general_settings:
+              master_key: sk-local-abc
+            """);
+        var route = Assert.Single(config.Routes);
+        Assert.Equal("gpt-6-luna", route.ModelName);
+        Assert.Equal("openai/gpt-6-luna", route.ProviderModel);
+        Assert.Equal("api.example.com", route.EndpointHost);
+        Assert.Equal(LlmProviderKind.OpenAiCompatible, route.Kind);
+        Assert.True(route.IsComplete);
+        Assert.Equal("sk-local-abc", config.MasterKey);
+    }
+
+    [Fact]
+    public void RoundTripsSeveralModels()
+    {
+        var config = new LiteLlmConfigFile { MasterKey = "sk-local-x" }
+            .WithRoute(new LiteLlmRoute { ModelName = "gpt-6-luna", ProviderModel = "openai/gpt-6-luna", ApiBase = "https://api.example.com/v1", ApiKey = "sk-a" })
+            .WithRoute(new LiteLlmRoute { ModelName = "qwen3-coder-30b", ProviderModel = "ollama_chat/qwen3-coder:30b", ApiBase = "http://localhost:11434" })
+            .WithRoute(new LiteLlmRoute { ModelName = "gpt-6-luna", ProviderModel = "openai/gpt-6-luna", ApiBase = "https://api.other.com/v1", ApiKey = "sk-b" });
+        var yaml = config.ToYaml();
+        Assert.DoesNotContain("api_key: \n", yaml);
+        var read = LiteLlmConfigFile.Parse(yaml);
+        Assert.Equal(["gpt-6-luna", "qwen3-coder-30b"], read.Routes.Select(r => r.ModelName));
+        Assert.Equal("sk-b", read.Route("gpt-6-luna")!.ApiKey);
+        var qwen = read.Route("qwen3-coder-30b")!;
+        Assert.Equal(LlmProviderKind.Ollama, qwen.Kind);
+        Assert.False(qwen.NeedsApiKey);
+        Assert.True(qwen.IsComplete);
+        Assert.Equal("api.other.com, localhost", read.EndpointHosts());
+        Assert.Equal("localhost", read.EndpointHosts(["qwen3-coder-30b", "missing"]));
+        Assert.Equal("sk-local-x", read.MasterKey);
+        Assert.Single(read.WithoutRoute("gpt-6-luna").Routes);
+    }
+
+    [Fact]
+    public void OpenAiRouteWithoutKeyIsIncomplete() =>
+        Assert.False(new LiteLlmRoute { ModelName = "m", ProviderModel = "openai/m", ApiBase = "https://x/v1" }.IsComplete);
+}

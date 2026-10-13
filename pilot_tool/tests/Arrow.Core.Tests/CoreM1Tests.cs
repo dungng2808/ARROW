@@ -230,3 +230,58 @@ public class ToolLogTests
         Assert.Equal("Error|gọi lỗi với sk-***|khóa sk-*** sai", Assert.Single(lines));
     }
 }
+
+/// <summary>Sửa models của cấu hình thực nghiệm: giữ trường khác, đổi giá, thêm, bỏ model.</summary>
+public class ExperimentModelEditorTests
+{
+    private const string Experiment = """
+        {
+          "schema_version": 1,
+          "experiment_id": "x",
+          "models": [
+            {
+              "name": "gpt-6-luna",
+              "expected_model_id_prefix": "gpt-6-luna",
+              "params": { "reasoning_effort": "none", "temperature": 0 },
+              "price_usd_per_million": null
+            }
+          ],
+          "n_rule": "share95"
+        }
+        """;
+
+    [Fact]
+    public void SetsPriceAndKeepsOtherFields()
+    {
+        var json = ExperimentModelEditor.SetPrice(Experiment, "gpt-6-luna", new PriceConfig { Input = 0.05, Output = 0.25 });
+        var config = Json.Deserialize<ExperimentConfig>(json);
+        Assert.Equal(0.05, config.Models[0].PriceUsdPerMillion!.Input);
+        Assert.Equal(0.25, config.Models[0].PriceUsdPerMillion!.Output);
+        Assert.Equal("share95", config.NRule);
+        Assert.Equal("x", config.ExperimentId);
+        Assert.True(json.IndexOf("experiment_id", StringComparison.Ordinal) < json.IndexOf("models", StringComparison.Ordinal));
+        Assert.Null(Json.Deserialize<ExperimentConfig>(ExperimentModelEditor.SetPrice(json, "gpt-6-luna", null)).Models[0].PriceUsdPerMillion);
+    }
+
+    [Fact]
+    public void AddsAndRemovesModels()
+    {
+        var qwen = new ModelConfig
+        {
+            Name = "qwen3-coder-30b",
+            ExpectedModelIdPrefix = "qwen3-coder",
+            Params = new Dictionary<string, object> { ["temperature"] = 0 },
+            PriceUsdPerMillion = new PriceConfig { Input = 0, Output = 0 },
+        };
+        var json = ExperimentModelEditor.AddModel(Experiment, qwen);
+        var config = Json.Deserialize<ExperimentConfig>(json);
+        Assert.Equal(["gpt-6-luna", "qwen3-coder-30b"], config.Models.Select(m => m.Name));
+        Assert.Equal("qwen3-coder", config.Models[1].ExpectedModelIdPrefix);
+        Assert.Equal("MODEL_EXISTS", Assert.Throws<ArrowException>(() => ExperimentModelEditor.AddModel(json, qwen)).Code);
+
+        var removed = Json.Deserialize<ExperimentConfig>(ExperimentModelEditor.RemoveModel(json, "gpt-6-luna"));
+        Assert.Equal("qwen3-coder-30b", Assert.Single(removed.Models).Name);
+        Assert.Equal("MODEL_REQUIRED", Assert.Throws<ArrowException>(() => ExperimentModelEditor.RemoveModel(Experiment, "gpt-6-luna")).Code);
+        Assert.Equal("MODEL_MISSING", Assert.Throws<ArrowException>(() => ExperimentModelEditor.SetPrice(Experiment, "nope", null)).Code);
+    }
+}

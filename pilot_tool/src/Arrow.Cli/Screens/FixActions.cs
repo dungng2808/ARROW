@@ -1,3 +1,4 @@
+using Arrow.Core.Config;
 using Arrow.Cli.Ui;
 using Arrow.Core.Util;
 using Arrow.Infrastructure.Llm;
@@ -36,25 +37,23 @@ public static class FixActions
         return false;
     }
 
-    /// <summary>Nhập khóa API và endpoint, lưu vào litellm.config.local.yaml (không commit).</summary>
+    /// <summary>Cài provider, endpoint, khóa API cho các model của thực nghiệm còn thiếu (lưu vào litellm.config.local.yaml, không commit).</summary>
     public static void EnterApiKey(Session session)
     {
-        var path = session.Paths.LiteLlmConfigPath;
-        var config = LiteLlmConfigFile.TryLoad(path) ?? new LiteLlmConfigFile();
-        if (string.IsNullOrEmpty(config.MasterKey))
+        AnsiConsole.MarkupLine("[grey]Khóa API của bạn lưu trong pilot_tool/litellm.config.local.yaml trên máy này, không bao giờ lên Git. Màn hình chỉ hiện ****.[/]");
+        var screen = new ModelScreen(session);
+        var models = session.Machine is { Experiment.Length: > 0 } machine
+            ? ExperimentLoader.Load(session.Paths.Resolve(machine.Experiment)).Config.Models.Select(m => m.Name).ToList()
+            : [];
+        var missing = models.Where(m => screen.LoadLlm().Route(m) is not { IsComplete: true }).ToList();
+        foreach (var model in missing.Count > 0 ? missing : models)
         {
-            config = config with { MasterKey = LiteLlmConfigFile.NewMasterKey() };
+            AnsiConsole.MarkupLine($"Model [bold]{Markup.Escape(model)}[/]:");
+            screen.ConfigureRoute(model);
         }
 
-        AnsiConsole.MarkupLine("[grey]Khóa API của bạn lưu trong pilot_tool/litellm.config.local.yaml trên máy này, không bao giờ lên Git. Màn hình chỉ hiện ****.[/]");
-        var apiBase = AnsiConsole.Prompt(new TextPrompt<string>("Endpoint của provider (api_base):")
-            .DefaultValue(string.IsNullOrEmpty(config.ApiBase) ? "https://api.openai.com/v1" : config.ApiBase)
-            .Validate(v => Uri.TryCreate(v, UriKind.Absolute, out _) ? ValidationResult.Success() : ValidationResult.Error("Địa chỉ không hợp lệ")));
-        var key = AnsiConsole.Prompt(new TextPrompt<string>("Khóa API của bạn:").Secret()).Trim();
-        config = config with { ApiBase = apiBase.Trim(), ApiKey = key };
-        config.Save(path);
-        ToolLog.Info($"đã lưu khóa API mới cho endpoint {config.EndpointHost}");
-        AnsiConsole.MarkupLine($"{Theme.Ok} Đã lưu khóa {Markup.Escape(LiteLlmConfigFile.Mask(key))} · endpoint {Markup.Escape(config.EndpointHost)}");
+        // File cũ thiếu allowed_openai_params: ghi lại đúng mẫu.
+        screen.LoadLlm().Save(session.Paths.LiteLlmConfigPath);
     }
 
     /// <summary>Tải công cụ của S3, S4 vào ARROW/tools và kiểm tra SHA-256. Trả về số file lỗi.</summary>
