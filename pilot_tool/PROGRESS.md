@@ -52,6 +52,15 @@ Commit: `f02b2d6` (M5), đã push lên `main`.
 - Test: Core 108/108 (`RepairPolicyTests`: kịch bản 5 vòng của specs/05 Mục 9, Tie khác signature giữ mức, output không hợp lệ tính một vòng, mức 3 lùi về 2 cho DISCOVERY và khi không xác định được method, Fixed sửa từ bản mới nhất và build lại mã trùng, dựng lại từ sự kiện cho kết quả giống chạy liền, bộ đếm của summary; `NRuleTests`: ví dụ README → `share95` N = 5, `report2` N = 8, S(10) = 0 → 10). Infrastructure 28/28, trong đó `RepairEndToEndTests` (`arrow run --stages prepare,generate,repair --fake-llm`, n_max 3): RUNTIME — Fixed build lại cùng mã 3 vòng không thành công, Adaptive vòng 1 mã trùng → mức 2 (có mã method bị gọi) → VALID vòng 2; ASSERTION — Fixed 3 vòng output không hợp lệ, Adaptive: không hợp lệ → mức 2 → lặp signature → mức 3 ghép `adds`, giữ `divides` của checkpoint → VALID vòng 3; COMPILE (Gradle) cả hai VALID vòng 1; thứ tự xen kẽ đúng; GitBug-Java không có job sửa.
 - S2 với model thật: chưa chạy (ví TeamoRouter hết tiền, xem Việc còn mở).
 
+Commit: `a951443` (M6), đã push lên `main`.
+
+## 6. M7: EvoSuite, JaCoCo, PIT, tsDetect
+
+- Công cụ: `arrow tools install` → 16 file trong `ARROW/tools/`, đúng SHA-256 (nguồn và hash: SETUP.md); `arrow doctor` kiểm tra từng công cụ và đề nghị tải khi thiếu.
+- Code: `Arrow.Core/Quality` (model `jacoco.json`, `pit.json`, `tsdetect.json`, `evosuite_stats.json`; đọc CSV của JaCoCo, PIT, tsDetect), `Arrow.Infrastructure/Quality` (`QualityToolkit`: lệnh build tùy ý, classpath test Maven/Gradle, init script Gradle, chạy Java có log, thêm dependency `system` vào POM; `EvoSuiteService` S3; `QualityService` S4), stage S3 và S4 (đo mọi bộ test VALID: ARROW sau sinh, sau sửa từng cơ chế, EvoSuite).
+- Sai lệch đã ghi (00-INDEX P7, P8; specs/06 Mục 2.2): PIT chạy bản dòng lệnh cho cả Maven và Gradle vì plugin Gradle 1.15.0 không chạy trên Gradle 9; JUnit 5 cần thêm `junit-platform-launcher` cùng phiên bản.
+- Test: Core 111/111 (`QualityParserTests`); Infrastructure 32/32, trong đó `QualityIntegrationTests`: Maven JUnit 4 (JaCoCo đúng 9 dòng của `Calculator`, PIT có mutation score, tsDetect đọc được), Maven nhiều module JUnit 5, Gradle JUnit 5; EvoSuite 1.2.0 (JDK 11) sinh `Calculator_ESTest` đạt VALID qua bộ xác minh 5 bước và đo được bằng cùng bộ đo.
+
 ## Việc còn mở
 
 - **Ví TeamoRouter hết tiền (13/10/2026, 03:51):** smoke với model thật dừng sau 3/6 lượt sinh; S2 smoke (sửa 2 vòng × 2 cơ chế) chưa chạy được. Sau khi nạp tiền: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6 --rerun-infra`.

@@ -288,3 +288,23 @@ Kết quả được chia sẻ qua **một thư mục riêng trên GitHub** (ch�
 ## Ghi chú LiteLLM (13/10/2026)
 
 `litellm.config.local.yaml` phải có dòng `allowed_openai_params: ["reasoning_effort"]` trong `litellm_params` của model (bản do `arrow setup` ghi từ 13/10/2026 đã có). Thiếu dòng này thì LiteLLM 1.91.0 trả HTTP 400 `UnsupportedParamsError` cho `reasoning_effort` và run tự tạm dừng. Máy đã cài trước ngày này: chạy lại bước khóa API của `arrow setup`, hoặc thêm dòng đó dưới `api_key:` (cùng thụt lề). Không dùng `drop_params: true` vì LiteLLM sẽ âm thầm bỏ `reasoning_effort` của cấu hình thực nghiệm.
+
+## Công cụ của S3, S4 (13/10/2026)
+
+`arrow tools install` tải các file sau vào `ARROW/tools/` (không commit, có trong `.gitignore`) và kiểm tra SHA-256; `arrow doctor` báo ✘ nếu thiếu hoặc sai và đề nghị tải. Danh sách trong code: `src/Arrow.Infrastructure/Tooling/ToolsCatalog.cs`.
+
+| File (`ARROW/tools/…`) | Nguồn | SHA-256 |
+| --- | --- | --- |
+| `evosuite/evosuite-1.2.0.jar` | github.com/EvoSuite/evosuite/releases/download/v1.2.0/evosuite-1.2.0.jar | `0bc0062fdec70c35089ad736c9b88ccf87308c2f0aaaafe43176f3c4a89ddeba` |
+| `evosuite/evosuite-standalone-runtime-1.2.0.jar` | github.com/EvoSuite/evosuite/releases/download/v1.2.0/evosuite-standalone-runtime-1.2.0.jar | `cc856a6d02b391367d2a4516346c699c67e4b4a370203471df1f3d78b46b74dc` |
+| `jacoco/jacococli-0.8.12.jar` | repo1.maven.org/maven2/org/jacoco/org.jacoco.cli/0.8.12/org.jacoco.cli-0.8.12-nodeps.jar | `594c01125b84864a7fc5a9efab19b71b7de36b27346863f6d7cd0cd45400ceb0` |
+| `jacoco/jacocoagent-0.8.12.jar` | repo1.maven.org/maven2/org/jacoco/org.jacoco.agent/0.8.12/org.jacoco.agent-0.8.12-runtime.jar | `115e8e6e6593ca3a9892dfef695df4d487c706e59e71e64dc0ab95716ee02622` |
+| `pit/pitest-1.17.4.jar` | repo1.maven.org/maven2/org/pitest/pitest/1.17.4/ | `97082da0ae5283f564b3f51652c39f4f1d235eb3b019384d11eb5d4fc0e4219e` |
+| `pit/pitest-entry-1.17.4.jar` | repo1.maven.org/maven2/org/pitest/pitest-entry/1.17.4/ | `809c1cf0b83c14e5c5cdb8d70c2c231db24499243263e18474436e30c23657eb` |
+| `pit/pitest-command-line-1.17.4.jar` | repo1.maven.org/maven2/org/pitest/pitest-command-line/1.17.4/ | `a1785b9ec46daf34685b63b9702c1b94f052fa90d74cc1a84f20944894e34ccc` |
+| `pit/pitest-junit5-plugin-1.2.1.jar` | repo1.maven.org/maven2/org/pitest/pitest-junit5-plugin/1.2.1/ | `9d944887a583ebd4adc33d2d26b8b56639fd53fee93b4d068a90596705c072b5` |
+| `pit/lib/asm-9.7.1.jar`, `asm-analysis`, `asm-commons`, `asm-tree`, `asm-util` (9.7.1) | repo1.maven.org/maven2/org/ow2/asm/ | xem `ToolsCatalog.cs` |
+| `pit/lib/commons-text-1.12.0.jar`, `commons-lang3-3.14.0.jar` | repo1.maven.org/maven2/org/apache/commons/ | xem `ToolsCatalog.cs` |
+| `tsdetect/TestSmellDetector.jar` (2.2) | github.com/TestSmells/TestSmellDetector/releases/download/v2.2/TestSmellDetector.jar | `6a12de6d1613c7ee9e845a2b69d876834f8ee98379e85d38c0e6027f7110f7bc` |
+
+JaCoCo của bước đo chạy qua `jacoco-maven-plugin:0.8.12` (Maven tự tải) hoặc plugin `jacoco` của Gradle với `toolVersion 0.8.12`; hai jar JaCoCo ở trên để kiểm tra phiên bản và dùng khi cần. EvoSuite chạy bằng JDK 11 (`jdk_homes.11`). `junit-platform-launcher` cho PIT với module JUnit 5 được tải tự động vào `tools/pit/launcher/` theo phiên bản của module.

@@ -41,6 +41,11 @@ app.Configure(config =>
         shard.SetDescription("Chia shard (người điều phối)");
         shard.AddCommand<ShardPlanCommand>("plan").WithDescription("Chia task cho các máy");
     });
+    config.AddBranch("tools", tools =>
+    {
+        tools.SetDescription("Công cụ của S3/S4 trong ARROW/tools");
+        tools.AddCommand<ToolsInstallCommand>("install").WithDescription("Tải EvoSuite, JaCoCo, PIT, tsDetect và kiểm tra SHA-256");
+    });
     config.AddBranch("fewshot", fewshot =>
     {
         fewshot.SetDescription("Ví dụ few-shot (người điều phối)");
@@ -290,4 +295,10 @@ public sealed class FewShotSelectCommand : AsyncCommand<FewShotSelectCommand.Set
 
     public override Task<int> ExecuteAsync(CommandContext context, Settings settings, CancellationToken cancellationToken) =>
         new FewShotScreen(settings.CreateSession()).RunAsync(settings.PoolGlob, settings.Exclude, settings.Seed, cancellationToken);
+}
+
+public sealed class ToolsInstallCommand : AsyncCommand<GlobalSettings>
+{
+    public override async Task<int> ExecuteAsync(CommandContext context, GlobalSettings settings, CancellationToken cancellationToken) =>
+        await FixActions.InstallToolsAsync(settings.CreateSession(), cancellationToken) == 0 ? 0 : 1;
 }

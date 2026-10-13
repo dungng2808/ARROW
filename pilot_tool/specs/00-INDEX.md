@@ -47,6 +47,8 @@ Quy ước: `MUST` là bắt buộc, `SHOULD` là nên làm. Nhãn `[Dn]` trong 
 | P4 | Few-shot: điều kiện "chạy độc lập, không cần dịch vụ ngoài" | Lọc theo danh sách dấu hiệu trong mã test (không chạy test) | 04 Mục 5 |
 | P5 | LiteLLM 1.91.0 từ chối `reasoning_effort` với model `gpt-6-luna` (`UnsupportedParamsError`) | `litellm.config.local.yaml` thêm `allowed_openai_params: ["reasoning_effort"]` cho model; không dùng `drop_params` vì sẽ bỏ tham số | 04 Mục 1 |
 | P6 | Ghi nguyên tử khi nhiều luồng cùng ghi một file (`control.json`) | Tên file tạm riêng `<file>.<pid>.<n>.tmp` | 01 |
+| P7 | PIT: spec ghi Maven plugin và plugin Gradle `info.solidsoft.pitest` 1.15.0; plugin Gradle không chạy trên Gradle 9 | PIT bản dòng lệnh 1.17.4 cho cả Maven và Gradle, classpath test lấy từ build tool, không sửa POM; JUnit 5 thêm plugin 1.2.1 và `junit-platform-launcher` cùng phiên bản platform | 06 Mục 2.2 |
+| P8 | EvoSuite: test sinh ra dùng JUnit 4; module chỉ có JUnit 5 sẽ COMPILE/DISCOVERY | Giữ như spec (không thêm vintage); runtime EvoSuite thêm vào scope test chỉ ở job EvoSuite và job đo bộ test EvoSuite | 06 Mục 1 |
 
 ## Nguồn của thiết kế
 

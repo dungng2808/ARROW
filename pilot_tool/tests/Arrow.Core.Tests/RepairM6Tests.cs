@@ -242,3 +242,55 @@ public class NRuleTests
         Assert.Equal(10, Arrow.Core.Report.NRules.Report2([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]));
     }
 }
+
+public class QualityParserTests
+{
+    [Fact]
+    public void JacocoCsvForCutIncludingInnerClasses()
+    {
+        const string csv = """
+            GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+            g,a,Other,1,1,0,0,1,1,1,1,1,1
+            g,a,Calc,12,16,1,1,3,6,3,3,2,3
+            g,a,Calc.Inner,0,4,0,0,0,1,0,1,0,1
+            """;
+        var result = Arrow.Core.Quality.QualityParsers.ParseJacocoCsv(csv, "a.Calc")!;
+        Assert.Equal(7.0 / 10, result.Line!.Value, 4);
+        Assert.Equal(0.5, result.Branch);
+        Assert.Equal(4.0 / 6, result.Method!.Value, 4);
+        Assert.Null(Arrow.Core.Quality.QualityParsers.ParseJacocoCsv(csv, "a.Missing"));
+        var noBranches = Arrow.Core.Quality.QualityParsers.ParseJacocoCsv(csv.Replace("g,a,Calc,12,16,1,1", "g,a,Calc,12,16,0,0"), "a.Calc")!;
+        Assert.Null(noBranches.Branch);
+    }
+
+    [Fact]
+    public void PitCsvScoreAndStrength()
+    {
+        const string csv = """
+            Calc.java,a.Calc,M1,add,1,KILLED,t
+            Calc.java,a.Calc,M2,add,2,SURVIVED,none
+            Calc.java,a.Calc,M3,div,3,NO_COVERAGE,none
+            Calc.java,a.Calc$1,M4,run,4,TIMED_OUT,t
+            Calc.java,a.Calc,M5,div,5,NON_VIABLE,none
+            Other.java,a.Other,M1,x,1,KILLED,t
+            """;
+        var result = Arrow.Core.Quality.QualityParsers.ParsePitCsv(csv, "a.Calc")!;
+        Assert.Equal(4, result.Total);
+        Assert.Equal(2, result.Killed);
+        Assert.Equal(0.5, result.MutationScore);
+        Assert.Equal(Math.Round(2.0 / 3, 4), result.TestStrength);
+    }
+
+    [Fact]
+    public void TsDetectCsv()
+    {
+        const string csv = """
+            App,TestClass,TestFilePath,ProductionFilePath,RelativeTestFilePath,RelativeProductionFilePath,NumberOfMethods,Assertion Roulette,Magic Number Test,Eager Test
+            app,CalcTest.java,/t/CalcTest.java,/m/Calc.java,,,2,1,2,0
+            """;
+        var result = Arrow.Core.Quality.QualityParsers.ParseTsDetectCsv(csv)!;
+        Assert.Equal(3, result.TotalSmells);
+        Assert.Equal(2, result.TestMethods);
+        Assert.Equal(2, result.BySmell["Magic Number Test"]);
+    }
+}

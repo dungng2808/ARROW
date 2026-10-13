@@ -117,6 +117,47 @@ public static class BuildCommands
         return new BuildCommand(args, plan.WorkingDir);
     }
 
+    /// <summary>
+    /// Lệnh với goal/task tùy ý cho module (S3, S4): Maven <c>-f pom.xml [-pl -am] &lt;cờ&gt; &lt;goals&gt;</c>;
+    /// Gradle <c>&lt;cờ&gt; -x … &lt;tasks&gt;</c> (task không có tiền tố thì thêm tiền tố project của module).
+    /// </summary>
+    /// <param name="dropFlags">Cờ chung bị bỏ ở bước này (ví dụ <c>-Djacoco.skip=true</c> khi đo coverage, specs/06 Mục 2.1).</param>
+    public static BuildCommand Custom(BuildPlan plan, BuildFlags flags, IEnumerable<string> goals, IReadOnlyCollection<string>? gradleTasks = null,
+        IReadOnlyCollection<string>? dropFlags = null)
+    {
+        var drop = dropFlags ?? [];
+        if (plan.Tool == BuildToolKind.Maven)
+        {
+            var args = new List<string> { "-f", "pom.xml" };
+            if (plan.Mode == BuildMode.Reactor)
+            {
+                args.AddRange(["-pl", plan.ModulePath, "-am"]);
+            }
+
+            args.AddRange(flags.Maven.Where(f => !drop.Contains(f)).Select(f => AdaptMavenFlag(f, flags.MavenVersion)));
+            if (flags.Windows)
+            {
+                args.Add("-Dsurefire.useManifestOnlyJar=false");
+            }
+
+            args.AddRange(goals);
+            return new BuildCommand(args, plan.WorkingDir);
+        }
+
+        var prefix = plan.Mode == BuildMode.Reactor ? plan.GradleProjectPath + ":" : "";
+        var gradle = new List<string>(flags.Gradle.Where(f => !drop.Contains(f)));
+        if (gradleTasks is not null)
+        {
+            foreach (var task in flags.GradleExcludedTasks.Where(gradleTasks.Contains))
+            {
+                gradle.AddRange(["-x", prefix + task]);
+            }
+        }
+
+        gradle.AddRange(goals.Select(g => g.StartsWith('-') || g.Contains(':') || g.Contains('/') || g.Contains('.') ? g : prefix + g));
+        return new BuildCommand(gradle, plan.WorkingDir);
+    }
+
     /// <summary>Đọc tên task từ output của <c>gradle tasks --all</c> (dòng "name - mô tả" hoặc chỉ "name").</summary>
     public static HashSet<string> ParseGradleTasks(string output)
     {

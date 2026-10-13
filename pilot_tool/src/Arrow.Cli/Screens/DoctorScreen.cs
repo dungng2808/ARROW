@@ -53,6 +53,11 @@ public sealed class DoctorScreen(Session session)
             changed = true;
         }
 
+        if (fixes.Contains(DoctorFix.InstallTools) && AnsiConsole.Confirm("Thiếu công cụ của S3/S4 (EvoSuite, JaCoCo, PIT, tsDetect). [bold]Tải ngay[/] vào ARROW/tools?"))
+        {
+            changed |= await FixActions.InstallToolsAsync(session, cancellationToken) == 0;
+        }
+
         if (!changed)
         {
             return report;

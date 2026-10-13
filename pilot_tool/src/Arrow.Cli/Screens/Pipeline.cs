@@ -30,6 +30,7 @@ public sealed partial class Pipeline : IAsyncDisposable
     private readonly PrepareService _prepare;
     private readonly JavaAnalyzer _analyzer;
     private readonly CandidateRunner _candidates;
+    private readonly string _workDir;
     private readonly SemaphoreSlim _llmLock = new(1, 1);
     private ILlmClient? _llm;
     private LlmGateway? _gateway;
@@ -43,6 +44,7 @@ public sealed partial class Pipeline : IAsyncDisposable
         _store = store;
         _prompts = prompts;
         _options = options;
+        _workDir = workDir;
         _git = new GitRepositoryProvider(machine.GitPath, workDir, machine.RepoPolicy);
         _prepare = new PrepareService(_git, machine, experiment, workDir);
         _analyzer = new JavaAnalyzer(paths.PilotToolDir, machine);

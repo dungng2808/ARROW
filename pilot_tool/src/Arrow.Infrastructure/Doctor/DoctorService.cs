@@ -23,6 +23,7 @@ public enum DoctorFix
     RunSetup,
     InstallLiteLlm,
     EnterApiKey,
+    InstallTools,
 }
 
 /// <param name="Steps">Các bước làm tiếp khi Hint một dòng không đủ; DoctorScreen in thành khung riêng dưới bảng.</param>
@@ -195,7 +196,23 @@ public sealed class DoctorService(ToolPaths paths)
                     : new DoctorCheck("LiteLLM", CheckStatus.Pass, $"{litellm.Version} · {litellm.Path}"));
         }
 
-        Add(new DoctorCheck("Gọi thử model", CheckStatus.Skip, "Làm ở mốc M5 (bước sinh test)"));
+        Add(new DoctorCheck("Gọi thử model", CheckStatus.Skip, "Gọi thử bằng lệnh smoke: arrow run --experiment experiments/smoke-v1.json --max-llm-calls 6"));
+        if (litellmConfig is not null && litellmConfig.HasApiKey && !File.ReadAllText(paths.LiteLlmConfigPath).Contains("allowed_openai_params", StringComparison.Ordinal))
+        {
+            Add(new DoctorCheck("LiteLLM nhận reasoning_effort", CheckStatus.Fail, "litellm.config.local.yaml thiếu allowed_openai_params: [\"reasoning_effort\"]",
+                "Nhập lại khóa (tool ghi lại file đúng mẫu), hoặc thêm dòng đó dưới api_key (SETUP.md, Ghi chú LiteLLM)", DoctorFix.EnterApiKey));
+        }
+
+        // 9b. Công cụ của S3, S4 (EvoSuite, JaCoCo, PIT, tsDetect) trong ARROW/tools
+        var toolProblems = ToolsCatalog.Verify(paths.ArrowRoot);
+        foreach (var group in ToolsCatalog.Files.GroupBy(f => f.Tool))
+        {
+            var problems = toolProblems.Where(p => p.File.Tool == group.Key).ToList();
+            Add(problems.Count == 0
+                ? new DoctorCheck(group.Key, CheckStatus.Pass, $"{group.Count()} file trong ARROW/tools, đúng SHA-256")
+                : new DoctorCheck(group.Key, CheckStatus.Fail, string.Join("; ", problems.Select(p => $"{p.File.RelativePath} {p.Problem}")),
+                    "Tải ngay, hoặc chạy: arrow tools install", DoctorFix.InstallTools));
+        }
 
         // 10. Windows: đường dẫn dài
         if (OperatingSystem.IsWindows())

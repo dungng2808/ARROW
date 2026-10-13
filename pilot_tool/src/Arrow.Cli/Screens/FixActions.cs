@@ -56,4 +56,26 @@ public static class FixActions
         ToolLog.Info($"đã lưu khóa API mới cho endpoint {config.EndpointHost}");
         AnsiConsole.MarkupLine($"{Theme.Ok} Đã lưu khóa {Markup.Escape(LiteLlmConfigFile.Mask(key))} · endpoint {Markup.Escape(config.EndpointHost)}");
     }
+
+    /// <summary>Tải công cụ của S3, S4 vào ARROW/tools và kiểm tra SHA-256. Trả về số file lỗi.</summary>
+    public static async Task<int> InstallToolsAsync(Session session, CancellationToken cancellationToken)
+    {
+        var errors = await ToolsCatalog.InstallAsync(session.Paths.ArrowRoot, line =>
+        {
+            ToolLog.Info("tools: " + line);
+            AnsiConsole.MarkupLine("[grey]" + Markup.Escape(line) + "[/]");
+        }, cancellationToken);
+        foreach (var error in errors)
+        {
+            AnsiConsole.MarkupLine($"{Theme.Fail} {Markup.Escape(error)}");
+        }
+
+        var remaining = ToolsCatalog.Verify(session.Paths.ArrowRoot);
+        if (remaining.Count == 0)
+        {
+            AnsiConsole.MarkupLine($"{Theme.Ok} Đủ {ToolsCatalog.Files.Count} file công cụ trong ARROW/tools, đúng SHA-256");
+        }
+
+        return remaining.Count;
+    }
 }
