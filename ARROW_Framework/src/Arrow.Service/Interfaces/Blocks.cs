@@ -1,0 +1,64 @@
+using Arrow.Models.Block1;
+using Arrow.Models.Config;
+using Arrow.Models.Manifest;
+using Arrow.Models.Run;
+
+namespace Arrow.Service.Interfaces;
+
+/// <summary>Công cụ trên máy: git, Maven, Gradle (null nếu không có) và JDK theo major.</summary>
+public sealed record ToolEnvironment(string Git, string? Maven, string? Gradle, IReadOnlyDictionary<int, string> JdkHomes);
+
+/// <summary>Những gì một khối cần biết về run đang chạy.</summary>
+public sealed record RunContext
+{
+    public string RunId { get; init; } = "";
+    public VerificationConfig Verification { get; init; } = new();
+    public ScreeningConfig Screening { get; init; } = new();
+    public string GeneratedTestSuffix { get; init; } = "_ArrowTest";
+    public ToolEnvironment Tools { get; init; } = new("git", null, null, new Dictionary<int, string>());
+
+    /// <summary>Giữ <c>base</c> và <c>snapshot</c> sau khối 1 (khối 3–4 cần). Lệnh <c>screen</c> tắt để không tốn đĩa.</summary>
+    public bool KeepWorkspace { get; init; } = true;
+
+    /// <summary>Thời gian chờ trước lần thử lại thứ 2, 3… khi lỗi mạng (spec 01 Mục 3: 10 s, 30 s).</summary>
+    public IReadOnlyList<TimeSpan> RetryDelays { get; init; } = [TimeSpan.FromSeconds(10), TimeSpan.FromSeconds(30)];
+}
+
+/// <summary>Khối 1 (spec 01 Mục 8): Flow 1.1–1.4 cho một task.</summary>
+public interface IRepositoryAnalyzer
+{
+    /// <summary>
+    /// Không ném lỗi cho task hỏng: trả <c>Outcome</c> = EXCLUDED/INFRA kèm mã. Lưu <c>block1/*</c> theo thứ tự của spec 01 Mục 6.4
+    /// (tới <c>outcome.json</c>); dòng ledger do nơi gọi ghi sau cùng.
+    /// </summary>
+    Task<RepositoryAnalysis> AnalyzeAsync(TaskRecord task, RunContext run, CancellationToken cancellationToken);
+}
+
+/// <summary>Yêu cầu sàng lọc (spec 01 Mục 6.3, spec 06 S10).</summary>
+public sealed record ScreeningRequest
+{
+    public string ManifestPath { get; init; } = "";
+
+    /// <summary>Null → đoán theo tên file (<c>gitbug</c> → <c>gitbug-java</c>, còn lại <c>classes2test</c>).</summary>
+    public string? Dataset { get; init; }
+    public string RunId { get; init; } = "";
+
+    /// <summary>Chỉ chạy các task này (rỗng = mọi task của manifest).</summary>
+    public IReadOnlyList<string> TaskIds { get; init; } = [];
+
+    /// <summary>Giá trị thô của <c>--tasks</c>: đường dẫn file (mỗi dòng một task_id, <c>#</c> là chú thích) hoặc danh sách cách nhau dấu phẩy. Service đọc file, UI không.</summary>
+    public string? TaskSelection { get; init; }
+
+    /// <summary>Số task chạy song song; null → <c>workers.build</c> của máy.</summary>
+    public int? Workers { get; init; }
+    public bool RerunInfra { get; init; }
+    public bool KeepWorkspace { get; init; }
+}
+
+public sealed record ScreeningSummary(string RunId, string ManifestPath, IReadOnlyList<ScreeningRow> Rows, string CsvPath);
+
+/// <summary>Chạy chỉ khối 1 cho mọi CUT của một manifest và ghi <c>reports/screening.csv</c>.</summary>
+public interface IScreeningService
+{
+    Task<ScreeningSummary> RunAsync(ScreeningRequest request, IProgress<RunEvent> progress, CancellationToken cancellationToken);
+}

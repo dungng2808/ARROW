@@ -16,7 +16,7 @@ public sealed class CommandLine
     /// <summary>Các tùy chọn không nhận giá trị.</summary>
     public static readonly IReadOnlySet<string> KnownFlags = new HashSet<string>(StringComparer.Ordinal)
     {
-        "version", "help", "verbose", "plain", "rerun-infra",
+        "version", "help", "verbose", "plain", "rerun-infra", "keep-workspace",
     };
 
     public static CommandLine Parse(IReadOnlyList<string> args)

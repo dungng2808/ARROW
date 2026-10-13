@@ -99,3 +99,19 @@ public sealed record RunInfo
 
 /// <summary>Một file của <c>reports/</c>.</summary>
 public sealed record CsvTable(IReadOnlyList<string> Headers, IReadOnlyList<IReadOnlyList<string>> Rows);
+
+/// <summary>Một dòng <c>reports/screening.csv</c> (spec 01 Mục 6.3): kết quả khối 1 và tiêu chí B của một CUT.</summary>
+public sealed record ScreeningRow
+{
+    public string Dataset { get; init; } = "";
+    public string TaskId { get; init; } = "";
+    public OutcomeKind Outcome { get; init; }
+    public string? Code { get; init; }
+
+    /// <summary><c>PASS</c>, <c>NO_TEST_RUN</c>, <c>FAILING</c>, <c>FLAKY</c>, <c>NO_PAIRED_TEST</c>; rỗng khi khối 1 không tới bước baseline.</summary>
+    public string PairedTestStatus { get; init; } = "";
+    public List<int> TestsRun { get; init; } = [];
+    public int? JdkMajor { get; init; }
+    public string? Message { get; init; }
+    public bool NeedsRerun { get; init; }
+}

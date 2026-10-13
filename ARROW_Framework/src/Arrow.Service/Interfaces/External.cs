@@ -1,3 +1,6 @@
+using Arrow.Models.Block1;
+using Arrow.Models.Common;
+
 namespace Arrow.Service.Interfaces;
 
 /// <summary>Một lệnh cần chạy: chương trình, tham số, thư mục, biến môi trường (null = xóa biến đó), timeout, dữ liệu stdin.</summary>
@@ -22,6 +25,124 @@ public sealed record ProcessResult(int? ExitCode, bool TimedOut, string Output, 
 public interface IProcessRunner
 {
     Task<ProcessResult> RunAsync(ProcessSpec spec, CancellationToken cancellationToken);
+}
+
+// ── git và workspace (spec 01 Mục 3, spec 03 Mục 3.0) ──────────────
+
+[System.Text.Json.Serialization.JsonConverter(typeof(UpperSnakeEnumConverter<GitFetchStatus>))]
+public enum GitFetchStatus
+{
+    Ok,
+
+    /// <summary>Repository không còn, hoặc server không có commit (không thử lại).</summary>
+    CommitMissing,
+
+    /// <summary>Lỗi mạng (thử lại được).</summary>
+    NetworkError,
+}
+
+public sealed record GitFetchResult(GitFetchStatus Status, string Detail);
+
+/// <summary>Các lệnh git của khối 1: mirror bare, tải đúng một commit, worktree.</summary>
+public interface IGitClient
+{
+    /// <summary>Tạo mirror bare (<c>git init --bare</c> + remote <c>origin</c>) nếu chưa có.</summary>
+    Task EnsureMirrorAsync(string mirrorPath, string repoUrl, CancellationToken cancellationToken);
+
+    Task<bool> HasCommitAsync(string mirrorPath, string sha, CancellationToken cancellationToken);
+
+    /// <summary>
+    /// Một lần tải commit: thử các mirror cục bộ có sẵn (<paramref name="localSources"/>), rồi <c>fetch --depth 1 origin &lt;sha&gt;</c>,
+    /// server từ chối thì tải toàn bộ lịch sử. Không tự thử lại khi lỗi mạng.
+    /// </summary>
+    Task<GitFetchResult> FetchCommitAsync(string mirrorPath, string sha, IReadOnlyList<string> localSources, CancellationToken cancellationToken);
+
+    /// <summary><c>git worktree add --detach</c>; trả commit HEAD của worktree.</summary>
+    Task<string> AddWorktreeAsync(string mirrorPath, string sha, string targetDir, CancellationToken cancellationToken);
+
+    /// <summary>Xóa worktree và dọn đăng ký của nó trong mirror.</summary>
+    Task RemoveWorktreeAsync(string mirrorPath, string worktreeDir, CancellationToken cancellationToken);
+}
+
+/// <summary>Thư mục làm việc của công cụ build: mirror, checkout gốc, snapshot, bản sao cho từng lần chạy test.</summary>
+public interface IWorkspaceManager
+{
+    string WorkDir { get; }
+
+    /// <summary><c>work_dir/mirrors/&lt;host&gt;/&lt;owner&gt;/&lt;repo&gt;.git</c>.</summary>
+    string MirrorPath(string repoUrl);
+
+    /// <summary>Mirror cùng repository theo cách đặt tên cũ (<c>work_dir/mirrors/&lt;owner&gt;__&lt;repo&gt;.git</c>) để tải commit không qua mạng.</summary>
+    IReadOnlyList<string> LegacyMirrors(string repoUrl);
+
+    /// <summary><c>work_dir/ws/&lt;run&gt;/&lt;task&gt;</c>.</summary>
+    string TaskDir(string runId, TaskKey task);
+
+    /// <summary>Sao chép thư mục bằng cách nhanh nhất hệ điều hành hỗ trợ (clonefile trên macOS, reflink trên Linux), giữ quyền chạy, thời gian sửa và symlink.</summary>
+    Task CopyDirectoryAsync(string source, string target, CancellationToken cancellationToken);
+
+    /// <summary>Bản sao mới của <paramref name="snapshot"/> trong <c>&lt;task dir&gt;/tmp/&lt;label&gt;-&lt;id&gt;</c>.</summary>
+    Task<string> NewCopyAsync(string snapshot, string runId, TaskKey task, string label, CancellationToken cancellationToken);
+
+    void DeleteDirectory(string path);
+
+    /// <summary>Xóa toàn bộ workspace của task (gỡ worktree khỏi mirror).</summary>
+    Task DeleteTaskAsync(string runId, TaskKey task, string? mirrorPath, CancellationToken cancellationToken);
+}
+
+// ── Maven/Gradle ─────────────────────────────────────────────────────
+
+/// <summary>Loại thất bại của một lệnh build, để quyết định thử lại (lỗi hạ tầng) hay đổi JDK / kết luận lỗi.</summary>
+public enum BuildFailureKind
+{
+    None,
+    Timeout,
+
+    /// <summary>Lỗi mạng khi tải dependency/plugin.</summary>
+    Network,
+
+    /// <summary>Lỗi biên dịch hoặc lỗi build khác.</summary>
+    Build,
+}
+
+/// <summary>Cách gọi Maven/Gradle cho một bản sao workspace (spec 01 Mục 4.1, 6).</summary>
+public sealed record BuildContext
+{
+    /// <summary>Gốc repository của bản sao (tuyệt đối).</summary>
+    public string RepoRoot { get; init; } = "";
+    public BuildPlan Plan { get; init; } = new();
+    /// <summary>Chương trình build: đường dẫn tuyệt đối của công cụ trên máy, hoặc wrapper tính từ gốc repository (<see cref="ExecutableInRepo"/>).</summary>
+    public string Executable { get; init; } = "";
+
+    /// <summary>Wrapper (<c>mvnw</c>, <c>gradlew</c>) nằm trong repository: đường dẫn tính từ <see cref="RepoRoot"/>, nên dùng được trên mọi bản sao.</summary>
+    public bool ExecutableInRepo { get; init; }
+    public string JdkHome { get; init; } = "";
+    public IReadOnlyList<string> CommonFlags { get; init; } = [];
+
+    /// <summary>Gradle: init script của framework (tuyệt đối).</summary>
+    public string? InitScript { get; init; }
+    public TimeSpan Timeout { get; init; } = TimeSpan.FromMinutes(15);
+
+    public string BuildRootPath => Path.GetFullPath(Path.Combine(RepoRoot, Plan.BuildRoot.Replace('/', Path.DirectorySeparatorChar)));
+
+    public string ExecutablePath => ExecutableInRepo ? Path.GetFullPath(Path.Combine(RepoRoot, Executable.Replace('/', Path.DirectorySeparatorChar))) : Executable;
+}
+
+public sealed record BuildRun(IReadOnlyList<string> Command, string WorkingDirectory, ProcessResult Result, BuildFailureKind Failure);
+
+public interface IBuildRunner
+{
+    /// <summary>
+    /// Chạy từ build root: Maven <c>&lt;exe&gt; -f pom.xml &lt;cờ chung&gt; [-pl m -am] &lt;args&gt;</c>;
+    /// Gradle <c>&lt;exe&gt; --no-daemon --console=plain --init-script … &lt;args&gt;</c>. JDK, <c>JAVA_TOOL_OPTIONS</c> đặt qua biến môi trường.
+    /// </summary>
+    Task<BuildRun> RunAsync(BuildContext context, IReadOnlyList<string> arguments, CancellationToken cancellationToken);
+}
+
+/// <summary>Đọc báo cáo XML của Surefire (<c>target/surefire-reports</c>) và Gradle (<c>build/test-results</c>) trong một thư mục.</summary>
+public interface ITestReportReader
+{
+    IReadOnlyList<TestCaseResult> Read(string directory);
 }
 
 // ── java-helper (spec 07 Mục 10) ─────────────────────────────────────

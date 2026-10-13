@@ -137,7 +137,8 @@ Khối 3 coi một test sẵn có là **regression** khi nó nằm trong `passin
 2. **Tải commit:** `git fetch --depth 1 origin <checkout_sha>`. Lỗi mạng: tối đa 3 lần thử (chờ 10 s, 30 s); vẫn lỗi → `INFRA`, `B1_CLONE_FAILED`, `needs_rerun`. Server từ chối fetch theo SHA hoặc không còn commit → thử `git fetch --unshallow`; vẫn không có → `EXCLUDED`, `B1_COMMIT_MISSING`.
 3. **Checkout gốc:** `git worktree add --detach work_dir/ws/<run_id>/<task_id>/base <checkout_sha>`; kiểm tra `git rev-parse HEAD` = `checkout_sha`.
 4. **Kiểm tra file CUT:** `class_path` phải tồn tại; không có → `EXCLUDED`, `B1_CUT_MISSING`. Ghi `source_sha256` của CUT.
-5. **Đường dẫn:** `work_dir` không có dấu cách hay ký tự không phải ASCII; vi phạm thì `doctor` báo lỗi và `run` dừng trước khi chạy.
+5. **Đường dẫn:** `work_dir` không có dấu cách hay ký tự không phải ASCII; vi phạm thì `doctor` báo lỗi và `run` dừng trước khi chạy. Framework dùng **đường dẫn thật** của `work_dir` (đã giải symlink, ví dụ `/var` → `/private/var` trên macOS) vì Gradle in đường dẫn đã giải symlink; nếu không, không khớp được thư mục project Gradle với workspace.
+6. **Mirror có sẵn theo cách đặt tên cũ** (`work_dir/mirrors/<owner>__<repo>.git`, của pilot_tool) được dùng làm nguồn tải cục bộ trước khi tải qua mạng; không có commit thì tải từ `origin` như bước 2.
 
 ## 4. Flow 1.2: Repository Analysis
 
@@ -170,14 +171,15 @@ Hai bài học từ dữ liệu:
 ### 4.2. Build tool
 
 1. File build ở build root: `pom.xml` → Maven; `build.gradle(.kts)` hoặc `settings.gradle(.kts)` → Gradle. Có cả hai thì theo `build_tool` của manifest.
-2. Wrapper: `mvnw`/`gradlew` ở build root (hoặc gốc repository nếu build root không có); có thì dùng (đặt quyền chạy trên macOS/Linux), không thì dùng `maven_path`/`gradle_path` của máy.
+2. Chương trình build: **theo đúng lệnh đã biên dịch thành công ở preflight** (Mục 4.1): lệnh dùng `mvnw`/`gradlew` thì dùng wrapper ở build root (hoặc gốc repository nếu build root không có), lệnh dùng `mvn`/`gradle` thì dùng `maven_path`/`gradle_path` của máy. Manifest không có lệnh thành công (tự dò) thì dùng wrapper nếu có. Wrapper được đặt quyền chạy trên macOS/Linux và lưu **tương đối với gốc repository** để chạy được trên mọi bản sao (snapshot, bản sao cho từng lần chạy test). Lý do theo lệnh preflight thay vì luôn ưu tiên wrapper: lặp lại đúng cách build đã thành công (wrapper cũ có thể tải bản Maven/Gradle không chạy được với JDK hiện tại).
 3. Phiên bản: `mvn -v` / `gradle -v` với JDK đã chọn.
 
 ### 4.3. Java version và chọn JDK
 
 1. **Mức Java khai báo**, lấy giá trị đầu tiên có:
-   - Maven: effective POM của module (`mvn help:effective-pom -Doutput=<file>`, chạy từ build root với bộ chọn module): `maven.compiler.release` → `maven.compiler.source` → `release`/`source` của `maven-compiler-plugin` → thuộc tính `java.version`.
-   - Gradle: init script của framework in `java.toolchain.languageVersion`, nếu không có thì `sourceCompatibility` của project module.
+   - Maven: effective POM của module (`mvn <cờ chung> [-pl m -am] org.apache.maven.plugins:maven-help-plugin:3.4.1:effective-pom -Doutput=<file ngoài repository>`; Maven cũ hơn 3.6.3 dùng `3.2.0`), chạy **một lần gọi riêng trước khi biên dịch**, bằng JDK của manifest, vì cần mức Java để chọn JDK. Với `-am` file có nhiều `<project>`; project của module đích là project có `target` hoặc `src/main/java` nằm ngay trong module root. Thứ tự lấy: `maven.compiler.release` → `maven.compiler.source` → `release`/`source` của `maven-compiler-plugin` → thuộc tính `java.version`; giá trị chưa nội suy (`${…}`) bị bỏ qua.
+   - Gradle: init script của framework (task `arrowInfo`, chạy trước khi biên dịch) in `java.toolchain.languageVersion`, nếu không có thì `sourceCompatibility` của project module, cùng thư mục project, source/test dirs và dependency khai báo.
+   - Lệnh effective POM hoặc `arrowInfo` lỗi: không loại task, ghi `missing_reasons.java` và chọn JDK theo manifest.
    - Quy về số major: `1.7` → 7, `1.8` → 8, `11` → 11.
 2. **Major từ manifest** (`java_version`): lấy chuỗi trong ngoặc kép sau `version` của dòng `java -version`; nếu bắt đầu bằng `1.` thì major là số thứ hai (`"1.8.0_504"` → 8), nếu không thì là số đầu (`"17.0.20.1"` → 17, `"11.0.32.1"` → 11, `"21"` → 21). Không tách được → `null`.
 3. **Chọn JDK** trong các JDK có trên máy (8, 11, 17, 21): JDK nhỏ nhất có major ≥ mức khai báo (mức khai báo < 8 thì dùng 8). Không đọc được mức khai báo → JDK của manifest (`jdk_choice_reason = "manifest"`).
@@ -244,7 +246,9 @@ Có cả TestNG và JUnit: chọn theo framework của **test người viết** 
 
 ### 6.2. Chạy test sẵn có ×2
 
-1. Mỗi lần chạy: tạo **bản sao mới** của `compiled_snapshot`, chạy Maven `-DfailIfNoTests=false -Dmaven.test.failure.ignore=true test` (với bộ chọn module); Gradle `:<project>:test --continue`. Đọc báo cáo XML (`target/surefire-reports`, `build/test-results/test`) của mọi module trong reactor. Xóa bản sao sau khi đọc.
+1. Mỗi lần chạy: tạo **bản sao mới** của `compiled_snapshot`, chạy Maven `-DfailIfNoTests=false -Dsurefire.failIfNoSpecifiedTests=false -Dmaven.test.failure.ignore=true test` (với bộ chọn module); Gradle `:<project>:test --continue` (init script đặt `ignoreFailures = true` cho task test). Đọc báo cáo XML (`target/surefire-reports`, `build/test-results/**`) của mọi module trong reactor. Xóa bản sao sau khi đọc.
+   - **Tên class của một test case:** Surefire 3.x với JUnit 5 có thể ghi thuộc tính `classname` của `<testcase>` là tên method hoặc display name (`testInsert()`; gặp ở mẫu pilot `9577793_…`, `93861612_…`). Framework chỉ dùng `classname` khi nó là tên class Java hợp lệ (và có package nếu tên `<testsuite>` có package), ngược lại dùng tên `<testsuite>` (luôn là FQN của class test). Class lồng (`Outer$Inner`) thuộc về class ngoài khi tính tiêu chí B.
+   - **File báo cáo được đọc:** chỉ `TEST-*.xml` nằm ngay trong `surefire-reports/` (Maven) hoặc `test-results/<task>/` (Gradle). TestNG ghi thêm bản trùng vào `surefire-reports/junitreports/`; đọc cả hai thì mỗi test bị đếm hai lần (mẫu pilot `618492_…`, `43258821_…`). `tests_run` của tiêu chí B đếm số test **khác nhau** (`Class#method`) mỗi lần chạy.
 2. Chạy `baseline_runs` lần (mặc định 2). Pass ở mọi lần → `passing_in_all_runs`; pass ở một số lần → `flaky`; fail ở mọi lần → `failing_in_all_runs`.
 3. Module không có test sẵn có nào → danh sách rỗng (bước module regression của khối 3 khi đó chỉ kiểm tra build và test sinh ra).
 4. Timeout hoặc lỗi hạ tầng → tối đa 3 lần thử; vẫn lỗi → `INFRA`, `B1_BASELINE_TIMEOUT` / `B1_DEPENDENCY_RESOLUTION`, `needs_rerun`; task vào danh sách "Cần chạy lại riêng" kèm lệnh `arrow-fw run --run-id <run> --tasks <task_id> --rerun-infra`.
@@ -264,7 +268,7 @@ Theo `evaluation_manifest/pilot/README.md` (pilot v2, 13/10/2026): CUT đạt kh
 | `NO_PAIRED_TEST` | Manifest không có `test_class_path` |
 
 2. **Ai quyết định thay mẫu:** việc **thay** CUT không đạt bằng CUT khác làm **trước** framework, bằng script chọn mẫu (`preflight_tool/scripts/select_pilot_after_s0.py`), sinh manifest phiên bản mới (đúng quy định của `CLAUDE.md`: thay bằng class rút ngẫu nhiên từ pool theo cùng quy tắc, kèm phiên bản manifest mới). Framework chỉ **đo** tiêu chí B:
-   - Lệnh `arrow-fw screen --manifest <file> --run-id <id>` chạy **chỉ khối 1** cho mọi CUT của manifest và ghi `reports/screening.csv` (`task_id, outcome, code, paired_test_status, tests_run, jdk_major`), làm đầu vào cho script chọn mẫu.
+   - Lệnh `arrow-fw screen --manifest <file> --run-id <id> [--dataset D] [--tasks a,b|FILE] [--workers N] [--rerun-infra] [--keep-workspace]` chạy **chỉ khối 1** cho mọi CUT của manifest (song song theo `workers.build`) và ghi `reports/screening.csv` (`task_id, outcome, code, paired_test_status, tests_run, jdk_major, message`; `tests_run` dạng `6;6`), làm đầu vào cho script chọn mẫu (`select_pilot_after_s0.py --screening-csv …`). Lệnh này chỉ **đo** tiêu chí B: CUT không đạt vẫn có `outcome = OK`, trạng thái nằm ở cột `paired_test_status`. Mỗi task ghi ledger khi xong, chạy lại cùng run id thì bỏ qua task đã xong (task INFRA chỉ chạy lại khi có `--rerun-infra`). Workspace (`base`, `snapshot`) bị xóa sau mỗi task trừ khi có `--keep-workspace`.
    - Khi chạy thực nghiệm với `screening.require_paired_test_pass = true` (mặc định cho pilot và tập đánh giá), CUT có `paired_test.status ≠ PASS` bị `EXCLUDED` với mã `B1_PAIRED_TEST_NOT_PASSING`. Manifest đã sàng lọc đúng thì trường hợp này không xảy ra; nếu xảy ra (ví dụ khác máy) thì báo cáo liệt kê để nhóm xử lý.
 
 ### 6.4. Kết thúc khối 1 và ghi ledger
@@ -293,6 +297,7 @@ Run dừng ở bất kỳ đâu trước bước 5 → khi chạy tiếp, task k
 | `B1_BASELINE_BUILD_FAILED` | EXCLUDED | Không JDK nào biên dịch được module |
 | `B1_BASELINE_TIMEOUT` | INFRA, cần chạy lại | Build hoặc test sẵn có quá thời gian (3 lần thử) |
 | `B1_PAIRED_TEST_NOT_PASSING` | EXCLUDED | Tiêu chí B không đạt khi `require_paired_test_pass = true` |
+| `B1_WORKSPACE` | INFRA, cần chạy lại | Lỗi khi sao chép/xóa workspace hoặc không chạy được chương trình build (lỗi của máy, không phải của task) |
 
 ## 8. Interface C#
 

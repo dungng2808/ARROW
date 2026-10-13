@@ -39,8 +39,29 @@ public static class ToolLocator
         return FindOnPath(IsWindows ? "mvn.cmd" : "mvn");
     }
 
+    /// <summary>Gradle theo thứ tự: <c>gradle_path</c> của máy, rồi <c>gradle</c> (<c>gradle.bat</c> trên Windows) trong PATH.</summary>
+    public static string? FindGradle(MachineConfig? machine) =>
+        machine is { GradlePath.Length: > 0 } && File.Exists(machine.GradlePath) ? machine.GradlePath : FindOnPath(IsWindows ? "gradle.bat" : "gradle");
+
+    public static string? FindGit(MachineConfig? machine) =>
+        machine is { GitPath.Length: > 0 } && File.Exists(machine.GitPath) ? machine.GitPath : FindOnPath(IsWindows ? "git.exe" : "git");
+
+    /// <summary>Các JDK framework hỗ trợ (8, 11, 17, 21) tìm được trên máy.</summary>
+    public static IReadOnlyDictionary<int, string> FindJdkHomes(MachineConfig? machine, string arrowRoot) =>
+        new[] { 8, 11, 17, 21 }
+            .Select(major => (major, home: FindJdkHome(major, machine, arrowRoot)))
+            .Where(j => j.home is not null)
+            .ToDictionary(j => j.major, j => j.home!);
+
+    /// <summary>Công cụ build của máy cho khối 1, 3, 4; thiếu git thì báo lỗi.</summary>
+    public static Interfaces.ToolEnvironment Environment(MachineConfig? machine, string arrowRoot) =>
+        new(FindGit(machine) ?? throw new Models.Common.ArrowException(Models.Common.ErrorCodes.GitMissing, "Không tìm thấy git (git_path trong machine.local.json hoặc PATH)"),
+            FindMaven(machine),
+            FindGradle(machine),
+            FindJdkHomes(machine, arrowRoot));
+
     public static string? FindOnPath(string program) =>
-        (Environment.GetEnvironmentVariable("PATH") ?? "")
+        (System.Environment.GetEnvironmentVariable("PATH") ?? "")
         .Split(Path.PathSeparator, StringSplitOptions.RemoveEmptyEntries)
         .Select(dir => Path.Combine(dir, program))
         .FirstOrDefault(File.Exists);

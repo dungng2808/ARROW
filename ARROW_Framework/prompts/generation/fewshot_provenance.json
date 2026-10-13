@@ -23,12 +23,17 @@
       "test_sha256": "89be35b77f979ff12f321fbbf67b565f9e78613779f0e0cf625ad15418c826a4",
       "verbatim_in_prompt": true,
       "verification": {
-        "status": "PENDING",
-        "method": "arrow-fw screen (tiêu chí B) ở bước C3",
-        "date": null,
-        "machine": null,
-        "jdk": null,
-        "tests_run": null
+        "status": "PASS",
+        "method": "arrow-fw screen (tiêu chí B, spec 01 Mục 6.3), run screen-fewshot; manifest = bản ghi preflight của task trong preflight_manifest/0*/technical_eligible_manifest.jsonl",
+        "date": "2026-10-14",
+        "machine": "Dung-mac (osx-arm64)",
+        "jdk": 8,
+        "build": "Gradle 4.7 (gradlew), project :conduit-api",
+        "tests_run": [
+          3,
+          3
+        ],
+        "checksums": "cut_sha256 khớp; test_sha256 khớp khi chuẩn hóa LF và thêm newline cuối (file ở commit không có newline cuối)"
       }
     },
     {
@@ -42,12 +47,17 @@
       "test_sha256": "fb43529f118a928905bf85cf757b9e634ed43dc0b290c9c30fc1fbc645b5949f",
       "verbatim_in_prompt": true,
       "verification": {
-        "status": "PENDING",
-        "method": "arrow-fw screen (tiêu chí B) ở bước C3",
-        "date": null,
-        "machine": null,
-        "jdk": null,
-        "tests_run": null
+        "status": "PASS",
+        "method": "arrow-fw screen (tiêu chí B, spec 01 Mục 6.3), run screen-fewshot; manifest = bản ghi preflight của task trong preflight_manifest/0*/technical_eligible_manifest.jsonl",
+        "date": "2026-10-14",
+        "machine": "Dung-mac (osx-arm64)",
+        "jdk": 8,
+        "build": "Maven 3.9.16, reactor -pl saw -am",
+        "tests_run": [
+          3,
+          3
+        ],
+        "checksums": "cut_sha256 và test_sha256 khớp"
       }
     }
   ]

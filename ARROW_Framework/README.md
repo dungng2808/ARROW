@@ -1,10 +1,10 @@
 # ARROW Framework
 
-**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong bước C1** (khung 3 tầng, Models, toàn bộ Data Access, nhập/xuất console, kiểm tra bộ prompt) và **C2** (java-helper: công cụ Java dùng JavaParser, chạy thường trú, cùng client C# và trình chạy tiến trình). Các bước C3–C10 theo spec 07 Mục 11.
+**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong bước C1** (khung 3 tầng, Models, toàn bộ Data Access, nhập/xuất console, kiểm tra bộ prompt), **C2** (java-helper: công cụ Java dùng JavaParser, chạy thường trú, cùng client C# và trình chạy tiến trình) và **C3** (khối 1: tải đúng commit, build root, JDK, 6 thông tin cấu hình, snapshot, baseline, tiêu chí B; lệnh `screen`). Các bước C4–C10 theo spec 07 Mục 11.
 
 ## Build và chạy
 
-Cần .NET SDK 8 trở lên; java-helper cần JDK 17 (`machine.local.json` → `jdk_homes`, hoặc `ARROW/Java-version/runtime/jdk-17`) và Maven. Từ thư mục `ARROW_Framework`:
+Cần .NET SDK 8 trở lên; java-helper cần JDK 17 (`machine.local.json` → `jdk_homes`, hoặc `ARROW/Java-version/runtime/jdk-17`) và Maven. Khối 1 cần git, Maven (Gradle nếu repository không có `gradlew`) và các JDK 8/11/17/21 (tìm theo cùng thứ tự); repository được tải vào `work_dir` (mặc định `../repo`). Integration test của khối 1 chạy Maven/Gradle thật trên `tests/fixtures/`. Từ thư mục `ARROW_Framework`:
 
 | Việc | Lệnh |
 | --- | --- |
@@ -12,6 +12,7 @@ Cần .NET SDK 8 trở lên; java-helper cần JDK 17 (`machine.local.json` → 
 | Test | `dotnet test ArrowFramework.sln` |
 | Kiểm tra bộ prompt | `dotnet run --project src/Arrow.UI -- prompts check` |
 | Trợ giúp | `dotnet run --project src/Arrow.UI -- --help` |
+| Sàng lọc CUT (chỉ khối 1, tiêu chí B) | `dotnet run --project src/Arrow.UI -- screen --manifest ../evaluation_manifest/pilot/classes2test_pilot_50_seed42_v2.jsonl --run-id screen-pilot-v2` |
 | Build java-helper (tự chạy khi jar chưa có hoặc cũ hơn mã nguồn) | `mvn -q -B -ntp -DskipTests package` trong `tools/java-helper` |
 | Test java-helper | `mvn -q -B -ntp test` trong `tools/java-helper` |
 

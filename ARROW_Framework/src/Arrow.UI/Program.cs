@@ -39,13 +39,20 @@ try
         return new PromptCheckScreen(services.Prompts, output).Run();
     }
 
+    if (command.Is("screen"))
+    {
+        return await new ScreeningScreen(services.Screening, ConsoleInput.FromConsole(), output).RunAsync(command);
+    }
+
     if (command.Command.Count == 0 || command.Flag("help"))
     {
         output.Title($"ARROW Framework v{version} · .NET {Environment.Version.ToString(2)}");
         output.Line($"Thư mục: {paths.FrameworkRoot}");
         output.Blank();
-        output.Line("Lệnh hiện có (bước C1):");
+        output.Line("Lệnh hiện có (bước C3):");
         output.Line("  arrow-fw prompts check   Kiểm tra bộ prompt trong prompts/");
+        output.Line("  arrow-fw screen --manifest F --run-id R [--dataset D] [--tasks a,b|FILE] [--workers N] [--rerun-infra] [--keep-workspace]");
+        output.Line("                           Sàng lọc CUT: chỉ khối 1, ghi runs/R/reports/screening.csv (tiêu chí B)");
         output.Line("  arrow-fw --version       In phiên bản");
         output.Line("Menu và các lệnh run, report, setup… có từ các bước sau (spec 07 Mục 11).");
         return 0;

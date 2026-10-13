@@ -4,8 +4,13 @@ Usage (from ARROW/preflight_tool):
     python scripts/select_pilot_after_s0.py \
         --pilot ../evaluation_manifest/pilot/classes2test_pilot_50_seed42.jsonl \
         --reserve ../evaluation_manifest/pilot/classes2test_pilot_reserve_50_seed42.jsonl \
-        --run-dir ../pilot_tool/runs/pilot-screening [--run-dir <run rerunning some tasks> ...] \
+        --screening-csv ../ARROW_Framework/runs/<screen run>/reports/screening.csv [--screening-csv <run rerunning some tasks> ...] \
         --name classes2test_pilot_50_seed42_v2 --output-dir ../evaluation_manifest/pilot
+
+Screening input: `screening.csv` written by `arrow-fw screen` (ARROW_Framework, spec 01 section 6.3;
+columns task_id, outcome, code, paired_test_status, tests_run, jdk_major, message). The older
+`--run-dir` input reads ledger.jsonl + baseline.json of the removed pilot_tool (tag pilot-tool-v1)
+and is kept only to reproduce classes2test_pilot_50_seed42_v2.
 
 Rule (criterion B, S0 of pilot_tool): a CUT passes when its prepare job ended READY and the
 human-written test class paired with it in the manifest (test_class_path) ran in the baseline
@@ -18,6 +23,7 @@ earlier one for the tasks it ran (used to redo S0 for a few tasks after a tool f
 from __future__ import annotations
 
 import argparse
+import csv
 import hashlib
 import json
 import sys
@@ -68,20 +74,44 @@ def screen(record: dict, found: tuple[dict, Path] | None, dataset: str) -> tuple
     return True, f"OK:{len(passing)}"
 
 
+def screening_csv_verdicts(paths: list[Path]) -> dict[str, tuple[bool, str]]:
+    """Criterion B from arrow-fw screen: outcome OK and paired_test_status PASS. A later file overrides an earlier one."""
+    verdicts: dict[str, tuple[bool, str]] = {}
+    for path in paths:
+        with path.open(encoding="utf-8", newline="") as handle:
+            for row in csv.DictReader(handle):
+                if row["outcome"] != "OK":
+                    verdicts[row["task_id"]] = (False, f"K1_{row['outcome']}:{row['code']}")
+                elif row["paired_test_status"] != "PASS":
+                    verdicts[row["task_id"]] = (False, f"PAIRED_TEST_{row['paired_test_status']}(tests_run={row['tests_run']})")
+                else:
+                    passing = row["tests_run"].split(";")[0] if row["tests_run"] else "0"
+                    verdicts[row["task_id"]] = (True, f"OK:{passing}")
+    return verdicts
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__.splitlines()[0])
     parser.add_argument("--pilot", required=True, type=Path)
     parser.add_argument("--reserve", required=True, type=Path)
-    parser.add_argument("--run-dir", required=True, type=Path, action="append")
+    parser.add_argument("--screening-csv", type=Path, action="append", default=[])
+    parser.add_argument("--run-dir", type=Path, action="append", default=[], help="pilot_tool run (old format)")
     parser.add_argument("--dataset", default="classes2test")
     parser.add_argument("--name", required=True)
     parser.add_argument("--output-dir", required=True, type=Path)
     args = parser.parse_args()
 
+    if bool(args.screening_csv) == bool(args.run_dir):
+        print("ERROR give either --screening-csv (arrow-fw screen) or --run-dir (old pilot_tool), not both", file=sys.stderr)
+        return 2
     pilot = read_jsonl(args.pilot)
     reserve = read_jsonl(args.reserve)
-    outcomes = latest_outcomes(args.run_dir, args.dataset)
-    verdicts = {r["task_id"]: screen(r, outcomes.get(r["task_id"]), args.dataset) for r in pilot + reserve}
+    if args.screening_csv:
+        from_csv = screening_csv_verdicts(args.screening_csv)
+        verdicts = {r["task_id"]: from_csv.get(r["task_id"], (False, "NOT_RUN")) for r in pilot + reserve}
+    else:
+        outcomes = latest_outcomes(args.run_dir, args.dataset)
+        verdicts = {r["task_id"]: screen(r, outcomes.get(r["task_id"]), args.dataset) for r in pilot + reserve}
 
     passing_reserve = [r for r in reserve if verdicts[r["task_id"]][0]]
     chosen: list[dict] = []
@@ -116,10 +146,10 @@ def main() -> int:
         "manifest_file": manifest_path.name,
         "manifest_sha256": hashlib.sha256(body).hexdigest(),
         "size": len(chosen),
-        "rule": __doc__.split("Rule (criterion B, S0 of pilot_tool): ", 1)[1].strip().replace("\n", " "),
+        "rule": __doc__.split("Rule (criterion B, S0 of pilot_tool): ", 1)[1].split("\n\nScreening input", 1)[0].strip().replace("\n", " "),
         "pilot_file": args.pilot.as_posix(), "pilot_sha256": sha(args.pilot),
         "reserve_file": args.reserve.as_posix(), "reserve_sha256": sha(args.reserve),
-        "screening_runs": [d.name for d in args.run_dir],
+        "screening_runs": [d.name for d in args.run_dir] + [p.parent.parent.name for p in args.screening_csv],
         "replacements": replacements,
         "screening": {tid: v[1] for tid, v in verdicts.items()},
         "selected_task_ids": [r["task_id"] for r in chosen],

@@ -87,6 +87,8 @@ public static class ErrorCodes
     // Công cụ ngoài
     public const string JdkMissing = "JDK_MISSING";
     public const string MavenMissing = "MAVEN_MISSING";
+    public const string GradleMissing = "GRADLE_MISSING";
+    public const string GitMissing = "GIT_MISSING";
     public const string JavaHelperBuild = "JAVA_HELPER_BUILD";
     public const string JavaHelperTimeout = "JAVA_HELPER_TIMEOUT";
     public const string JavaHelperError = "JAVA_HELPER_ERROR";
@@ -102,6 +104,7 @@ public static class ErrorCodes
     public const string B1BaselineBuildFailed = "B1_BASELINE_BUILD_FAILED";
     public const string B1BaselineTimeout = "B1_BASELINE_TIMEOUT";
     public const string B1PairedTestNotPassing = "B1_PAIRED_TEST_NOT_PASSING";
+    public const string B1Workspace = "B1_WORKSPACE";
 
     // Khối 2
     public const string B2InvalidOutput = "B2_INVALID_OUTPUT";

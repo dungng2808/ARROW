@@ -161,6 +161,24 @@ public sealed record WorkspaceInfo
     public List<string> CommonFlags { get; init; } = [];
 }
 
+/// <summary>
+/// Cách build một task (spec 01 Mục 4.1): build root (tính từ gốc repository), chế độ, bộ chọn module
+/// (Maven: đường dẫn trong <c>-pl</c>; Gradle: đường dẫn project như <c>:core</c>), và nguồn của quyết định.
+/// </summary>
+public sealed record BuildPlan
+{
+    /// <summary><c>maven</c> hoặc <c>gradle</c>.</summary>
+    public string Tool { get; init; } = "";
+    public string BuildRoot { get; init; } = ".";
+    public BuildMode Mode { get; init; }
+
+    /// <summary>Maven: thư mục module trong <c>-pl</c> (chế độ reactor), null ở chế độ standalone. Gradle: đường dẫn project (<c>:</c> là project gốc).</summary>
+    public string? Module { get; init; }
+
+    /// <summary><c>manifest:&lt;stage&gt;</c>, <c>detected:reactor</c> hoặc <c>detected:standalone</c>.</summary>
+    public string Source { get; init; } = "";
+}
+
 /// <summary>Kết quả khối 1 cho một task.</summary>
 public sealed record RepositoryAnalysis(
     BlockOutcome Outcome,
