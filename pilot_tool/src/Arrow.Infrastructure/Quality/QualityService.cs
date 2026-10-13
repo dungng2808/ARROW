@@ -102,22 +102,39 @@ public sealed class QualityService(ToolPaths paths, ExperimentConfig experiment,
 
     private static string Fmt(double? value) => value is null ? "-" : value.Value.ToString("0.00", System.Globalization.CultureInfo.InvariantCulture);
 
+    /// <summary>
+    /// JaCoCo 0.8.12 (specs/06 Mục 2.1, 00-INDEX P9): agent của tool gắn qua <c>JAVA_TOOL_OPTIONS</c> vào mọi JVM của lệnh chạy riêng
+    /// test sinh ra; JaCoCo riêng của project vẫn tắt bằng cờ chung <c>-Djacoco.skip=true</c> để hai agent không đụng nhau; báo cáo lập
+    /// bằng <c>jacococli report</c> trên class main của module. Giống nhau cho Maven và Gradle.
+    /// </summary>
     private async Task<CoverageResult> JacocoAsync(QualityToolkit toolkit, string key, SuiteToMeasure suite, List<string> gradleArgs, PreparedTaskData data,
         CancellationToken cancellationToken)
     {
         var watch = Stopwatch.StartNew();
         var simple = suite.TestClassFqn[(suite.TestClassFqn.LastIndexOf('.') + 1)..];
+        var exec = Path.Combine(toolkit.ModuleDir, ".arrow-jacoco.exec");
+        File.Delete(exec);
+        var agent = ToolsCatalog.PathOf(paths.ArrowRoot, "jacoco/jacocoagent-0.8.12.jar");
+        var toolkitWithAgent = new QualityToolkit(experiment, machine, data.Task, toolkit.Workspace, data.TaskDir);
+        toolkitWithAgent.AddJvmOptions($"-javaagent:{agent}=destfile={exec},append=true,includes={data.Task.ClassFqn}*");
         var result = toolkit.IsMaven
-            ? await toolkit.BuildAsync(key, "jacoco", ["-DfailIfNoTests=false", "-Dsurefire.failIfNoSpecifiedTests=false", "-Dmaven.test.failure.ignore=true", $"-Dtest={simple}",
-                "org.jacoco:jacoco-maven-plugin:0.8.12:prepare-agent", "test", "org.jacoco:jacoco-maven-plugin:0.8.12:report"], ["-Djacoco.skip=true"], toolkit.StepTimeout, cancellationToken).ConfigureAwait(false)
-            : await toolkit.BuildAsync(key, "jacoco", [.. gradleArgs, "test", "--tests", suite.TestClassFqn, "jacocoTestReport", "--continue"], null, toolkit.StepTimeout, cancellationToken).ConfigureAwait(false);
-        var csv = toolkit.IsMaven
-            ? Path.Combine(toolkit.ModuleDir, "target", "site", "jacoco", "jacoco.csv")
-            : Path.Combine(toolkit.ModuleDir, "build", "reports", "jacoco", "test", "jacocoTestReport.csv");
+            ? await toolkitWithAgent.BuildAsync(key, "jacoco", ["-DfailIfNoTests=false", "-Dsurefire.failIfNoSpecifiedTests=false", "-Dmaven.test.failure.ignore=true", $"-Dtest={simple}", "test"],
+                null, toolkit.StepTimeout, cancellationToken).ConfigureAwait(false)
+            : await toolkitWithAgent.BuildAsync(key, "jacoco", [.. gradleArgs, "test", "--tests", suite.TestClassFqn, "--continue"], null, toolkit.StepTimeout, cancellationToken).ConfigureAwait(false);
         var log = toolkit.Relative(result.LogPath);
+        if (!File.Exists(exec))
+        {
+            return new CoverageResult { Status = "FAILED", Reason = result.TimedOut ? "timeout" : $"agent JaCoCo không ghi dữ liệu (exit {result.ExitCode})", Seconds = Math.Round(watch.Elapsed.TotalSeconds, 2), Log = log };
+        }
+
+        var csv = Path.Combine(toolkit.ModuleDir, ".arrow-jacoco.csv");
+        var cli = ToolsCatalog.PathOf(paths.ArrowRoot, "jacoco/jacococli-0.8.12.jar");
+        var (report, reportLog) = await toolkit.RunJavaAsync(data.Task.JdkHome, key, "jacoco_report",
+            ["-jar", cli, "report", exec, "--classfiles", toolkit.MainClassesDir, "--sourcefiles", Path.Combine(toolkit.ModuleDir, "src", "main", "java"), "--csv", csv],
+            toolkit.ModuleDir, TimeSpan.FromMinutes(5), cancellationToken).ConfigureAwait(false);
         if (!File.Exists(csv))
         {
-            return new CoverageResult { Status = "FAILED", Reason = result.TimedOut ? "timeout" : $"không có báo cáo JaCoCo (exit {result.ExitCode})", Seconds = Math.Round(watch.Elapsed.TotalSeconds, 2), Log = log };
+            return new CoverageResult { Status = "FAILED", Reason = $"jacococli report lỗi (exit {report.ExitCode})", Seconds = Math.Round(watch.Elapsed.TotalSeconds, 2), Log = reportLog };
         }
 
         var coverage = QualityParsers.ParseJacocoCsv(await File.ReadAllTextAsync(csv, cancellationToken).ConfigureAwait(false), data.Task.ClassFqn);

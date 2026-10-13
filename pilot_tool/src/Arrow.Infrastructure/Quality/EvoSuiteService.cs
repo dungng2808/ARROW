@@ -100,7 +100,11 @@ public sealed class EvoSuiteService(ToolPaths paths, ExperimentConfig experiment
             var watch = Stopwatch.StartNew();
             var (result, log) = await toolkit.RunJavaAsync(jdk11, "evosuite", "generate",
             [
-                "-jar", ToolsCatalog.EvoSuiteJar(paths.ArrowRoot),
+                // Classpath của project cũng đưa vào JVM chính của EvoSuite: chạy "-jar" thì tiến trình chính không nạp được
+                // class của project khi nhận test từ tiến trình con qua RMI, nên sinh xong mà không ghi được file test
+                // (ClassNotFoundException "RMI class loader disabled"). Tham số của EvoSuite không đổi.
+                "-cp", string.Join(Path.PathSeparator, new[] { ToolsCatalog.EvoSuiteJar(paths.ArrowRoot) }.Concat(projectCp)),
+                "org.evosuite.EvoSuite",
                 "-class", task.ClassFqn,
                 "-projectCP", string.Join(Path.PathSeparator, projectCp),
                 "-seed", "42",

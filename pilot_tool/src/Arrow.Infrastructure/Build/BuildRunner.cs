@@ -47,6 +47,10 @@ public sealed class BuildRunner
 
     public string Executable => _executable;
 
+    /// <summary>Thêm tham số JVM cho mọi tiến trình Java của các lệnh sau (ví dụ agent JaCoCo của bước đo, specs/06 Mục 2.1).</summary>
+    public void AddJvmOptions(string options) =>
+        _environment["JAVA_TOOL_OPTIONS"] = (_environment.GetValueOrDefault("JAVA_TOOL_OPTIONS") + " " + options).Trim();
+
     /// <summary>Môi trường của mọi tiến trình build (specs/02 §3 bước 4).</summary>
     public static Dictionary<string, string?> BuildEnvironment(string jdkHome)
     {

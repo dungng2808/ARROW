@@ -169,7 +169,7 @@ public static partial class FailureClassifier
 
     public static bool IsAssertionFailure(TestCaseResult result)
     {
-        var type = result.Type ?? FirstTraceType(result.Detail) ?? "";
+        var type = ExceptionType(result) ?? "";
         var message = result.Message ?? "";
         if (TimeoutTypes.Any(t => type.StartsWith(t, StringComparison.Ordinal)) || message.Contains("timed out after", StringComparison.OrdinalIgnoreCase))
         {
@@ -210,6 +210,32 @@ public static partial class FailureClassifier
     public static VerificationState TargetFailureState(IEnumerable<TestCaseResult> failed) =>
         failed.All(IsAssertionFailure) ? VerificationState.Assertion : VerificationState.Runtime;
 
+    [GeneratedRegex(@"^[A-Za-z_$][\w$]*(\.[A-Za-z_$][\w$]*)+$")]
+    private static partial Regex QualifiedClass();
+
+    [GeneratedRegex(@"(?:^|\s|Caused by:\s*)([A-Za-z_$][\w$]*(?:\.[A-Za-z_$][\w$]*)+(?:Exception|Error|Throwable|Failure))\b")]
+    private static partial Regex ThrowableName();
+
+    /// <summary>
+    /// Tên exception của một test case lỗi. Surefire đôi khi ghi thông điệp vào <c>type</c> (exception tự định nghĩa <c>toString</c>,
+    /// ví dụ của snakeyaml): chỉ nhận <c>type</c> có dạng tên class, ngược lại tìm trong stack trace; không có thì null.
+    /// </summary>
+    public static string? ExceptionType(TestCaseResult result)
+    {
+        if (result.Type is { } type && QualifiedClass().IsMatch(type.Trim()))
+        {
+            return type.Trim();
+        }
+
+        if (FirstTraceType(result.Detail) is { } first && QualifiedClass().IsMatch(first))
+        {
+            return first;
+        }
+
+        var match = ThrowableName().Match(result.Detail ?? "");
+        return match.Success ? match.Groups[1].Value : null;
+    }
+
     public static TestFailure ToFailure(TestCaseResult result)
     {
         var trace = (result.Detail ?? "").Split('\n').Select(l => l.TrimEnd()).Where(l => l.Length > 0).Take(15).ToList();
@@ -217,7 +243,7 @@ public static partial class FailureClassifier
         {
             Method = TestReportParser.MethodName(result.Id[(result.Id.IndexOf('#') + 1)..]),
             Kind = IsAssertionFailure(result) ? "assertion" : "exception",
-            Type = result.Type ?? FirstTraceType(result.Detail),
+            Type = ExceptionType(result),
             Message = result.Message,
             TraceHead = trace,
         };

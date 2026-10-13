@@ -178,6 +178,10 @@ public sealed class RunCommand : AsyncCommand<RunCommand.Settings>
         [Description("Dùng model giả theo file luật (không gọi API, không tốn tiền)")]
         public string? FakeLlm { get; init; }
 
+        [CommandOption("--import-from <RUN_ID>")]
+        [Description("Run mới lấy kết quả S0–S2 của run cũ (cùng cấu hình) để chạy lại các bước sau bằng tool đã sửa, không gọi model lại")]
+        public string? ImportFrom { get; init; }
+
         [CommandOption("--max-llm-calls <N>")]
         [Description("Giới hạn số lượt gọi API thật; vượt thì tạm dừng run")]
         public int? MaxLlmCalls { get; init; }
@@ -200,7 +204,7 @@ public sealed class RunCommand : AsyncCommand<RunCommand.Settings>
 
         return await new ShardRunScreen(settings.CreateSession())
             .RunAsync(new ShardRunScreen.Options(settings.RunId, settings.Plain, settings.RerunInfra, tasks, settings.AllTasks,
-                settings.Experiment, stages, settings.FakeLlm, settings.MaxLlmCalls), cancellationToken);
+                settings.Experiment, stages, settings.FakeLlm, settings.MaxLlmCalls, settings.ImportFrom), cancellationToken);
     }
 }
 

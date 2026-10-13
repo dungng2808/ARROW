@@ -31,7 +31,8 @@ public sealed class ShardRunScreen(Session session)
     /// <param name="FakeLlmPath">File luật của model giả (không gọi API, không bật proxy).</param>
     /// <param name="MaxLlmCalls">Giới hạn số lượt gọi API thật của lần chạy (smoke).</param>
     public sealed record Options(string? RunId, bool Plain, bool RerunInfra, IReadOnlyCollection<string>? Tasks, bool AllTasks = false,
-        string? ExperimentPath = null, IReadOnlyCollection<string>? Stages = null, string? FakeLlmPath = null, int? MaxLlmCalls = null);
+        string? ExperimentPath = null, IReadOnlyCollection<string>? Stages = null, string? FakeLlmPath = null, int? MaxLlmCalls = null,
+        string? ImportFrom = null);
 
     public async Task<int> RunAsync(Options options, CancellationToken cancellationToken)
     {
@@ -86,6 +87,12 @@ public sealed class ShardRunScreen(Session session)
         var runId = options.RunId ?? (useShard ? session.DefaultRunId() : $"{experiment.Config.ExperimentId}-all-{machine.MachineName}");
         var stages = (options.Stages ?? AllStages).ToHashSet(StringComparer.Ordinal);
         var store = session.Store(runId);
+        if (options.ImportFrom is not null && !File.Exists(store.LedgerPath))
+        {
+            var imported = Arrow.Infrastructure.Report.RunImporter.Import(session.Store(options.ImportFrom), store, experiment.Sha256);
+            AnsiConsole.MarkupLine($"{Theme.Ok} Lấy kết quả S0–S2 từ runs/{Markup.Escape(options.ImportFrom)} ({imported.LedgerLines} dòng ledger, commit tool cũ {Markup.Escape((imported.FromToolCommit ?? "?")[..Math.Min(8, (imported.FromToolCommit ?? "?").Length)])})");
+        }
+
         store.EnsureCreated();
         using var runLog = ToolLogSetup.AttachRun(store.ToolLogPath);
         var prompts = PromptLibrary.Load(Path.Combine(paths.PilotToolDir, experiment.Config.PromptSet.Dir));

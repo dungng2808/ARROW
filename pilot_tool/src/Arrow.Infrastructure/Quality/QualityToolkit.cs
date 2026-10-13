@@ -39,6 +39,12 @@ public sealed class QualityToolkit
     }
 
     public bool IsMaven => _task.Plan.Tool == BuildToolKind.Maven;
+    public string Workspace => _workspace;
+
+    /// <summary>Thư mục class main của module (nơi JaCoCo đọc class để lập báo cáo).</summary>
+    public string MainClassesDir => IsMaven ? Path.Combine(ModuleDir, "target", "classes") : Path.Combine(ModuleDir, "build", "classes", "java", "main");
+
+    public void AddJvmOptions(string options) => _runner.AddJvmOptions(options);
     public string ModuleDir => Path.Combine(_workspace, _task.Plan.ModuleDir == "." ? "" : _task.Plan.ModuleDir);
     public HashSet<string>? GradleTasks => _task.GradleTasks?.ToHashSet(StringComparer.Ordinal);
     public TimeSpan StepTimeout => TimeSpan.FromSeconds(_experiment.Build.StepTimeoutSeconds);
@@ -50,7 +56,7 @@ public sealed class QualityToolkit
         _runner.RunAsync(BuildCommands.Custom(_task.Plan, _flags, goals, GradleTasks, dropFlags), step, Path.Combine(_logsDir, $"{key}__{step}.log"), timeout, cancellationToken);
 
     /// <summary>
-    /// Init script Gradle của bước đo: áp plugin <c>jacoco</c> 0.8.12 (báo cáo CSV) và task <c>arrowClasspath</c> ghi
+    /// Init script Gradle của bước đo: task <c>arrowClasspath</c> ghi
     /// classpath test và main vào <c>build/arrow-classpath.txt</c>; <paramref name="extraTestJars"/> thêm vào testImplementation.
     /// </summary>
     public string WriteGradleInitScript(IEnumerable<string> extraTestJars)
@@ -61,9 +67,6 @@ public sealed class QualityToolkit
             allprojects { p ->
                 p.pluginManager.withPlugin('java') {
                     {{(jars.Length == 0 ? "" : $"p.dependencies.add('testImplementation', p.files({jars}))")}}
-                    p.pluginManager.apply('jacoco')
-                    p.jacoco { toolVersion = '0.8.12' }
-                    p.tasks.named('jacocoTestReport') { reports { csv.required = true; xml.required = false; html.required = false } }
                     p.tasks.register('arrowClasspath') {
                         def out = p.layout.buildDirectory.file('arrow-classpath.txt')
                         def test = p.sourceSets.test.runtimeClasspath

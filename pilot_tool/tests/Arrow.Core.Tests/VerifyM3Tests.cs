@@ -117,6 +117,18 @@ public class FailureClassifierTests
     }
 
     [Fact]
+    public void MessageInTypeAttributeIsNotUsedAsExceptionName()
+    {
+        // snakeyaml: Surefire ghi thông điệp vào type.
+        var yaml = FailureClassifier.ToFailure(Failed("a.T#load", "expected a single document in the stream\n in 'reader', line 1, column 1", "m",
+            "expected a single document in the stream\n in 'reader', line 1, column 1:\n    first\n    ^\n\tat org.yaml.snakeyaml.composer.Composer.getSingleNode(Composer.java:10)"));
+        Assert.Null(yaml.Type);
+        Assert.Equal("RUNTIME | Exception | -", FailureClassifier.RuntimeSignature(yaml, new HashSet<string>()));
+        var caused = FailureClassifier.ToFailure(Failed("a.T#x", "boom happened", "m", "boom happened\nCaused by: org.yaml.snakeyaml.constructor.ConstructorException: bad"));
+        Assert.Equal("org.yaml.snakeyaml.constructor.ConstructorException", caused.Type);
+    }
+
+    [Fact]
     public void SignaturesForOtherStates()
     {
         var assertion = FailureClassifier.ToFailure(Failed("a.T#testGetOneNotFound", "org.opentest4j.AssertionFailedError"));
