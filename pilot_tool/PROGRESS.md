@@ -76,8 +76,11 @@ Commit: `3728e24` (M7), đã push lên `main`.
 | `runs/smoke-gpt6` | `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate --max-llm-calls 6 --run-id smoke-gpt6 --rerun-infra` | S0: 2 READY. S1: 3 lượt gọi thật thành công, model id `gpt-6-luna` (jpa2ddl `zero_shot` → COMPILE, `zero_shot_project_aware` → VALID; `159422409` `zero_shot` → COMPILE); lượt 4: HTTP 400 `enterprise_insufficient_balance` → run tự tạm dừng, đã dừng |
 | `runs/smoke-gpt6-b` (13/10 10:19) | như trên, `--stages prepare,generate,repair --max-llm-calls 36` (run mới vì commit tool đổi → `RUN_CONFIG_MISMATCH`) | S0: 2 READY; lượt gọi đầu: HTTP 400 `enterprise_insufficient_balance` (`source: enterprise_wallet`) → tạm dừng, đã dừng; 0 lượt bị tính |
 | `runs/smoke-gpt6-c` (13/10 10:27) | như trên | như `smoke-gpt6-b` |
+| `runs/smoke-gpt6-d` (13/10 10:30) | như trên | như `smoke-gpt6-b` |
+| `runs/smoke-gpt6-e` (13/10 10:37) | như trên | HTTP 400 `routing_strategy_resource_unavailable`: "No channel is currently available for this routing mode. Switch to premium routing or retry later" (`routing_strategy: low_price`) → tạm dừng, đã dừng |
+| `runs/smoke-gpt6-f` (13/10 10:39, sau 2 phút) | như trên | lại `enterprise_insufficient_balance` → tạm dừng, đã dừng |
 
-**Smoke S1 + S2 chưa đạt.** Lỗi đến từ TeamoRouter (ví enterprise gắn với khóa API của máy), không phải từ tool; người dùng thấy ví cá nhân còn 0,37 USD, nên có thể khóa đang dùng thuộc ví team đã hết tiền, hoặc router giữ trước chi phí theo `max_tokens = 8192`. Không đổi model, tham số hay gọi thêm ngoài smoke (điều kiện 3). Tổng lượt gọi thật đã dùng: 3 / 40.
+**Smoke S1 + S2 chưa đạt.** Lỗi đến từ TeamoRouter (ví enterprise gắn với khóa API của máy), không phải từ tool; người dùng thấy ví cá nhân còn 0,37 USD, nên có thể khóa đang dùng thuộc ví team đã hết tiền, hoặc router giữ trước chi phí theo `max_tokens = 8192`. Tài khoản đang để chế độ định tuyến `low_price`. Không đổi model, tham số hay gọi thêm ngoài smoke (điều kiện 3). Tổng lượt gọi thật đã dùng: 3 / 40. Cần người dùng kiểm tra trên dashboard TeamoRouter: khóa thuộc ví nào, nạp tiền hoặc đổi khóa, cân nhắc chuyển routing sang premium.
 
 ## Trạng thái
 
