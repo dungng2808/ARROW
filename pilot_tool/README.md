@@ -1,10 +1,10 @@
 # pilot_tool: công cụ chạy pilot của ARROW
 
-**Trạng thái:** đang code; mốc M1–M4 xong, M5–M7 code xong (smoke với model thật còn dở vì ví provider hết tiền) (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
+**Trạng thái:** đang code; mốc M1–M8 có code và test; smoke với model thật còn dở vì ví provider hết tiền (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
 
 Tài liệu liên quan: `ARCHITECTURE.md` (kiến trúc code), `CLI_DASHBOARD.md` (dashboard trong terminal), `SETUP.md` (cài đặt máy, chia shard, gom kết quả), `specs/` (spec chi tiết để code; các điểm chờ xác nhận ở `specs/00-INDEX.md`).
 
-## 0. Bắt đầu nhanh (mốc M1, M2 đã có)
+## 0. Bắt đầu nhanh
 
 Cần .NET SDK 8 trở lên (máy chỉ có SDK mới hơn vẫn được). Từ thư mục `ARROW/pilot_tool`:
 
@@ -14,8 +14,17 @@ Cần .NET SDK 8 trở lên (máy chỉ có SDK mới hơn vẫn được). Từ
 | Mở menu (lần đầu tự vào cài đặt 8 bước) | `dotnet run --project src/Arrow.Cli` |
 | Danh sách lệnh | `dotnet run --project src/Arrow.Cli -- --help` |
 | Thử dashboard với job giả (P tạm dừng, R tiếp tục, S dừng) | `dotnet run --project src/Arrow.Cli -- run --demo` |
-| Chạy shard của máy (M2: bước S0 chuẩn bị) | `dotnet run --project src/Arrow.Cli -- run` |
-| Chạy lại task lỗi hạ tầng | `dotnet run --project src/Arrow.Cli -- run --rerun-infra` |
+| Tải công cụ S3/S4 (EvoSuite, JaCoCo, PIT, tsDetect) vào `ARROW/tools` | `dotnet run --project src/Arrow.Cli -- tools install` |
+| Chạy shard của máy: S0 → S1 → S2 → S3 → S4 → S5 báo cáo | `dotnet run --project src/Arrow.Cli -- run` |
+| Chỉ chạy một số bước | `dotnet run --project src/Arrow.Cli -- run --stages prepare,generate` |
+| Smoke với model thật (2 CUT, tối đa 40 lượt gọi) | `dotnet run --project src/Arrow.Cli -- run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6` |
+| Chạy thử cả pipeline không tốn tiền (model giả) | `dotnet run --project src/Arrow.Cli -- run --experiment <file> --fake-llm <luật.json>` |
+| Chạy lại job lỗi hạ tầng | `dotnet run --project src/Arrow.Cli -- run --rerun-infra` |
+| Xem kết quả sinh, các vòng sửa, đường cộng dồn | `dotnet run --project src/Arrow.Cli -- show --run-id <id>` |
+| Báo cáo pilot của một run | `dotnet run --project src/Arrow.Cli -- report --run-id <id>` |
+| Đóng gói run gửi người điều phối | `dotnet run --project src/Arrow.Cli -- export --run-id <id>` |
+| Gom gói của mọi shard và báo cáo (người điều phối) | `dotnet run --project src/Arrow.Cli -- merge --plan ../shards/pilot-6/plan.json --bundles ../pilot_results/pilot-6` |
+| Chọn lại ví dụ few-shot (người điều phối) | `dotnet run --project src/Arrow.Cli -- fewshot select` |
 | Unit test | `dotnet test tests/Arrow.Core.Tests` |
 | Integration test (Maven, Gradle thật trên `tests/fixtures`, cần `machine.local.json`) | `dotnet test tests/Arrow.Infrastructure.Tests` |
 
@@ -39,7 +48,7 @@ Sau đó mở terminal mới: `arrow` (menu), `arrow --help`, `arrow run --demo`
 
 Cần Python 3.10 trở lên (macOS: `brew install python@3.12`; Windows: python.org).
 
-M1 có: menu, `setup`, `doctor`, `shard plan`, `control`, `runs`, `status`, dashboard trong terminal với job giả, log của tool (`pilot_tool/logs/arrow-<ngày>.log`, thêm `--verbose` để ghi chi tiết; khi gặp lỗi, gửi file này cho người điều phối). M2 có: bước S0 chạy thật (`arrow run`): tải đúng commit vào mirror, tạo workspace riêng, dò module giống preflight, chọn JDK theo mức Java khai báo, build baseline, chạy test của module 2 lần, trích 6 thông tin repository; ghi `task.json`, `baseline.json`, `repo_context.json` trong `runs/<run_id>/tasks/…`. Sinh test và sửa test có từ M5, M6. Thư mục repository (mặc định `ARROW/repo`) phải không có dấu cách và chữ có dấu; nếu đường dẫn ARROW có dấu cách thì đổi tên thư mục cha hoặc chọn `~/arrow-repo`.
+M1 có: menu, `setup`, `doctor`, `shard plan`, `control`, `runs`, `status`, dashboard trong terminal với job giả, log của tool (`pilot_tool/logs/arrow-<ngày>.log`, thêm `--verbose` để ghi chi tiết; khi gặp lỗi, gửi file này cho người điều phối). M2 có: bước S0 chạy thật (`arrow run`): tải đúng commit vào mirror, tạo workspace riêng, dò module giống preflight, chọn JDK theo mức Java khai báo, build baseline, chạy test của module 2 lần, trích 6 thông tin repository; ghi `task.json`, `baseline.json`, `repo_context.json` trong `runs/<run_id>/tasks/…`. M3–M8: xác minh 5 bước, java-analyzer, sinh test (S1) qua LiteLLM, Fixed/Adaptive Repair (S2), EvoSuite (S3), JaCoCo/PIT/tsDetect (S4), báo cáo và chọn N (S5), `export`/`merge`/`show`; tiến độ và bằng chứng ở `PROGRESS.md`. Thư mục repository (mặc định `ARROW/repo`) phải không có dấu cách và chữ có dấu; nếu đường dẫn ARROW có dấu cách thì đổi tên thư mục cha hoặc chọn `~/arrow-repo`.
 
 ## 1. Mục đích
 

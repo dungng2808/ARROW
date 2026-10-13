@@ -35,6 +35,10 @@ app.Configure(config =>
     config.AddCommand<RunCommand>("run").WithDescription("Chạy shard của máy này: S0 chuẩn bị → S1 sinh test → S2 sửa → S3 EvoSuite → S4 chất lượng (--demo: job giả)");
     config.AddCommand<StatusCommand>("status").WithDescription("Xem trạng thái một run");
     config.AddCommand<RunsCommand>("runs").WithDescription("Danh sách run trên máy");
+    config.AddCommand<ReportCommand>("report").WithDescription("S5: báo cáo pilot (part1_*.csv, part2_cumulative.csv, pilot_report.md) cho một run");
+    config.AddCommand<ShowCommand>("show").WithDescription("Xem kết quả sinh test, các vòng sửa và đường cộng dồn của một run");
+    config.AddCommand<ExportCommand>("export").WithDescription("Đóng gói run của máy này để gửi người điều phối");
+    config.AddCommand<MergeCommand>("merge").WithDescription("Gom các gói của mọi shard thành một run rồi báo cáo (người điều phối)");
     config.AddCommand<ControlCmd>("control").WithDescription("Tạm dừng / tiếp tục / dừng run đang chạy: control <pause|resume|stop>");
     config.AddBranch("shard", shard =>
     {
@@ -301,4 +305,86 @@ public sealed class ToolsInstallCommand : AsyncCommand<GlobalSettings>
 {
     public override async Task<int> ExecuteAsync(CommandContext context, GlobalSettings settings, CancellationToken cancellationToken) =>
         await FixActions.InstallToolsAsync(settings.CreateSession(), cancellationToken) == 0 ? 0 : 1;
+}
+
+public class RunExperimentSettings : GlobalSettings
+{
+    [CommandOption("--run-id <ID>")]
+    public string? RunId { get; init; }
+
+    [CommandOption("--experiment <FILE>")]
+    [Description("Cấu hình thực nghiệm của run (mặc định: của máy)")]
+    public string? Experiment { get; init; }
+}
+
+public sealed class ReportCommand : Command<RunExperimentSettings>
+{
+    public override int Execute(CommandContext context, RunExperimentSettings settings, CancellationToken cancellationToken)
+    {
+        var session = settings.CreateSession();
+        return new ReportScreens(session).Report(settings.RunId ?? session.DefaultRunId(), settings.Experiment);
+    }
+}
+
+public sealed class ShowCommand : Command<ShowCommand.Settings>
+{
+    public sealed class Settings : RunExperimentSettings
+    {
+        [CommandOption("--task <ID>")]
+        [Description("Chỉ hiện task có task_id bắt đầu bằng chuỗi này")]
+        public string? Task { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken)
+    {
+        var session = settings.CreateSession();
+        return new ReportScreens(session).Show(settings.RunId ?? session.DefaultRunId(), settings.Task, settings.Experiment);
+    }
+}
+
+public sealed class ExportCommand : Command<ExportCommand.Settings>
+{
+    public sealed class Settings : GlobalSettings
+    {
+        [CommandOption("--run-id <ID>")]
+        public string? RunId { get; init; }
+
+        [CommandOption("--out <DIR>")]
+        [Description("Thư mục ghi gói (mặc định ARROW/pilot_results)")]
+        public string? Out { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken)
+    {
+        var session = settings.CreateSession();
+        return new ReportScreens(session).Export(settings.RunId ?? session.DefaultRunId(), settings.Out);
+    }
+}
+
+public sealed class MergeCommand : Command<MergeCommand.Settings>
+{
+    public sealed class Settings : GlobalSettings
+    {
+        [CommandOption("--plan <FILE>")]
+        [Description("plan.json của phân công shard, ví dụ ../shards/pilot-6/plan.json")]
+        public string Plan { get; init; } = "";
+
+        [CommandOption("--bundles <DIR>")]
+        [Description("Thư mục chứa các gói .zip của mọi shard")]
+        public string Bundles { get; init; } = "";
+
+        [CommandOption("--run-id <ID>")]
+        [Description("Tên run gom (mặc định <plan_id>-merged)")]
+        public string? RunId { get; init; }
+
+        [CommandOption("--experiment <FILE>")]
+        public string? Experiment { get; init; }
+    }
+
+    public override int Execute(CommandContext context, Settings settings, CancellationToken cancellationToken)
+    {
+        var session = settings.CreateSession();
+        var plan = Arrow.Core.Util.Json.Read<Arrow.Core.Shards.ShardPlanFile>(session.Paths.Resolve(settings.Plan, Environment.CurrentDirectory));
+        return new ReportScreens(session).Merge(settings.Plan, settings.Bundles, settings.RunId ?? plan.PlanId + "-merged", settings.Experiment);
+    }
 }

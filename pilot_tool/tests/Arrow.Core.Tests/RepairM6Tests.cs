@@ -294,3 +294,51 @@ public class QualityParserTests
         Assert.Equal(2, result.BySmell["Magic Number Test"]);
     }
 }
+
+public class PilotReportTests
+{
+    [Fact]
+    public void PercentilesAndCostRows()
+    {
+        Assert.Equal(2.5, Arrow.Core.Report.PilotReport.Percentile([1, 2, 3, 4], 0.5));
+        Assert.Equal(3.7, Arrow.Core.Report.PilotReport.Percentile([1, 2, 3, 4], 0.9));
+        var rows = Arrow.Core.Report.PilotReport.Costs(
+        [
+            new("llm_generate", "c2t", 2, 100, 20, 0.01),
+            new("llm_generate", "c2t", 4, 50, 10, 0.02),
+            new("clone", "c2t", 10),
+        ]);
+        Assert.Equal("clone", rows[0].Step);
+        var gen = rows[1];
+        Assert.Equal(2, gen.Count);
+        Assert.Equal(3, gen.MedianSeconds);
+        Assert.Equal(150, gen.PromptTokens);
+        Assert.Equal(0.03, gen.CostUsd, 6);
+    }
+
+    [Fact]
+    public void NIsNotComputedWhileChainsAreUnfinished()
+    {
+        var chains = new List<Arrow.Core.Report.RepairChain>
+        {
+            new("t1", "zero_shot", "fixed", true, 1, false),
+            new("t1", "zero_shot", "adaptive", false, null, false),
+            new("t2", "few_shot", "fixed", false, null, true),
+        };
+        var selection = Arrow.Core.Report.PilotReport.SelectN(chains, 10, "share95");
+        Assert.False(selection.Computable);
+        Assert.Null(selection.N);
+        Assert.Equal(1, selection.Unfinished);
+        Assert.Equal(1, selection.ExcludedInfra);
+
+        chains[1] = chains[1] with { Finished = true };
+        var done = Arrow.Core.Report.PilotReport.SelectN(chains, 10, "share95");
+        Assert.True(done.Computable);
+        Assert.Equal(3, done.N);
+        Assert.Equal("round,successes_cumulative,share_of_round10\n1,1,1\n", Arrow.Core.Report.PilotReport.CumulativeCsv(done).Split("2,")[0]);
+    }
+
+    [Fact]
+    public void CsvQuotesCells() =>
+        Assert.Equal("a,b\n\"x,y\",\"say \"\"hi\"\"\"\n", Arrow.Core.Report.PilotReport.Csv(new[] { ("x,y", "say \"hi\"") }, ("a", r => r.Item1), ("b", r => r.Item2)));
+}

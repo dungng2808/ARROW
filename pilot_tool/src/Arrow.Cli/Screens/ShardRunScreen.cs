@@ -23,7 +23,7 @@ namespace Arrow.Cli.Screens;
 /// </summary>
 public sealed class ShardRunScreen(Session session)
 {
-    public static readonly string[] AllStages = ["prepare", "generate", "repair", "evosuite", "quality"];
+    public static readonly string[] AllStages = ["prepare", "generate", "repair", "evosuite", "quality", "report"];
 
     /// <param name="AllTasks">Chạy mọi task của cấu hình thực nghiệm thay vì shard của máy (người điều phối thử trước khi chia).</param>
     /// <param name="ExperimentPath">Cấu hình thực nghiệm khác cấu hình của máy (ví dụ smoke); chạy mọi task của nó, không theo shard.</param>
@@ -123,6 +123,13 @@ public sealed class ShardRunScreen(Session session)
         if (pipeline.LlmCalls > 0)
         {
             AnsiConsole.MarkupLine($"Lượt gọi API thật: [bold]{pipeline.LlmCalls}[/]");
+        }
+
+        if (!stopped && stages.Contains("report"))
+        {
+            var report = new Arrow.Infrastructure.Report.ReportService(experiment.Config).Write(store);
+            AnsiConsole.MarkupLine($"{Theme.Ok} S5 báo cáo: [bold]{Markup.Escape(paths.Relative(Path.Combine(report.Dir, "pilot_report.md")))}[/] · "
+                                   + (report.Part2.Computable ? $"N theo {Markup.Escape(report.Part2.Rule)} = [bold]{report.Part2.N}[/]" : "N chưa tính được"));
         }
 
         var finished = store.LatestByJob().Values.Count(e => RunStore.IsFinished(e, rerunInfra: false));

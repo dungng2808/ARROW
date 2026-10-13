@@ -61,10 +61,25 @@ Commit: `a951443` (M6), đã push lên `main`.
 - Sai lệch đã ghi (00-INDEX P7, P8; specs/06 Mục 2.2): PIT chạy bản dòng lệnh cho cả Maven và Gradle vì plugin Gradle 1.15.0 không chạy trên Gradle 9; JUnit 5 cần thêm `junit-platform-launcher` cùng phiên bản.
 - Test: Core 111/111 (`QualityParserTests`); Infrastructure 32/32, trong đó `QualityIntegrationTests`: Maven JUnit 4 (JaCoCo đúng 9 dòng của `Calculator`, PIT có mutation score, tsDetect đọc được), Maven nhiều module JUnit 5, Gradle JUnit 5; EvoSuite 1.2.0 (JDK 11) sinh `Calculator_ESTest` đạt VALID qua bộ xác minh 5 bước và đo được bằng cùng bộ đo.
 
+Commit: `3728e24` (M7), đã push lên `main`.
+
+## 7. M8: báo cáo, export, merge, show
+
+- Code: `Arrow.Core/Report/PilotReport` (bảng thời gian/chi phí trung vị, p90; chọn N chung hai cơ chế, chỉ tính khi mọi chuỗi xong, độ nhạy `report2`, `share90/95/99`; CSV), `Arrow.Infrastructure/Report` (`ReportService` S5 → `reports/part1_cost.csv`, `part1_infra_errors.csv`, `part1_generation.csv`, `part2_cumulative.csv`, `pilot_report.md`; `BundleService` export (bỏ `llm_cache/`, log bước đạt giữ 200 dòng cuối, `bundle_manifest.json` có hash từng file, cảnh báo > 50 MB, từ chối > 95 MB) và merge (cùng experiment và prompt hash, mỗi shard đúng một gói, hợp task bằng plan, không task trùng, model id giống nhau)). Lệnh `arrow report`, `show`, `export`, `merge`; `arrow run` chạy S5 ở cuối.
+- Test: Core 114/114 (`PilotReportTests`); Infrastructure 37/37, trong đó `FullPipelineEndToEndTests` (`arrow run` đủ S0→S5 với `--fake-llm`, n_max 3, trên 3 fixture): EvoSuite VALID trên fixture JUnit 4 (task Java 17 → `UNSUPPORTED_JDK` đúng specs/06), mọi bộ test VALID (ARROW sau sinh, sau sửa, EvoSuite) có JaCoCo/PIT/tsDetect `OK`, `part1_cost.csv` có đủ 10 bước, `part2_cumulative.csv` = `1,2 / 2,3 / 3,4`, `pilot_report.md` ghi **N theo `share95` = 3** (độ nhạy `report2` = 3); `export` không chứa `llm_cache/`; `merge` gom lại cho cùng N; `merge` từ chối plan có shard thiếu gói. `LoggingTests` (specs/08 Mục 7): che khóa, dòng ledger ghi dở và file tạm sót lại bị bỏ qua, log > 5 MB giữ đầu/cuối, log bước đạt trong gói chỉ giữ 200 dòng cuối.
+- `dotnet build ArrowRunner.sln` → 0 warning, 0 error.
+
+## Trạng thái
+
+**Code M1–M8 và test tự động đã xong; sẵn sàng chạy pilot theo shard** sau khi giải quyết hai việc đầu trong danh sách dưới (ví provider, smoke).
+
 ## Việc còn mở
 
-- **Ví TeamoRouter hết tiền (13/10/2026, 03:51):** smoke với model thật dừng sau 3/6 lượt sinh; S2 smoke (sửa 2 vòng × 2 cơ chế) chưa chạy được. Sau khi nạp tiền: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6 --rerun-infra`.
-
+- **Ví TeamoRouter hết tiền** (HTTP 400 "Your TeamoRouter wallet balance is insufficient", lần cuối 13/10/2026 10:19 giờ VN, run `smoke-gpt6-b`, đã dừng). Đã gọi thật 3 lượt thành công (run `smoke-gpt6`, model id `gpt-6-luna`); smoke S2 với model thật chưa chạy được. Sau khi nạp tiền: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 36 --run-id smoke-gpt6-c` (36 + 3 lượt đã dùng ≤ 40).
+- Cột "Xong khi" của M5 (177 ứng viên), M6 (S2 với GPT-6 Luna trên pilot), M8 (`pilot_report.md` của pilot thật): để lại cho lần chạy pilot theo shard `shards/pilot-6` (mỗi máy `arrow run`, `arrow export`; người điều phối `arrow merge`).
+- Giá token GPT-6 Luna (`price_usd_per_million`) chưa điền: cột chi phí của báo cáo là 0 cho tới khi điền (token vẫn đủ).
 - Tiêu chí M1 trên Windows (tạm dừng/tiếp tục trên Windows): chưa kiểm được trên máy này.
-- `evaluation_manifest/gitbug_java_32_seed42.*` (tập đánh giá GitBug-Java, nguồn rút pilot GitBug-Java) và thay đổi trong `evaluation_manifest/README.md` chưa commit: ngoài phạm vi goal, để người dùng commit.
+- Các máy khác cần: `git pull`, `arrow tools install`, sửa `litellm.config.local.yaml` thêm `allowed_openai_params` (hoặc nhập lại khóa), `arrow doctor`.
+- `evaluation_manifest/gitbug_java_32_seed42.*` và thay đổi trong `evaluation_manifest/README.md` chưa commit: ngoài phạm vi goal, để người dùng commit.
 - Tập đánh giá 200 class chưa sàng lọc S0 theo tiêu chí B (người dùng sẽ chọn lại sau).
+- Điểm chờ xác nhận P1–P8: `specs/00-INDEX.md`.

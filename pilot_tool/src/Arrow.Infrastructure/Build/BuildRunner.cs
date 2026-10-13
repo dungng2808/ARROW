@@ -82,15 +82,7 @@ public sealed class BuildRunner
 
     private void WriteLog(string logPath, BuildCommand command, string cwd, DateTimeOffset started, ProcessResult result)
     {
-        var body = ToolLog.Redact(result.Output);
-        var bytes = Encoding.UTF8.GetByteCount(body);
-        if (bytes > MaxLogBytes)
-        {
-            var raw = Encoding.UTF8.GetBytes(body);
-            body = Encoding.UTF8.GetString(raw, 0, KeepBytes)
-                   + $"\n… {raw.Length - 2 * KeepBytes} bytes omitted …\n"
-                   + Encoding.UTF8.GetString(raw, raw.Length - KeepBytes, KeepBytes);
-        }
+        var body = TruncateLog(ToolLog.Redact(result.Output));
 
         var quoted = string.Join(' ', command.Arguments.Select(a => a.Contains(' ') ? $"\"{a}\"" : a));
         var text = new StringBuilder()
@@ -110,6 +102,20 @@ public sealed class BuildRunner
             .Append(" · duration: ").Append(result.Duration.TotalSeconds.ToString("0.00", CultureInfo.InvariantCulture)).Append('s')
             .Append(" · timeout: ").AppendLine(result.TimedOut ? "true" : "false");
         AtomicFile.WriteAllText(logPath, text.ToString());
+    }
+
+    /// <summary>Log lớn hơn 5 MB chỉ giữ 2 MB đầu và 2 MB cuối, giữa ghi số byte đã bỏ (specs/08 Mục 4).</summary>
+    public static string TruncateLog(string body)
+    {
+        var raw = Encoding.UTF8.GetBytes(body);
+        if (raw.Length <= MaxLogBytes)
+        {
+            return body;
+        }
+
+        return Encoding.UTF8.GetString(raw, 0, KeepBytes)
+               + $"\n… {raw.Length - 2 * KeepBytes} bytes omitted …\n"
+               + Encoding.UTF8.GetString(raw, raw.Length - KeepBytes, KeepBytes);
     }
 
     /// <summary>Xóa báo cáo test cũ của module trước mỗi bước chạy test (specs/02 §4.4).</summary>

@@ -148,3 +148,7 @@ Phím tắt không dùng được ở chế độ này; điều khiển bằng l
 - macOS: Terminal hoặc iTerm2. Windows: Windows Terminal hoặc terminal trong VS Code (cửa sổ cmd cũ có thể hiển thị sai ký tự khung).
 - Rộng tối thiểu 100 cột, cao 30 dòng; nhỏ hơn thì tự chuyển sang bố cục gọn (bỏ khung "Đang chạy" và "Sự kiện gần nhất").
 - Đóng cửa sổ terminal thì run dừng; chạy lại cùng `run_id` để tiếp tục.
+
+## Lệnh xem kết quả (13/10/2026)
+
+`arrow show --run-id <id> [--task <tiền tố>]` in, cho từng task, kết quả bước sinh theo model và quy trình, các vòng sửa của Fixed và Adaptive (vòng, mức, trạng thái, rollback, mã trùng, output không hợp lệ, vòng đạt VALID), và cuối cùng là đường cộng dồn chung hai cơ chế cùng N theo quy tắc của cấu hình thực nghiệm (N chỉ hiện khi mọi chuỗi đã xong). `arrow report` ghi cùng số liệu vào `runs/<id>/reports/`.

@@ -70,11 +70,9 @@ public class RepairEndToEndTests
         ```
         """;
 
-    [Fact]
-    public async Task FixedAndAdaptiveBranches()
-    {
-        var setup = EndToEnd.Create("e2e-repair",
-        [
+    /// <summary>Kịch bản model giả dùng chung cho test S2 và test S0→S5.</summary>
+    public static List<FakeLlmClient.Rule> Rules() =>
+    [
             // Bước sinh.
             Rule(EndToEnd.CalcAssertion, "Calculator_ArrowTest", "Here are examples"),
             Rule(EndToEnd.CalcValid, "Write a unit test class", "Calculator_ArrowTest", "Repository configuration"),
@@ -92,7 +90,12 @@ public class RepairEndToEndTests
             Rule(EndToEnd.Invalid, "Some tests fail their assertions"),
             // Sửa: COMPILE (Gradle).
             Rule(EndToEnd.CartValid, "does not compile", "Cart_ArrowTest"),
-        ], nMax: 3);
+    ];
+
+    [Fact]
+    public async Task FixedAndAdaptiveBranches()
+    {
+        var setup = EndToEnd.Create("e2e-repair", Rules(), nMax: 3);
         var (exit, output) = await EndToEnd.RunAsync(setup, "--stages", "prepare,generate,repair");
         Assert.True(exit == 0, output);
 

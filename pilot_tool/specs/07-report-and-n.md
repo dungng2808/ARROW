@@ -1,6 +1,6 @@
 # 07. Báo cáo pilot và chọn N
 
-`arrow report --run-id <id>` chạy trên run đã gom (`merge`) hoặc một run đơn. Chỉ đọc dữ liệu trong `runs/<id>/`, không gọi model hay build.
+`arrow report --run-id <id> [--experiment <file>]` chạy trên run đã gom (`merge`) hoặc một run đơn; `arrow run` tự chạy bước này (S5) khi mọi bước trước đã chạy xong. Cấu hình thực nghiệm phải có cùng sha256 với `run_config.lock.json` (run gom: `machines/*.json`). Chỉ đọc dữ liệu trong `runs/<id>/`, không gọi model hay build.
 
 ## 1. Phần 1: môi trường, công cụ, chi phí
 
@@ -21,7 +21,7 @@ Mỗi dòng một bước (`clone`, `baseline`, `llm_generate`, `build_verify`, 
 
 ### 1.3. Kết quả bước sinh test (chỉ để kiểm tra pipeline)
 
-Số ứng viên theo trạng thái và theo quy trình prompting, theo dataset. Đây **không** phải kết quả RQ1 (pilot không trả lời RQ); báo cáo ghi rõ điều này.
+Số ứng viên theo trạng thái và theo quy trình prompting, theo dataset. Chi tiết từng ứng viên ở `part1_generation.csv` (dataset, task, model, quy trình, trạng thái, output không hợp lệ, error signature, số assertion, số test pass, model id). Đây **không** phải kết quả RQ1 (pilot không trả lời RQ); báo cáo ghi rõ điều này.
 
 ### 1.4. Ước tính cho thực nghiệm chính
 
@@ -69,6 +69,8 @@ nếu không có k thỏa: N = 10
 ### 2.5. Phân tích độ nhạy
 
 Ngoài N theo quy tắc đang dùng, báo cáo luôn in thêm: N theo `report2`, N theo `share95` với ngưỡng 90%, 95%, 99%. Chỉ quy tắc ghi trong cấu hình thực nghiệm (`n_rule`) được dùng làm N chính thức.
+
+Cách tính thời gian của bước `clone`: thời lượng job S0 trừ tổng thời gian các lệnh build của job (gồm cả tạo workspace); `baseline`: tổng thời gian các lần chạy test của module ở baseline. Ước tính 1.4 dùng trung vị theo bước (lấy dataset lớn nhất) và chi phí trung bình mỗi lượt gọi; RQ2 là cận trên (mọi chuỗi chạy đủ N vòng).
 
 ## 3. `pilot_report.md`
 
