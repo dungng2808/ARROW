@@ -1,0 +1,37 @@
+# ARROW Framework
+
+**Trạng thái:** spec đã chốt các điểm Q1–Q8 (14/10/2026); màn hình và kiến trúc chờ duyệt. Chưa có code. Sau khi spec được duyệt, code bằng C# console (.NET 8) theo đúng các spec dưới đây.
+
+ARROW Framework chạy quy trình ARROW trên các CUT của manifest, gồm 4 khối:
+
+| Khối | Spec | Input | Output |
+| --- | --- | --- | --- |
+| 1. Repository-Aware | [specs/01-repository-aware.md](specs/01-repository-aware.md) | Bản ghi manifest (repository, commit, CUT) | Repository Metadata M (6 thông tin), baseline |
+| 2. LLM-Based Test Generation | [specs/02-llm-test-generation.md](specs/02-llm-test-generation.md) | M, mã CUT, quy trình prompting, model; hoặc yêu cầu sửa từ khối 3 | Candidate Unit Test T |
+| 3. Adaptive Repair Strategy | [specs/03-adaptive-repair.md](specs/03-adaptive-repair.md) | T, M, baseline, cơ chế sửa, N | Kết quả xác minh, log từng vòng, Final Test Suite |
+| 4. Automated Test Suite Assessment | [specs/04-test-suite-assessment.md](specs/04-test-suite-assessment.md) | Bộ test VALID của ARROW và EvoSuite; kết quả khối 1–3 | Coverage, mutation, test smell; báo cáo RQ1–RQ3 |
+
+Tổng quan (luồng dữ liệu, cấu hình, thư mục run, lệnh, kiến trúc code, các điểm chờ xác nhận): [specs/00-overview.md](specs/00-overview.md).
+
+| Spec khác | Nội dung |
+| --- | --- |
+| [specs/05-open-questions.md](specs/05-open-questions.md) | Các điểm đã chốt (Q1–Q8), giải thích chi tiết |
+| [specs/06-console-ui.md](specs/06-console-ui.md) | Màn hình console: menu, cài đặt, model, kiểm tra môi trường, theo dõi khi chạy, chi tiết task, báo cáo, cần chạy lại |
+| [specs/07-architecture.md](specs/07-architecture.md) | Kiến trúc code: project, lớp chính, luồng chạy, song song, lưu trữ, thứ tự viết code |
+
+Thiết kế Adaptive Repair gốc: [../Adaptive repair.md](../Adaptive%20repair.md). Quy tắc chung của dự án: [../CLAUDE.md](../CLAUDE.md).
+
+## Điểm chờ xác nhận
+
+Giải thích chi tiết từng điểm: [specs/05-open-questions.md](specs/05-open-questions.md).
+
+| # | Điểm | Trạng thái | Spec liên quan |
+| --- | --- | --- | --- |
+| Q1 | Nhãn model trong ảnh: "Selected LLM (commercial API / open-weight model)" | Chốt | 00, 02 |
+| Q2 | Fixed Repair trong khối 3, EvoSuite trong khối 4 | Chốt | 03, 04 |
+| Q3 | Bộ đại diện ARROW ở RQ3 (một bộ mỗi task mỗi model); báo riêng từng model, từng dataset | Chốt | 04 |
+| Q4 | M đầy đủ cho mọi prompt sửa | Chốt | 02, 03 |
+| Q5 | Mức 3 không tiến triển thì về mức 2; prompt mức 3 có danh sách đã thử | Chốt | 03 |
+| Q6 | Quy tắc chọn N của CLAUDE.md, chạy pilot sau khi code | Chốt | 04 |
+| Q7 | Mức 2 của UNKNOWN: khối lỗi build đầy đủ + cấu hình build | Chốt | 03 |
+| Q8 | Timeout: thử 3 lần, vẫn lỗi thì ghi cần chạy lại riêng task | Chốt | 01, 03, 04 |
