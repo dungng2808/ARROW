@@ -6,7 +6,7 @@
 .env.*
 
 # Run outputs and tool logs
-runs/
+/runs/
 logs/
 
 # .NET build outputs
