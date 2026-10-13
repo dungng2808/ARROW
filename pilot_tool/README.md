@@ -2,7 +2,7 @@
 
 **Trạng thái:** đang code; mốc M1–M8 có code và test; smoke với GPT-6 Luna thật qua S1, S2 (13/10/2026), tiến độ chi tiết ở `PROGRESS.md`. Tài liệu này mô tả tool làm gì và làm như thế nào; code viết theo tài liệu này. Khi thiết kế thay đổi, sửa tài liệu trước rồi mới sửa code.
 
-Tài liệu liên quan: `ARCHITECTURE.md` (kiến trúc code), `CLI_DASHBOARD.md` (dashboard trong terminal), `SETUP.md` (cài đặt máy, chia shard, gom kết quả), `specs/` (spec chi tiết để code; các điểm chờ xác nhận ở `specs/00-INDEX.md`).
+Người chạy pilot: đọc `HUONG_DAN_CHAY_PILOT.md`. Tài liệu liên quan: `ARCHITECTURE.md` (kiến trúc code), `CLI_DASHBOARD.md` (dashboard trong terminal), `SETUP.md` (cài đặt máy, chia shard, gom kết quả), `specs/` (spec chi tiết để code; các điểm chờ xác nhận ở `specs/00-INDEX.md`).
 
 ## 0. Bắt đầu nhanh
 
