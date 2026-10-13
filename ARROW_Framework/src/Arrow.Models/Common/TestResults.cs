@@ -24,6 +24,9 @@ public sealed record TestCaseResult
     public TestCaseStatus Status { get; init; }
     public string? Message { get; init; }
     public string? ExceptionType { get; init; }
+
+    /// <summary>Nội dung thẻ <c>&lt;failure&gt;</c>/<c>&lt;error&gt;</c> (stack trace); null khi pass.</summary>
+    public string? Trace { get; init; }
     public double TimeSeconds { get; init; }
 
     /// <summary>Định danh dùng trong baseline: <c>Class#method</c>.</summary>

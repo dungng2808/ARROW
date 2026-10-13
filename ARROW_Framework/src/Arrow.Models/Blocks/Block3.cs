@@ -36,11 +36,17 @@ public sealed record FailureInfo
     public string? Type { get; init; }
     public string? Message { get; init; }
     public string? TraceHead { get; init; }
+
+    /// <summary><c>Class.method</c> của frame đầu tiên thuộc mã dự án (cho signature RUNTIME).</summary>
+    public string? Frame { get; init; }
 }
 
 public sealed record CompileError
 {
     public string File { get; init; } = "";
+
+    /// <summary>Lỗi nằm trong file test sinh ra (so theo tên file).</summary>
+    public bool InGeneratedFile { get; init; }
     public int Line { get; init; }
     public int? Column { get; init; }
     public string Message { get; init; } = "";
@@ -69,6 +75,12 @@ public sealed record VerifyResult
     public List<FailureInfo> Failures { get; init; } = [];
     public List<CompileError> CompileErrors { get; init; } = [];
     public List<RegressionInfo> Regressions { get; init; } = [];
+
+    /// <summary>UNKNOWN: khối <c>Failed to execute goal</c> / <c>What went wrong</c> trích từ log build (đã bỏ đường dẫn workspace), cho error block.</summary>
+    public string? BuildErrorExcerpt { get; init; }
+
+    /// <summary>Tên file và số test được chạy ở bước 2 (cho error block của DISCOVERY).</summary>
+    public string? TestFile { get; init; }
     public string? ErrorSignature { get; init; }
     public List<string> FailingMethods { get; init; } = [];
     public string? CodeHash { get; init; }

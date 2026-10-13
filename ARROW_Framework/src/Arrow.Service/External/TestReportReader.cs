@@ -80,6 +80,10 @@ public sealed partial class TestReportReader : ITestReportReader
         return Parse(document);
     }
 
+    /// <summary>Bỏ <c>()</c> ở cuối tên method (Gradle với JUnit 5 ghi <c>adds()</c>), spec 03 Mục 3.3.</summary>
+    public static string MethodName(string? name) =>
+        name is null ? "" : name.EndsWith("()", StringComparison.Ordinal) ? name[..^2] : name;
+
     public static IReadOnlyList<TestCaseResult> Parse(XDocument document)
     {
         var results = new List<TestCaseResult>();
@@ -96,10 +100,11 @@ public sealed partial class TestReportReader : ITestReportReader
                 results.Add(new TestCaseResult
                 {
                     ClassName = className,
-                    Name = (string?)testCase.Attribute("name") ?? "",
+                    Name = MethodName((string?)testCase.Attribute("name")),
                     Status = error is not null ? TestCaseStatus.Error : failure is not null ? TestCaseStatus.Failed : skipped ? TestCaseStatus.Skipped : TestCaseStatus.Passed,
                     Message = problem is null ? null : (string?)problem.Attribute("message"),
                     ExceptionType = problem is null ? null : (string?)problem.Attribute("type"),
+                    Trace = problem is null || problem.Value.Trim().Length == 0 ? null : problem.Value.Trim(),
                     TimeSeconds = double.TryParse((string?)testCase.Attribute("time"), NumberStyles.Float, CultureInfo.InvariantCulture, out var t) ? t : 0,
                 });
             }
