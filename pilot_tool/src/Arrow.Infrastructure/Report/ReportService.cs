@@ -25,6 +25,10 @@ public sealed class ReportService(ExperimentConfig experiment)
 {
     private sealed record GenResult(string Dataset, string TaskId, string Model, string Strategy, VerifyResult Verify, LlmUsage? Usage);
 
+    /// <summary>Số liệu cho mục tổng quan: chỉ kiểm tra pipeline, không tách cơ chế, không so chất lượng giữa hệ thống.</summary>
+    private sealed record Overview(List<RepairSummary> Summaries, List<(string Dataset, string Status, string? Verify)> EvoSuite,
+        List<(string Dataset, string Tool, string Status, string? Reason)> Quality);
+
     public ReportFiles Write(RunStore store)
     {
         var reportsDir = Path.Combine(store.Root, "reports");
@@ -36,6 +40,7 @@ public sealed class ReportService(ExperimentConfig experiment)
         var samples = new List<StepSample>();
         var generations = new List<GenResult>();
         var chains = new List<RepairChain>();
+        var overview = new Overview([], [], []);
         var excluded = new List<(string Task, string Strategy, string Reason)>();
         var repairDatasets = experiment.Manifests.Where(m => m.Repair).Select(m => m.Dataset).ToHashSet();
         var modelIds = new SortedSet<string>(StringComparer.Ordinal);
@@ -125,6 +130,10 @@ public sealed class ReportService(ExperimentConfig experiment)
                         var branch = latest.GetValueOrDefault(branchKey.Canonical);
                         var summaryPath = Path.Combine(mechanismDir, "summary.json");
                         var summary = File.Exists(summaryPath) ? Json.Read<RepairSummary>(summaryPath) : null;
+                        if (summary is not null)
+                        {
+                            overview.Summaries.Add(summary);
+                        }
                         chains.Add(new RepairChain(taskId, strategy, mechanism,
                             summary is not null && (summary.Success || summary.RoundsUsed >= experiment.Repair.NMax),
                             summary?.SuccessRound, branch?.Status == JobStatus.Infra));
@@ -136,7 +145,10 @@ public sealed class ReportService(ExperimentConfig experiment)
             var stats = Path.Combine(taskDir, "evosuite", "evosuite_stats.json");
             if (File.Exists(stats))
             {
-                samples.Add(new StepSample("evosuite", dataset, Json.Read<EvoSuiteStats>(stats).GenerationSeconds));
+                var evo = Json.Read<EvoSuiteStats>(stats);
+                samples.Add(new StepSample("evosuite", dataset, evo.GenerationSeconds));
+                var evoVerify = Path.Combine(taskDir, "evosuite", "verify.json");
+                overview.EvoSuite.Add((dataset, evo.Status, File.Exists(evoVerify) ? States.Name(Json.Read<VerifyResult>(evoVerify).State) : null));
             }
 
             var qualityDir = Path.Combine(taskDir, "quality");
@@ -147,6 +159,17 @@ public sealed class ReportService(ExperimentConfig experiment)
                     AddQuality<CoverageResult>(system, "jacoco.json", "jacoco", dataset, r => r.Seconds, samples);
                     AddQuality<MutationResult>(system, "pit.json", "pit", dataset, r => r.Seconds, samples);
                     AddQuality<SmellResult>(system, "tsdetect.json", "tsdetect", dataset, r => r.Seconds, samples);
+                    foreach (var (tool, file) in new[] { ("JaCoCo", "jacoco.json"), ("PIT", "pit.json"), ("tsDetect", "tsdetect.json") })
+                    {
+                        var path = Path.Combine(system, file);
+                        if (File.Exists(path))
+                        {
+                            using var document = System.Text.Json.JsonDocument.Parse(File.ReadAllText(path));
+                            var root = document.RootElement;
+                            overview.Quality.Add((dataset, tool, root.GetProperty("status").GetString() ?? "",
+                                root.TryGetProperty("reason", out var reason) && reason.ValueKind == System.Text.Json.JsonValueKind.String ? reason.GetString() : null));
+                        }
+                    }
                 }
             }
         }
@@ -178,7 +201,7 @@ public sealed class ReportService(ExperimentConfig experiment)
             ("invalid_output", g => g.Verify.InvalidOutput), ("error_signature", g => g.Verify.ErrorSignature), ("assertion_count", g => g.Verify.AssertionCount),
             ("tests_passed", g => g.Verify.TestMethods.Passed), ("model_id", g => g.Usage?.ModelId)));
         Write("part2_cumulative.csv", PilotReport.CumulativeCsv(part2));
-        Write("pilot_report.md", Markdown(store, costs, infra, generations, part2, excluded, modelIds));
+        Write("pilot_report.md", Markdown(store, costs, infra, generations, part2, excluded, modelIds, overview));
         return new ReportFiles(reportsDir, part2, files);
     }
 
@@ -212,7 +235,7 @@ public sealed class ReportService(ExperimentConfig experiment)
     }
 
     private string Markdown(RunStore store, List<CostRow> costs, List<InfraRow> infra, List<GenResult> generations, NSelection part2,
-        List<(string Task, string Strategy, string Reason)> excluded, SortedSet<string> modelIds)
+        List<(string Task, string Strategy, string Reason)> excluded, SortedSet<string> modelIds, Overview overview)
     {
         var inv = CultureInfo.InvariantCulture;
         var md = new StringBuilder();
@@ -316,6 +339,8 @@ public sealed class ReportService(ExperimentConfig experiment)
             md.AppendLine($"N chưa tính được: còn {part2.Unfinished} chuỗi chưa VALID và chưa đủ {part2.NMax} vòng{(part2.Chains == 0 ? " (chưa có chuỗi sửa nào)" : "")}.");
         }
 
+        AppendOverview(md, generations, part2, overview);
+
         md.AppendLine().AppendLine("## Ngoại lệ đã khai báo").AppendLine();
         md.AppendLine("- Cờ build chung bỏ qua plugin định dạng, giấy phép, coverage tối thiểu của repository (specs/02 Mục 4.3), như nhau cho mọi hệ thống; ghi trong `run_config.lock.json`.");
         md.AppendLine("- JVM của mọi bước build chạy với locale `en_US` và múi giờ UTC (specs/02 Mục 3 bước 6).");
@@ -327,6 +352,100 @@ public sealed class ReportService(ExperimentConfig experiment)
         md.AppendLine("- Pilot chỉ chạy GPT-6 Luna; N chọn trên GPT-6 Luna được áp dụng cho cả Qwen3-Coder-30B, có thể chưa tối ưu cho Qwen.");
         md.AppendLine("- Thực nghiệm chạy một lần cho mỗi cấu hình.");
         return md.ToString();
+    }
+
+    private static string Pct(int part, int total) => total == 0 ? "-" : $"{100.0 * part / total:0}% ({part}/{total})";
+
+    private static double Median(IEnumerable<double> values)
+    {
+        var list = values.Order().ToList();
+        return list.Count == 0 ? double.NaN : list.Count % 2 == 1 ? list[list.Count / 2] : (list[list.Count / 2 - 1] + list[list.Count / 2]) / 2;
+    }
+
+    /// <summary>
+    /// Mục tổng quan để chuẩn bị thực nghiệm chính: tỷ lệ qua từng bước xác minh theo quy trình, kết quả sửa gộp hai cơ chế,
+    /// EvoSuite và bộ đo chạy được bao nhiêu. Không phải kết quả RQ; không tách Fixed/Adaptive; không so chất lượng giữa hệ thống.
+    /// </summary>
+    private void AppendOverview(StringBuilder md, List<GenResult> generations, NSelection part2, Overview overview)
+    {
+        var inv = CultureInfo.InvariantCulture;
+        md.AppendLine().AppendLine("## Tổng quan để chuẩn bị thực nghiệm chính").AppendLine();
+        md.AppendLine("Các bảng dưới chỉ để kiểm tra pipeline và ước lượng khối lượng việc; **không phải kết quả RQ1, RQ2, RQ3**. Kết quả sửa gộp chung hai cơ chế; không so chất lượng giữa ARROW và EvoSuite.").AppendLine();
+
+        md.AppendLine("### A. Bước sinh test: tỷ lệ qua từng bước xác minh").AppendLine();
+        md.AppendLine("| Dataset | Quy trình | Ứng viên | Compile | Discovery | Execution | Target pass | Không regression (VALID) |");
+        md.AppendLine("| --- | --- | ---: | ---: | ---: | ---: | ---: | ---: |");
+        foreach (var group in generations.Where(g => g.Verify.State != VerificationState.Infra).GroupBy(g => (g.Dataset, g.Strategy))
+                     .OrderBy(g => g.Key.Dataset, StringComparer.Ordinal).ThenBy(g => g.Key.Strategy, StringComparer.Ordinal))
+        {
+            var n = group.Count();
+            int Pass(Func<VerifySteps, StepStatus> step) => group.Count(g => step(g.Verify.Steps) == StepStatus.Pass);
+            md.AppendLine($"| {group.Key.Dataset} | {group.Key.Strategy} | {n} | {Pct(Pass(s => s.Compile), n)} | {Pct(Pass(s => s.Discovery), n)} | {Pct(Pass(s => s.Execution), n)} | {Pct(Pass(s => s.TargetPass), n)} | {Pct(Pass(s => s.Regression), n)} |");
+        }
+
+        md.AppendLine().AppendLine("Lỗi thường gặp nhất ở bước sinh (theo error signature):").AppendLine();
+        md.AppendLine("| Error signature | Số ứng viên |").AppendLine("| --- | ---: |");
+        foreach (var signature in generations.Where(g => g.Verify.ErrorSignature is not null).GroupBy(g => g.Verify.ErrorSignature!).OrderByDescending(g => g.Count()).Take(8))
+        {
+            md.AppendLine($"| `{Escape(signature.Key)}` | {signature.Count()} |");
+        }
+
+        md.AppendLine().AppendLine("### B. Bước sửa (gộp Fixed và Adaptive)").AppendLine();
+        var summaries = overview.Summaries;
+        if (summaries.Count == 0)
+        {
+            md.AppendLine("Chưa có chuỗi sửa nào.");
+        }
+        else
+        {
+            var success = summaries.Where(s => s.Success).ToList();
+            md.AppendLine("| Chỉ số | Giá trị |").AppendLine("| --- | ---: |");
+            md.AppendLine($"| Chuỗi sửa | {summaries.Count} |");
+            md.AppendLine($"| Đạt VALID trong {experiment.Repair.NMax} vòng | {Pct(success.Count, summaries.Count)} |");
+            md.AppendLine($"| Vòng đạt VALID (trung vị) | {(success.Count == 0 ? "-" : Median(success.Select(s => (double)s.SuccessRound!.Value)).ToString("0.#", inv))} |");
+            md.AppendLine($"| Thời gian một chuỗi, gồm gọi model và build (trung vị, giây) | {Median(summaries.Select(s => s.RepairSeconds)).ToString("0", inv)} |");
+            md.AppendLine($"| Token một chuỗi (trung vị, vào / ra) | {Median(summaries.Select(s => (double)s.PromptTokens)).ToString("0", inv)} / {Median(summaries.Select(s => (double)s.CompletionTokens)).ToString("0", inv)} |");
+            md.AppendLine($"| Số vòng có rollback / mã trùng / output không hợp lệ / mức 3 (tổng) | {summaries.Sum(s => s.Rollbacks)} / {summaries.Sum(s => s.DuplicateCode)} / {summaries.Sum(s => s.InvalidOutput)} / {summaries.Sum(s => s.Level3Rounds)} |");
+            md.AppendLine($"| Test method bị bỏ ở mức 3 (tổng) | {summaries.Sum(s => s.DroppedMethods.Count)} |");
+            md.AppendLine().AppendLine("Trạng thái ban đầu (c0) của các chuỗi:").AppendLine();
+            md.AppendLine("| Trạng thái c0 | Chuỗi | Đạt VALID |").AppendLine("| --- | ---: | ---: |");
+            foreach (var group in summaries.GroupBy(s => s.C0State).OrderBy(g => g.Key))
+            {
+                md.AppendLine($"| {States.Name(group.Key)} | {group.Count()} | {Pct(group.Count(s => s.Success), group.Count())} |");
+            }
+
+            md.AppendLine().AppendLine($"N theo `{part2.Rule}`: {(part2.N?.ToString(inv) ?? "chưa tính được")} (xem phần 2).");
+        }
+
+        md.AppendLine().AppendLine("### C. EvoSuite chạy được với bao nhiêu CUT").AppendLine();
+        if (overview.EvoSuite.Count == 0)
+        {
+            md.AppendLine("Chưa chạy EvoSuite.");
+        }
+        else
+        {
+            md.AppendLine("| Dataset | CUT | Sinh được test | Không hỗ trợ JDK (Java > 11) | Lỗi khác | Bộ test VALID |").AppendLine("| --- | ---: | ---: | ---: | ---: | ---: |");
+            foreach (var group in overview.EvoSuite.GroupBy(e => e.Dataset).OrderBy(g => g.Key, StringComparer.Ordinal))
+            {
+                var n = group.Count();
+                md.AppendLine($"| {group.Key} | {n} | {Pct(group.Count(e => e.Status == "OK"), n)} | {group.Count(e => e.Status == "UNSUPPORTED_JDK")} | {group.Count(e => e.Status is not ("OK" or "UNSUPPORTED_JDK"))} | {Pct(group.Count(e => e.Verify == "VALID"), n)} |");
+            }
+        }
+
+        md.AppendLine().AppendLine("### D. Bộ đo chất lượng chạy được trên bao nhiêu bộ test VALID").AppendLine();
+        if (overview.Quality.Count == 0)
+        {
+            md.AppendLine("Chưa đo bộ test nào.");
+        }
+        else
+        {
+            md.AppendLine("| Công cụ | Bộ test đã đo | Đo được (OK) | Lý do không đo được |").AppendLine("| --- | ---: | ---: | --- |");
+            foreach (var group in overview.Quality.GroupBy(q => q.Tool))
+            {
+                var reasons = string.Join("; ", group.Where(q => q.Status != "OK").GroupBy(q => q.Reason ?? q.Status).Select(r => $"{Escape(r.Key)} ({r.Count()})"));
+                md.AppendLine($"| {group.Key} | {group.Count()} | {Pct(group.Count(q => q.Status == "OK"), group.Count())} | {(reasons.Length == 0 ? "-" : reasons)} |");
+            }
+        }
     }
 
     private static double PerCandidate(List<CostRow> costs, params string[] steps) =>
