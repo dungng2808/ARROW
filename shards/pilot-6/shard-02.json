@@ -4,7 +4,7 @@
   "shard_id": "shard-02",
   "owner": "Dung-win",
   "owner_display": "Dũng-win",
-  "experiment_sha256": "6c4f10df1573792c95613409882face361a1a0e7402a3a884e86fdb63fc3d22d",
+  "experiment_sha256": "d5567edc789801809a9b2dc43e94ea6ef4ffd9cce12182fb5df771dddd991950",
   "tasks": [
     {
       "dataset": "classes2test",

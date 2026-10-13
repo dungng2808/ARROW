@@ -26,7 +26,7 @@
         "max_tokens": 8192,
         "seed": 42
       },
-      "price_usd_per_million": null
+      "price_usd_per_million": { "input": 0.05, "output": 0.25 }
     }
   ],
   "generation_strategies": [
