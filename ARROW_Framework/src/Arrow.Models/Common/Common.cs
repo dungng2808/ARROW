@@ -84,6 +84,13 @@ public static class ErrorCodes
     public const string ModelMissing = "MODEL_MISSING";
     public const string ModelRequired = "MODEL_REQUIRED";
 
+    // Công cụ ngoài
+    public const string JdkMissing = "JDK_MISSING";
+    public const string MavenMissing = "MAVEN_MISSING";
+    public const string JavaHelperBuild = "JAVA_HELPER_BUILD";
+    public const string JavaHelperTimeout = "JAVA_HELPER_TIMEOUT";
+    public const string JavaHelperError = "JAVA_HELPER_ERROR";
+
     // Khối 1
     public const string B1ManifestInvalid = "B1_MANIFEST_INVALID";
     public const string B1CloneFailed = "B1_CLONE_FAILED";
