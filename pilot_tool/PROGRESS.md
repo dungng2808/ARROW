@@ -80,15 +80,20 @@ Commit: `3728e24` (M7), đã push lên `main`.
 | `runs/smoke-gpt6-e` (13/10 10:37) | như trên | HTTP 400 `routing_strategy_resource_unavailable`: "No channel is currently available for this routing mode. Switch to premium routing or retry later" (`routing_strategy: low_price`) → tạm dừng, đã dừng |
 | `runs/smoke-gpt6-f` (13/10 10:39, sau 2 phút) | như trên | lại `enterprise_insufficient_balance` → tạm dừng, đã dừng |
 
-**Smoke S1 + S2 chưa đạt.** Lỗi đến từ TeamoRouter (ví enterprise gắn với khóa API của máy), không phải từ tool; người dùng thấy ví cá nhân còn 0,37 USD, nên có thể khóa đang dùng thuộc ví team đã hết tiền, hoặc router giữ trước chi phí theo `max_tokens = 8192`. Tài khoản đang để chế độ định tuyến `low_price`. Không đổi model, tham số hay gọi thêm ngoài smoke (điều kiện 3). Tổng lượt gọi thật đã dùng: 3 / 40. Cần người dùng kiểm tra trên dashboard TeamoRouter: khóa thuộc ví nào, nạp tiền hoặc đổi khóa, cân nhắc chuyển routing sang premium.
+| `runs/smoke-20261013-1049` (13/10 10:49, menu "Chạy smoke với model thật", `workers.llm` = 4) | `arrow run --experiment experiments/smoke-v1.json --tasks … --stages prepare,generate,repair --max-llm-calls 36` | 14 lượt gọi thật thành công (`gpt-6-luna`); 2 job INFRA `enterprise_insufficient_balance` lẻ tẻ trong khi các lượt song song vẫn thành công; S2: 7/8 nhánh VALID |
+| **`runs/smoke-20261013-1104`** (13/10 11:04, menu, `workers.llm` = 2) | như trên | **S0 2/2 READY; S1 6/6 có kết quả (1 VALID, 3 COMPILE trong đó 1 output không hợp lệ thiếu `package`, 1 RUNTIME… xem `part1_generation.csv`); S2 8/8 nhánh không lỗi hạ tầng, đều VALID (Fixed và Adaptive VALID vòng 1, Adaptive `159422409` zero_shot VALID vòng 2); 0 job INFRA.** 13 lượt gọi thật, 15.032 token vào, 6.791 token ra, model id `gpt-6-luna`. `arrow report --run-id smoke-20261013-1104` → `reports/pilot_report.md`, N (`share95`, n_max 2) = 3, `report2` = 2 |
+
+**Smoke S1 + S2 với model thật: đạt** (run `smoke-20261013-1104`). Tổng lượt gọi thật: 3 + 14 + 13 = 30 / 40.
+
+Nguyên nhân các lỗi trước (kiểm tra bằng API `GET /v1/billing/balance`, `/v1/billing/costs`, `/v1/usage` của TeamoRouter): số dư của khóa còn 0,3609 USD, mỗi lượt gọi chỉ khoảng 0,0002 USD, không có lỗi 429 hay header rate limit. Lỗi `enterprise_insufficient_balance` và `routing_strategy_resource_unavailable` (`low_price`) xuất hiện khi có nhiều lượt gọi cùng lúc (`workers.llm` = 4); với `workers.llm` = 2 không còn lỗi. Request trả lỗi 400 vẫn bị TeamoRouter tính tiền (22 request, 0,0053 USD): nên báo hỗ trợ TeamoRouter. Khuyến nghị cho pilot: `workers.llm` ≤ 2 trên mọi máy.
 
 ## Trạng thái
 
-**Code M1–M8 và test tự động đã xong; sẵn sàng chạy pilot theo shard** sau khi giải quyết hai việc đầu trong danh sách dưới (ví provider, smoke).
+**Code M1–M8 và test tự động đã xong; smoke với GPT-6 Luna thật qua S1 và S2; sẵn sàng chạy pilot theo shard.**
 
 ## Việc còn mở
 
-- **Ví TeamoRouter hết tiền** (HTTP 400 "Your TeamoRouter wallet balance is insufficient", lần cuối 13/10/2026 10:19 giờ VN, run `smoke-gpt6-b`, đã dừng). Đã gọi thật 3 lượt thành công (run `smoke-gpt6`, model id `gpt-6-luna`); smoke S2 với model thật chưa chạy được. Sau khi nạp tiền: `arrow run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 36 --run-id smoke-gpt6-c` (36 + 3 lượt đã dùng ≤ 40).
+- TeamoRouter từ chối khi nhiều lượt gọi cùng lúc: đặt `workers.llm` ≤ 2 trên mọi máy trước khi chạy pilot; báo hỗ trợ TeamoRouter việc request lỗi vẫn bị tính tiền (trace_id trong `logs/litellm-20261013.log`).
 - Cột "Xong khi" của M5 (177 ứng viên), M6 (S2 với GPT-6 Luna trên pilot), M8 (`pilot_report.md` của pilot thật): để lại cho lần chạy pilot theo shard `shards/pilot-6` (mỗi máy `arrow run`, `arrow export`; người điều phối `arrow merge`).
 - Giá token GPT-6 Luna (`price_usd_per_million`) chưa điền: cột chi phí của báo cáo là 0 cho tới khi điền (token vẫn đủ).
 - Tiêu chí M1 trên Windows (tạm dừng/tiếp tục trên Windows): chưa kiểm được trên máy này.

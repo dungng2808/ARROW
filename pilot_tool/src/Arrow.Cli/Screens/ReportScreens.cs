@@ -17,10 +17,21 @@ public sealed class ReportScreens(Session session)
 {
     private LoadedExperiment Experiment(string? path, RunStore store)
     {
+        var locks = ReportService.Locks(store);
+        if (path is null && locks.Count > 0)
+        {
+            // Tự tìm cấu hình thực nghiệm của run (ví dụ smoke-v1) theo sha256 đã khóa.
+            var match = Directory.EnumerateFiles(session.Paths.ExperimentsDir, "*.json")
+                .FirstOrDefault(f => Hashing.Sha256File(f) == locks[0].ExperimentSha256);
+            if (match is not null)
+            {
+                return ExperimentLoader.Load(match, verifyManifests: false);
+            }
+        }
+
         var machine = session.Machine;
         var file = path ?? machine?.Experiment ?? throw new ArrowException("NO_EXPERIMENT", "Cần --experiment hoặc cấu hình máy");
         var experiment = ExperimentLoader.Load(session.Paths.Resolve(file), verifyManifests: false);
-        var locks = ReportService.Locks(store);
         if (locks.Count > 0 && locks.Any(l => l.ExperimentSha256 != experiment.Sha256))
         {
             throw new ArrowException("EXPERIMENT_MISMATCH", $"Run {store.RunId} được tạo với cấu hình thực nghiệm khác {file}; dùng --experiment đúng file");
