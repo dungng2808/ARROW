@@ -10,9 +10,10 @@ namespace Arrow.Cli.Screens;
 /// <summary>Màn hình đầu và menu chính (CLI_DASHBOARD.md, SETUP.md §2).</summary>
 public sealed class MenuScreen(Session session)
 {
-    private const string RunMine = "Chạy shard của tôi (mốc M2: S0 chuẩn bị)";
-    private const string RunDemo = "Chạy thử dashboard (job giả, mốc M1)";
+    private const string RunMine = "Chạy shard của tôi (S0 chuẩn bị → S5 báo cáo)";
+    private const string RunDemo = "Chạy thử dashboard (job giả, không build, không gọi model)";
     private const string Status = "Xem trạng thái run";
+    private const string Show = "Xem kết quả run (sinh test, vòng sửa, đường cộng dồn)";
     private const string Control = "Tạm dừng / tiếp tục run đang chạy";
     private const string Setup = "Cài đặt máy";
     private const string Doctor = "Kiểm tra môi trường";
@@ -53,7 +54,7 @@ public sealed class MenuScreen(Session session)
             var choice = AnsiConsole.Prompt(new SelectionPrompt<string>()
                 .Title("Chọn việc ([grey]↑/↓, Enter[/]):")
                 .PageSize(14)
-                .AddChoices(RunMine, RunDemo, Status, Control, Setup, Doctor, Export)
+                .AddChoices(RunMine, RunDemo, Status, Show, Control, Setup, Doctor, Export)
                 .AddChoiceGroup("── Người điều phối ──", ShardPlan, Merge, Report)
                 .AddChoices(Quit));
 
@@ -73,9 +74,24 @@ public sealed class MenuScreen(Session session)
                     }
 
                     break;
-                case Export or Merge or Report:
-                    AnsiConsole.MarkupLine("[yellow]Chức năng này có ở mốc M8.[/]");
+                case Show:
+                    await PickRunAsync(runId => Task.FromResult(Guard(() => new ReportScreens(session).Show(runId, null, null))));
                     break;
+                case Export:
+                    await PickRunAsync(runId => Task.FromResult(Guard(() => new ReportScreens(session).Export(runId, null))));
+                    break;
+                case Report:
+                    await PickRunAsync(runId => Task.FromResult(Guard(() => new ReportScreens(session).Report(runId, null))));
+                    break;
+                case Merge:
+                {
+                    var planId = session.TryLoadShard()?.PlanId ?? "pilot-6";
+                    var plan = AnsiConsole.Prompt(new TextPrompt<string>("File plan.json:").DefaultValue($"../shards/{planId}/plan.json"));
+                    var bundles = AnsiConsole.Prompt(new TextPrompt<string>("Thư mục chứa các gói .zip:").DefaultValue($"../pilot_results/{planId}"));
+                    var runId = AnsiConsole.Prompt(new TextPrompt<string>("Tên run gom:").DefaultValue($"{planId}-merged"));
+                    Guard(() => new ReportScreens(session).Merge(session.Paths.Resolve(plan), session.Paths.Resolve(bundles), runId, null));
+                    break;
+                }
                 case RunDemo:
                     await new DemoRunScreen(session).RunAsync(null, null, plain: false, cancellationToken);
                     break;
@@ -140,6 +156,20 @@ public sealed class MenuScreen(Session session)
                 return $"{Markup.Escape(r.RunId)}   {r.Status.State.ToString().ToUpperInvariant()}{alive}   {Markup.Escape(r.Status.Stage)} {stage?.Done}/{stage?.Total}   đã chạy {Theme.Duration(r.Status.ElapsedSeconds)}";
             });
             AnsiConsole.Write(new Panel(new Markup(string.Join("\n", lines))).Header(" Run gần đây ").Border(BoxBorder.Rounded).Expand());
+        }
+    }
+
+    /// <summary>Lỗi có mã (run thiếu, gói sai…) in ra rồi về menu, không thoát chương trình.</summary>
+    private static int Guard(Func<int> action)
+    {
+        try
+        {
+            return action();
+        }
+        catch (Arrow.Core.Util.ArrowException ex)
+        {
+            AnsiConsole.MarkupLine($"[red]{Markup.Escape(ex.Code)}[/]: {Markup.Escape(ex.Message)}");
+            return 2;
         }
     }
 

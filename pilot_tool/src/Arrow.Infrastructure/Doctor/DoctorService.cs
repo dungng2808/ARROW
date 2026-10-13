@@ -172,7 +172,7 @@ public sealed class DoctorService(ToolPaths paths)
                 : new DoctorCheck("Kết nối GitHub", CheckStatus.Fail, lsRemote.TimedOut ? "Quá thời gian" : lsRemote.StdErr.Trim(), "Kiểm tra mạng, proxy"));
         }
 
-        // 9. LiteLLM (gọi thử model làm ở mốc M5)
+        // 9. LiteLLM
         var litellmConfig = LiteLlmConfigFile.TryLoad(paths.LiteLlmConfigPath);
         if (litellmConfig is null || !litellmConfig.HasApiKey)
         {

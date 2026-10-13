@@ -457,7 +457,7 @@ public sealed class SetupScreen(Session session)
         _apiKeyInput = AnsiConsole.Prompt(keyPrompt).Trim();
         var alias = AnsiConsole.Prompt(new TextPrompt<string>("Tên gợi nhớ của khóa (ghi vào kết quả, không ghi khóa):")
             .DefaultValue(string.IsNullOrEmpty(_draft.Llm.KeyAlias) ? _draft.MachineName.ToLowerInvariant() : _draft.Llm.KeyAlias));
-        AnsiConsole.MarkupLine("[grey]Gọi thử model sẽ có ở mốc M5 (bước sinh test).[/]");
+        AnsiConsole.MarkupLine("[grey]Gọi thử model bằng smoke: arrow run --experiment experiments/smoke-v1.json --max-llm-calls 6 (xem README Mục 0).[/]");
 
         _llm = _llm with { ApiBase = apiBase.Trim() };
         _draft = _draft with { Llm = _draft.Llm with { ProxyMode = modes[modeChoice], ProxyUrl = proxyUrl, KeyAlias = alias } };

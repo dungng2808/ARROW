@@ -6,7 +6,7 @@ using Spectre.Console;
 namespace Arrow.Cli.Screens;
 
 /// <summary>
-/// Lần chạy demo của mốc M1: job giả (không gọi model, không build) để kiểm tra dashboard, ledger,
+/// Lần chạy demo: job giả (không gọi model, không build) để kiểm tra dashboard, ledger,
 /// chạy tiếp sau khi dừng, và tạm dừng/tiếp tục/dừng hẳn trên macOS và Windows.
 /// </summary>
 public sealed class DemoRunScreen(Session session)
