@@ -1,250 +1,268 @@
-# 07. Kiến trúc code
+# 07. Kiến trúc code: 3 tầng
 
-**Mục đích:** mô tả cách tổ chức code C# của ARROW Framework: các project, thư mục, lớp chính của từng khối, cách các phần gọi nhau, cách chạy song song, lưu trạng thái, chạy tiếp, và thứ tự viết code.
+**Mục đích:** mô tả cách tổ chức code C# (.NET 8, console) của ARROW Framework theo **kiến trúc 3 tầng**: UI, Service, Data Access. Các tầng nói chuyện với nhau **chỉ qua interface**.
 
-## 1. Nguyên tắc
-
-1. **Bốn khối = bốn thư mục, mỗi khối một interface** khớp đúng input/output trong spec của khối. Pipeline chỉ nối các interface; không khối nào gọi thẳng vào bên trong khối khác.
-2. **Tách logic thuần khỏi I/O.** Mọi quyết định (chọn JDK, dựng prompt, tách mã, phân loại lỗi, signature, so sánh checkpoint, thuật toán Fixed/Adaptive, công thức báo cáo, quy tắc N) nằm trong `Arrow.Core`, không chạy tiến trình, không gọi mạng, nên unit test được bằng ví dụ trong spec. Mọi việc chạm vào máy (git, Maven/Gradle, Java, HTTP, file) nằm trong `Arrow.Infrastructure`.
-3. **Kết quả là dữ liệu, không phải exception.** Task hỏng, candidate lỗi, lỗi hạ tầng đều trả về dưới dạng `Outcome` có mã lỗi; exception chỉ dùng cho lỗi lập trình hoặc lỗi cấu hình làm dừng cả run.
-4. **Mọi thứ ghi ra đĩa ngay khi xong** (ghi nguyên tử), để dừng bất cứ lúc nào cũng chạy tiếp được.
-5. **Một chỗ gọi model** (`ILlmClient`), **một chỗ chạy build** (`IBuildRunner`), **một chỗ đọc báo cáo test** (`TestReportReader`): Fixed, Adaptive, EvoSuite, khối 4 đều dùng chung, bảo đảm cùng điều kiện so sánh.
-
-## 2. Các project và phụ thuộc
+## 1. Ba tầng
 
 ```
-                    ┌──────────────────────┐
-                    │     Arrow.Console    │  lệnh, màn hình (Spectre.Console), RunHost
-                    └──────────┬───────────┘
-                               │
-                    ┌──────────▼───────────┐
-                    │ Arrow.Infrastructure │  4 khối (phần I/O), Pipeline, Git, Maven/Gradle,
-                    │                      │  LLM client, java-helper, công cụ khối 4, RunStore
-                    └──────────┬───────────┘
-                               │
-                    ┌──────────▼───────────┐
-                    │      Arrow.Core      │  model dữ liệu, cấu hình, logic thuần của 4 khối
-                    └──────────────────────┘
+┌───────────────────────────────────────────────────────────────┐
+│ Tầng UI (Arrow.UI)                                            │
+│ Nhập bằng Console.ReadLine, xuất bằng Console.WriteLine       │
+│ Menu, màn hình S1–S10, đọc tham số dòng lệnh                  │
+└──────────────────────────────┬────────────────────────────────┘
+                               │ gọi interface dịch vụ (IPipelineService, IReportService…)
+┌──────────────────────────────▼────────────────────────────────┐
+│ Tầng Service (Arrow.Service)                                  │
+│ Thực thi logic: 4 khối, thuật toán Fixed/Adaptive, công thức  │
+│ báo cáo, lập lịch job; gọi công cụ ngoài (git, Maven/Gradle,  │
+│ Java, model, JaCoCo/PIT/tsDetect/EvoSuite) qua interface      │
+└──────────────────────────────┬────────────────────────────────┘
+                               │ gọi interface repository (IRunRepository, IConfigRepository…)
+┌──────────────────────────────▼────────────────────────────────┐
+│ Tầng Data Access (Arrow.DataAccess)                           │
+│ Đọc, ghi dữ liệu của framework ra file: cấu hình, manifest,   │
+│ prompt, ledger, trạng thái, kết quả từng khối, cache, báo cáo,│
+│ log                                                           │
+└───────────────────────────────────────────────────────────────┘
 
- tools/java-helper (Java, JavaParser)  ◄── gọi qua tiến trình từ Arrow.Infrastructure
- tests/Arrow.Core.Tests                ──► Arrow.Core                     (unit)
- tests/Arrow.Infrastructure.Tests      ──► Arrow.Infrastructure, Console  (integration, end-to-end)
+Arrow.Models: thư viện dùng chung chỉ chứa class dữ liệu (record, enum), không có logic; cả ba tầng đều dùng.
 ```
 
-Phụ thuộc một chiều: Console → Infrastructure → Core. Core không tham chiếu project nào.
+| Tầng | Làm | Không làm |
+| --- | --- | --- |
+| **UI** | Hiện thông tin, hỏi người dùng, đọc tham số dòng lệnh, gọi Service, in kết quả | Đọc/ghi file, chạy tiến trình, gọi model, chứa quy tắc nghiệp vụ |
+| **Service** | Mọi logic: phân tích repository, dựng prompt, xác minh, sửa, đo, tính chỉ số; điều phối công cụ ngoài; lập lịch, tạm dừng, chạy tiếp | Đọc/ghi trực tiếp file dữ liệu của framework (luôn qua repository của Data Access); in ra màn hình |
+| **Data Access** | Đọc, ghi file dữ liệu (JSON, JSONL, CSV, Markdown, YAML, text), ghi nguyên tử, khóa khi ghi đồng thời, che khóa API trong log | Logic nghiệp vụ, chạy tiến trình |
 
-## 3. Thư mục và lớp chính
+**Ranh giới về file:** Data Access giữ **dữ liệu của framework** (mọi thứ trong `experiments/`, `prompts/`, `runs/`, `logs/`, `machine.local.json`, `litellm.config.local.yaml`). **Mã nguồn của repository Java** và **workspace để build** (`repo/mirrors`, `repo/ws`) là môi trường làm việc của công cụ build, nên do tầng Service quản lý qua `IWorkspaceManager` (thư mục External). Báo cáo test XML mà Maven/Gradle sinh ra trong workspace cũng do Service đọc (`ITestReportReader`); kết quả đã phân tích thì Service ghi qua Data Access.
+
+**Hướng phụ thuộc:** UI → Service → Data Access; cả ba → Models. UI **không** tham chiếu Data Access: Service cung cấp `ServiceFactory.Create(paths)` tự tạo các repository và trả về các interface dịch vụ cho UI.
+
+## 2. Các project
 
 ```
 ARROW_Framework/
   ArrowFramework.sln
-  Directory.Build.props            .NET 8, nullable, warnings as errors
+  Directory.Build.props              .NET 8, nullable, cảnh báo là lỗi
   src/
-    Arrow.Core/
-      Common/        Json, Hashing, Ids (TaskKey, CandidateKey, ChainKey), ArrowException, Outcome, ErrorCodes
-      Config/        ExperimentConfig, MachineConfig, ConfigLoader (kiểm tra sha256 manifest), RunLock
-      Manifest/      TaskRecord, ManifestReader
-      Block1/        RepositoryMetadata (M), Baseline, JavaVersionReader, ManifestJavaVersionParser, JdkSelector,
-                     BuildRootRule (từ lần biên dịch test thành công trong build_attempts), MavenModuleSelector,
-                     TestFrameworkDetector, PathCalculator, MetadataPromptRenderer
-      Block2/        LlmRequest, LlmResponse, LlmUsage, CacheKey, PromptBuilder (3 quy trình + sửa),
-                     PromptTemplates, CodeExtractor, NameNormalizer, CandidateTest
-      Block3/        SuiteFiles (test_fqn, files, extra_test_classpath), VerificationState, VerifyResult, JavacErrorParser, TestResultClassifier,
-                     SignatureBuilder, Diagnosis, CheckpointComparer, IRepairPolicy,
-                     AdaptiveRepairPolicy, FixedRepairPolicy, RepairRequest, RoundDecision, FinalTestSuite
-      Block4/        CoverageResult, MutationResult, SmellResult, JacocoCsvParser, PitXmlParser,
-                     TsDetectCsvParser, Rq1Calculator, Rq2Calculator, NRule, PSensitivity,
-                     Rq3Calculator, ReportModel
-    Arrow.Infrastructure/
-      Processes/     ProcessRunner (timeout, giết cả cây tiến trình, gom output), ToolLog
-      Storage/       RunStore (thư mục run), AtomicFile, Ledger, EventLog, StatusTracker
-      Build/         BuildRunner (Maven/Gradle, JAVA_HOME, JAVA_TOOL_OPTIONS, cờ chung),
-                     BuildCommands, TestReportReader (Surefire/Gradle XML)
-      Git/           GitClient, MirrorManager, WorkspaceManager (checkout gốc, snapshot đã biên dịch, bản sao mới cho mỗi lần chạy test)
-      JavaHelper/    JavaHelperClient (tiến trình java-helper chạy lâu, giao tiếp JSON từng dòng)
-      Block1/        RepositoryAnalyzer : IRepositoryAnalyzer, BuildRootLocator, EffectivePomReader, GradleProbe,
-                     BaselineRunner, PairedTestScreener (tiêu chí B)
-      Block2/        TestGenerator : ITestGenerator, LiteLlmClient, ReplayingLlmClient, LlmGateway,
-                     FakeLlmClient, LiteLlmProxy (tự bật/tắt proxy), LiteLlmConfigFile
-      Block3/        Verifier : IVerifier, FailureDiagnoser : IFailureDiagnoser,
-                     ExtraContextBuilder (thông tin bổ sung mức 2), RepairRunner : IRepairRunner
-      Block4/        EvoSuiteGenerator : IComparisonGenerator, JacocoTool, PitTool, TsDetectTool : IQualityTool,
-                     ReportBuilder : IReportBuilder, ReportWriter (CSV, report.md), ToolsCatalog (tải, sha256)
-      Pipeline/      RunPipeline, JobGraph, Scheduler (2 hàng đợi), ControlGate (tạm dừng/dừng), ResumePlanner
-      Doctor/        DoctorService
-    Arrow.Console/
-      Program.cs     đăng ký lệnh (Spectre.Console.Cli)
-      Commands/      Run, Screen, Status, Show, Report, RerunList, Control, Setup, Models, Doctor, FewShot
-      Screens/       MenuScreen (S1), SetupScreen (S2), ModelScreen (S3), DoctorScreen (S4),
-                     LiveRunScreen (S5), StatusScreen (S6), TaskScreen (S7), ReportScreen (S8), RerunScreen (S9), ScreenScreen (S10)
-      Ui/            Theme, PlainPrinter, KeyListener
-  tools/java-helper/   pom.xml, src/…  (JavaParser 3.26, đóng gói 1 jar)
-  prompts/             generation/*.md, repair/*.md, fewshot/examples.json
-  experiments/         pilot-v1.json, smoke-v1.json
+    Arrow.Models/                    class dữ liệu dùng chung
+    Arrow.DataAccess/                tầng Data Access
+    Arrow.Service/                   tầng Service
+    Arrow.UI/                        tầng UI (project console, file chạy arrow-fw)
+  tools/java-helper/                 công cụ Java (JavaParser) Service gọi qua tiến trình
+  prompts/                           template prompt, ví dụ few-shot (Data Access đọc)
+  experiments/                       cấu hình thực nghiệm (Data Access đọc/ghi)
   tests/
-    Arrow.Core.Tests/
-    Arrow.Infrastructure.Tests/
-    fixtures/          sample-maven-junit4, sample-maven-multimodule-junit5, sample-gradle-junit5
+    Arrow.DataAccess.Tests/          đọc/ghi file trên thư mục tạm
+    Arrow.Service.Tests/             logic thuần + Service với repository và công cụ giả
+    Arrow.IntegrationTests/          Maven/Gradle thật trên fixture, chạy toàn luồng với model giả
+    fixtures/                        dự án Java mẫu
 ```
 
-## 4. Interface của từng khối
+Thư viện ngoài: **không** dùng thư viện giao diện. Chỉ .NET BCL (`System.Text.Json`, `System.Diagnostics.Process`, `HttpClient`) và xUnit cho test.
 
-| Khối | Interface (Core định nghĩa model, Infrastructure triển khai) | Input → Output |
+## 3. Arrow.Models (dữ liệu dùng chung)
+
+```
+Arrow.Models/
+  Common/     Ids (TaskKey, CandidateKey, ChainKey, CallId), Outcome, ErrorCodes, VerificationState, ErrorGroup
+  Config/     ExperimentConfig, ModelConfig, PriceConfig, MachineConfig, LiteLlmRoute, RunLock
+  Manifest/   TaskRecord, BuildAttempt
+  Block1/     RepositoryMetadata (M), Baseline, PairedTestResult, WorkspaceInfo, RepositoryAnalysis
+  Block2/     GenerateRequest, RepairRequest, LlmRequest, LlmResponse, LlmUsage, CandidateTest
+  Block3/     SuiteFiles, VerifyResult, Diagnosis, RoundDecision, FinalTestSuite
+  Block4/     CoverageResult, MutationResult, SmellResult, QualityOutcome, ReportModel
+  Run/        RunRequest, RunStatus, RunEvent, LedgerEntry, ControlCommand, RerunItem, TaskDetail, ScreeningRow
+```
+
+Tên trường JSON là snake_case (spec 00 Mục 4); các record này là hình dạng dữ liệu của mọi file JSON trong spec 01–04.
+
+## 4. Tầng Service
+
+### 4.1. Interface dịch vụ cho UI (UI chỉ gọi những interface này)
+
+| Interface | Màn hình dùng | Việc |
 | --- | --- | --- |
-| 1 | `IRepositoryAnalyzer.AnalyzeAsync(TaskRecord, RunContext)` | manifest → `RepositoryAnalysis` (M, baseline, workspace, outcome) |
-| 2 | `ITestGenerator.GenerateAsync(GenerateRequest)` / `RepairAsync(RepairRequest)` | M + CUT + quy trình / yêu cầu sửa → `CandidateTest` (T) |
-| 3 | `IVerifier.VerifyAsync(CandidateTest, TaskContext)` | T → `VerifyResult` (5 bước) |
-| 3 | `IFailureDiagnoser.Diagnose(VerifyResult, …)` | kết quả → `Diagnosis` (trạng thái, signature, method lỗi, khối lỗi) |
+| `IPipelineService` | S5 | `Start(RunRequest, IProgress<RunEvent>) → RunHandle`; `Pause`, `Resume`, `Stop`; `GetSummary()` (bảng tổng khi gõ `t`) |
+| `IScreeningService` | S10 | Chạy chỉ khối 1 cho một manifest, trả bảng tiêu chí B, ghi `screening.csv` |
+| `IRunQueryService` | S1, S6, S7, S9 | `ListRuns`, `GetStatus`, `GetTaskDetail`, `GetRerunList`, `SendControl(runId, pause/resume/stop)` |
+| `IReportService` | S8 | Tạo báo cáo cho một hoặc nhiều run, trả bản tóm tắt để UI in |
+| `ISetupService` | S2 | Dò JDK/Maven/Gradle/Git, kiểm tra thư mục repository, đọc/lưu cấu hình máy |
+| `IModelConfigService` | S3 | Xem model, lưu provider và khóa, đặt giá, thêm/bỏ model, gọi thử |
+| `IDoctorService` | S4 | Kiểm tra môi trường, trả từng dòng qua callback; sửa các lỗi tự sửa được |
+
+### 4.2. Interface của 4 khối (Service dùng nội bộ, khớp spec 01–04)
+
+| Khối | Interface | Input → Output |
+| --- | --- | --- |
+| 1 | `IRepositoryAnalyzer` | `TaskRecord` → `RepositoryAnalysis` (M, baseline, snapshot, tiêu chí B) |
+| 2 | `ITestGenerator` | `GenerateRequest` / `RepairRequest` → `CandidateTest` |
+| 3 | `IVerifier` | `SuiteFiles` → `VerifyResult` (5 bước) |
+| 3 | `IFailureDiagnoser` | `VerifyResult` → `Diagnosis` |
 | 3 | `IRepairPolicy` (`AdaptiveRepairPolicy`, `FixedRepairPolicy`) | lịch sử vòng → `RepairRequest` tiếp theo, `RoundDecision` |
-| 3 | `IRepairRunner.RunChainAsync(c0, mechanism, TaskContext)` | c0 → `FinalTestSuite` (gọi khối 2 mỗi vòng) |
-| 4 | `IComparisonGenerator`, `IQualityTool`, `IReportBuilder` | bộ test VALID → JaCoCo/PIT/tsDetect → báo cáo |
+| 3 | `IRepairRunner` | c0 + cơ chế → `FinalTestSuite` (vòng lặp gọi khối 2) |
+| 4 | `IComparisonGenerator` (EvoSuite), `IQualityTool` (JaCoCo, PIT, tsDetect), `IReportBuilder` | bộ test VALID → số đo → báo cáo |
 
-`RepairRunner` là chỗ duy nhất thể hiện **vòng lặp nét đứt** của hình: mỗi vòng hỏi `IRepairPolicy` lấy `RepairRequest` → gọi `ITestGenerator.RepairAsync` (khối 2) → `IVerifier` → `IFailureDiagnoser` → `IRepairPolicy.Apply`.
+### 4.3. Interface công cụ ngoài (thư mục `External/`)
 
-## 5. Luồng chạy một run
-
-```
-arrow-fw run
-  └─ RunCommand
-       ├─ ConfigLoader: đọc experiment (kiểm sha256 manifest), machine.local.json, litellm config
-       ├─ RunStore.Open(run_id): tạo hoặc mở thư mục run; RunLock ghi hoặc so run.lock.json
-       ├─ ResumePlanner: đọc ledger → danh sách job đã xong
-       ├─ JobGraph.Build(tasks, experiment): tạo mọi job và quan hệ phụ thuộc
-       ├─ RunHost: chạy RunPipeline ở nền + LiveRunScreen (hoặc PlainPrinter)
-       │    └─ RunPipeline
-       │         └─ Scheduler lấy job sẵn sàng → chạy → ghi ledger → mở khóa job phụ thuộc
-       └─ kết thúc: status DONE / STOPPED / PAUSED, in tóm tắt
-```
-
-**Đồ thị job của một task** (một model; nhiều model thì nhân bản nhánh khối 2–3):
-
-```
-B1 analyze
-  ├─► B2 generate (zero_shot) ──► B3 verify c0 ──┬─► B3 chain fixed ─────┐
-  ├─► B2 generate (zero_shot_project_aware) ─► …  └─► B3 chain adaptive ──┤
-  ├─► B2 generate (few_shot) ──► …                                         ├─► B4 measure (mỗi bộ VALID)
-  └─► B4 evosuite generate ──► B3 verify evosuite ────────────────────────┘
-B4 report: chạy riêng bằng `arrow-fw report` (hoặc tự chạy khi mọi job của run xong)
-```
-
-**Một vòng sửa** (trong job `B3 chain`):
-
-```
-RepairRunner           IRepairPolicy        ITestGenerator (khối 2)     IVerifier        IFailureDiagnoser
-    │ NextRequest() ───────►│                        │                       │                  │
-    │◄── RepairRequest ─────│                        │                       │                  │
-    │ RepairAsync(request) ─────────────────────────►│ prompt → LLM → tách mã │                  │
-    │◄────────────────────────────── CandidateTest ──│                       │                  │
-    │ (Adaptive: hash trùng? → bỏ qua build)          │                       │                  │
-    │ VerifyAsync(ct) ──────────────────────────────────────────────────────►│ 5 bước           │
-    │◄──────────────────────────────────────────────────────── VerifyResult ─│                  │
-    │ Diagnose(result) ─────────────────────────────────────────────────────────────────────────►│
-    │◄──────────────────────────────────────────────────────────────────────────── Diagnosis ───│
-    │ Apply(outcome) ──────►│ checkpoint, rollback, mức, đã thử                                    │
-    │◄── RoundDecision ─────│                                                                      │
-    │ ghi round_k/*.json; VALID hoặc hết N → FinalTestSuite                                         │
-```
-
-## 6. Lập lịch và song song
-
-- **Hai hàng đợi** giới hạn bằng `SemaphoreSlim`: `build` (`workers.build`, mọi lệnh Maven/Gradle/Java/EvoSuite/PIT) và `llm` (`workers.llm`, mọi lượt gọi model). Một job giữ hàng đợi chỉ trong lúc làm đúng việc đó (chain sửa nhả `build` khi đang chờ model và ngược lại), nên chain của nhiều task đan xen nhau.
-- **Ưu tiên job sâu hơn**: job khối 3–4 của task đã bắt đầu được chạy trước job khối 1 của task mới, để task xong sớm và workspace được xóa sớm (đỡ tốn đĩa).
-- **Thứ tự Fixed/Adaptive xen kẽ** theo chỉ số task (lẻ: Fixed trước) như AR Mục 8.
-- **Giới hạn gọi model**: `LlmGateway` giữ `rpm_limit` lượt mỗi phút và `--max-llm-calls`.
-- **Tạm dừng / dừng**: `ControlGate` được kiểm tra trước mỗi bước (mỗi lệnh build, mỗi lượt gọi model). Tạm dừng: không bắt đầu bước mới. Dừng: hủy `CancellationToken`, tiến trình con bị giết cả cây.
-- **Khóa ghi file**: mọi lần ghi `status.json`, ledger, events đi qua một khóa trong `StatusTracker`/`Ledger` (bài học bản cũ: Windows từ chối `File.Move` khi hai luồng cùng ghi).
-- **Tải công cụ một lần**: tải file công cụ (ví dụ `junit-platform-launcher`) dùng khóa theo tên file, job khác chờ thay vì tải song song (bài học bản cũ: "file đang được tiến trình khác dùng" trên Windows).
-
-## 7. Lưu trữ và chạy tiếp
-
-| File | Ghi khi | Dùng để |
+| Interface | Bản thật | Bản giả cho test |
 | --- | --- | --- |
-| `run.lock.json` | Lần đầu tạo run | So cấu hình khi chạy tiếp (sha256 experiment, manifest, prompt; commit tool; JDK) |
-| `ledger.jsonl` | Mỗi job xong (một dòng: job, outcome, mã lỗi, `needs_rerun`) | Chạy tiếp: bỏ qua job đã có |
-| `events.jsonl` | Mỗi sự kiện đáng chú ý | Khung "Sự kiện" của S5, chẩn đoán |
-| `status.json` | Mỗi 2 s (heartbeat) | S6 ở terminal khác; biết run còn sống |
-| `tasks/…` | Theo spec 00 Mục 4 | Kết quả của từng khối |
-| `llm_cache/` | Mỗi lượt gọi model thành công (khóa = `call_id` + request, kèm thời gian, token, chi phí gốc) | Phát lại khi chạy tiếp; không bao giờ dùng cho lượt gọi của chain/vòng khác |
+| `IProcessRunner` | Chạy tiến trình, timeout, giết cả cây tiến trình, thử lại lỗi hạ tầng tối đa 3 lần | Trả output định sẵn |
+| `IGitClient` | git fetch, worktree | Fixture git cục bộ |
+| `IWorkspaceManager` | Mirror, checkout gốc, `compiled_snapshot`, bản sao mới cho mỗi lần chạy test, xóa | Thư mục tạm |
+| `IBuildRunner` | Dựng và chạy lệnh Maven/Gradle (build root, bộ chọn module, cờ chung, JDK) | Kết quả định sẵn |
+| `ITestReportReader` | Đọc `TEST-*.xml` của Surefire/Gradle trong workspace | XML mẫu |
+| `IJavaHelper` | Tiến trình java-helper chạy lâu, giao tiếp JSON từng dòng | Kết quả định sẵn |
+| `ILlmClient` | `LiteLlmClient` (HTTP tới proxy) bọc bởi `ReplayingLlmClient` (phát lại khi chạy tiếp, dùng `ILlmCacheRepository`) và `LlmGateway` (giới hạn, kiểm tra model id) | `FakeLlmClient` (luật: prompt chứa X thì trả Y) |
+| `ILiteLlmProxy` | Bật/tắt proxy LiteLLM | Không bật gì |
+| `IToolsCatalog` | Tải, kiểm tra sha256 của JaCoCo/PIT/tsDetect/EvoSuite | Thư mục công cụ giả |
 
-**Chạy tiếp:** `ResumePlanner` đọc ledger. **Dòng ledger là việc ghi cuối cùng của mọi job**, chỉ ghi khi mọi file đầu ra của job đã lưu đủ (lớp `JobRunner` bảo đảm thứ tự: chạy → ghi đầu ra → ghi ledger). Job có dòng → bỏ qua. Job không có dòng (đang chạy dở khi dừng) → xóa đầu ra dở dang và chạy lại từ đầu job (chain sửa: từ vòng 1; lượt gọi model đã có trong `llm_cache/` được phát lại với số liệu gốc). Job `INFRA` chỉ chạy lại khi có `--rerun-infra`.
-
-**Ghi nguyên tử:** ghi `<file>.<guid>.tmp` rồi đổi tên; tên `.tmp` có guid để hai luồng không đụng nhau.
-
-## 8. Lớp gọi model (khối 2)
+### 4.4. Thư mục của Arrow.Service
 
 ```
-TestGenerator ──► LlmGateway ──► ReplayingLlmClient ──► LiteLlmClient ──HTTP──► LiteLLM proxy ──► provider
-                  (giới hạn,     (khóa = call_id +        (gọi lại 20/60/120 s
-                   kiểm model id, request; có thì phát     khi 429/5xx; lỗi
-                   đếm lượt)      lại với số liệu gốc)    cấu hình → tạm dừng run)
+Arrow.Service/
+  Interfaces/       interface dịch vụ (4.1), interface khối (4.2), interface công cụ ngoài (4.3)
+  App/              PipelineService, ScreeningService, RunQueryService, ReportService,
+                    SetupService, ModelConfigService, DoctorService
+  Block1/           RepositoryAnalyzer, BuildRootRule, JdkSelector, ManifestJavaVersionParser,
+                    EffectivePomReader, GradleProbe, TestFrameworkDetector, PathCalculator,
+                    BaselineRunner, PairedTestScreener, MetadataPromptRenderer
+  Block2/           TestGenerator, PromptBuilder, CodeExtractor, NameNormalizer
+  Block3/           Verifier, JavacErrorParser, TestResultClassifier, SignatureBuilder, FailureDiagnoser,
+                    CheckpointComparer, AdaptiveRepairPolicy, FixedRepairPolicy, ExtraContextBuilder, RepairRunner
+  Block4/           EvoSuiteGenerator, SuitePreparer (ghi + biên dịch + classpath), JacocoTool, PitTool, TsDetectTool,
+                    JacocoCsvParser, PitXmlParser, TsDetectCsvParser, Rq1Calculator, Rq2Calculator, Rq3Calculator,
+                    NRule, PSensitivity, ReportBuilder
+  Pipeline/         JobGraph, Scheduler (2 hàng đợi), ControlGate, ResumePlanner, JobRunner
+  External/         ProcessRunner, GitClient, WorkspaceManager, BuildRunner, TestReportReader, JavaHelperClient,
+                    LiteLlmClient, ReplayingLlmClient, LlmGateway, LiteLlmProxy, ToolsCatalog
+  ServiceFactory.cs tạo repository của Data Access, công cụ ngoài, rồi các service; trả interface dịch vụ cho UI
 ```
 
-Test thay `LiteLlmClient` bằng `FakeLlmClient` (luật: nếu prompt chứa X thì trả Y), không cần proxy, không tốn tiền. `LiteLlmProxy` bật proxy khi cần gọi model lần đầu và tắt khi run xong; khi bật xóa các biến môi trường gây lỗi (`DEBUG`), đặt `PYTHONUTF8=1` (bài học bản cũ trên Windows).
+Logic thuần (không I/O: `PromptBuilder`, `CodeExtractor`, `JavacErrorParser`, `TestResultClassifier`, `SignatureBuilder`, `CheckpointComparer`, hai policy sửa, `JdkSelector`, `BuildRootRule`, các calculator, `NRule`) là các class không phụ thuộc gì ngoài Models, nên unit test trực tiếp bằng ví dụ trong spec.
 
-## 9. Lớp build và tiến trình
+## 5. Tầng Data Access
 
-- `ProcessRunner`: chạy tiến trình với timeout, gom stdout+stderr, giết cả cây tiến trình khi timeout hoặc bị hủy; trả mã thoát, thời gian, có timeout không. Có cơ chế thử lại tối đa 3 lần cho lỗi hạ tầng (Q8), chờ 30 s giữa các lần.
-- `BuildRunner`: dựng lệnh Maven/Gradle (wrapper nếu có), đặt `JAVA_HOME`, `PATH`, `JAVA_TOOL_OPTIONS` (locale `en_US`, múi giờ UTC, UTF-8), xóa `JDK_JAVA_OPTIONS`/`MAVEN_ARGS` của người dùng; ghi log từng lệnh (spec 00 Mục 6).
-- `WorkspaceManager`: mirror (`git fetch --depth 1 <sha>`); checkout gốc của task (không build, không chạy test trong đó); `compiled_snapshot` (bản sao sau khi biên dịch, chưa chạy test); **bản sao mới của snapshot cho mỗi lần chạy test** (baseline, mỗi lần xác minh của khối 3, mỗi công cụ của khối 4), xóa ngay sau khi đọc kết quả. Sao chép bằng copy-on-write (APFS `clonefile`, reflink) khi có, nếu không thì copy thường. Xóa snapshot khi mọi job của task xong.
-- `TestReportReader`: đọc `TEST-*.xml` của Surefire và Gradle (JUnit 4, JUnit 5, TestNG; mọi module trong reactor) thành danh sách `(test id, pass/fail/error/skip, exception type, message, trace)`; xử lý tên class/method khác nhau giữa hai công cụ.
-- `JavacErrorParser` (Core): biểu thức nhận đường dẫn macOS, `/D:/…`, `D:\…` (spec 03 Mục 3.2).
+### 5.1. Interface repository
 
-## 10. java-helper
-
-Công cụ Java nhỏ (JavaParser) chạy như **một tiến trình sống lâu** cho mỗi worker, nhận lệnh JSON từng dòng qua stdin và trả JSON từng dòng (tránh tốn 0,5–1 s khởi động JVM mỗi lần gọi):
-
-| Lệnh | Dùng ở | Việc |
+| Interface | File | Việc |
 | --- | --- | --- |
-| `parse` | Khối 2 | Kiểm tra cú pháp, đếm class top-level, tên class, package |
-| `rename_class` | Khối 2 | Đổi tên class và tham chiếu |
-| `strip_comments_hash` | Khối 2, 3 | Mã không comment/khoảng trắng thừa để tính hash |
-| `count_assertions` | Khối 3 | Đếm assertion (AR Mục 5.2) |
-| `list_test_methods` | Khối 3, 4 | Danh sách test method |
-| `method_at_line` | Khối 3 | Method chứa một dòng (COMPILE → method lỗi) |
-| `splice_methods` | Khối 2 (mức 3) | Ghép method viết lại vào checkpoint |
-| `class_api` | Khối 3 (mức 2) | Chữ ký constructor/method/field của một class (từ mã nguồn hoặc jar) |
-| `method_source` | Khối 3 (mức 2) | Mã nguồn method theo tên |
-| `called_methods` | Khối 3 (mức 2) | Các method của CUT mà một test method gọi |
+| `IConfigRepository` | `experiments/*.json`, `machine.local.json`, `litellm.config.local.yaml` | Đọc cấu hình (kiểm sha256 manifest), ghi cấu hình máy và LiteLLM, sửa mục `models` của cấu hình thực nghiệm (giữ thứ tự khóa) |
+| `IManifestRepository` | `evaluation_manifest/**/*.jsonl` | Đọc bản ghi `TaskRecord`, kiểm sha256 |
+| `IPromptRepository` | `prompts/**` | Đọc template, ví dụ few-shot, tính sha256 template |
+| `IRunRepository` | `runs/<run>/run.lock.json`, `ledger.jsonl`, `events.jsonl`, `status.json`, `control.json` | Tạo/mở run, ghi và so khóa cấu hình, thêm dòng ledger, đọc ledger, ghi sự kiện, ghi/đọc trạng thái, ghi/đọc lệnh điều khiển |
+| `ITaskResultRepository` | `runs/<run>/tasks/<dataset>/<task>/block1..4/**` | Ghi/đọc kết quả từng khối: M, baseline, workspace info, outcome; prompt, response, usage, candidate; verify, decision, final; jacoco, pit, tsdetect; log của từng lệnh |
+| `ILlmCacheRepository` | `runs/<run>/llm_cache/` | `TryGet(key)`, `Put(key, entry)` (entry gồm response và thời gian, token, chi phí gốc) |
+| `IReportRepository` | `runs/<run>/reports/` | Ghi CSV (`rq1_verification.csv`, `rq2_*.csv`, `rq3_*.csv`, `needs_rerun.csv`, `screening.csv`…) và `report.md` |
+| `ILogRepository` | `logs/arrow-<ngày>.log` | Ghi log của tool, che khóa API, `master_key`, `api_base` đầy đủ trước khi ghi |
 
-Jar được build từ `tools/java-helper` bằng Maven khi chưa có hoặc mã nguồn mới hơn jar; chạy bằng JDK 17.
+### 5.2. Cách cài đặt
 
-## 11. Màn hình (Arrow.Console)
+```
+Arrow.DataAccess/
+  Interfaces/   các interface ở 5.1
+  Files/        FileConfigRepository, FileManifestRepository, FilePromptRepository, FileRunRepository,
+                FileTaskResultRepository, FileLlmCacheRepository, FileReportRepository, FileLogRepository
+  Common/       AtomicFile (ghi <file>.<guid>.tmp rồi đổi tên), JsonFile (System.Text.Json, snake_case, UTF-8, LF),
+                JsonlAppender (thêm dòng có khóa), CsvWriter, YamlLiteLlm (đọc/ghi định dạng cố định của file LiteLLM), Redactor
+```
 
-- `RunHost` chạy `RunPipeline` trong một `Task` nền; `LiveRunScreen` vẽ lại từ `StatusTracker.Snapshot()` mỗi 0,5 s (Spectre `LiveDisplay`); `KeyListener` đọc phím P/R/S/Q và gọi `ControlGate`.
-- Không phải terminal (chuyển hướng output) hoặc `--plain` → `PlainPrinter` in sự kiện từng dòng.
-- `arrow-fw control --run-id R pause|resume|stop` ghi file `control.json` trong thư mục run; `ControlGate` của run đang chạy đọc file này mỗi 2 s (điều khiển từ terminal khác).
-- Màn hình chỉ đọc model dữ liệu của Core; không chứa logic quyết định.
+- Mọi lần ghi đi qua `AtomicFile`; ghi nối vào JSONL và ghi `status.json` có khóa theo file (bài học bản cũ: Windows từ chối `File.Move` khi hai luồng cùng ghi).
+- Đường dẫn trong file luôn dùng `/` và tương đối với gốc run hoặc gốc repository.
+- Kiểm thử bằng thư mục tạm, không cần Java hay mạng.
 
-## 12. Cấu hình, log, lỗi
+## 6. Tầng UI
 
-- `ConfigLoader` kiểm tra cấu hình khi khởi động: sha256 manifest, đủ model trong `litellm.config.local.yaml`, JDK cần có, thư mục không dấu cách. Lỗi → thông báo có mã và cách sửa, không chạy.
-- Log của tool: `logs/arrow-<ngày>.log` (mức Info; `--verbose` thêm Debug), qua `ToolLog` (ghi có khóa, che khóa API/`master_key` trước khi ghi).
-- Mã lỗi: hằng trong `ErrorCodes` (Core), tiền tố theo khối (`B1_…`, `B2_…`, `B3_…`, `B4_…`), danh sách khớp các spec 01–04.
+```
+Arrow.UI/
+  Program.cs          UTF-8, đọc tham số dòng lệnh, gọi ServiceFactory.Create, mở menu hoặc màn hình theo lệnh
+  CommandLine.cs      tách lệnh và tùy chọn (`run --run-id R --tasks a,b`), không dùng thư viện
+  ConsoleInput.cs     Choose, Ask, AskInt, Confirm, AskSecret (đều bằng ReadLine)
+  ConsoleOutput.cs    Title, Line, Table, Status, Blank (WriteLine); có khóa để luồng nền và luồng chính không in chen nhau
+  Screens/            MenuScreen (S1), SetupScreen (S2), ModelScreen (S3), DoctorScreen (S4), RunScreen (S5),
+                      StatusScreen (S6), TaskScreen (S7), ReportScreen (S8), RerunScreen (S9), ScreeningScreen (S10)
+```
 
-## 13. Thư viện
+Mỗi màn hình là một class nhận interface dịch vụ qua constructor, có một hàm `Run()`: hỏi bằng `ConsoleInput`, gọi Service, in bằng `ConsoleOutput`. Không màn hình nào chứa quy tắc nghiệp vụ.
 
-| Thư viện | Phiên bản | Dùng cho |
+**S5 khi đang chạy:** `RunScreen` gọi `IPipelineService.Start(request, progress)`; pipeline chạy ở luồng nền và báo `RunEvent` qua `IProgress<RunEvent>`, `RunScreen` in mỗi sự kiện một dòng (qua `ConsoleOutput`, có khóa). Luồng chính lặp `Console.ReadLine()` và gọi `Pause`/`Resume`/`Stop`/`GetSummary` theo chữ người dùng gõ (spec 06 Mục 7).
+
+## 7. Luồng gọi giữa các tầng
+
+### 7.1. Chạy một run (`arrow-fw run`)
+
+```
+UI: RunScreen
+  │ hỏi run id, tập task (ReadLine)
+  │ IPipelineService.Start(request, progress)
+  ▼
+Service: PipelineService
+  │ IConfigRepository.LoadExperiment / LoadMachine        ── Data Access đọc file cấu hình
+  │ IManifestRepository.ReadTasks                         ── Data Access đọc manifest
+  │ IRunRepository.OpenOrCreate + WriteOrVerifyLock       ── Data Access ghi run.lock.json
+  │ ResumePlanner(IRunRepository.ReadLedger)              ── job nào đã xong
+  │ JobGraph.Build → Scheduler chạy job:
+  │    JobRunner: gọi service của khối → ITaskResultRepository.Save… → IRunRepository.AppendLedger (cuối cùng)
+  │ báo RunEvent qua progress                             ── UI in một dòng
+  ▼
+UI: in tóm tắt khi xong
+```
+
+### 7.2. Một vòng sửa (trong job "chain" của khối 3)
+
+```
+RepairRunner (Service)
+  ├─ IRepairPolicy.NextRequest()                     → RepairRequest
+  ├─ ITestGenerator.RepairAsync(request)  (khối 2)    → ILlmClient (Replaying → Gateway → LiteLLM)
+  │       ReplayingLlmClient: ILlmCacheRepository.TryGet/Put   (Data Access)
+  ├─ Adaptive: mã trùng? → bỏ qua build
+  ├─ IVerifier.VerifyAsync(SuiteFiles)                → IWorkspaceManager (bản sao mới), IBuildRunner, ITestReportReader
+  ├─ IFailureDiagnoser.Diagnose(result)               → Diagnosis
+  ├─ IRepairPolicy.Apply(outcome)                     → RoundDecision
+  └─ ITaskResultRepository.SaveRound(prompt, response, usage, candidate, verify, decision)   (Data Access)
+VALID hoặc hết N → ITaskResultRepository.SaveFinal(final) → IRunRepository.AppendLedger (cuối cùng)
+```
+
+## 8. Chạy song song, tạm dừng, chạy tiếp (trong tầng Service)
+
+- **Hai hàng đợi** (`SemaphoreSlim`): `build` (`workers.build`, mọi lệnh Maven/Gradle/Java/EvoSuite/PIT) và `llm` (`workers.llm`). Job giữ hàng đợi chỉ trong lúc làm đúng việc đó.
+- **Ưu tiên job sâu hơn** (khối 3–4 của task đã bắt đầu chạy trước khối 1 của task mới) để workspace được xóa sớm.
+- **Fixed/Adaptive xen kẽ** theo chỉ số task (AR Mục 8).
+- **ControlGate** được kiểm tra trước mỗi bước: tạm dừng = không bắt đầu bước mới; dừng = hủy `CancellationToken`, giết cây tiến trình. Lệnh từ terminal khác đọc qua `IRunRepository.ReadControl` mỗi 2 giây.
+- **Chạy tiếp:** dòng ledger là việc ghi **cuối cùng** của mọi job (`JobRunner` bảo đảm: chạy → lưu đầu ra qua `ITaskResultRepository` → `AppendLedger`). Job có dòng ledger → bỏ qua; job chưa có → xóa đầu ra dở dang, chạy lại từ đầu job (chain: từ vòng 1, lượt gọi model đã có trong cache được phát lại với số liệu gốc). Job `INFRA` chỉ chạy lại khi có `--rerun-infra`.
+- **Heartbeat:** `PipelineService` ghi `status.json` qua `IRunRepository` mỗi 2 giây (S6 ở terminal khác đọc).
+
+## 9. Ghép các tầng (ServiceFactory)
+
+`ServiceFactory.Create(ToolPaths paths, Options options)`:
+1. Tạo repository của Data Access (`FileConfigRepository`, `FileRunRepository`…).
+2. Tạo công cụ ngoài (`ProcessRunner`, `BuildRunner`, `LiteLlmClient` hoặc `FakeLlmClient` khi `--fake-llm`…).
+3. Tạo service của 4 khối, rồi service cho UI, truyền phụ thuộc qua constructor (không dùng thư viện DI).
+4. Trả về một object `ArrowServices` chỉ gồm các interface ở Mục 4.1.
+
+Test thay bước 1 bằng repository trong bộ nhớ và bước 2 bằng công cụ giả.
+
+## 10. Kiểm thử theo tầng
+
+| Tầng | Test | Cần gì |
 | --- | --- | --- |
-| .NET SDK | 8 (roll forward lên bản mới hơn) | Toàn bộ |
-| Spectre.Console, Spectre.Console.Cli | 0.49 | Màn hình, lệnh |
-| xUnit | 2.9 | Test |
-| JavaParser (trong java-helper) | 3.26 | Phân tích mã Java |
-| LiteLLM (Python, ngoài .NET) | 1.91.0 | Proxy gọi model |
-| JaCoCo / PIT (+ junit5 plugin) / tsDetect / EvoSuite | 0.8.12 / 1.17.4 (+1.2.1) / 2.2 / 1.2.0 | Khối 4 |
+| Data Access | Đọc/ghi từng loại file, ghi nguyên tử, ghi đồng thời từ nhiều luồng, che khóa API trong log, giữ thứ tự khóa khi sửa `models` | Thư mục tạm |
+| Service: logic thuần | Mọi ví dụ trong spec 01–05 (chọn build root, JDK, prompt 3 quy trình, tách mã, phân loại lỗi, signature, ví dụ Fixed/Adaptive spec 03 Mục 7, 14, 15, công thức RQ, quy tắc N) | Không cần gì |
+| Service: điều phối | `PipelineService`, `RepairRunner` với repository trong bộ nhớ, `FakeLlmClient`, `IBuildRunner` giả | Không cần Java |
+| Tích hợp | Khối 1, 3, 4 với Maven/Gradle thật trên fixture; toàn luồng `run` với model giả; dừng giữa chừng rồi chạy tiếp | JDK, Maven, Gradle |
+| UI | Chạy `arrow-fw` với input chuyển hướng (`echo "4\n…" \| arrow-fw`), so output với mẫu | File chạy đã build |
 
-Không dùng thư viện JSON ngoài: `System.Text.Json` (snake_case). Không dùng ORM hay cơ sở dữ liệu: mọi kết quả là file JSON/CSV trong thư mục run.
-
-## 14. Thứ tự viết code (mỗi bước có test, build không cảnh báo, test pass)
+## 11. Thứ tự viết code (mỗi bước có test, build không cảnh báo, test pass)
 
 | Bước | Nội dung | Xong khi |
 | --- | --- | --- |
-| C1 | Solution, Core/Common, Config, Manifest, RunStore, Ledger, ProcessRunner, ToolLog | Unit test cấu hình, ledger, ghi nguyên tử |
-| C2 | java-helper (Java) + JavaHelperClient | Test từng lệnh trên mã mẫu |
-| C3 | Khối 1: build root, RepositoryAnalyzer, snapshot, Baseline, tiêu chí B, lệnh `screen` | Integration trên 4 fixture (gồm build root là thư mục con, module phụ thuộc module anh em): M đủ 6 thông tin, baseline đúng, tiêu chí B đúng; chạy `screen` trên manifest pilot v2: kết quả khớp sàng lọc pilot v2 (50/50 PASS) hoặc liệt kê rõ CUT khác biệt |
-| C4 | Khối 3 phần xác minh: SuiteFiles, Verifier, JavacErrorParser, TestReportReader, Diagnoser | Fixture với candidate cố ý sai ra đủ 6 trạng thái; một bộ kiểu EvoSuite (`*_ESTest` + scaffolding) được xác minh đúng |
-| C5 | Khối 2: PromptBuilder, CodeExtractor, LLM stack, FakeLlmClient | Unit test prompt 3 quy trình; HTTP giả |
-| C6 | Khối 3 phần sửa: Adaptive/Fixed policy, RepairRunner, ExtraContextBuilder | Ví dụ spec 03 Mục 7, 14, 15 thành unit test; e2e một chain với model giả |
-| C7 | Khối 4: chuẩn bị bộ test (ghi + biên dịch + classpath), EvoSuite, JaCoCo, PIT, tsDetect, ReportBuilder | Đo được trên 3 fixture (gồm đa module với `-am`); PIT chỉ có mutant của CUT; báo cáo từ dữ liệu mẫu |
-| C8 | Pipeline, Scheduler, ResumePlanner, ControlGate | E2E `run` 4 khối với model giả; dừng giữa chừng rồi chạy tiếp |
-| C9 | Màn hình S1–S9, setup, models, doctor | Chạy tay từng màn hình; `--plain` |
-| C10 | Smoke với model thật (2 CUT, giới hạn lượt gọi) | Chạy qua 4 khối, có báo cáo |
+| C1 | Solution 4 project + 3 project test; Models; Data Access (mọi repository); `ConsoleInput`/`ConsoleOutput` | Test Data Access pass |
+| C2 | java-helper (Java) + `IJavaHelper` | Test từng lệnh trên mã mẫu |
+| C3 | Service khối 1: build root, JDK, phân tích, snapshot, baseline, tiêu chí B; `IScreeningService` | Integration trên fixture (gồm build root thư mục con, module không thuộc reactor); `screen` trên pilot v2 khớp sàng lọc pilot (50/50 PASS) hoặc liệt kê khác biệt |
+| C4 | Service khối 3 phần xác minh: `SuiteFiles`, Verifier, phân loại lỗi, Diagnoser | Fixture với candidate cố ý sai ra đủ 6 trạng thái; một bộ kiểu EvoSuite xác minh đúng |
+| C5 | Service khối 2: prompt, tách mã, `ILlmClient` (Replaying, Gateway, LiteLLM, Fake) | Unit test prompt 3 quy trình; HTTP giả |
+| C6 | Service khối 3 phần sửa: hai policy, `RepairRunner`, `ExtraContextBuilder` | Ví dụ spec 03 Mục 7, 14, 15 thành unit test; một chain với model giả |
+| C7 | Service khối 4: chuẩn bị bộ test, EvoSuite, JaCoCo, PIT, tsDetect, báo cáo | Đo được trên fixture; PIT chỉ có mutant của CUT; báo cáo từ dữ liệu mẫu |
+| C8 | `PipelineService`, Scheduler, ResumePlanner, ControlGate, `IRunQueryService` | Toàn luồng `run` 4 khối với model giả; dừng rồi chạy tiếp |
+| C9 | Tầng UI: S1–S10, `CommandLine`, `ServiceFactory` | Chạy tay từng màn hình; test UI với input chuyển hướng |
+| C10 | Smoke với model thật (2 CUT, giới hạn lượt gọi) | Qua 4 khối, có báo cáo |

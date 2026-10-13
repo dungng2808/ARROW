@@ -1,6 +1,6 @@
 # ARROW Framework
 
-**Trạng thái:** spec đã chốt các điểm Q1–Q8 (14/10/2026); màn hình và kiến trúc chờ duyệt. Chưa có code. Sau khi spec được duyệt, code bằng C# console (.NET 8) theo đúng các spec dưới đây.
+**Trạng thái:** spec đã chốt các điểm Q1–Q8 (14/10/2026); màn hình và kiến trúc chờ duyệt. Chưa có code. Sau khi spec được duyệt, code bằng C# console (.NET 8), kiến trúc 3 tầng (UI / Service / Data Access), theo đúng các spec dưới đây.
 
 ARROW Framework chạy quy trình ARROW trên các CUT của manifest, gồm 4 khối:
 
@@ -16,8 +16,8 @@ Tổng quan (luồng dữ liệu, cấu hình, thư mục run, lệnh, kiến tr
 | Spec khác | Nội dung |
 | --- | --- |
 | [specs/05-open-questions.md](specs/05-open-questions.md) | Các điểm đã chốt (Q1–Q8), giải thích chi tiết |
-| [specs/06-console-ui.md](specs/06-console-ui.md) | Màn hình console: menu, cài đặt, model, kiểm tra môi trường, theo dõi khi chạy, chi tiết task, báo cáo, cần chạy lại |
-| [specs/07-architecture.md](specs/07-architecture.md) | Kiến trúc code: project, lớp chính, luồng chạy, song song, lưu trữ, thứ tự viết code |
+| [specs/06-console-ui.md](specs/06-console-ui.md) | Tầng UI: nhập bằng `ReadLine`, xuất bằng `WriteLine`; menu, cài đặt, model, kiểm tra môi trường, theo dõi khi chạy, chi tiết task, báo cáo, cần chạy lại, sàng lọc |
+| [specs/07-architecture.md](specs/07-architecture.md) | Kiến trúc 3 tầng UI / Service / Data Access qua interface: project, interface từng tầng, luồng gọi, song song, chạy tiếp, thứ tự viết code |
 
 Thiết kế Adaptive Repair gốc: [../Adaptive repair.md](../Adaptive%20repair.md). Quy tắc chung của dự án: [../CLAUDE.md](../CLAUDE.md).
 

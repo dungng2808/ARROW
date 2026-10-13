@@ -158,7 +158,7 @@ Mọi file JSON: UTF-8 không BOM, xuống dòng LF, tên trường snake_case. 
 | `arrow-fw setup` / `arrow-fw models` | Cài đặt máy; model, provider, khóa API, giá |
 | `arrow-fw` (không kèm lệnh) | Menu chính |
 
-Màn hình của từng lệnh (menu, cài đặt, theo dõi trực tiếp khi chạy, chi tiết task, báo cáo…) mô tả ở **spec 06**. Khi chạy: P tạm dừng, R tiếp tục, S hoặc Ctrl+C dừng an toàn (việc đang chạy dở bị hủy, việc đã ghi ledger được giữ, chạy lại cùng lệnh thì tiếp tục). `--plain` in từng dòng thay cho màn hình.
+Màn hình của từng lệnh (menu, cài đặt, theo dõi khi chạy, chi tiết task, báo cáo…) mô tả ở **spec 06**: nhập bằng `ReadLine`, xuất bằng `WriteLine`. Khi chạy, gõ `p` tạm dừng, `r` tiếp tục, `s` hoặc Ctrl+C dừng an toàn (việc đang chạy dở bị hủy, việc đã ghi ledger được giữ, chạy lại cùng lệnh thì tiếp tục), `t` in bảng tổng.
 
 ### 5.2. Thứ tự và song song
 
@@ -185,17 +185,15 @@ Không có cơ chế chia shard riêng. Mỗi máy chạy cùng experiment với
 
 ## 7. Kiến trúc code C#
 
-Chi tiết ở **spec 07**. Tóm tắt: ba project phụ thuộc một chiều `Arrow.Console → Arrow.Infrastructure → Arrow.Core`.
+Chi tiết ở **spec 07**. Kiến trúc **3 tầng**, các tầng gọi nhau qua interface:
 
-| Project | Chứa |
-| --- | --- |
-| `Arrow.Core` | Model dữ liệu, cấu hình, **logic thuần** của 4 khối (chọn JDK, dựng prompt, tách mã, phân loại lỗi, signature, checkpoint, Fixed/Adaptive, công thức báo cáo, quy tắc N). Không chạy tiến trình, không gọi mạng |
-| `Arrow.Infrastructure` | Phần chạm vào máy của 4 khối (git, Maven/Gradle, java-helper, gọi model, JaCoCo/PIT/tsDetect/EvoSuite), Pipeline lập lịch job, lưu trạng thái run |
-| `Arrow.Console` | Lệnh dòng lệnh và màn hình (spec 06) |
-| `tools/java-helper` | Công cụ Java (JavaParser): phân tích, đếm assertion, ghép method… |
+| Tầng | Project | Làm |
+| --- | --- | --- |
+| UI | `Arrow.UI` | Nhập bằng `Console.ReadLine`, xuất bằng `Console.WriteLine`; menu và màn hình (spec 06) |
+| Service | `Arrow.Service` | Thực thi logic: 4 khối, thuật toán sửa, công thức báo cáo, lập lịch; gọi công cụ ngoài (git, Maven/Gradle, Java, model, JaCoCo/PIT/tsDetect/EvoSuite) |
+| Data Access | `Arrow.DataAccess` | Đọc, ghi dữ liệu của framework ra file (cấu hình, manifest, prompt, ledger, kết quả, cache, báo cáo, log) |
 
-- Mỗi khối có **interface** khớp đúng input/output trong spec của khối (ví dụ `IRepositoryAnalyzer`, `ITestGenerator`, `IVerifier`, `IRepairRunner`, `IQualityTool`). Pipeline chỉ nối các interface.
-- Gọi model chỉ qua `ILlmClient`; test dùng `FakeLlmClient` đọc luật từ file JSON, không tốn tiền.
+`Arrow.Models` chứa class dữ liệu dùng chung. Hướng phụ thuộc: UI → Service → Data Access. Mỗi khối có interface khớp đúng input/output trong spec của khối (`IRepositoryAnalyzer`, `ITestGenerator`, `IVerifier`, `IRepairRunner`, `IQualityTool`…). Gọi model chỉ qua `ILlmClient`; test dùng `FakeLlmClient`, không tốn tiền.
 
 ## 8. Kiểm thử của framework
 
@@ -241,3 +239,4 @@ Giải thích chi tiết từng điểm (bối cảnh, vấn đề, ảnh hưở
 | 14/10/2026 | Spec 03, 04: lệnh chạy test lấy tên từ `SuiteFiles.test_fqn` (`…_ArrowTest`, `…_ESTest`); mô tả `SuiteFiles` gồm scaffolding, runtime EvoSuite | Review lần 2: cố định `_ArrowTest` làm bộ EvoSuite bị xếp DISCOVERY |
 | 14/10/2026 | Spec 04: mỗi bản sao để đo phải ghi bộ test và **biên dịch test** trước khi chạy PIT | Review lần 2: snapshot tạo trước khi có bộ test, PIT không tự biên dịch |
 | 14/10/2026 | Spec 00, 01, 07: ledger là việc ghi cuối cùng của job; khối 1 chỉ ghi sau baseline và tiêu chí B | Review lần 2: ghi OK sớm làm chạy tiếp thiếu baseline |
+| 14/10/2026 | Spec 06, 07: kiến trúc 3 tầng UI / Service / Data Access qua interface; UI chỉ dùng `Console.ReadLine` và `Console.WriteLine` (bỏ Spectre.Console) | Yêu cầu của nhóm |
