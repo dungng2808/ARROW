@@ -11,6 +11,7 @@ namespace Arrow.Cli.Screens;
 public sealed class MenuScreen(Session session)
 {
     private const string RunMine = "Chạy shard của tôi (S0 chuẩn bị → S5 báo cáo)";
+    private const string RunSmoke = "Chạy smoke với model thật (2 CUT, S0 → S2, tối đa 36 lượt gọi)";
     private const string RunDemo = "Chạy thử dashboard (job giả, không build, không gọi model)";
     private const string Status = "Xem trạng thái run";
     private const string Show = "Xem kết quả run (sinh test, vòng sửa, đường cộng dồn)";
@@ -22,6 +23,10 @@ public sealed class MenuScreen(Session session)
     private const string Merge = "Gom kết quả các máy";
     private const string Report = "Báo cáo pilot";
     private const string Quit = "Thoát";
+
+    /// <summary>Smoke với model thật (README Mục 0): 2 CUT Classes2Test của pilot, cấu hình experiments/smoke-v1.json (n_max 2).</summary>
+    private const string SmokeExperiment = "experiments/smoke-v1.json";
+    private static readonly string[] SmokeTasks = ["107165228_0924785415323560", "159422409_9d630c4556038ca7"];
 
     public async Task<int> RunAsync(CancellationToken cancellationToken)
     {
@@ -54,7 +59,7 @@ public sealed class MenuScreen(Session session)
             var choice = AnsiConsole.Prompt(new SelectionPrompt<string>()
                 .Title("Chọn việc ([grey]↑/↓, Enter[/]):")
                 .PageSize(14)
-                .AddChoices(RunMine, RunDemo, Status, Show, Control, Setup, Doctor, Export)
+                .AddChoices(RunMine, RunSmoke, RunDemo, Status, Show, Control, Setup, Doctor, Export)
                 .AddChoiceGroup("── Người điều phối ──", ShardPlan, Merge, Report)
                 .AddChoices(Quit));
 
@@ -74,6 +79,27 @@ public sealed class MenuScreen(Session session)
                     }
 
                     break;
+                case RunSmoke:
+                {
+                    var runId = $"smoke-{DateTime.Now:yyyyMMdd-HHmm}";
+                    AnsiConsole.MarkupLine($"[grey]Smoke gọi GPT-6 Luna thật qua LiteLLM: {SmokeTasks.Length} CUT × 3 quy trình, sửa tối đa 2 vòng × 2 cơ chế; run [bold]{runId}[/]. Lỗi khóa/ví/định tuyến của provider làm run tự tạm dừng: bấm S để dừng.[/]");
+                    if (!AnsiConsole.Confirm("Bắt đầu?"))
+                    {
+                        break;
+                    }
+
+                    try
+                    {
+                        await new ShardRunScreen(session).RunAsync(new ShardRunScreen.Options(runId, false, false, SmokeTasks,
+                            ExperimentPath: SmokeExperiment, Stages: ["prepare", "generate", "repair"], MaxLlmCalls: 36), cancellationToken);
+                    }
+                    catch (Arrow.Core.Util.ArrowException ex)
+                    {
+                        AnsiConsole.MarkupLine($"[red]{Markup.Escape(ex.Code)}[/]: {Markup.Escape(ex.Message)}");
+                    }
+
+                    break;
+                }
                 case Show:
                     await PickRunAsync(runId => Task.FromResult(Guard(() => new ReportScreens(session).Show(runId, null, null))));
                     break;

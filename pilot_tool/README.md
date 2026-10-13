@@ -17,7 +17,7 @@ Cần .NET SDK 8 trở lên (máy chỉ có SDK mới hơn vẫn được). Từ
 | Tải công cụ S3/S4 (EvoSuite, JaCoCo, PIT, tsDetect) vào `ARROW/tools` | `dotnet run --project src/Arrow.Cli -- tools install` |
 | Chạy shard của máy: S0 → S1 → S2 → S3 → S4 → S5 báo cáo | `dotnet run --project src/Arrow.Cli -- run` |
 | Chỉ chạy một số bước | `dotnet run --project src/Arrow.Cli -- run --stages prepare,generate` |
-| Smoke với model thật (2 CUT, tối đa 40 lượt gọi) | `dotnet run --project src/Arrow.Cli -- run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6` |
+| Smoke với model thật (2 CUT, tối đa 40 lượt gọi; hoặc menu `arrow` → "Chạy smoke với model thật") | `dotnet run --project src/Arrow.Cli -- run --experiment experiments/smoke-v1.json --tasks 107165228_0924785415323560,159422409_9d630c4556038ca7 --stages prepare,generate,repair --max-llm-calls 40 --run-id smoke-gpt6` |
 | Chạy thử cả pipeline không tốn tiền (model giả) | `dotnet run --project src/Arrow.Cli -- run --experiment <file> --fake-llm <luật.json>` |
 | Chạy lại job lỗi hạ tầng | `dotnet run --project src/Arrow.Cli -- run --rerun-infra` |
 | Xem kết quả sinh, các vòng sửa, đường cộng dồn | `dotnet run --project src/Arrow.Cli -- show --run-id <id>` |
