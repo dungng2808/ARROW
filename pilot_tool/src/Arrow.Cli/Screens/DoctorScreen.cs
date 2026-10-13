@@ -94,7 +94,7 @@ public sealed class DoctorScreen(Session session)
         AnsiConsole.Write(new Rule("[bold]Kiểm tra môi trường[/]").LeftJustified());
         var table = new Table().Border(TableBorder.Rounded).AddColumns("Kiểm tra", "", "Chi tiết");
         DoctorReport? report = null;
-        await AnsiConsole.Live(table).StartAsync(async context =>
+        if (!AnsiConsole.Profile.Capabilities.Interactive)
         {
             report = await new DoctorService(session.Paths).RunAsync(check =>
             {
@@ -108,9 +108,29 @@ public sealed class DoctorScreen(Session session)
                 var detail = Markup.Escape(check.Detail) + (check.Hint is null || check.Status == CheckStatus.Pass ? "" : $"\n[grey]→ {Markup.Escape(check.Hint)}[/]");
                 table.AddRow(Markup.Escape(check.Name), icon, detail);
                 ToolLog.Info($"doctor: {check.Name}: {check.Status.ToString().ToUpperInvariant()} · {check.Detail}");
-                context.Refresh();
             }, cancellationToken);
-        });
+            AnsiConsole.Write(table);
+        }
+        else
+        {
+            await AnsiConsole.Live(table).StartAsync(async context =>
+            {
+                report = await new DoctorService(session.Paths).RunAsync(check =>
+                {
+                    var icon = check.Status switch
+                    {
+                        CheckStatus.Pass => Theme.Ok,
+                        CheckStatus.Warn => Theme.Warn,
+                        CheckStatus.Fail => Theme.Fail,
+                        _ => Theme.Skip,
+                    };
+                    var detail = Markup.Escape(check.Detail) + (check.Hint is null || check.Status == CheckStatus.Pass ? "" : $"\n[grey]→ {Markup.Escape(check.Hint)}[/]");
+                    table.AddRow(Markup.Escape(check.Name), icon, detail);
+                    ToolLog.Info($"doctor: {check.Name}: {check.Status.ToString().ToUpperInvariant()} · {check.Detail}");
+                    context.Refresh();
+                }, cancellationToken);
+            });
+        }
 
         var ready = report!.Status == "READY";
         ToolLog.Info($"doctor: kết quả {report.Status}");

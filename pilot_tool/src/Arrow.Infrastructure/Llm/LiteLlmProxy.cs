@@ -12,11 +12,13 @@ namespace Arrow.Infrastructure.Llm;
 public sealed class LiteLlmProxy : IAsyncDisposable
 {
     private readonly Process? _process;
+    private readonly IDisposable? _log;
 
-    private LiteLlmProxy(Process? process, string url)
+    private LiteLlmProxy(Process? process, string url, IDisposable? log = null)
     {
         _process = process;
         Url = url;
+        _log = log;
     }
 
     public string Url { get; }
@@ -81,8 +83,10 @@ public sealed class LiteLlmProxy : IAsyncDisposable
         }
 
         start.Environment["PYTHONIOENCODING"] = "utf-8";
+        start.Environment["PYTHONUTF8"] = "1";
         var process = Process.Start(start) ?? throw new ArrowException("LLM_PROXY_START_FAILED", "Không khởi động được LiteLLM proxy");
-        var log = new StreamWriter(logPath, append: true) { AutoFlush = true };
+        var logStream = new FileStream(logPath, FileMode.Append, FileAccess.Write, FileShare.ReadWrite);
+        var log = new StreamWriter(logStream, System.Text.Encoding.UTF8) { AutoFlush = true };
         void Write(string? line)
         {
             if (line is not null)
@@ -105,17 +109,19 @@ public sealed class LiteLlmProxy : IAsyncDisposable
         {
             if (process.HasExited)
             {
+                log.Dispose();
                 throw new ArrowException("LLM_PROXY_START_FAILED", $"LiteLLM proxy thoát (mã {process.ExitCode}); xem {logPath}");
             }
 
             if (await IsAliveAsync(url, cancellationToken).ConfigureAwait(false))
             {
-                return new LiteLlmProxy(process, url);
+                return new LiteLlmProxy(process, url, log);
             }
 
             await Task.Delay(1000, cancellationToken).ConfigureAwait(false);
         }
 
+        log.Dispose();
         process.Kill(entireProcessTree: true);
         throw new ArrowException("LLM_PROXY_START_FAILED", $"LiteLLM proxy không sẵn sàng sau 120 giây; xem {logPath}");
     }
@@ -135,6 +141,7 @@ public sealed class LiteLlmProxy : IAsyncDisposable
         }
 
         _process?.Dispose();
+        _log?.Dispose();
         return ValueTask.CompletedTask;
     }
 }
