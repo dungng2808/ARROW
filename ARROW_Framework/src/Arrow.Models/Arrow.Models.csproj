@@ -1,0 +1,3 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Class dữ liệu dùng chung cho cả 3 tầng; không có logic, không tham chiếu project nào. -->
+</Project>

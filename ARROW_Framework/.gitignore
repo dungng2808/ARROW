@@ -1,0 +1,17 @@
+# Build
+bin/
+obj/
+*.user
+.vs/
+.idea/
+
+# Dữ liệu của máy và kết quả chạy: không commit
+machine.local.json
+litellm.config.local.yaml
+*.local.json
+*.local.yaml
+runs/
+logs/
+
+# java-helper build output
+tools/java-helper/target/

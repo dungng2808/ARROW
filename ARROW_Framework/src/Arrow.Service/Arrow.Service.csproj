@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Tầng Service: thực thi logic, gọi Data Access qua interface. -->
+  <ItemGroup>
+    <ProjectReference Include="..\Arrow.Models\Arrow.Models.csproj" />
+    <ProjectReference Include="..\Arrow.DataAccess\Arrow.DataAccess.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Arrow.Service.Tests" />
+    <InternalsVisibleTo Include="Arrow.IntegrationTests" />
+  </ItemGroup>
+</Project>

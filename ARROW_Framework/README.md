@@ -1,6 +1,17 @@
 # ARROW Framework
 
-**Trạng thái:** spec đã chốt các điểm Q1–Q8 (14/10/2026); màn hình và kiến trúc chờ duyệt. Chưa có code. Sau khi spec được duyệt, code bằng C# console (.NET 8), kiến trúc 3 tầng (UI / Service / Data Access), theo đúng các spec dưới đây.
+**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong bước C1** (khung 3 tầng, Models, toàn bộ Data Access, nhập/xuất console, kiểm tra bộ prompt). Các bước C2–C10 theo spec 07 Mục 11.
+
+## Build và chạy
+
+Cần .NET SDK 8 trở lên. Từ thư mục `ARROW_Framework`:
+
+| Việc | Lệnh |
+| --- | --- |
+| Build | `dotnet build ArrowFramework.sln` |
+| Test | `dotnet test ArrowFramework.sln` |
+| Kiểm tra bộ prompt | `dotnet run --project src/Arrow.UI -- prompts check` |
+| Trợ giúp | `dotnet run --project src/Arrow.UI -- --help` | Sau khi spec được duyệt, code bằng C# console (.NET 8), kiến trúc 3 tầng (UI / Service / Data Access), theo đúng các spec dưới đây.
 
 ARROW Framework chạy quy trình ARROW trên các CUT của manifest, gồm 4 khối:
 

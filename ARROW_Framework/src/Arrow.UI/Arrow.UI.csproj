@@ -1,0 +1,15 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Tầng UI: nhập bằng Console.ReadLine, xuất bằng Console.WriteLine. Chỉ gọi tầng Service. -->
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <AssemblyName>arrow-fw</AssemblyName>
+    <RootNamespace>Arrow.UI</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Arrow.Models\Arrow.Models.csproj" />
+    <ProjectReference Include="..\Arrow.Service\Arrow.Service.csproj" />
+  </ItemGroup>
+  <ItemGroup>
+    <InternalsVisibleTo Include="Arrow.Service.Tests" />
+  </ItemGroup>
+</Project>
