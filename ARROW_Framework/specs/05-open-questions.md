@@ -204,9 +204,15 @@ keep every other method exactly as it is.
 Repository configuration: Maven 3.9.6 · Java 8 · JUnit 4 (4.13.2) · Mockito 3.12.4 · … (khối M đầy đủ)
 Errors:
   OrderService_ArrowTest.java:[14,30] cannot find symbol  symbol: method getTotal(long)
-Attempts that already failed (do not repeat them):        ← phần B thêm vào mức 3
-  - round 1: COMPILE | cannot find symbol | method
-  - round 2: COMPILE | cannot find symbol | method
+Additional information for this failure:                 ← mức 3 giữ thông tin bổ sung của mức 2 (chốt 14/10/2026)
+  Constructors, methods and fields of com.acme.shop.OrderService: … public long totalPrice(long orderId) …
+Approaches that already failed (do not repeat them):        ← phần B thêm vào mức 3
+- Round 1 · COMPILE | cannot find symbol | method
+  First error: cannot find symbol: method getTotal(long) in class com.acme.shop.OrderService
+  Changed code: …
+- Round 2 · COMPILE | cannot find symbol | method
+  First error: cannot find symbol: method calcTotal(long) in class com.acme.shop.OrderService
+  Changed code: …
 Test class: ```java … ```
 Class under test: ```java … ```
 ```

@@ -223,9 +223,10 @@ for t = 1 … N:
     ct      ← Khối2.RepairAsync(request)
 
     if ct không hợp lệ (INVALID_OUTPUT):
-        attempts += (t, "invalid output") ; level ← NextLevel(level) ; continue
+        attempts += Attempt(t, "invalid output: <lý do>") ; level ← NextLevel(level) ; continue
     if ct.code_hash ∈ seen_hash:
-        attempts += (t, "duplicate code (same as round r)") ; level ← NextLevel(level) ; continue
+        attempts += Attempt(t, "duplicate code (same as round r)", change = Diff(best, ct))
+        level ← NextLevel(level) ; continue
     seen_hash += ct.code_hash
 
     v ← Xácminh(ct)                                         # 3.1; INFRA → dừng chain
@@ -236,7 +237,7 @@ for t = 1 … N:
         if v.state ≠ best.state: level ← 1                   # lỗi đổi loại
         best ← ct (kèm v)                                    # cập nhật checkpoint
     else:
-        attempts += (t, v.error_signature)
+        attempts += Attempt(t, v.error_signature, first_error = FirstError(v), change = Diff(best, ct))
         if cmp = WORSE  or  v.error_signature = best.error_signature:
             level ← NextLevel(level)                        # rollback hoặc lỗi lặp
         # cmp = EQUAL và signature khác: giữ mức
@@ -246,9 +247,34 @@ Finalize(budget, best)
 
 `NextLevel(level)`:
 - `level < 3` → `level + 1`.
-- `level = 3` → **2** *(chốt Q5, 14/10/2026)*: đã ở mức cao nhất mà vẫn không tiến triển thì quay lại mức 2 (thông tin bổ sung + danh sách đã thử), lần lỗi lặp tiếp theo lại lên 3. AR chỉ ghi `min(level + 1, 3)`; với quy tắc đó, khi checkpoint không đổi, prompt mức 3 giống hệt từng chữ ở mọi vòng, khối 2 trả lại cùng câu trả lời từ cache và mọi vòng còn lại đều là mã trùng (pilot cũ: 5 chain kẹt như vậy tới hết N).
+- `level = 3` → **2** *(chốt Q5, 14/10/2026)*: đã ở mức cao nhất mà vẫn không tiến triển thì quay lại mức 2 (thông tin bổ sung + danh sách đã thử), lần lỗi lặp tiếp theo lại lên 3. AR chỉ ghi `min(level + 1, 3)`; với quy tắc đó, khi checkpoint không đổi, prompt mức 3 giống hệt từng chữ ở mọi vòng, model (temperature 0) trả lại cùng câu trả lời và mọi vòng còn lại đều là mã trùng (pilot cũ: 5 chain kẹt như vậy tới hết N).
 
 **Mức thực tế:** mức 3 chỉ dùng khi `best.state` ∈ {COMPILE, RUNTIME, ASSERTION} **và** `best.failing_methods` khác rỗng; nếu không, vòng đó dùng prompt mức 2 (`requested_level = 3`, `level = 2`).
+
+**Danh sách "đã thử và thất bại" (`attempts`)** *(chốt 14/10/2026)*. Mỗi phần tử có hai loại thông tin cho hai mục đích:
+
+| Trường | Dùng cho | Nội dung |
+| --- | --- | --- |
+| `round` | cả hai | Vòng của lần thử |
+| `signature` | **thuật toán** (phát hiện lỗi lặp) và model | Error signature đã chuẩn hóa (Mục 5), hoặc `duplicate code (same as round r)`, hoặc `invalid output: <lý do>` |
+| `first_error` | **model** | Lỗi đầu tiên **chưa chuẩn hóa**, bỏ đường dẫn tuyệt đối, tối đa 200 ký tự: COMPILE: thông điệp javac kèm symbol và location (`cannot find symbol: method calcTotal(long) in class com.acme.shop.OrderService`); UNKNOWN: dòng `Failed to execute goal …` đầu tiên; DISCOVERY: `no tests executed`; RUNTIME: method, exception, thông điệp (`totalPriceAddsTax: NullPointerException at OrderService.totalPrice`); ASSERTION: method và thông điệp (`totalPriceAddsTax: expected:<110> but was:<100>`); REGRESSION: test sẵn có đầu tiên bị hỏng kèm exception. Không có với output không hợp lệ |
+| `change` | **model** | Các dòng mã đã đổi so với checkpoint mà lần thử đó sửa từ (`-` dòng bị bỏ, `+` dòng thêm, không kèm dòng ngữ cảnh), tối đa 15 dòng, dư thì ghi `… (k more changed lines)`. Không có với output không hợp lệ |
+
+Khi điền vào prompt (`{{failed_attempts}}`): **3 lần thử gần nhất** hiện đủ `signature`, `first_error`, `change`; các lần cũ hơn chỉ hiện một dòng `round` + `signature` (để prompt không dài mãi). Thuật toán chỉ so `signature`; `first_error` và `change` chỉ để model biết **đã thử cái gì** mà tránh lặp, kể cả khi bản đó đã bị rollback và không còn trong mã gửi đi.
+
+```
+Approaches that already failed (do not repeat them):
+- Round 1 · COMPILE | cannot find symbol | method
+- Round 2 · COMPILE | cannot find symbol | method
+  First error: cannot find symbol: method calcTotal(long) in class com.acme.shop.OrderService
+  Changed code:
+    -        long total = service.getTotal(1L);
+    +        long total = service.calcTotal(1L);
+- Round 3 · duplicate code (same as round 2)
+  Changed code:
+    -        long total = service.getTotal(1L);
+    +        long total = service.calcTotal(1L);
+```
 
 ### 6.5. Nội dung `RepairRequest` của Adaptive theo mức
 
@@ -256,9 +282,11 @@ Prompt luôn mô tả lỗi của **checkpoint** (`best`), vì mã gửi đi là
 
 | Mức | Template | `error_block` | `extra_context` | `failed_attempts` | `rewrite_methods` |
 | --- | --- | --- | --- | --- | --- |
-| 1 | `repair/level1.md` | của best | rỗng | rỗng | rỗng |
-| 2 | `repair/level2.md` | của best | theo trạng thái (bảng dưới) | toàn bộ `attempts` | rỗng |
-| 3 | `repair/level3.md` | của best | rỗng | toàn bộ `attempts` *(chốt Q5, 14/10/2026)* | `best.failing_methods` |
+| 1 | `repair/user/level1.md` | của best | rỗng | rỗng | rỗng |
+| 2 | `repair/user/level2.md` | của best | theo trạng thái (bảng dưới) | toàn bộ `attempts` | rỗng |
+| 3 | `repair/user/level3.md` | của best | **theo trạng thái, như mức 2** *(chốt 14/10/2026)* | toàn bộ `attempts` *(chốt Q5, 14/10/2026)* | `best.failing_methods` |
+
+Mức 3 = **mức 2 + khoanh vùng method cần viết lại**: giữ nguyên thông tin bổ sung của mức 2 (ví dụ API thật của class liên quan tới lỗi), chỉ thu hẹp phạm vi sửa vào các method lỗi. Thu hẹp phạm vi không có nghĩa là bớt thông tin; với quy tắc xoay mức 2 ↔ 3 (Q5), bỏ thông tin ở mức 3 sẽ làm mất đúng thông tin vừa đưa ra ở mức 2.
 
 Mọi mức đều có mã test của best, source của CUT (AR Mục 3.1, cập nhật 09/10) và **khối M đầy đủ** (spec 02 Mục 2.2; chốt Q4 = C, 14/10/2026). Vì Java version và dependencies đã nằm trong M ở mọi mức, thông tin bổ sung của mức 2 COMPILE chỉ còn phần M không có: API thật của các class liên quan tới lỗi.
 
@@ -278,7 +306,7 @@ Mọi mức đều có mã test của best, source của CUT (AR Mục 3.1, cậ
 ```
 latest ← c0
 for t = 1 … N:
-    request ← (template repair/fixed.md, error_block của latest, mã của latest, source CUT, khối M đầy đủ)
+    request ← (template repair/user/level1.md, error_block của latest, mã của latest, source CUT, khối M đầy đủ)
     ct ← Khối2.RepairAsync(request)
     if ct không hợp lệ: continue                       # tính một vòng, latest giữ nguyên
     v ← Xácminh(ct)                                    # mã trùng vẫn build lại
@@ -450,14 +478,14 @@ Mỗi dòng là một trường hợp có thể xảy ra với c0. Cột "Sửa"
 | # | Hỏng ở đâu | Ví dụ dấu hiệu | Trạng thái | Signature ví dụ | Sửa | Adaptive xử lý theo mức | Fixed |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | F0 | Model không trả mã dùng được | Chỉ có chữ giải thích; hai class; mã bị cắt | `INVALID_OUTPUT` | – | **Không** (không có mã để sửa) | – | – |
-| F1 | Biên dịch: gọi thứ không tồn tại | `OrderService_ArrowTest.java:[14,30] cannot find symbol` `symbol: method getTotal(long)` | COMPILE | `COMPILE \| cannot find symbol \| method` | Có | M1: lỗi javac + mã test + source CUT. M2: thêm **API thật** của `OrderService` và các class trong lỗi (constructor, method, field) và danh sách đã thử (Java version, dependencies đã có trong khối M ở mọi mức). M3: chỉ viết lại **method chứa dòng lỗi** (`totalPriceAddsTax`), ghép vào checkpoint | Cùng prompt mọi vòng |
+| F1 | Biên dịch: gọi thứ không tồn tại | `OrderService_ArrowTest.java:[14,30] cannot find symbol` `symbol: method getTotal(long)` | COMPILE | `COMPILE \| cannot find symbol \| method` | Có | M1: lỗi javac + mã test + source CUT. M2: thêm **API thật** của `OrderService` và các class trong lỗi (constructor, method, field) và danh sách đã thử (Java version, dependencies đã có trong khối M ở mọi mức). M3: thông tin như M2, nhưng chỉ viết lại **method chứa dòng lỗi** (`totalPriceAddsTax`), ghép vào checkpoint | Cùng prompt mọi vòng |
 | F2 | Biên dịch: sai kiểu, sai tham số | `incompatible types: String cannot be converted to long`; `constructor OrderService in class OrderService cannot be applied to given types` | COMPILE | `COMPILE \| incompatible types \| -`; `COMPILE \| constructor cannot be applied \| -` | Có | Như F1 | Như F1 |
 | F3 | Biên dịch: thư viện không có trong dự án | `package org.junit.jupiter.api does not exist` (dùng JUnit 5 trong dự án JUnit 4); `package org.assertj.core.api does not exist` | COMPILE | `COMPILE \| package does not exist \| -` | Có | Như F1; khối M (có ở mọi mức) cho model thấy dự án chỉ có JUnit 4 + Mockito; M2 thêm danh sách package thật có trong các jar test (`org.junit`, `org.mockito`) | Như F1 |
 | F4 | Biên dịch: lỗi javac khác | `unreported exception IOException`; `has private access`; `is abstract; cannot be instantiated` | COMPILE | `COMPILE \| unreported exception \| -` … | Có | Như F1 | Như F1 |
 | F5 | Build hỏng nhưng không có lỗi javac trong file test | `Failed to execute goal …maven-enforcer-plugin…`; annotation processor lỗi; task Gradle lỗi | UNKNOWN | `UNKNOWN \| maven-enforcer-plugin \| -` | Có | M1: khối lỗi build (60 dòng). M2: khối lỗi build đầy đủ (120 dòng) + cấu hình build (Q7). M3: không áp dụng → dùng M2 | Như F1 |
 | F6 | Biên dịch được nhưng JUnit không chạy test nào | Thiếu `@Test`; dùng `@org.junit.jupiter.api.Test` trong dự án chỉ có JUnit 4; JUnit 4 báo `No runnable methods` | DISCOVERY | `DISCOVERY \| no tests executed \| -` | Có | M1: báo "0 test được chạy" + mã. M2: **khung test class mẫu** đúng JUnit 4 (import `org.junit.Test`, class `public`), đúng package và đường dẫn file. M3: không áp dụng → M2 | Như F1 |
-| F7 | Chạy: test văng exception | `NullPointerException at OrderService.totalPrice(OrderService.java:31)`; Mockito `UnfinishedStubbingException`; `IllegalArgumentException` từ CUT | RUNTIME | `RUNTIME \| NullPointerException \| OrderService.totalPrice` | Có | M1: method lỗi + exception + 8 dòng stack trace. M2: **mã nguồn method** trong stack trace (`totalPrice`), constructor và cách khởi tạo field của `OrderService`, gợi ý mock. M3: chỉ viết lại **các test method bị lỗi** | Như F1 |
-| F9 | Chạy xong nhưng kết quả sai | `expected:<110> but was:<100>`; `Expected IllegalStateException to be thrown, but nothing was thrown` | ASSERTION | `ASSERTION \| AssertionError \| totalPriceAddsTax` | Có | M1: method fail + thông điệp expected/actual. M2: giá trị expected/actual, **mã các method của CUT** mà test gọi. M3: chỉ viết lại các test method fail. Model được sửa tự do, kể cả đổi expected (CLAUDE.md hạng mục 9) | Như F1 |
+| F7 | Chạy: test văng exception | `NullPointerException at OrderService.totalPrice(OrderService.java:31)`; Mockito `UnfinishedStubbingException`; `IllegalArgumentException` từ CUT | RUNTIME | `RUNTIME \| NullPointerException \| OrderService.totalPrice` | Có | M1: method lỗi + exception + 8 dòng stack trace. M2: **mã nguồn method** trong stack trace (`totalPrice`), constructor và cách khởi tạo field của `OrderService`, gợi ý mock. M3: thông tin như M2, nhưng chỉ viết lại **các test method bị lỗi** | Như F1 |
+| F9 | Chạy xong nhưng kết quả sai | `expected:<110> but was:<100>`; `Expected IllegalStateException to be thrown, but nothing was thrown` | ASSERTION | `ASSERTION \| AssertionError \| totalPriceAddsTax` | Có | M1: method fail + thông điệp expected/actual. M2: giá trị expected/actual, **mã các method của CUT** mà test gọi. M3: thông tin như M2, nhưng chỉ viết lại các test method fail. Model được sửa tự do, kể cả đổi expected (CLAUDE.md hạng mục 9) | Như F1 |
 | F10 | Test mới pass khi chạy riêng nhưng làm hỏng module | `ClockTest`, `InventoryTest` pass ở baseline nhưng fail khi chạy cùng test mới (test mới đổi biến `static`, ghi file, đổi system property); hoặc test mới fail khi chạy chung | REGRESSION | `REGRESSION \| existing tests fail \| ClockTest,InventoryTest` | Có | M1: tên và lỗi của test cũ bị hỏng. M2: thêm field `static` và tài nguyên dùng chung mà test mới chạm tới. M3: không áp dụng → M2 | Như F1 |
 | I1 | Hạ tầng: quá thời gian ở bất kỳ bước nào (biên dịch, chạy riêng test, chạy module) | Hết `step_timeout_seconds` ở cả **3 lần thử** | INFRA, `needs_rerun` | – | **Chưa**: vào danh sách "Cần chạy lại riêng" kèm lệnh `arrow-fw run --tasks <task_id> --rerun-infra`; chưa tính vào RQ1/RQ2 cho tới khi chạy lại xong | – | – |
 | I2 | Hạ tầng: không tải được dependency | `Could not resolve dependencies`, mạng lỗi ở cả 3 lần thử | INFRA, `needs_rerun` | – | Như I1 | – | – |
@@ -499,7 +527,7 @@ c0 = `OrderService_ArrowTest` (quy trình `zero_shot`), N = 5.
 | --- | --- | --- | --- | --- |
 | 1 | M1 COMPILE (c0): lỗi `getTotal` + mã + source CUT | COMPILE, lỗi khác: `constructor OrderService cannot be applied` | O8: ngang, khác signature → giữ mức; đã thử += vòng 1 | 1 |
 | 2 | M1 COMPILE (c0) — prompt **giống hệt vòng 1** (lượt gọi mới, nhưng temperature 0) → model trả lại đúng bản vòng 1 | Mã trùng vòng 1 | O3: không build, lên mức | 2 |
-| 3 | M2 COMPILE (c0): + API thật của `OrderService` (`totalPrice(long)`, constructor 2 tham số) + đã thử (vòng 1, 2) | Biên dịch được; `totalPriceAddsTax` fail: `expected:<110> but was:<100>` → ASSERTION | O4: tốt hơn, đổi trạng thái → checkpoint = vòng 3, về mức 1 | 1 |
+| 3 | M2 COMPILE (c0): + API thật của `OrderService` (`totalPrice(long)`, constructor 2 tham số) + đã thử (vòng 1, 2, kèm lỗi cụ thể và dòng mã đã đổi) | Biên dịch được; `totalPriceAddsTax` fail: `expected:<110> but was:<100>` → ASSERTION | O4: tốt hơn, đổi trạng thái → checkpoint = vòng 3, về mức 1 | 1 |
 | 4 | M1 ASSERTION (vòng 3): method fail + expected/actual | ASSERTION, cùng signature, 4/5 pass như vòng 3 | O7: lỗi lặp → lên mức; đã thử += vòng 4 | 2 |
 | 5 | M2 ASSERTION (vòng 3): + mã `totalPrice`, `TaxPolicy.apply` + đã thử | 5/5 pass; chạy cả module: 41 test cũ pass → **VALID** | O1: thành công ở vòng 5 | – |
 

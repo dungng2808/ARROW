@@ -27,7 +27,7 @@ Repository-Aware Prompt Construction        Prompting Strategy          Candidat
 | Mã nguồn CUT | workspace gốc, `paths.cut_path` | đọc nguyên văn |
 | `strategy` | experiment `strategies` | `zero_shot` \| `zero_shot_project_aware` \| `few_shot` |
 | `ModelConfig` | experiment `models[i]` | tên, tham số, giá |
-| Ví dụ few-shot | `prompts/fewshot/examples.json` | chỉ với `few_shot` |
+| Ví dụ few-shot | nằm sẵn trong `prompts/generation/system/few_shot.md` (nguồn gốc: `prompts/generation/fewshot_provenance.json`) | chỉ với `few_shot` |
 
 ### 1.2. Chế độ REPAIR: `RepairRequest` (khối 3 tạo)
 
@@ -41,7 +41,11 @@ Repository-Aware Prompt Construction        Prompting Strategy          Candidat
   "base_round": 1,
   "error_block": "FileResolver_ArrowTest.java:[13,6] cannot find symbol\n  symbol: class TempDir\n…",
   "extra_context": "Constructors and methods of com.x.FileResolver:\n  public FileResolver(Path root)\n…",
-  "failed_attempts": [ { "round": 2, "outcome": "COMPILE | cannot find symbol | method" } ],
+  "failed_attempts": [
+    { "round": 2, "signature": "COMPILE | cannot find symbol | method",
+      "first_error": "cannot find symbol: method resolveAll(java.nio.file.Path) in class com.x.FileResolver",
+      "change": "-  Path p = tmp.newFolder().toPath();\n+  Path p = Files.createTempDirectory(\"x\");\n+  resolver.resolveAll(p);" }
+  ],
   "rewrite_methods": []
 }
 ```
@@ -50,64 +54,83 @@ Repository-Aware Prompt Construction        Prompting Strategy          Candidat
 
 ## 2. Flow 2.1: Repository-Aware Prompt Construction
 
-Prompt gồm 3 thành phần. Mỗi thành phần được dựng bằng code từ dữ liệu, rồi điền vào template trong `prompts/`.
+Prompt của mỗi lượt gọi gồm **2 message**: `system` (chỉ dẫn, cố định theo quy trình hoặc theo việc sửa) và `user` (dữ liệu của lượt đó). Cả hai lấy từ file template trong `ARROW_Framework/prompts/` (danh sách và cách điền ở `prompts/README.md`). Ba thành phần của hình:
+
+| Thành phần (hình) | Nằm ở | Chỗ trống |
+| --- | --- | --- |
+| Source Code Context | user message | `{{cut_fqn}}`, `{{cut_path}}`, `{{cut_source}}` |
+| Repository Metadata | user message (chỉ `zero_shot_project_aware` khi sinh; mọi prompt sửa) | `{{repository_configuration}}` |
+| Instruction Strategy | system message (theo quy trình hoặc sửa) và câu dẫn của user message | – |
 
 ### 2.1. Source Code Context
 
-1. Mã nguồn CUT **nguyên văn** (kể cả comment), đặt trong khối ```` ```java ````, kèm dòng `File: <cut_path>`.
+1. Mã nguồn CUT **nguyên văn** (kể cả comment) điền vào `{{cut_source}}`; template đặt nó trong khối ```` ```java ```` của **đầu vào** để tách rõ mã (đầu ra của model thì không có fence, Mục 4.5).
 2. CUT dài hơn 48.000 ký tự: bỏ comment (bằng java-helper); vẫn dài hơn thì giữ chữ ký của mọi constructor và method công khai, thân method chỉ giữ cho tới khi đủ giới hạn. Ghi `source_truncation` (`none` / `comments_removed` / `signatures_only`) vào `prompt.json`.
 3. Không đưa class khác của repository vào prompt sinh test (cùng một ngữ cảnh mã cho mọi quy trình, để RQ1 chỉ khác ở thông tin repository).
 
 ### 2.2. Repository Metadata
 
-Khối M rút gọn, sinh bằng code từ `metadata.json` (không phụ thuộc chế độ):
+Khối M dạng chữ, sinh bằng code từ `metadata.json`, điền vào `{{repository_configuration}}`:
 
 ```
-Repository configuration:
-- Build tool: Maven 3.9.6 (module jpa2ddl-core, multi-module project)
-- Java version: 8 (compile with JDK 8; do not use APIs newer than Java 8)
-- Test framework: JUnit 5 (5.9.2); mocking: Mockito 4.8.0; assertions: AssertJ 3.24.2
-- Dependencies (direct): org.hibernate:hibernate-core:5.4.2.Final, … (tối đa 25 dòng, ưu tiên thư viện test)
-- Project structure: modules jpa2ddl-core, jpa2ddl-maven, jpa2ddl-gradle; CUT package com.devskiller.jpa2ddl
-- Source path: jpa2ddl-core/src/main/java
-- Test path: write the test to jpa2ddl-core/src/test/java/com/devskiller/jpa2ddl/FileResolver_ArrowTest.java
+- Build tool: Maven 3.9.6 (module shop-core, multi-module project, build root .)
+- Java version: 8 (compile with JDK 8; do not use language features or APIs newer than Java 8)
+- Test framework: JUnit 4 (4.13.2); mocking: Mockito 3.12.4; assertions: none beyond JUnit
+- Dependencies (direct): com.google.guava:guava:30.1-jre, … (tối đa 25 dòng, ưu tiên thư viện test)
+- Project structure: modules shop-api, shop-core; CUT package com.acme.shop
+- Source path: shop-core/src/main/java
+- Test path: shop-core/src/test/java/com/acme/shop/OrderService_ArrowTest.java
 ```
 
 Khi nào đưa vào prompt *(chốt Q4 = C, 14/10/2026)*:
 - Chế độ GENERATE: **chỉ** với `zero_shot_project_aware` (đây là điểm khác biệt của RQ1).
 - Chế độ REPAIR: khối M **đầy đủ** như trên trong **mọi** prompt sửa, cả Fixed và Adaptive, mọi mức, bất kể candidate được sinh bằng quy trình nào. RQ1 đo trên candidate ban đầu nên không bị ảnh hưởng; RQ2 công bằng vì hai cơ chế nhận cùng khối M.
 
-### 2.3. Instruction Strategy
+### 2.3. Instruction Strategy: các file template
 
-Template chỉ dẫn, mỗi template một file `.md` có version, tính sha256 khi khởi động (ghi vào `run.lock.json`):
+| File (trong `prompts/`) | Vai trò | Dùng cho |
+| --- | --- | --- |
+| `generation/system/zero_shot.md` | system | Sinh test, `zero_shot` |
+| `generation/system/zero_shot_project_aware.md` | system | Sinh test, `zero_shot_project_aware` |
+| `generation/system/few_shot.md` | system | Sinh test, `few_shot`; **2 ví dụ few-shot nằm sẵn trong file này** |
+| `generation/user/default.md` | user | Sinh test, `zero_shot` và `few_shot` |
+| `generation/user/project_aware.md` | user | Sinh test, `zero_shot_project_aware` (như `default.md` + khối M) |
+| `repair/system.md` | system | Sửa test, Fixed (mọi vòng) và Adaptive (mọi mức) |
+| `repair/user/level1.md` | user | Fixed (mọi vòng) và Adaptive mức 1; dùng chung một file nên vòng 1 của hai cơ chế có prompt giống hệt nhau |
+| `repair/user/level2.md` | user | Adaptive mức 2 (và khi mức 3 không áp dụng) |
+| `repair/user/level3.md` | user | Adaptive mức 3 |
+| `repair/failure_summaries.md` | dữ liệu | Câu mô tả lỗi theo trạng thái, điền vào `{{failure_summary}}` |
+| `generation/fewshot_provenance.json` | dữ liệu | Nguồn gốc và bằng chứng xác minh của 2 ví dụ few-shot (Mục 3) |
 
-| Template | Dùng khi |
-| --- | --- |
-| `generation/system.md` | Mọi lượt sinh |
-| `generation/zero_shot.md`, `generation/zero_shot_project_aware.md`, `generation/few_shot.md` | Chế độ GENERATE theo quy trình |
-| `repair/system.md` | Mọi lượt sửa |
-| `repair/fixed.md` | Fixed Repair, mọi vòng (= mức 1 của Adaptive) |
-| `repair/level1.md`, `repair/level2.md`, `repair/level3.md` | Adaptive Repair theo mức |
-
-Yêu cầu chung của mọi template sinh: trả về **một** test class Java hoàn chỉnh trong một khối mã, đúng package của CUT, tên class `<CUT>_ArrowTest`, chỉ dùng thư viện đã có trong dự án. Quy trình nào cũng nêu tên class và package (để mọi quy trình cùng điều kiện đặt file); chỉ `zero_shot_project_aware` có thêm khối M.
+Quy tắc chung của template:
+- Phần đầu file giữa hai dòng `---` (`id`, `version`, `role`, `used_by`, `placeholders`) **không** gửi cho model. Framework kiểm tra mọi `{{…}}` trong file đều có trong `placeholders` và đều có giá trị; thiếu thì báo lỗi, không gửi.
+- `id`, `version` và sha256 của **từng file** ghi vào `run.lock.json`; đổi nội dung bất kỳ file nào thì run cũ không chạy tiếp được.
+- **Công bằng RQ1:** phần "Shared requirements" và "Output contract" của 3 system prompt sinh test phải **giống nhau từng chữ**; chỉ đoạn "Technique" khác. Hai user message sinh test chỉ khác khối "Repository configuration". Framework kiểm tra hai điều này khi khởi động (so chuỗi) và từ chối chạy nếu khác.
+- **Output contract** (mọi system prompt): trả về **mã Java thuần** của đúng một compilation unit, một class test `public` không trừu tượng, đúng tên và package được yêu cầu, method test `public`; **không** Markdown fence, không giải thích.
 
 ## 3. Flow 2.2: Prompting Strategy
 
-| Quy trình | System | User message |
+| Quy trình | System | User |
 | --- | --- | --- |
-| `zero_shot` | `generation/system.md` | chỉ dẫn + Source Code Context |
-| `zero_shot_project_aware` | như trên | chỉ dẫn + **khối M** (Mục 2.2) + Source Code Context |
-| `few_shot` | như trên | 2 ví dụ (CUT → test) + chỉ dẫn + Source Code Context |
+| `zero_shot` | `generation/system/zero_shot.md` | `generation/user/default.md` |
+| `zero_shot_project_aware` | `generation/system/zero_shot_project_aware.md` | `generation/user/project_aware.md` (có khối M) |
+| `few_shot` | `generation/system/few_shot.md` (có 2 ví dụ) | `generation/user/default.md` |
 
-**Ví dụ few-shot** (`prompts/fewshot/examples.json`):
-1. Chọn **một lần** trước khi chạy, giống nhau cho mọi CUT: một ví dụ JUnit 4, một ví dụ JUnit 5.
-2. Nguồn: cặp CUT – test người viết của Classes2Test, **ngoài** tập đánh giá và tập pilot, khác repository với mọi task.
-3. Điều kiện: test người viết pass trên commit đã dựng lại; CUT dưới 150 dòng; test có ít nhất 3 test method và 3 assertion; chọn bằng seed 42 trong các cặp đạt điều kiện.
-4. Lệnh `arrow-fw fewshot select` ghi file và sha256; file được commit.
+Cả 3 quy trình đều nhận package và tên class test cần sinh (để cùng điều kiện đặt file). Chế độ REPAIR không dùng Prompting Strategy (quy trình sinh của candidate chỉ là một phần định danh chain).
 
-Chế độ REPAIR không dùng Prompting Strategy (quy trình sinh của candidate chỉ là một phần định danh chain).
+**Ví dụ few-shot** (nằm trong `generation/system/few_shot.md`; nguồn gốc ở `generation/fewshot_provenance.json`):
 
-**Test framework trong prompt sinh:** template sinh **không** nêu tên test framework (JUnit 4/5, TestNG); thông tin này chỉ đến với model qua khối M của `zero_shot_project_aware` (đúng điểm khác biệt của RQ1). `zero_shot` và `few_shot` để model tự chọn; chọn sai framework so với dự án thì lỗi biên dịch hoặc DISCOVERY là kết quả thật của quy trình đó. Ví dụ few-shot là JUnit 4 và JUnit 5, không có TestNG (2/50 CUT pilot dùng TestNG).
+| Framework | task_id | Repository, commit | CUT → test người viết |
+| --- | --- | --- | --- |
+| JUnit 4 | `166116543_f6b6c10d343d5bb1` | `shekhargulati/conduit-on-kubernetes` @ `2e2aed6d…` | `DefaultJwtService` → `DefaultJwtServiceTest` (3 test method, 5 assertion) |
+| JUnit 5 | `48880766_962a909932e57aca` | `jtablesaw/tablesaw` @ `93f7dd53…` | `ReadOptions` → `ReadOptionsTest` (3 test method, 3 assertion) |
+
+1. **Quy tắc đã dùng để chọn** (13/10/2026, giữ nguyên): pool `technical_eligible` + `CONTENT_MATCHED` của Classes2Test, bỏ mọi repository của tập đánh giá 200 class, pilot v1, pilot v2 và 50 CUT dự bị (còn 4.805 ứng viên); với mỗi framework (JUnit 4, JUnit 5) sắp ứng viên theo `task_id`, xáo bằng seed 42 (Fisher–Yates), lấy ứng viên đầu tiên đạt mọi điều kiện: CUT 30–150 dòng, test người viết 20–120 dòng, ≥ 2 test method và ≥ 2 assertion, không Mockito, test không có dấu hiệu cần dịch vụ ngoài (Spring/Micronaut/Quarkus context, `@ExtendWith`, `@RunWith`, injection, Testcontainers, JDBC, SQL, database, URL HTTP, socket, thư mục tạm, biến môi trường, `Thread.sleep`).
+2. **Xác minh còn thiếu:** lần chọn trên chỉ dùng điều kiện tĩnh, chưa chạy test người viết. Bước C3 chạy `arrow-fw screen` trên 2 task này; tiêu chí B đạt `PASS` thì ghi kết quả (ngày, máy, JDK, số test chạy) vào `fewshot_provenance.json`. Không đạt → chọn ứng viên kế tiếp theo đúng quy tắc ở bước 1 cho framework đó, cập nhật `few_shot.md` và `fewshot_provenance.json`.
+3. Ví dụ giữ **nguyên văn** test người viết (kể cả class/method không `public` của ví dụ JUnit 5). `few_shot.md` dặn: ví dụ khác output contract thì theo output contract.
+4. Không có ví dụ TestNG (2/50 CUT pilot dùng TestNG): đúng với thiết kế "một JUnit 4, một JUnit 5".
+
+**Test framework trong prompt sinh:** `zero_shot` và `few_shot` không được cho biết test framework của dự án; model tự chọn từ bằng chứng trong mã CUT. Chọn sai so với dự án thì lỗi biên dịch hoặc DISCOVERY là kết quả thật của quy trình đó. Chỉ `zero_shot_project_aware` nhận framework qua khối M.
 
 ## 4. Flow 2.3: Candidate Test Generation, LLM Abstraction Layer
 
@@ -129,6 +152,8 @@ Chỉ hai vai `system` và `user`, một lượt (không hội thoại nhiều l
 
 - Tham số lấy **nguyên văn** từ `models[i].params` của experiment, giống nhau cho mọi quy trình, mọi cơ chế, mọi vòng. Không có tham số nào thay đổi theo task.
 - Không có `drop_params`: proxy từ chối tham số không hỗ trợ thì báo lỗi cấu hình (dừng run), không âm thầm bỏ qua.
+- **`max_tokens = 8192`** *(chốt 14/10/2026)*: là **trần** độ dài đầu ra, không phải số token phải trả (tiền tính theo số token model thật sự sinh ra). Pilot cũ với GPT-6 Luna: trung vị 1.146, lớn nhất 2.944 token, không lượt nào bị cắt, nên 8.192 còn dư gần gấp 3. Báo cáo đếm số lượt `finish_reason = "length"`; nếu thực nghiệm có lượt bị cắt thì xem lại trần này **trước** khi chạy chính thức (không đổi giữa chừng).
+- **Qwen qua Ollama:** cửa sổ ngữ cảnh `num_ctx` phải chứa được prompt dài nhất (khoảng 23.000 token, `prompts/README.md` Mục 6) **cộng** 8.192 token đầu ra, nên đặt `num_ctx` ≥ **32.768** trong cấu hình Ollama. Mặc định của Ollama nhỏ hơn nhiều và **cắt prompt không báo lỗi**. `arrow-fw doctor` kiểm tra `num_ctx` của model Ollama (qua `ollama show`) và báo lỗi nếu nhỏ hơn 32.768.
 
 ### 4.3. Route Request to Selected Model
 
@@ -168,7 +193,7 @@ Cache **chỉ** dùng để **phát lại một lượt gọi đã hoàn thành 
 
 Từ nội dung response tới mã Java dùng được:
 
-1. **Tách khối mã:** lấy khối ```` ```java ```` (hoặc ```` ``` ````) đầu tiên có khai báo `class`; không có khối mã thì lấy toàn bộ văn bản nếu nó bắt đầu bằng `package`/`import`/`class`/`public`.
+1. **Lấy mã:** output contract yêu cầu **mã Java thuần, không fence**, nên mặc định coi cả response là mã. Nếu model vẫn bọc mã trong ```` ```java ```` (hoặc ```` ``` ````), lấy khối đầu tiên có khai báo `class` và ghi `normalization: "fence removed"`. Cắt bỏ chữ thừa trước dòng `package`/`import`/khai báo class đầu tiên và sau dấu `}` đóng class (ghi `normalization: "prose trimmed"`).
 2. **Kiểm tra cú pháp** bằng java-helper (JavaParser): phải parse được và có đúng một class top-level. Không đạt → `INVALID_OUTPUT` với lý do (`no_code`, `parse_error`, `multiple_classes`).
 3. **Chuẩn hóa tên** (ghi từng thao tác vào `normalization`):
    - `package` = package của CUT (thêm hoặc sửa);
@@ -234,7 +259,7 @@ public interface ILlmClient
 
 ## 8. Kiểm thử
 
-- Unit: dựng prompt cho 3 quy trình (chỉ `zero_shot_project_aware` có khối M); khối M rút gọn từ M mẫu; tách mã từ response có/không có khối mã, nhiều class; chuẩn hóa package và tên class; ghép method mức 3; khóa cache ổn định khi đổi thứ tự tham số và **khác nhau** giữa hai `call_id` có cùng prompt; phát lại giữ thời gian và chi phí gốc.
+- Unit: nạp template, bỏ phần đầu file, điền chỗ trống, báo lỗi khi thiếu giá trị; kiểm tra công bằng RQ1 (phần chung của 3 system prompt giống nhau, 2 user message chỉ khác khối M); khối M dạng chữ từ M mẫu; lấy mã từ response thuần, có fence, có chữ thừa, nhiều class; hiện `failed_attempts` (3 lần gần nhất có chi tiết, lần cũ hơn chỉ signature); chuẩn hóa package và tên class; ghép method mức 3; khóa cache ổn định khi đổi thứ tự tham số và **khác nhau** giữa hai `call_id` có cùng prompt; phát lại giữ thời gian và chi phí gốc.
 - Integration: `LiteLlmClient` với HTTP giả (200, 429 rồi 200, 401, sai model id).
 
 ## 9. Ví dụ (CUT minh họa của spec 01 Mục 10)
@@ -249,42 +274,51 @@ public interface ILlmClient
 | Bước | Việc framework làm | Kết quả ví dụ |
 | --- | --- | --- |
 | 2.1 Source Code Context | Đọc nguyên văn `OrderService.java` (7.400 ký tự < 48.000) | `source_truncation = none` |
-| 2.2 Repository Metadata | Dựng khối M rút gọn từ `metadata.json` | 7 dòng (dưới) |
-| 2.3 Instruction Strategy | Chọn `generation/system.md` + `generation/zero_shot_project_aware.md` | sha256 của 2 template ghi vào `prompt.json` |
-| 3 Prompting Strategy | `zero_shot_project_aware` = chỉ dẫn + khối M + mã CUT | 2 message |
+| 2.2 Repository Metadata | Dựng khối M dạng chữ từ `metadata.json` | 7 dòng (Mục 2.2) |
+| 2.3 Instruction Strategy | Chọn system `generation/system/zero_shot_project_aware.md`, user `generation/user/project_aware.md`; bỏ phần đầu file; điền `cut_fqn`, `cut_path`, `test_package`, `test_class_name`, `repository_configuration`, `cut_source` | id, version, sha256 của 2 template ghi vào `prompt.json` |
+| 3 Prompting Strategy | `zero_shot_project_aware` | 2 message |
 | 4.1 Chuẩn hóa input | `LlmRequest { model, messages, params }` | |
 | 4.2 Tham số | `reasoning_effort: none, temperature: 0, max_tokens: 8192, seed: 42` | |
 | 4.4 Cache | Khóa `sha256(call_id + model + params + messages)`, `call_id = gen/555001_…/gpt-6-luna/zero_shot_project_aware`; chưa có (run mới) | Gọi model thật |
 | 4.3 Định tuyến | `POST http://127.0.0.1:4000/v1/chat/completions`, LiteLLM chuyển tới provider của `gpt-6-luna` | 200 OK sau 8,7 s; model id `gpt-6-luna` ✔ |
-| 4.5 Tách mã | Lấy khối ```` ```java ```` đầu tiên; parse được, 1 class | Class tên `OrderServiceTest` |
+| 4.5 Lấy mã | Response là mã thuần (không fence); parse được, 1 class | Class tên `OrderServiceTest` |
 | 4.5 Chuẩn hóa | package đúng; đổi tên class thành `OrderService_ArrowTest` | `normalization = ["class: OrderServiceTest → OrderService_ArrowTest"]` |
 | 4.5 Hash | Bỏ comment, khoảng trắng → SHA-256 | `sha256:9f3c…` |
 
 Prompt gửi đi (rút gọn):
 
 ```
-[system]  You are an expert Java developer who writes unit tests. Reply with one complete Java test class in a single ```java code block.
+[system]  (generation/system/zero_shot_project_aware.md, bỏ phần đầu file)
+          You are a Java unit-test generation assistant for ARROW. … Shared requirements 1–7 … Output contract …
+          Technique: zero-shot project-aware …
 
-[user]    Write a unit test class for the class below.
-          The test class must be in package com.acme.shop and named OrderService_ArrowTest.
+[user]    (generation/user/project_aware.md sau khi điền)
+          Generate a unit test class for the target class under test (CUT) below.
 
-          Repository configuration:
-          - Build tool: Maven 3.9.6 (module shop-core, multi-module project)
-          - Java version: 8 (compile with JDK 8; do not use APIs newer than Java 8)
-          - Test framework: JUnit 4 (4.13.2); mocking: Mockito 3.12.4
-          - Dependencies (direct): com.google.guava:guava:30.1-jre, …
-          - Project structure: modules shop-core, shop-api; CUT package com.acme.shop
-          - Source path: shop-core/src/main/java
-          - Test path: write the test to shop-core/src/test/java/com/acme/shop/OrderService_ArrowTest.java
+          Target CUT
+          - Fully qualified name: com.acme.shop.OrderService
+          - Source file: shop-core/src/main/java/com/acme/shop/OrderService.java
 
-          File: shop-core/src/main/java/com/acme/shop/OrderService.java
+          Required test class
+          - Package: com.acme.shop
+          - Class name: OrderService_ArrowTest
+
+          Repository configuration (compatibility constraints):
+          - Build tool: Maven 3.9.6 (module shop-core, multi-module project, build root .)
+          - Java version: 8 (…)
+          - Test framework: JUnit 4 (4.13.2); mocking: Mockito 3.12.4; …
+          - …
+
+          Target CUT source:
           ```java
           package com.acme.shop;
           public class OrderService { … }
           ```
+
+          Return only the complete Java source of the test class OrderService_ArrowTest, according to the output contract.
 ```
 
-Với `zero_shot`: cùng prompt nhưng **không có** khối "Repository configuration". Với `few_shot`: thêm 2 ví dụ (CUT → test) trước chỉ dẫn, không có khối M.
+Với `zero_shot`: system `generation/system/zero_shot.md`, user `generation/user/default.md` (giống hệt trên nhưng **không có** khối "Repository configuration"). Với `few_shot`: system `generation/system/few_shot.md` (có 2 ví dụ), user `generation/user/default.md`.
 
 ### 9.3. Output
 
@@ -317,37 +351,60 @@ public class OrderService_ArrowTest {
 | Model trả về | Framework xử lý | Kết quả |
 | --- | --- | --- |
 | Chỉ có lời giải thích, không có mã | Bước tách mã không tìm thấy class | `INVALID_OUTPUT`, `invalid_reason = no_code` |
-| Hai class top-level trong một khối mã | Parse được nhưng 2 class | `INVALID_OUTPUT`, `multiple_classes` |
+| Hai class top-level | Parse được nhưng 2 class | `INVALID_OUTPUT`, `multiple_classes` |
+| Mã bọc trong ```` ```java ```` kèm một câu giải thích | Bóc fence, cắt chữ thừa | Hợp lệ; `normalization` ghi `fence removed`, `prose trimmed` |
 | Mã bị cắt giữa chừng (`finish_reason = length`) | Parse lỗi | `INVALID_OUTPUT`, `parse_error`; đếm vào số lượt bị cắt |
 | Class tên `TestOrderService`, thiếu `package` | Thêm `package com.acme.shop;`, đổi tên class | Hợp lệ; `normalization` ghi 2 thao tác |
 
 ### 9.5. Ví dụ chế độ REPAIR (khối 3 gửi sang)
 
-Khối 3 gửi `RepairRequest` mức 2 cho trạng thái COMPILE (chain Adaptive, vòng 2). Khối 2 dựng prompt:
+Khối 3 gửi `RepairRequest` mức 2 cho trạng thái COMPILE (chain Adaptive, vòng 3; vòng 1 và 2 đã thất bại). Khối 2 dùng system `repair/system.md` và user `repair/user/level2.md`:
 
 ```
-[system]  (repair/system.md) You fix failing Java unit tests. Reply with the complete fixed test class in one ```java block.
-[user]    (repair/level2.md)
-          The test class below does not compile.
-          Repository configuration:                         (khối M đầy đủ, có ở mọi prompt sửa)
-          - Build tool: Maven 3.9.6 (module shop-core, multi-module project)
-          - Java version: 8 (compile with JDK 8; do not use APIs newer than Java 8)
-          - Test framework: JUnit 4 (4.13.2); mocking: Mockito 3.12.4
-          - Dependencies (direct): com.google.guava:guava:30.1-jre, …
-          - Project structure: modules shop-core, shop-api; CUT package com.acme.shop
-          - Source path: shop-core/src/main/java
-          - Test path: shop-core/src/test/java/com/acme/shop/OrderService_ArrowTest.java
-          Errors:
-            OrderService_ArrowTest.java:[14,30] cannot find symbol  symbol: method getTotal(long)  location: class OrderService
-          Additional information:
-            Constructors and methods of com.acme.shop.OrderService:
-              public OrderService(OrderRepository repo, TaxPolicy tax)
-              public long totalPrice(long orderId)
-              public void cancel(long orderId)
-          Attempts that already failed (do not repeat them):
-            - round 1: COMPILE | cannot find symbol | method
-          Test class: ```java … ```
-          Class under test: ```java … ```
+[user]    The test class below failed ARROW's verification. It does not compile. Earlier repairs of this failure did not succeed, so additional information is provided.
+
+          Required test class
+          - Package: com.acme.shop
+          - Class name: OrderService_ArrowTest
+
+          Repository configuration (compatibility constraints):      (khối M đầy đủ, có ở mọi prompt sửa)
+          - Build tool: Maven 3.9.6 (module shop-core, multi-module project, build root .)
+          - …
+
+          Failure output:
+          OrderService_ArrowTest.java:[14,30] cannot find symbol
+            symbol:   method getTotal(long)
+            location: class com.acme.shop.OrderService
+
+          Additional information for this failure:
+          Constructors, methods and fields of com.acme.shop.OrderService:
+            public OrderService(com.acme.shop.repo.OrderRepository repo, com.acme.shop.TaxPolicy tax)
+            public long totalPrice(long orderId)
+            public void cancel(long orderId)
+
+          Approaches that already failed (do not repeat them):
+          - Round 1 · COMPILE | cannot find symbol | method
+            First error: cannot find symbol: method getTotal(long) in class com.acme.shop.OrderService
+            Changed code:
+              -        long total = service.getTotal(1L);
+              +        long total = service.getTotal(1L, true);
+          - Round 2 · COMPILE | cannot find symbol | method
+            First error: cannot find symbol: method calcTotal(long) in class com.acme.shop.OrderService
+            Changed code:
+              -        long total = service.getTotal(1L);
+              +        long total = service.calcTotal(1L);
+
+          Current test class:
+          ```java
+          …
+          ```
+
+          Target CUT com.acme.shop.OrderService (shop-core/src/main/java/com/acme/shop/OrderService.java):
+          ```java
+          …
+          ```
+
+          Return only the complete corrected Java source of OrderService_ArrowTest, according to the output contract.
 ```
 
 Output: `candidate.java` mới của vòng 2, đi lại vào khối 3 Flow 3.1.

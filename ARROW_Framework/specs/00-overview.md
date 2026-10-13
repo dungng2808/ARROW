@@ -240,3 +240,6 @@ Giải thích chi tiết từng điểm (bối cảnh, vấn đề, ảnh hưở
 | 14/10/2026 | Spec 04: mỗi bản sao để đo phải ghi bộ test và **biên dịch test** trước khi chạy PIT | Review lần 2: snapshot tạo trước khi có bộ test, PIT không tự biên dịch |
 | 14/10/2026 | Spec 00, 01, 07: ledger là việc ghi cuối cùng của job; khối 1 chỉ ghi sau baseline và tiêu chí B | Review lần 2: ghi OK sớm làm chạy tiếp thiếu baseline |
 | 14/10/2026 | Spec 06, 07: kiến trúc 3 tầng UI / Service / Data Access qua interface; UI chỉ dùng `Console.ReadLine` và `Console.WriteLine` (bỏ Spectre.Console) | Yêu cầu của nhóm |
+| 14/10/2026 | Spec 02: đồng bộ với thư mục `prompts/` thật (3 system prompt sinh, 2 user message, prompt sửa theo mức, ví dụ few-shot trong system prompt, đầu ra mã thuần không fence, nguồn gốc few-shot và bước xác minh còn thiếu) | Review prompt |
+| 14/10/2026 | Spec 03: mỗi lần "đã thử" có thêm lỗi đầu tiên chưa chuẩn hóa và các dòng mã đã đổi (3 lần gần nhất); mức 3 giữ thông tin bổ sung của mức 2 | Review prompt; cần cập nhật `Adaptive repair.md` Mục 3.1 và 4 |
+| 14/10/2026 | Spec 02: giữ `max_tokens` = 8192 (pilot cũ lớn nhất 2.944 token, không lượt nào bị cắt); Qwen qua Ollama cần `num_ctx` ≥ 32.768; doctor kiểm tra `num_ctx` | Quyết định của nhóm |
