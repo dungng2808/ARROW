@@ -297,6 +297,55 @@ public class Block1IntegrationTests
         Assert.Empty(noPaired.Baseline.PairedTest.TestsRun);
     }
 
+    /// <summary>
+    /// Spec 01 Mục 4.3 bước 5: JVM chạy test không khởi động được với JDK đã chọn (<c>-Xss256k</c> với JDK 8 trên Mac ARM) → đổi JDK.
+    /// Trên máy mà JDK 8 chạy được thì giữ JDK 8; trường hợp nào tiêu chí B cũng phải ra PASS.
+    /// </summary>
+    [Fact]
+    public async Task SwitchesJdkWhenTestJvmCannotStart()
+    {
+        using var repo = new FixtureRepo("maven-small-stack");
+        var task = repo.Task("150_stack", "src/main/java/com/acme/util/Util.java", "com.acme.util.Util", "src/test/java/com/acme/util/UtilTest.java",
+            "openjdk version \"1.8.0_504\"", "junit4", Attempt("test_compile", MavenTestCompile, "."));
+        var analysis = await repo.Analyzer().AnalyzeAsync(task, repo.Context(), CancellationToken.None);
+        Assert.True(analysis.Outcome.Outcome == OutcomeKind.Ok, analysis.Outcome.Message);
+        Assert.Equal((PairedTestStatus.Pass, 2), (analysis.Baseline!.PairedTest.Status, analysis.Baseline.PairedTest.TestsRun[0]));
+
+        var jdk8Starts = await JvmStartsAsync(8, "-Xss256k");
+        var java = analysis.Metadata!.Java;
+        if (jdk8Starts)
+        {
+            Assert.Equal((8, "declared"), (java.JdkMajor, java.JdkChoiceReason));
+        }
+        else
+        {
+            Assert.NotEqual(8, java.JdkMajor);
+            Assert.StartsWith("fallback:8,", java.JdkChoiceReason, StringComparison.Ordinal);
+            Assert.True(repo.Results.Exists("it", new TaskKey("classes2test", "150_stack"), "block1/logs/03-compile-jdk8.log"));
+        }
+    }
+
+    private static async Task<bool> JvmStartsAsync(int major, string option)
+    {
+        var home = ToolLocator.FindJdkHome(major, null, FixtureRepo.Framework.ArrowRoot);
+        if (home is null)
+        {
+            return false;
+        }
+
+        var result = await new ProcessRunner().RunAsync(new ProcessSpec(ToolLocator.JavaExecutable(home), [option, "-version"], Path.GetTempPath()), CancellationToken.None);
+        return result.Succeeded;
+    }
+
+    [Fact]
+    public void RecognizesTestJvmStartFailures()
+    {
+        Assert.True(RepositoryAnalyzer.IsJvmStartFailure("[ERROR] The forked VM terminated without properly saying goodbye. VM crash or System.exit called?", 0));
+        Assert.True(RepositoryAnalyzer.IsJvmStartFailure("The stack size specified is too small, Specify at least 640k\nError: Could not create the Java Virtual Machine.", 0));
+        Assert.False(RepositoryAnalyzer.IsJvmStartFailure("[ERROR] The forked VM terminated without properly saying goodbye.", 12));
+        Assert.False(RepositoryAnalyzer.IsJvmStartFailure("[INFO] Tests run: 0, Failures: 0", 0));
+    }
+
     [Fact]
     public async Task ScreeningWritesLedgerCsvAndSkipsFinishedTasks()
     {

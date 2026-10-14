@@ -140,14 +140,46 @@ public sealed partial class RepositoryAnalyzer(
             throw Excluded(ErrorCodes.B1BuildRootNotFound, "Không có lần biên dịch test thành công trong manifest và không tìm được thư mục có file build");
         }
 
-        Compiled? compiled = null;
+        // Biên dịch + baseline. JVM chạy test không khởi động được với JDK đã chọn (ví dụ JDK 8 trên Mac ARM với -Xss256k)
+        // → biên dịch lại bằng JDK kế tiếp và chạy baseline lại; không JDK nào khác biên dịch được thì giữ JDK ban đầu.
+        var skipJdks = new List<int>();
+        var lastChance = false;
+        while (true)
+        {
+            Compiled compiled;
+            try
+            {
+                compiled = await CompilePlansAsync(job, plans, baseDir, sourceRoot, skipJdks).ConfigureAwait(false);
+            }
+            catch (Stop) when (skipJdks.Count > 0)
+            {
+                log.Info($"[K1] {task.TaskId}: không JDK nào khác biên dịch được, giữ JDK {skipJdks[0]}");
+                skipJdks.Clear();
+                lastChance = true;
+                compiled = await CompilePlansAsync(job, plans, baseDir, sourceRoot, skipJdks).ConfigureAwait(false);
+            }
+
+            var canRetry = !lastChance && run.Tools.JdkHomes.Keys.Except(skipJdks).Any(j => j != compiled.JdkMajor);
+            var result = await SnapshotAndBaselineAsync(job, compiled, baseDir, classPath, sourceRoot, cutSha, canRetry).ConfigureAwait(false);
+            if (result is null)
+            {
+                log.Warn($"[K1] {task.TaskId}: JVM chạy test không khởi động được với JDK {compiled.JdkMajor}, thử JDK khác");
+                skipJdks.Add(compiled.JdkMajor);
+                continue;
+            }
+
+            return result;
+        }
+    }
+
+    private async Task<Compiled> CompilePlansAsync(Job job, IReadOnlyList<BuildPlan> plans, string baseDir, string sourceRoot, IReadOnlyCollection<int> skipJdks)
+    {
         Stop? lastStop = null;
         foreach (var plan in plans)
         {
             try
             {
-                compiled = await CompileAsync(job, plan, baseDir, sourceRoot).ConfigureAwait(false);
-                break;
+                return await CompileAsync(job, plan, baseDir, sourceRoot, skipJdks).ConfigureAwait(false);
             }
             catch (Stop stop) when (plan != plans[^1] && stop.Outcome.Outcome == OutcomeKind.Excluded)
             {
@@ -155,10 +187,15 @@ public sealed partial class RepositoryAnalyzer(
             }
         }
 
-        if (compiled is null)
-        {
-            throw lastStop ?? Excluded(ErrorCodes.B1BaselineBuildFailed, "Không biên dịch được");
-        }
+        throw lastStop ?? Excluded(ErrorCodes.B1BaselineBuildFailed, "Không biên dịch được");
+    }
+
+    /// <summary>Lưu M, tạo snapshot, chạy baseline; null khi JVM chạy test không khởi động được và còn JDK khác để thử.</summary>
+    private async Task<RepositoryAnalysis?> SnapshotAndBaselineAsync(Job job, Compiled compiled, string baseDir, string classPath, string sourceRoot, string cutSha, bool canRetryJdk)
+    {
+        var task = job.Task;
+        var run = job.Run;
+        var taskDir = workspace.TaskDir(run.RunId, job.Key);
 
         // ── Flow 1.3: M ───────────────────────────────────────────────
         var metadata = BuildMetadata(job, compiled, baseDir, classPath, sourceRoot, cutSha);
@@ -175,7 +212,7 @@ public sealed partial class RepositoryAnalyzer(
         var context = compiled.Context with { RepoRoot = snapshot };
         var info = new WorkspaceInfo
         {
-            Mirror = Relative(workspace.WorkDir, job.Mirror),
+            Mirror = Relative(workspace.WorkDir, job.Mirror!),
             BaseCheckout = Relative(workspace.WorkDir, baseDir),
             CompiledSnapshot = Relative(workspace.WorkDir, snapshot),
             JdkMajor = compiled.JdkMajor,
@@ -195,7 +232,13 @@ public sealed partial class RepositoryAnalyzer(
 
         // ── Flow 1.4: baseline ×N và tiêu chí B ───────────────────────
         var pairedClass = PairedTestClass(baseDir, task.TestClassPath);
-        var baseline = await RunBaselineAsync(job, context, compiled, pairedClass).ConfigureAwait(false);
+        var baseline = await RunBaselineAsync(job, context, compiled, pairedClass, canRetryJdk).ConfigureAwait(false);
+        if (baseline is null)
+        {
+            workspace.DeleteDirectory(snapshot);
+            return null;
+        }
+
         results.SaveJson(run.RunId, job.Key, ResultPaths.Baseline, baseline);
 
         var outcome = run.Screening.RequirePairedTestPass && baseline.PairedTest.Status != PairedTestStatus.Pass
@@ -341,7 +384,7 @@ public sealed partial class RepositoryAnalyzer(
         double CompileSeconds,
         Dictionary<string, string> MissingReasons);
 
-    private async Task<Compiled> CompileAsync(Job job, BuildPlan plan, string baseDir, string sourceRoot)
+    private async Task<Compiled> CompileAsync(Job job, BuildPlan plan, string baseDir, string sourceRoot, IReadOnlyCollection<int> skipJdks)
     {
         var run = job.Run;
         if (!HasBuildFile(baseDir, plan.BuildRoot, plan.Tool))
@@ -438,7 +481,7 @@ public sealed partial class RepositoryAnalyzer(
         var jdkPlan = JdkSelector.Select(declaredMajor, manifestMajor, run.Tools.JdkHomes.Keys.ToList());
         var tried = new List<int>();
         BuildRun? compile = null;
-        foreach (var jdk in jdkPlan.Order)
+        foreach (var jdk in jdkPlan.Order.Where(j => !skipJdks.Contains(j)))
         {
             if (tried.Count > 0)
             {
@@ -471,7 +514,7 @@ public sealed partial class RepositoryAnalyzer(
         }
 
         var jdkMajor = tried[^1];
-        var jdkReason = tried.Count == 1 ? jdkPlan.Reason : JdkSelector.FallbackReason(tried);
+        var jdkReason = tried.Count == 1 && skipJdks.Count == 0 ? jdkPlan.Reason : JdkSelector.FallbackReason(skipJdks.Concat(tried));
 
         // Dependency đã phân giải và classpath test (cùng lần gọi với biên dịch).
         IReadOnlyList<ResolvedDependency> resolved;
@@ -729,7 +772,18 @@ public sealed partial class RepositoryAnalyzer(
         return marker < 0 ? simple : path[(marker + "src/test/java/".Length)..^".java".Length].Replace('/', '.');
     }
 
-    private async Task<Baseline> RunBaselineAsync(Job job, BuildContext snapshotContext, Compiled compiled, string? pairedClass)
+    /// <summary>Dấu hiệu JVM chạy test không khởi động được (không phải lỗi của test).</summary>
+    private static readonly string[] JvmStartFailureMarkers =
+    [
+        "stack size specified is too small", "Could not create the Java Virtual Machine", "Error occurred during initialization of VM",
+        "Unrecognized VM option", "Unrecognized option:", "The forked VM terminated without properly saying goodbye",
+    ];
+
+    public static bool IsJvmStartFailure(string output, int testsReported) =>
+        testsReported == 0 && JvmStartFailureMarkers.Any(m => output.Contains(m, StringComparison.Ordinal));
+
+    /// <param name="canRetryJdk">Lần chạy đầu không có test nào và JVM không khởi động được → trả null để nơi gọi đổi JDK.</param>
+    private async Task<Baseline?> RunBaselineAsync(Job job, BuildContext snapshotContext, Compiled compiled, string? pairedClass, bool canRetryJdk)
     {
         var run = job.Run;
         var arguments = compiled.Plan.Tool == "gradle" ? BuildCommands.GradleModuleTest(compiled.Plan.Module) : BuildCommands.MavenModuleTest;
@@ -762,6 +816,11 @@ public sealed partial class RepositoryAnalyzer(
                     }
 
                     var tests = reports.Read(context.BuildRootPath);
+                    if (i == 1 && canRetryJdk && IsJvmStartFailure(result.Result.Output, tests.Count))
+                    {
+                        return null;
+                    }
+
                     if (result.Failure == BuildFailureKind.Build)
                     {
                         log.Warn($"[K1] {job.Task.TaskId}: baseline {i} mã thoát {result.Result.ExitCode}, đọc được {tests.Count} test");
