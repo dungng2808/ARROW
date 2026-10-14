@@ -2,9 +2,9 @@
   "schema_version": 1,
   "plan_id": "pilot-6",
   "experiment_id": "pilot-v1",
-  "experiment_sha256": "d5567edc789801809a9b2dc43e94ea6ef4ffd9cce12182fb5df771dddd991950",
+  "experiment_sha256": "b0424b4a80ed1e9f9e2ef3801b75d30170883db2dab8b47514c45430482a9913",
   "manifests_sha256": {
-    "classes2test": "b44a9d9aa91dc022649c38433bd66af26677b033159aab999d6fbedbd11376b2",
+    "classes2test": "88b9084a56cb8679bc01569935a71b259b008cee726e614a75fd11444e2f5e1d",
     "gitbug-java": "6754b1a52e142813fe0a6be9530cd031da9f73bfe7f024bf0dc0dc94a34ea9b4"
   },
   "coordinator": "Dung-mac",
@@ -14,7 +14,7 @@
       "owner": "Dung-mac",
       "owner_display": "Dũng-mac",
       "file": "shard-01.json",
-      "sha256": "26975a1901b5badfaf4fe9a0caa6b7ce4cac1c6e975de655fa36c6c731521cbb",
+      "sha256": "3a69236e2bec38dcc4c236908382a5fa17470b459e2be3fbd4c110cb3088155f",
       "task_count": 9,
       "repository_count": 9,
       "tasks_by_dataset": {
@@ -28,7 +28,7 @@
       "owner": "Dung-win",
       "owner_display": "Dũng-win",
       "file": "shard-02.json",
-      "sha256": "94d12cc5e24e80997b61c821e00eceba02bb17aa8bc9dca02706f9df65e4873f",
+      "sha256": "44dfbd67af6e62ca930de6f09982f8aedc4add63a54f7cdfc798a3c7ff33a961",
       "task_count": 10,
       "repository_count": 10,
       "tasks_by_dataset": {
@@ -42,7 +42,7 @@
       "owner": "KieuAnh",
       "owner_display": "Kiều Anh",
       "file": "shard-03.json",
-      "sha256": "44b1f7ed238bd2ff4464dc0952a9d4bba9ee3291279d8a865be41b3f22bf082a",
+      "sha256": "c3068903a60d487e472f171425ed3e9fb8075d1db4ec338255bfd98de77af507",
       "task_count": 10,
       "repository_count": 10,
       "tasks_by_dataset": {
@@ -56,7 +56,7 @@
       "owner": "Quang",
       "owner_display": "Quang",
       "file": "shard-04.json",
-      "sha256": "3be791254cd2ada40ef4a28a6a477a23c3df76064ad9f600cc60fb466e3299ce",
+      "sha256": "6926db326ae5c563938122730790e1d2793a4bf8871343653118667e8d73ca60",
       "task_count": 10,
       "repository_count": 10,
       "tasks_by_dataset": {
@@ -70,7 +70,7 @@
       "owner": "Chinh",
       "owner_display": "Chinh",
       "file": "shard-05.json",
-      "sha256": "f48a5345dcb07fc015ff0f0239a8d2817e54ece08c14ca893f1e30b810277428",
+      "sha256": "44a04567e8cfd40022c76deb82d97ca9f88030c1e06e8d4fd00d46a5bd9b4c04",
       "task_count": 10,
       "repository_count": 10,
       "tasks_by_dataset": {
@@ -84,7 +84,7 @@
       "owner": "Han",
       "owner_display": "Hán",
       "file": "shard-06.json",
-      "sha256": "549d3dc141ae9d7f779ae8e345808d3446b167337d17d12b2fd1a3fd4c7d87ca",
+      "sha256": "9169de0dcdda98009bed0ae0a98fa432d0c4034a0b3d0a140709170405f719ff",
       "task_count": 10,
       "repository_count": 10,
       "tasks_by_dataset": {

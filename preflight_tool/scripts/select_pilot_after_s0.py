@@ -95,6 +95,8 @@ def main() -> int:
     parser.add_argument("--pilot", required=True, type=Path)
     parser.add_argument("--reserve", required=True, type=Path)
     parser.add_argument("--screening-csv", type=Path, action="append", default=[])
+    parser.add_argument("--force-replace", action="append", default=[], metavar="TASK_ID=REASON",
+                        help="replace this CUT even if it passed screening (reason is recorded in the meta file)")
     parser.add_argument("--run-dir", type=Path, action="append", default=[], help="pilot_tool run (old format)")
     parser.add_argument("--dataset", default="classes2test")
     parser.add_argument("--name", required=True)
@@ -113,7 +115,19 @@ def main() -> int:
         outcomes = latest_outcomes(args.run_dir, args.dataset)
         verdicts = {r["task_id"]: screen(r, outcomes.get(r["task_id"]), args.dataset) for r in pilot + reserve}
 
-    passing_reserve = [r for r in reserve if verdicts[r["task_id"]][0]]
+    forced = {}
+    for item in args.force_replace:
+        task_id, _, reason = item.partition("=")
+        if not reason:
+            print(f"ERROR --force-replace needs TASK_ID=REASON: {item}", file=sys.stderr)
+            return 2
+        forced[task_id] = reason
+    for task_id, reason in forced.items():
+        verdicts[task_id] = (False, f"MANUAL:{reason}")
+
+    # Reserve CUTs already in the pilot (used by an earlier replacement) cannot be drawn again.
+    pilot_ids = {r["task_id"] for r in pilot}
+    passing_reserve = [r for r in reserve if verdicts[r["task_id"]][0] and r["task_id"] not in pilot_ids]
     chosen: list[dict] = []
     replacements = []
     for record in pilot:
@@ -151,6 +165,7 @@ def main() -> int:
         "reserve_file": args.reserve.as_posix(), "reserve_sha256": sha(args.reserve),
         "screening_runs": [d.name for d in args.run_dir] + [p.parent.parent.name for p in args.screening_csv],
         "replacements": replacements,
+        "forced_replacements": forced,
         "screening": {tid: v[1] for tid, v in verdicts.items()},
         "selected_task_ids": [r["task_id"] for r in chosen],
     }
