@@ -435,4 +435,38 @@ public class Block1Tests
         Assert.True(TestReportReader.IsReport($"{sep}r{sep}core{sep}build{sep}test-results{sep}test{sep}TEST-a.ATest.xml"));
         Assert.False(TestReportReader.IsReport($"{sep}r{sep}src{sep}test{sep}resources{sep}TEST-a.ATest.xml"));
     }
+
+    [Fact]
+    public void GradleOwnerIsDeepestProjectContainingCut()
+    {
+        var info = new GradleInfo { Projects = [(":", "/ws/b"), (":dbfit-java", "/ws/b/dbfit-java"), (":dbfit-java:core", "/ws/b/dbfit-java/core"), (":api", "/ws/b/api")] };
+        Assert.Equal(":dbfit-java:core", RepositoryAnalyzer.GradleOwner(info, "/ws/b", "dbfit-java/core/src/main/java"));
+        Assert.Equal(":api", RepositoryAnalyzer.GradleOwner(info, "/ws/b", "api/src/main/java"));
+        Assert.Equal(":", RepositoryAnalyzer.GradleOwner(info, "/ws/b", "src/main/java"));
+        Assert.Equal(":", RepositoryAnalyzer.GradleOwner(info, "/ws/b", "apix/src/main/java"));
+    }
+
+    [Fact]
+    public void RemovesOnlyCorruptJarsInsideBuildCaches()
+    {
+        var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        var inCache = Path.Combine(home, ".m2", "repository", "arrow-test-" + Guid.NewGuid().ToString("N")[..8], "x-1.0.jar");
+        var outside = Path.Combine(Path.GetTempPath(), "arrow-test-" + Guid.NewGuid().ToString("N")[..8] + ".jar");
+        Directory.CreateDirectory(Path.GetDirectoryName(inCache)!);
+        File.WriteAllText(inCache, "<!doctype html><html></html>");
+        File.WriteAllText(outside, "<!doctype html><html></html>");
+        try
+        {
+            var log = $"[ERROR] error reading {inCache}; zip END header not found\n[ERROR] error reading {outside}; error in opening zip file";
+            Assert.Equal(1, BuildFailureClassifier.RemoveCorruptCachedJars(log));
+            Assert.False(File.Exists(inCache));
+            Assert.True(File.Exists(outside));
+            Assert.Equal(0, BuildFailureClassifier.RemoveCorruptCachedJars("BUILD SUCCESS"));
+        }
+        finally
+        {
+            Directory.Delete(Path.GetDirectoryName(inCache)!, recursive: true);
+            File.Delete(outside);
+        }
+    }
 }

@@ -460,6 +460,20 @@ public sealed partial class RepositoryAnalyzer(
                 missingReasons["java"] = "init script Gradle lỗi: " + probe.Result.Tail(3);
             }
 
+            // Lệnh preflight không ghi project (task `testClasses` chạy cho mọi project) hoặc ghi project cha của CUT:
+            // module đích là project con có thư mục chứa source root của CUT (thư mục sâu nhất).
+            if (gradle is { Projects.Count: > 0 } && GradleOwner(gradle, building, sourceRoot) is { } owner && owner != (plan.Module ?? ":"))
+            {
+                log.Info($"[K1] {job.Task.TaskId}: project Gradle chứa CUT là {owner} (lệnh preflight: {plan.Module ?? ":"})");
+                plan = plan with { Module = owner };
+                context = context with { Plan = plan };
+                var again = await RunStepAsync(job, context, BuildCommands.GradleInfo(plan.Module), "gradle-info-project").ConfigureAwait(false);
+                if (again.Failure == BuildFailureKind.None)
+                {
+                    gradle = GradleProbe.Parse(again.Result.Output);
+                }
+            }
+
             moduleRoot = gradle is { ProjectDir.Length: > 0 } && BuildRootRule.RelativeTo(building, gradle.ProjectDir) is { } dir
                 ? dir
                 : BuildRootRule.ExpectedModuleRoot(plan);
@@ -548,6 +562,15 @@ public sealed partial class RepositoryAnalyzer(
         classpath = classpath.Select(entry => BuildRootRule.RelativeTo(building, entry) ?? entry.Replace('\\', '/')).ToList();
         return new Compiled(plan, context, jdkMajor, jdkReason, toolVersion, wrapper, moduleRoot, pom, gradle, declared, declaredSource, declaredMajor, resolved, classpath, Math.Round(compile.Result.Duration.TotalSeconds, 1), missingReasons);
     }
+
+    /// <summary>Đường dẫn project Gradle có thư mục là tiền tố dài nhất của <paramref name="sourceRoot"/>; không có → null.</summary>
+    public static string? GradleOwner(GradleInfo gradle, string repoRoot, string sourceRoot) =>
+        gradle.Projects
+            .Select(p => (p.Path, Dir: BuildRootRule.RelativeTo(repoRoot, p.Dir)))
+            .Where(p => p.Dir is not null && (p.Dir == "." || sourceRoot == p.Dir || sourceRoot.StartsWith(p.Dir + "/", StringComparison.Ordinal)))
+            .OrderByDescending(p => p.Dir == "." ? 0 : p.Dir!.Length)
+            .Select(p => p.Path)
+            .FirstOrDefault();
 
     private async Task PrepareBuildCopyAsync(string baseDir, string building, CancellationToken ct)
     {

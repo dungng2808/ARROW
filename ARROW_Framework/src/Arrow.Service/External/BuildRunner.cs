@@ -28,7 +28,14 @@ public sealed class BuildRunner(IProcessRunner runner) : IBuildRunner
             ["LC_ALL"] = "en_US.UTF-8",
         };
         var result = await runner.RunAsync(new ProcessSpec(command[0], command.Skip(1).ToList(), workingDirectory, environment, context.Timeout), cancellationToken).ConfigureAwait(false);
-        return new BuildRun(command, workingDirectory, result, BuildFailureClassifier.Classify(result));
+        var failure = BuildFailureClassifier.Classify(result);
+        if (failure == BuildFailureKind.Build && BuildFailureClassifier.RemoveCorruptCachedJars(result.Output) > 0)
+        {
+            // Jar trong cache (~/.m2, ~/.gradle) hỏng đã bị xóa: lỗi của máy, thử lại thì công cụ build tải lại.
+            failure = BuildFailureKind.Network;
+        }
+
+        return new BuildRun(command, workingDirectory, result, failure);
     }
 }
 
@@ -220,6 +227,47 @@ public static partial class BuildFailureClassifier
 
         var text = result.Output.ToLowerInvariant();
         return NetworkMarkers.Any(text.Contains) || ServerError().IsMatch(result.Output) ? BuildFailureKind.Network : BuildFailureKind.Build;
+    }
+
+    [GeneratedRegex(@"(?:error reading|Invalid or corrupt jarfile|error: error reading)\s+(?<jar>\S+?\.jar)\b(?:;|\s|$)", RegexOptions.Multiline)]
+    private static partial Regex CorruptJar();
+
+    /// <summary>
+    /// javac/JVM báo đọc jar lỗi (<c>zip END header not found</c>, <c>error in opening zip file</c>…): thường là trang HTML mà một kho Maven
+    /// bên thứ ba trả về thay cho file và được lưu thành <c>.jar</c>. Xóa các jar đó nếu nằm trong cache của Maven/Gradle (không xóa gì khác)
+    /// và không còn là file zip hợp lệ; trả số file đã xóa.
+    /// </summary>
+    public static int RemoveCorruptCachedJars(string output)
+    {
+        var home = Environment.GetFolderPath(Environment.SpecialFolder.UserProfile);
+        string[] caches = [Path.Combine(home, ".m2", "repository"), Path.Combine(home, ".gradle", "caches")];
+        var removed = 0;
+        foreach (var jar in CorruptJar().Matches(output).Select(m => m.Groups["jar"].Value).Distinct(StringComparer.Ordinal))
+        {
+            var full = Path.GetFullPath(jar);
+            if (!caches.Any(c => full.StartsWith(c + Path.DirectorySeparatorChar, StringComparison.Ordinal)) || !File.Exists(full) || IsZip(full))
+            {
+                continue;
+            }
+
+            File.Delete(full);
+            removed++;
+        }
+
+        return removed;
+    }
+
+    private static bool IsZip(string path)
+    {
+        try
+        {
+            using var archive = System.IO.Compression.ZipFile.OpenRead(path);
+            return archive.Entries.Count >= 0;
+        }
+        catch (Exception ex) when (ex is InvalidDataException or IOException)
+        {
+            return false;
+        }
     }
 
     [GeneratedRegex(@"Apache Maven (\d+(\.\d+)*)")]
