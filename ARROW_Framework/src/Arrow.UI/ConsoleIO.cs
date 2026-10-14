@@ -13,6 +13,17 @@ public sealed class ConsoleInput(TextReader input, TextWriter output)
 
     private string ReadLine() => input.ReadLine() ?? throw new InputClosedException();
 
+    /// <summary>Một dòng nhập thô (null khi hết dữ liệu), dùng cho lệnh gõ trong lúc run đang chạy (S5).</summary>
+    public string? TryReadLine() => input.ReadLine();
+
+    /// <summary>In <c>Nhấn Enter để về menu</c> và chờ một dòng (spec 06 Mục 3).</summary>
+    public void Pause()
+    {
+        output.Write("Nhấn Enter để về menu");
+        output.WriteLine();
+        input.ReadLine();
+    }
+
     /// <summary>In danh sách đánh số từ 1 và hỏi <c>Chọn số</c>. Trả chỉ số (từ 0) của mục được chọn; chọn <c>0</c> (nếu có <paramref name="zeroLabel"/>) trả -1.</summary>
     public int Choose(string title, IReadOnlyList<string> items, string? zeroLabel = null, int? defaultIndex = null)
     {

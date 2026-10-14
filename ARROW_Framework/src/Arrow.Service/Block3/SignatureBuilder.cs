@@ -110,13 +110,15 @@ public static partial class BuildErrorExtractor
         return workspaceRoot is null ? joined : StripRoot(joined, workspaceRoot);
     }
 
-    /// <summary>Bỏ đường dẫn tuyệt đối của bản sao workspace (cả dạng <c>/</c> và <c>\</c>).</summary>
+    /// <summary>Bỏ đường dẫn tuyệt đối của bản sao workspace (cả dạng <c>/</c>, <c>\</c> và <c>/D:/…</c> của Maven trên Windows).</summary>
     public static string StripRoot(string text, string workspaceRoot)
     {
         var root = workspaceRoot.TrimEnd('/', '\\');
+        var forward = root.Replace('\\', '/');
         return text.Replace(root + "/", "", StringComparison.Ordinal)
             .Replace(root + "\\", "", StringComparison.Ordinal)
-            .Replace(root.Replace('\\', '/') + "/", "", StringComparison.Ordinal)
+            .Replace("/" + forward + "/", "", StringComparison.Ordinal)
+            .Replace(forward + "/", "", StringComparison.Ordinal)
             .Replace(root, ".", StringComparison.Ordinal);
     }
 }

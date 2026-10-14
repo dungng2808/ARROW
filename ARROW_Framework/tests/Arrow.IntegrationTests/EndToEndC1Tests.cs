@@ -9,7 +9,11 @@ public class EndToEndC1Tests
     private static (int ExitCode, string Output) RunArrow(params string[] args)
     {
         var dll = Path.Combine(AppContext.BaseDirectory, "arrow-fw.dll");
-        var start = new ProcessStartInfo("dotnet") { RedirectStandardOutput = true, RedirectStandardError = true, RedirectStandardInput = true, UseShellExecute = false };
+        var start = new ProcessStartInfo("dotnet")
+        {
+            RedirectStandardOutput = true, RedirectStandardError = true, RedirectStandardInput = true, UseShellExecute = false,
+            StandardOutputEncoding = System.Text.Encoding.UTF8, StandardErrorEncoding = System.Text.Encoding.UTF8,
+        };
         start.ArgumentList.Add(dll);
         foreach (var arg in args)
         {

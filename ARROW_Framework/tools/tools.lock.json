@@ -1,0 +1,19 @@
+{
+  "comment": "Công cụ của khối 4 (spec 04 Mục 1). maven: tải qua Maven Central; url: tải trực tiếp. sha256 null = chưa khóa: lần tải đầu ghi sha256 vào <tools_dir>/tools.installed.json và doctor báo cần khóa vào file này.",
+  "tools": [
+    { "id": "jacoco-agent", "file": "jacoco-0.8.12/jacocoagent.jar", "maven": "org.jacoco:org.jacoco.agent:0.8.12:jar:runtime", "sha256": null },
+    { "id": "jacoco-cli", "file": "jacoco-0.8.12/jacococli.jar", "maven": "org.jacoco:org.jacoco.cli:0.8.12:jar:nodeps", "sha256": null },
+    { "id": "pitest", "file": "pit-1.17.4/pitest-1.17.4.jar", "maven": "org.pitest:pitest:1.17.4", "sha256": null },
+    { "id": "pitest-entry", "file": "pit-1.17.4/pitest-entry-1.17.4.jar", "maven": "org.pitest:pitest-entry:1.17.4", "sha256": null },
+    { "id": "pitest-command-line", "file": "pit-1.17.4/pitest-command-line-1.17.4.jar", "maven": "org.pitest:pitest-command-line:1.17.4", "sha256": null },
+    { "id": "pitest-html-report", "file": "pit-1.17.4/pitest-html-report-1.17.4.jar", "maven": "org.pitest:pitest-html-report:1.17.4", "sha256": null },
+    { "id": "commons-text", "file": "pit-1.17.4/commons-text-1.12.0.jar", "maven": "org.apache.commons:commons-text:1.12.0", "sha256": null },
+    { "id": "commons-lang3", "file": "pit-1.17.4/commons-lang3-3.14.0.jar", "maven": "org.apache.commons:commons-lang3:3.14.0", "sha256": null },
+    { "id": "jopt-simple", "file": "pit-1.17.4/jopt-simple-4.9.jar", "maven": "net.sf.jopt-simple:jopt-simple:4.9", "sha256": null },
+    { "id": "pitest-junit5-plugin", "file": "pit-1.17.4/pitest-junit5-plugin-1.2.1.jar", "maven": "org.pitest:pitest-junit5-plugin:1.2.1", "sha256": null },
+    { "id": "pitest-testng-plugin", "file": "pit-1.17.4/pitest-testng-plugin-1.0.0.jar", "maven": "org.pitest:pitest-testng-plugin:1.0.0", "sha256": null },
+    { "id": "tsdetect", "file": "tsdetect-2.2/TestSmellDetector.jar", "url": "https://github.com/TestSmells/TestSmellDetector/releases/download/v2.2/TestSmellDetector.jar", "sha256": null },
+    { "id": "evosuite", "file": "evosuite-1.2.0/evosuite-1.2.0.jar", "url": "https://github.com/EvoSuite/evosuite/releases/download/v1.2.0/evosuite-1.2.0.jar", "sha256": null },
+    { "id": "evosuite-runtime", "file": "evosuite-1.2.0/evosuite-standalone-runtime-1.2.0.jar", "url": "https://github.com/EvoSuite/evosuite/releases/download/v1.2.0/evosuite-standalone-runtime-1.2.0.jar", "sha256": null }
+  ]
+}

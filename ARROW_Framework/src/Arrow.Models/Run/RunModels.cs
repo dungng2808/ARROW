@@ -62,6 +62,13 @@ public sealed record RunStatus
     public Dictionary<string, int> C0States { get; init; } = [];
     public int LlmCalls { get; init; }
     public double CostUsd { get; init; }
+
+    /// <summary>Lý do tạm dừng (lỗi cấu hình model…), null khi không tạm dừng.</summary>
+    public string? PausedReason { get; init; }
+
+    /// <summary>Chain đã xong và số chain thành công theo cơ chế.</summary>
+    public Dictionary<string, int> ChainSuccess { get; init; } = [];
+    public int InvalidOutputs { get; init; }
 }
 
 public sealed record BlockProgress
@@ -95,6 +102,59 @@ public sealed record RunInfo
     public string RunId { get; init; } = "";
     public RunLock? Lock { get; init; }
     public RunStatus? Status { get; init; }
+}
+
+/// <summary>Yêu cầu <c>arrow-fw run</c> (spec 00 Mục 5.1, spec 06 S5).</summary>
+public sealed record RunRequest
+{
+    /// <summary>File cấu hình thực nghiệm (tương đối với <c>ARROW_Framework</c>); null → file duy nhất trong <c>experiments/</c>.</summary>
+    public string? ExperimentPath { get; init; }
+
+    /// <summary>Null → <c>run-&lt;yyyyMMdd-HHmm&gt;</c>.</summary>
+    public string? RunId { get; init; }
+
+    /// <summary>Giá trị thô của <c>--tasks</c>: file danh sách task_id hoặc danh sách cách nhau dấu phẩy; null = mọi task.</summary>
+    public string? TaskSelection { get; init; }
+    public List<int> Blocks { get; init; } = [1, 2, 3, 4];
+    public bool RerunInfra { get; init; }
+
+    /// <summary><c>--max-llm-calls</c>: chặn tổng số lượt gọi model của lần chạy này.</summary>
+    public int? MaxLlmCalls { get; init; }
+
+    /// <summary><c>--fake-llm</c>: dùng model giả (không gọi mạng, không tốn tiền).</summary>
+    public bool FakeLlm { get; init; }
+}
+
+/// <summary>Kết quả khi run kết thúc (xong, bị dừng hoặc lỗi).</summary>
+public sealed record RunResult
+{
+    public string RunId { get; init; } = "";
+    public RunState State { get; init; }
+    public string? Error { get; init; }
+    public RunStatus Status { get; init; } = new();
+}
+
+/// <summary>Một job cần chạy lại riêng (spec 06 S9).</summary>
+public sealed record RerunItem
+{
+    public string Dataset { get; init; } = "";
+    public string TaskId { get; init; } = "";
+    public int Block { get; init; }
+    public string Job { get; init; } = "";
+    public string? Code { get; init; }
+    public string? Message { get; init; }
+    public int Attempts { get; init; }
+    public bool TimeoutRepeated { get; init; }
+    public string Command { get; init; } = "";
+}
+
+/// <summary>Trạng thái run để in (spec 06 S6): đã lưu, còn sống không (heartbeat gần đây).</summary>
+public sealed record RunStatusView
+{
+    public RunStatus? Status { get; init; }
+    public bool Alive { get; init; }
+    public double? HeartbeatAgeSeconds { get; init; }
+    public RunLock? Lock { get; init; }
 }
 
 /// <summary>Một file của <c>reports/</c>.</summary>

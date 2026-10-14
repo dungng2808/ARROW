@@ -8,6 +8,7 @@ import arrow.helper.commands.MethodAtLine;
 import arrow.helper.commands.MethodSource;
 import arrow.helper.commands.Parse;
 import arrow.helper.commands.RenameClass;
+import arrow.helper.commands.ShrinkSource;
 import arrow.helper.commands.SpliceMethods;
 import arrow.helper.commands.StripCommentsHash;
 import com.google.gson.JsonObject;
@@ -92,6 +93,7 @@ public final class Main {
             case "class_api" -> ClassApi.run(args);
             case "method_source" -> MethodSource.run(args);
             case "called_methods" -> CalledMethods.run(args);
+            case "shrink_source" -> ShrinkSource.run(args);
             default -> throw new IllegalArgumentException("Lệnh không hỗ trợ: " + command);
         };
     }

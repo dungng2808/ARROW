@@ -60,6 +60,19 @@ public sealed class FileRunRepository(FrameworkPaths paths) : IRunRepository
             File.Delete(path);
         }
     }
+
+    public void WriteText(string runId, string fileName, string text) => AtomicFile.WriteAllText(RunFile(runId, SafeName(fileName)), text);
+
+    public string? ReadText(string runId, string fileName)
+    {
+        var path = RunFile(runId, SafeName(fileName));
+        return File.Exists(path) ? File.ReadAllText(path, Encoding.UTF8) : null;
+    }
+
+    private static string SafeName(string fileName) =>
+        fileName.Length == 0 || fileName.IndexOfAny(['/', '\\']) >= 0 || fileName.Contains("..", StringComparison.Ordinal)
+            ? throw new ArgumentException($"Tên file ở gốc run không hợp lệ: {fileName}")
+            : fileName;
 }
 
 public sealed class FileTaskResultRepository(FrameworkPaths paths) : ITaskResultRepository

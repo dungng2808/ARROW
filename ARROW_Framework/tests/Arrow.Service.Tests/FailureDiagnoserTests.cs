@@ -52,7 +52,7 @@ public class FailureDiagnoserTests
               location: variable service of type com.acme.shop.OrderService
               code: long t = service.getTotal(1L);
             """.Replace("\r\n", "\n").TrimEnd(), diagnosis.ErrorBlock);
-        Assert.Equal("shop-core/src/test/java/com/acme/shop/OrderService_ArrowTest.java:4: cannot find symbol", diagnosis.FirstError);
+        Assert.Equal("cannot find symbol: method getTotal(long) in variable service of type com.acme.shop.OrderService", diagnosis.FirstError);
     }
 
     [Fact]
@@ -68,11 +68,11 @@ public class FailureDiagnoserTests
         Assert.Equal(ErrorGroup.Build, unknown.Group);
         Assert.Empty(unknown.FailingMethods);
         Assert.StartsWith("[ERROR] Failed to execute goal", unknown.ErrorBlock, StringComparison.Ordinal);
-        Assert.Equal("[ERROR] Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:3.0.0:enforce", unknown.FirstError);
+        Assert.Equal("Failed to execute goal org.apache.maven.plugins:maven-enforcer-plugin:3.0.0:enforce", unknown.FirstError);
 
         var discovery = _diagnoser.Diagnose(new VerifyResult { State = VerificationState.Discovery, ErrorSignature = "DISCOVERY | no tests executed | -", TestFile = "shop-core/src/test/java/com/acme/shop/OrderService_ArrowTest.java" }, Candidate(), M);
         Assert.Equal("The test runner executed 0 test methods of com.acme.shop.OrderService_ArrowTest (file shop-core/src/test/java/com/acme/shop/OrderService_ArrowTest.java). The project runs tests with JUnit 4.", discovery.ErrorBlock);
-        Assert.Equal("0 tests executed", discovery.FirstError);
+        Assert.Equal("no tests executed", discovery.FirstError);
     }
 
     [Fact]
@@ -91,6 +91,9 @@ public class FailureDiagnoserTests
         var lines = runtime.ErrorBlock.Split('\n');
         Assert.Equal("Test method: test1", lines[0]);
         Assert.Equal("Exception: java.lang.NullPointerException: Cannot invoke \"TaxPolicy.apply(long)\" because \"this.tax\" is null", lines[1]);
+        Assert.Equal("test1: NullPointerException", runtime.FirstError);
+        var withFrame = _diagnoser.Diagnose(new VerifyResult { State = VerificationState.Runtime, Failures = [failures[0] with { Method = "totalPriceAddsTax", Frame = "OrderService.totalPrice" }] }, Candidate(), M);
+        Assert.Equal("totalPriceAddsTax: NullPointerException at OrderService.totalPrice", withFrame.FirstError);
         Assert.Equal("  at com.acme.shop.OrderService.totalPrice(OrderService.java:31)", lines[2]);
         Assert.Equal(5, lines.Count(l => l.StartsWith("Test method:", StringComparison.Ordinal)));
         Assert.Equal("… and 2 more failing test methods", lines[^1]);
@@ -103,7 +106,7 @@ public class FailureDiagnoserTests
         }, Candidate(), M);
         Assert.Equal(ErrorGroup.Assertion, assertion.Group);
         Assert.Equal("Test method: totalPriceAddsTax\nException: java.lang.AssertionError: expected:<110> but was:<100>", assertion.ErrorBlock);
-        Assert.Equal("java.lang.AssertionError: expected:<110> but was:<100>", assertion.FirstError);
+        Assert.Equal("totalPriceAddsTax: expected:<110> but was:<100>", assertion.FirstError);
     }
 
     [Fact]
@@ -125,7 +128,7 @@ public class FailureDiagnoserTests
             - com.acme.InvoiceTest#appliesDefaultTax: java.lang.AssertionError: expected:<110> but was:<120>
             - com.acme.CartTest#adds: was not run (missing from the report)
             """.Replace("\r\n", "\n").TrimEnd(), regression.ErrorBlock);
-        Assert.Equal("com.acme.InvoiceTest#appliesDefaultTax: java.lang.AssertionError", regression.FirstError);
+        Assert.Equal("com.acme.InvoiceTest#appliesDefaultTax: AssertionError", regression.FirstError);
 
         var valid = _diagnoser.Diagnose(new VerifyResult { State = VerificationState.Valid }, Candidate(), M);
         Assert.Equal(("", (ErrorGroup?)null), (valid.ErrorBlock, valid.Group));

@@ -1,6 +1,12 @@
 # ARROW Framework
 
-**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong bước C1** (khung 3 tầng, Models, toàn bộ Data Access, nhập/xuất console, kiểm tra bộ prompt), **C2** (java-helper: công cụ Java dùng JavaParser, chạy thường trú, cùng client C# và trình chạy tiến trình) , **C3** (khối 1: tải đúng commit, build root, JDK, 6 thông tin cấu hình, snapshot, baseline, tiêu chí B; lệnh `screen`) và **C4** (khối 3 phần xác minh: 5 bước trên bản sao mới của snapshot, phân loại lỗi, error signature, chẩn đoán). Các bước C5–C10 theo spec 07 Mục 11.
+**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong C1–C9** theo spec 07 Mục 11:
+C1 (khung 3 tầng, Data Access, console), C2 (java-helper), C3 (khối 1, lệnh `screen`), C4 (khối 3 phần xác minh),
+C5 (khối 2: dựng prompt 3 quy trình và prompt sửa 3 mức, tách và chuẩn hóa mã, lớp gọi model Replaying → Gateway → LiteLLM, model giả),
+C6 (khối 3 phần sửa: Fixed và Adaptive Repair, checkpoint, rollback, strategy switching, thông tin bổ sung theo trạng thái, `RepairRunner`),
+C7 (khối 4: chuẩn bị bộ test, JaCoCo, PIT, tsDetect, EvoSuite, báo cáo RQ1–RQ3, chọn N, độ nhạy P, cần chạy lại),
+C8 (`run` toàn luồng: lập lịch, hàng đợi build/model, tạm dừng/dừng/chạy tiếp theo ledger, heartbeat, điều khiển từ terminal khác),
+C9 (màn hình S1–S10 và mọi lệnh). **C10** (smoke với model thật) còn chờ khóa API và LiteLLM của máy chạy; smoke với model giả trên 2 CUT thật đã chạy.
 
 ## Build và chạy
 
@@ -13,6 +19,12 @@ Cần .NET SDK 8 trở lên; java-helper cần JDK 17 (`machine.local.json` → 
 | Kiểm tra bộ prompt | `dotnet run --project src/Arrow.UI -- prompts check` |
 | Trợ giúp | `dotnet run --project src/Arrow.UI -- --help` |
 | Sàng lọc CUT (chỉ khối 1, tiêu chí B) | `dotnet run --project src/Arrow.UI -- screen --manifest ../evaluation_manifest/pilot/classes2test_pilot_50_seed42_v2.jsonl --run-id screen-pilot-v2` |
+| Menu chính | `dotnet run --project src/Arrow.UI` |
+| Kiểm tra môi trường / tải công cụ khối 4 | `dotnet run --project src/Arrow.UI -- doctor` / `-- tools install` |
+| Chạy 4 khối (model thật qua LiteLLM) | `dotnet run --project src/Arrow.UI -- run --experiment experiments/pilot-v1.json --run-id pilot-1` |
+| Chạy thử không tốn tiền (model giả) | `dotnet run --project src/Arrow.UI -- run --run-id smoke --tasks <id1>,<id2> --fake-llm` |
+| Báo cáo, trạng thái, chi tiết task | `-- report --run-id R` · `-- status --run-id R` · `-- show --run-id R --task T` · `-- rerun-list --run-id R` |
+| Điều khiển run đang chạy | `-- control --run-id R pause\|resume\|stop` |
 | Build java-helper (tự chạy khi jar chưa có hoặc cũ hơn mã nguồn) | `mvn -q -B -ntp -DskipTests package` trong `tools/java-helper` |
 | Test java-helper | `mvn -q -B -ntp test` trong `tools/java-helper` |
 

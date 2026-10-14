@@ -38,6 +38,9 @@ public sealed class Verifier(
         public CancellationToken Token { get; } = token;
         public List<StepRecord> Steps { get; } = [];
         public List<string> Copies { get; } = [];
+
+        /// <summary>Đối số thêm của lệnh build cho từng bản sao (Gradle: init script classpath phụ).</summary>
+        public Dictionary<string, IReadOnlyList<string>> CopyArgs { get; } = [];
         public double Seconds { get; set; }
     }
 
@@ -213,7 +216,7 @@ public sealed class Verifier(
             }
 
             var context = BuildCommands.FromWorkspace(run.Task.Workspace, workspace.WorkDir, copy, timeout);
-            var args = arguments.Concat(ExtraInitScript(run, copy)).ToList();
+            var args = arguments.Concat(run.CopyArgs.GetValueOrDefault(copy) ?? []).ToList();
             BuildRun result;
             try
             {
@@ -255,70 +258,12 @@ public sealed class Verifier(
         var snapshot = Path.Combine(workspace.WorkDir, run.Task.Workspace.CompiledSnapshot);
         var copy = await workspace.NewCopyAsync(snapshot, run.Task.RunId, run.Task.Key, "verify", run.Token).ConfigureAwait(false);
         run.Copies.Add(copy);
-        foreach (var (path, content) in run.Suite.Files)
-        {
-            var target = Path.Combine(copy, path.Replace('/', Path.DirectorySeparatorChar));
-            Directory.CreateDirectory(Path.GetDirectoryName(target)!);
-            await File.WriteAllTextAsync(target, content.Replace("\r\n", "\n"), new UTF8Encoding(false), run.Token).ConfigureAwait(false);
-        }
-
-        if (run.Suite.ExtraTestClasspath.Count > 0 && run.Task.Workspace.Tool == "maven")
-        {
-            AddMavenSystemDependencies(Path.Combine(copy, run.Task.Metadata.ProjectStructure.ModuleRoot.Replace('/', Path.DirectorySeparatorChar), "pom.xml"), run.Suite.ExtraTestClasspath);
-        }
-
+        run.CopyArgs[copy] = await SuiteWriter.WriteAsync(copy, run.Suite, run.Task, run.Token).ConfigureAwait(false);
         return copy;
     }
 
-    /// <summary>
-    /// Maven: thêm jar của classpath phụ vào <c>pom.xml</c> của module đích (chỉ trong bản sao) dưới dạng dependency scope <c>system</c>
-    /// (Maven không có cách khác để trỏ một dependency tới file jar mà không cài vào <c>~/.m2</c>).
-    /// </summary>
-    public static void AddMavenSystemDependencies(string pomPath, IReadOnlyList<string> jars)
-    {
-        var document = XDocument.Load(pomPath, LoadOptions.PreserveWhitespace);
-        var project = document.Root!;
-        var ns = project.Name.Namespace;
-        var dependencies = project.Element(ns + "dependencies");
-        if (dependencies is null)
-        {
-            dependencies = new XElement(ns + "dependencies");
-            project.Add(dependencies);
-        }
-
-        foreach (var (jar, index) in jars.Select((j, i) => (j, i)))
-        {
-            dependencies.Add(new XElement(ns + "dependency",
-                new XElement(ns + "groupId", "arrow.extra"),
-                new XElement(ns + "artifactId", $"extra-{index}-{Path.GetFileNameWithoutExtension(jar)}"),
-                new XElement(ns + "version", "0"),
-                new XElement(ns + "scope", "system"),
-                new XElement(ns + "systemPath", Path.GetFullPath(jar))));
-        }
-
-        File.WriteAllText(pomPath, document.Declaration + document.ToString(SaveOptions.DisableFormatting), new UTF8Encoding(false));
-    }
-
-    /// <summary>Gradle: init script thêm classpath phụ cho <c>testImplementation</c> của project đích (ghi trong bản sao).</summary>
-    private static IReadOnlyList<string> ExtraInitScript(Run run, string copy)
-    {
-        if (run.Suite.ExtraTestClasspath.Count == 0 || run.Task.Workspace.Tool != "gradle")
-        {
-            return [];
-        }
-
-        var files = string.Join(", ", run.Suite.ExtraTestClasspath.Select(j => "'" + Path.GetFullPath(j).Replace("\\", "/", StringComparison.Ordinal) + "'"));
-        var project = run.Task.Workspace.Module ?? ":";
-        var script = Path.Combine(copy, "arrow-extra-classpath.gradle");
-        File.WriteAllText(script, $$"""
-            allprojects { p ->
-                p.afterEvaluate {
-                    if (p.path == '{{project}}') { p.dependencies { testImplementation p.files({{files}}) } }
-                }
-            }
-            """, new UTF8Encoding(false));
-        return ["--init-script", script];
-    }
+    /// <summary>Xem <see cref="SuiteWriter.AddMavenSystemDependencies"/>.</summary>
+    public static void AddMavenSystemDependencies(string pomPath, IReadOnlyList<string> jars) => SuiteWriter.AddMavenSystemDependencies(pomPath, jars);
 
     /// <summary>Chép báo cáo XML của class test vào thư mục kết quả.</summary>
     private void SaveReports(Run run, string buildRoot, string step)

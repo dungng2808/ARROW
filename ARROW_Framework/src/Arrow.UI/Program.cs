@@ -3,7 +3,6 @@ using System.Text;
 using Arrow.Models.Common;
 using Arrow.Service;
 using Arrow.UI;
-using Arrow.UI.Screens;
 
 Console.OutputEncoding = Encoding.UTF8;
 if (!Console.IsInputRedirected)
@@ -33,33 +32,16 @@ try
     }
 
     var services = ServiceFactory.Create(paths, command.Flag("verbose"));
-
-    if (command.Is("prompts", "check"))
+    // S5 chỉ chờ lệnh gõ khi có bàn phím và màn hình (spec 06 Mục 7).
+    var interactive = !Console.IsInputRedirected && !Console.IsOutputRedirected;
+    var commands = new Commands(services, ConsoleInput.FromConsole(), output, version, interactive);
+    if (command.Flag("help"))
     {
-        return new PromptCheckScreen(services.Prompts, output).Run();
-    }
-
-    if (command.Is("screen"))
-    {
-        return await new ScreeningScreen(services.Screening, ConsoleInput.FromConsole(), output).RunAsync(command);
-    }
-
-    if (command.Command.Count == 0 || command.Flag("help"))
-    {
-        output.Title($"ARROW Framework v{version} · .NET {Environment.Version.ToString(2)}");
-        output.Line($"Thư mục: {paths.FrameworkRoot}");
-        output.Blank();
-        output.Line("Lệnh hiện có (bước C3):");
-        output.Line("  arrow-fw prompts check   Kiểm tra bộ prompt trong prompts/");
-        output.Line("  arrow-fw screen --manifest F --run-id R [--dataset D] [--tasks a,b|FILE] [--workers N] [--rerun-infra] [--keep-workspace]");
-        output.Line("                           Sàng lọc CUT: chỉ khối 1, ghi runs/R/reports/screening.csv (tiêu chí B)");
-        output.Line("  arrow-fw --version       In phiên bản");
-        output.Line("Menu và các lệnh run, report, setup… có từ các bước sau (spec 07 Mục 11).");
+        commands.PrintHelp();
         return 0;
     }
 
-    output.Status(Mark.Fail, $"Lệnh không hỗ trợ: {string.Join(' ', command.Command)}", "xem arrow-fw --help");
-    return 2;
+    return await commands.RunAsync(command);
 }
 catch (ArrowException ex)
 {

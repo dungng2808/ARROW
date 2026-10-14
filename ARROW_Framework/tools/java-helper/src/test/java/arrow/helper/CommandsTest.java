@@ -320,4 +320,41 @@ class CommandsTest {
         assertEquals("private final TaxPolicy tax;", called.getAsJsonArray("fields").get(0).getAsString());
         assertNull(null);
     }
+
+    @Test
+    void shrinkSourceRemovesCommentsThenBodies() {
+        String cut = """
+                package com.acme;
+                /** Một class dài. */
+                public class Big {
+                    // comment rất dài ......................................................................
+                    public int first(int a) {
+                        return a + 1;
+                    }
+
+                    public int second(int b) {
+                        int x = b * 2;
+                        int y = x * 3;
+                        return x + y;
+                    }
+                }
+                """;
+        JsonObject none = call("shrink_source", Map.of("code", cut, "max_chars", 10_000));
+        assertEquals("none", none.get("truncation").getAsString());
+        assertEquals(cut, none.get("code").getAsString());
+
+        JsonObject stripped = call("shrink_source", Map.of("code", cut, "max_chars", 230));
+        assertEquals("comments_removed", stripped.get("truncation").getAsString());
+        String noComments = stripped.get("code").getAsString();
+        assertFalse(noComments.contains("comment") || noComments.contains("/**"), noComments);
+        assertTrue(noComments.contains("return x + y;"));
+
+        JsonObject signatures = call("shrink_source", Map.of("code", cut, "max_chars", 190));
+        assertEquals("signatures_only", signatures.get("truncation").getAsString());
+        String text = signatures.get("code").getAsString();
+        assertTrue(text.length() <= 190, text);
+        assertTrue(text.contains("return a + 1;"), text);
+        assertTrue(text.contains("public int second(int b) { /* body omitted */ }"), text);
+        assertTrue(call("parse", Map.of("code", text)).get("parsed").getAsBoolean(), text);
+    }
 }

@@ -102,3 +102,35 @@ public interface IFailureDiagnoser
 {
     Diagnosis Diagnose(VerifyResult result, CandidateTest candidate, RepositoryMetadata metadata);
 }
+
+/// <summary>Một chain sửa: c0 và kết quả xác minh c0, cơ chế, N, cùng ngữ cảnh gọi model và xác minh.</summary>
+public sealed record ChainRequest
+{
+    public TaskContext Task { get; init; } = new();
+
+    /// <summary>Ngữ cảnh của khối 2 (model, quy trình, mã CUT); <c>ResultDir</c> do chain đặt cho từng vòng.</summary>
+    public GenerationContext Generation { get; init; } = new();
+    public CandidateTest C0 { get; init; } = new();
+    public VerifyResult C0Verify { get; init; } = new();
+
+    /// <summary><c>fixed</c> hoặc <c>adaptive</c>.</summary>
+    public string Mechanism { get; init; } = "";
+    public int N { get; init; } = 5;
+    public int? EarlyStopP { get; init; }
+    public VerifyOptions Verify { get; init; } = new();
+
+    /// <summary><c>first</c> hoặc <c>second</c>: chain này chạy trước hay sau chain của cơ chế kia (AR Mục 8).</summary>
+    public string RunOrder { get; init; } = "";
+
+    /// <summary>Gọi sau mỗi vòng (để màn hình theo dõi in kết quả từng vòng).</summary>
+    public Action<RoundDecision>? OnRound { get; init; }
+}
+
+/// <summary>Kết quả chain: <c>Ok</c> (đã chốt, thành công hay không) hoặc <c>Infra</c> (dừng giữa chừng, chạy lại từ đầu chain).</summary>
+public sealed record ChainResult(BlockOutcome Outcome, FinalTestSuite Final, string? FinalCode);
+
+/// <summary>Khối 3, Flow 3.4–3.6 (spec 03 Mục 6–8): vòng lặp sửa gọi khối 2, xác minh, policy; ghi từng vòng và <c>final.json</c>.</summary>
+public interface IRepairRunner
+{
+    Task<ChainResult> RunChainAsync(ChainRequest request, CancellationToken cancellationToken);
+}

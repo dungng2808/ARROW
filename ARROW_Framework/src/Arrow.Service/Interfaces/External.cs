@@ -123,6 +123,9 @@ public sealed record BuildContext
     public string? InitScript { get; init; }
     public TimeSpan Timeout { get; init; } = TimeSpan.FromMinutes(15);
 
+    /// <summary>Thêm vào <c>JAVA_TOOL_OPTIONS</c> chung (khối 4: agent JaCoCo).</summary>
+    public string? ExtraJavaToolOptions { get; init; }
+
     public string BuildRootPath => Path.GetFullPath(Path.Combine(RepoRoot, Plan.BuildRoot.Replace('/', Path.DirectorySeparatorChar)));
 
     public string ExecutablePath => ExecutableInRepo ? Path.GetFullPath(Path.Combine(RepoRoot, Executable.Replace('/', Path.DirectorySeparatorChar))) : Executable;
@@ -179,6 +182,9 @@ public sealed record JavaNamedSource(string Name, string Source);
 
 public sealed record JavaMethodSources(bool Parsed, IReadOnlyList<JavaNamedSource> Methods);
 
+/// <summary>Mã CUT sau khi rút gọn; <c>Truncation</c> ∈ <c>none</c>, <c>comments_removed</c>, <c>signatures_only</c>.</summary>
+public sealed record JavaShrinkResult(string Code, string Truncation);
+
 public sealed record JavaCalledMethods(
     bool Parsed,
     IReadOnlyList<string> Called,
@@ -222,4 +228,7 @@ public interface IJavaHelper : IAsyncDisposable
 
     /// <summary>Method của CUT mà các test method gọi tới, kèm mã nguồn, constructor và field của CUT.</summary>
     Task<JavaCalledMethods> CalledMethodsAsync(string testCode, IReadOnlyList<string> testMethods, string cutCode, CancellationToken cancellationToken);
+
+    /// <summary>Rút gọn mã CUT dài hơn <paramref name="maxChars"/>: bỏ comment, rồi chỉ giữ chữ ký (spec 02 Mục 2.1 bước 2).</summary>
+    Task<JavaShrinkResult> ShrinkSourceAsync(string code, int maxChars, CancellationToken cancellationToken);
 }

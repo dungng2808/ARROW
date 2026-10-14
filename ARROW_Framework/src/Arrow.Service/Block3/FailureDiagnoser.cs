@@ -16,6 +16,9 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
     public const int MaxBlockLines = 60;
     public const int MaxFailures = 5;
 
+    /// <summary>Lỗi đầu tiên trong danh sách đã thử: tối đa 200 ký tự (spec 03 Mục 6.4).</summary>
+    public const int MaxFirstErrorChars = 200;
+
     public Diagnosis Diagnose(VerifyResult result, CandidateTest candidate, RepositoryMetadata metadata)
     {
         var (block, first) = result.State switch
@@ -36,7 +39,7 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
             CodeHash = candidate.CodeHash ?? result.CodeHash,
             FailingMethods = result.State is VerificationState.Compile or VerificationState.Runtime or VerificationState.Assertion ? [.. result.FailingMethods] : [],
             ErrorBlock = Limit(block),
-            FirstError = first,
+            FirstError = first is { Length: > MaxFirstErrorChars } ? first[..MaxFirstErrorChars] + "…" : first,
         };
     }
 
@@ -70,7 +73,10 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
             }
         }
 
-        var first = errors.FirstOrDefault() is { } e ? $"{e.File}:{e.Line}: {e.Message}" : null;
+        // Lỗi đầu tiên cho danh sách đã thử (spec 03 Mục 6.4): thông điệp javac kèm symbol và location.
+        var first = errors.FirstOrDefault() is { } e
+            ? e.Message + (e.Symbol is null ? "" : $": {(e.SymbolKind is null ? "" : e.SymbolKind + " ")}{e.Symbol}") + (e.Location is null ? "" : $" in {e.Location}")
+            : null;
         return (text.ToString(), first);
     }
 
@@ -78,7 +84,9 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
     private static (string, string?) UnknownBlock(VerifyResult result)
     {
         var block = result.BuildErrorExcerpt ?? "";
-        return (block, block.Split('\n').FirstOrDefault(l => l.Trim().Length > 0)?.Trim());
+        var lines = block.Split('\n').Select(l => l.Trim()).Where(l => l.Length > 0).ToList();
+        var first = lines.FirstOrDefault(l => l.Contains("Failed to execute goal", StringComparison.Ordinal)) ?? lines.FirstOrDefault();
+        return (block, first is null ? null : first.StartsWith("[ERROR] ", StringComparison.Ordinal) ? first[8..] : first);
     }
 
     /// <summary>DISCOVERY: số test được chạy (0) và tên class, file đã ghi.</summary>
@@ -87,7 +95,7 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
         var framework = metadata.TestFramework.Name switch { "junit5" => "JUnit 5", "testng" => "TestNG", _ => "JUnit 4" };
         var testClass = candidate.TestFqn.Length > 0 ? candidate.TestFqn : metadata.Paths.GeneratedTestFqn;
         var file = result.TestFile ?? candidate.TestPath;
-        return ($"The test runner executed 0 test methods of {testClass} (file {file}). The project runs tests with {framework}.\n", "0 tests executed");
+        return ($"The test runner executed 0 test methods of {testClass} (file {file}). The project runs tests with {framework}.\n", "no tests executed");
     }
 
     /// <summary>RUNTIME/ASSERTION: mỗi method fail (tối đa 5): tên, exception, thông điệp, 8 dòng đầu stack trace.</summary>
@@ -112,7 +120,19 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
             text.Append($"… and {result.Failures.Count - MaxFailures} more failing test methods\n");
         }
 
-        var first = result.Failures.FirstOrDefault() is { } f ? $"{f.Type}{(string.IsNullOrWhiteSpace(f.Message) ? "" : ": " + OneLine(f.Message))}" : null;
+        // RUNTIME: "method: Exception at Class.method"; ASSERTION: "method: thông điệp" (spec 03 Mục 6.4).
+        var f = result.State == VerificationState.Runtime
+            ? result.Failures.FirstOrDefault(x => !TestResultClassifier.IsAssertion(x.Type, x.Message)) ?? result.Failures.FirstOrDefault()
+            : result.Failures.FirstOrDefault();
+        string? first = null;
+        if (f is not null)
+        {
+            var method = f.Method.Length > 0 ? f.Method : "(class)";
+            first = result.State == VerificationState.Runtime
+                ? $"{method}: {TestResultClassifier.ShortName(f.Type ?? "unknown")}{(f.Frame is null ? "" : " at " + f.Frame)}"
+                : $"{method}: {(string.IsNullOrWhiteSpace(f.Message) ? TestResultClassifier.ShortName(f.Type ?? "unknown") : OneLine(f.Message))}";
+        }
+
         return (text.ToString(), first);
     }
 
@@ -131,7 +151,7 @@ public sealed class FailureDiagnoser : IFailureDiagnoser
             text.Append($"… and {result.Regressions.Count - MaxFailures} more\n");
         }
 
-        var first = result.Regressions.FirstOrDefault() is { } r ? $"{r.TestId}: {r.Type}" : null;
+        var first = result.Regressions.FirstOrDefault() is { } r ? $"{r.TestId}: {(r.Type == "NOT_RUN" ? "not run" : TestResultClassifier.ShortName(r.Type))}" : null;
         return (text.ToString(), first);
     }
 

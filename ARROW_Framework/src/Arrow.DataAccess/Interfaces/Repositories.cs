@@ -72,6 +72,10 @@ public interface IRunRepository
     void WriteControl(string runId, ControlCommand command);
     ControlCommand? ReadControl(string runId);
     void ClearControl(string runId);
+
+    /// <summary>File văn bản khác ở gốc run (ví dụ <c>experiment.json</c>: bản sao cấu hình thực nghiệm lúc tạo run).</summary>
+    void WriteText(string runId, string fileName, string text);
+    string? ReadText(string runId, string fileName);
 }
 
 /// <summary>Kết quả từng khối của từng task trong <c>runs/&lt;run&gt;/tasks/&lt;dataset&gt;/&lt;task&gt;/</c>. Đường dẫn con lấy từ <see cref="ResultPaths"/>.</summary>

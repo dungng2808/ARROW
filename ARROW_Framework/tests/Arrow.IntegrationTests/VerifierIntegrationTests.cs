@@ -320,10 +320,11 @@ public class VerifierIntegrationTests(VerifyFixture fixture) : IClassFixture<Ver
     {
         var pom = Path.Combine(fixture.Repo.Root, "pom-copy.xml");
         File.Copy(Path.Combine(FixtureRepo.Framework.FrameworkRoot, "tests", "fixtures", "maven-verify-junit4", "pom.xml"), pom);
-        Verifier.AddMavenSystemDependencies(pom, ["/tmp/evosuite-standalone-runtime-1.2.0.jar"]);
+        var jar = Path.Combine(Path.GetTempPath(), "evosuite-standalone-runtime-1.2.0.jar");
+        Verifier.AddMavenSystemDependencies(pom, [jar]);
         var text = File.ReadAllText(pom);
         Assert.Contains("<scope>system</scope>", text);
-        Assert.Contains("<systemPath>/tmp/evosuite-standalone-runtime-1.2.0.jar</systemPath>", text);
+        Assert.Contains($"<systemPath>{Path.GetFullPath(jar)}</systemPath>", text);
         Assert.Contains("<artifactId>junit</artifactId>", text);
     }
 }

@@ -18,7 +18,7 @@ public sealed class BuildRunner(IProcessRunner runner) : IBuildRunner
         {
             ["JAVA_HOME"] = context.JdkHome,
             ["PATH"] = Path.Combine(context.JdkHome, "bin") + Path.PathSeparator + Environment.GetEnvironmentVariable("PATH"),
-            ["JAVA_TOOL_OPTIONS"] = JavaToolOptions,
+            ["JAVA_TOOL_OPTIONS"] = context.ExtraJavaToolOptions is { Length: > 0 } extra ? JavaToolOptions + " " + extra : JavaToolOptions,
             ["JDK_JAVA_OPTIONS"] = null,
             ["MAVEN_ARGS"] = null,
             ["MAVEN_OPTS"] = null,

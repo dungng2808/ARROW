@@ -267,6 +267,9 @@ public sealed class JavaHelperClient(JavaHelperOptions options, IProcessRunner r
     public Task<JavaCalledMethods> CalledMethodsAsync(string testCode, IReadOnlyList<string> testMethods, string cutCode, CancellationToken cancellationToken) =>
         CallAsync<JavaCalledMethods>("called_methods", new { test_code = testCode, test_methods = testMethods, cut_code = cutCode }, cancellationToken);
 
+    public Task<JavaShrinkResult> ShrinkSourceAsync(string code, int maxChars, CancellationToken cancellationToken) =>
+        CallAsync<JavaShrinkResult>("shrink_source", new { code, max_chars = maxChars }, cancellationToken);
+
     public async ValueTask DisposeAsync()
     {
         await _gate.WaitAsync().ConfigureAwait(false);

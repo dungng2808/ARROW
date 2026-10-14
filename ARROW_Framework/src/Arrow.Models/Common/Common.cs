@@ -61,6 +61,9 @@ public sealed record BlockOutcome
     public string? Log { get; init; }
     public bool NeedsRerun { get; init; }
 
+    /// <summary>Thời gian của việc (khối 4: từng công cụ đo), để báo cáo tài nguyên.</summary>
+    public double? Seconds { get; init; }
+
     public static BlockOutcome Ok() => new() { Outcome = OutcomeKind.Ok };
 }
 

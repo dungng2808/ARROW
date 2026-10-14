@@ -8,15 +8,19 @@ public sealed class CommandLine
 {
     private readonly Dictionary<string, List<string>> _options = new(StringComparer.Ordinal);
     private readonly HashSet<string> _flags = new(StringComparer.Ordinal);
+    private readonly List<string> _trailing = [];
 
     public IReadOnlyList<string> Command { get; }
+
+    /// <summary>Từ đứng sau các tùy chọn (ví dụ <c>pause</c> trong <c>control --run-id R pause</c>).</summary>
+    public IReadOnlyList<string> Trailing => _trailing;
 
     private CommandLine(IReadOnlyList<string> command) => Command = command;
 
     /// <summary>Các tùy chọn không nhận giá trị.</summary>
     public static readonly IReadOnlySet<string> KnownFlags = new HashSet<string>(StringComparer.Ordinal)
     {
-        "version", "help", "verbose", "plain", "rerun-infra", "keep-workspace",
+        "version", "help", "verbose", "plain", "rerun-infra", "keep-workspace", "fake-llm",
     };
 
     public static CommandLine Parse(IReadOnlyList<string> args)
@@ -33,9 +37,16 @@ public sealed class CommandLine
         while (i < args.Count)
         {
             var arg = args[i];
-            if (!arg.StartsWith("--", StringComparison.Ordinal) || arg.Length == 2)
+            if (arg == "--")
             {
                 throw new ArgumentException($"Tham số không hợp lệ: {arg}");
+            }
+
+            if (!arg.StartsWith("--", StringComparison.Ordinal))
+            {
+                result._trailing.Add(arg);
+                i++;
+                continue;
             }
 
             var name = arg[2..];

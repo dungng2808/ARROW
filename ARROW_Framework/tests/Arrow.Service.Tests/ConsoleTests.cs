@@ -66,7 +66,7 @@ public class ConsoleTests
         output.Table(["Quy trình", "n", "VALID"], [["zero_shot", "50", "14%"], ["zero_shot_project_aware", "50", "38%"]]);
         output.Status(Mark.Ok, "Model gpt-6-luna", "api.teamorouter.com");
         output.Status(Mark.Fail, "PIT");
-        var lines = writer.ToString().Split('\n');
+        var lines = writer.ToString().ReplaceLineEndings("\n").Split('\n');
         Assert.Equal("Báo cáo", lines[0]);
         Assert.Equal("=======", lines[1]);
         Assert.Equal("Quy trình                n   VALID", lines[2]);
@@ -89,6 +89,10 @@ public class ConsoleTests
         Assert.False(cmd.Flag("rerun-infra"));
 
         Assert.True(CommandLine.Parse(["prompts", "check"]).Is("prompts", "check"));
-        Assert.Throws<ArgumentException>(() => CommandLine.Parse(["run", "--run-id", "A", "stray"]));
+        // Từ đứng sau tùy chọn được giữ riêng (control --run-id R pause); Program báo lỗi với các lệnh khác.
+        var control = CommandLine.Parse(["control", "--run-id", "A", "pause"]);
+        Assert.Equal((true, "A"), (control.Is("control"), control.Option("run-id")));
+        Assert.Equal(["pause"], control.Trailing);
+        Assert.Throws<ArgumentException>(() => CommandLine.Parse(["run", "--"]));
     }
 }
