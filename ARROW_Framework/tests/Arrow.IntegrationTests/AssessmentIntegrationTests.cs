@@ -107,7 +107,7 @@ public class AssessmentIntegrationTests(VerifyFixture fixture) : IClassFixture<V
         var (tools, all) = Create();
         if (!tools.Check().Single(t => t.Id == "tsdetect").Present)
         {
-            return; // tsDetect chưa có trong tools_dir (tải từ GitHub Releases bằng arrow-fw setup)
+            return; // tsDetect chưa có trong tools_dir (tải từ GitHub Releases bằng arrow setup)
         }
 
         var result = await all[2].MeasureAsync(Suite, fixture.Task, new MeasureOptions { ResultDir = "block4/ts" }, CancellationToken.None);

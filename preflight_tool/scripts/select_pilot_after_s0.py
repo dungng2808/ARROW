@@ -7,7 +7,7 @@ Usage (from ARROW/preflight_tool):
         --screening-csv ../ARROW_Framework/runs/<screen run>/reports/screening.csv [--screening-csv <run rerunning some tasks> ...] \
         --name classes2test_pilot_50_seed42_v2 --output-dir ../evaluation_manifest/pilot
 
-Screening input: `screening.csv` written by `arrow-fw screen` (ARROW_Framework, spec 01 section 6.3;
+Screening input: `screening.csv` written by `arrow screen` (ARROW_Framework, spec 01 section 6.3;
 columns task_id, outcome, code, paired_test_status, tests_run, jdk_major, message). The older
 `--run-dir` input reads ledger.jsonl + baseline.json of the removed pilot_tool (tag pilot-tool-v1)
 and is kept only to reproduce classes2test_pilot_50_seed42_v2.
@@ -75,7 +75,7 @@ def screen(record: dict, found: tuple[dict, Path] | None, dataset: str) -> tuple
 
 
 def screening_csv_verdicts(paths: list[Path]) -> dict[str, tuple[bool, str]]:
-    """Criterion B from arrow-fw screen: outcome OK and paired_test_status PASS. A later file overrides an earlier one."""
+    """Criterion B from arrow screen: outcome OK and paired_test_status PASS. A later file overrides an earlier one."""
     verdicts: dict[str, tuple[bool, str]] = {}
     for path in paths:
         with path.open(encoding="utf-8", newline="") as handle:
@@ -102,7 +102,7 @@ def main() -> int:
     args = parser.parse_args()
 
     if bool(args.screening_csv) == bool(args.run_dir):
-        print("ERROR give either --screening-csv (arrow-fw screen) or --run-dir (old pilot_tool), not both", file=sys.stderr)
+        print("ERROR give either --screening-csv (arrow screen) or --run-dir (old pilot_tool), not both", file=sys.stderr)
         return 2
     pilot = read_jsonl(args.pilot)
     reserve = read_jsonl(args.reserve)

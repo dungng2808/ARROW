@@ -175,7 +175,7 @@ public sealed class SetupScreen(ISetupService setup, ModelScreen models, DoctorS
     private async Task<bool> StepModelAsync(MachineConfig machine, Action<MachineConfig> save)
     {
         Explain(5, "Gọi model", "Chọn cách chạy proxy LiteLLM, khai báo provider và khóa từng model", "Mọi lượt gọi model đi qua proxy; khóa chỉ nằm ở file của máy này",
-            "Chọn chế độ proxy, rồi khai báo model (có thể làm sau bằng arrow-fw models)");
+            "Chọn chế độ proxy, rồi khai báo model (có thể làm sau bằng arrow models)");
         var mode = input.Choose("Chế độ proxy LiteLLM:", ["auto_start (framework tự bật/tắt proxy)", "external (proxy đang chạy sẵn)", "Quay lại"],
             defaultIndex: machine.Llm.ProxyMode == "external" ? 1 : 0);
         if (mode == 2)

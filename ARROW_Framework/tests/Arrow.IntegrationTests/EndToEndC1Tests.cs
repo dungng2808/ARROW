@@ -3,12 +3,12 @@ using Arrow.Service;
 
 namespace Arrow.IntegrationTests;
 
-/// <summary>Bước C1: lệnh <c>arrow-fw prompts check</c> chạy qua cả 3 tầng (UI → Service → Data Access) trên bộ prompt thật.</summary>
+/// <summary>Bước C1: lệnh <c>arrow prompts check</c> chạy qua cả 3 tầng (UI → Service → Data Access) trên bộ prompt thật.</summary>
 public class EndToEndC1Tests
 {
     private static (int ExitCode, string Output) RunArrow(params string[] args)
     {
-        var dll = Path.Combine(AppContext.BaseDirectory, "arrow-fw.dll");
+        var dll = Path.Combine(AppContext.BaseDirectory, "arrow.dll");
         var start = new ProcessStartInfo("dotnet")
         {
             RedirectStandardOutput = true, RedirectStandardError = true, RedirectStandardInput = true, UseShellExecute = false,

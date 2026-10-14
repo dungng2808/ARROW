@@ -1,6 +1,6 @@
 # 06. Màn hình console (tầng UI)
 
-**Mục đích:** mô tả tầng UI của `arrow-fw`: mỗi màn hình hiện gì, người dùng nhập gì, và lệnh tương ứng. Kiến trúc 3 tầng ở spec 07. Tầng UI chỉ **nhập** và **hiện**; mọi xử lý gọi xuống tầng Service qua interface.
+**Mục đích:** mô tả tầng UI của `arrow`: mỗi màn hình hiện gì, người dùng nhập gì, và lệnh tương ứng. Kiến trúc 3 tầng ở spec 07. Tầng UI chỉ **nhập** và **hiện**; mọi xử lý gọi xuống tầng Service qua interface.
 
 ## 1. Nguyên tắc
 
@@ -12,7 +12,7 @@
 | Tiếng Việt | Đặt `Console.OutputEncoding` và `Console.InputEncoding` là UTF-8 khi khởi động |
 | Khóa API | Nhập bằng `ReadLine` như mọi chỗ khác (chốt 14/10/2026), nên khóa **hiện trên màn hình lúc gõ**. Trước khi hỏi, in nhắc `[!] Khoa se hien tren man hinh khi go`. Sau khi nhận, mọi chỗ khác chỉ hiện 4 ký tự cuối (`...2a4b`); khóa không bao giờ ghi vào log hay file kết quả |
 | UI không xử lý | UI không đọc/ghi file, không chạy tiến trình, không gọi model. UI gọi interface của tầng Service (spec 07 Mục 4) và in kết quả trả về |
-| Lệnh và menu | Mỗi màn hình mở được bằng menu (gõ `arrow-fw`) hoặc bằng lệnh trực tiếp (`arrow-fw run …`) để dùng trong script |
+| Lệnh và menu | Mỗi màn hình mở được bằng menu (gõ `arrow`) hoặc bằng lệnh trực tiếp (`arrow run …`) để dùng trong script |
 
 **Hàm nhập dùng chung** (lớp `ConsoleInput`):
 
@@ -32,16 +32,16 @@ Các ví dụ màn hình dưới đây viết không dấu cho thẳng cột tro
 
 | # | Màn hình | Lệnh |
 | --- | --- | --- |
-| S1 | Menu chính | `arrow-fw` |
-| S2 | Cài đặt máy | `arrow-fw setup` |
-| S3 | Model, provider, khóa API, giá | `arrow-fw models` |
-| S4 | Kiểm tra môi trường | `arrow-fw doctor` |
-| S5 | Chạy và theo dõi | `arrow-fw run [--run-id R] [--tasks …] [--blocks 1,2,3,4] [--rerun-infra]` |
-| S6 | Trạng thái một run | `arrow-fw status --run-id R` |
-| S7 | Chi tiết một task | `arrow-fw show --run-id R --task T` |
-| S8 | Báo cáo | `arrow-fw report --run-id R [--run-id R2 …]` |
-| S9 | Cần chạy lại riêng | `arrow-fw rerun-list --run-id R` |
-| S10 | Sàng lọc CUT (tiêu chí B) | `arrow-fw screen --manifest F --run-id R` |
+| S1 | Menu chính | `arrow` |
+| S2 | Cài đặt máy | `arrow setup` |
+| S3 | Model, provider, khóa API, giá | `arrow models` |
+| S4 | Kiểm tra môi trường | `arrow doctor` |
+| S5 | Chạy và theo dõi | `arrow run [--run-id R] [--tasks …] [--blocks 1,2,3,4] [--rerun-infra]` |
+| S6 | Trạng thái một run | `arrow status --run-id R` |
+| S7 | Chi tiết một task | `arrow show --run-id R --task T` |
+| S8 | Báo cáo | `arrow report --run-id R [--run-id R2 …]` |
+| S9 | Cần chạy lại riêng | `arrow rerun-list --run-id R` |
+| S10 | Sàng lọc CUT (tiêu chí B) | `arrow screen --manifest F --run-id R` |
 
 ## 3. S1: Menu chính
 
@@ -165,7 +165,7 @@ Kiem tra moi truong
 [OK] Model gpt-6-luna          openai/gpt-6-luna · api.teamorouter.com
 [OK] java-helper               tools/java-helper/java-helper.jar
 [X]  PIT                       thieu pitest-testng-plugin
-     -> Cach sua: arrow-fw tools install
+     -> Cach sua: arrow tools install
 Trang thai: NOT READY (1 loi)
 Sua ngay cac loi tool tu sua duoc? (y/n) [y]:
 ```
@@ -211,13 +211,13 @@ c0: VALID 31 · COMPILE 74 · UNKNOWN 2 · DISCOVERY 5 · RUNTIME 22 · ASSERTIO
 | `h` | In danh sách lệnh |
 | Ctrl+C | Như `s` nhưng không hỏi lại |
 
-Run tự **tạm dừng** khi gặp lỗi cấu hình model (khóa sai, hết tiền, sai model id): in `[X] TAM DUNG: <lý do>` và cách sửa (chạy `arrow-fw models` ở terminal khác), sửa xong gõ `r`.
+Run tự **tạm dừng** khi gặp lỗi cấu hình model (khóa sai, hết tiền, sai model id): in `[X] TAM DUNG: <lý do>` và cách sửa (chạy `arrow models` ở terminal khác), sửa xong gõ `r`.
 
 Khi output bị chuyển hướng ra file (`Console.IsOutputRedirected`) hoặc input không phải bàn phím (`Console.IsInputRedirected`), S5 không chờ `ReadLine`, chỉ in dòng sự kiện và dòng tổng.
 
 ## 8. S6: Trạng thái một run
 
-Lấy trạng thái đã lưu qua tầng Service, in bảng tổng như lệnh `t` của S5, thêm dòng `Con song: co (heartbeat 3 s truoc)` hoặc `khong`. Điều khiển run đang chạy từ terminal khác: `arrow-fw control --run-id R pause|resume|stop`.
+Lấy trạng thái đã lưu qua tầng Service, in bảng tổng như lệnh `t` của S5, thêm dòng `Con song: co (heartbeat 3 s truoc)` hoặc `khong`. Điều khiển run đang chạy từ terminal khác: `arrow control --run-id R pause|resume|stop`.
 
 ## 9. S7: Chi tiết một task
 
@@ -283,7 +283,7 @@ branch    25  0.52   0.69
 mutation  28  0.55   0.47
 smell     30  0.90   1.30
 
-Can chay lai rieng: 1 job -> arrow-fw rerun-list --run-id pilot-1
+Can chay lai rieng: 1 job -> arrow rerun-list --run-id pilot-1
 ```
 
 (Số liệu minh họa.)
@@ -296,7 +296,7 @@ Can chay lai rieng · pilot-1
 #  Task        Khoi  Job                           Loi         Lan thu  Lap lai?
 1  402981_...  3     gpt-6-luna/few_shot/adaptive  B3_TIMEOUT  3        khong
 
-Lenh: arrow-fw run --run-id pilot-1 --tasks 402981_... --rerun-infra
+Lenh: arrow run --run-id pilot-1 --tasks 402981_... --rerun-infra
   1. Chay lai task so 1
   2. Chay lai tat ca
   0. Quay lai

@@ -5,7 +5,7 @@ namespace Arrow.DataAccess.Tests;
 /// <summary>Thư mục <c>ARROW_Framework</c> tạm cho một test; tự xóa khi xong.</summary>
 public sealed class TempFramework : IDisposable
 {
-    public string Root { get; } = Path.Combine(Path.GetTempPath(), "arrow-fw-test-" + Guid.NewGuid().ToString("N"));
+    public string Root { get; } = Path.Combine(Path.GetTempPath(), "arrow-test-" + Guid.NewGuid().ToString("N"));
 
     public TempFramework()
     {

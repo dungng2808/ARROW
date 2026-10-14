@@ -47,7 +47,7 @@ public sealed class ReportScreen(IReportService reports, ConsoleOutput output)
         }
 
         var rerun = report.Tables["needs_rerun.csv"].Rows.Count;
-        output.Line(rerun == 0 ? "Cần chạy lại riêng: 0 job (run hoàn chỉnh)" : $"Cần chạy lại riêng: {rerun} job -> arrow-fw rerun-list --run-id {runIds[0]}");
+        output.Line(rerun == 0 ? "Cần chạy lại riêng: 0 job (run hoàn chỉnh)" : $"Cần chạy lại riêng: {rerun} job -> arrow rerun-list --run-id {runIds[0]}");
         output.Line($"File: {string.Join(", ", report.Files)}");
         return 0;
     }

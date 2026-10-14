@@ -15,7 +15,7 @@ using Arrow.Service.Interfaces;
 namespace Arrow.Service.App;
 
 /// <summary>
-/// <c>arrow-fw screen</c> (spec 01 Mục 6.3, spec 06 S10): chạy chỉ khối 1 cho mọi CUT của một manifest, song song theo <c>workers.build</c>,
+/// <c>arrow screen</c> (spec 01 Mục 6.3, spec 06 S10): chạy chỉ khối 1 cho mọi CUT của một manifest, song song theo <c>workers.build</c>,
 /// ghi ledger sau mỗi task (chạy lại cùng run id thì bỏ qua task đã xong), rồi ghi <c>reports/screening.csv</c>.
 /// Sàng lọc chỉ <b>đo</b> tiêu chí B: task không đạt vẫn có <c>outcome = OK</c>, trạng thái nằm ở cột <c>paired_test_status</c>.
 /// </summary>

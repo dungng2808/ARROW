@@ -9,14 +9,14 @@ using Arrow.Service.External;
 namespace Arrow.IntegrationTests;
 
 /// <summary>
-/// Bước C9 (spec 07 Mục 10): chạy <c>arrow-fw</c> thật với input/output chuyển hướng trên một thư mục framework tạm (<c>--root</c>):
+/// Bước C9 (spec 07 Mục 10): chạy <c>arrow</c> thật với input/output chuyển hướng trên một thư mục framework tạm (<c>--root</c>):
 /// trợ giúp, menu, kiểm tra môi trường, run với model giả, trạng thái, chi tiết task, báo cáo, cần chạy lại, điều khiển, model.
 /// </summary>
 public class CliIntegrationTests
 {
     private static (int ExitCode, string Output) Arrow(string root, string stdin, params string[] args)
     {
-        var dll = Path.Combine(AppContext.BaseDirectory, "arrow-fw.dll");
+        var dll = Path.Combine(AppContext.BaseDirectory, "arrow.dll");
         var start = new ProcessStartInfo("dotnet")
         {
             RedirectStandardOutput = true, RedirectStandardError = true, RedirectStandardInput = true, UseShellExecute = false,
@@ -33,7 +33,7 @@ public class CliIntegrationTests
         process.StandardInput.Close();
         var error = process.StandardError.ReadToEndAsync();
         var output = process.StandardOutput.ReadToEnd();
-        Assert.True(process.WaitForExit(600_000), "arrow-fw không kết thúc");
+        Assert.True(process.WaitForExit(600_000), "arrow không kết thúc");
         return (process.ExitCode, output + error.Result);
     }
 
@@ -52,7 +52,7 @@ public class CliIntegrationTests
     {
         var (code, output) = Arrow(FixtureRepo.Framework.FrameworkRoot, "", "--help");
         Assert.Equal(0, code);
-        foreach (var command in new[] { "arrow-fw run", "arrow-fw report", "arrow-fw status", "arrow-fw show", "arrow-fw rerun-list", "arrow-fw control", "arrow-fw doctor", "arrow-fw setup", "arrow-fw models", "arrow-fw screen" })
+        foreach (var command in new[] { "arrow run", "arrow report", "arrow status", "arrow show", "arrow rerun-list", "arrow control", "arrow doctor", "arrow setup", "arrow models", "arrow screen" })
         {
             Assert.Contains(command, output);
         }

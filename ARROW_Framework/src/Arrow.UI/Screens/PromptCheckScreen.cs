@@ -2,7 +2,7 @@ using Arrow.Service.Interfaces;
 
 namespace Arrow.UI.Screens;
 
-/// <summary><c>arrow-fw prompts check</c>: liệt kê template và kết quả kiểm tra bộ prompt (spec 02 Mục 2.3).</summary>
+/// <summary><c>arrow prompts check</c>: liệt kê template và kết quả kiểm tra bộ prompt (spec 02 Mục 2.3).</summary>
 public sealed class PromptCheckScreen(IPromptService prompts, ConsoleOutput output)
 {
     public int Run()

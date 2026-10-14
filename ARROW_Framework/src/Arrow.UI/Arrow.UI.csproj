@@ -2,7 +2,7 @@
   <!-- Tầng UI: nhập bằng Console.ReadLine, xuất bằng Console.WriteLine. Chỉ gọi tầng Service. -->
   <PropertyGroup>
     <OutputType>Exe</OutputType>
-    <AssemblyName>arrow-fw</AssemblyName>
+    <AssemblyName>arrow</AssemblyName>
     <RootNamespace>Arrow.UI</RootNamespace>
   </PropertyGroup>
   <ItemGroup>

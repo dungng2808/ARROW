@@ -63,12 +63,53 @@ public sealed class JavaHelperClient(JavaHelperOptions options, IProcessRunner r
         return sources.Any(f => File.GetLastWriteTimeUtc(f) > jarTime);
     }
 
+    private static readonly System.Collections.Concurrent.ConcurrentDictionary<string, SemaphoreSlim> BuildLocks = new(StringComparer.Ordinal);
+
+    /// <summary>
+    /// Build jar khi cần. Hai client (trong cùng tiến trình hoặc hai tiến trình) không build cùng lúc: khóa trong tiến trình theo thư mục
+    /// project, và khóa file trong thư mục tạm của hệ thống (theo đường dẫn project) giữa các tiến trình; lấy được khóa thì kiểm tra lại vì bên kia có thể vừa build xong.
+    /// </summary>
     public async Task<string> EnsureJarAsync(CancellationToken cancellationToken)
     {
         if (!NeedsBuild())
         {
             return JarPath;
         }
+
+        var gate = BuildLocks.GetOrAdd(Path.GetFullPath(options.ProjectDir), _ => new SemaphoreSlim(1, 1));
+        await gate.WaitAsync(cancellationToken).ConfigureAwait(false);
+        try
+        {
+            // File khóa nằm ngoài thư mục project (thư mục tạm của hệ thống) để việc chép thư mục java-helper không đụng vào nó.
+            var projectKey = Convert.ToHexString(System.Security.Cryptography.SHA256.HashData(Encoding.UTF8.GetBytes(Path.GetFullPath(options.ProjectDir))))[..16];
+            var lockPath = Path.Combine(Path.GetTempPath(), $"arrow-java-helper-{projectKey}.lock");
+            var waited = System.Diagnostics.Stopwatch.StartNew();
+            FileStream? fileLock = null;
+            while (fileLock is null)
+            {
+                try
+                {
+                    fileLock = new FileStream(lockPath, FileMode.OpenOrCreate, FileAccess.ReadWrite, FileShare.None);
+                }
+                catch (IOException) when (waited.Elapsed < options.BuildTimeout)
+                {
+                    await Task.Delay(500, cancellationToken).ConfigureAwait(false);
+                }
+            }
+
+            using (fileLock)
+            {
+                return NeedsBuild() ? await BuildJarAsync(cancellationToken).ConfigureAwait(false) : JarPath;
+            }
+        }
+        finally
+        {
+            gate.Release();
+        }
+    }
+
+    private async Task<string> BuildJarAsync(CancellationToken cancellationToken)
+    {
 
         var maven = options.MavenExecutable
                     ?? throw new ArrowException(ErrorCodes.MavenMissing, "Cần Maven để build java-helper (đặt maven_path trong machine.local.json hoặc thêm mvn vào PATH)");

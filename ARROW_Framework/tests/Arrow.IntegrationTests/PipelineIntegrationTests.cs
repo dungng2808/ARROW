@@ -13,7 +13,7 @@ using Arrow.Service.External;
 namespace Arrow.IntegrationTests;
 
 /// <summary>
-/// Bước C8 (spec 07 Mục 11): toàn luồng <c>arrow-fw run</c> 4 khối trên fixture Maven với model giả; lần chạy đầu bị dừng giữa chain sửa,
+/// Bước C8 (spec 07 Mục 11): toàn luồng <c>arrow run</c> 4 khối trên fixture Maven với model giả; lần chạy đầu bị dừng giữa chain sửa,
 /// chạy lại cùng run id thì tiếp tục (job đã có ledger không chạy lại, lượt gọi model đã xong được phát lại từ cache).
 /// </summary>
 public class PipelineIntegrationTests
@@ -167,6 +167,17 @@ public class PipelineIntegrationTests
         var experimentFile = Path.Combine(paths.ExperimentsDir, "e2e.json");
         await File.AppendAllTextAsync(experimentFile, "\n");
         Assert.Equal(ErrorCodes.RunConfigMismatch, Assert.Throws<ArrowException>(() => services.Pipeline.Start(new RunRequest { RunId = "e2e", FakeLlm = true }, progress)).Code);
+
+        // --shard: file phân công chia cho cấu hình cũ bị từ chối; task không có trong thực nghiệm bị báo.
+        var shard = Path.Combine(repo.Root, "shard-01.json");
+        string Shard(string sha, string taskId) =>
+            $$"""{"schema_version":1,"plan_id":"it","shard_id":"shard-01","experiment_sha256":"{{sha}}","tasks":[{"dataset":"classes2test","task_id":"{{taskId}}"}]}""";
+        await File.WriteAllTextAsync(shard, Shard(new string('0', 64), "800_e2e"));
+        var stale = Assert.Throws<ArrowException>(() => services.Pipeline.Start(new RunRequest { RunId = "e2e-shard", ShardPath = shard, FakeLlm = true }, progress));
+        Assert.Equal(ErrorCodes.RunConfigMismatch, stale.Code);
+        Assert.Contains("shard-01.json", stale.Message);
+        await File.WriteAllTextAsync(shard, Shard(Hashing.Sha256TextFile(experimentFile), "999_missing"));
+        Assert.Throws<ArgumentException>(() => services.Pipeline.Start(new RunRequest { RunId = "e2e-shard", ShardPath = shard, FakeLlm = true }, progress));
     }
 
     private sealed class Progress(List<RunEvent> events) : IProgress<RunEvent>

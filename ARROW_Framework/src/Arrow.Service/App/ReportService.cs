@@ -5,7 +5,7 @@ using Arrow.Service.Interfaces;
 namespace Arrow.Service.App;
 
 /// <summary>
-/// Khối 4, phần báo cáo (spec 04 Mục 6, lệnh <c>arrow-fw report</c>): đọc một hoặc nhiều run, dựng báo cáo, ghi CSV và <c>report.md</c>.
+/// Khối 4, phần báo cáo (spec 04 Mục 6, lệnh <c>arrow report</c>): đọc một hoặc nhiều run, dựng báo cáo, ghi CSV và <c>report.md</c>.
 /// Một run: ghi vào <c>runs/&lt;run&gt;/reports/</c>; nhiều run: ghi vào <c>runs/merged-&lt;run1&gt;-&lt;run2&gt;…/reports/</c>.
 /// </summary>
 public sealed class ReportService(RunResultsLoader loader, IReportRepository reports, ILogRepository log) : IReportService

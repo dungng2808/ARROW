@@ -9,7 +9,7 @@ using Arrow.Service.Interfaces;
 
 namespace Arrow.Service.App;
 
-/// <summary>Đọc trạng thái đã lưu của các run (S1, S6, S7, S9) và gửi lệnh điều khiển (<c>arrow-fw control</c>).</summary>
+/// <summary>Đọc trạng thái đã lưu của các run (S1, S6, S7, S9) và gửi lệnh điều khiển (<c>arrow control</c>).</summary>
 public sealed class RunQueryService(IRunRepository runs, ITaskResultRepository results, RunResultsLoader loader) : IRunQueryService
 {
     /// <summary>Run coi là còn sống khi heartbeat gần hơn khoảng này (heartbeat ghi mỗi 2 giây).</summary>
@@ -63,7 +63,7 @@ public sealed class RunQueryService(IRunRepository runs, ITaskResultRepository r
                 Message = x.Latest.Message,
                 Attempts = attempts,
                 TimeoutRepeated = x.Timeouts >= 2,
-                Command = $"arrow-fw run --run-id {runId} --tasks {x.Latest.TaskId} --rerun-infra",
+                Command = $"arrow run --run-id {runId} --tasks {x.Latest.TaskId} --rerun-infra",
             })
             .ToList();
     }
@@ -71,7 +71,7 @@ public sealed class RunQueryService(IRunRepository runs, ITaskResultRepository r
     public void SendControl(string runId, ControlAction action)
     {
         Require(runId);
-        runs.WriteControl(runId, new ControlCommand { Action = action, At = DateTimeOffset.Now, Source = "arrow-fw control" });
+        runs.WriteControl(runId, new ControlCommand { Action = action, At = DateTimeOffset.Now, Source = "arrow control" });
     }
 
     private void Require(string runId)

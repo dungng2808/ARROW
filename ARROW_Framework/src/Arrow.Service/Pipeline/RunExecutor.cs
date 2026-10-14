@@ -496,7 +496,7 @@ public sealed class RunExecutor(
             catch (ArrowException ex) when (ex.Code is ErrorCodes.B2LlmConfig or ErrorCodes.B2WrongModel)
             {
                 gate.Pause($"{ex.Code}: {ex.Message}");
-                Event(2, null, null, EventLevel.Error, $"TẠM DỪNG: {ex.Code}: {ex.Message}. Sửa bằng arrow-fw models ở terminal khác rồi gõ r");
+                Event(2, null, null, EventLevel.Error, $"TẠM DỪNG: {ex.Code}: {ex.Message}. Sửa bằng arrow models ở terminal khác rồi gõ r");
             }
             catch (ArrowException ex) when (ex.Code == ErrorCodes.B2CallLimit)
             {

@@ -18,7 +18,7 @@ public sealed class RunResultsLoader(IRunRepository runs, ITaskResultRepository 
     public ExperimentConfig LoadExperiment(string runId)
     {
         var text = runs.ReadText(runId, ExperimentCopy)
-                   ?? throw new ArrowException(ErrorCodes.RunMissing, $"Run {runId} không có {ExperimentCopy} (chưa chạy bằng arrow-fw run?)");
+                   ?? throw new ArrowException(ErrorCodes.RunMissing, $"Run {runId} không có {ExperimentCopy} (chưa chạy bằng arrow run?)");
         return JsonFile.Deserialize<ExperimentConfig>(text);
     }
 

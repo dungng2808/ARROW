@@ -48,7 +48,7 @@ ARROW_Framework/
     Arrow.Models/                    class dữ liệu dùng chung
     Arrow.DataAccess/                tầng Data Access
     Arrow.Service/                   tầng Service
-    Arrow.UI/                        tầng UI (project console, file chạy arrow-fw)
+    Arrow.UI/                        tầng UI (project console, file chạy arrow)
   tools/java-helper/                 công cụ Java (JavaParser) Service gọi qua tiến trình
   prompts/                           template prompt, ví dụ few-shot (Data Access đọc)
   experiments/                       cấu hình thực nghiệm (Data Access đọc/ghi)
@@ -189,7 +189,7 @@ Mỗi màn hình là một class nhận interface dịch vụ qua constructor, c
 
 ## 7. Luồng gọi giữa các tầng
 
-### 7.1. Chạy một run (`arrow-fw run`)
+### 7.1. Chạy một run (`arrow run`)
 
 ```
 UI: RunScreen
@@ -250,7 +250,7 @@ Test thay bước 1 bằng repository trong bộ nhớ và bước 2 bằng côn
 | Service: logic thuần | Mọi ví dụ trong spec 01–05 (chọn build root, JDK, prompt 3 quy trình, tách mã, phân loại lỗi, signature, ví dụ Fixed/Adaptive spec 03 Mục 7, 14, 15, công thức RQ, quy tắc N) | Không cần gì |
 | Service: điều phối | `PipelineService`, `RepairRunner` với repository trong bộ nhớ, `FakeLlmClient`, `IBuildRunner` giả | Không cần Java |
 | Tích hợp | Khối 1, 3, 4 với Maven/Gradle thật trên fixture; toàn luồng `run` với model giả; dừng giữa chừng rồi chạy tiếp | JDK, Maven, Gradle |
-| UI | Chạy `arrow-fw` với input chuyển hướng (`echo "4\n…" \| arrow-fw`), so output với mẫu | File chạy đã build |
+| UI | Chạy `arrow` với input chuyển hướng (`echo "4\n…" \| arrow`), so output với mẫu | File chạy đã build |
 
 ## 11. Thứ tự viết code (mỗi bước có test, build không cảnh báo, test pass)
 

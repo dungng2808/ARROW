@@ -143,20 +143,20 @@ Mọi file JSON: UTF-8 không BOM, xuống dòng LF, tên trường snake_case. 
 
 | Lệnh | Việc |
 | --- | --- |
-| `arrow-fw run [--experiment F] [--run-id R] [--tasks FILE\|ID,…] [--blocks 1,2,3,4]` | Chạy các khối cho các task; mặc định cả 4 khối, mọi task của experiment |
-| `arrow-fw analyze …` | Chỉ khối 1 |
-| `arrow-fw screen --manifest F --run-id R` | Chỉ khối 1 cho mọi CUT của manifest, ghi `reports/screening.csv` (tiêu chí B) làm đầu vào cho script chọn mẫu (spec 01 Mục 6.3) |
-| `arrow-fw generate …` | Khối 2 (cần khối 1 đã xong) |
-| `arrow-fw repair …` | Khối 3 (cần khối 2 đã xong) |
-| `arrow-fw assess …` | Khối 4 phần đo (cần khối 3 đã xong) |
-| `arrow-fw report --run-id R [--run-id R2 …]` | Khối 4 phần báo cáo; nhiều run thì gộp (dùng khi nhiều máy chạy các phần task khác nhau) |
-| `arrow-fw doctor` | Kiểm tra môi trường: JDK, Maven/Gradle, Git, LiteLLM, công cụ khối 4, gọi thử từng model |
-| `arrow-fw status --run-id R` | Tiến độ: số job xong/tổng theo khối, số INFRA, số EXCLUDED |
-| `arrow-fw show --run-id R --task T` | Chi tiết một task: kết quả từng khối, từng vòng sửa |
-| `arrow-fw rerun-list --run-id R` | Danh sách job cần chạy lại riêng, kèm lệnh |
-| `arrow-fw control --run-id R pause\|resume\|stop` | Điều khiển run đang chạy từ terminal khác |
-| `arrow-fw setup` / `arrow-fw models` | Cài đặt máy; model, provider, khóa API, giá |
-| `arrow-fw` (không kèm lệnh) | Menu chính |
+| `arrow run [--experiment F] [--run-id R] [--tasks FILE\|ID,…] [--shard F] [--blocks 1,2,3,4]` | Chạy các khối cho các task; mặc định cả 4 khối, mọi task của experiment; `--shard` chỉ chạy các task được giao cho máy này (Mục 5.4) |
+| `arrow analyze …` | Chỉ khối 1 |
+| `arrow screen --manifest F --run-id R` | Chỉ khối 1 cho mọi CUT của manifest, ghi `reports/screening.csv` (tiêu chí B) làm đầu vào cho script chọn mẫu (spec 01 Mục 6.3) |
+| `arrow generate …` | Khối 2 (cần khối 1 đã xong) |
+| `arrow repair …` | Khối 3 (cần khối 2 đã xong) |
+| `arrow assess …` | Khối 4 phần đo (cần khối 3 đã xong) |
+| `arrow report --run-id R [--run-id R2 …]` | Khối 4 phần báo cáo; nhiều run thì gộp (dùng khi nhiều máy chạy các phần task khác nhau) |
+| `arrow doctor` | Kiểm tra môi trường: JDK, Maven/Gradle, Git, LiteLLM, công cụ khối 4, gọi thử từng model |
+| `arrow status --run-id R` | Tiến độ: số job xong/tổng theo khối, số INFRA, số EXCLUDED |
+| `arrow show --run-id R --task T` | Chi tiết một task: kết quả từng khối, từng vòng sửa |
+| `arrow rerun-list --run-id R` | Danh sách job cần chạy lại riêng, kèm lệnh |
+| `arrow control --run-id R pause\|resume\|stop` | Điều khiển run đang chạy từ terminal khác |
+| `arrow setup` / `arrow models` | Cài đặt máy; model, provider, khóa API, giá |
+| `arrow` (không kèm lệnh) | Menu chính |
 
 Màn hình của từng lệnh (menu, cài đặt, theo dõi khi chạy, chi tiết task, báo cáo…) mô tả ở **spec 06**: nhập bằng `ReadLine`, xuất bằng `WriteLine`. Khi chạy, gõ `p` tạm dừng, `r` tiếp tục, `s` hoặc Ctrl+C dừng an toàn (việc đang chạy dở bị hủy, việc đã ghi ledger được giữ, chạy lại cùng lệnh thì tiếp tục), `t` in bảng tổng.
 
@@ -170,12 +170,12 @@ Màn hình của từng lệnh (menu, cài đặt, theo dõi khi chạy, chi ti�
 ### 5.3. Chạy tiếp và chạy lại
 
 - Job ghi một dòng `ledger.jsonl` khi xong (kể cả kết quả lỗi). **Dòng ledger là việc ghi cuối cùng của job**, chỉ ghi sau khi mọi file đầu ra của job đã lưu đủ (ví dụ khối 1: metadata, snapshot, baseline, tiêu chí B; spec 01 Mục 6.4). Chạy lại cùng `run_id` bỏ qua job đã có dòng ledger; job chưa có dòng thì làm lại từ đầu job (xóa đầu ra dở dang).
-- Lỗi hạ tầng (timeout, dependency, công cụ) được thử lại tự động, tối đa `verification.infra_attempts` = 3 lần thử. Vẫn lỗi thì ghi ledger với `outcome = INFRA`, `needs_rerun = true` và lý do; báo cáo có danh sách **"Cần chạy lại riêng"** kèm lệnh cho từng task: `arrow-fw run --run-id R --tasks <task_id> --rerun-infra`. `--rerun-infra` không kèm `--tasks` thì chạy lại mọi job INFRA của run.
+- Lỗi hạ tầng (timeout, dependency, công cụ) được thử lại tự động, tối đa `verification.infra_attempts` = 3 lần thử. Vẫn lỗi thì ghi ledger với `outcome = INFRA`, `needs_rerun = true` và lý do; báo cáo có danh sách **"Cần chạy lại riêng"** kèm lệnh cho từng task: `arrow run --run-id R --tasks <task_id> --rerun-infra`. `--rerun-infra` không kèm `--tasks` thì chạy lại mọi job INFRA của run.
 - Một chain sửa dừng giữa chừng (Ctrl+C) được chạy lại **từ đầu chain**; các lượt gọi model đã có trong `llm_cache/` không tốn tiền lại.
 
 ### 5.4. Nhiều máy
 
-Không có cơ chế chia shard riêng. Mỗi máy chạy cùng experiment với `--tasks <file danh sách task_id>`, rồi `arrow-fw report --run-id A --run-id B …` gộp kết quả. Báo cáo kiểm tra mọi run cùng sha256 experiment và prompt, task không trùng nhau.
+Task được chia cho các máy bằng file phân công `shards/<plan>/shard-NN.json` (commit lên Git; mỗi file có `experiment_sha256` và danh sách `tasks[].task_id`; mọi CUT của một repository nằm cùng một máy). Mỗi máy chạy `arrow run --experiment experiments/<tên>.json --run-id <plan>-<máy> --shard shards/<plan>/shard-NN.json`; framework từ chối nếu `experiment_sha256` của shard khác sha256 của cấu hình đang dùng (`RUN_CONFIG_MISMATCH`). Cuối cùng `arrow report --run-id A --run-id B …` gộp kết quả; báo cáo kiểm tra mọi run cùng sha256 experiment và prompt, task không trùng nhau. Thứ tự Fixed/Adaptive của một task (Mục 5.2) theo vị trí của task trong toàn bộ thực nghiệm, nên giống nhau dù task chạy ở máy nào. `--tasks <file danh sách task_id>` vẫn dùng được cho chạy lại riêng.
 
 ## 6. Log và mã lỗi
 
@@ -201,7 +201,7 @@ Chi tiết ở **spec 07**. Kiến trúc **3 tầng**, các tầng gọi nhau qu
 | --- | --- |
 | Unit | Phân tích file build (Java version, test framework), dựng prompt, tách mã từ response, phân loại lỗi và signature, so sánh checkpoint, thuật toán Fixed/Adaptive theo ví dụ của spec 03, quy tắc N, công thức chỉ số khối 4 |
 | Integration | Khối 1 và khối 3 trên 3 fixture với Maven/Gradle thật; khối 4 đo một test VALID trên mỗi fixture |
-| End-to-end | `arrow-fw run` trên fixture với `FakeLlmClient`: đủ 4 khối, ra báo cáo |
+| End-to-end | `arrow run` trên fixture với `FakeLlmClient`: đủ 4 khối, ra báo cáo |
 | Smoke model thật | 2 CUT, giới hạn số lượt gọi, chạy tay khi cần |
 
 ## 9. Chờ xác nhận
@@ -249,3 +249,4 @@ Giải thích chi tiết từng điểm (bối cảnh, vấn đề, ảnh hưở
 | 14/10/2026 | Spec 03 (khi code C6): `first_error` theo đúng dạng Mục 6.4 (COMPILE kèm symbol/location, RUNTIME `method: Exception at Class.method`, ASSERTION `method: thông điệp`, tối đa 200 ký tự); `level_up` đếm mỗi lần áp `NextLevel` (kể cả 3 → 2); mã trùng so với mọi hash đã thấy, kể cả bản bị rollback | Code C6 |
 | 14/10/2026 | Spec 04 (khi code C7): công cụ khối 4 khóa trong `tools/tools.lock.json` (Maven Central hoặc GitHub Releases; sha256 `null` = chưa khóa, `doctor` báo); PIT cần thêm `pitest-html-report`, `commons-text`, `commons-lang3`, `jopt-simple`, chạy bằng JDK ≥ 11 (JDK của task nếu ≥ 11), classpath qua `--classPathFile`, `--failWhenNoMutations=false`; tsDetect chỉ đọc mã nên chạy trên thư mục tạm chứa file test và CUT; báo cáo thêm `rq1_signatures`, `rq2_mechanisms`, `rq2_by_c0_state`, `rq2_p_sensitivity`, `rq3_availability`, `rq3_arrow_variants`, `rq3_smells`, `cost`, `timing`, `excluded`; `rq2_cumulative` thêm cột `dataset,model`, `rq3_summary` thêm `arrow_sd,evosuite_sd`; gộp nhiều run ghi vào `runs/merged-<run1>-<run2>…/reports/` | Code C7 |
 | 14/10/2026 | Spec 00, 07 (khi code C8–C9): đường dẫn manifest trong `experiments/*.json` tính từ thư mục của file đó (vì vậy là `../../evaluation_manifest/…`); run chép cấu hình thực nghiệm vào `runs/<run>/experiment.json`; hàng đợi build giới hạn ở tầng tiến trình (mọi lệnh Maven/Gradle/Java/git); job: `analyze`, `generate/<m>/<s>`, `verify/<m>/<s>`, `chain/<m>/<s>/<mech>`, `evosuite`, `measure/<suite>`; thêm lệnh `tools install`, cờ `--fake-llm` | Code C8, C9 |
+| 14/10/2026 | Đổi tên lệnh `arrow-fw` → `arrow`; thêm `arrow run --shard` (file phân công kèm `experiment_sha256`); thứ tự Fixed/Adaptive theo vị trí task trong toàn bộ thực nghiệm (không theo danh sách đã lọc); java-helper khóa khi build jar | Quyết định của nhóm (pilot chạy trên mọi máy theo shard); review nhánh C5–C9 |

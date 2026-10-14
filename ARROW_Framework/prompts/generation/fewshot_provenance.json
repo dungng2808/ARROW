@@ -24,7 +24,7 @@
       "verbatim_in_prompt": true,
       "verification": {
         "status": "PASS",
-        "method": "arrow-fw screen (tiêu chí B, spec 01 Mục 6.3), run screen-fewshot; manifest = bản ghi preflight của task trong preflight_manifest/0*/technical_eligible_manifest.jsonl",
+        "method": "arrow screen (tiêu chí B, spec 01 Mục 6.3), run screen-fewshot; manifest = bản ghi preflight của task trong preflight_manifest/0*/technical_eligible_manifest.jsonl",
         "date": "2026-10-14",
         "machine": "Dung-mac (osx-arm64)",
         "jdk": 8,
@@ -48,7 +48,7 @@
       "verbatim_in_prompt": true,
       "verification": {
         "status": "PASS",
-        "method": "arrow-fw screen (tiêu chí B, spec 01 Mục 6.3), run screen-fewshot; manifest = bản ghi preflight của task trong preflight_manifest/0*/technical_eligible_manifest.jsonl",
+        "method": "arrow screen (tiêu chí B, spec 01 Mục 6.3), run screen-fewshot; manifest = bản ghi preflight của task trong preflight_manifest/0*/technical_eligible_manifest.jsonl",
         "date": "2026-10-14",
         "machine": "Dung-mac (osx-arm64)",
         "jdk": 8,

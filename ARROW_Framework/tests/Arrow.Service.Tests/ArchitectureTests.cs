@@ -22,7 +22,7 @@ public class ArchitectureTests
         var service = References(typeof(ServiceFactory).Assembly);
         Assert.Contains("Arrow.DataAccess", service);
         Assert.Contains("Arrow.Models", service);
-        Assert.DoesNotContain(service, n => n.StartsWith("arrow-fw", StringComparison.Ordinal));
+        Assert.DoesNotContain(service, n => n.StartsWith("arrow", StringComparison.Ordinal));
     }
 
     [Fact]

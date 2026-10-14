@@ -5,7 +5,7 @@ using Arrow.Service.Interfaces;
 namespace Arrow.UI.Screens;
 
 /// <summary>
-/// S10 (spec 06 Mục 12): <c>arrow-fw screen --manifest F --run-id R [--dataset D] [--tasks a,b|FILE] [--workers N] [--rerun-infra] [--keep-workspace]</c>.
+/// S10 (spec 06 Mục 12): <c>arrow screen --manifest F --run-id R [--dataset D] [--tasks a,b|FILE] [--workers N] [--rerun-infra] [--keep-workspace]</c>.
 /// In mỗi sự kiện của khối 1 một dòng, cuối cùng in bảng tổng theo tiêu chí B.
 /// </summary>
 public sealed class ScreeningScreen(IScreeningService screening, ConsoleInput input, ConsoleOutput output)
@@ -51,7 +51,7 @@ public sealed class ScreeningScreen(IScreeningService screening, ConsoleInput in
         }
         catch (OperationCanceledException)
         {
-            output.Status(Mark.Warn, "Đã dừng", $"chạy lại: arrow-fw screen --manifest {manifest} --run-id {runId}");
+            output.Status(Mark.Warn, "Đã dừng", $"chạy lại: arrow screen --manifest {manifest} --run-id {runId}");
             return 130;
         }
         finally
@@ -87,7 +87,7 @@ public sealed class ScreeningScreen(IScreeningService screening, ConsoleInput in
         output.Line($"Da ghi {summary.CsvPath}");
         if (infra.Count > 0)
         {
-            output.Line($"Chay lai task INFRA: arrow-fw screen --manifest {summary.ManifestPath} --run-id {summary.RunId} --rerun-infra");
+            output.Line($"Chay lai task INFRA: arrow screen --manifest {summary.ManifestPath} --run-id {summary.RunId} --rerun-infra");
         }
 
         output.Line("Buoc tiep theo (ngoai framework): preflight_tool/scripts/select_pilot_after_s0.py ... de thay CUT khong dat");

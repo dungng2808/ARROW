@@ -134,10 +134,10 @@ public sealed class RunScreen(IPipelineService pipeline, ConsoleInput input, Con
         {
             case RunState.Done:
                 output.Status(Mark.Ok, $"Run {result.RunId} xong");
-                output.Line($"Tiếp theo: arrow-fw report --run-id {result.RunId}   ·   arrow-fw rerun-list --run-id {result.RunId}");
+                output.Line($"Tiếp theo: arrow report --run-id {result.RunId}   ·   arrow rerun-list --run-id {result.RunId}");
                 return 0;
             case RunState.Stopped:
-                output.Status(Mark.Warn, $"Run {result.RunId} đã dừng", $"chạy tiếp: arrow-fw run --run-id {result.RunId}");
+                output.Status(Mark.Warn, $"Run {result.RunId} đã dừng", $"chạy tiếp: arrow run --run-id {result.RunId}");
                 return 130;
             default:
                 output.Status(Mark.Fail, $"Run {result.RunId} lỗi", result.Error ?? "");

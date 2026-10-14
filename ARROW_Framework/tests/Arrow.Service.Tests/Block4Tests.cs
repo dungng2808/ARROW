@@ -249,6 +249,6 @@ public class Block4Tests
             ],
         };
         var rows = ReportBuilder.Build([run], Experiment).Csv["needs_rerun.csv"].Rows;
-        Assert.Equal(["t1", "classes2test", "3", "chain/m/zero_shot/adaptive", "run_target", "B3_TIMEOUT", "3", "", "true", "arrow-fw run --run-id run-1 --tasks t1 --rerun-infra"], Assert.Single(rows));
+        Assert.Equal(["t1", "classes2test", "3", "chain/m/zero_shot/adaptive", "run_target", "B3_TIMEOUT", "3", "", "true", "arrow run --run-id run-1 --tasks t1 --rerun-infra"], Assert.Single(rows));
     }
 }

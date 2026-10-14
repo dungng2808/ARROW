@@ -17,7 +17,7 @@ Chỉ đo trên bộ test VALID (Đóng góp 3: "đo lường trên tập test h
 | --- | --- |
 | Danh sách bộ test cần đo: `suite_id`, đường dẫn mã, `test_fqn`, task | khối 3: `final.json` VALID và c0 VALID (`…__initial`); bộ EvoSuite VALID |
 | M, `workspace.json`, `dependencies_resolved.txt` | khối 1 |
-| Công cụ | `tools_dir` của máy: JaCoCo 0.8.12 (agent, cli), PIT 1.17.4 (command line, kèm `pitest-junit5-plugin` 1.2.1 cho JUnit 5), tsDetect 2.2, EvoSuite 1.2.0. Mỗi file có sha256 kiểm tra bằng `arrow-fw doctor` |
+| Công cụ | `tools_dir` của máy: JaCoCo 0.8.12 (agent, cli), PIT 1.17.4 (command line, kèm `pitest-junit5-plugin` 1.2.1 cho JUnit 5), tsDetect 2.2, EvoSuite 1.2.0. Mỗi file có sha256 kiểm tra bằng `arrow doctor` |
 | Mọi `verify_c0.json`, `decision.json`, `final.json`, `usage.json`, `outcome.json` | khối 1–3 (cho báo cáo) |
 
 ## 2. Output
@@ -95,7 +95,7 @@ Không có trong hình nhưng cần cho RQ3 ("so với các hệ thống sinh te
 
 ## 6. Flow 4.5: Unified Metrics & Reporting
 
-Lệnh `arrow-fw report --run-id R [--run-id R2 …]` đọc kết quả của mọi khối (một hoặc nhiều run cùng experiment) và ghi `reports/`.
+Lệnh `arrow report --run-id R [--run-id R2 …]` đọc kết quả của mọi khối (một hoặc nhiều run cùng experiment) và ghi `reports/`.
 
 ### 6.1. Verification metrics (RQ1, Đóng góp 1 và 3)
 
@@ -166,7 +166,7 @@ Theo khối và dataset: số lượt gọi model, token vào/ra, chi phí USD (
 **Cần chạy lại riêng** (`reports/needs_rerun.csv`, chốt Q8): mỗi job `INFRA` một dòng `task_id, dataset, block, job, step, error_code, attempts, seconds_each, timeout_repeated, rerun_command`, ví dụ:
 
 ```
-555001_ab12cd34ef56ab78,classes2test,3,gpt-6-luna/zero_shot/adaptive,run_target,B3_TIMEOUT,3,"900;900;900",false,arrow-fw run --run-id run-1 --tasks 555001_ab12cd34ef56ab78 --rerun-infra
+555001_ab12cd34ef56ab78,classes2test,3,gpt-6-luna/zero_shot/adaptive,run_target,B3_TIMEOUT,3,"900;900;900",false,arrow run --run-id run-1 --tasks 555001_ab12cd34ef56ab78 --rerun-infra
 ```
 
 Báo cáo nêu rõ các job này **chưa có kết quả** và chưa được tính vào RQ1–RQ3; danh sách rỗng mới là run hoàn chỉnh.

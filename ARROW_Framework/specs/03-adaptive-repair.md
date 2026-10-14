@@ -117,7 +117,7 @@ Một chain có nhiều vòng; test của vòng trước có thể xóa resource
 1. Gặp lỗi hạ tầng → **chạy lại đúng bước đó**, tối đa **3 lần thử** (`verification.infra_attempts = 3`), chờ 30 s giữa hai lần.
 2. Lần thử thứ 3 vẫn lỗi → bước đó nhận `INFRA` với mã `B3_TIMEOUT`, `B3_DEPENDENCY` hoặc `B3_TOOL_ERROR`, kèm `needs_rerun: true` và lý do (bước nào, mấy lần, mỗi lần bao lâu).
 3. Job được ghi vào **danh sách "Cần chạy lại riêng"** (`reports/needs_rerun.csv` và một mục trong `report.md`), mỗi dòng có lệnh chạy lại riêng task đó:
-   `arrow-fw run --run-id <run> --tasks <task_id> --rerun-infra`
+   `arrow run --run-id <run> --tasks <task_id> --rerun-infra`
 4. Lệnh trên chỉ chạy lại các job `INFRA` của task đó (từ bước bị lỗi; chain sửa thì từ đầu chain), không chạy lại job đã xong.
 
 Lỗi hạ tầng không thuộc chuỗi trạng thái, không phải lỗi của candidate:
@@ -491,7 +491,7 @@ Mỗi dòng là một trường hợp có thể xảy ra với c0. Cột "Sửa"
 | F7 | Chạy: test văng exception | `NullPointerException at OrderService.totalPrice(OrderService.java:31)`; Mockito `UnfinishedStubbingException`; `IllegalArgumentException` từ CUT | RUNTIME | `RUNTIME \| NullPointerException \| OrderService.totalPrice` | Có | M1: method lỗi + exception + 8 dòng stack trace. M2: **mã nguồn method** trong stack trace (`totalPrice`), constructor và cách khởi tạo field của `OrderService`, gợi ý mock. M3: thông tin như M2, nhưng chỉ viết lại **các test method bị lỗi** | Như F1 |
 | F9 | Chạy xong nhưng kết quả sai | `expected:<110> but was:<100>`; `Expected IllegalStateException to be thrown, but nothing was thrown` | ASSERTION | `ASSERTION \| AssertionError \| totalPriceAddsTax` | Có | M1: method fail + thông điệp expected/actual. M2: giá trị expected/actual, **mã các method của CUT** mà test gọi. M3: thông tin như M2, nhưng chỉ viết lại các test method fail. Model được sửa tự do, kể cả đổi expected (CLAUDE.md hạng mục 9) | Như F1 |
 | F10 | Test mới pass khi chạy riêng nhưng làm hỏng module | `ClockTest`, `InventoryTest` pass ở baseline nhưng fail khi chạy cùng test mới (test mới đổi biến `static`, ghi file, đổi system property); hoặc test mới fail khi chạy chung | REGRESSION | `REGRESSION \| existing tests fail \| ClockTest,InventoryTest` | Có | M1: tên và lỗi của test cũ bị hỏng. M2: thêm field `static` và tài nguyên dùng chung mà test mới chạm tới. M3: không áp dụng → M2 | Như F1 |
-| I1 | Hạ tầng: quá thời gian ở bất kỳ bước nào (biên dịch, chạy riêng test, chạy module) | Hết `step_timeout_seconds` ở cả **3 lần thử** | INFRA, `needs_rerun` | – | **Chưa**: vào danh sách "Cần chạy lại riêng" kèm lệnh `arrow-fw run --tasks <task_id> --rerun-infra`; chưa tính vào RQ1/RQ2 cho tới khi chạy lại xong | – | – |
+| I1 | Hạ tầng: quá thời gian ở bất kỳ bước nào (biên dịch, chạy riêng test, chạy module) | Hết `step_timeout_seconds` ở cả **3 lần thử** | INFRA, `needs_rerun` | – | **Chưa**: vào danh sách "Cần chạy lại riêng" kèm lệnh `arrow run --tasks <task_id> --rerun-infra`; chưa tính vào RQ1/RQ2 cho tới khi chạy lại xong | – | – |
 | I2 | Hạ tầng: không tải được dependency | `Could not resolve dependencies`, mạng lỗi ở cả 3 lần thử | INFRA, `needs_rerun` | – | Như I1 | – | – |
 | I3 | Hạ tầng: công cụ hỏng | Maven/JVM bị giết, hết đĩa, không tạo được workspace (3 lần thử) | INFRA, `needs_rerun` | – | Như I1 | – | – |
 | G | Dataset không bật sửa | GitBug-Java ở pilot (`repair: false`) | trạng thái của c0 | | **Không**: chỉ ghi kết quả xác minh cho RQ1 | – | – |

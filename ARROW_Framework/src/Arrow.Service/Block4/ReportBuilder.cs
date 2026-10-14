@@ -534,7 +534,7 @@ public static partial class ReportBuilder
                 var timeouts = job.Count(e => e.Code?.Contains("TIMEOUT", StringComparison.Ordinal) == true);
                 var step = StepName().Match(latest.Message ?? "") is { Success: true } m ? m.Value : "";
                 rows.Add([latest.TaskId, latest.Dataset, Stats.I(latest.Block), latest.Job, step, latest.Code ?? "", Stats.I(attempts), "", timeouts >= 2 ? "true" : "false",
-                    $"arrow-fw run --run-id {run.RunId} --tasks {latest.TaskId} --rerun-infra"]);
+                    $"arrow run --run-id {run.RunId} --tasks {latest.TaskId} --rerun-infra"]);
             }
         }
 

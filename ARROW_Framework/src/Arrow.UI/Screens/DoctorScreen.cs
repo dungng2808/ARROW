@@ -14,7 +14,7 @@ public sealed class DoctorScreen(IDoctorService doctor, ConsoleInput input, Cons
             && (fixWithoutAsking || interactive && input.Confirm("Sửa ngay các lỗi tự sửa được?", true)))
         {
             await doctor.FixAsync(Print, CancellationToken.None);
-            output.Line("Chạy lại arrow-fw doctor để kiểm tra lại.");
+            output.Line("Chạy lại arrow doctor để kiểm tra lại.");
         }
 
         return report.Ready ? 0 : 1;

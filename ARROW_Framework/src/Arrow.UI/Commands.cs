@@ -61,7 +61,7 @@ public sealed class Commands(ArrowServices services, ConsoleInput input, Console
             case "models":
                 return await new ModelScreen(services.Models, input, output).RunAsync(command.Option("experiment"));
             default:
-                output.Status(Mark.Fail, $"Lệnh không hỗ trợ: {name}", "xem arrow-fw --help");
+                output.Status(Mark.Fail, $"Lệnh không hỗ trợ: {name}", "xem arrow --help");
                 return 2;
         }
     }
@@ -73,6 +73,7 @@ public sealed class Commands(ArrowServices services, ConsoleInput input, Console
             ExperimentPath = command.Option("experiment"),
             RunId = command.Option("run-id"),
             TaskSelection = command.Option("tasks"),
+            ShardPath = command.Option("shard") is { } shard ? Path.GetFullPath(shard) : null,
             Blocks = blocks ?? (command.Option("blocks") is { } b ? ParseBlocks(b) : [1, 2, 3, 4]),
             RerunInfra = command.Flag("rerun-infra"),
             MaxLlmCalls = command.Option("max-llm-calls") is { } max ? int.TryParse(max, out var n) && n > 0 ? n : throw new ArgumentException("--max-llm-calls phải là số nguyên dương") : null,
@@ -84,7 +85,7 @@ public sealed class Commands(ArrowServices services, ConsoleInput input, Console
     private int Control(CommandLine command)
     {
         var runId = Require(command, "run-id");
-        var word = command.Trailing.FirstOrDefault() ?? command.Option("action") ?? throw new ArgumentException("Cần pause, resume hoặc stop: arrow-fw control --run-id R pause");
+        var word = command.Trailing.FirstOrDefault() ?? command.Option("action") ?? throw new ArgumentException("Cần pause, resume hoặc stop: arrow control --run-id R pause");
         var action = word switch
         {
             "pause" => ControlAction.Pause,
@@ -116,21 +117,21 @@ public sealed class Commands(ArrowServices services, ConsoleInput input, Console
         output.Blank();
         output.Table(["Lệnh", "Việc"],
         [
-            ["arrow-fw", "Menu chính"],
-            ["arrow-fw run [--experiment F] [--run-id R] [--tasks FILE|ID,…] [--blocks 1,2,3,4] [--rerun-infra] [--max-llm-calls N] [--fake-llm]", "Chạy các khối (mặc định cả 4)"],
-            ["arrow-fw analyze | generate | repair | assess …", "Chỉ khối 1 | 2 | 3 | 4 (cùng tùy chọn với run)"],
-            ["arrow-fw screen --manifest F --run-id R [--dataset D] [--tasks …] [--workers N] [--rerun-infra] [--keep-workspace]", "Sàng lọc CUT (khối 1, tiêu chí B)"],
-            ["arrow-fw report --run-id R [--run-id R2 …]", "Báo cáo RQ1–RQ3 (gộp nhiều run)"],
-            ["arrow-fw status --run-id R", "Trạng thái run"],
-            ["arrow-fw show --run-id R --task T", "Chi tiết một task"],
-            ["arrow-fw rerun-list --run-id R", "Job cần chạy lại riêng"],
-            ["arrow-fw control --run-id R pause|resume|stop", "Điều khiển run đang chạy từ terminal khác"],
-            ["arrow-fw doctor [--experiment F]", "Kiểm tra môi trường"],
-            ["arrow-fw tools install", "Tải công cụ khối 4 còn thiếu"],
-            ["arrow-fw setup", "Cài đặt máy"],
-            ["arrow-fw models [--experiment F]", "Model, provider, khóa API, giá"],
-            ["arrow-fw prompts check", "Kiểm tra bộ prompt"],
-            ["arrow-fw --version", "In phiên bản"],
+            ["arrow", "Menu chính"],
+            ["arrow run [--experiment F] [--run-id R] [--tasks FILE|ID,…] [--shard shards/<plan>/shard-NN.json] [--blocks 1,2,3,4] [--rerun-infra] [--max-llm-calls N] [--fake-llm]", "Chạy các khối (mặc định cả 4)"],
+            ["arrow analyze | generate | repair | assess …", "Chỉ khối 1 | 2 | 3 | 4 (cùng tùy chọn với run)"],
+            ["arrow screen --manifest F --run-id R [--dataset D] [--tasks …] [--workers N] [--rerun-infra] [--keep-workspace]", "Sàng lọc CUT (khối 1, tiêu chí B)"],
+            ["arrow report --run-id R [--run-id R2 …]", "Báo cáo RQ1–RQ3 (gộp nhiều run)"],
+            ["arrow status --run-id R", "Trạng thái run"],
+            ["arrow show --run-id R --task T", "Chi tiết một task"],
+            ["arrow rerun-list --run-id R", "Job cần chạy lại riêng"],
+            ["arrow control --run-id R pause|resume|stop", "Điều khiển run đang chạy từ terminal khác"],
+            ["arrow doctor [--experiment F]", "Kiểm tra môi trường"],
+            ["arrow tools install", "Tải công cụ khối 4 còn thiếu"],
+            ["arrow setup", "Cài đặt máy"],
+            ["arrow models [--experiment F]", "Model, provider, khóa API, giá"],
+            ["arrow prompts check", "Kiểm tra bộ prompt"],
+            ["arrow --version", "In phiên bản"],
         ]);
     }
 }

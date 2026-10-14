@@ -7,7 +7,7 @@ public sealed record PromptCheckReport(IReadOnlyList<PromptFileInfo> Files, IRea
     public bool Ok => Problems.Count == 0;
 }
 
-/// <summary>Dịch vụ cho UI: xem và kiểm tra bộ prompt (lệnh <c>arrow-fw prompts check</c>).</summary>
+/// <summary>Dịch vụ cho UI: xem và kiểm tra bộ prompt (lệnh <c>arrow prompts check</c>).</summary>
 public interface IPromptService
 {
     PromptCheckReport Check();

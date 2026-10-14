@@ -88,7 +88,7 @@ public enum ControlAction
     Stop,
 }
 
-/// <summary><c>control.json</c>: lệnh điều khiển gửi từ terminal khác (<c>arrow-fw control</c>).</summary>
+/// <summary><c>control.json</c>: lệnh điều khiển gửi từ terminal khác (<c>arrow control</c>).</summary>
 public sealed record ControlCommand
 {
     public ControlAction Action { get; init; }
@@ -104,7 +104,7 @@ public sealed record RunInfo
     public RunStatus? Status { get; init; }
 }
 
-/// <summary>Yêu cầu <c>arrow-fw run</c> (spec 00 Mục 5.1, spec 06 S5).</summary>
+/// <summary>Yêu cầu <c>arrow run</c> (spec 00 Mục 5.1, spec 06 S5).</summary>
 public sealed record RunRequest
 {
     /// <summary>File cấu hình thực nghiệm (tương đối với <c>ARROW_Framework</c>); null → file duy nhất trong <c>experiments/</c>.</summary>
@@ -115,6 +115,9 @@ public sealed record RunRequest
 
     /// <summary>Giá trị thô của <c>--tasks</c>: file danh sách task_id hoặc danh sách cách nhau dấu phẩy; null = mọi task.</summary>
     public string? TaskSelection { get; init; }
+
+    /// <summary><c>--shard</c>: file phân công task cho máy này (<c>shards/&lt;plan&gt;/shard-NN.json</c>).</summary>
+    public string? ShardPath { get; init; }
     public List<int> Blocks { get; init; } = [1, 2, 3, 4];
     public bool RerunInfra { get; init; }
 

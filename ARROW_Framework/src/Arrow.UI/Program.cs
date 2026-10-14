@@ -18,7 +18,7 @@ try
     var command = CommandLine.Parse(args);
     if (command.Flag("version"))
     {
-        output.Line($"arrow-fw {version}");
+        output.Line($"arrow {version}");
         return 0;
     }
 

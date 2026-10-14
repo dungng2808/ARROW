@@ -288,7 +288,7 @@ Class under test: ```java … ```
 **Quyết định (14/10/2026):** timeout là lỗi hạ tầng, **gọi lại** chứ không tính cho test:
 1. Bước bị timeout (biên dịch, chạy riêng test sinh ra, chạy cả module, baseline, đo chất lượng) được chạy lại, **tối đa 3 lần thử** (`verification.infra_attempts = 3`), chờ 30 s giữa hai lần.
 2. Vẫn timeout ở lần thử thứ 3 → job ghi `INFRA` (`B3_TIMEOUT`, `B1_BASELINE_TIMEOUT`…) với `needs_rerun = true`, kèm bước nào, mấy lần, mỗi lần bao lâu.
-3. Báo cáo có danh sách **"Cần chạy lại riêng"** (`reports/needs_rerun.csv`), mỗi dòng kèm lệnh chạy lại riêng task đó: `arrow-fw run --run-id <run> --tasks <task_id> --rerun-infra`. Lệnh chỉ chạy lại các job INFRA của task (chain sửa thì từ đầu chain; lượt gọi model đã có trong cache không tốn tiền).
+3. Báo cáo có danh sách **"Cần chạy lại riêng"** (`reports/needs_rerun.csv`), mỗi dòng kèm lệnh chạy lại riêng task đó: `arrow run --run-id <run> --tasks <task_id> --rerun-infra`. Lệnh chỉ chạy lại các job INFRA của task (chain sửa thì từ đầu chain; lượt gọi model đã có trong cache không tốn tiền).
 4. Job INFRA **chưa có kết quả**: chưa tính vào RQ1/RQ2/RQ3 cho tới khi chạy lại xong. Run chỉ hoàn chỉnh khi danh sách này rỗng.
 5. Các lỗi hạ tầng khác (không tải được dependency, công cụ chết, hết đĩa) xử lý giống hệt: 3 lần thử rồi vào danh sách cần chạy lại.
 

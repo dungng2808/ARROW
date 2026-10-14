@@ -14,7 +14,7 @@ using Arrow.Service.Pipeline;
 namespace Arrow.Service.App;
 
 /// <summary>
-/// <c>arrow-fw run</c> (spec 00 Mục 5, spec 07 Mục 7.1, 8): đọc cấu hình, kiểm tra bộ prompt, tạo hoặc mở run (khóa cấu hình trong
+/// <c>arrow run</c> (spec 00 Mục 5, spec 07 Mục 7.1, 8): đọc cấu hình, kiểm tra bộ prompt, tạo hoặc mở run (khóa cấu hình trong
 /// <c>run.lock.json</c>), dựng lớp gọi model (Replaying → Gateway → LiteLLM/giả), chạy các job ở luồng nền, ghi <c>status.json</c> mỗi
 /// 2 giây và nhận lệnh điều khiển (<c>control.json</c>) từ terminal khác.
 /// </summary>
@@ -99,15 +99,18 @@ public sealed class PipelineService(
         }
 
         var all = manifests.ReadTasks(experiment);
-        var wanted = ScreeningService.ParseSelection(request.TaskSelection);
+        var wanted = ScreeningService.ParseSelection(request.TaskSelection).Concat(ShardTasks(request.ShardPath, experiment)).Distinct().ToList();
         var unknown = wanted.Except(all.Select(t => t.TaskId)).ToList();
         if (unknown.Count > 0)
         {
             throw new ArgumentException("Task không có trong cấu hình thực nghiệm: " + string.Join(", ", unknown));
         }
 
-        var selected = wanted.Count == 0 ? all : all.Where(t => wanted.Contains(t.TaskId)).ToList();
-        var planned = selected.Select((t, i) => new PlannedTask(t, experiment.Config.Manifests.First(m => m.Dataset == t.Dataset), i + 1)).ToList();
+        // Số thứ tự task (quyết định Fixed hay Adaptive chạy trước) là vị trí trong toàn bộ thực nghiệm, không phụ thuộc
+        // --tasks/--shard, để cùng một task chạy theo cùng thứ tự trên mọi máy.
+        var planned = all.Select((t, i) => new PlannedTask(t, experiment.Config.Manifests.First(m => m.Dataset == t.Dataset), i + 1))
+            .Where(p => wanted.Count == 0 || wanted.Contains(p.Record.TaskId))
+            .ToList();
         var machine = config.LoadMachine();
         var tools = ToolLocator.Environment(machine, paths.ArrowRoot);
         var experimentText = File.ReadAllText(experiment.Path).Replace("\r\n", "\n");
@@ -115,6 +118,36 @@ public sealed class PipelineService(
             paths.Resolve(machine?.WorkDir ?? "../repo"), paths.Resolve(machine?.ToolsDir ?? "../tools"));
         LockRun(prepared);
         return prepared;
+    }
+
+    /// <summary>
+    /// <c>--shard</c>: file phân công (<c>shards/&lt;plan&gt;/shard-NN.json</c>, mục <c>tasks[].task_id</c>). File ghi sha256 của cấu hình
+    /// thực nghiệm (và của manifest); lệch với cấu hình đang dùng thì từ chối, để mọi máy chạy cùng một cấu hình.
+    /// </summary>
+    private static IReadOnlyList<string> ShardTasks(string? shardPath, Models.Config.LoadedExperiment experiment)
+    {
+        if (string.IsNullOrWhiteSpace(shardPath))
+        {
+            return [];
+        }
+
+        if (!File.Exists(shardPath))
+        {
+            throw new ArrowException(ErrorCodes.ConfigMissing, $"Không có file shard {shardPath}");
+        }
+
+        var shard = System.Text.Json.Nodes.JsonNode.Parse(File.ReadAllText(shardPath))
+                    ?? throw new ArrowException(ErrorCodes.ConfigInvalid, $"{shardPath}: không phải JSON");
+        var expected = shard["experiment_sha256"]?.GetValue<string>();
+        if (expected is not null && expected != experiment.Sha256)
+        {
+            throw new ArrowException(ErrorCodes.RunConfigMismatch,
+                $"{Path.GetFileName(shardPath)} được chia cho cấu hình thực nghiệm sha256 {expected[..12]}…, cấu hình đang dùng là {experiment.Sha256[..12]}… (pull bản mới hoặc chia lại shard)");
+        }
+
+        var tasks = shard["tasks"]?.AsArray().Select(t => t?["task_id"]?.GetValue<string>()).OfType<string>().ToList()
+                    ?? throw new ArrowException(ErrorCodes.ConfigInvalid, $"{shardPath}: thiếu mục tasks");
+        return tasks;
     }
 
     /// <summary>Run mới: ghi <c>run.lock.json</c> và bản sao cấu hình; run cũ: cấu hình và prompt phải khớp (<c>RUN_CONFIG_MISMATCH</c>).</summary>
@@ -208,7 +241,7 @@ public sealed class PipelineService(
                     var missing = prepared.Experiment.Config.Models.Where(m => liteLlm?.Route(m.Name) is not { IsComplete: true }).Select(m => m.Name).ToList();
                     if (missing.Count > 0)
                     {
-                        throw new ArrowException(ErrorCodes.B2LlmConfig, $"Chưa khai báo provider/khóa cho model {string.Join(", ", missing)} (arrow-fw models)");
+                        throw new ArrowException(ErrorCodes.B2LlmConfig, $"Chưa khai báo provider/khóa cho model {string.Join(", ", missing)} (arrow models)");
                     }
 
                     proxy = new LiteLlmProxy(machineLlm, paths, log);

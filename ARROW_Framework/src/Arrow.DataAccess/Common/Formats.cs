@@ -16,7 +16,7 @@ public static partial class LiteLlmYaml
     {
         var yaml = new StringBuilder()
             .Append("# Cấu hình LiteLLM proxy của máy này. KHÔNG commit file này (chứa khóa API).\n")
-            .Append("# Sửa bằng arrow-fw models.\n")
+            .Append("# Sửa bằng arrow models.\n")
             .Append("model_list:\n");
         foreach (var route in config.Routes)
         {

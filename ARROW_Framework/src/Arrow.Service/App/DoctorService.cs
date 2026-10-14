@@ -52,7 +52,7 @@ public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepositor
         var problems = PromptConsistencyChecker.Check(prompts.LoadAll().ToDictionary(t => t.RelativePath));
         Add(problems.Count == 0
             ? new DoctorLine("Bộ prompt", DoctorMark.Ok, "nhất quán (RQ1 công bằng, prompt sửa dùng nguyên văn phần chung)")
-            : new DoctorLine("Bộ prompt", DoctorMark.Fail, string.Join("; ", problems), "arrow-fw prompts check"));
+            : new DoctorLine("Bộ prompt", DoctorMark.Fail, string.Join("; ", problems), "arrow prompts check"));
 
         // JDK và công cụ build.
         var jdks = new List<ToolInfo>();
@@ -65,14 +65,14 @@ public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepositor
         Add(new DoctorLine("JDK 8 / 11 / 17 / 21",
             jdks.Single(j => j.Name == "JDK 17").Ok ? (missingJdk.Count == 0 ? DoctorMark.Ok : DoctorMark.Warn) : DoctorMark.Fail,
             string.Join(" / ", jdks.Select(j => j.Ok ? j.Version : "thiếu")),
-            missingJdk.Count == 0 ? null : $"thiếu {string.Join(", ", missingJdk.Select(j => j.Name))}: task cần JDK đó sẽ bị loại; xem Java-version/README.md hoặc arrow-fw setup"));
+            missingJdk.Count == 0 ? null : $"thiếu {string.Join(", ", missingJdk.Select(j => j.Name))}: task cần JDK đó sẽ bị loại; xem Java-version/README.md hoặc arrow setup"));
 
         var maven = await ToolProbe.ProgramAsync(runner, "Maven", ToolLocator.FindMaven(machine), ["-v"], cancellationToken).ConfigureAwait(false);
         var gradle = await ToolProbe.ProgramAsync(runner, "Gradle", ToolLocator.FindGradle(machine), ["-v"], cancellationToken).ConfigureAwait(false);
         var git = await ToolProbe.ProgramAsync(runner, "Git", ToolLocator.FindGit(machine), ["--version"], cancellationToken).ConfigureAwait(false);
         Add(new DoctorLine("Maven, Gradle, Git", maven.Ok && git.Ok ? (gradle.Ok ? DoctorMark.Ok : DoctorMark.Warn) : DoctorMark.Fail,
             $"{maven.Version ?? "thiếu"} · {gradle.Version ?? "thiếu"} · {git.Version ?? "thiếu"}",
-            maven.Ok && git.Ok ? (gradle.Ok ? null : "Gradle chỉ cần khi repository không có gradlew") : "cài Maven/Git hoặc đặt maven_path/git_path bằng arrow-fw setup"));
+            maven.Ok && git.Ok ? (gradle.Ok ? null : "Gradle chỉ cần khi repository không có gradlew") : "cài Maven/Git hoặc đặt maven_path/git_path bằng arrow setup"));
 
         // Thư mục repository.
         var workDir = paths.Resolve(machine?.WorkDir ?? "../repo");
@@ -80,7 +80,7 @@ public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepositor
         var workError = setup.ValidateWorkDir(workDir);
         Add(workError is null
             ? new DoctorLine("Thư mục repository", DoctorMark.Ok, $"{workDir} · {setup.FreeSpaceGb(workDir):0} GB trống")
-            : new DoctorLine("Thư mục repository", DoctorMark.Fail, $"{workDir}: {workError}", "đổi work_dir bằng arrow-fw setup"));
+            : new DoctorLine("Thư mục repository", DoctorMark.Fail, $"{workDir}: {workError}", "đổi work_dir bằng arrow setup"));
 
         // Kết nối GitHub.
         if (git.Ok)
@@ -104,7 +104,7 @@ public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepositor
             var route = liteLlm?.Route(model.Name);
             if (route is not { IsComplete: true })
             {
-                Add(new DoctorLine($"Model {model.Name}", DoctorMark.Fail, "chưa khai báo provider/endpoint/khóa", "arrow-fw models"));
+                Add(new DoctorLine($"Model {model.Name}", DoctorMark.Fail, "chưa khai báo provider/endpoint/khóa", "arrow models"));
                 continue;
             }
 

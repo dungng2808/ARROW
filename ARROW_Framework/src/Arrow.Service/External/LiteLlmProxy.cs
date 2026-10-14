@@ -38,7 +38,7 @@ public sealed class LiteLlmProxy(LlmMachineConfig config, FrameworkPaths paths, 
         var configFile = paths.Resolve(config.ProxyConfigFile);
         if (!File.Exists(configFile))
         {
-            throw new ArrowException(ErrorCodes.B2LlmConfig, $"Không có {configFile}; khai báo model và khóa bằng arrow-fw models");
+            throw new ArrowException(ErrorCodes.B2LlmConfig, $"Không có {configFile}; khai báo model và khóa bằng arrow models");
         }
 
         var uri = new Uri(config.ProxyUrl);
