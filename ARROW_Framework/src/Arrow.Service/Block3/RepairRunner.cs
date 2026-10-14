@@ -39,11 +39,12 @@ public sealed class RepairRunner(
             "fixed" => new FixedRepairPolicy(c0),
             _ => throw new ArrowException(ErrorCodes.ConfigInvalid, $"Cơ chế sửa không hỗ trợ: {request.Mechanism}"),
         };
+        var snapshot = Path.Combine(workspace.WorkDir, task.Workspace.CompiledSnapshot.Replace('/', Path.DirectorySeparatorChar));
         var input = new ExtraContextInput(
             task.Metadata,
             generation.CutSource,
-            Path.Combine(workspace.WorkDir, task.Workspace.CompiledSnapshot.Replace('/', Path.DirectorySeparatorChar)),
-            Lines(results.LoadText(task.RunId, task.Key, ResultPaths.TestClasspath)),
+            snapshot,
+            ResolveClasspath(snapshot, Lines(results.LoadText(task.RunId, task.Key, ResultPaths.TestClasspath))),
             Lines(results.LoadText(task.RunId, task.Key, ResultPaths.DependenciesResolved)));
 
         var totals = new Totals();
@@ -184,6 +185,13 @@ public sealed class RepairRunner(
             return [];
         }
     }
+
+    /// <summary>
+    /// <c>test_classpath.txt</c> ghi thư mục class của module anh em tương đối với gốc workspace (spec 01 Mục 4.4) → đường dẫn tuyệt đối
+    /// trong snapshot, để java-helper đọc được API của các class đó; jar ngoài (đường dẫn tuyệt đối) giữ nguyên.
+    /// </summary>
+    public static List<string> ResolveClasspath(string snapshot, IEnumerable<string> entries) =>
+        entries.Select(e => Path.IsPathRooted(e) ? e : Path.GetFullPath(Path.Combine(snapshot, e.Replace('/', Path.DirectorySeparatorChar)))).ToList();
 
     private static List<string> Lines(string? text) =>
         (text ?? "").Replace("\r\n", "\n").Split('\n', StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries).ToList();

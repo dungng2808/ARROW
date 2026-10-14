@@ -262,4 +262,14 @@ public class RepairPolicyTests
         Assert.Null(LineDiff.Changes("x\ny\n", "x\ny"));
         Assert.Equal("+z", LineDiff.Changes("x\ny", "x\nz\ny"));
     }
+
+    [Fact]
+    public void SiblingModuleClassDirectoriesResolveAgainstSnapshot()
+    {
+        var snapshot = Path.Combine(Path.GetTempPath(), "ws", "snapshot");
+        var jar = Path.Combine(Path.GetTempPath(), "m2", "junit-4.13.2.jar");
+        Assert.Equal(
+            [Path.Combine(snapshot, "shop-api", "target", "classes"), jar],
+            RepairRunner.ResolveClasspath(snapshot, ["shop-api/target/classes", jar]));
+    }
 }
