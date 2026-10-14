@@ -1,4 +1,5 @@
 using Arrow.Models.Block1;
+using Arrow.Models.Block2;
 using Arrow.Models.Block3;
 using Arrow.Models.Common;
 using Arrow.Models.Config;
@@ -94,4 +95,10 @@ public sealed record VerifyOptions
 public interface IVerifier
 {
     Task<VerifyResult> VerifyAsync(SuiteFiles suite, TaskContext task, VerifyOptions options, CancellationToken cancellationToken);
+}
+
+/// <summary>Khối 3, Flow 3.3 (spec 03 Mục 5): chẩn đoán lỗi từ kết quả xác minh; code thuần.</summary>
+public interface IFailureDiagnoser
+{
+    Diagnosis Diagnose(VerifyResult result, CandidateTest candidate, RepositoryMetadata metadata);
 }

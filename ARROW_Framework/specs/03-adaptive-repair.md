@@ -58,7 +58,7 @@ Một chain có nhiều vòng; test của vòng trước có thể xóa resource
 | Trường | Candidate ARROW | Bộ EvoSuite |
 | --- | --- | --- |
 | `test_fqn` | `com.acme.shop.OrderService_ArrowTest` | `com.acme.shop.OrderService_ESTest` |
-| `files` (đường dẫn trong test root → nội dung) | `…/OrderService_ArrowTest.java` | `…/OrderService_ESTest.java`, `…/OrderService_ESTest_scaffolding.java` |
+| `files` (đường dẫn tính từ gốc repository → nội dung) | `…/OrderService_ArrowTest.java` | `…/OrderService_ESTest.java`, `…/OrderService_ESTest_scaffolding.java` |
 | `extra_test_classpath` | – | `evosuite-standalone-runtime-1.2.0.jar` |
 3. Xong lần xác minh (kể cả khi lỗi): đọc báo cáo, chép log và XML cần giữ vào thư mục kết quả của vòng, rồi **xóa** bản sao (trừ khi `keep_failed_workspaces` bật để gỡ lỗi).
 4. Chạy lại một chain (sau INFRA hoặc khi chạy tiếp) cũng bắt đầu từ bản sao mới, không dùng workspace còn sót.
@@ -76,7 +76,8 @@ Một chain có nhiều vòng; test của vòng trước có thể xóa resource
 | 4. Target pass | (cùng lần chạy bước 2) | | Mọi test method pass | `ASSERTION` |
 | 5. Module regression | `-f pom.xml [-pl <m> -am] … -DfailIfNoTests=false -Dmaven.test.failure.ignore=true test` (**cùng lệnh** với baseline, spec 01 Mục 6.2) | `:<p>:test --continue` | Mọi test trong `baseline.passing_in_all_runs` vẫn pass, và test sinh ra vẫn pass | `REGRESSION` |
 
-- Bước 2 và bước 5 chạy trên **hai bản sao mới khác nhau** của snapshot (bước 5 không thấy file do lần chạy bước 2 để lại).
+- Bước 2 và bước 5 chạy trên **hai bản sao mới khác nhau** của snapshot (bước 5 không thấy file do lần chạy bước 2 để lại). Bước 2 dùng lại bản sao vừa biên dịch ở bước 1 (bản sao đó chưa chạy test nào); khi phải thử lại vì lỗi hạ tầng thì dùng bản sao mới.
+- Lệnh chạy riêng ở bước 2 thất bại mà không có báo cáo của class `test_fqn` và không phải thông báo "không tìm thấy test" (`No tests found for given includes`, `No tests were executed`), ví dụ JVM chạy test bị sập hoặc `System.exit`, → `RUNTIME` với signature `RUNTIME | <plugin hoặc task lỗi> | -` (bổ sung khi code C4).
 - `-Dsurefire.failIfNoSpecifiedTests=false` để các module anh em trong reactor (không có class `<Tên>`) không báo lỗi "No tests matching".
 - Scaffolding của EvoSuite không phải test class; chỉ class `test_fqn` được tính ở bước 2–4.
 - Với `-am`, bước 5 cũng chạy test của module anh em, đúng như baseline; so sánh regression dùng chung danh sách nên nhất quán (spec 01 Mục 6).
@@ -89,7 +90,7 @@ Một chain có nhiều vòng; test của vòng trước có thể xóa resource
 1. Tìm dòng lỗi javac trong log bằng biểu thức nhận được mọi dạng đường dẫn:
    `^(?:\[ERROR\]\s+)?(?<file>(?:/?[A-Za-z]:)?[^:\[\]\r\n]*?\.java):(?:\[(?<line>\d+),(?<col>\d+)\]|(?<line2>\d+):\s*error:)\s*(?<msg>.*)$`
    Nhận đúng `/Users/a/X.java:[13,6]` (macOS), `/D:/a/X.java:[13,6]` (Maven trên Windows), `D:\a\X.java:13: error:` (Gradle trên Windows). Kèm dòng `symbol:` / `location:` ngay sau.
-2. Có ít nhất một lỗi javac **trong file test sinh ra** (so theo tên file) → `COMPILE`.
+2. Có ít nhất một lỗi javac **trong file test sinh ra** (so theo tên file) → `COMPILE`. "File sinh ra" là file của class `test_fqn` và các file của bộ có cùng tiền tố tên (scaffolding `…_ESTest_scaffolding.java` của EvoSuite).
 3. Build thất bại nhưng không có lỗi javac nào trong file sinh ra → `UNKNOWN`.
 4. Không tính là lỗi javac: dòng chứa `AssertionError`, dòng trong stack trace (`at …`), cảnh báo `warning:`.
 
@@ -107,6 +108,7 @@ Một chain có nhiều vòng; test của vòng trước có thể xóa resource
 - Test sẵn có trong `passing_in_all_runs` mà fail hoặc **không còn chạy** (mất khỏi báo cáo) → `REGRESSION`.
 - Test sinh ra pass khi chạy riêng nhưng fail khi chạy cùng module (phụ thuộc thứ tự, trạng thái dùng chung) → `REGRESSION`.
 - Test `flaky` ở baseline không được dùng để kết luận.
+- Test sinh ra **không được chạy** ở bước 5 (ví dụ dự án cấu hình `includes` của Surefire khác mẫu tên mặc định) không bị coi là regression; chỉ khi nó chạy và fail cùng module (Mục 15.1 (c)).
 
 ### 3.5. Lỗi hạ tầng
 
@@ -141,6 +143,8 @@ Lỗi hạ tầng không thuộc chuỗi trạng thái, không phải lỗi củ
   "failures": [ { "method": "resolvesRelative", "type": "org.opentest4j.AssertionFailedError", "message": "expected: <a> but was: <b>", "trace_head": "…" } ],
   "compile_errors": [],
   "regressions": [],
+  "build_error_excerpt": null,
+  "test_file": "src/test/java/…/PathUtil_ArrowTest.java",
   "error_signature": "ASSERTION | AssertionFailedError | resolvesRelative",
   "failing_methods": [ "resolvesRelative", "rejectsNull" ],
   "code_hash": "sha256:…", "assertion_count": 9, "build_seconds": 14.4
@@ -372,7 +376,7 @@ Thêm hai ví dụ cho Q5: (a) level 3, mã trùng → level 2, vòng sau prompt
 Bộ test EvoSuite (spec 04 Mục 3) đi qua **đúng** Flow 3.1: bản sao mới của snapshot, cùng 5 bước, cùng lệnh; không qua chẩn đoán để sửa, không vào chain sửa. Khác biệt nằm hết trong `SuiteFiles` của bộ:
 - `test_fqn = <CUT>_ESTest` (lệnh `-Dtest=<CUT>_ESTest`, Gradle `--tests <pkg>.<CUT>_ESTest`);
 - `files` gồm test class và scaffolding;
-- `extra_test_classpath` = `evosuite-standalone-runtime` (bộ test EvoSuite cần thư viện này để chạy): trong bản sao, Maven thêm dependency scope `test` trỏ tới file jar vào `pom.xml` của module đích (chỉ trong bản sao); Gradle thêm `testImplementation files(…)` qua init script. Đây là ngoại lệ đã khai báo, giống nhau cho mọi lần xác minh và đo bộ EvoSuite.
+- `extra_test_classpath` = `evosuite-standalone-runtime` (bộ test EvoSuite cần thư viện này để chạy): trong bản sao, Maven thêm dependency scope `system` với `systemPath` trỏ tới file jar vào `pom.xml` của module đích (chỉ trong bản sao; Maven không có cách khác trỏ dependency tới một file jar mà không cài vào `~/.m2`, scope `system` cũng có trên classpath test); Gradle thêm `testImplementation files(…)` qua một init script phụ. Đây là ngoại lệ đã khai báo, giống nhau cho mọi lần xác minh và đo bộ EvoSuite.
 
 Kết quả `block3/evosuite/verify.json`; chỉ bộ VALID được đo ở khối 4.
 

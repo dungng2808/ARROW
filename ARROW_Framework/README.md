@@ -1,6 +1,6 @@
 # ARROW Framework
 
-**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong bước C1** (khung 3 tầng, Models, toàn bộ Data Access, nhập/xuất console, kiểm tra bộ prompt), **C2** (java-helper: công cụ Java dùng JavaParser, chạy thường trú, cùng client C# và trình chạy tiến trình) và **C3** (khối 1: tải đúng commit, build root, JDK, 6 thông tin cấu hình, snapshot, baseline, tiêu chí B; lệnh `screen`). Các bước C4–C10 theo spec 07 Mục 11.
+**Trạng thái:** spec đã chốt (14/10/2026). Code: **xong bước C1** (khung 3 tầng, Models, toàn bộ Data Access, nhập/xuất console, kiểm tra bộ prompt), **C2** (java-helper: công cụ Java dùng JavaParser, chạy thường trú, cùng client C# và trình chạy tiến trình) , **C3** (khối 1: tải đúng commit, build root, JDK, 6 thông tin cấu hình, snapshot, baseline, tiêu chí B; lệnh `screen`) và **C4** (khối 3 phần xác minh: 5 bước trên bản sao mới của snapshot, phân loại lỗi, error signature, chẩn đoán). Các bước C5–C10 theo spec 07 Mục 11.
 
 ## Build và chạy
 
