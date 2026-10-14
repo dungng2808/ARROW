@@ -1,7 +1,7 @@
 # Adaptive Repair — Thiết kế chi tiết
 
-**Trạng thái:** Thiết kế đã chốt ngày 08/10/2026 (Đóng góp 2 của ARROW). Đã triển khai và đối chiếu với code ngày 09/10/2026; các điểm làm rõ hoặc thay đổi so với bản 08/10 được đánh dấu *(cập nhật 09/10/2026)* và tổng hợp ở mục 13. Lỗi được mô tả theo **ba nhóm build, runtime, assertion**, mỗi nhóm gồm các trạng thái ở mục 2.1; việc gom nhóm không làm thay đổi thuật toán đã triển khai.
-**Code:** `ARROW/src/repair_v2/` (thuật toán, trạng thái, đếm assertion, prompt), `ARROW/prompts/repair_v2/` (template), `ARROW/run_repair.py` (chạy RQ2), `ARROW/analyze_rq2.py` (bảng RQ2). Cơ chế cũ `ARROW/src/adaptive_repair.py` giữ nguyên để tái lập các lượt đã chạy, **không** dùng cho RQ2.
+**Trạng thái:** Thiết kế đã chốt ngày 08/10/2026 (Đóng góp 2 của ARROW). Đã triển khai và đối chiếu với code ngày 09/10/2026, cập nhật theo ARROW Framework và các quyết định Q4–Q8 ngày 14/10/2026 (mục 13, dòng 14–19); các điểm làm rõ hoặc thay đổi so với bản 08/10 được đánh dấu *(cập nhật 09/10/2026)* và tổng hợp ở mục 13. Lỗi được mô tả theo **ba nhóm build, runtime, assertion**, mỗi nhóm gồm các trạng thái ở mục 2.1; việc gom nhóm không làm thay đổi thuật toán đã triển khai.
+**Code (cập nhật 14/10/2026):** ARROW Framework (C#, `ARROW/ARROW_Framework/`, lệnh `arrow`). Thuật toán: `src/Arrow.Service/Block3/RepairPolicies.cs` (`AdaptiveRepairPolicy`, `FixedRepairPolicy`, `CheckpointComparer`), vòng lặp `RepairRunner.cs`, xác minh `Verifier.cs`, phân loại và signature `TestResultClassifier.cs`, `JavacErrorParser.cs`, `SignatureBuilder.cs`, thông tin bổ sung `ExtraContextBuilder.cs`; template `ARROW_Framework/prompts/repair/`; đếm assertion bằng java-helper (`count_assertions`); bảng RQ2 do khối 4 (`ReportBuilder.cs`) sinh. Spec chi tiết và chuẩn: `ARROW_Framework/specs/03-adaptive-repair.md` (khi tài liệu này và spec khác nhau, spec 03 là bản đã code). Code cũ `src/repair_v2/` và `pilot_tool` không còn dùng.
 **Lưu ý:** Trước khi viết Report 4 (Methodology) hoặc trình bày, vẫn phải đối chiếu tài liệu này với code; nếu khác nhau, sửa code theo thiết kế hoặc sửa thiết kế theo code — không để báo cáo mô tả khác với cái đã chạy.
 
 ---
@@ -39,7 +39,7 @@ COMPILE → DISCOVERY → RUNTIME → ASSERTION → REGRESSION → VALID
 **Quy ước:** bản đi xa hơn trong chuỗi là bản tốt hơn.
 
 *(Cập nhật 09/10/2026)* Khi triển khai:
-- **UNKNOWN** (log build không phân loại được) xếp ngay sau COMPILE. **Build timeout** và **lỗi công cụ** là lỗi hạ tầng, không thuộc chuỗi: build lại 1 lần, vẫn lỗi thì dừng ứng viên và loại khỏi RQ2.
+- **UNKNOWN** (log build không phân loại được) xếp ngay sau COMPILE. **Build timeout** và **lỗi công cụ** là lỗi hạ tầng, không thuộc chuỗi. *(Cập nhật 14/10/2026, chốt Q8)* Chạy lại đúng bước đó tối đa **3 lần thử**; vẫn lỗi thì job nhận `INFRA` (`B3_TIMEOUT`, `B3_DEPENDENCY`, `B3_TOOL_ERROR`), vào danh sách **"Cần chạy lại riêng"** kèm lệnh `arrow run --run-id <run> --tasks <task_id> --rerun-infra`; chưa tính vào RQ1/RQ2 cho tới khi chạy lại xong.
 - Phân loại lỗi biên dịch chỉ dựa trên dấu hiệu thật của javac/Maven/Gradle. Trước đây dòng `java.lang.AssertionError:` bị nhận nhầm là lỗi biên dịch (chuỗi con `error:`), làm ASSERTION bị xếp thành COMPILE.
 - **REGRESSION** chỉ phát hiện được khi lần chạy toàn module chạy cả test sinh ra. Tên test sinh ra `<Focal>Test_<hash>` không khớp mẫu mặc định của Maven Surefire (`*Test`, `Test*`, `*Tests`, `*TestCase`), nên lần chạy toàn module truyền thêm `-Dsurefire.includesFile` (mẫu mặc định + tên test sinh ra), không sửa `pom.xml`.
 
@@ -51,7 +51,7 @@ COMPILE → DISCOVERY → RUNTIME → ASSERTION → REGRESSION → VALID
 | **RUNTIME** | RUNTIME, REGRESSION | Lỗi khi chạy: test văng exception, hoặc test pass nhưng làm test sẵn có của module fail |
 | **ASSERTION** | ASSERTION | Test chạy xong nhưng kết quả không khớp với assertion (kể cả `assertThrows` hay `@Test(expected = …)` thất bại) |
 
-- **Prompt, mức strategy, thông tin bổ sung ở mức 2 và cách làm ở mức 3 vẫn chọn theo loại con (trạng thái)**, đúng như code `src/repair_v2`. Nhóm dùng để mô tả và báo cáo (ví dụ thống kê số ứng viên theo nhóm lỗi); nhóm suy ra trực tiếp từ trạng thái nên log không cần trường riêng.
+- **Prompt, mức strategy, thông tin bổ sung ở mức 2 và cách làm ở mức 3 vẫn chọn theo loại con (trạng thái)**, đúng như code (spec 03 Mục 6.5). Nhóm dùng để mô tả và báo cáo (ví dụ thống kê số ứng viên theo nhóm lỗi); nhóm suy ra trực tiếp từ trạng thái nên log không cần trường riêng.
 - Đổi nhóm luôn là đổi trạng thái, nên quy tắc "trạng thái đổi → mức 1" ở mục 3.1 đã bao gồm việc đổi nhóm.
 - **Thứ tự nhóm không dùng để so sánh checkpoint**: REGRESSION thuộc nhóm RUNTIME nhưng trong chuỗi xác minh đứng sau ASSERTION vì test mục tiêu đã pass. Checkpoint luôn so theo chuỗi ở trên.
 - Phân loại theo nhóm là **bước nền**, không phải điểm mới của ARROW (TestART cũng phân lỗi biên dịch, runtime, assertion); điểm khác biệt nằm ở cách dùng lịch sử sửa (mục 3).
@@ -120,7 +120,13 @@ Bản được giữ lại để quay về khi lần sửa mới làm tệ đi. 
 |---|---|---|
 | 1 | Lần đầu gặp loại lỗi | Thông báo lỗi + mã test + **source của focal class** *(cập nhật 09/10/2026)* |
 | 2 | Lỗi lặp lại lần 1 | Mức 1 + **thông tin bổ sung đúng loại lỗi** + **"cách đã thử và đã thất bại — không lặp lại"** |
-| 3 | Lỗi lặp lại lần 2 | Chỉ **viết lại riêng test method bị lỗi**, giữ nguyên các method đã chạy tốt |
+| 3 | Lỗi lặp lại lần 2 | **Như mức 2** (giữ thông tin bổ sung và danh sách đã thử, cập nhật 14/10/2026) nhưng chỉ **viết lại riêng test method bị lỗi**, giữ nguyên các method đã chạy tốt |
+
+*(Cập nhật 14/10/2026, chốt Q4)* **Mọi mức** (và mọi vòng của Fixed) đều có **khối Repository Metadata M đầy đủ** (build tool, Java version, test framework, dependencies, cấu trúc dự án, source/test path). Vì vậy thông tin bổ sung mức 2 của COMPILE chỉ còn phần M không có: API thật của các class liên quan tới lỗi.
+
+*(Cập nhật 14/10/2026, chốt Q5)* **Sau mức 3 là mức 2**, không đứng yên ở 3: `NextLevel(1) = 2`, `NextLevel(2) = 3`, `NextLevel(3) = 2`. Nếu giữ `min(level + 1, 3)`, khi checkpoint không đổi thì prompt mức 3 giống hệt từng chữ ở mọi vòng, model (temperature 0) trả lại cùng câu trả lời và các vòng còn lại đều là mã trùng (pilot cũ: 5 chain kẹt như vậy tới hết N). Danh sách đã thử thay đổi sau mỗi vòng nên prompt của vòng sau luôn khác.
+
+*(Cập nhật 14/10/2026)* Mỗi lần trong **"cách đã thử và đã thất bại"** gồm: vòng, **signature** (thuật toán dùng để nhận ra lỗi lặp), **lỗi đầu tiên chưa chuẩn hóa** (tối đa 200 ký tự) và **các dòng mã đã đổi** so với checkpoint (`-`/`+`, tối đa 15 dòng). Prompt hiện đủ ba thông tin cho **3 lần gần nhất**, các lần cũ hơn chỉ một dòng vòng + signature. Mục đích: model biết đã thử cái gì để tránh lặp, kể cả bản đã bị rollback.
 
 **Thông tin bổ sung ở mức 2 theo loại lỗi:**
 
@@ -184,10 +190,10 @@ Hai dấu hiệu:
 
 ## 4. Thuật toán
 
-*(Cập nhật 09/10/2026 — khớp với `src/repair_v2/loops.py::run_adaptive`)*
+*(Cập nhật 14/10/2026 — khớp với `ARROW_Framework/src/Arrow.Service/Block3/RepairPolicies.cs`)*
 
 ```
-Đầu vào: ứng viên thất bại c0 (đã build lại để lấy trạng thái), ngân sách N = 5
+Đầu vào: ứng viên thất bại c0 (đã xác minh), ngân sách N (mặc định 5; chọn lại bằng pilot, mục 6.1)
 best ← c0 ; seen_hash ← {hash(c0)} ; level ← 1 ; đã_thử ← []
 
 for t = 1 … N:
@@ -195,12 +201,12 @@ for t = 1 … N:
     ct   ← LLM_sửa(best, prompt(type, level, đã_thử))   # mức 3: chỉ ghép method lỗi vào best
 
     if ct không phải test class hợp lệ:           # sai class/package, không phải Java
-        đã_thử += (t, "output không hợp lệ") ; level ← min(level+1, 3) ; continue
+        đã_thử += (t, "output không hợp lệ") ; level ← NextLevel(level) ; continue
     if hash(ct) ∈ seen_hash:                      # mã trùng
-        đã_thử += (t, "mã trùng") ; level ← min(level+1, 3) ; continue
+        đã_thử += (t, "mã trùng", dòng đã đổi) ; level ← NextLevel(level) ; continue
     seen_hash ← seen_hash ∪ {hash(ct)}
 
-    build + chạy ct → state(ct), signature(ct)    # timeout/lỗi công cụ: build lại 1 lần, vẫn lỗi thì dừng (hạ tầng)
+    build + chạy ct → state(ct), signature(ct)    # bản sao mới của snapshot; lỗi hạ tầng: 3 lần thử rồi INFRA
 
     if state(ct) = VALID:  return ct              # THÀNH CÔNG
 
@@ -208,9 +214,9 @@ for t = 1 … N:
         if state(ct) ≠ state(best): level ← 1     # lỗi đổi loại
         best ← ct
     else:
-        đã_thử += (t, state(ct), signature(ct))   # cách đã thử và đã thất bại
+        đã_thử += (t, signature(ct), lỗi đầu tiên, dòng đã đổi)   # cách đã thử và đã thất bại
         if tệ_hơn(ct, best) hoặc signature(ct) = signature(best):
-            level ← min(level+1, 3)               # rollback hoặc lỗi lặp → leo mức
+            level ← NextLevel(level)              # rollback hoặc lỗi lặp → leo mức (3 → 2)
                                                   # (vòng sau vẫn sửa từ best)
 return best                                       # hết N vòng, không đạt VALID
 ```
@@ -270,6 +276,8 @@ Lập luận:
 1. Cùng cấu hình đánh giá của ChatUniTest; nằm trong khoảng 3–5 của các công trình liên quan.
 2. Fixed và Adaptive dùng **cùng N** — RQ2 so sánh hai cơ chế, không tìm N tối ưu.
 3. Báo cáo **tỷ lệ thành công cộng dồn theo từng vòng** (vòng 1 → 5). Nếu đường cong đi ngang ở vòng 4–5 thì N = 5 là đủ.
+
+*(Cập nhật 14/10/2026, chốt Q6)* Chỉ dựa vào tài liệu chưa đủ nên N được **kiểm tra bằng pilot**: pilot (`experiments/pilot-v1.json`, `repair.n = 10`, 50 CUT Classes2Test v3 + 9 CUT GitBug-Java, chia 6 máy theo `shards/pilot-6/`) chạy cả hai cơ chế tới 10 vòng; N = vòng k nhỏ nhất (5 ≤ k ≤ 10) mà cả vòng k−1 và vòng k không có thêm ứng viên sửa thành công trên tỷ lệ cộng dồn chung của hai cơ chế (chỉ tính Classes2Test); không vòng nào thỏa thì N = 10. Khối 4 của ARROW Framework tính quy tắc này (lớp `NRule`, kết quả in trong `report.md`). Pilot không xem kết quả so sánh hai cơ chế và không gộp vào kết quả chính.
 
 ### 6.2. P (dừng sớm)
 
@@ -384,7 +392,7 @@ Fixed **không** dùng hash, signature hay checkpoint, để mọi cơ chế d�
 | Vì sao chia ba nhóm lỗi? | Ba nhóm build, runtime, assertion cho biết test hỏng trước khi chạy, khi chạy hay ở kết quả; trong mỗi nhóm, từng trạng thái có prompt và thông tin bổ sung riêng. Việc phân loại là bước nền (TestART cũng phân loại tương tự); điểm khác của ARROW là cách dùng lịch sử sửa. |
 | Rollback khi nào? | Khi lần sửa mới cho ra bản đi lùi trong chuỗi xác minh so với checkpoint; vòng sau sửa từ checkpoint. |
 | Nếu mọi lần sửa đều tệ hơn? | Luôn sửa từ checkpoint nên không mất bản tốt nhất; hết N vòng thì trả về checkpoint. |
-| Vì sao N = 5? | Theo cấu hình đánh giá của ChatUniTest, trong khoảng 3–5 của công trình liên quan; biểu đồ tỷ lệ thành công cộng dồn cho thấy … |
+| Vì sao N = …? | Tài liệu (ChatUniTest 5, TestART 4, ChatTester 3) không chứng minh con số nào, nên N được chọn bằng pilot: chạy hai cơ chế tới 10 vòng, N là vòng k nhỏ nhất (5 ≤ k ≤ 10) mà cả vòng k−1 và k không có thêm ứng viên sửa thành công trên tỷ lệ cộng dồn chung (mục 6.1); biểu đồ cộng dồn của pilot cho thấy … |
 | Vì sao P = …? | Không chọn trước; tính từ log cho P = 1, 2, 3 và chọn giá trị cân bằng tốt nhất giữa chi phí và tỷ lệ thành công. |
 | Dừng sớm có làm mất cơ hội thành công không? | Có thể — RQ2 báo cáo cả tỷ lệ thành công, số lần sửa và thời gian để thấy đánh đổi; bảng độ nhạy P cho thấy mức ảnh hưởng. |
 | Để LLM tự do sửa assertion có thổi phồng tỷ lệ thành công không? | Có thể. Chất lượng thật của test hợp lệ được đánh giá bằng mutation score ở RQ3. *(Theo quyết định 08/10/2026, tạm không đưa ghi chú hạn chế này vào báo cáo; xem mục 5.1.)* |
@@ -396,8 +404,8 @@ Fixed **không** dùng hash, signature hay checkpoint, để mọi cơ chế d�
 
 1. ~~Đối chiếu toàn bộ tài liệu này với code repair~~ — **xong 09/10/2026**. Các chỗ làm rõ/thay đổi đã đánh dấu trong tài liệu và tổng hợp ở mục 13.
 2. ~~Xác nhận code ghi đủ log ở mục 9~~ — **xong 09/10/2026**.
-3. ~~Viết hàm đếm assertion qua AST~~ — **xong 09/10/2026** (`src/repair_v2/java_ast.py::count_assertions`, dùng tree-sitter). Việc phát hiện đổi expected / xóa / đổi loại assertion vẫn là tùy chọn, chưa làm.
-4. Sau thực nghiệm: vẽ biểu đồ cộng dồn theo vòng, tính bảng độ nhạy P, tổng hợp thống kê assertion và mức 3. `analyze_rq2.py` đã tạo sẵn các bảng (CSV); **còn chờ số liệu pilot/thực nghiệm**.
+3. ~~Viết hàm đếm assertion qua AST~~ — **xong 09/10/2026**; từ 14/10/2026 là lệnh `count_assertions` của java-helper (JavaParser) trong ARROW Framework. Việc phát hiện đổi expected / xóa / đổi loại assertion vẫn là tùy chọn, chưa làm.
+4. Sau thực nghiệm: vẽ biểu đồ cộng dồn theo vòng, tính bảng độ nhạy P, tổng hợp thống kê assertion và mức 3. Khối 4 của ARROW Framework (`arrow report`) tạo sẵn các bảng (CSV); **còn chờ số liệu pilot/thực nghiệm**.
 5. *(Mới)* Paper/Report 4: sửa mô tả điều kiện dừng của Fixed (mục 7) và nêu rõ chỉ số "pass cả module" đã đổi cách đo từ 09/10/2026 (mục 2.1).
 
 ---
@@ -421,6 +429,12 @@ Ngày 09/10/2026, khi triển khai và chạy thử (smoke với Qwen2.5-Coder 7
 | 11 | 8 | c0 lấy từ single-shot; thứ tự Fixed/Adaptive xen kẽ; chỉ so sánh ứng viên cả hai cơ chế chạy xong | Bảo đảm điều kiện công bằng; vòng 1 cùng prompt nên cơ chế chạy sau được cache |
 | 12 | 2.1, 3.1, 11 | Gom các trạng thái lỗi thành ba nhóm build (COMPILE, UNKNOWN, DISCOVERY), runtime (RUNTIME, REGRESSION), assertion (ASSERTION); prompt vẫn chọn theo trạng thái | Giữ đúng mô tả ban đầu của Đóng góp 2 ("biên dịch, runtime, assertion") mà không đổi code |
 | 13 | 11 | Câu trả lời về việc LLM tự do sửa assertion không còn nói "nêu ở phần hạn chế" | Khớp quyết định 08/10/2026 tạm không đưa ghi chú này vào báo cáo (mục 5.1) |
+| 14 | 3.1, 4 | *(14/10/2026, Q5)* `NextLevel(3) = 2`: sau mức 3 không tiến triển thì về mức 2 | Pilot cũ: 5 chain kẹt ở mức 3 với prompt giống hệt, mọi vòng còn lại là mã trùng |
+| 15 | 3.1 | *(14/10/2026)* Mức 3 giữ thông tin bổ sung và danh sách đã thử của mức 2; mỗi lần đã thử có thêm lỗi đầu tiên chưa chuẩn hóa và các dòng mã đã đổi (3 lần gần nhất) | Xoay mức 2 ↔ 3 mà bỏ thông tin ở mức 3 thì mất đúng thông tin vừa đưa ra; model cần biết đã thử gì |
+| 16 | 3.1, 7 | *(14/10/2026, Q4)* Mọi prompt sửa (mọi mức, cả Fixed) có khối Repository Metadata M đầy đủ | RQ2 công bằng: hai cơ chế nhận cùng thông tin cấu hình |
+| 17 | 2.1 | *(14/10/2026, Q8)* Lỗi hạ tầng: 3 lần thử rồi INFRA, vào danh sách "Cần chạy lại riêng" kèm lệnh; không loại hẳn khỏi RQ2 | Timeout thường do máy, chạy lại riêng task đó |
+| 18 | 6.1 | *(14/10/2026, Q6)* N chọn bằng pilot theo quy tắc 5 ≤ k ≤ 10 của CLAUDE.md, pilot chạy `n = 10` | Tài liệu chưa đủ để chọn N |
+| 19 | đầu tài liệu | *(14/10/2026)* Code chuyển sang ARROW Framework (C#); `src/repair_v2/` và `pilot_tool` không còn dùng; spec chuẩn là `ARROW_Framework/specs/03-adaptive-repair.md` | Viết lại framework theo 4 khối |
 
 Quan sát khi chạy thử (chưa phải số liệu):
 - Qwen 7B thường trả lại **y nguyên** test cũ: Adaptive phát hiện mã trùng và bỏ qua build.
