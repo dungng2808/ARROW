@@ -396,7 +396,7 @@ public class Block1Tests
         Assert.Equal(Path.Combine(Path.GetTempPath(), "copy1", "sub", "mvnw"), BuildCommands.Command(wrapper, ["-v"])[0]);
 
         var gradle = BuildCommands.Command(new BuildContext { Plan = new BuildPlan { Tool = "gradle", Module = ":core" }, Executable = "gradlew", CommonFlags = BuildCommands.GradleCommonFlags, InitScript = "/t/arrow-init.gradle" }, BuildCommands.GradleModuleTest(":core"));
-        Assert.Equal(["gradlew", "--no-daemon", "--console=plain", "--init-script", "/t/arrow-init.gradle", ":core:test", "--continue"], gradle);
+        Assert.Equal(["gradlew", "--no-daemon", "--console=plain", "-Dorg.gradle.configuration-cache=false", "-Dorg.gradle.unsafe.configuration-cache=false", "--init-script", "/t/arrow-init.gradle", ":core:test", "--continue"], gradle);
     }
 
     [Fact]

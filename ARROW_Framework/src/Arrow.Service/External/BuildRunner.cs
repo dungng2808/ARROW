@@ -76,7 +76,12 @@ public static class BuildCommands
         return flags;
     }
 
-    public static IReadOnlyList<string> GradleCommonFlags => ["--no-daemon", "--console=plain"];
+    /// <summary>
+    /// Cờ chung của Gradle. Tắt configuration cache (Gradle 8 bật theo <c>gradle.properties</c> của dự án; Gradle 7 dùng tên <c>unsafe</c>):
+    /// task của init script tham chiếu <c>Project</c> nên không lưu vào cache được. Gradle cũ bỏ qua thuộc tính không biết.
+    /// </summary>
+    public static IReadOnlyList<string> GradleCommonFlags =>
+        ["--no-daemon", "--console=plain", "-Dorg.gradle.configuration-cache=false", "-Dorg.gradle.unsafe.configuration-cache=false"];
 
     /// <summary>Lệnh đầy đủ: chương trình, cờ chung, bộ chọn module, rồi <paramref name="arguments"/>.</summary>
     public static IReadOnlyList<string> Command(BuildContext context, IReadOnlyList<string> arguments)

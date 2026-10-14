@@ -235,7 +235,7 @@ Có cả TestNG và JUnit: chọn theo framework của **test người viết** 
 
 **Cờ build dùng chung** (giống nhau cho mọi khối, mọi hệ thống, ghi vào `run.lock.json`):
 - Maven: `-f pom.xml` (chạy từ build root), `-B -ntp -Dstyle.color=never`, tắt checkstyle, spotless, formatter, impsort, license, rat, jacoco (của dự án), pmd, cpd, spotbugs, enforcer, javadoc, gpg. Trên Windows thêm `-Dsurefire.useManifestOnlyJar=false`.
-- Gradle: `--no-daemon --console=plain`, loại các task `checkstyle*`, `spotless*` nếu có.
+- Gradle: `--no-daemon --console=plain -Dorg.gradle.configuration-cache=false -Dorg.gradle.unsafe.configuration-cache=false`, loại các task `checkstyle*`, `spotless*` nếu có. Configuration cache bị tắt vì task trong init script của framework tham chiếu `Project` nên không lưu vào cache được (bổ sung 15/10/2026: dự án GitBug-Java bật configuration cache trong `gradle.properties` bị loại nhầm); tắt cache không đổi cách biên dịch hay chạy test.
 - JVM: `JAVA_TOOL_OPTIONS = -Dfile.encoding=UTF-8 -Duser.language=en -Duser.country=US -Duser.timezone=UTC`.
 
 **Lệnh Maven luôn chạy từ build root, kèm bộ chọn module của Mục 4.1** (`-pl <module> -am` ở chế độ reactor, không có ở chế độ standalone) cho **mọi** bước: biên dịch, chạy riêng test, chạy test của module (baseline và khối 3), đo (khối 4). Nhờ `-am`, các module anh em mà module đích phụ thuộc luôn được build trong cùng reactor, không cần `install` vào `~/.m2`. Hệ quả: lần "chạy test của module" cũng chạy test của các module anh em đó; baseline và khối 3 dùng cùng lệnh nên danh sách so sánh vẫn nhất quán (test sinh ra nằm trong module đích nên không ảnh hưởng tới test của module anh em, chỉ tốn thêm thời gian). Gradle: `:<project>:test` tự build project phụ thuộc.
