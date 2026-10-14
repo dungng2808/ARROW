@@ -34,7 +34,11 @@ public static partial class JavacErrorParser
     ];
 
     /// <param name="generatedFileName">Tên file test sinh ra (ví dụ <c>OrderService_ArrowTest.java</c>), để đánh dấu lỗi nằm trong file đó.</param>
-    public static IReadOnlyList<CompileError> Parse(string log, string? generatedFileName)
+    public static IReadOnlyList<CompileError> Parse(string log, string? generatedFileName) =>
+        Parse(log, generatedFileName is null ? [] : [generatedFileName]);
+
+    /// <param name="generatedFileNames">Tên các file của bộ test (test class và scaffolding).</param>
+    public static IReadOnlyList<CompileError> Parse(string log, IReadOnlyCollection<string> generatedFileNames)
     {
         var lines = log.Replace("\r\n", "\n").Split('\n');
         var errors = new List<CompileError>();
@@ -82,7 +86,7 @@ public static partial class JavacErrorParser
             errors.Add(new CompileError
             {
                 File = file,
-                InGeneratedFile = generatedFileName is not null && string.Equals(FileName(file), generatedFileName, StringComparison.Ordinal),
+                InGeneratedFile = generatedFileNames.Contains(FileName(file)),
                 Line = line,
                 Column = column,
                 Message = message,

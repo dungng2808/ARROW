@@ -162,7 +162,7 @@ public static partial class TestResultClassifier
 
     /// <summary>
     /// Bước 5 (spec 03 Mục 3.4, 15.1): test trong <c>passing_in_all_runs</c> mà fail hoặc không còn chạy, và test sinh ra
-    /// fail (hoặc không chạy) khi chạy cùng module. Test flaky và test hỏng sẵn không được xét.
+    /// fail khi chạy cùng module. Test flaky và test hỏng sẵn không được xét.
     /// </summary>
     public static IReadOnlyList<RegressionInfo> FindRegressions(IReadOnlyList<string> baselinePassing, IReadOnlyList<TestCaseResult> moduleRun, string testFqn)
     {
@@ -180,13 +180,8 @@ public static partial class TestResultClassifier
             }
         }
 
-        var generated = moduleRun.Where(t => Belongs(t, testFqn)).ToList();
-        if (generated.Count == 0)
-        {
-            regressions.Add(new RegressionInfo { TestId = testFqn, Type = "NOT_RUN", Message = "test sinh ra không được chạy khi chạy cả module" });
-        }
-
-        regressions.AddRange(generated.Where(t => t.Status is TestCaseStatus.Failed or TestCaseStatus.Error)
+        // Test sinh ra chỉ là regression khi nó chạy và fail cùng module; không được chạy (include của Surefire khác) thì không kết luận.
+        regressions.AddRange(moduleRun.Where(t => Belongs(t, testFqn) && t.Status is TestCaseStatus.Failed or TestCaseStatus.Error)
             .Select(t => new RegressionInfo { TestId = t.Id, Type = ExceptionName(t.ExceptionType, t.Trace), Message = t.Message }));
         return regressions;
     }

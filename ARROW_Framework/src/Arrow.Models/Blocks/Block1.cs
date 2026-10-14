@@ -159,6 +159,19 @@ public sealed record WorkspaceInfo
     public string BuildRootSource { get; init; } = "";
     public string? MavenModuleSelector { get; init; }
     public List<string> CommonFlags { get; init; } = [];
+
+    /// <summary><c>maven</c> hoặc <c>gradle</c>.</summary>
+    public string Tool { get; init; } = "maven";
+
+    /// <summary>Maven: thư mục trong <c>-pl</c> (reactor); Gradle: đường dẫn project (<c>:core</c>).</summary>
+    public string? Module { get; init; }
+
+    /// <summary>Chương trình build: wrapper tính từ gốc repository (<see cref="ExecutableInRepo"/>) hoặc đường dẫn tuyệt đối của công cụ trên máy.</summary>
+    public string Executable { get; init; } = "";
+    public bool ExecutableInRepo { get; init; }
+
+    /// <summary>Gradle: init script của framework (tương đối với <c>work_dir</c>).</summary>
+    public string? InitScript { get; init; }
 }
 
 /// <summary>

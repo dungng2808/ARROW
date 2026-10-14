@@ -24,9 +24,6 @@ public sealed partial class RepositoryAnalyzer(
     ITaskResultRepository results,
     ILogRepository log) : IRepositoryAnalyzer
 {
-    private const int MaxLogBytes = 5 * 1024 * 1024;
-    private const int KeptLogBytes = 2 * 1024 * 1024;
-
     /// <summary>Trạng thái của một lần phân tích: task, run, đường dẫn workspace, số thứ tự log.</summary>
     private sealed class Job(TaskRecord task, RunContext run)
     {
@@ -188,6 +185,11 @@ public sealed partial class RepositoryAnalyzer(
             BuildRootSource = compiled.Plan.Source,
             MavenModuleSelector = compiled.Plan.Tool == "maven" && compiled.Plan.Mode == BuildMode.Reactor ? $"-pl {compiled.Plan.Module} -am" : null,
             CommonFlags = context.CommonFlags.ToList(),
+            Tool = compiled.Plan.Tool,
+            Module = compiled.Plan.Module,
+            Executable = context.Executable,
+            ExecutableInRepo = context.ExecutableInRepo,
+            InitScript = context.InitScript is null ? null : Relative(workspace.WorkDir, context.InitScript),
         };
         results.SaveJson(run.RunId, job.Key, ResultPaths.Workspace, info);
 
@@ -590,24 +592,10 @@ public sealed partial class RepositoryAnalyzer(
     private void SaveCommandLog(Job job, string step, BuildContext context, BuildRun run)
     {
         job.LogIndex++;
-        var output = run.Result.Output;
-        if (Encoding.UTF8.GetByteCount(output) > MaxLogBytes)
-        {
-            var chars = KeptLogBytes / 2;
-            output = output[..Math.Min(chars, output.Length)] + "\n… (cắt bớt) …\n" + output[^Math.Min(chars, output.Length)..];
-        }
-
-        var text = new StringBuilder()
-            .Append("$ ").AppendJoin(' ', run.Command.Select(Quote)).Append('\n')
-            .Append("cwd: ").Append(run.WorkingDirectory).Append('\n')
-            .Append("jdk: ").Append(context.JdkHome).Append('\n')
-            .Append(output)
-            .Append($"\n# exit={run.Result.ExitCode?.ToString(System.Globalization.CultureInfo.InvariantCulture) ?? "-"} seconds={run.Result.Duration.TotalSeconds:0.0} timeout={(run.Result.TimedOut ? "yes" : "no")}\n")
-            .ToString();
+        var output = BuildCommands.TruncateLog(run.Result.Output);
+        var text = BuildCommands.FormatLog(run, context.JdkHome, output);
         results.SaveText(job.Run.RunId, job.Key, $"{ResultPaths.Block1Dir}/logs/{job.LogIndex:00}-{step}.log", text);
     }
-
-    private static string Quote(string argument) => argument.Contains(' ') ? $"\"{argument}\"" : argument;
 
     // ── Flow 1.3 ─────────────────────────────────────────────────────
 

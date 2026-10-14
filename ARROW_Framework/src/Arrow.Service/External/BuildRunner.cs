@@ -127,6 +127,52 @@ public static class BuildCommands
 
     public static IReadOnlyList<string> GradleModuleTest(string? project) => [Block1.GradleProbe.Task(project, "test"), "--continue"];
 
+    // ── Log của từng lệnh (spec 00 Mục 6) ──────────────────────────────
+
+    private const int MaxLogChars = 5 * 1024 * 1024;
+    private const int KeptLogChars = 2 * 1024 * 1024;
+
+    /// <summary>Log lớn hơn 5 MB chỉ giữ 2 MB đầu và 2 MB cuối.</summary>
+    public static string TruncateLog(string output) =>
+        output.Length <= MaxLogChars ? output : output[..KeptLogChars] + "\n… (cắt bớt) …\n" + output[^KeptLogChars..];
+
+    /// <summary>Dòng đầu: lệnh, thư mục, JDK; dòng cuối: mã thoát, thời gian, có timeout không.</summary>
+    public static string FormatLog(BuildRun run, string jdkHome, string? output = null) =>
+        new System.Text.StringBuilder()
+            .Append("$ ").AppendJoin(' ', run.Command.Select(a => a.Contains(' ') ? $"\"{a}\"" : a)).Append('\n')
+            .Append("cwd: ").Append(run.WorkingDirectory).Append('\n')
+            .Append("jdk: ").Append(jdkHome).Append('\n')
+            .Append(output ?? TruncateLog(run.Result.Output))
+            .Append(System.FormattableString.Invariant($"\n# exit={run.Result.ExitCode?.ToString() ?? "-"} seconds={run.Result.Duration.TotalSeconds:0.0} timeout={(run.Result.TimedOut ? "yes" : "no")}\n"))
+            .ToString();
+
+    /// <summary>Dựng lại cách gọi build của task từ <c>workspace.json</c> cho một bản sao (khối 3, 4).</summary>
+    public static BuildContext FromWorkspace(WorkspaceInfo info, string workDir, string repoRoot, TimeSpan timeout) => new()
+    {
+        RepoRoot = repoRoot,
+        Plan = new BuildPlan { Tool = info.Tool, BuildRoot = info.BuildRoot, Mode = info.BuildMode, Module = info.Module, Source = info.BuildRootSource },
+        Executable = info.Executable,
+        ExecutableInRepo = info.ExecutableInRepo,
+        JdkHome = info.JdkHome,
+        CommonFlags = info.CommonFlags,
+        InitScript = info.InitScript is null ? null : Path.GetFullPath(Path.Combine(workDir, info.InitScript)),
+        Timeout = timeout,
+    };
+
+    /// <summary>Bước 1 của xác minh (spec 03 Mục 3.1): chỉ biên dịch.</summary>
+    public static IReadOnlyList<string> CompileTests(BuildPlan plan) =>
+        plan.Tool == "gradle" ? [Block1.GradleProbe.Task(plan.Module, "testClasses")] : ["-DskipTests", "test-compile"];
+
+    /// <summary>Bước 2–4: chạy riêng class test, tên lấy từ <c>test_fqn</c> của bộ (Maven dùng tên ngắn, Gradle dùng FQN).</summary>
+    public static IReadOnlyList<string> RunSingleTest(BuildPlan plan, string testFqn) =>
+        plan.Tool == "gradle"
+            ? [Block1.GradleProbe.Task(plan.Module, "test"), "--tests", testFqn, "--continue"]
+            : ["-Dtest=" + testFqn[(testFqn.LastIndexOf('.') + 1)..], "-Dsurefire.failIfNoSpecifiedTests=false", "-DfailIfNoTests=false", "-Dmaven.test.failure.ignore=true", "test"];
+
+    /// <summary>Bước 5: cùng lệnh với baseline (spec 01 Mục 6.2).</summary>
+    public static IReadOnlyList<string> RunModuleTests(BuildPlan plan) =>
+        plan.Tool == "gradle" ? GradleModuleTest(plan.Module) : MavenModuleTest;
+
     /// <summary>So sánh phiên bản dạng <c>3.9.6</c>; phần không phải số bị bỏ.</summary>
     public static int CompareVersions(string left, string right)
     {

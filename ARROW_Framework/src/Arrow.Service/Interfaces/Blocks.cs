@@ -1,4 +1,6 @@
 using Arrow.Models.Block1;
+using Arrow.Models.Block3;
+using Arrow.Models.Common;
 using Arrow.Models.Config;
 using Arrow.Models.Manifest;
 using Arrow.Models.Run;
@@ -61,4 +63,35 @@ public sealed record ScreeningSummary(string RunId, string ManifestPath, IReadOn
 public interface IScreeningService
 {
     Task<ScreeningSummary> RunAsync(ScreeningRequest request, IProgress<RunEvent> progress, CancellationToken cancellationToken);
+}
+
+/// <summary>Những gì khối 3 cần biết về task: kết quả khối 1 (M, baseline, workspace).</summary>
+public sealed record TaskContext
+{
+    public string RunId { get; init; } = "";
+    public TaskKey Key { get; init; } = new("", "");
+    public RepositoryMetadata Metadata { get; init; } = new();
+    public Baseline Baseline { get; init; } = new();
+    public WorkspaceInfo Workspace { get; init; } = new();
+}
+
+/// <summary>Tùy chọn của một lần xác minh.</summary>
+public sealed record VerifyOptions
+{
+    /// <summary>Thư mục kết quả của lần xác minh, tính từ thư mục task (ví dụ <c>block3/gpt-6-luna/zero_shot/adaptive/round_2</c>); log ghi vào <c>&lt;ResultDir&gt;/logs/</c>.</summary>
+    public string ResultDir { get; init; } = "";
+    public int StepTimeoutSeconds { get; init; } = 900;
+    public int InfraAttempts { get; init; } = 3;
+
+    /// <summary>Chờ giữa hai lần thử khi lỗi hạ tầng (spec 03 Mục 3.5: 30 s).</summary>
+    public TimeSpan RetryDelay { get; init; } = TimeSpan.FromSeconds(30);
+
+    /// <summary>Giữ bản sao workspace khi không VALID (để gỡ lỗi).</summary>
+    public bool KeepFailedWorkspaces { get; init; }
+}
+
+/// <summary>Khối 3, Flow 3.1 (spec 03 Mục 3): xác minh 5 bước, dùng chung cho candidate ARROW và bộ EvoSuite.</summary>
+public interface IVerifier
+{
+    Task<VerifyResult> VerifyAsync(SuiteFiles suite, TaskContext task, VerifyOptions options, CancellationToken cancellationToken);
 }
