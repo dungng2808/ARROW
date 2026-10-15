@@ -194,6 +194,11 @@ Loại javac quy về danh sách cố định: `cannot find symbol`, `incompatib
 
 Candidate vào chain sửa khi **cả bốn** điều kiện đúng: manifest của dataset có `repair: true`; c0 có mã (không `INVALID_OUTPUT`); c0 không `INFRA`; c0 không `VALID`. Mỗi candidate như vậy chạy **mọi** cơ chế trong `repair.mechanisms`, mỗi cơ chế một chain độc lập, cùng c0, cùng N, cùng model và tham số.
 
+**Tập con cố định của RQ2** *(chốt 15/10/2026, phương án E; Report 2 Experiment 2)*. Manifest đặt `repair_subset: K` (thực nghiệm chính: Classes2Test `K = 120`; GitBug-Java không đặt, tức sửa mọi ứng viên thất bại) thì chỉ K ứng viên thất bại được sửa cho RQ2:
+1. **Pha 1** (`arrow run` trên mọi máy): khối 1, 2 và xác minh c0; chain của dataset có `repair_subset` **chờ** (sự kiện "chờ tập con RQ2"), khối 4 vẫn đo các bộ VALID ngay khi sinh.
+2. **Chọn tập con** (người tổng hợp, sau khi gom run của mọi máy và chạy lại hết task INFRA): `arrow rq2-subset --experiment F --run-id A --run-id B …`. Ứng viên đủ điều kiện ở trên được chia theo ô model × quy trình, mỗi ô `K / số ô` ứng viên (2 model × 3 quy trình → 20); trong ô xếp theo `sha256("<seed>|<dataset>|<task_id>|<model>|<strategy>")` (seed 42) và lấy các ứng viên đầu. Thứ tự này chỉ phụ thuộc seed và định danh ứng viên nên tái lập được, không phụ thuộc máy hay thứ tự gộp. Ô có ít ứng viên hơn thì lấy hết, ghi `shortfall_by_cell` (Report 2: báo số thực tế và độ lệch). Lệnh từ chối khi còn task chưa chạy pha 1, có ở nhiều run, hoặc c0 còn INFRA. Kết quả ghi vào `repair_subset_file` của cấu hình (`experiments/<tên>.rq2-subset.json`, có `experiment_sha256`), commit lên Git.
+3. **Pha 2** (mọi máy pull rồi chạy lại đúng lệnh `arrow run`): ứng viên trong tập con chạy mọi cơ chế (xen kẽ như AR Mục 8). Ứng viên **ngoài** tập con của quy trình `repair.rq3_strategy` (`zero_shot_project_aware`) chạy **chỉ Adaptive**, `final.json` có `rq3_only: true`, `run_order: "rq3_only"`: chain này chỉ để RQ3 có bộ test ARROW đại diện (Q3), **không** tính vào RQ2 hay quy tắc chọn N. Ứng viên ngoài tập con của các quy trình khác không được sửa. File tập con lệch `experiment_sha256` thì `run` từ chối (`RUN_CONFIG_MISMATCH`).
+
 ### 6.2. Can Repair Continue?
 
 Sau mỗi vòng (và sau c0), chain dừng khi **một** điều kiện đúng:

@@ -193,4 +193,47 @@ public sealed record FinalTestSuite
     public RepairCounters Counters { get; init; } = new();
     public List<string> DroppedMethods { get; init; } = [];
     public string RunOrder { get; init; } = "";
+
+    /// <summary>Chain Adaptive chạy chỉ để RQ3 có bộ đại diện (ứng viên ngoài tập con RQ2); không tính vào RQ2.</summary>
+    public bool Rq3Only { get; init; }
+}
+
+/// <summary>Một ứng viên của tập con RQ2.</summary>
+public sealed record SubsetCandidate
+{
+    public string TaskId { get; init; } = "";
+    public string Model { get; init; } = "";
+    public string Strategy { get; init; } = "";
+}
+
+/// <summary>Tập con RQ2 của một dataset: số ứng viên thất bại của từng ô (pool) và các ứng viên được chọn.</summary>
+public sealed record SubsetDataset
+{
+    public int Size { get; init; }
+    public int PerCell { get; init; }
+
+    /// <summary><c>model|strategy</c> → số ứng viên thất bại có thể sửa (pool) của ô.</summary>
+    public Dictionary<string, int> PoolByCell { get; init; } = [];
+
+    /// <summary>Ô có ít ứng viên hơn <see cref="PerCell"/>: lấy hết, ghi số thiếu (Report 2: báo số thực tế và độ lệch).</summary>
+    public Dictionary<string, int> ShortfallByCell { get; init; } = [];
+    public List<SubsetCandidate> Candidates { get; init; } = [];
+}
+
+/// <summary>
+/// <c>experiments/&lt;tên&gt;.rq2-subset.json</c>: tập con cố định của RQ2 (spec 03 Mục 6.1), chọn sau RQ1 từ kết quả xác minh c0 của mọi run;
+/// commit lên Git để mọi máy chạy pha 2 với cùng tập con.
+/// </summary>
+public sealed record RepairSubset
+{
+    public int SchemaVersion { get; init; } = 1;
+    public string ExperimentId { get; init; } = "";
+    public string ExperimentSha256 { get; init; } = "";
+    public int Seed { get; init; } = 42;
+    public string Rule { get; init; } = "";
+    public List<string> Runs { get; init; } = [];
+    public Dictionary<string, SubsetDataset> Datasets { get; init; } = [];
+
+    public bool Contains(string dataset, string taskId, string model, string strategy) =>
+        Datasets.TryGetValue(dataset, out var d) && d.Candidates.Any(c => c.TaskId == taskId && c.Model == model && c.Strategy == strategy);
 }

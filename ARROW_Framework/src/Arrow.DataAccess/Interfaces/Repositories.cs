@@ -19,6 +19,10 @@ public interface IConfigRepository
     void AddModel(string experimentPath, ModelConfig model);
     void RemoveModel(string experimentPath, string modelName);
 
+    /// <summary>File tập con RQ2 (<c>experiments/*.rq2-subset.json</c>); không có → null.</summary>
+    Models.Block3.RepairSubset? LoadRepairSubset(string path);
+    void SaveRepairSubset(string path, Models.Block3.RepairSubset subset);
+
     MachineConfig? LoadMachine();
     void SaveMachine(MachineConfig machine);
 

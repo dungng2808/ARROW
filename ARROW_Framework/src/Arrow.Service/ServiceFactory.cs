@@ -22,7 +22,8 @@ public sealed record ArrowServices(
     IReportService Reports,
     ISetupService Setup,
     IModelConfigService Models,
-    IDoctorService Doctor);
+    IDoctorService Doctor,
+    IRepairSubsetService RepairSubsets);
 
 /// <summary>
 /// Ghép các tầng (spec 07 Mục 9): tạo repository của Data Access, rồi các service, truyền phụ thuộc qua constructor.
@@ -87,7 +88,8 @@ public static class ServiceFactory
             new ReportService(loader, reports, log),
             new SetupService(paths, config, new ProcessRunner()),
             new ModelConfigService(paths, config, log),
-            new DoctorService(paths, config, prompts, new ProcessRunner(), log));
+            new DoctorService(paths, config, prompts, new ProcessRunner(), log),
+            new RepairSubsetService(config, new FileManifestRepository(), runs, results, log));
     }
 
     /// <summary>Tìm thư mục <c>ARROW_Framework</c>: đi lên từ <paramref name="start"/> tới khi gặp <c>ArrowFramework.sln</c> hoặc cặp <c>prompts/</c> + <c>specs/</c>.</summary>

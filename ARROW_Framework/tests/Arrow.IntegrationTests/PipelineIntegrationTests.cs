@@ -180,6 +180,98 @@ public class PipelineIntegrationTests
         Assert.Throws<ArgumentException>(() => services.Pipeline.Start(new RunRequest { RunId = "e2e-shard", ShardPath = shard, FakeLlm = true }, progress));
     }
 
+    /// <summary>
+    /// Tập con RQ2 (spec 03 Mục 6.1, phương án E): pha 1 chain chờ; arrow rq2-subset chọn đều theo ô; pha 2 ứng viên trong tập con chạy
+    /// Fixed + Adaptive, ứng viên zero_shot_project_aware ngoài tập con chỉ chạy Adaptive (rq3_only), ứng viên khác ngoài tập con không sửa;
+    /// RQ2 bỏ chain rq3_only.
+    /// </summary>
+    [Fact]
+    public async Task RepairSubsetRunsInTwoPhases()
+    {
+        using var repo = new FixtureRepo("maven-verify-junit4");
+        var real = FixtureRepo.Framework;
+        var paths = repo.ResultPaths;
+        CopyTree(real.PromptsDir, paths.PromptsDir);
+        CopyTree(Path.Combine(real.FrameworkRoot, "tools", "java-helper"), Path.Combine(paths.FrameworkRoot, "tools", "java-helper"));
+        File.Copy(Path.Combine(real.FrameworkRoot, "tools", "tools.lock.json"), Path.Combine(paths.FrameworkRoot, "tools", "tools.lock.json"));
+        var tools = ToolLocator.Environment(null, real.ArrowRoot);
+        new FileConfigRepository(paths).SaveMachine(new MachineConfig
+        {
+            MachineName = "it",
+            JdkHomes = tools.JdkHomes.ToDictionary(j => j.Key.ToString(), j => j.Value),
+            WorkDir = repo.WorkDir,
+            ToolsDir = Path.Combine(real.ArrowRoot, "tools"),
+            Workers = new WorkersConfig { Build = 2, Llm = 2 },
+        });
+
+        // Hai CUT cùng repository: mỗi ô (model × quy trình) có 2 ứng viên thất bại, tập con lấy 1 mỗi ô.
+        var compile = ("test_compile", new[] { "mvn", "-q", "-DskipTests", "test-compile" }, ".", 0);
+        var calculator = repo.Task("810_calc", "src/main/java/com/acme/billing/PriceCalculator.java", "com.acme.billing.PriceCalculator", "src/test/java/com/acme/billing/PriceCalculatorTest.java",
+            "openjdk version \"1.8.0_504\"", "junit4", compile);
+        var invoice = repo.Task("811_invoice", "src/main/java/com/acme/billing/Invoice.java", "com.acme.billing.Invoice", "src/test/java/com/acme/billing/TotalsTest.java",
+            "openjdk version \"1.8.0_504\"", "junit4", compile);
+        var manifest = Path.Combine(repo.Root, "subset.jsonl");
+        await File.WriteAllTextAsync(manifest, string.Concat(new[] { calculator, invoice }.Select(t => JsonFile.Serialize(t with { Dataset = "", RawJson = "" }, indented: false) + "\n")));
+        Directory.CreateDirectory(paths.ExperimentsDir);
+        var experimentFile = Path.Combine(paths.ExperimentsDir, "subset.json");
+        await File.WriteAllTextAsync(experimentFile, JsonFile.Serialize(new ExperimentConfig
+        {
+            ExperimentId = "subset",
+            Kind = "evaluation",
+            Manifests = [new ManifestRef { Dataset = "classes2test", Path = manifest, Sha256 = Hashing.Sha256TextFile(manifest), Repair = true, RepairSubset = 2 }],
+            Models = [new ModelConfig { Name = "fake-model", Params = new() { ["temperature"] = 0 } }],
+            Strategies = ["zero_shot", "zero_shot_project_aware"],
+            Repair = new RepairConfig { Mechanisms = ["fixed", "adaptive"], N = 1, Rq3Strategy = "zero_shot_project_aware" },
+            Assessment = new AssessmentConfig { Tools = [], ComparisonSystems = [] },
+            RepairSubsetFile = "subset.rq2-subset.json",
+        }));
+
+        var fake = new FakeLlmClient()
+            .When(r => r.CallId.StartsWith("gen/", StringComparison.Ordinal), _ => Broken)
+            .When(r => r.CallId.StartsWith("repair/", StringComparison.Ordinal), _ => Valid);
+        var services = ServiceFactory.Create(paths, fakeLlm: () => fake);
+        var events = new List<RunEvent>();
+        var request = new RunRequest { RunId = "two-phase", ExperimentPath = experimentFile, FakeLlm = true, Blocks = [1, 2, 3] };
+        var runs = new FileRunRepository(paths);
+
+        // Pha 1: sinh và xác minh c0, chain chờ tập con.
+        var first = await services.Pipeline.Start(request, new Progress(events)).Completion;
+        Assert.True(first.State == RunState.Done, first.Error);
+        Assert.Equal(4, runs.ReadLedger("two-phase").Count(e => e.Job.StartsWith("verify/", StringComparison.Ordinal)));
+        Assert.DoesNotContain(runs.ReadLedger("two-phase"), e => e.Job.StartsWith("chain/", StringComparison.Ordinal));
+        Assert.Contains(events, e => e.Message.Contains("chờ tập con RQ2", StringComparison.Ordinal));
+
+        // Chọn tập con: 1 mỗi ô, thứ tự xác định theo seed.
+        var created = services.RepairSubsets.Create(experimentFile, ["two-phase"]);
+        Assert.Empty(created.Problems);
+        var chosen = created.Subset!.Datasets["classes2test"];
+        Assert.Equal((2, 1), (chosen.Candidates.Count, chosen.PerCell));
+        Assert.Equal(new Dictionary<string, int> { ["fake-model|zero_shot"] = 2, ["fake-model|zero_shot_project_aware"] = 2 }, chosen.PoolByCell);
+        Assert.True(File.Exists(Path.Combine(paths.ExperimentsDir, "subset.rq2-subset.json")));
+
+        // Pha 2: cùng lệnh, chạy các chain theo tập con.
+        var second = await services.Pipeline.Start(request, new Progress(events)).Completion;
+        Assert.True(second.State == RunState.Done, second.Error);
+        var chains = runs.ReadLedger("two-phase").Where(e => e.Job.StartsWith("chain/", StringComparison.Ordinal)).ToList();
+        Assert.Equal(5, chains.Count); // 2 ứng viên × 2 cơ chế + 1 Adaptive chỉ cho RQ3
+
+        var results = new FileTaskResultRepository(paths);
+        var zspOutside = new[] { "810_calc", "811_invoice" }.Single(t => !chosen.Candidates.Any(c => c.TaskId == t && c.Strategy == "zero_shot_project_aware"));
+        var rq3 = results.LoadJson<FinalTestSuite>("two-phase", new TaskKey("classes2test", zspOutside), ResultPaths.Final("fake-model", "zero_shot_project_aware", "adaptive"))!;
+        Assert.Equal((true, "rq3_only", true), (rq3.Rq3Only, rq3.RunOrder, rq3.Success));
+        Assert.Null(results.LoadJson<FinalTestSuite>("two-phase", new TaskKey("classes2test", zspOutside), ResultPaths.Final("fake-model", "zero_shot_project_aware", "fixed")));
+        var zsOutside = new[] { "810_calc", "811_invoice" }.Single(t => !chosen.Candidates.Any(c => c.TaskId == t && c.Strategy == "zero_shot"));
+        Assert.Null(results.LoadJson<FinalTestSuite>("two-phase", new TaskKey("classes2test", zsOutside), ResultPaths.Final("fake-model", "zero_shot", "adaptive")));
+
+        // RQ2 chỉ tính 4 chain của tập con.
+        var report = services.Reports.Build(["two-phase"]);
+        Assert.Equal(4, report.Tables["rq2_chains.csv"].Rows.Count);
+
+        // Tập con chọn cho cấu hình khác thì không dùng.
+        await File.AppendAllTextAsync(experimentFile, "\n");
+        Assert.Equal(ErrorCodes.RunConfigMismatch, Assert.Throws<ArrowException>(() => services.Pipeline.Start(request with { RunId = "two-phase-b" }, new Progress(events))).Code);
+    }
+
     private sealed class Progress(List<RunEvent> events) : IProgress<RunEvent>
     {
         public void Report(RunEvent value)

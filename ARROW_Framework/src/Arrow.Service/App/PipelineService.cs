@@ -38,7 +38,7 @@ public sealed class PipelineService(
     private DateTimeOffset _startedAt;
     private volatile RunState _state = RunState.Done;
 
-    private sealed record Prepared(string RunId, LoadedExperiment Experiment, string ExperimentText, IReadOnlyList<PlannedTask> Tasks, MachineConfig? Machine, ToolEnvironment Tools, string WorkDir, string ToolsDir);
+    private sealed record Prepared(string RunId, LoadedExperiment Experiment, string ExperimentText, IReadOnlyList<PlannedTask> Tasks, MachineConfig? Machine, ToolEnvironment Tools, string WorkDir, string ToolsDir, Models.Block3.RepairSubset? Subset);
 
     public RunHandle Start(RunRequest request, IProgress<RunEvent> progress)
     {
@@ -114,8 +114,16 @@ public sealed class PipelineService(
         var machine = config.LoadMachine();
         var tools = ToolLocator.Environment(machine, paths.ArrowRoot);
         var experimentText = File.ReadAllText(experiment.Path).Replace("\r\n", "\n");
+        // Tập con RQ2 (pha 2): chỉ dùng khi được chọn cho đúng cấu hình này; chưa có thì chain của dataset đặt repair_subset chờ.
+        var subset = experiment.Config.RepairSubsetFile is { } subsetFile ? config.LoadRepairSubset(experiment.ResolvePath(subsetFile)) : null;
+        if (subset is not null && subset.ExperimentSha256 != experiment.Sha256)
+        {
+            throw new ArrowException(ErrorCodes.RunConfigMismatch,
+                $"{experiment.Config.RepairSubsetFile} được chọn cho cấu hình sha256 {subset.ExperimentSha256[..12]}…, cấu hình đang dùng là {experiment.Sha256[..12]}…");
+        }
+
         var prepared = new Prepared(runId, experiment, experimentText, planned, machine, tools,
-            paths.Resolve(machine?.WorkDir ?? "../repo"), paths.Resolve(machine?.ToolsDir ?? "../tools"));
+            paths.Resolve(machine?.WorkDir ?? "../repo"), paths.Resolve(machine?.ToolsDir ?? "../tools"), subset);
         LockRun(prepared);
         return prepared;
     }
@@ -256,7 +264,7 @@ public sealed class PipelineService(
             var models = request.FakeLlm ? prepared.Experiment.Config.Models.Select(m => m with { PriceUsdPerMillion = null }) : prepared.Experiment.Config.Models;
             using var gateway = new LlmGateway(baseLlm, models, machine?.Workers.Llm ?? 2, request.FakeLlm ? 0 : machine?.Llm.RpmLimit ?? 60, request.MaxLlmCalls);
             var llm = new ReplayingLlmClient(gateway, cache, runId);
-            var setup = new RunSetup(runId, prepared.Tools, prepared.WorkDir, prepared.ToolsDir, machine, prepared.Experiment, llm);
+            var setup = new RunSetup(runId, prepared.Tools, prepared.WorkDir, prepared.ToolsDir, machine, prepared.Experiment, llm, prepared.Subset);
             components = componentsFactory(setup);
             var planner = new ResumePlanner(runs.ReadLedger(runId), request.RerunInfra);
             var executor = new RunExecutor(setup, components, runs, results, planner, gate, _counters, request, progress, log);

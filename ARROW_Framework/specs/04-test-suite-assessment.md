@@ -299,3 +299,9 @@ Số liệu trên chỉ để minh họa định dạng, không phải kết qu�
 | Không có `jacoco.exec` (test không chạy dưới agent) | `B4_JACOCO_FAILED`; PIT và tsDetect vẫn chạy; bộ test có mặt trong RQ3 nhưng thiếu số coverage, ghi rõ |
 | PIT báo `No mutations found` (CUT chỉ có getter đơn giản) | `total = 0`, `score = null` (không tính là 0) |
 | Task cần JDK 17 | EvoSuite `B4_EVOSUITE_UNSUPPORTED_JDK`; task đó không có cặp ARROW–EvoSuite, được đếm vào "chỉ ARROW có bộ VALID" |
+
+## Bổ sung 15/10/2026: tập con RQ2 và chain chỉ cho RQ3
+
+- Bảng RQ2 (`rq2_*.csv`) và quy tắc chọn N **bỏ** các chain có `rq3_only: true` (spec 03 Mục 6.1): RQ2 chỉ tính ứng viên của tập con cố định (Classes2Test) hoặc mọi ứng viên thất bại (dataset không đặt `repair_subset`).
+- Bộ test ARROW đại diện của RQ3 (Q3) vẫn là `<model>__zero_shot_project_aware__initial`, nếu không có thì `<model>__zero_shot_project_aware__adaptive`; chain `rq3_only` cung cấp bộ thứ hai cho CUT ngoài tập con.
+

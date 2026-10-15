@@ -147,6 +147,7 @@ public sealed class RepairRunner(
             Counters = policy.Counters,
             DroppedMethods = droppedMethods,
             RunOrder = request.RunOrder,
+            Rq3Only = request.Rq3Only,
         };
         if (outcome.Outcome == OutcomeKind.Ok)
         {

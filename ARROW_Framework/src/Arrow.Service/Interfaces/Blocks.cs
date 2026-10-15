@@ -122,6 +122,9 @@ public sealed record ChainRequest
     /// <summary><c>first</c> hoặc <c>second</c>: chain này chạy trước hay sau chain của cơ chế kia (AR Mục 8).</summary>
     public string RunOrder { get; init; } = "";
 
+    /// <summary>Chain Adaptive ngoài tập con RQ2, chỉ để RQ3 có bộ đại diện.</summary>
+    public bool Rq3Only { get; init; }
+
     /// <summary>Gọi sau mỗi vòng (để màn hình theo dõi in kết quả từng vòng).</summary>
     public Action<RoundDecision>? OnRound { get; init; }
 }

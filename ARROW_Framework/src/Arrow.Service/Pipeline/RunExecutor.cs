@@ -212,9 +212,32 @@ public sealed class RunExecutor(
 
                 // AR Mục 8: task lẻ chạy Fixed trước, task chẵn chạy Adaptive trước.
                 var mechanisms = Experiment.Repair.Mechanisms.OrderBy(m => m == (planned.Index % 2 == 1 ? "fixed" : "adaptive") ? 0 : 1).ToList();
+                var rq3Only = false;
+                if (planned.Manifest.RepairSubset is not null)
+                {
+                    // Tập con RQ2 (spec 03 Mục 6.1): chọn sau RQ1 bằng arrow rq2-subset; chưa có thì chain chờ tới pha 2.
+                    if (setup.Subset is null)
+                    {
+                        Event(3, key.TaskId, JobIds.Chain(model.Name, strategy, "*"), EventLevel.Info, $"{strategy}: chờ tập con RQ2 (arrow rq2-subset) để sửa");
+                        continue;
+                    }
+
+                    if (!setup.Subset.Contains(planned.Manifest.Dataset, key.TaskId, model.Name, strategy))
+                    {
+                        // Ngoài tập con: chỉ quy trình đại diện của RQ3 được sửa, bằng Adaptive, không tính vào RQ2.
+                        if (strategy != Experiment.Repair.Rq3Strategy || !mechanisms.Contains("adaptive"))
+                        {
+                            continue;
+                        }
+
+                        mechanisms = ["adaptive"];
+                        rq3Only = true;
+                    }
+                }
+
                 for (var i = 0; i < mechanisms.Count; i++)
                 {
-                    await ChainAsync(task, generation, c0, c0Verify, mechanisms[i], i == 0 ? "first" : "second").ConfigureAwait(false);
+                    await ChainAsync(task, generation, c0, c0Verify, mechanisms[i], rq3Only ? "rq3_only" : i == 0 ? "first" : "second", rq3Only).ConfigureAwait(false);
                 }
             }
         }
@@ -301,7 +324,7 @@ public sealed class RunExecutor(
         return results.LoadJson<VerifyResult>(RunId, task.Key, ResultPaths.VerifyC0(model, strategy));
     }
 
-    private async Task ChainAsync(TaskContext task, GenerationContext generation, CandidateTest c0, VerifyResult c0Verify, string mechanism, string order)
+    private async Task ChainAsync(TaskContext task, GenerationContext generation, CandidateTest c0, VerifyResult c0Verify, string mechanism, string order, bool rq3Only = false)
     {
         var job = JobIds.Chain(generation.Model.Name, generation.Strategy, mechanism);
         counters.Planned(3);
@@ -315,7 +338,7 @@ public sealed class RunExecutor(
         {
             Task = task, Generation = generation, C0 = c0, C0Verify = c0Verify, Mechanism = mechanism,
             N = Experiment.Repair.N, EarlyStopP = mechanism == "adaptive" ? Experiment.Repair.EarlyStopP : null,
-            Verify = VerifyOptions(""), RunOrder = order,
+            Verify = VerifyOptions(""), RunOrder = order, Rq3Only = rq3Only,
             OnRound = decision => Event(3, task.Key.TaskId, job, EventLevel.Info,
                 $"{generation.Strategy} {mechanism} vòng {decision.Round} → {RoundText(decision)} · mức {decision.Level}→{decision.LevelAfter}"),
         };

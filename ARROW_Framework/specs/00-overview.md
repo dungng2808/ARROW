@@ -93,6 +93,7 @@ Ba file, tách phần dùng chung với phần riêng của từng máy.
 
 - `sha256` của manifest được kiểm tra khi đọc; lệch thì dừng (`MANIFEST_MISMATCH`).
 - `repair: false` ở một manifest: candidate của dataset đó chỉ xác minh, không sửa (ví dụ GitBug-Java ở pilot).
+- `repair_subset: K` ở một manifest (thực nghiệm chính, Classes2Test `K = 120`), cùng `repair.rq3_strategy` và `repair_subset_file` ở cấp cấu hình: RQ2 chỉ sửa K ứng viên thất bại rút đều theo ô; thực nghiệm chạy hai pha (spec 03 Mục 6.1).
 - File này quyết định kết quả thực nghiệm. Run ghi sha256 của file vào `run.lock.json`; chạy tiếp một run với file đã đổi thì từ chối (`RUN_CONFIG_MISMATCH`).
 
 ### 3.2. `machine.local.json` (riêng từng máy, không commit)
@@ -145,6 +146,7 @@ Mọi file JSON: UTF-8 không BOM, xuống dòng LF, tên trường snake_case. 
 | --- | --- |
 | `arrow run [--experiment F] [--run-id R] [--tasks FILE\|ID,…] [--shard F] [--blocks 1,2,3,4]` | Chạy các khối cho các task; mặc định cả 4 khối, mọi task của experiment; `--shard` chỉ chạy các task được giao cho máy này (Mục 5.4) |
 | `arrow analyze …` | Chỉ khối 1 |
+| `arrow rq2-subset --experiment F --run-id R [--run-id R2 …]` | Sau pha 1: chọn tập con cố định của RQ2 (`repair_subset`) từ kết quả c0 của mọi run, ghi `repair_subset_file` để commit (spec 03 Mục 6.1) |
 | `arrow screen --manifest F --run-id R` | Chỉ khối 1 cho mọi CUT của manifest, ghi `reports/screening.csv` (tiêu chí B) làm đầu vào cho script chọn mẫu (spec 01 Mục 6.3) |
 | `arrow generate …` | Khối 2 (cần khối 1 đã xong) |
 | `arrow repair …` | Khối 3 (cần khối 2 đã xong) |
@@ -252,3 +254,4 @@ Giải thích chi tiết từng điểm (bối cảnh, vấn đề, ảnh hưở
 | 14/10/2026 | Đổi tên lệnh `arrow-fw` → `arrow`; thêm `arrow run --shard` (file phân công kèm `experiment_sha256`); thứ tự Fixed/Adaptive theo vị trí task trong toàn bộ thực nghiệm (không theo danh sách đã lọc); java-helper khóa khi build jar | Quyết định của nhóm (pilot chạy trên mọi máy theo shard); review nhánh C5–C9 |
 | 14/10/2026 | Spec 01 Mục 4.3 bước 5: JVM chạy test không khởi động được với JDK đã chọn → đổi JDK | Quyết định của nhóm; jsoup trên Mac ARM với JDK 8 |
 | 15/10/2026 | Spec 01: Gradle dùng project chứa CUT khi lệnh preflight không ghi project hoặc ghi project cha; jar hỏng trong cache Maven/Gradle bị xóa và thử lại (lỗi hạ tầng) | Sàng lọc tập đánh giá 200 CUT: 5 CUT `B1_MODULE_MISMATCH` sai, 5 CUT lỗi biên dịch do jar hỏng trong `~/.m2` |
+| 15/10/2026 | Spec 00, 03, 04: tập con cố định 120 ứng viên Classes2Test cho RQ2 rút đều theo ô model × quy trình (seed 42, xếp theo sha256), chạy hai pha với `arrow rq2-subset`; Adaptive cho mọi ứng viên `zero_shot_project_aware` thất bại ngoài tập con, chỉ dùng cho RQ3 (`rq3_only`), không tính vào RQ2 và quy tắc N | Quyết định của nhóm (phương án E): giữ đúng thiết kế 120 của Report 2 mà RQ3 vẫn có đủ bộ đại diện |

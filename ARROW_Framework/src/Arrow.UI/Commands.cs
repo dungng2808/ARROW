@@ -36,6 +36,8 @@ public sealed class Commands(ArrowServices services, ConsoleInput input, Console
                 return await Run(command, [3]);
             case "assess":
                 return await Run(command, [4]);
+            case "rq2-subset":
+                return new RepairSubsetScreen(services.RepairSubsets, output).Run(Require(command, "experiment"), command.Options("run-id") is { Count: > 0 } runIds ? runIds : [Require(command, "run-id")]);
             case "report":
                 return new ReportScreen(services.Reports, output).Run(command.Options("run-id") is { Count: > 0 } ids ? ids : [Require(command, "run-id")]);
             case "status":
@@ -121,6 +123,7 @@ public sealed class Commands(ArrowServices services, ConsoleInput input, Console
             ["arrow run [--experiment F] [--run-id R] [--tasks FILE|ID,…] [--shard shards/<plan>/shard-NN.json] [--blocks 1,2,3,4] [--rerun-infra] [--max-llm-calls N] [--fake-llm]", "Chạy các khối (mặc định cả 4)"],
             ["arrow analyze | generate | repair | assess …", "Chỉ khối 1 | 2 | 3 | 4 (cùng tùy chọn với run)"],
             ["arrow screen --manifest F --run-id R [--dataset D] [--tasks …] [--workers N] [--rerun-infra] [--keep-workspace]", "Sàng lọc CUT (khối 1, tiêu chí B)"],
+            ["arrow rq2-subset --experiment F --run-id R [--run-id R2 …]", "Chọn tập con RQ2 sau pha 1 (repair_subset), ghi file để commit"],
             ["arrow report --run-id R [--run-id R2 …]", "Báo cáo RQ1–RQ3 (gộp nhiều run)"],
             ["arrow status --run-id R", "Trạng thái run"],
             ["arrow show --run-id R --task T", "Chi tiết một task"],

@@ -29,6 +29,9 @@ public sealed record ExperimentConfig
     public AssessmentConfig Assessment { get; init; } = new();
     public PromptsConfig Prompts { get; init; } = new();
     public string GeneratedTestSuffix { get; init; } = "_ArrowTest";
+
+    /// <summary>File tập con RQ2 (tính từ thư mục của file cấu hình), tạo bằng <c>arrow rq2-subset</c>; cần khi có manifest đặt <c>repair_subset</c>.</summary>
+    public string? RepairSubsetFile { get; init; }
 }
 
 public sealed record ManifestRef
@@ -37,6 +40,12 @@ public sealed record ManifestRef
     public string Path { get; init; } = "";
     public string Sha256 { get; init; } = "";
     public bool Repair { get; init; }
+
+    /// <summary>
+    /// RQ2 chỉ sửa một tập con cố định gồm chừng này ứng viên thất bại của dataset, rút đều theo ô model × quy trình (Report 2 Experiment 2;
+    /// spec 03 Mục 6.1). Null = sửa mọi ứng viên thất bại. Tập con được chọn sau RQ1 bằng <c>arrow rq2-subset</c>.
+    /// </summary>
+    public int? RepairSubset { get; init; }
 }
 
 public sealed record ModelConfig
@@ -58,6 +67,12 @@ public sealed record RepairConfig
     public List<string> Mechanisms { get; init; } = ["fixed", "adaptive"];
     public int N { get; init; } = 10;
     public int? EarlyStopP { get; init; }
+
+    /// <summary>
+    /// Quy trình mà mọi ứng viên thất bại đều được sửa bằng Adaptive (kể cả ngoài tập con RQ2), chỉ để RQ3 có bộ test ARROW đại diện
+    /// (quyết định 15/10/2026, phương án E). Các chain này có <c>rq3_only = true</c> và không tính vào RQ2.
+    /// </summary>
+    public string? Rq3Strategy { get; init; }
 }
 
 public sealed record VerificationConfig
@@ -86,8 +101,11 @@ public sealed record PromptsConfig
 /// <summary>Cấu hình thực nghiệm đã đọc, kèm đường dẫn tuyệt đối và sha256 của file.</summary>
 public sealed record LoadedExperiment(ExperimentConfig Config, string Path, string Sha256)
 {
-    public string ResolveManifestPath(ManifestRef manifest) =>
-        System.IO.Path.GetFullPath(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Path)!, manifest.Path));
+    public string ResolveManifestPath(ManifestRef manifest) => ResolvePath(manifest.Path);
+
+    /// <summary>Đường dẫn trong cấu hình tính từ thư mục của file cấu hình.</summary>
+    public string ResolvePath(string relative) =>
+        System.IO.Path.GetFullPath(System.IO.Path.Combine(System.IO.Path.GetDirectoryName(Path)!, relative));
 }
 
 /// <summary><c>machine.local.json</c> (spec 00 Mục 3.2): riêng từng máy, không commit.</summary>

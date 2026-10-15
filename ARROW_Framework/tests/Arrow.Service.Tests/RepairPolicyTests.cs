@@ -272,4 +272,36 @@ public class RepairPolicyTests
             [Path.Combine(snapshot, "shop-api", "target", "classes"), jar],
             RepairRunner.ResolveClasspath(snapshot, ["shop-api/target/classes", jar]));
     }
+
+    // ── Tập con RQ2 (spec 03 Mục 6.1) ─────────────────────────────────
+
+    private static SubsetCandidate S(string task, string model, string strategy) => new() { TaskId = task, Model = model, Strategy = strategy };
+
+    [Fact]
+    public void SubsetTakesEqualShareOfEveryCellDeterministically()
+    {
+        string[] models = ["luna", "qwen"];
+        string[] strategies = ["zero_shot", "zero_shot_project_aware", "few_shot"];
+        var pool = models.SelectMany(m => strategies.SelectMany(s => Enumerable.Range(0, 30).Select(i => S($"t{i}", m, s)))).ToList();
+        var subset = RepairSubsetSelector.Select("classes2test", pool, models, strategies, 120, 42);
+        Assert.Equal((120, 20), (subset.Candidates.Count, subset.PerCell));
+        Assert.All(subset.PoolByCell.Values, n => Assert.Equal(30, n));
+        Assert.All(subset.Candidates.GroupBy(c => (c.Model, c.Strategy)), g => Assert.Equal(20, g.Count()));
+        Assert.Empty(subset.ShortfallByCell);
+
+        // Không phụ thuộc thứ tự đầu vào (gộp run theo thứ tự khác) nhưng phụ thuộc seed.
+        var shuffled = RepairSubsetSelector.Select("classes2test", pool.AsEnumerable().Reverse().ToList(), models, strategies, 120, 42);
+        Assert.Equal(subset.Candidates, shuffled.Candidates);
+        Assert.NotEqual(subset.Candidates, RepairSubsetSelector.Select("classes2test", pool, models, strategies, 120, 7).Candidates);
+    }
+
+    [Fact]
+    public void SubsetTakesShortCellWholeAndRecordsShortfall()
+    {
+        List<SubsetCandidate> pool = [S("a", "luna", "zero_shot"), S("b", "luna", "zero_shot"), S("c", "luna", "few_shot")];
+        var subset = RepairSubsetSelector.Select("gitbug-java", pool, ["luna"], ["zero_shot", "few_shot"], 4, 42);
+        Assert.Equal(3, subset.Candidates.Count);
+        Assert.Equal(new Dictionary<string, int> { ["luna|few_shot"] = 1 }, subset.ShortfallByCell);
+        Assert.Throws<ArgumentException>(() => RepairSubsetSelector.Select("x", pool, ["luna"], ["zero_shot", "few_shot"], 3, 42));
+    }
 }

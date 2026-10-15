@@ -75,6 +75,10 @@ public sealed class FileConfigRepository(FrameworkPaths paths) : IConfigReposito
 
     public void SaveMachine(MachineConfig machine) => JsonFile.Write(paths.MachineConfigPath, machine);
 
+    public Models.Block3.RepairSubset? LoadRepairSubset(string path) => JsonFile.TryRead<Models.Block3.RepairSubset>(path);
+
+    public void SaveRepairSubset(string path, Models.Block3.RepairSubset subset) => JsonFile.Write(path, subset);
+
     public LiteLlmConfig? LoadLiteLlm()
     {
         if (!File.Exists(paths.LiteLlmConfigPath))

@@ -12,7 +12,8 @@ public sealed record RunSetup(
     string ToolsDir,
     MachineConfig? Machine,
     LoadedExperiment Experiment,
-    ILlmClient Llm);
+    ILlmClient Llm,
+    Models.Block3.RepairSubset? Subset = null);
 
 /// <summary>Các khối của một run (spec 07 Mục 4.2), dùng chung một tiến trình java-helper và một hàng đợi build.</summary>
 public sealed class RunComponents(

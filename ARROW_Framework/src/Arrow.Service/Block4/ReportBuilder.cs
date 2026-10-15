@@ -258,9 +258,11 @@ public static partial class ReportBuilder
         public FinalTestSuite Final => Data.Final;
     }
 
-    /// <summary>Chỉ candidate mà mọi cơ chế đều chạy xong (không INFRA) (spec 04 Mục 6.2).</summary>
+    /// <summary>
+    /// Chỉ candidate mà mọi cơ chế đều chạy xong (không INFRA) (spec 04 Mục 6.2); bỏ chain chỉ dùng cho RQ3 (ngoài tập con RQ2).
+    /// </summary>
     private static List<Chain> Rq2Chains(IReadOnlyList<TaskData> tasks, ExperimentConfig experiment) =>
-        tasks.SelectMany(t => t.Chains.Select(c => new Chain(t.Key.Dataset, c)))
+        tasks.SelectMany(t => t.Chains.Where(c => !c.Final.Rq3Only).Select(c => new Chain(t.Key.Dataset, c)))
             .GroupBy(c => (c.Dataset, c.Final.TaskId, c.Final.Model, c.Final.Strategy))
             .Where(g => experiment.Repair.Mechanisms.All(m => g.Any(c => c.Final.Mechanism == m && c.Final.StopReason != "infra")))
             .SelectMany(g => g)
