@@ -67,7 +67,7 @@ public static class ServiceFactory
             var preparer = new SuitePreparer(workspace, build, results);
             var assessor = new QualityAssessor(
             [
-                new JacocoTool(preparer, build, tools, runner, workspace, results),
+                new JacocoTool(preparer, build, tools, reader, runner, workspace, results),
                 new PitTool(preparer, tools, runner, workspace, results, setup.Tools.JdkHomes),
                 new TsDetectTool(tools, helper, runner, workspace, results),
             ], results, log);

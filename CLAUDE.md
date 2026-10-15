@@ -58,7 +58,7 @@ So với Fixed Repair (dùng cùng một prompt sửa ở mọi vòng), Adaptive
 | 7 | Code hash | Mã trùng một bản đã thử → không build lại, tính là một vòng không tiến triển, lên mức strategy tiếp theo | |
 | 8 | Dừng sớm P | **Không chọn trước.** Thực nghiệm chạy hết N vòng và ghi log từng vòng; vì dừng sớm chỉ cắt ngắn chuỗi sửa, tính lại kết quả cho P = 1, 2, 3 từ log và chọn theo dữ liệu (phân tích độ nhạy) | Không tốn thêm lượt gọi LLM; tránh phải biện minh một con số chọn tùy ý |
 | 9 | Assertion failure | **Để LLM sửa tự do** (được đổi expected, không có rào chắn khi tính "sửa thành công") | Quyết định của nhóm. Tạm thời (08/10/2026) không đưa vào báo cáo việc đếm thay đổi assertion hay ghi chú hạn chế liên quan |
-| 10 | Đếm assertion | Tính `assert*` của JUnit/TestNG, `assertThat` (AssertJ/Hamcrest), `@Test(expected=…)`, `fail()` trong try, và `verify()` của Mockito; **không** tính assertion tầm thường (`assertTrue(true)`, `assertEquals(x, x)`) | Đếm qua AST, không cần chạy test |
+| 10 | Đếm assertion | Tính `assert*` của JUnit/TestNG, `assertThat` (AssertJ/Hamcrest), `@Test(expected=…)`, `fail()` trong try, và `verify()` của Mockito (cả `inOrder.verify`, `verifyNoInteractions`/`verifyNoMoreInteractions`), kiểu BDD `then(…)`, MockMvc `andExpect(…)`, `thrown.expect…` của `ExpectedException` (bổ sung 15/10/2026); **không** tính assertion tầm thường (`assertTrue(true)`, `assertEquals(x, x)`) | Đếm qua AST, không cần chạy test |
 | 11 | Log cần ghi | Mỗi vòng: trạng thái, error signature, code hash, mức strategy, có rollback không, thời gian LLM và build; tổng hợp số lần rollback, mã trùng, lỗi lặp, đổi strategy, dừng sớm (tính lại) | Phục vụ biểu đồ cộng dồn, phân tích P và thống kê mô tả các cơ chế |
 
 ---

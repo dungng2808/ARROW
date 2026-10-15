@@ -1,10 +1,12 @@
 using System.Diagnostics;
 using System.Text;
 using Arrow.DataAccess;
+using Arrow.DataAccess.Common;
 using Arrow.DataAccess.Interfaces;
 using Arrow.Models.Block3;
 using Arrow.Models.Block4;
 using Arrow.Models.Common;
+using Arrow.Service.Block3;
 using Arrow.Service.External;
 using Arrow.Service.Interfaces;
 
@@ -35,53 +37,127 @@ public abstract class QualityToolBase(IProcessRunner runner, IWorkspaceManager w
 }
 
 /// <summary>
-/// JaCoCo (spec 04 Mục 4.2): chạy riêng bộ test với agent gắn qua <c>JAVA_TOOL_OPTIONS</c> (<c>includes=&lt;FQN&gt;:&lt;FQN&gt;$*</c>),
-/// rồi <c>jacococli report --csv</c> trên class production của module; chỉ cộng dòng của CUT và class lồng.
+/// JaCoCo (spec 04 Mục 4.2, cập nhật 15/10/2026): <b>offline instrumentation</b>, cùng một cách cho bộ ARROW và bộ EvoSuite, Maven và Gradle.
+/// Sau bước chuẩn bị, file <c>.class</c> của CUT và class lồng được <c>jacococli instrument</c> ngay trong thư mục class production của
+/// bản sao; runtime JaCoCo (<c>jacocoagent.jar</c>) vào classpath test như classpath phụ; chạy riêng bộ test mà không biên dịch lại
+/// production (Maven <c>-Dmaven.main.skip=true</c>, Gradle <c>-x :p:compileJava</c>); báo cáo dùng bản <c>.class</c> gốc.
+/// Không gắn agent vào JVM nào: bộ EvoSuite giữ nguyên <c>separateClassLoader = true</c> (classloader của EvoSuite đọc bytecode đã có
+/// probe nên vẫn ghi được coverage), không còn agent trùng với JaCoCo của dự án (plugin <c>jacoco</c> của Gradle bị tắt qua init script).
+/// Bộ test không pass khi đo, hoặc CUT bị biên dịch lại → <c>B4_JACOCO_FAILED</c>, không ghi coverage 0.
 /// </summary>
-public sealed class JacocoTool(SuitePreparer preparer, IBuildRunner build, IToolsCatalog tools, IProcessRunner runner, IWorkspaceManager workspace, ITaskResultRepository results)
+public sealed class JacocoTool(SuitePreparer preparer, IBuildRunner build, IToolsCatalog tools, ITestReportReader reports, IProcessRunner runner, IWorkspaceManager workspace, ITaskResultRepository results)
     : QualityToolBase(runner, workspace, results), IQualityTool
 {
+    public const string GradleInitScriptName = "arrow-jacoco.gradle";
+
+    /// <summary>Tắt JaCoCo riêng của dự án (plugin <c>jacoco</c> gắn agent vào mọi task test; agent thứ hai làm JVM chạy test sập).</summary>
+    public const string GradleInitScript = """
+        allprojects { p ->
+            p.afterEvaluate {
+                p.tasks.withType(Test).each { t ->
+                    def projectJacoco = t.extensions.findByName('jacoco')
+                    if (projectJacoco != null) { projectJacoco.enabled = false }
+                }
+            }
+        }
+        """;
+
     public string Name => "jacoco";
 
-    /// <summary>
-    /// Bộ EvoSuite chạy với <c>separateClassLoader = true</c> (mặc định): CUT được nạp từ bytecode EvoSuite đã biến đổi trong classloader
-    /// riêng nên JaCoCo không khớp được class với file .class gốc và báo coverage 0. Riêng khi đo JaCoCo, bản sao của bộ test đổi thành
-    /// <c>separateClassLoader = false</c>; test method giữ nguyên. PIT và xác minh dùng bộ test gốc (spec 04 Mục 3, ngoại lệ đã khai báo).
-    /// </summary>
-    public static SuiteFiles ForJacoco(SuiteFiles suite) => suite with
+    /// <summary>File <c>.class</c> của CUT và class lồng (<c>Tên.class</c>, <c>Tên$*.class</c>) trong thư mục class production.</summary>
+    public static IReadOnlyList<string> CutClassFiles(string productionClasses, string fqn)
     {
-        Files = suite.Files.ToDictionary(f => f.Key, f => f.Value.Replace("separateClassLoader = true", "separateClassLoader = false", StringComparison.Ordinal)),
-    };
+        var lastDot = fqn.LastIndexOf('.');
+        var directory = Path.Combine(productionClasses, lastDot < 0 ? "" : fqn[..lastDot].Replace('.', Path.DirectorySeparatorChar));
+        var name = fqn[(lastDot + 1)..];
+        return Directory.Exists(directory)
+            ? Directory.EnumerateFiles(directory, "*.class")
+                .Where(f => Path.GetFileName(f) == name + ".class" || Path.GetFileName(f).StartsWith(name + "$", StringComparison.Ordinal))
+                .Order(StringComparer.Ordinal)
+                .ToList()
+            : [];
+    }
+
+    /// <summary>Đối số để lệnh chạy test không biên dịch lại class production (bản đã instrument).</summary>
+    public static IReadOnlyList<string> KeepProductionClasses(string tool, string? module, string initScript) =>
+        tool == "gradle"
+            ? ["-x", Block1.GradleProbe.Task(module, "compileJava"), "--init-script", initScript]
+            : ["-Dmaven.main.skip=true"];
 
     public async Task<ToolResult> MeasureAsync(SuiteToMeasure suite, TaskContext task, MeasureOptions options, CancellationToken cancellationToken)
     {
-        var agent = await tools.EnsureAsync("jacoco-agent", cancellationToken).ConfigureAwait(false);
+        var runtime = await tools.EnsureAsync("jacoco-agent", cancellationToken).ConfigureAwait(false);
         var cli = await tools.EnsureAsync("jacoco-cli", cancellationToken).ConfigureAwait(false);
-        var prepared = await preparer.PrepareAsync(ForJacoco(suite.Files), task, "jacoco", compile: true, options, cancellationToken).ConfigureAwait(false);
+        var files = suite.Files with { ExtraTestClasspath = [.. suite.Files.ExtraTestClasspath, runtime] };
+        var prepared = await preparer.PrepareAsync(files, task, "jacoco", compile: true, options, cancellationToken).ConfigureAwait(false);
         try
         {
             var fqn = task.Metadata.Cut.Fqn;
-            var exec = Path.Combine(prepared.Copy, "arrow-jacoco.exec");
-            // allowAttachSelf: runtime của EvoSuite (không dùng classloader riêng) tự gắn agent vào JVM chạy test; từ JDK 9 phải cho phép.
-            var context = prepared.Context with
+            var cutClasses = CutClassFiles(prepared.ProductionClasses, fqn);
+            if (cutClasses.Count == 0)
             {
-                ExtraJavaToolOptions = $"-javaagent:{agent}=destfile={exec},append=true,includes={fqn}:{fqn}$* -Djdk.attach.allowAttachSelf=true",
-            };
-            var run = await build.RunAsync(context, BuildCommands.RunSingleTest(context.Plan, suite.Files.TestFqn).Concat(prepared.ExtraArgs).ToList(), cancellationToken).ConfigureAwait(false);
+                throw new ToolFailure(ErrorCodes.B4JacocoFailed, $"không thấy file .class của {fqn} trong thư mục class production");
+            }
+
+            var original = Path.Combine(prepared.Copy, "arrow-jacoco", "original");
+            var instrumented = Path.Combine(prepared.Copy, "arrow-jacoco", "instrumented");
+            foreach (var file in cutClasses)
+            {
+                var copyTo = Path.Combine(original, Path.GetRelativePath(prepared.ProductionClasses, file));
+                Directory.CreateDirectory(Path.GetDirectoryName(copyTo)!);
+                File.Copy(file, copyTo);
+            }
+
+            var instrument = await JavaAsync(prepared.Context.JdkHome, ["-jar", cli, "instrument", original, "--dest", instrumented],
+                prepared.Copy, TimeSpan.FromMinutes(5), task, Log(options, "jacoco-instrument"), cancellationToken).ConfigureAwait(false);
+            if (!instrument.Succeeded)
+            {
+                throw new ToolFailure(ErrorCodes.B4JacocoFailed, $"jacococli instrument lỗi: {instrument.Tail(5)}", retryable: instrument.TimedOut);
+            }
+
+            var hashes = new Dictionary<string, string>(StringComparer.Ordinal);
+            foreach (var file in cutClasses)
+            {
+                File.Copy(Path.Combine(instrumented, Path.GetRelativePath(prepared.ProductionClasses, file)), file, overwrite: true);
+                hashes[file] = Hashing.Sha256Bytes(File.ReadAllBytes(file));
+            }
+
+            var initScript = Path.Combine(prepared.Copy, GradleInitScriptName);
+            await File.WriteAllTextAsync(initScript, GradleInitScript.Replace("\r\n", "\n"), new UTF8Encoding(false), cancellationToken).ConfigureAwait(false);
+            var exec = Path.Combine(prepared.Copy, "arrow-jacoco.exec");
+            var context = prepared.Context with { ExtraJavaToolOptions = $"-Djacoco-agent.destfile={exec}" };
+            var arguments = BuildCommands.RunSingleTest(context.Plan, suite.Files.TestFqn)
+                .Concat(prepared.ExtraArgs)
+                .Concat(KeepProductionClasses(task.Workspace.Tool, task.Workspace.Module, initScript))
+                .ToList();
+            var run = await build.RunAsync(context, arguments, cancellationToken).ConfigureAwait(false);
             SaveText(task, Log(options, "jacoco-test"), BuildCommands.FormatLog(run, context.JdkHome));
             if (run.Failure is BuildFailureKind.Timeout or BuildFailureKind.Network)
             {
                 throw new ToolFailure(ErrorCodes.B4JacocoFailed, run.Failure == BuildFailureKind.Timeout ? $"chạy test quá {options.StepTimeoutSeconds} s" : "lỗi mạng khi chạy test", retryable: true);
             }
 
-            if (!File.Exists(exec))
+            if (hashes.Any(h => !File.Exists(h.Key) || Hashing.Sha256Bytes(File.ReadAllBytes(h.Key)) != h.Value))
             {
-                throw new ToolFailure(ErrorCodes.B4JacocoFailed, "không có jacoco.exec (test không chạy dưới agent)");
+                throw new ToolFailure(ErrorCodes.B4JacocoFailed, "CUT bị biên dịch lại khi chạy test nên mất bản đã instrument");
+            }
+
+            var target = TestResultClassifier.Classify(reports.Read(context.BuildRootPath), suite.Files.TestFqn);
+            if (target.FailedState is { } state)
+            {
+                var first = target.Failures.FirstOrDefault();
+                throw new ToolFailure(ErrorCodes.B4JacocoFailed,
+                    $"bộ test không pass khi đo JaCoCo ({state.ToString().ToUpperInvariant()}{(first is null ? "" : $": {first.Method} {first.Type} {first.Message}")})");
+            }
+
+            if (!File.Exists(exec) || new FileInfo(exec).Length == 0)
+            {
+                throw new ToolFailure(ErrorCodes.B4JacocoFailed, "không có jacoco.exec (runtime JaCoCo không ghi dữ liệu)");
             }
 
             var csv = Path.Combine(prepared.Copy, "arrow-jacoco.csv");
             var report = await JavaAsync(context.JdkHome,
-                ["-jar", cli, "report", exec, "--classfiles", prepared.ProductionClasses, "--sourcefiles", SuitePreparer.SourceRoot(prepared, task.Metadata), "--csv", csv],
+                ["-jar", cli, "report", exec, "--classfiles", original, "--sourcefiles", SuitePreparer.SourceRoot(prepared, task.Metadata), "--csv", csv],
                 prepared.Copy, TimeSpan.FromMinutes(5), task, Log(options, "jacoco-report"), cancellationToken).ConfigureAwait(false);
             if (!report.Succeeded || !File.Exists(csv))
             {
@@ -103,6 +179,7 @@ public sealed class JacocoTool(SuitePreparer preparer, IBuildRunner build, ITool
 /// <summary>
 /// PIT (spec 04 Mục 4.3): chuẩn bị (biên dịch test, classpath) → <c>MutationCoverageReport</c> với <c>--targetClasses &lt;FQN&gt;,&lt;FQN&gt;$*</c>,
 /// <c>--targetTests &lt;test FQN&gt;</c>, <c>DEFAULTS</c>, 1 luồng, XML; plugin JUnit 5 / TestNG theo framework của module; kiểm tra phạm vi mutant.
+/// Minion chạy test bằng JDK của task (<c>--jvmPath</c>), tiến trình chính bằng JDK 11+.
 /// </summary>
 public sealed class PitTool(SuitePreparer preparer, IToolsCatalog tools, IProcessRunner runner, IWorkspaceManager workspace, ITaskResultRepository results, IReadOnlyDictionary<int, string> jdkHomes)
     : QualityToolBase(runner, workspace, results), IQualityTool
@@ -133,7 +210,18 @@ public sealed class PitTool(SuitePreparer preparer, IToolsCatalog tools, IProces
             if (framework == "junit5")
             {
                 launch.Add(await tools.EnsureAsync("pitest-junit5-plugin", cancellationToken).ConfigureAwait(false));
-                if (!classpath.Any(c => Path.GetFileName(c).StartsWith("junit-platform-launcher", StringComparison.Ordinal)))
+                if (NeedsNewerPlatform(PlatformVersion(prepared.Classpath)))
+                {
+                    // pitest-junit5-plugin cần JUnit Platform 1.5+ (org.junit.platform.commons.PreconditionViolationException): chỉ khi chạy PIT,
+                    // bộ jar JUnit 5 của module được thay bằng 5.5.2 / 1.5.2 (tương thích ngược với test viết cho 5.0–5.4).
+                    var hadParams = classpath.Any(c => Path.GetFileName(c).StartsWith("junit-jupiter-params-", StringComparison.Ordinal));
+                    classpath.RemoveAll(IsJUnit5Jar);
+                    foreach (var (coordinate, file) in ReplacementJUnit5.Where(r => hadParams || !r.Coordinate.Contains("junit-jupiter-params", StringComparison.Ordinal)))
+                    {
+                        classpath.Add(await tools.EnsureMavenAsync(coordinate, file, cancellationToken).ConfigureAwait(false));
+                    }
+                }
+                else if (!classpath.Any(c => Path.GetFileName(c).StartsWith("junit-platform-launcher", StringComparison.Ordinal)))
                 {
                     var version = PlatformVersion(prepared.Classpath) ?? "1.10.2";
                     classpath.Add(await tools.EnsureMavenAsync($"org.junit.platform:junit-platform-launcher:{version}", $"junit-platform/junit-platform-launcher-{version}.jar", cancellationToken).ConfigureAwait(false));
@@ -168,6 +256,10 @@ public sealed class PitTool(SuitePreparer preparer, IToolsCatalog tools, IProces
                 "--outputFormats", "XML",
                 "--failWhenNoMutations=false",
                 "--sourceDirs", SuitePreparer.SourceRoot(prepared, task.Metadata),
+                // Tiến trình chính của PIT cần JDK 11+, nhưng test chạy trong minion bằng đúng JDK của task (như khi xác minh): thư viện
+                // cũ (Mockito 1–2, ByteBuddy cũ) không chạy trên JDK 11 nên bộ test VALID trên JDK 8 sẽ "không xanh" dưới PIT.
+                // Lớp minion của PIT biên dịch cho Java 8.
+                "--jvmPath", ToolLocator.JavaExecutable(prepared.Context.JdkHome),
             ], prepared.ModuleDir, Timeout, task, Log(options, "pit"), cancellationToken).ConfigureAwait(false);
 
             var xmlFile = Path.Combine(reportDir, "mutations.xml");
@@ -191,6 +283,29 @@ public sealed class PitTool(SuitePreparer preparer, IToolsCatalog tools, IProces
             Workspace.DeleteDirectory(prepared.Copy);
         }
     }
+
+    /// <summary>Bộ JUnit 5 thay thế khi chạy PIT trên module có JUnit Platform cũ hơn 1.5.</summary>
+    public static readonly IReadOnlyList<(string Coordinate, string File)> ReplacementJUnit5 =
+    [
+        ("org.junit.jupiter:junit-jupiter-api:5.5.2", "junit-platform/junit-jupiter-api-5.5.2.jar"),
+        ("org.junit.jupiter:junit-jupiter-engine:5.5.2", "junit-platform/junit-jupiter-engine-5.5.2.jar"),
+        ("org.junit.jupiter:junit-jupiter-params:5.5.2", "junit-platform/junit-jupiter-params-5.5.2.jar"),
+        ("org.junit.platform:junit-platform-commons:1.5.2", "junit-platform/junit-platform-commons-1.5.2.jar"),
+        ("org.junit.platform:junit-platform-engine:1.5.2", "junit-platform/junit-platform-engine-1.5.2.jar"),
+        ("org.junit.platform:junit-platform-launcher:1.5.2", "junit-platform/junit-platform-launcher-1.5.2.jar"),
+        ("org.opentest4j:opentest4j:1.2.0", "junit-platform/opentest4j-1.2.0.jar"),
+    ];
+
+    private static bool IsJUnit5Jar(string path)
+    {
+        var name = Path.GetFileName(path);
+        return name.StartsWith("junit-jupiter-", StringComparison.Ordinal) || name.StartsWith("junit-platform-", StringComparison.Ordinal)
+               || name.StartsWith("opentest4j-", StringComparison.Ordinal);
+    }
+
+    /// <summary>JUnit Platform cũ hơn 1.5 (JUnit Jupiter 5.0–5.4): pitest-junit5-plugin không chạy được.</summary>
+    public static bool NeedsNewerPlatform(string? platformVersion) =>
+        platformVersion is not null && Version.TryParse(platformVersion.Split('-')[0], out var version) && version < new Version(1, 5);
 
     /// <summary>Phiên bản JUnit Platform của module, đọc từ tên jar <c>junit-platform-commons-&lt;v&gt;.jar</c> / <c>junit-platform-engine-…</c>.</summary>
     public static string? PlatformVersion(IReadOnlyList<string> classpath)

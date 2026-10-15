@@ -15,6 +15,20 @@ public static partial class JavacErrorParser
     [GeneratedRegex(@"^(?:\[ERROR\])?\s*(?<key>symbol|location)\s*:\s*(?<value>.*)$")]
     private static partial Regex DetailLine();
 
+    /// <summary>
+    /// maven-compiler-plugin 2.x in lỗi javac bị cụt: mất dòng <c>symbol:</c>, dòng <c>location:</c> còn lại dạng <c>[ERROR]  class Bounds</c>.
+    /// </summary>
+    [GeneratedRegex(@"^(?:\[ERROR\])?\s+(?<value>(?:class|interface|enum|record)\s+[\p{L}_$][\p{L}\p{N}_$.<>,?\s]*)$")]
+    private static partial Regex BareLocationLine();
+
+    /// <summary>Tên kiểu nêu trong location hoặc thông điệp: <c>class X</c>, <c>of type X</c>, <c>access in X</c>, <c>is not public in X</c>.</summary>
+    [GeneratedRegex(@"(?:class|interface|enum|record|of type|access in|is not public in)\s+(?<name>[\p{L}_$][\p{L}\p{N}_$.]*)")]
+    private static partial Regex TypeMention();
+
+    /// <summary><c>com.acme.Shape is abstract; cannot be instantiated</c>.</summary>
+    [GeneratedRegex(@"^(?<name>[\p{L}_$][\p{L}\p{N}_$.]*) is abstract; cannot be instantiated")]
+    private static partial Regex AbstractType();
+
     /// <summary>Loại lỗi javac cố định (spec 03 Mục 5), theo thứ tự so khớp; "cannot be applied" xét riêng (method hay constructor).</summary>
     private static readonly (string Kind, string[] Markers)[] Kinds =
     [
@@ -57,9 +71,20 @@ public static partial class JavacErrorParser
                 continue;
             }
 
+            if (message.StartsWith("error:", StringComparison.Ordinal))
+            {
+                message = message["error:".Length..].Trim(); // maven-compiler-plugin 2.x: "File.java:[l,c] error: cannot find symbol"
+            }
+
             string? symbol = null, location = null;
             for (var j = i + 1; j < lines.Length && j <= i + 6 && !ErrorLine().IsMatch(lines[j].TrimEnd()); j++)
             {
+                if (location is null && BareLocationLine().Match(lines[j].TrimEnd()) is { Success: true } bare)
+                {
+                    location = bare.Groups["value"].Value.Trim();
+                    continue;
+                }
+
                 var detail = DetailLine().Match(lines[j].Trim());
                 if (detail.Success)
                 {
@@ -98,6 +123,26 @@ public static partial class JavacErrorParser
         }
 
         return errors;
+    }
+
+    /// <summary>
+    /// Kiểu được nêu trong một lỗi (để mức 2 của COMPILE đưa API thật của chúng): <c>location: class X</c>, <c>variable s of type X</c>,
+    /// <c>constructor A in class X</c>, <c>x has private access in X</c>, <c>X is not public in p</c>, <c>X is abstract; cannot be instantiated</c>.
+    /// </summary>
+    public static IReadOnlyList<string> MentionedTypes(CompileError error)
+    {
+        var names = new List<string>();
+        foreach (var text in new[] { error.Location, error.Message }.OfType<string>())
+        {
+            names.AddRange(TypeMention().Matches(text).Select(m => m.Groups["name"].Value));
+        }
+
+        if (AbstractType().Match(error.Message) is { Success: true } abstractType)
+        {
+            names.Add(abstractType.Groups["name"].Value);
+        }
+
+        return names.Select(n => n.TrimEnd('.')).Where(n => n.Length > 0).Distinct(StringComparer.Ordinal).ToList();
     }
 
     /// <summary>Thông điệp javac → một trong các loại cố định, không khớp thì <c>other</c>.</summary>

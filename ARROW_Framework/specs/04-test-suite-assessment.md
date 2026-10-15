@@ -49,31 +49,36 @@ Không có trong hình nhưng cần cho RQ3 ("so với các hệ thống sinh te
   1. ghi mọi file của `SuiteFiles` (spec 03 Mục 3.0: test class, scaffolding nếu là EvoSuite) và thêm `extra_test_classpath`;
   2. **biên dịch test** và lấy classpath trong **một lần gọi** từ build root với bộ chọn module: Maven `-DskipTests test-compile <dependency-plugin>:build-classpath -Dmdep.includeScope=test -Dmdep.outputFile=arrow-cp.txt`; Gradle `:<p>:testClasses` rồi init script in classpath;
   3. biên dịch thất bại → công cụ đó lỗi `B4_SUITE_COMPILE` (không xảy ra với bộ đã VALID; nếu xảy ra là lỗi môi trường, thử lại tối đa 3 lần).
-  JaCoCo chạy `test` của Maven/Gradle nên tự biên dịch, nhưng vẫn theo cùng bước 1–2 để cả ba công cụ đo trên cùng một cách chuẩn bị. tsDetect chỉ đọc mã nguồn, cần bước 1, không cần bước 2.
+  JaCoCo chạy `test` của Maven/Gradle (không biên dịch lại production, Mục 4.2), nhưng vẫn theo cùng bước 1–2 để cả ba công cụ đo trên cùng một cách chuẩn bị. tsDetect chỉ đọc mã nguồn, cần bước 1, không cần bước 2.
 - Lệnh build chạy từ `build_root`, Maven kèm `-pl <m> -am` như spec 03 Mục 3.1; cờ build chung (đã tắt JaCoCo của dự án bằng `-Djacoco.skip=true`).
 - **Phạm vi đo là đúng CUT và các class lồng của nó**, dùng **hai mẫu chính xác** `<FQN>` và `<FQN>$*`. **Không** dùng `<FQN>*`: với CUT `com.acme.shop.Order`, mẫu `com.acme.shop.Order*` khớp nhầm cả `OrderService`, `OrderRepository`.
 
 ### 4.2. Coverage Analysis (JaCoCo)
 
-1. Chạy **riêng** bộ test (lệnh bước 2 của spec 03 Mục 3.1, tên test lấy từ `SuiteFiles.test_fqn`, ví dụ `-Dtest=OrderService_ESTest` với bộ EvoSuite) với agent gắn qua biến môi trường:
-   `JAVA_TOOL_OPTIONS += -javaagent:<jacocoagent.jar>=destfile=<exec>,append=true,includes=<FQN>:<FQN>$*`
-   (JaCoCo tách nhiều mẫu bằng `:`; gắn qua biến môi trường để không xung đột với cấu hình Surefire/JaCoCo riêng của dự án).
-2. Tạo báo cáo: `java -jar jacococli.jar report <exec> --classfiles <thư mục class production của module đích> --sourcefiles <source_root> --csv <file>`.
-3. Đọc CSV, **chỉ lấy dòng** có cột `PACKAGE` đúng package của CUT và cột `CLASS` **bằng đúng** tên CUT hoặc bắt đầu bằng `<tên CUT>.` (JaCoCo ghi class lồng dạng `Outer.Inner`); cộng các bộ đếm. Ví dụ CUT `Order`: lấy `Order`, `Order.Item`; **không** lấy `OrderService`.
-4. `jacoco.json`:
+*(Cập nhật 15/10/2026: **offline instrumentation**, cùng một cách cho bộ ARROW và bộ EvoSuite, Maven và Gradle; thay cho agent gắn qua `JAVA_TOOL_OPTIONS`.)*
+1. Chuẩn bị như Mục 4.1, thêm `jacocoagent.jar` (runtime của JaCoCo) vào `extra_test_classpath`.
+2. Lấy file `.class` của CUT và class lồng (`<Tên>.class`, `<Tên>$*.class`) trong thư mục class production của module đích, chép bản gốc ra `arrow-jacoco/original/`, `java -jar jacococli.jar instrument arrow-jacoco/original --dest arrow-jacoco/instrumented`, rồi chép bản đã instrument đè lên đúng chỗ cũ.
+3. Chạy **riêng** bộ test (lệnh bước 2 của spec 03 Mục 3.1, tên test lấy từ `SuiteFiles.test_fqn`, ví dụ `-Dtest=OrderService_ESTest` với bộ EvoSuite) **không biên dịch lại production**: Maven thêm `-Dmaven.main.skip=true` (maven-compiler-plugin 2.x không có cờ này nhưng chỉ biên dịch lại khi source mới hơn `.class`); Gradle thêm `-x :<p>:compileJava` và init script `arrow-jacoco.gradle` tắt JaCoCo riêng của dự án (plugin `jacoco` của Gradle gắn agent vào task test). `JAVA_TOOL_OPTIONS += -Djacoco-agent.destfile=<exec>`.
+4. Kiểm tra: `.class` của CUT vẫn là bản đã instrument (khác → CUT bị biên dịch lại); bộ test **pass hết** khi đo (đọc báo cáo XML như spec 03 Mục 3.3); có `<exec>`. Không đạt → `B4_JACOCO_FAILED` kèm lý do, **không** ghi coverage 0.
+5. Tạo báo cáo: `java -jar jacococli.jar report <exec> --classfiles arrow-jacoco/original --sourcefiles <source_root> --csv <file>` (bản `.class` gốc).
+6. Đọc CSV, **chỉ lấy dòng** có cột `PACKAGE` đúng package của CUT và cột `CLASS` **bằng đúng** tên CUT hoặc bắt đầu bằng `<tên CUT>.` (JaCoCo ghi class lồng dạng `Outer.Inner`); cộng các bộ đếm. Ví dụ CUT `Order`: lấy `Order`, `Order.Item`; **không** lấy `OrderService`.
+7. `jacoco.json`:
    ```json
    { "line": 0.72, "branch": 0.55, "method": 0.80,
      "counters": { "LINE_COVERED": 36, "LINE_MISSED": 14, "BRANCH_COVERED": 11, "BRANCH_MISSED": 9, "METHOD_COVERED": 8, "METHOD_MISSED": 2 } }
    ```
    Tỷ lệ = covered / (covered + missed); mẫu số 0 (ví dụ CUT không có nhánh) → `null`, không tính là 0.
-5. Không có file `.exec` hoặc CUT không có trong báo cáo → `B4_JACOCO_FAILED`.
+8. Không có file `.exec`, CUT không có trong báo cáo, bộ test không pass khi đo hoặc CUT bị biên dịch lại → `B4_JACOCO_FAILED`.
+
+Vì sao đổi (pilot 15/10/2026): (a) agent qua `JAVA_TOOL_OPTIONS` vào mọi JVM; với dự án Gradle có plugin `jacoco`, JVM chạy test nhận hai agent và sập (`duplicate class definition for java.lang.$JaCoCo`), Gradle 7.1 treo tới hết thời gian ở cả 3 lần thử (task `awslabs-aws-java-nio-spi-for-s3`, 45 phút); (b) bộ EvoSuite đo bằng bản sao `separateClassLoader = false` thì runtime EvoSuite phải tự gắn agent, việc này thất bại trên Windows với JDK 8 (`Error during attachment using … ByteBuddyAgent`), test lỗi `initializationError` nhưng coverage bị ghi 0 (7/7 bộ EvoSuite trên 2 máy Windows). Với offline instrumentation, classloader riêng của EvoSuite đọc bytecode đã có probe nên không cần đổi annotation và không cần gắn agent. Kiểm chứng trên Mac: 14 bộ test (gồm 3 bộ EvoSuite) cho coverage trùng khớp từng số với cách cũ; task Gradle trên đo được (line 0,73) trong 4 giây.
 
 ### 4.3. Mutation Analysis (PIT)
 
 0. Chuẩn bị bộ test như Mục 4.1 (ghi file, **biên dịch test**, lấy classpath). PIT không tự biên dịch, nên thiếu bước này PIT sẽ không thấy class test.
 1. Chạy PIT command line (`org.pitest.mutationtest.commandline.MutationCoverageReport`) với:
    `--classPath` = thư mục class production và class test **vừa biên dịch** của module đích + nội dung `arrow-cp.txt` của bước chuẩn bị (dependencies, class của module anh em) + thư viện PIT; `--targetClasses <FQN>,<FQN>$*` (hai mẫu chính xác, PIT coi mỗi mẫu là glob); `--targetTests <test FQN>` (bộ EvoSuite: class `*_ESTest`, không tính scaffolding); `--mutators DEFAULTS`; `--threads 1`; `--timestampedReports=false`; `--outputFormats XML`; `--sourceDirs <source_root>`.
-   Module JUnit 5: thêm `pitest-junit5-plugin` 1.2.1 và `junit-platform-launcher` đúng phiên bản JUnit Platform của module. Module TestNG: thêm `pitest-testng-plugin` (phiên bản tương thích PIT 1.17.4, ghi sha256 cùng các công cụ khác).
+   Module JUnit 5: thêm `pitest-junit5-plugin` 1.2.1 và `junit-platform-launcher` đúng phiên bản JUnit Platform của module. *(15/10/2026)* Module có JUnit Platform cũ hơn 1.5 (Jupiter 5.0–5.4): plugin cần `org.junit.platform.commons.PreconditionViolationException` (có từ 1.5), nên **chỉ khi chạy PIT** bộ jar JUnit 5 của module (jupiter-api/engine/params, platform-commons/engine/launcher, opentest4j) được thay bằng Jupiter 5.5.2 / Platform 1.5.2 / opentest4j 1.2.0 (tương thích ngược với test viết cho 5.0–5.4).
+   *(15/10/2026)* `--jvmPath <java của JDK task>`: tiến trình chính của PIT chạy bằng JDK 11+, còn **minion chạy test bằng đúng JDK của task** như khi xác minh (lớp minion của PIT biên dịch cho Java 8). Pilot: 9/9 task có PIT lỗi đều là task JDK 8, vì thư viện cũ (Mockito 1–2) không chạy trên JDK 11 (`Mockito cannot mock this class`), nên bộ VALID bị PIT báo "not green". Module TestNG: thêm `pitest-testng-plugin` (phiên bản tương thích PIT 1.17.4, ghi sha256 cùng các công cụ khác).
    Sau khi chạy, kiểm tra trong `mutations.xml` mọi mutant đều thuộc `<FQN>` hoặc `<FQN>$…`; có mutant của class khác → `B4_PIT_SCOPE` (lỗi cấu hình, không ghi kết quả).
 2. Đọc `mutations.xml`, đếm theo trạng thái: `KILLED`, `SURVIVED`, `NO_COVERAGE`, `TIMED_OUT`, `MEMORY_ERROR`, `RUN_ERROR`.
 3. **Mutation score** = (`KILLED` + `TIMED_OUT` + `MEMORY_ERROR`) / tổng mutant (cách tính mặc định của PIT). Ghi kèm `test_strength` = killed / (tổng − `NO_COVERAGE`).
@@ -234,8 +239,8 @@ public interface IReportBuilder            // Flow 4.5, code thuần trên dữ 
 | Bước | Việc framework làm | Kết quả ví dụ |
 | --- | --- | --- |
 | 4.1 Chuẩn bị | Workspace mới từ workspace gốc; ghi `OrderService_ArrowTest.java` vào test path | |
-| 4.2 JaCoCo | Bản sao mới của snapshot; chạy riêng `OrderService_ArrowTest` với `-javaagent:jacocoagent.jar=destfile=…/jacoco.exec,includes=com.acme.shop.OrderService:com.acme.shop.OrderService$*` | Có `jacoco.exec` |
-| 4.2 Báo cáo | `java -jar jacococli.jar report jacoco.exec --classfiles shop-core/target/classes --sourcefiles shop-core/src/main/java --csv jacoco.csv` | Lấy dòng `OrderService` và `OrderService.Item`; bỏ dòng `OrderServiceImpl` nếu có |
+| 4.2 JaCoCo | Bản sao mới của snapshot; `jacococli instrument` file `OrderService.class` và `OrderService$*.class` trong `shop-core/target/classes`; chạy riêng `OrderService_ArrowTest` với `-Dmaven.main.skip=true` và `-Djacoco-agent.destfile=…/jacoco.exec` | Có `jacoco.exec`; bộ test pass; `.class` vẫn là bản đã instrument |
+| 4.2 Báo cáo | `java -jar jacococli.jar report jacoco.exec --classfiles arrow-jacoco/original --sourcefiles shop-core/src/main/java --csv jacoco.csv` | Lấy dòng `OrderService` và `OrderService.Item`; bỏ dòng `OrderServiceImpl` nếu có |
 | 4.3 PIT | Bản sao mới; ghi `OrderService_ArrowTest.java`; `test-compile …:build-classpath` (một lần gọi); `--targetClasses com.acme.shop.OrderService,com.acme.shop.OrderService$* --targetTests com.acme.shop.OrderService_ArrowTest --mutators DEFAULTS --threads 1` | 54 mutant, đều thuộc `OrderService` / `OrderService$Item` ✔ |
 | 4.4 tsDetect | CSV đầu vào `app,…/OrderService_ArrowTest.java,…/OrderService.java` → chạy `TestSmellDetector.jar` | 2 loại smell |
 
@@ -296,7 +301,7 @@ Số liệu trên chỉ để minh họa định dạng, không phải kết qu�
 
 | Tình huống | Kết quả |
 | --- | --- |
-| Không có `jacoco.exec` (test không chạy dưới agent) | `B4_JACOCO_FAILED`; PIT và tsDetect vẫn chạy; bộ test có mặt trong RQ3 nhưng thiếu số coverage, ghi rõ |
+| Không có `jacoco.exec`, bộ test không pass khi đo, hoặc CUT bị biên dịch lại | `B4_JACOCO_FAILED`; PIT và tsDetect vẫn chạy; bộ test có mặt trong RQ3 nhưng thiếu số coverage, ghi rõ |
 | PIT báo `No mutations found` (CUT chỉ có getter đơn giản) | `total = 0`, `score = null` (không tính là 0) |
 | Task cần JDK 17 | EvoSuite `B4_EVOSUITE_UNSUPPORTED_JDK`; task đó không có cặp ARROW–EvoSuite, được đếm vào "chỉ ARROW có bộ VALID" |
 
@@ -306,6 +311,8 @@ Số liệu trên chỉ để minh họa định dạng, không phải kết qu�
 - Bộ test ARROW đại diện của RQ3 (Q3) vẫn là `<model>__zero_shot_project_aware__initial`, nếu không có thì `<model>__zero_shot_project_aware__adaptive`; chain `rq3_only` cung cấp bộ thứ hai cho CUT ngoài tập con.
 
 ## Bổ sung 15/10/2026: đo JaCoCo trên bộ EvoSuite
+
+> **Đã thay (15/10/2026, sau pilot):** cách đổi `separateClassLoader = false` dưới đây không còn dùng; JaCoCo đo mọi bộ bằng offline instrumentation (Mục 4.2), bộ EvoSuite giữ nguyên `separateClassLoader = true`. Giữ đoạn này để ghi lại lịch sử.
 
 Bộ EvoSuite sinh với cấu hình mặc định có `@EvoRunnerParameters(… separateClassLoader = true)`: CUT được nạp trong classloader riêng từ bytecode EvoSuite đã biến đổi, nên JaCoCo (agent) không khớp được class với file `.class` gốc và báo coverage 0 (chạy thử với model thật: line 0 trong khi PIT diệt 12/15 mutant). Ngược lại, với `separateClassLoader = false`, runtime của EvoSuite biến đổi lại class của CUT và PIT mất dữ liệu coverage (15/15 mutant `NO_COVERAGE`). Vì vậy:
 - EvoSuite vẫn chạy cấu hình mặc định; xác minh (khối 3) và PIT dùng **bộ test gốc**.

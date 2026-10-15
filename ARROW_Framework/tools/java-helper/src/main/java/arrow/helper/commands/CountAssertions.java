@@ -24,7 +24,10 @@ import java.util.TreeMap;
 /**
  * {@code count_assertions}: đếm assertion qua cây cú pháp (AR Mục 5.2; CLAUDE.md hạng mục 10).
  * Tính: {@code assert*} của JUnit/TestNG, {@code assertThat} (AssertJ/Hamcrest), {@code @Test(expected = …)}, {@code fail()} trong {@code try},
- * {@code verify(…)} của Mockito, mỗi kiểm tra trong chuỗi {@code then()}/{@code expect()} của RestAssured.
+ * {@code verify(…)} của Mockito (cả {@code inOrder.verify(…)}), {@code verifyNoInteractions}/{@code verifyNoMoreInteractions}/{@code verifyZeroInteractions},
+ * kiểu BDD ({@code then(mock).should…()} của Mockito, {@code then(actual).is…()} của AssertJ), {@code andExpect(…)} của MockMvc,
+ * {@code thrown.expect…(…)} của JUnit 4 {@code ExpectedException}, mỗi kiểm tra trong chuỗi {@code then()}/{@code expect()} của RestAssured
+ * (bổ sung 15/10/2026).
  * Không tính: assertion tầm thường ({@code assertTrue(true)}, {@code assertEquals(x, x)}, {@code assertNull(null)}, {@code assertNotNull(new X())}),
  * {@code assertThat()} không tham số.
  * Vào: {@code code}. Ra: {@code parsed}, {@code total}, {@code per_method} (chỉ test method).
@@ -92,10 +95,39 @@ public final class CountAssertions {
             return true;
         }
         if (name.equals("verify") && arguments > 0
-                && (call.getScope().isEmpty() || call.getScope().get().toString().endsWith("Mockito"))) {
+                && (call.getScope().isEmpty() || call.getScope().get().toString().endsWith("Mockito")
+                    || call.getScope().get().toString().toLowerCase(java.util.Locale.ROOT).contains("inorder"))) {
+            return true;
+        }
+        if (VERIFY_NO_INTERACTIONS.contains(name) && arguments > 0) {
+            return true;
+        }
+        if (name.equals("andExpect") && arguments > 0) {
+            return true; // MockMvc
+        }
+        if (EXPECTED_EXCEPTION.contains(name) && arguments > 0 && call.getScope().isPresent()) {
+            return true; // JUnit 4 @Rule ExpectedException (thrown.expect…); expect(...) không scope là stub của EasyMock
+        }
+        if (isBddThen(call)) {
             return true;
         }
         return isRestAssuredChain(call) && arguments > 0 && !name.equals("extract");
+    }
+
+    private static final java.util.Set<String> VERIFY_NO_INTERACTIONS = java.util.Set.of("verifyNoInteractions", "verifyNoMoreInteractions", "verifyZeroInteractions");
+    private static final java.util.Set<String> EXPECTED_EXCEPTION = java.util.Set.of("expect", "expectMessage", "expectCause");
+
+    /**
+     * {@code then(x)} có tham số và có lời gọi nối tiếp: BDD của Mockito ({@code then(mock).should().save(o)}) hoặc của AssertJ
+     * ({@code then(total).isEqualTo(3)}). Tính một lần cho mỗi {@code then(x)}; {@code then()} không tham số của RestAssured xét riêng.
+     */
+    static boolean isBddThen(MethodCallExpr call) {
+        if (!call.getNameAsString().equals("then") || call.getArguments().size() != 1) {
+            return false;
+        }
+        return call.getParentNode().filter(MethodCallExpr.class::isInstance).map(MethodCallExpr.class::cast)
+                .map(parent -> parent.getScope().filter(scope -> scope == call).isPresent())
+                .orElse(false);
     }
 
     /** Lời gọi nằm sau {@code then()} hoặc {@code expect()} (không tham số) trong chuỗi của RestAssured. */

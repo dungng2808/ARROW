@@ -48,6 +48,25 @@ public class Block3ClassificationTests
         Assert.Equal(("constructor cannot be applied", 31), (errors[3].Kind, errors[3].Line));
     }
 
+    [Fact]
+    public void ParsesTruncatedOutputOfMavenCompilerPlugin2()
+    {
+        // maven-compiler-plugin 2.3.2 (task 149270308): tiền tố "error:" trong thông điệp, mất dòng symbol, location không có nhãn.
+        const string log = """
+            [ERROR] /Users/a/ws/flexbox/src/test/java/com/d/FlexboxLayout_ArrowTest.java:[64,43] error: x has private access in Bounds
+            [ERROR] /Users/a/ws/flexbox/src/test/java/com/d/FlexboxLayout_ArrowTest.java:[65,44] error: cannot find symbol
+            [ERROR]  class Bounds
+            [ERROR] /Users/a/ws/flexbox/src/test/java/com/d/FlexboxLayout_ArrowTest.java:[70,9] error: com.d.Shape is abstract; cannot be instantiated
+            """;
+        var errors = JavacErrorParser.Parse(log, "FlexboxLayout_ArrowTest.java");
+        Assert.Equal(3, errors.Count);
+        Assert.Equal(("x has private access in Bounds", "has private access", (string?)null), (errors[0].Message, errors[0].Kind, errors[0].Location));
+        Assert.Equal(("cannot find symbol", "cannot find symbol", "class Bounds"), (errors[1].Message, errors[1].Kind, errors[1].Location));
+        Assert.Equal(["Bounds"], JavacErrorParser.MentionedTypes(errors[0]));
+        Assert.Equal(["Bounds"], JavacErrorParser.MentionedTypes(errors[1]));
+        Assert.Equal(["com.d.Shape"], JavacErrorParser.MentionedTypes(errors[2]));
+    }
+
     [Theory]
     [InlineData("cannot find symbol", "cannot find symbol")]
     [InlineData("incompatible types: String cannot be converted to long", "incompatible types")]

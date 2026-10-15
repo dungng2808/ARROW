@@ -30,9 +30,6 @@ public sealed partial class ExtraContextBuilder(IJavaHelper javaHelper)
     public const int MaxLines = 200;
     public const int MaxPackages = 60;
 
-    [GeneratedRegex(@"(?:class|interface|enum|record|of type)\s+(?<name>[\p{L}_$][\p{L}\p{N}_$.]*)")]
-    private static partial Regex TypeMention();
-
     [GeneratedRegex(@"^\s*at\s+(?:[\w.\-]+/+)?(?<cls>[\p{L}_$][\p{L}\p{N}_$.]*)\.(?<method>[\p{L}_$<][\p{L}\p{N}_$>]*)\(")]
     private static partial Regex Frame();
 
@@ -75,11 +72,11 @@ public sealed partial class ExtraContextBuilder(IJavaHelper javaHelper)
     {
         var m = input.Metadata;
         var errors = best.Verify.CompileErrors.Where(e => e.InGeneratedFile).ToList();
-        // Class trong "location: class X", "variable s of type X" và thông điệp như "constructor A in class X cannot be applied".
+        // Class nêu trong lỗi (JavacErrorParser.MentionedTypes): "location: class X", "variable s of type X", "constructor A in class X",
+        // "x has private access in X", "X is abstract; cannot be instantiated".
         var mentioned = errors
-            .SelectMany(e => new[] { e.Location, e.Message })
-            .OfType<string>()
-            .SelectMany(text => TypeMention().Matches(text).Select(x => StripGenerics(x.Groups["name"].Value)))
+            .SelectMany(JavacErrorParser.MentionedTypes)
+            .Select(StripGenerics)
             .Where(n => n != m.Cut.Fqn && !n.EndsWith("_ArrowTest", StringComparison.Ordinal))
             .Distinct(StringComparer.Ordinal)
             .ToList();

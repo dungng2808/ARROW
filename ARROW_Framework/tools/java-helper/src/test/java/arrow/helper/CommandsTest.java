@@ -177,6 +177,38 @@ class CommandsTest {
         // assertThat(list), verify(mock), Mockito.verify(mock), statusCode(200), body(is("hi")) = 5; còn lại tầm thường hoặc không tham số.
         assertEquals(5, counted.get("a").getAsInt());
         assertEquals(1, counted.get("b").getAsInt());
+
+        String added = """
+                class T {
+                    @Test void web() throws Exception {
+                        mockMvc.perform(get("/api/orders/1")).andExpect(status().isOk()).andExpect(jsonPath("$.id").value(1));
+                    }
+                    @Test void interactions() {
+                        verifyNoInteractions(repository);
+                        verifyNoMoreInteractions(client);
+                        InOrder inOrder = inOrder(repository, client);
+                        inOrder.verify(repository).save(order);
+                        inOrder.verify(client).charge(7L);
+                        signature.verify(bytes);
+                    }
+                    @Test void bdd() {
+                        then(client).should().charge(7L);
+                        then(total).isEqualByComparingTo("100");
+                        given().when().get("/x").then().statusCode(200);
+                    }
+                    @Test public void rule() {
+                        thrown.expect(IllegalArgumentException.class);
+                        thrown.expectMessage("quantity");
+                        expect(mock.find()).andReturn(null);
+                        service.place(0);
+                    }
+                }
+                """;
+        JsonObject extra = call("count_assertions", Map.of("code", added)).getAsJsonObject("per_method");
+        assertEquals(2, extra.get("web").getAsInt());          // 2 × andExpect
+        assertEquals(4, extra.get("interactions").getAsInt()); // 2 verifyNo… + 2 inOrder.verify; signature.verify không tính
+        assertEquals(3, extra.get("bdd").getAsInt());          // then(client).should, then(total), statusCode(200)
+        assertEquals(2, extra.get("rule").getAsInt());         // thrown.expect, thrown.expectMessage; expect() của EasyMock không tính
     }
 
     @Test

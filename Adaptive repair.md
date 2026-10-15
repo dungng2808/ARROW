@@ -250,13 +250,17 @@ Trong thực nghiệm, dừng sớm theo P **không bật**; P được tính l�
 | Assertion của JUnit 4/5, TestNG | `assertEquals`, `assertTrue`, `assertNull`, `assertThrows`, … |
 | Thư viện assertion | `assertThat(...)` của AssertJ, Hamcrest |
 | Kiểm tra exception kiểu JUnit 4 | `@Test(expected = X.class)`, `fail()` trong `try` |
-| Kiểm tra lời gọi mock | `verify(mock).method(...)` của Mockito |
+| Kiểm tra lời gọi mock | `verify(mock).method(...)` của Mockito, cả `inOrder.verify(...)`; `verifyNoInteractions`, `verifyNoMoreInteractions`, `verifyZeroInteractions` *(bổ sung 15/10/2026)* |
+| Kiểu BDD *(bổ sung 15/10/2026)* | `then(mock).should().save(o)` của Mockito, `then(total).isEqualTo(3)` của AssertJ (mỗi `then(x)` tính một) |
+| Kiểm tra HTTP của Spring MockMvc *(bổ sung 15/10/2026)* | `.andExpect(status().isOk())` (mỗi `andExpect` tính một) |
+| `ExpectedException` của JUnit 4 *(bổ sung 15/10/2026)* | `thrown.expect(X.class)`, `thrown.expectMessage("…")` |
 | Kiểm tra trong chuỗi `then()`/`expect()` của RestAssured *(bổ sung 09/10/2026)* | `.then().statusCode(200).body(is("hi"))` — mỗi kiểm tra tính một assertion |
 
 | Không được tính (assertion tầm thường) | Ví dụ |
 |---|---|
 | Luôn đúng | `assertTrue(true)`, `assertEquals(x, x)`, `assertNotNull(new Object())` |
 | Từ nối không tham số *(bổ sung 09/10/2026)* | `.then().assertThat()` của RestAssured |
+| Không phải assertion dù cùng tên *(bổ sung 15/10/2026)* | `signature.verify(bytes)` (method `verify` của class khác), `expect(mock.find()).andReturn(x)` của EasyMock (là stub) |
 
 Đếm qua AST, không cần chạy test.
 

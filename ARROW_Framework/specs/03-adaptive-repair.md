@@ -93,6 +93,7 @@ Một chain có nhiều vòng; test của vòng trước có thể xóa resource
 2. Có ít nhất một lỗi javac **trong file test sinh ra** (so theo tên file) → `COMPILE`. "File sinh ra" là file của class `test_fqn` và các file của bộ có cùng tiền tố tên (scaffolding `…_ESTest_scaffolding.java` của EvoSuite).
 3. Build thất bại nhưng không có lỗi javac nào trong file sinh ra → `UNKNOWN`.
 4. Không tính là lỗi javac: dòng chứa `AssertionError`, dòng trong stack trace (`at …`), cảnh báo `warning:`.
+5. *(15/10/2026)* maven-compiler-plugin 2.x in lỗi bị cụt: thông điệp có tiền tố `error:` (`X.java:[65,44] error: cannot find symbol`, tiền tố bị bỏ), mất dòng `symbol:`, dòng `location:` còn lại không có nhãn (`[ERROR]  class Bounds`) → nhận là `location`. Pilot: task `149270308` (plugin 2.3.2) có `symbol`/`location` rỗng nên mức 2 không đưa được API của `Bounds` và cả 6 chain kẹt ở COMPILE.
 
 ### 3.3. Phân loại kết quả chạy test (bước 2–4)
 
@@ -129,7 +130,7 @@ Lỗi hạ tầng không thuộc chuỗi trạng thái, không phải lỗi củ
 ### 3.6. Số liệu đo kèm
 
 - `tests_passed`: số test method của class sinh ra pass ở lần chạy riêng (bước 2–4).
-- `assertion_count`: đếm qua AST (java-helper), quy tắc ở AR Mục 5.2 (JUnit/TestNG, AssertJ/Hamcrest `assertThat`, `@Test(expected)`, `fail()` trong `try`, Mockito `verify`, kiểm tra RestAssured; không đếm assertion tầm thường).
+- `assertion_count`: đếm qua AST (java-helper), quy tắc ở AR Mục 5.2 (JUnit/TestNG, AssertJ/Hamcrest `assertThat`, `@Test(expected)`, `fail()` trong `try`, Mockito `verify` (cả `inOrder.verify`), `verifyNoInteractions`/`verifyNoMoreInteractions`/`verifyZeroInteractions`, kiểu BDD `then(mock).should…()` và `then(actual).is…()`, MockMvc `andExpect(…)`, `thrown.expect…(…)` của `ExpectedException`, kiểm tra RestAssured; không đếm assertion tầm thường; bổ sung 15/10/2026).
 - `build_seconds`: tổng thời gian các lệnh build của lần xác minh.
 
 ### 3.7. `verify.json`
@@ -303,7 +304,7 @@ Mọi mức đều có mã test của best, source của CUT (AR Mục 3.1, cậ
 
 | Trạng thái | Nội dung |
 | --- | --- |
-| COMPILE | Constructor, method và field công khai (chữ ký) của CUT và của **các class xuất hiện trong `symbol`/`location` của lỗi** (kể cả class của dependency, đọc từ jar đã phân giải); với lỗi `package does not exist`: danh sách package thật có trong các jar test của dự án (ví dụ `org.junit`, `org.mockito`) |
+| COMPILE | Constructor, method và field công khai (chữ ký) của CUT và của **các class xuất hiện trong `symbol`/`location` của lỗi** (và trong thông điệp: `constructor A in class X`, `x has private access in X`, `X is not public in …`, `X is abstract; cannot be instantiated`; bổ sung 15/10/2026) (kể cả class của dependency, đọc từ jar đã phân giải); với lỗi `package does not exist`: danh sách package thật có trong các jar test của dự án (ví dụ `org.junit`, `org.mockito`) |
 | UNKNOWN | Toàn bộ khối lỗi build (tối đa 120 dòng) và cấu hình build trong M (build tool, plugin test, Java version) |
 | DISCOVERY | Khung test class mẫu đúng test framework của M: JUnit 4 (`import org.junit.Test`, class `public`), JUnit 5 (`import org.junit.jupiter.api.Test`), TestNG (`import org.testng.annotations.Test`); package và đường dẫn file theo test path |
 | RUNTIME | Mã nguồn của các method dự án xuất hiện trong stack trace; constructor và cách khởi tạo field của CUT; nếu dự án có Mockito: nhắc dùng mock cho dependency |

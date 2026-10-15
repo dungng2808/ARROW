@@ -78,6 +78,7 @@ public sealed class ProcessRunner : IProcessRunner
         {
             timedOut = timeout.IsCancellationRequested && !cancellationToken.IsCancellationRequested;
             Kill(process);
+            KillStragglers(spec.WorkingDirectory);
             if (!timedOut)
             {
                 throw;
@@ -98,6 +99,46 @@ public sealed class ProcessRunner : IProcessRunner
 
         return new ProcessResult(timedOut ? null : process.ExitCode, timedOut, text, watch.Elapsed);
     }
+
+    /// <summary>
+    /// Dừng tiến trình còn sót có dòng lệnh chứa thư mục làm việc: daemon Gradle tách khỏi cây tiến trình nên JVM chạy test (con của
+    /// daemon) không bị <see cref="Process.Kill(bool)"/> dừng; pilot để lại JVM treo nhiều giờ sau khi lệnh hết thời gian.
+    /// Chỉ áp dụng cho thư mục đủ sâu (bản sao workspace), không áp dụng cho thư mục gốc hay thư mục người dùng.
+    /// </summary>
+    public static void KillStragglers(string? workingDirectory)
+    {
+        if (string.IsNullOrWhiteSpace(workingDirectory))
+        {
+            return;
+        }
+
+        var path = Path.GetFullPath(workingDirectory).TrimEnd('/', '\\');
+        if (path.Split('/', '\\', StringSplitOptions.RemoveEmptyEntries).Length < 5)
+        {
+            return;
+        }
+
+        try
+        {
+            var start = OperatingSystem.IsWindows()
+                ? new ProcessStartInfo("powershell", ["-NoProfile", "-NonInteractive", "-Command",
+                    $"Get-CimInstance Win32_Process | Where-Object {{ $_.CommandLine -and $_.CommandLine.Contains('{path.Replace("'", "''")}') -and $_.ProcessId -ne $PID }} | ForEach-Object {{ Stop-Process -Id $_.ProcessId -Force -ErrorAction SilentlyContinue }}"])
+                : new ProcessStartInfo("pkill", ["-9", "-f", "--", RegexEscape(path)]);
+            start.UseShellExecute = false;
+            start.CreateNoWindow = true;
+            start.RedirectStandardOutput = true;
+            start.RedirectStandardError = true;
+            using var killer = Process.Start(start);
+            killer?.WaitForExit(15_000);
+        }
+        catch (Exception ex) when (ex is System.ComponentModel.Win32Exception or InvalidOperationException)
+        {
+            // Không có pkill/powershell: bỏ qua, chỉ là dọn dẹp.
+        }
+    }
+
+    private static string RegexEscape(string text) =>
+        string.Concat(text.Select(c => ".^$*+?()[]{}|\\".Contains(c) ? "\\" + c : c.ToString()));
 
     private static void Kill(Process process)
     {

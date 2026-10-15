@@ -252,21 +252,46 @@ public class Block4Tests
         Assert.Equal(["t1", "classes2test", "3", "chain/m/zero_shot/adaptive", "run_target", "B3_TIMEOUT", "3", "", "true", "arrow run --run-id run-1 --tasks t1 --rerun-infra"], Assert.Single(rows));
     }
 
-    [Fact]
-    public void JacocoMeasuresEvoSuiteWithoutSeparateClassLoaderOnly()
+    [Theory]
+    [InlineData("1.0.1", true)]
+    [InlineData("1.4.0", true)]
+    [InlineData("1.5.2", false)]
+    [InlineData("1.10.0-M1", false)]
+    [InlineData(null, false)]
+    public void PitUsesNewerJUnitPlatformOnlyForOldModules(string? platform, bool replace)
     {
-        var suite = new Arrow.Models.Block3.SuiteFiles
+        Assert.Equal(replace, Arrow.Service.Block4.PitTool.NeedsNewerPlatform(platform));
+    }
+
+    [Fact]
+    public void JacocoInstrumentsOnlyTheCutAndItsNestedClasses()
+    {
+        var root = Path.Combine(Path.GetTempPath(), "arrow-cut-" + Guid.NewGuid().ToString("N"));
+        var package = Path.Combine(root, "com", "acme", "shop");
+        Directory.CreateDirectory(package);
+        foreach (var name in new[] { "Order.class", "Order$Item.class", "Order$1.class", "OrderService.class", "OrderTest.class" })
         {
-            TestFqn = "a.B_ESTest",
-            Files = new()
-            {
-                ["src/test/java/a/B_ESTest.java"] = "@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, resetStaticState = true, separateClassLoader = true)\npublic class B_ESTest {}",
-                ["src/test/java/a/B_ESTest_scaffolding.java"] = "class B_ESTest_scaffolding {}",
-            },
-        };
-        var jacoco = Arrow.Service.Block4.JacocoTool.ForJacoco(suite);
-        Assert.Contains("separateClassLoader = false", jacoco.Files["src/test/java/a/B_ESTest.java"]);
-        Assert.Contains("separateClassLoader = true", suite.Files["src/test/java/a/B_ESTest.java"]); // bộ gốc (PIT, xác minh) không đổi
-        Assert.Equal(suite.Files["src/test/java/a/B_ESTest_scaffolding.java"], jacoco.Files["src/test/java/a/B_ESTest_scaffolding.java"]);
+            File.WriteAllText(Path.Combine(package, name), "");
+        }
+
+        try
+        {
+            var files = Arrow.Service.Block4.JacocoTool.CutClassFiles(root, "com.acme.shop.Order").Select(Path.GetFileName).ToList();
+            Assert.Equal(["Order$1.class", "Order$Item.class", "Order.class"], files);
+            Assert.Empty(Arrow.Service.Block4.JacocoTool.CutClassFiles(root, "com.acme.shop.Missing"));
+        }
+        finally
+        {
+            Directory.Delete(root, recursive: true);
+        }
+    }
+
+    [Fact]
+    public void JacocoRunDoesNotRecompileProductionClasses()
+    {
+        Assert.Equal(["-Dmaven.main.skip=true"], Arrow.Service.Block4.JacocoTool.KeepProductionClasses("maven", null, "init.gradle"));
+        Assert.Equal(["-x", ":core:compileJava", "--init-script", "init.gradle"], Arrow.Service.Block4.JacocoTool.KeepProductionClasses("gradle", ":core", "init.gradle"));
+        Assert.Equal(["-x", ":compileJava", "--init-script", "init.gradle"], Arrow.Service.Block4.JacocoTool.KeepProductionClasses("gradle", ":", "init.gradle"));
+        Assert.Contains("projectJacoco.enabled = false", Arrow.Service.Block4.JacocoTool.GradleInitScript);
     }
 }

@@ -63,7 +63,7 @@ public class AssessmentIntegrationTests(VerifyFixture fixture) : IClassFixture<V
         var preparer = new SuitePreparer(fixture.Workspace, build, fixture.Repo.Results);
         return (tools,
         [
-            new JacocoTool(preparer, build, tools, runner, fixture.Workspace, fixture.Repo.Results),
+            new JacocoTool(preparer, build, tools, new TestReportReader(), runner, fixture.Workspace, fixture.Repo.Results),
             new PitTool(preparer, tools, runner, fixture.Workspace, fixture.Repo.Results, environment.JdkHomes),
             new TsDetectTool(tools, fixture.Helper, runner, fixture.Workspace, fixture.Repo.Results),
         ]);
