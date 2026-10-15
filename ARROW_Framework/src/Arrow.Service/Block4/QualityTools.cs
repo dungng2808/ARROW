@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Text;
 using Arrow.DataAccess;
 using Arrow.DataAccess.Interfaces;
+using Arrow.Models.Block3;
 using Arrow.Models.Block4;
 using Arrow.Models.Common;
 using Arrow.Service.External;
@@ -42,16 +43,30 @@ public sealed class JacocoTool(SuitePreparer preparer, IBuildRunner build, ITool
 {
     public string Name => "jacoco";
 
+    /// <summary>
+    /// Bộ EvoSuite chạy với <c>separateClassLoader = true</c> (mặc định): CUT được nạp từ bytecode EvoSuite đã biến đổi trong classloader
+    /// riêng nên JaCoCo không khớp được class với file .class gốc và báo coverage 0. Riêng khi đo JaCoCo, bản sao của bộ test đổi thành
+    /// <c>separateClassLoader = false</c>; test method giữ nguyên. PIT và xác minh dùng bộ test gốc (spec 04 Mục 3, ngoại lệ đã khai báo).
+    /// </summary>
+    public static SuiteFiles ForJacoco(SuiteFiles suite) => suite with
+    {
+        Files = suite.Files.ToDictionary(f => f.Key, f => f.Value.Replace("separateClassLoader = true", "separateClassLoader = false", StringComparison.Ordinal)),
+    };
+
     public async Task<ToolResult> MeasureAsync(SuiteToMeasure suite, TaskContext task, MeasureOptions options, CancellationToken cancellationToken)
     {
         var agent = await tools.EnsureAsync("jacoco-agent", cancellationToken).ConfigureAwait(false);
         var cli = await tools.EnsureAsync("jacoco-cli", cancellationToken).ConfigureAwait(false);
-        var prepared = await preparer.PrepareAsync(suite.Files, task, "jacoco", compile: true, options, cancellationToken).ConfigureAwait(false);
+        var prepared = await preparer.PrepareAsync(ForJacoco(suite.Files), task, "jacoco", compile: true, options, cancellationToken).ConfigureAwait(false);
         try
         {
             var fqn = task.Metadata.Cut.Fqn;
             var exec = Path.Combine(prepared.Copy, "arrow-jacoco.exec");
-            var context = prepared.Context with { ExtraJavaToolOptions = $"-javaagent:{agent}=destfile={exec},append=true,includes={fqn}:{fqn}$*" };
+            // allowAttachSelf: runtime của EvoSuite (không dùng classloader riêng) tự gắn agent vào JVM chạy test; từ JDK 9 phải cho phép.
+            var context = prepared.Context with
+            {
+                ExtraJavaToolOptions = $"-javaagent:{agent}=destfile={exec},append=true,includes={fqn}:{fqn}$* -Djdk.attach.allowAttachSelf=true",
+            };
             var run = await build.RunAsync(context, BuildCommands.RunSingleTest(context.Plan, suite.Files.TestFqn).Concat(prepared.ExtraArgs).ToList(), cancellationToken).ConfigureAwait(false);
             SaveText(task, Log(options, "jacoco-test"), BuildCommands.FormatLog(run, context.JdkHome));
             if (run.Failure is BuildFailureKind.Timeout or BuildFailureKind.Network)

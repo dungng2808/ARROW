@@ -62,6 +62,16 @@ public sealed class RunCounters
         }
     }
 
+    /// <summary>Lượt gọi model của một vòng sửa: cộng lượt gọi và chi phí (không tính vào số câu trả lời không hợp lệ của khối 2).</summary>
+    public void LlmRepair(LlmUsage usage)
+    {
+        lock (_lock)
+        {
+            _llmCalls++;
+            _cost += usage.CostUsd;
+        }
+    }
+
     public void Llm(LlmUsage usage, bool validOutput)
     {
         lock (_lock)
@@ -339,6 +349,7 @@ public sealed class RunExecutor(
             Task = task, Generation = generation, C0 = c0, C0Verify = c0Verify, Mechanism = mechanism,
             N = Experiment.Repair.N, EarlyStopP = mechanism == "adaptive" ? Experiment.Repair.EarlyStopP : null,
             Verify = VerifyOptions(""), RunOrder = order, Rq3Only = rq3Only,
+            OnUsage = counters.LlmRepair,
             OnRound = decision => Event(3, task.Key.TaskId, job, EventLevel.Info,
                 $"{generation.Strategy} {mechanism} vòng {decision.Round} → {RoundText(decision)} · mức {decision.Level}→{decision.LevelAfter}"),
         };

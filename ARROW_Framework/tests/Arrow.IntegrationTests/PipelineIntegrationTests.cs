@@ -254,6 +254,7 @@ public class PipelineIntegrationTests
         Assert.True(second.State == RunState.Done, second.Error);
         var chains = runs.ReadLedger("two-phase").Where(e => e.Job.StartsWith("chain/", StringComparison.Ordinal)).ToList();
         Assert.Equal(5, chains.Count); // 2 ứng viên × 2 cơ chế + 1 Adaptive chỉ cho RQ3
+        Assert.Equal(5, runs.ReadStatus("two-phase")!.LlmCalls); // bảng tổng đếm cả lượt gọi của phần sửa (N = 1)
 
         var results = new FileTaskResultRepository(paths);
         var zspOutside = new[] { "810_calc", "811_invoice" }.Single(t => !chosen.Candidates.Any(c => c.TaskId == t && c.Strategy == "zero_shot_project_aware"));

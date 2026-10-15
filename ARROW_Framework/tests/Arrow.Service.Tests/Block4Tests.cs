@@ -251,4 +251,22 @@ public class Block4Tests
         var rows = ReportBuilder.Build([run], Experiment).Csv["needs_rerun.csv"].Rows;
         Assert.Equal(["t1", "classes2test", "3", "chain/m/zero_shot/adaptive", "run_target", "B3_TIMEOUT", "3", "", "true", "arrow run --run-id run-1 --tasks t1 --rerun-infra"], Assert.Single(rows));
     }
+
+    [Fact]
+    public void JacocoMeasuresEvoSuiteWithoutSeparateClassLoaderOnly()
+    {
+        var suite = new Arrow.Models.Block3.SuiteFiles
+        {
+            TestFqn = "a.B_ESTest",
+            Files = new()
+            {
+                ["src/test/java/a/B_ESTest.java"] = "@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, resetStaticState = true, separateClassLoader = true)\npublic class B_ESTest {}",
+                ["src/test/java/a/B_ESTest_scaffolding.java"] = "class B_ESTest_scaffolding {}",
+            },
+        };
+        var jacoco = Arrow.Service.Block4.JacocoTool.ForJacoco(suite);
+        Assert.Contains("separateClassLoader = false", jacoco.Files["src/test/java/a/B_ESTest.java"]);
+        Assert.Contains("separateClassLoader = true", suite.Files["src/test/java/a/B_ESTest.java"]); // bộ gốc (PIT, xác minh) không đổi
+        Assert.Equal(suite.Files["src/test/java/a/B_ESTest_scaffolding.java"], jacoco.Files["src/test/java/a/B_ESTest_scaffolding.java"]);
+    }
 }

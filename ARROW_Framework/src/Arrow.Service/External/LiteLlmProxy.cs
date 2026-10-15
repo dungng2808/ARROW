@@ -84,11 +84,18 @@ public sealed class LiteLlmProxy(LlmMachineConfig config, FrameworkPaths paths, 
         }
     }
 
-    private string? FindExecutable()
+    private string? FindExecutable() => FindExecutable(paths.ArrowRoot);
+
+    /// <summary>Lệnh <c>litellm</c>: trong <c>ARROW/litellm</c> (là venv hoặc chứa <c>.venv</c>), rồi PATH; dùng chung cho proxy và doctor.</summary>
+    public static string? FindExecutable(string arrowRoot)
     {
         var windows = OperatingSystem.IsWindows();
-        var venv = Path.Combine(paths.ArrowRoot, "litellm", ".venv", windows ? "Scripts" : "bin", windows ? "litellm.exe" : "litellm");
-        return File.Exists(venv) ? venv : ToolLocator.FindOnPath(windows ? "litellm.exe" : "litellm");
+        // Môi trường Python của LiteLLM: ARROW/litellm là chính venv (ARROW/litellm/bin) hoặc chứa venv (ARROW/litellm/.venv/bin).
+        var program = windows ? "litellm.exe" : "litellm";
+        var bin = windows ? "Scripts" : "bin";
+        return new[] { Path.Combine(arrowRoot, "litellm", bin, program), Path.Combine(arrowRoot, "litellm", ".venv", bin, program) }
+                   .FirstOrDefault(File.Exists)
+               ?? ToolLocator.FindOnPath(program);
     }
 
     public ValueTask DisposeAsync()

@@ -1,0 +1,20 @@
+{
+  "experiment_id": "smoke-real",
+  "kind": "smoke",
+  "manifests": [
+    { "dataset": "classes2test", "path": "../../evaluation_manifest/pilot/classes2test_pilot_50_seed42_v3.jsonl", "sha256": "88b9084a56cb8679bc01569935a71b259b008cee726e614a75fd11444e2f5e1d", "repair": true },
+    { "dataset": "gitbug-java", "path": "../../evaluation_manifest/pilot/gitbug_java_pilot_9_seed42.jsonl", "sha256": "6754b1a52e142813fe0a6be9530cd031da9f73bfe7f024bf0dc0dc94a34ea9b4", "repair": false }
+  ],
+  "models": [
+    { "name": "gpt-6-luna", "expected_model_id_prefix": "gpt-6-luna",
+      "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 8192, "seed": 42 },
+      "price_usd_per_million": { "input": 0.05, "output": 0.25 } }
+  ],
+  "strategies": ["zero_shot", "zero_shot_project_aware", "few_shot"],
+  "repair": { "mechanisms": ["fixed", "adaptive"], "n": 2, "early_stop_p": null },
+  "verification": { "baseline_runs": 2, "step_timeout_seconds": 900, "infra_attempts": 3 },
+  "screening": { "require_paired_test_pass": true },
+  "assessment": { "tools": ["jacoco", "pit", "tsdetect"], "comparison_systems": ["evosuite"] },
+  "prompts": { "dir": "prompts", "version": "v1" },
+  "generated_test_suffix": "_ArrowTest"
+}

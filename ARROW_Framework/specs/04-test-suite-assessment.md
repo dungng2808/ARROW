@@ -305,3 +305,10 @@ Số liệu trên chỉ để minh họa định dạng, không phải kết qu�
 - Bảng RQ2 (`rq2_*.csv`) và quy tắc chọn N **bỏ** các chain có `rq3_only: true` (spec 03 Mục 6.1): RQ2 chỉ tính ứng viên của tập con cố định (Classes2Test) hoặc mọi ứng viên thất bại (dataset không đặt `repair_subset`).
 - Bộ test ARROW đại diện của RQ3 (Q3) vẫn là `<model>__zero_shot_project_aware__initial`, nếu không có thì `<model>__zero_shot_project_aware__adaptive`; chain `rq3_only` cung cấp bộ thứ hai cho CUT ngoài tập con.
 
+## Bổ sung 15/10/2026: đo JaCoCo trên bộ EvoSuite
+
+Bộ EvoSuite sinh với cấu hình mặc định có `@EvoRunnerParameters(… separateClassLoader = true)`: CUT được nạp trong classloader riêng từ bytecode EvoSuite đã biến đổi, nên JaCoCo (agent) không khớp được class với file `.class` gốc và báo coverage 0 (chạy thử với model thật: line 0 trong khi PIT diệt 12/15 mutant). Ngược lại, với `separateClassLoader = false`, runtime của EvoSuite biến đổi lại class của CUT và PIT mất dữ liệu coverage (15/15 mutant `NO_COVERAGE`). Vì vậy:
+- EvoSuite vẫn chạy cấu hình mặc định; xác minh (khối 3) và PIT dùng **bộ test gốc**.
+- **Chỉ khi đo JaCoCo**, bản sao của bộ test đổi annotation thành `separateClassLoader = false` (test method giữ nguyên từng chữ) và JVM chạy test có `-Djdk.attach.allowAttachSelf=true` (runtime của EvoSuite tự gắn agent; từ JDK 9 phải cho phép).
+- Ngoại lệ đã khai báo, giống nhau cho mọi bộ EvoSuite; bộ ARROW không chứa annotation này nên không bị ảnh hưởng. Kết quả sau khi sửa trên CUT `118477931`: line 100%, branch 100%, mutation 0,8.
+

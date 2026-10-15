@@ -94,8 +94,7 @@ public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepositor
         // LiteLLM và từng model.
         var liteLlm = config.LoadLiteLlm();
         var proxyMode = machine?.Llm.ProxyMode ?? "auto_start";
-        var litellmExe = ToolLocator.FindOnPath(OperatingSystem.IsWindows() ? "litellm.exe" : "litellm")
-                         ?? Path.Combine(paths.ArrowRoot, "litellm", ".venv", OperatingSystem.IsWindows() ? "Scripts" : "bin", OperatingSystem.IsWindows() ? "litellm.exe" : "litellm");
+        var litellmExe = LiteLlmProxy.FindExecutable(paths.ArrowRoot) ?? "";
         Add(proxyMode == "external" || File.Exists(litellmExe)
             ? new DoctorLine("LiteLLM", DoctorMark.Ok, proxyMode == "external" ? $"proxy ngoài ở {machine?.Llm.ProxyUrl}" : litellmExe)
             : new DoctorLine("LiteLLM", DoctorMark.Warn, "không tìm thấy lệnh litellm", "cài LiteLLM (pip install 'litellm[proxy]') hoặc đặt proxy_mode = external; chỉ cần khi gọi model thật"));

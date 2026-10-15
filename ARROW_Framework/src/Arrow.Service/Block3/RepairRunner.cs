@@ -83,6 +83,7 @@ public sealed class RepairRunner(
             }
 
             totals.Add(generated.Usage);
+            request.OnUsage?.Invoke(generated.Usage);
             var candidate = generated.Candidate;
             var duplicate = candidate.ValidOutput ? policy.DuplicateOf(candidate.CodeHash) : null;
             VerifyResult? verify = null;

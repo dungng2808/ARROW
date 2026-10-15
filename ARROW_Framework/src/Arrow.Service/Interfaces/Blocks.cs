@@ -127,6 +127,9 @@ public sealed record ChainRequest
 
     /// <summary>Gọi sau mỗi vòng (để màn hình theo dõi in kết quả từng vòng).</summary>
     public Action<RoundDecision>? OnRound { get; init; }
+
+    /// <summary>Gọi sau mỗi lượt gọi model của chain (để bảng tổng đếm lượt gọi và chi phí của cả phần sửa).</summary>
+    public Action<LlmUsage>? OnUsage { get; init; }
 }
 
 /// <summary>Kết quả chain: <c>Ok</c> (đã chốt, thành công hay không) hoặc <c>Infra</c> (dừng giữa chừng, chạy lại từ đầu chain).</summary>
