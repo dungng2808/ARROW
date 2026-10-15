@@ -43,6 +43,8 @@ public sealed class LiteLlmProxy(LlmMachineConfig config, FrameworkPaths paths, 
 
         var uri = new Uri(config.ProxyUrl);
         var start = new ProcessStartInfo(executable) { UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true, CreateNoWindow = true };
+        start.Environment["PYTHONIOENCODING"] = "utf-8";
+        start.Environment["PYTHONUTF8"] = "1";
         foreach (var argument in new[] { "--config", configFile, "--host", uri.Host, "--port", uri.Port.ToString(System.Globalization.CultureInfo.InvariantCulture) })
         {
             start.ArgumentList.Add(argument);
