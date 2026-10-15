@@ -10,6 +10,8 @@ C9 (màn hình S1–S10 và mọi lệnh). **C10** (smoke với model thật) c�
 
 ## Build và chạy
 
+Hướng dẫn từng bước cho thành viên chạy pilot (cài đặt, chạy theo shard, gửi kết quả): [HUONG_DAN_CHAY.md](HUONG_DAN_CHAY.md).
+
 Cần .NET SDK 8 trở lên; java-helper cần JDK 17 (`machine.local.json` → `jdk_homes`, hoặc `ARROW/Java-version/runtime/jdk-17`) và Maven. Khối 1 cần git, Maven (Gradle nếu repository không có `gradlew`) và các JDK 8/11/17/21 (tìm theo cùng thứ tự); repository được tải vào `work_dir` (mặc định `../repo`). Integration test của khối 1 chạy Maven/Gradle thật trên `tests/fixtures/`. Từ thư mục `ARROW_Framework`:
 
 | Việc | Lệnh |

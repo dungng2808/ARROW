@@ -14,6 +14,8 @@ Mỗi file `shard-NN.json` là danh sách task (CUT) giao cho một máy; mọi 
 
 ## Chạy trên mỗi máy
 
+Hướng dẫn đầy đủ (cài đặt lần đầu, menu, theo dõi, gửi kết quả): [ARROW_Framework/HUONG_DAN_CHAY.md](../../ARROW_Framework/HUONG_DAN_CHAY.md).
+
 Pull bản mới nhất, cài máy (`arrow setup`, `arrow models`, `arrow doctor`), rồi từ thư mục `ARROW_Framework`:
 
 ```text
