@@ -43,6 +43,8 @@ public sealed class LiteLlmProxy(LlmMachineConfig config, FrameworkPaths paths, 
 
         var uri = new Uri(config.ProxyUrl);
         var start = new ProcessStartInfo(executable) { UseShellExecute = false, RedirectStandardOutput = true, RedirectStandardError = true, CreateNoWindow = true };
+        start.Environment.Remove("DEBUG");
+        start.Environment["DEBUG"] = "false";
         start.Environment["PYTHONIOENCODING"] = "utf-8";
         start.Environment["PYTHONUTF8"] = "1";
         foreach (var argument in new[] { "--config", configFile, "--host", uri.Host, "--port", uri.Port.ToString(System.Globalization.CultureInfo.InvariantCulture) })
@@ -50,9 +52,11 @@ public sealed class LiteLlmProxy(LlmMachineConfig config, FrameworkPaths paths, 
             start.ArgumentList.Add(argument);
         }
 
+        var stderr = new System.Text.StringBuilder();
         _process = Process.Start(start) ?? throw new ArrowException(ErrorCodes.B2LlmConfig, "Không chạy được litellm");
         _process.OutputDataReceived += (_, _) => { };
         _process.ErrorDataReceived += (_, _) => { };
+        _process.ErrorDataReceived += (_, e) => { if (e.Data is not null) stderr.AppendLine(e.Data); };
         _process.BeginOutputReadLine();
         _process.BeginErrorReadLine();
         log.Info($"LiteLLM: bật proxy (pid {_process.Id}) ở {uri.Host}:{uri.Port}");
@@ -70,7 +74,8 @@ public sealed class LiteLlmProxy(LlmMachineConfig config, FrameworkPaths paths, 
             }
         }
 
-        throw new ArrowException(ErrorCodes.B2LlmConfig, "Proxy LiteLLM không sẵn sàng sau 60 s");
+        var errDetail = stderr.ToString().Trim();
+        throw new ArrowException(ErrorCodes.B2LlmConfig, $"Proxy LiteLLM không sẵn sàng sau 60 s{(errDetail.Length > 0 ? $": {errDetail}" : "")}");
     }
 
     private async Task<bool> AliveAsync(CancellationToken cancellationToken)
