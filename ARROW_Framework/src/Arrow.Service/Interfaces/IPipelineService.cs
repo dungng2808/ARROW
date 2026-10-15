@@ -21,6 +21,9 @@ public interface IPipelineService
 
     /// <summary>Bảng tổng hiện tại (lệnh <c>t</c>).</summary>
     RunStatus GetSummary();
+
+    /// <summary>File phân công máy <c>ARROW/shards/&lt;plan&gt;/shard-NN.json</c> (để menu cho chọn).</summary>
+    IReadOnlyList<string> ListShards();
 }
 
 /// <summary>Chi tiết một task cho màn hình S7.</summary>

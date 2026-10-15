@@ -268,6 +268,17 @@ public class PipelineIntegrationTests
         var report = services.Reports.Build(["two-phase"]);
         Assert.Equal(4, report.Tables["rq2_chains.csv"].Rows.Count);
 
+        // Run tạo bằng --shard rồi chạy tiếp chỉ bằng run id (menu "Chạy tiếp run đang dở"): vẫn chỉ các task của shard.
+        var shardFile = Path.Combine(repo.Root, "shard-01.json");
+        await File.WriteAllTextAsync(shardFile,
+            $$"""{"experiment_sha256":"{{Hashing.Sha256TextFile(experimentFile)}}","tasks":[{"dataset":"classes2test","task_id":"810_calc"}]}""");
+        var sharded = await services.Pipeline.Start(new RunRequest { RunId = "shard-run", ExperimentPath = experimentFile, ShardPath = shardFile, FakeLlm = true, Blocks = [1] }, new Progress(events)).Completion;
+        Assert.True(sharded.State == RunState.Done, sharded.Error);
+        var resumed = await services.Pipeline.Start(new RunRequest { RunId = "shard-run", FakeLlm = true, Blocks = [1] }, new Progress(events)).Completion;
+        Assert.True(resumed.State == RunState.Done, resumed.Error);
+        Assert.Equal(["810_calc"], runs.ReadLedger("shard-run").Select(e => e.TaskId).Distinct());
+        Assert.NotNull(runs.ReadLock("shard-run")!.ShardFile);
+
         // Tập con chọn cho cấu hình khác thì không dùng.
         await File.AppendAllTextAsync(experimentFile, "\n");
         Assert.Equal(ErrorCodes.RunConfigMismatch, Assert.Throws<ArrowException>(() => services.Pipeline.Start(request with { RunId = "two-phase-b" }, new Progress(events))).Code);

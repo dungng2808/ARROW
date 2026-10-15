@@ -13,7 +13,9 @@ public sealed class FileConfigRepository(FrameworkPaths paths) : IConfigReposito
 {
     public IReadOnlyList<string> ListExperiments() =>
         Directory.Exists(paths.ExperimentsDir)
-            ? Directory.GetFiles(paths.ExperimentsDir, "*.json").OrderBy(f => f, StringComparer.Ordinal).ToList()
+            ? Directory.GetFiles(paths.ExperimentsDir, "*.json")
+                .Where(f => !f.EndsWith(".rq2-subset.json", StringComparison.Ordinal)) // file tập con RQ2 không phải cấu hình thực nghiệm
+                .OrderBy(f => f, StringComparer.Ordinal).ToList()
             : [];
 
     public LoadedExperiment LoadExperiment(string path)

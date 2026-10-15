@@ -189,4 +189,9 @@ public sealed record RunLock
     public string? GradleVersion { get; init; }
     public List<string> BuildFlags { get; init; } = [];
     public string? LlmEndpointHosts { get; init; }
+
+    /// <summary>Cấu hình thực nghiệm, file shard và tập task của run (tính từ <c>ARROW_Framework</c>): chạy tiếp mà không chỉ định lại thì dùng các giá trị này.</summary>
+    public string? ExperimentFile { get; init; }
+    public string? ShardFile { get; init; }
+    public string? TaskSelection { get; init; }
 }

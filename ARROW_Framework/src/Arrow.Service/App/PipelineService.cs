@@ -38,7 +38,11 @@ public sealed class PipelineService(
     private DateTimeOffset _startedAt;
     private volatile RunState _state = RunState.Done;
 
-    private sealed record Prepared(string RunId, LoadedExperiment Experiment, string ExperimentText, IReadOnlyList<PlannedTask> Tasks, MachineConfig? Machine, ToolEnvironment Tools, string WorkDir, string ToolsDir, Models.Block3.RepairSubset? Subset);
+    private sealed record Prepared(string RunId, LoadedExperiment Experiment, string ExperimentText, IReadOnlyList<PlannedTask> Tasks, MachineConfig? Machine, ToolEnvironment Tools, string WorkDir, string ToolsDir, Models.Block3.RepairSubset? Subset)
+    {
+        public string? ShardPath { get; init; }
+        public string? TaskSelection { get; init; }
+    }
 
     public RunHandle Start(RunRequest request, IProgress<RunEvent> progress)
     {
@@ -71,6 +75,14 @@ public sealed class PipelineService(
         }
     }
 
+    public IReadOnlyList<string> ListShards()
+    {
+        var root = Path.Combine(paths.ArrowRoot, "shards");
+        return Directory.Exists(root)
+            ? Directory.GetFiles(root, "shard-*.json", SearchOption.AllDirectories).OrderBy(f => f, StringComparer.Ordinal).ToList()
+            : [];
+    }
+
     public RunStatus GetSummary() => _counters.Snapshot(_runId, CurrentState(), _startedAt, _gate?.PausedReason);
 
     private RunState CurrentState() => _state == RunState.Running && _gate?.IsPaused == true ? RunState.Paused : _state;
@@ -79,7 +91,27 @@ public sealed class PipelineService(
 
     private Prepared Prepare(RunRequest request)
     {
-        var experimentPath = request.ExperimentPath ?? config.ListExperiments() switch
+        var runId = request.RunId ?? $"run-{DateTime.Now:yyyyMMdd-HHmm}";
+        if (runId.Length == 0 || runId.Any(c => !(char.IsAsciiLetterOrDigit(c) || c is '-' or '_' or '.')))
+        {
+            throw new ArgumentException($"Run id chỉ gồm chữ, số, '-', '_', '.': '{runId}'");
+        }
+
+        // Chạy tiếp một run mà không chỉ định lại: dùng đúng cấu hình, shard và tập task đã ghi khi tạo run
+        // (menu "Chạy tiếp run đang dở" chỉ biết run id; không có bước này thì shard bị bỏ và chạy mọi task).
+        var previous = runs.ReadLock(runId);
+        if (previous is not null && request.ShardPath is null && request.TaskSelection is null)
+        {
+            request = request with
+            {
+                ShardPath = previous.ShardFile is { } shard ? paths.Resolve(shard) : null,
+                TaskSelection = previous.TaskSelection,
+            };
+        }
+
+        var experimentPath = request.ExperimentPath
+                             ?? (previous?.ExperimentFile is { } saved ? paths.Resolve(saved) : null)
+                             ?? config.ListExperiments() switch
         {
             [var only] => only,
             [] => throw new ArrowException(ErrorCodes.ConfigMissing, $"Không có file cấu hình thực nghiệm trong {paths.ExperimentsDir}"),
@@ -90,12 +122,6 @@ public sealed class PipelineService(
         if (problems.Count > 0)
         {
             throw new ArrowException(ErrorCodes.PromptInvalid, "Bộ prompt không nhất quán: " + string.Join("; ", problems));
-        }
-
-        var runId = request.RunId ?? $"run-{DateTime.Now:yyyyMMdd-HHmm}";
-        if (runId.Length == 0 || runId.Any(c => !(char.IsAsciiLetterOrDigit(c) || c is '-' or '_' or '.')))
-        {
-            throw new ArgumentException($"Run id chỉ gồm chữ, số, '-', '_', '.': '{runId}'");
         }
 
         var all = manifests.ReadTasks(experiment);
@@ -123,7 +149,11 @@ public sealed class PipelineService(
         }
 
         var prepared = new Prepared(runId, experiment, experimentText, planned, machine, tools,
-            paths.Resolve(machine?.WorkDir ?? "../repo"), paths.Resolve(machine?.ToolsDir ?? "../tools"), subset);
+            paths.Resolve(machine?.WorkDir ?? "../repo"), paths.Resolve(machine?.ToolsDir ?? "../tools"), subset)
+        {
+            ShardPath = request.ShardPath,
+            TaskSelection = request.TaskSelection,
+        };
         LockRun(prepared);
         return prepared;
     }
@@ -158,6 +188,9 @@ public sealed class PipelineService(
         return tasks;
     }
 
+    /// <summary>Đường dẫn tính từ <c>ARROW_Framework</c> (dùng <c>/</c>) để run.lock.json không phụ thuộc vị trí thư mục trên máy.</summary>
+    private string FrameworkRelative(string path) => Path.GetRelativePath(paths.FrameworkRoot, Path.GetFullPath(path)).Replace('\\', '/');
+
     /// <summary>Run mới: ghi <c>run.lock.json</c> và bản sao cấu hình; run cũ: cấu hình và prompt phải khớp (<c>RUN_CONFIG_MISMATCH</c>).</summary>
     private void LockRun(Prepared prepared)
     {
@@ -184,6 +217,9 @@ public sealed class PipelineService(
             CreatedAt = DateTimeOffset.Now,
             ExperimentId = prepared.Experiment.Config.ExperimentId,
             ExperimentSha256 = prepared.Experiment.Sha256,
+            ExperimentFile = FrameworkRelative(prepared.Experiment.Path),
+            ShardFile = prepared.ShardPath is null ? null : FrameworkRelative(prepared.ShardPath),
+            TaskSelection = prepared.TaskSelection,
             ManifestSha256 = prepared.Experiment.Config.Manifests.ToDictionary(m => m.Dataset, m => m.Sha256),
             PromptSha256 = promptSha,
             ToolVersion = Assembly.GetExecutingAssembly().GetName().Version?.ToString(3) ?? "",

@@ -98,21 +98,51 @@ public sealed class MenuScreen(ArrowServices services, ConsoleInput input, Conso
 
     private async Task NewRunAsync()
     {
-        var runId = input.Ask("Run id", $"run-{DateTime.Now:yyyyMMdd-HHmm}");
-        var set = input.Choose("Tập task:", ["Tất cả task của thực nghiệm", "Đọc từ file danh sách task_id", "Nhập task_id, cách nhau dấu phẩy"]);
-        var selection = set switch
+        // Cấu hình thực nghiệm: một file thì dùng luôn, nhiều file thì hỏi (pilot-v1, smoke-real, eval-v1…).
+        var experiments = services.Models.Experiments();
+        var experiment = experiments.Count switch
         {
-            1 => input.Ask("File danh sách task_id"),
-            2 => input.Ask("task_id"),
-            _ => null,
+            0 => null,
+            1 => experiments[0],
+            _ => experiments[input.Choose("Cấu hình thực nghiệm:", experiments.Select(Path.GetFileName).Select(n => n!).ToList())],
         };
+        var runId = input.Ask("Run id", $"run-{DateTime.Now:yyyyMMdd-HHmm}");
+        var set = input.Choose("Tập task:",
+        [
+            "Tất cả task của thực nghiệm",
+            "File phân công máy (shards/<plan>/shard-NN.json)",
+            "Đọc từ file danh sách task_id",
+            "Nhập task_id, cách nhau dấu phẩy",
+        ]);
+        string? shard = null;
+        string? selection = null;
+        switch (set)
+        {
+            case 1:
+                var shards = services.Pipeline.ListShards();
+                if (shards.Count == 0)
+                {
+                    output.Status(Mark.Warn, "Không có file shard trong ARROW/shards");
+                    return;
+                }
+
+                shard = shards[input.Choose("Shard của máy này:", shards.Select(s => $"{Path.GetFileName(Path.GetDirectoryName(s))}/{Path.GetFileName(s)}").ToList())];
+                break;
+            case 2:
+                selection = input.Ask("File danh sách task_id");
+                break;
+            case 3:
+                selection = input.Ask("task_id");
+                break;
+        }
+
         var blocks = input.Ask("Các khối", "1,2,3,4");
         if (!input.Confirm("Bắt đầu?", true))
         {
             return;
         }
 
-        await Runner().RunAsync(new RunRequest { RunId = runId, TaskSelection = selection, Blocks = Commands.ParseBlocks(blocks) });
+        await Runner().RunAsync(new RunRequest { ExperimentPath = experiment, RunId = runId, TaskSelection = selection, ShardPath = shard, Blocks = Commands.ParseBlocks(blocks) });
     }
 
     /// <summary>Chọn một run trong <c>runs/</c> (mới nhất trước); <paramref name="experimentRuns"/> = bỏ run sàng lọc.</summary>
