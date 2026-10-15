@@ -162,4 +162,4 @@ Return only the complete corrected Java source of OrderService_ArrowTest, accord
 
 Phần sửa là ước tính: mã test lấy theo độ dài test sinh ra ở pilot cũ (trung vị 1.146, p90 2.260 token), khối lỗi 300–900, thông tin bổ sung 500–2.500, mỗi lần thử có chi tiết khoảng 75 token. CUT lớn nhất (15.406 token, khoảng 60.000 ký tự) vượt ngưỡng 48.000 ký tự của spec 02 Mục 2.1 nên khi chạy thật sẽ bị bỏ comment hoặc rút còn chữ ký, tức thấp hơn số trên.
 
-**Trần đầu ra và cửa sổ ngữ cảnh** (chốt 14/10/2026): `max_tokens = 8192` cho mọi model (trần, không phải số token phải trả; pilot cũ lớn nhất 2.944, không lượt nào bị cắt). Prompt dài nhất khoảng 23.000 token + 8.192 token đầu ra nên Qwen qua Ollama cần `num_ctx` ≥ 32.768 (spec 02 Mục 4.2).
+**Trần đầu ra và cửa sổ ngữ cảnh** (chốt 15/10/2026): `max_tokens = 16384` cho mọi model (trần, không phải số token phải trả; nâng từ 8192 vì pilot shard-01 có 2 lượt bị cắt). Prompt dài nhất khoảng 23.000 token + 16.384 token đầu ra nên Qwen qua Ollama cần `num_ctx` ≥ 40.960 (spec 02 Mục 4.2).

@@ -115,7 +115,7 @@ public sealed class ModelScreen(IModelConfigService models, ConsoleInput input, 
             models.AddModel(path, new ModelConfig
             {
                 Name = name, ExpectedModelIdPrefix = prefix,
-                Params = new() { ["temperature"] = 0, ["max_tokens"] = 8192, ["seed"] = 42 },
+                Params = new() { ["temperature"] = 0, ["max_tokens"] = 16384, ["seed"] = 42 },
             });
             output.Status(Mark.Ok, $"Đã thêm {name}", "khai báo provider và khóa ở mục tiếp theo");
         }

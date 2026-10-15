@@ -143,7 +143,7 @@ Mọi lượt gọi là một `LlmRequest`:
 ```json
 { "model": "gpt-6-luna",
   "messages": [ { "role": "system", "content": "…" }, { "role": "user", "content": "…" } ],
-  "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 8192, "seed": 42 } }
+  "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 16384, "seed": 42 } }
 ```
 
 Chỉ hai vai `system` và `user`, một lượt (không hội thoại nhiều lượt; lượt sửa gửi lại đủ ngữ cảnh). Gửi tới proxy theo chuẩn OpenAI `POST /v1/chat/completions`.
@@ -152,8 +152,8 @@ Chỉ hai vai `system` và `user`, một lượt (không hội thoại nhiều l
 
 - Tham số lấy **nguyên văn** từ `models[i].params` của experiment, giống nhau cho mọi quy trình, mọi cơ chế, mọi vòng. Không có tham số nào thay đổi theo task.
 - Không có `drop_params`: proxy từ chối tham số không hỗ trợ thì báo lỗi cấu hình (dừng run), không âm thầm bỏ qua.
-- **`max_tokens = 8192`** *(chốt 14/10/2026)*: là **trần** độ dài đầu ra, không phải số token phải trả (tiền tính theo số token model thật sự sinh ra). Pilot cũ với GPT-6 Luna: trung vị 1.146, lớn nhất 2.944 token, không lượt nào bị cắt, nên 8.192 còn dư gần gấp 3. Báo cáo đếm số lượt `finish_reason = "length"`; nếu thực nghiệm có lượt bị cắt thì xem lại trần này **trước** khi chạy chính thức (không đổi giữa chừng).
-- **Qwen qua Ollama:** cửa sổ ngữ cảnh `num_ctx` phải chứa được prompt dài nhất (khoảng 23.000 token, `prompts/README.md` Mục 6) **cộng** 8.192 token đầu ra, nên đặt `num_ctx` ≥ **32.768** trong cấu hình Ollama. Mặc định của Ollama nhỏ hơn nhiều và **cắt prompt không báo lỗi**. `arrow doctor` kiểm tra `num_ctx` của model Ollama (qua `ollama show`) và báo lỗi nếu nhỏ hơn 32.768.
+- **`max_tokens = 16384`** *(chốt 15/10/2026, trước là 8192)*: là **trần** độ dài đầu ra, không phải số token phải trả (tiền tính theo số token model thật sự sinh ra). Pilot cũ với GPT-6 Luna: trung vị 1.146, lớn nhất 2.944 token. Pilot shard-01 (15/10/2026) có 2 lượt sinh bị cắt ở 8.192 token (test tự viết stub đầy đủ cho một interface lớn), nên nâng trần lên 16.384 và chạy lại pilot. Báo cáo đếm số lượt `finish_reason = "length"`; nếu thực nghiệm có lượt bị cắt thì xem lại trần này **trước** khi chạy chính thức (không đổi giữa chừng).
+- **Qwen qua Ollama:** cửa sổ ngữ cảnh `num_ctx` phải chứa được prompt dài nhất (khoảng 23.000 token, `prompts/README.md` Mục 6) **cộng** 16.384 token đầu ra, nên đặt `num_ctx` ≥ **40.960** trong cấu hình Ollama. Mặc định của Ollama nhỏ hơn nhiều và **cắt prompt không báo lỗi**. `arrow doctor` kiểm tra `num_ctx` của model Ollama (qua `ollama show`) và báo lỗi nếu nhỏ hơn 40.960.
 
 ### 4.3. Route Request to Selected Model
 
@@ -278,7 +278,7 @@ public interface ILlmClient
 | 2.3 Instruction Strategy | Chọn system `generation/system/zero_shot_project_aware.md`, user `generation/user/project_aware.md`; bỏ phần đầu file; điền `cut_fqn`, `cut_path`, `test_package`, `test_class_name`, `repository_configuration`, `cut_source` | id, version, sha256 của 2 template ghi vào `prompt.json` |
 | 3 Prompting Strategy | `zero_shot_project_aware` | 2 message |
 | 4.1 Chuẩn hóa input | `LlmRequest { model, messages, params }` | |
-| 4.2 Tham số | `reasoning_effort: none, temperature: 0, max_tokens: 8192, seed: 42` | |
+| 4.2 Tham số | `reasoning_effort: none, temperature: 0, max_tokens: 16384, seed: 42` | |
 | 4.4 Cache | Khóa `sha256(call_id + model + params + messages)`, `call_id = gen/555001_…/gpt-6-luna/zero_shot_project_aware`; chưa có (run mới) | Gọi model thật |
 | 4.3 Định tuyến | `POST http://127.0.0.1:4000/v1/chat/completions`, LiteLLM chuyển tới provider của `gpt-6-luna` | 200 OK sau 8,7 s; model id `gpt-6-luna` ✔ |
 | 4.5 Lấy mã | Response là mã thuần (không fence); parse được, 1 class | Class tên `OrderServiceTest` |

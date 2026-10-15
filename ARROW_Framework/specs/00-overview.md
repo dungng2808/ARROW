@@ -78,7 +78,7 @@ Ba file, tách phần dùng chung với phần riêng của từng máy.
   ],
   "models": [
     { "name": "gpt-6-luna", "expected_model_id_prefix": "gpt-6-luna",
-      "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 8192, "seed": 42 },
+      "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 16384, "seed": 42 },
       "price_usd_per_million": { "input": 0.05, "output": 0.25 } }
   ],
   "strategies": ["zero_shot", "zero_shot_project_aware", "few_shot"],
@@ -256,3 +256,4 @@ Giải thích chi tiết từng điểm (bối cảnh, vấn đề, ảnh hưở
 | 15/10/2026 | Spec 01: Gradle dùng project chứa CUT khi lệnh preflight không ghi project hoặc ghi project cha; jar hỏng trong cache Maven/Gradle bị xóa và thử lại (lỗi hạ tầng) | Sàng lọc tập đánh giá 200 CUT: 5 CUT `B1_MODULE_MISMATCH` sai, 5 CUT lỗi biên dịch do jar hỏng trong `~/.m2` |
 | 15/10/2026 | Spec 00, 03, 04: tập con cố định 120 ứng viên Classes2Test cho RQ2 rút đều theo ô model × quy trình (seed 42, xếp theo sha256), chạy hai pha với `arrow rq2-subset`; Adaptive cho mọi ứng viên `zero_shot_project_aware` thất bại ngoài tập con, chỉ dùng cho RQ3 (`rq3_only`), không tính vào RQ2 và quy tắc N | Quyết định của nhóm (phương án E): giữ đúng thiết kế 120 của Report 2 mà RQ3 vẫn có đủ bộ đại diện |
 | 15/10/2026 | Spec 04: đo JaCoCo trên bộ EvoSuite bằng bản sao `separateClassLoader = false`; bảng tổng của `run` đếm cả lượt gọi model của phần sửa; tìm LiteLLM trong `ARROW/litellm` (venv); thêm `experiments/smoke-real.json` (N = 2) cho chạy thử với model thật | Chạy thử C10 với GPT-6 Luna trên 2 CUT pilot |
+| 15/10/2026 | Spec 02: `max_tokens` 8192 → 16384; Qwen qua Ollama cần `num_ctx` ≥ 40.960 (doctor kiểm tra) | Pilot shard-01: 2 lượt sinh của `67934497` bị cắt ở 8.192 token (`finish_reason = "length"`, test tự viết stub `ResultSet` đầy đủ); quyết định của nhóm, chạy lại pilot |

@@ -4,7 +4,7 @@
   "shard_id": "shard-01",
   "owner": "Dung-mac",
   "owner_display": "Dũng-mac",
-  "experiment_sha256": "b0424b4a80ed1e9f9e2ef3801b75d30170883db2dab8b47514c45430482a9913",
+  "experiment_sha256": "45189e7477171dc96dfe3d501330e6524fe9983430f7e2a61a89360e9bcfc865",
   "tasks": [
     {
       "dataset": "classes2test",

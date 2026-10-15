@@ -7,7 +7,7 @@
   ],
   "models": [
     { "name": "gpt-6-luna", "expected_model_id_prefix": "gpt-6-luna",
-      "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 8192, "seed": 42 },
+      "params": { "reasoning_effort": "none", "temperature": 0, "max_tokens": 16384, "seed": 42 },
       "price_usd_per_million": { "input": 0.05, "output": 0.25 } }
   ],
   "strategies": ["zero_shot", "zero_shot_project_aware", "few_shot"],

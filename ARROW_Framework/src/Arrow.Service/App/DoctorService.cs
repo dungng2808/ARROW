@@ -10,12 +10,12 @@ namespace Arrow.Service.App;
 
 /// <summary>
 /// Kiểm tra môi trường (S4, spec 06 Mục 6, spec 00 Mục 5.1 <c>doctor</c>): cấu hình thực nghiệm và sha256 manifest, bộ prompt, JDK,
-/// Maven/Gradle/Git, thư mục repository, kết nối GitHub, LiteLLM, từng model (Ollama: <c>num_ctx</c> ≥ 32.768), java-helper, công cụ khối 4.
+/// Maven/Gradle/Git, thư mục repository, kết nối GitHub, LiteLLM, từng model (Ollama: <c>num_ctx</c> ≥ 40.960), java-helper, công cụ khối 4.
 /// Báo từng dòng ngay khi kiểm xong; lưu dấu kết quả vào <c>machine.local.json</c>.
 /// </summary>
 public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepository config, IPromptRepository prompts, IProcessRunner runner, ILogRepository log) : IDoctorService
 {
-    public const int MinOllamaContext = 32_768;
+    public const int MinOllamaContext = 40_960;
 
     [GeneratedRegex(@"num_ctx\s+(?<n>\d+)")]
     private static partial Regex NumCtx();
@@ -189,7 +189,7 @@ public sealed partial class DoctorService(FrameworkPaths paths, IConfigRepositor
             ToolLocator.FindMaven(machine), jdk, runner, log);
     }
 
-    /// <summary>Spec 02 Mục 4.2: Ollama cắt prompt không báo lỗi khi <c>num_ctx</c> nhỏ, nên phải ≥ 32.768.</summary>
+    /// <summary>Spec 02 Mục 4.2: Ollama cắt prompt không báo lỗi khi <c>num_ctx</c> nhỏ, nên phải ≥ 40.960.</summary>
     private async Task<DoctorLine> OllamaContextAsync(string name, LiteLlmRoute route, CancellationToken ct)
     {
         var ollama = ToolLocator.FindOnPath(OperatingSystem.IsWindows() ? "ollama.exe" : "ollama");
