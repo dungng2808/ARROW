@@ -1,0 +1,484 @@
+# Bàn giao riêng cho Máy của bạn — slug `may-toi`
+
+Gửi nguyên file này cho agent trên máy Máy của bạn. Agent chưa cần biết lịch sử chat;
+quy trình chung đầy đủ đã được chép bên dưới. Repository:
+https://github.com/dungng2808/ARROW.git. Tìm clone hiện có trước, nếu chưa có mới
+clone. Giữ source, dataset và output cũ cho tới khi người dùng cho phép dọn.
+
+**Phần riêng:** C2T **12873** CUT, GitBug **28**,
+CAT-LM **18**. Bắt đầu **3 workers**, trần hiệu chỉnh
+**4**; đây là số repo song song, không phải cam kết tối ưu cho mọi build.
+Làm các bước 1–7 bên dưới trước khi chạy khối lệnh riêng ở cuối file.
+Mọi đường dẫn thao tác bắt đầu từ `ARROW/Prelight_Net`, phải tìm đường dẫn thực tế
+và cấu hình `preflight.local.json` trên **máy này** trước. Không sử dụng config
+có đường dẫn của máy khác. Nhắc dọn pilot cũ trước chạy thật; chưa có chỉ dẫn xóa
+thì giữ pilot và dùng thư mục run mới tách biệt.
+
+# Thực nghiệm Prelight_Net trên 5 máy — team-r1
+
+Tài liệu này là đầu vào cho người/agent chưa có lịch sử hội thoại. Repository duy nhất:
+https://github.com/dungng2808/ARROW.git. Engine ở `ARROW/Prelight_Net`, chạy .NET,
+không cần chạy framework LLM, Docker hay Python Preflight cũ. Python 3.11+ chỉ dùng
+cho công cụ chia việc, dựng thư viện native trên Mac và xuất/tổng hợp báo cáo.
+
+File giao riêng: [máy của bạn](01_MAY_CUA_BAN.md), [Hán](02_HAN.md),
+[KA](03_KA.md), [Chính](04_CHINH.md), [Dũng/Mac](05_DUNG_MAC.md).
+Mỗi file đã chứa quy trình chung đầy đủ và lệnh riêng của thành viên.
+
+## 1. Phân công đã khóa, không chia lại theo kết quả pass
+
+| Thành viên/slug | Máy | C2T CUT | GitBug CUT | CAT-LM CUT | Workers bắt đầu | Trần thử nghiệm |
+| --- | --- | ---: | ---: | ---: | ---: | ---: |
+| Dũng / `dung` | M4 Pro, RAM 48 GB, SSD 1 TB | 34327 | 92 | 47 | 8 | 10, phụ thuộc số core thực và RAM |
+| KA / `ka` | Ryzen 7 6800H, RAM 24 GB | 17164 | 37 | 24 | 4 | 5 |
+| Máy chủ yêu cầu / `may-toi` | Ryzen 5 5600H, RAM 24 GB, RX 5500M | 12873 | 28 | 18 | 3 | 4 |
+| Hán / `han` | Ryzen 5 5600H, RAM 24 GB, RTX 3050 | 12873 | 27 | 18 | 3 | 4 |
+| Chính / `chinh` | i5-11400H, RAM 16 GB, GTX 1650 | 8582 | 18 | 12 | 2 | 3 |
+| Tổng | 5 máy | **85819** | **202** | **119** | | |
+
+Tên thật của chủ máy hiện tại chưa được cung cấp; dùng slug `may-toi`, không gộp
+với Dũng dùng Mac. GPU không tăng tốc clone/Java compile. Workers là số repository
+song song, không phải số CPU thread. Trần trên là giới hạn để hiệu chỉnh, chưa phải
+benchmark chứng minh tối ưu. Mỗi máy chỉ chạy một dataset tại một thời điểm.
+
+`team-plan.json` đã chia theo repository, không cắt một repo giữa hai người trong
+cùng dataset. Mục tiêu C2T là 40/20/15/15/10%; GitBug/CAT-LM lệch nhẹ do giữ nguyên
+repo. Dũng nhận 34327 C2T + 92 GitBug + 47 CAT-LM. Tải thật còn phụ thuộc độ lớn repo.
+Không dùng lại `shards-5` cũ vì chúng chia đều và gán tên thành viên khác.
+
+Population: C2T 362414 evidence → 85819 CUT, 9410 repo; GitBug **202 CUT đã ghép
+cặp** trên 42 repo (không tuyên bố bao phủ mọi bug/file không có cặp của benchmark
+gốc); CAT-LM 119 CUT/98 repo, gồm cả eval và non-eval. Giữ denominator đầy đủ,
+không bỏ lỗi clone/build hoặc loại mẫu để tăng pass.
+
+## 2. Quy tắc cho agent thực hiện trên từng máy
+
+1. Xác nhận đúng slug và máy thực tế. Đọc file thành viên tương ứng.
+2. Nếu chưa có workspace, clone ARROW. Nếu đã có, kiểm `git status`; giữ thay đổi
+   của người dùng rồi mới cập nhật. Không reset/clean toàn workspace.
+3. Trước chạy thật, **nhắc dọn pilot cũ**. Riêng máy `may-toi`, user đã yêu cầu
+   giữ output pilot tới khi cho phép dọn: hỏi rõ trước khi xóa
+   `Dataset/_pilot30_seed42` và `file.md/pilot-30-seed42`. Không xóa ngầm. Chạy mới
+   dùng tên khác nên không trộn output pilot. Không đụng dataset gốc.
+4. Tìm dataset/JDK/tool **trong workspace trước, ngoài workspace sau**. Chỉ nói
+   thiếu và yêu cầu người dùng cung cấp/tải sau khi đã liệt kê vị trí đã tìm.
+5. Tạo `preflight.local.json` theo đường dẫn máy đang chạy. File này đã ignore;
+   không push config cá nhân. Không chép đường dẫn `D:/ki9/...` sang máy khác.
+6. Không thay class policy, probe, timeout, mẫu hoặc commit vì một mẫu fail.
+   Không sửa engine để tăng tỷ lệ pass. Không dùng `--fast` hoặc `--max-classes`.
+7. Giữ Git commit của engine, config, native library và input cố định sau khi run
+   bắt đầu. Resume được đổi workers; không rebuild/pull làm đổi binary giữa run.
+8. Mọi output riêng ở `Dataset/_team-r1/...` (local, ignored). Output chia sẻ ở
+   `results/team-r1/<slug>/<dataset>/` (tracked), không chứa repo/cache.
+
+## 3. Clone và kiểm môi trường
+
+Windows PowerShell (nếu chưa có repo):
+
+```powershell
+git clone https://github.com/dungng2808/ARROW.git
+cd ARROW\Prelight_Net
+git lfs install
+git lfs pull
+git status --short
+dotnet --list-sdks
+dotnet --list-runtimes
+git --version
+python --version
+```
+
+macOS terminal ARM64:
+
+```bash
+git clone https://github.com/dungng2808/ARROW.git
+cd ARROW/Prelight_Net
+git lfs install
+git lfs pull
+uname -m
+sysctl -n hw.physicalcpu
+sysctl -n hw.logicalcpu
+sysctl -n hw.memsize
+dotnet --info
+dotnet --list-runtimes
+python3 --version
+```
+
+Nếu clone báo chưa cài Git LFS: cài Git LFS, `git lfs install`, `git lfs pull`.
+Không coi file pointer LFS là dữ liệu golden. Không cần tải dataset qua GitHub ARROW
+vì `Dataset/` bị ignore.
+
+Cần .NET SDK **10.0.403** để thống nhất build và .NET **8 runtime** đúng OS/CPU
+vì project target `net8.0`. `global.json` cho roll forward nhưng không có nghĩa SDK
+10 đi kèm runtime 8. Kiểm `dotnet --list-runtimes` có `Microsoft.NETCore.App 8.*`.
+Tìm bản đã cài trước, chỉ cài phần thiếu từ Microsoft; ghi phiên bản thực tế.
+Mac phải là ARM64 native, không trộn SDK x64/Rosetta. Không đổi target framework
+trong experiment này.
+
+## 4. Tìm và xác minh dataset trước khi tải
+
+Windows: kiểm các đường dẫn tương đối `Dataset`, `../gitbug_input`,
+`../classes2test-main`, workspace cha và thư mục Downloads đã biết. Sau đó dùng
+`Get-PSDrive -PSProvider FileSystem` tìm có mục tiêu trên **mọi ổ** truy cập được.
+Có thể dùng `rg --files --hidden --no-ignore` với glob `revision_map.csv`,
+`*testdata*.tgz`, `*catlm*.tar`; tìm thư mục `classes2test*` hoặc `dataset` theo
+từng root. Giới hạn đầu ra, không in hàng trăm nghìn JSON. Kiểm junction/symlink.
+
+Mac: tìm trong repo → thư mục cha → `$HOME/Downloads`, `$HOME/Documents`,
+`$HOME/datasets`, `/Volumes/*` đang gắn; `find` theo tên ở các root này, không
+follow symlink vòng và ghi các vị trí không đọc được. Giữ đường dẫn bản đã có;
+không copy archive lớn chỉ để ép vào `Dataset`.
+
+| Dataset | Phải tìm được | Xác minh |
+| --- | --- | --- |
+| Classes2Test | `dataset/<project>/*.json` | JSON có focal_class/test_class; không dùng thư mục `output/` thay dataset |
+| GitBug replay | `gitbug_input/dataset/` **và** `revision_map.csv` | Đúng bộ 202 CUT; map đầy đủ, không dùng danh sách 30 pilot |
+| CAT-LM | `testdata.tgz` hoặc tar Java tương đương | Ưu tiên bản Java-only của nhóm: 201098240 bytes; kiểm prefix Java, không kiểm tên file đơn thuần |
+
+Nếu chưa có: nhắc người dùng cung cấp dataset bị thiếu và vị trí mong muốn. Ưu
+tiên nhận bộ đã khóa từ điều phối viên. Nguồn GitBug raw là
+https://github.com/gitbugactions/gitbug-java, CAT-LM artifacts là
+https://zenodo.org/records/7909299; raw khác population/byte phải xác minh trước.
+Không tự tải lại hàng chục GB khi bản đã có ở ổ khác. Classes2Test nên nhận đúng
+`dataset/` của nhóm, không đoán URL/phiên bản từ tên thư mục.
+
+Bản CAT-LM Java-only hiện tại vẫn tên `testdata.tgz` nhưng là **tar thô**, không
+giải nén bằng `tar -xzf` chỉ dựa vào đuôi file. Prefix Java dài **201097216 bytes**,
+SHA-256 **4c16c31ebe3b6b7c5156f4eb69d628442278707eb76d810f41b33d5635237c89**.
+Archive gốc trước dọn phần Python là 17922042898 bytes; không cần gửi/tải lại
+phần Python. Engine tự đọc tar này; pool hash chốt theo prefix Java nên bản đã
+cắt Python vẫn tương thích nếu prefix giữ nguyên. Không tự repack đổi header tar.
+Các JSON C2T/GitBug cũng phải giữ nguyên byte, encoding và line ending. Nếu lấy
+dataset bằng Git trên Windows, kiểm autocrlf/attributes trước khi checkout;
+không chấp nhận file hash khác chỉ vì nội dung nhìn tương đương trong editor.
+
+## 5. JDK và build tool
+
+Đọc `ARROW/Java-version/AGENTS.md` sau clone. Tìm JDK 8/11/17/21 đã có trên toàn máy
+trước khi tải; kiểm **cả java và javac** đúng major, native OS/CPU. Không map thiếu
+JDK 8 sang 17. Mac thường có `/Library/Java/JavaVirtualMachines/*/Contents/Home`,
+`/usr/libexec/java_home -V`, và Homebrew `/opt/homebrew/opt/...`; kiểm từng bản.
+Chỉ tải major còn thiếu từ vendor chính thức, xác minh SHA-256; không cần Docker.
+Đối chiếu cùng vendor/full build giữa các OS nếu có; khác phiên bản phải ghi rõ.
+JDK hiện có không cần di chuyển. Mới cài theo `Java-version/runtime/jdk-<major>`.
+
+Maven fallback **3.9.9**, Gradle fallback **8.10.2**. Tìm `mvn`, `gradle` và cài
+portable đúng bản nếu thiếu, từ nguồn chính thức có checksum. Repo có wrapper sẽ
+dùng wrapper của repo; không thay mọi wrapper bằng Gradle mới nhất. Không tải JDK
+Windows cho Mac. Không thay PATH/JAVA_HOME toàn hệ thống.
+
+## 6. Config local bắt buộc
+
+Nếu chưa có file, copy `preflight.config.example.json` thành `preflight.local.json`.
+Nếu đã có thì sửa đúng các trường cần thiết, giữ config người dùng hợp lệ. JSON
+dùng slash `/` trong path Windows. Dưới đây là **mẫu có placeholder phải thay**:
+
+```json
+{
+  "run": {"workers": 3, "max_revision_candidates": 500, "max_evidence_checks": 50,
+    "build_timeout_seconds": 900, "git_timeout_seconds": 1800,
+    "keep_workspaces": false, "keep_repo_cache": false, "probe_profile": "v2",
+    "fast_mode": false, "offline": false},
+  "java": {"default_home": "<JDK17_HOME>",
+    "homes": {"8":"<JDK8_HOME>","11":"<JDK11_HOME>","17":"<JDK17_HOME>","21":"<JDK21_HOME>"},
+    "tree_sitter_library": "tools/tree-sitter-native/bin/tree_sitter_java_preflight.dll"},
+  "datasets": {
+    "classes2test": {"root":"<THU_MUC_CHUA_dataset>"},
+    "gitbug": {"root":"<gitbug_input_CHUA_dataset_VA_revision_map.csv>","manual_labels":""},
+    "catlm": {"archive":"<DUONG_DAN_ARCHIVE>","cohort":"all_filepairs",
+      "verify_upstream":false,"revision_policy":"snapshot_unverified"}},
+  "tools": {"maven_home":"<MAVEN_HOME>","gradle_home":"<GRADLE_HOME>",
+    "maven_repo_local":"Dataset/_team-r1/cache/<SLUG>/m2",
+    "gradle_user_home":"Dataset/_team-r1/cache/<SLUG>/gradle"},
+  "disk": {"min_free_gb":20,"resume_free_gb":30,"check_interval_seconds":15,
+    "build_cache_max_gb":20,"sweep_orphans_on_start":true}
+}
+```
+
+Thay workers theo bảng thành viên. Mac đổi `tree_sitter_library` thành đường dẫn
+tuyệt đối `.work/native-macos/libtree_sitter_java_preflight.dylib` sau bước 7.
+Không giữ placeholder. Cache bắt buộc nằm dưới Prelight_Net theo contract hiện tại.
+`build_cache_max_gb` là ngưỡng dọn hạn chế, **không phải hard cap**; theo dõi free
+disk trong run, dừng có checkpoint nếu cần. Đề nghị còn 50–80 GiB trống **sau khi
+dataset đã có**, chỉ là dự trù. CAT-LM normalize giải nén cả pool trước khi run
+quét bỏ repo ngoài shard, cần chỗ tạm. Không tự giảm ngưỡng an toàn để chạy tiếp.
+
+Tạo `<gradle_user_home>/gradle.properties` trước run, cùng nội dung trên 5 máy:
+
+```properties
+org.gradle.workers.max=1
+org.gradle.parallel=false
+org.gradle.daemon=false
+```
+
+Như vậy repo song song được quản lý bởi Prelight. Không đặt Maven `-T` hoặc mở
+thêm ba CLI cùng lúc làm nhân số workers. Không ép heap thấp gây false failure.
+
+## 7. Build engine và kiểm native trước khi chạy thật
+
+Windows:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/dotnet-local.ps1 restore PreflightNet.sln
+if ($LASTEXITCODE -ne 0) { throw 'Restore failed' }
+powershell -NoProfile -ExecutionPolicy Bypass -File tools/dotnet-local.ps1 build PreflightNet.sln -c Release --no-restore
+if ($LASTEXITCODE -ne 0) { throw 'Build failed' }
+dotnet src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll --help
+```
+
+Windows DLL native đã có trong repo, SHA-256:
+`51eb547d0bafac241829c251b83c3c6df0611b24f14ef2bb05c6ee4def4e7f1c`.
+Không rebuild native nếu checksum đã đúng.
+
+Mac (chưa được chạy thử trên máy Mac tại thời điểm viết plan, bắt buộc qua gate):
+
+```bash
+uname -m                       # arm64
+xcrun --find clang             # nếu thiếu: xcode-select --install
+python3 -B tools/team-experiment/build_native_macos.py
+export DOTNET_CLI_HOME="$PWD/Dataset/_team-setup/dotnet-home"
+export NUGET_PACKAGES="$PWD/Dataset/_team-setup/nuget"
+dotnet restore PreflightNet.sln
+dotnet build PreflightNet.sln -c Release --no-restore
+dotnet src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll --help
+```
+
+Builder Mac lấy đúng nguồn/checksum từ lock Windows, dùng clang dựng dylib ARM64;
+không chạy DLL Windows trên Mac và không đổi parser version. Không khẳng định Mac
+đã sẵn sàng chỉ vì `--help` chạy được. Trước normalize/run phải tạo console smoke
+ở `Dataset/_team-setup/native-smoke`, target net8.0, reference
+`src/Preflight.Service/Preflight.Service.csproj`, Program.cs:
+
+```csharp
+using Preflight.Service.Core.JavaAst;
+using Preflight.DataAccess;
+var parser = new JavaSourceParser(args[0]);
+var parsed = parser.Parse("package p; public class C { public int f() { return 1; } }",
+    "src/main/java/p/C.java", "C");
+if (parsed?.Name != "C") throw new Exception("Native parser smoke failed");
+using var db = new ClassIndexStore(Path.Combine(AppContext.BaseDirectory, "smoke.sqlite"));
+Console.WriteLine("NATIVE_AND_SQLITE_OK");
+```
+
+Tạo bằng `dotnet new console -f net8.0 -o Dataset/_team-setup/native-smoke`, dùng
+`dotnet add ... reference ...`, ghi Program.cs đúng trên, rồi:
+
+```bash
+dotnet run --project Dataset/_team-setup/native-smoke -- "$PWD/.work/native-macos/libtree_sitter_java_preflight.dylib"
+```
+
+Windows cũng có thể chạy smoke với đường dẫn DLL. Chỉ nhận gate khi in
+`NATIVE_AND_SQLITE_OK`. Nếu lỗi ABI/SQLite/Permission denied, dừng và sửa setup
+trước; không tính lỗi nền tảng thành fail dataset. Không sửa source/policy engine.
+Không cho agent tự chuyển 40% của Dũng sang máy khác khi gate chưa qua; báo nhóm
+và cập nhật plan có version nếu cần.
+
+## 8. Chạy phần được giao
+
+Làm theo file thành viên: normalize đầy đủ pool local → tạo shard local theo
+`team-plan.json` → run shard → export khi COMPLETED. Chạy thứ tự
+**GitBug → CAT-LM → Classes2Test** để phát hiện vấn đề setup trước lượt lớn.
+C2T profile **v1**, GitBug/CAT-LM **v2**. CAT-LM `snapshot_unverified` không strict;
+Classes2Test chọn theo history/content match cũng không tự thành UPSTREAM_PINNED.
+Không đổi policy để làm strict tăng. Full preflight compile main/test/probe,
+không phải chạy test suite/coverage/LLM repair.
+
+Mọi máy dùng cùng `team-plan.json`; `team.py shard` kiểm pool hash trước khi chọn
+mẫu. CAT-LM shard phải **sinh tại máy đang chạy** vì evidence chứa đường dẫn tuyệt
+đối; không copy shard/index/normalize.json từ Windows sang Mac. GitBug phải dùng
+cùng revision_map. Nếu pool khác 85819/202/119 hoặc hash lệch, dừng xác minh input,
+không resample, không dùng `--max-classes` để lách lỗi. Task ID + evidence shard
+được CLI kiểm thêm khi chạy.
+
+Calibration dùng chính run/shard thật: bắt đầu workers ở bảng, quan sát 15–30 phút,
+tăng từng 1 bằng Ctrl+C → resume nếu còn RAM ít nhất 6 GiB (máy 16 GiB: 4 GiB),
+free disk >30 GiB, không swap kéo dài và throughput tăng. Không vượt trần bảng;
+Dũng dùng `min(10, physical_cpu)` và kiểm biến thể M4 Pro thực tế. Giảm 1 nếu
+OOM/swap/nhiệt làm chậm. OOM do chạy quá tải phải ghi nhận, không âm thầm loại mẫu.
+Không thể bảo đảm một con số workers luôn là tối đa ổn định cho mọi repo Java.
+
+Sau calibration có thể để máy tự chạy, không cần agent theo dõi liên tục. Agent
+lưu **chỉ khối lệnh riêng của thành viên** cuối file bàn giao vào
+`Dataset/_team-r1/<SLUG>/run-team.ps1` (Windows) hoặc `run-team.sh` (Mac, LF).
+Không ghi toàn bộ Markdown thành script, không khởi chạy trùng nếu job cũ còn sống.
+Windows, từ Prelight_Net, thay `<SLUG>` bằng thành viên:
+
+```powershell
+$launchRoot = (Get-Location).Path
+$launchScript = Join-Path $launchRoot 'Dataset/_team-r1/<SLUG>/run-team.ps1'
+$launchLog = Join-Path $launchRoot 'Dataset/_team-r1/<SLUG>/run-team.log'
+Start-Process -FilePath powershell -ArgumentList '-NoProfile','-ExecutionPolicy','Bypass','-File',('"'+$launchScript+'"') -WorkingDirectory $launchRoot -WindowStyle Hidden -RedirectStandardOutput $launchLog -RedirectStandardError ($launchLog+'.error') -PassThru
+```
+
+Mac, từ Prelight_Net:
+
+```bash
+nohup caffeinate -i bash 'Dataset/_team-r1/dung/run-team.sh' > 'Dataset/_team-r1/dung/run-team.log' 2>&1 < /dev/null &
+echo $!
+```
+
+Ghi PID, kiểm job còn sống, xem `reports/progress.json` từng run và log launcher.
+Giữ máy bật/cắm nguồn; `caffeinate` không cho phép mặc định đóng nắp Mac mà vẫn
+chạy. Hiệu chỉnh bằng Ctrl+C dễ nhất ở lượt foreground trước. Nếu buộc dừng job
+nền, chỉ dừng đúng cây PID đã ghi; checkpoint phục hồi hard kill khi resume,
+không dùng lệnh kill toàn bộ java/dotnet trên máy. Không tự push khi run chưa đủ.
+
+Windows monitor: Task Manager; `Get-CimInstance Win32_OperatingSystem`;
+`Get-PSDrive -PSProvider FileSystem`. Mac: Activity Monitor, `memory_pressure`,
+`vm_stat`, `df -h`. Cắm nguồn, ngăn Sleep; Mac có thể dùng `caffeinate -i` bọc CLI.
+
+Exit 0 = run COMPLETED, có thể vẫn nhiều mẫu fail; 75 = thiếu disk, 130 = ngắt;
+1 = lỗi cần xem. Dừng nếu khác 0, không chạy dataset tiếp. Resume đúng output-dir:
+
+```text
+dotnet src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll resume --output-dir Dataset/_team-r1/<SLUG>/<DATASET> --workers <N>
+```
+
+Không xóa checkpoint để chạy lại mẫu fail. Không resume bằng `run`. Giữ input,
+config, binary, native library cố định. Repo/workspace tự dọn theo scheduler; chỉ
+dọn cache dùng chung khi **tất cả CLI/JVM của máy đã dừng**, giữ output/checkpoint.
+Trước khi xóa cache sau cùng, giữ `gradle.properties` để tái lập. Chưa được xóa
+pilot cũ hoặc output thật nếu người dùng chưa yêu cầu.
+
+## 9. Output lên GitHub
+
+`team.py export` chỉ xuất run COMPLETED, kiểm đủ đúng task ID đã giao; ghi
+`preflight_results.part-*.jsonl`, manifests, summary, provenance và `export.json`
+có SHA-256. Mỗi chunk tối đa 20 MiB; giữ byte từng dòng. Không tự tạo file >100 MiB
+để push. CSV/log/state gốc vẫn giữ local; không cần đưa clone, cache, SQLite WAL,
+dataset, JDK hoặc config cá nhân lên repo.
+`.gitattributes` đặt `results/team-r1/** -text` để Git không đổi CRLF/LF làm lệch
+checksum khi gộp Windows/Mac. `plan_sha256` tính trên JSON canonical, không phụ
+thuộc line ending của file plan. Giữ các quy tắc này khi commit/push kết quả.
+
+Lệnh thành viên có bước `team.py publish` tự commit/push branch riêng khi cả ba
+dataset đã export đủ và checksum đúng. Công cụ chặn nếu sai branch hoặc đang
+stage file ngoài thư mục results thành viên; không thay đổi/xóa staging đó.
+Không merge main tự động. Xác minh quyền GitHub và đăng nhập trước chạy nền;
+không có credential thì push báo lỗi, giữ nguyên dữ liệu/commit để push lại sau.
+
+Trước chạy, tạo branch riêng `experiment/team-r1-<SLUG>`. Khi hoàn tất/export,
+chỉ stage `Prelight_Net/results/team-r1/<SLUG>/`. Không dùng `git add .` vì repo
+hiện có binary và nhiều thay đổi local. Kiểm các file xuất trước commit; nếu GitHub
+secret scan chặn thì không bypass/bỏ bảo vệ — kiểm file cụ thể và báo điều phối.
+Không sửa status/pass hoặc raw evidence để push được.
+
+PowerShell, từ root ARROW:
+
+```powershell
+git add -- Prelight_Net/results/team-r1/<SLUG>/
+git diff --cached --stat
+git commit -m "Add team-r1 results for <SLUG>"
+git push -u origin experiment/team-r1-<SLUG>
+```
+
+Mac cùng lệnh Git. Nếu chưa có quyền push, giữ commit local và yêu cầu chủ repo
+cấp quyền collaborator; không gửi token qua chat. Nếu có GitHub CLI đã auth,
+`gh pr create --base main --head experiment/team-r1-<SLUG> --title ... --body ...`.
+Không force-push/main chung giữa 5 máy. Nhóm merge từng PR, không cần pull/rebuild
+trong lúc run còn hoạt động.
+
+Sau khi đủ output 5 người đã merge, điều phối viên chạy từ Prelight_Net:
+
+```text
+python -B tools/team-experiment/team.py aggregate --plan docs/team-experiment/team-plan.json
+```
+
+Mac dùng `python3`. Kết quả là `results/team-r1/_aggregate/full-summary.json` và
+`TONG_HOP.md`. Công cụ kiểm checksum, không trùng/thiếu task, tính pass trên đủ
+86140 CUT, không lấy trung bình phần trăm của 5 máy. Commit/push thư mục aggregate
+riêng. Báo rõ khác OS/CPU/JDK; pass tổng này không chứng minh parity Python/.NET.
+
+## 10. Điều phối viên và nguồn tham khảo
+
+Plan đã khóa bằng metadata đầy đủ, không chạy lại Prelight thật trong lượt lập
+kế hoạch. SHA pool cho C2T gồm identity/evidence; GitBug thêm commit pinned;
+CAT-LM gồm identity/HEAD và hash prefix Java của archive. File plan không chứa
+dataset body hoặc đường dẫn cá nhân. Không xóa plan khi dọn pilot; plan không
+phụ thuộc pilot sau khi đã được xuất.
+
+Nếu dataset chính thức thay đổi, tạo experiment ID/plan mới, không chỉnh plan
+team-r1 sau khi có thành viên bắt đầu. Nếu cần chuyển repo giữa thành viên do
+tải không đều, chỉ chuyển repo chưa chạy, có biên bản phiên bản và kiểm union.
+
+Tài liệu chính thức: [.NET macOS](https://learn.microsoft.com/en-us/dotnet/core/install/macos),
+[.NET Windows](https://learn.microsoft.com/en-us/dotnet/core/install/windows),
+[Gradle CLI](https://docs.gradle.org/current/userguide/command_line_interface.html),
+[giới hạn file GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
+
+
+## Lệnh riêng cho Máy của bạn: chạy/resume và xuất kết quả
+
+Sau khi setup và gate đã qua, tạo branch `experiment/team-r1-may-toi` từ bản
+source chung đã chốt: `git switch -c experiment/team-r1-may-toi`. Nếu branch
+đã có thì kiểm trạng thái rồi dùng branch đó, không ghi đè thay đổi người dùng.
+Workers trong config là 3; thay `<SLUG>` ở cache bằng `may-toi`.
+Lưu `results/team-r1/may-toi/machine.json` với CPU/RAM/OS/core thực,
+workers thực tế, SDK/runtime/JDK/Maven/Gradle full version, SHA native và thời điểm.
+Không copy config local vào Git.
+
+Khối lệnh dưới chạy lần lượt GitBug → CAT-LM → C2T; gọi lại để resume khi đã
+kiểm tra nguyên nhân ngắt và không còn CLI khác của cùng run. Thay `python`
+bằng Python executable đã tìm được nếu máy không dùng tên đó.
+Khối lệnh tự commit/push **chỉ output thành viên** sau khi đủ ba dataset và
+checksum hợp lệ. Kiểm quyền GitHub, branch và staging trước khi chạy nền.
+Nếu push lỗi, output/commit local vẫn giữ; không tự force-push hay bỏ qua secret scan.
+
+```powershell
+$member = 'may-toi'
+$workers = 3
+$cli = 'src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll'
+$plan = 'docs/team-experiment/team-plan.json'
+$sessionConfig = Get-Content preflight.local.json -Raw | ConvertFrom-Json
+$env:JAVA_HOME = $sessionConfig.java.default_home
+$env:PATH = (Join-Path $env:JAVA_HOME 'bin') + [IO.Path]::PathSeparator + $env:PATH
+foreach ($dataset in @('gitbug-java','catlm','classes2test')) {
+    $run = "Dataset/_team-r1/$member/$dataset"
+    $shard = "Dataset/_team-r1/$member/$dataset-shard.json"
+    $profile = if ($dataset -eq 'classes2test') { 'v1' } else { 'v2' }
+    if (!(Test-Path "$run/state/normalize.json")) {
+        dotnet $cli normalize --dataset $dataset --config preflight.local.json --output-dir $run --probe-profile $profile
+        if ($LASTEXITCODE -ne 0) { throw "Normalize failed: $dataset" }
+    }
+    if (!(Test-Path $shard)) {
+        python -B tools/team-experiment/team.py shard --plan $plan --dataset $dataset --member $member --index "$run/state/class_index.sqlite" --output $shard
+        if ($LASTEXITCODE -ne 0) { throw "Pool mismatch: $dataset" }
+    }
+    $complete = (Get-Content "$run/provenance.json" -Raw | ConvertFrom-Json).run_status -eq 'COMPLETED'
+    if (!$complete) {
+        if (Test-Path "$run/state/run_state.sqlite") {
+            dotnet $cli resume --output-dir $run --workers $workers
+        } else {
+            dotnet $cli run --output-dir $run --shard $shard --workers $workers
+        }
+        if ($LASTEXITCODE -ne 0) { throw "Run interrupted: $dataset; inspect and resume." }
+    }
+    if (!(Test-Path "results/team-r1/$member/$dataset/export.json")) {
+        python -B tools/team-experiment/team.py export --plan $plan --dataset $dataset --member $member --run $run
+        if ($LASTEXITCODE -ne 0) { throw "Export failed: $dataset" }
+    }
+}
+python -B tools/team-experiment/team.py publish --plan $plan --member $member
+if ($LASTEXITCODE -ne 0) { throw 'Results preserved locally; inspect Git authentication/staging/branch before publishing again.' }
+```
+
+Ctrl+C giữ checkpoint. Nếu cần đổi workers, đổi `$workers` trong khối lệnh và
+gọi lại sau khi CLI cũ dừng, tối đa 4 sau calibration. Không sửa config
+hoặc rebuild binary giữa run. Khối lệnh dừng khi có lỗi/thiếu disk, không bỏ qua
+mẫu và không chuyển dataset nếu dataset trước chưa hoàn tất.
+
+Ba run phải COMPLETED; kiểm đủ 12873/28/18
+CUT tương ứng C2T/GitBug/CAT-LM. Tỷ lệ pass lấy trên đủ mẫu đã giao, không lọc lỗi.
+Sau khi đã kiểm các file export, từ **root ARROW**:
+
+```text
+git add -- Prelight_Net/results/team-r1/may-toi/
+git diff --cached --stat
+git commit -m "Add team-r1 results for may-toi"
+git push -u origin experiment/team-r1-may-toi
+```
+
+Chỉ stage thư mục results của mình; không `git add .`, không force push.
+Tạo PR vào main bằng web hoặc GitHub CLI đã đăng nhập. Nếu chưa có quyền push,
+giữ commit local và báo chủ repo cấp collaborator. Không yêu cầu người dùng
+đưa token vào chat. Khi xong báo counts, pass%, thời gian, lỗi hạ tầng, link PR;
+không xóa output/checkpoint/pilot nếu chưa có yêu cầu.
