@@ -4,6 +4,9 @@
 
 # Keep checksummed experiment reports byte-identical across Windows and macOS.
 results/team-r1/** -text
-docs/team-experiment/team-plan.json text eol=lf
-docs/team-experiment/*.md text eol=lf
-tools/team-experiment/*.py text eol=lf
+Shards/_shared/team-plan.json text eol=lf
+Shards/_shared/assignment-files.json text eol=lf
+Shards/_shared/assignments/** -text
+Shards/*.md text eol=lf
+Shards/_shared/*.md text eol=lf
+Shards/_tools/*.py text eol=lf

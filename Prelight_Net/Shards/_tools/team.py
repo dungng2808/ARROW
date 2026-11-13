@@ -5,6 +5,7 @@ Only orchestration/reporting uses Python; the preflight engine remains the .NET 
 from __future__ import annotations
 import argparse
 import collections
+import contextlib
 import hashlib
 import json
 import os
@@ -15,7 +16,7 @@ import subprocess
 import sys
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
-MEMBERS = {'dung':40, 'ka':20, 'may-toi':15, 'han':15, 'chinh':10}
+MEMBERS = {'dung':40, 'ka':20, 'chinh':15, 'han':15, 'quang':10}
 EXPECTED = {'classes2test':85819, 'gitbug-java':202, 'catlm':119}
 
 def read(path):
@@ -35,7 +36,7 @@ def digest(value):
 
 def load_index(path):
     uri = pathlib.Path(path).resolve().as_uri()+'?mode=ro'
-    with sqlite3.connect(uri,uri=True) as db:
+    with contextlib.closing(sqlite3.connect(uri,uri=True)) as db:
         return [json.loads(row[0]) for row in db.execute('SELECT task_json FROM normalized_tasks ORDER BY task_id')]
 
 def candidate(task):
@@ -86,7 +87,7 @@ def plan(args):
     for dataset,path in args.catalog or []: pools[dataset]+=rows(path)
     for dataset,path in args.index or []: pools[dataset]+=load_index(path)
     assert set(pools)==set(EXPECTED)
-    result={'schema_version':1,'experiment_id':'team-r1','weights':MEMBERS,'datasets':{}}
+    result={'schema_version':1,'experiment_id':'team-r1','assignment_revision':2,'weights':MEMBERS,'datasets':{}}
     for dataset,tasks in pools.items():
         assert len(tasks)==EXPECTED[dataset],(dataset,len(tasks))
         assignments=allocate(tasks)
@@ -111,8 +112,18 @@ def shard(args):
     assert len(chosen)==len(wanted)
     if not chosen: raise ValueError('No tasks assigned; skip this dataset on this member')
     output=pathlib.Path(args.output)
-    if output.exists(): raise ValueError('Shard exists; reuse it for resume')
-    write(output,{'schema_version':1,'shard_id':f"team-r1-{args.member}-{args.dataset}",'class_count':len(chosen),'classes':[assignment(t) for t in chosen]})
+    value={'schema_version':1,'shard_id':f"team-r1-{args.member}-{args.dataset}",'class_count':len(chosen),'classes':[assignment(t) for t in chosen]}
+    checkpoint=pathlib.Path(args.index).with_name('run_state.sqlite')
+    if checkpoint.exists():
+        with contextlib.closing(sqlite3.connect(checkpoint.resolve().as_uri()+'?mode=ro',uri=True)) as db:
+            existing={row[0] for row in db.execute('SELECT task_id FROM tasks')}
+        if existing!=wanted:
+            raise ValueError('Checkpoint belongs to a different assignment. Preserve it; do not resume with this plan.')
+    if output.exists():
+        if read(output)!=value:
+            raise ValueError('Existing shard belongs to another assignment; do not run or overwrite it.')
+    else:
+        write(output,value)
     print(json.dumps({'member':args.member,'dataset':args.dataset,'classes':len(chosen),'output':str(output)}))
 
 def export(args):

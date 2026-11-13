@@ -1,0 +1,227 @@
+{
+  "experiment_id": "team-r1",
+  "assignment_revision": 2,
+  "plan_sha256": "eef913bfae84c1d39f32d10cdd10db85e2b1c082bdd0709fd74a11e774377f58",
+  "members": {
+    "dung": {
+      "classes2test": {
+        "path": "Shards/_shared/assignments/dung/classes2test.csv",
+        "task_count": 34327,
+        "repository_count": 3760,
+        "bytes": 10786735,
+        "sha256": "c044414a5fd64d4ffd09b7a2ed7b3b7fea3ffb07f0304754de23d616b65ece02",
+        "preview": [
+          {
+            "task_id": "10005385_c00b6941e158d1bc",
+            "repo_url": "https://github.com/gephi/graphstore",
+            "class_path": "store/src/main/java/org/gephi/graph/impl/EdgeTypeStore.java"
+          }
+        ]
+      },
+      "gitbug-java": {
+        "path": "Shards/_shared/assignments/dung/gitbug-java.csv",
+        "task_count": 92,
+        "repository_count": 1,
+        "bytes": 30669,
+        "sha256": "0bd1dbbb182cd471fa40bcc787d97c2297668f9c9b8034b30fa8e84e643c4ff4",
+        "preview": [
+          {
+            "task_id": "traccar-traccar-007b4007e063_3914cd0ff42f2d0d",
+            "repo_url": "https://github.com/traccar/traccar",
+            "class_path": "src/main/java/org/traccar/protocol/TopinProtocolDecoder.java"
+          }
+        ]
+      },
+      "catlm": {
+        "path": "Shards/_shared/assignments/dung/catlm.csv",
+        "task_count": 47,
+        "repository_count": 38,
+        "bytes": 15748,
+        "sha256": "055cdb916e5d18916c7d4afce232815ea914704066700071eee3cbbeff9321e5",
+        "preview": [
+          {
+            "task_id": "catlm-BushnevYuri__e2e-automation-pipeline_21c8512ca2e5d404",
+            "repo_url": "https://github.com/BushnevYuri/e2e-automation-pipeline",
+            "class_path": "src/main/java/steps/api/BlazeDemoAPISteps.java"
+          }
+        ]
+      }
+    },
+    "ka": {
+      "classes2test": {
+        "path": "Shards/_shared/assignments/ka/classes2test.csv",
+        "task_count": 17164,
+        "repository_count": 1883,
+        "bytes": 5162750,
+        "sha256": "dd1499dfc2998746c61845deb9dbae2bdbbfaead7e55e269c8985f91fc4bd2fa",
+        "preview": [
+          {
+            "task_id": "100021742_84a2a209f2807d95",
+            "repo_url": "https://github.com/snowdrop/spring-cloud-stream-binder-artemis",
+            "class_path": "spring-cloud-stream-binder-artemis/src/main/java/me/snowdrop/stream/binder/artemis/provisioning/ArtemisBrokerManager.java"
+          }
+        ]
+      },
+      "gitbug-java": {
+        "path": "Shards/_shared/assignments/ka/gitbug-java.csv",
+        "task_count": 37,
+        "repository_count": 1,
+        "bytes": 10371,
+        "sha256": "c1b67e16be8c5b7fbe948af8ac52eeda4aeaa46f546b9929e2713d44dbb27494",
+        "preview": [
+          {
+            "task_id": "jhy-jsoup-0121311b1bd5_1b8051b85de3b685",
+            "repo_url": "https://github.com/jhy/jsoup",
+            "class_path": "src/main/java/org/jsoup/internal/StringUtil.java"
+          }
+        ]
+      },
+      "catlm": {
+        "path": "Shards/_shared/assignments/ka/catlm.csv",
+        "task_count": 24,
+        "repository_count": 20,
+        "bytes": 7992,
+        "sha256": "1ffd462c48de9d1f1d3ec4e407ecd4d73fb79656b496659125b51f0a52dc3b2a",
+        "preview": [
+          {
+            "task_id": "catlm-9526xu__mybatis-encrypt_1c9e8ee37d2c9309",
+            "repo_url": "https://github.com/9526xu/mybatis-encrypt",
+            "class_path": "encrypt-core/src/main/java/org/demo/MybatisDemoApplication.java"
+          }
+        ]
+      }
+    },
+    "chinh": {
+      "classes2test": {
+        "path": "Shards/_shared/assignments/chinh/classes2test.csv",
+        "task_count": 12873,
+        "repository_count": 1412,
+        "bytes": 3908885,
+        "sha256": "c6cdccd793ac92d6e75b86f49edbf1673a080dffdbdcea7b31a85bf51db75d12",
+        "preview": [
+          {
+            "task_id": "1001284_358eac155ff6ee1e",
+            "repo_url": "https://github.com/pholser/junit-quickcheck",
+            "class_path": "core/src/main/java/com/pholser/junit/quickcheck/internal/GeometricDistribution.java"
+          }
+        ]
+      },
+      "gitbug-java": {
+        "path": "Shards/_shared/assignments/chinh/gitbug-java.csv",
+        "task_count": 28,
+        "repository_count": 15,
+        "bytes": 10206,
+        "sha256": "21f8e62b526dac7546061d2a94ff2fc2017a8c22c073a5ce38f0ec4906ffcbc1",
+        "preview": [
+          {
+            "task_id": "GoSimpleLLC-nbvcxz-ee8d5c62f4fb_495b6b04e2610c7c",
+            "repo_url": "https://github.com/GoSimpleLLC/nbvcxz",
+            "class_path": "src/main/java/me/gosimple/nbvcxz/resources/ConfigurationBuilder.java"
+          }
+        ]
+      },
+      "catlm": {
+        "path": "Shards/_shared/assignments/chinh/catlm.csv",
+        "task_count": 18,
+        "repository_count": 15,
+        "bytes": 5649,
+        "sha256": "b8b96cf0c63a4c377a9e29f4e6d820813968c67b1c7169a6df3829efb1a42150",
+        "preview": [
+          {
+            "task_id": "catlm-Java-Techie-jt__spring-boot-crud-example_30d5700320b4a54f",
+            "repo_url": "https://github.com/Java-Techie-jt/spring-boot-crud-example",
+            "class_path": "src/main/java/com/javatechie/crud/example/SpringBootCrudExample2Application.java"
+          }
+        ]
+      }
+    },
+    "han": {
+      "classes2test": {
+        "path": "Shards/_shared/assignments/han/classes2test.csv",
+        "task_count": 12873,
+        "repository_count": 1413,
+        "bytes": 3898770,
+        "sha256": "3cb6e5a8e495238fc57afa764a617a660af552f311cb177e9e08ac0c192129ad",
+        "preview": [
+          {
+            "task_id": "100295611_c3fb9b12520eb0d1",
+            "repo_url": "https://github.com/ralscha/wamp2spring",
+            "class_path": "wamp2spring-core/src/main/java/ch/rasc/wamp2spring/message/EventMessage.java"
+          }
+        ]
+      },
+      "gitbug-java": {
+        "path": "Shards/_shared/assignments/han/gitbug-java.csv",
+        "task_count": 27,
+        "repository_count": 15,
+        "bytes": 9734,
+        "sha256": "48c17b25b30eb072319d4158bb74eb9abd0d22c5ee8214d9b6c6c475d2186abd",
+        "preview": [
+          {
+            "task_id": "AuthMe-ConfigMe-7bf10c513479_5db35da89b9d8088",
+            "repo_url": "https://github.com/AuthMe/ConfigMe",
+            "class_path": "src/main/java/ch/jalu/configme/configurationdata/PropertyListBuilder.java"
+          }
+        ]
+      },
+      "catlm": {
+        "path": "Shards/_shared/assignments/han/catlm.csv",
+        "task_count": 18,
+        "repository_count": 15,
+        "bytes": 6020,
+        "sha256": "6bae4ebbd3893344a258f696bd484889df33ff2864adaf5f69aefe77fa6c9749",
+        "preview": [
+          {
+            "task_id": "catlm-Java-Techie-jt__spring-boot-mockito_3e3e87df9cbd19b4",
+            "repo_url": "https://github.com/Java-Techie-jt/spring-boot-mockito",
+            "class_path": "src/main/java/com/javatechie/spring/mockito/api/SpringBootMockitoApplication.java"
+          }
+        ]
+      }
+    },
+    "quang": {
+      "classes2test": {
+        "path": "Shards/_shared/assignments/quang/classes2test.csv",
+        "task_count": 8582,
+        "repository_count": 942,
+        "bytes": 2637891,
+        "sha256": "bb3a9cdb1f7a58a809b97ace4d02e9f80c46fb46961528b88511d39e3e3f4723",
+        "preview": [
+          {
+            "task_id": "10035739_96237c8e2a9012ec",
+            "repo_url": "https://github.com/openforis/android-ports",
+            "class_path": "android-liquibase/android-liquibase-core/src/main/java/liquibase/serializer/core/xml/XMLChangeLogSerializer.java"
+          }
+        ]
+      },
+      "gitbug-java": {
+        "path": "Shards/_shared/assignments/quang/gitbug-java.csv",
+        "task_count": 18,
+        "repository_count": 10,
+        "bytes": 6733,
+        "sha256": "32b940f501b86438ea3b23c86c568ea8503ac3479895c5a0c9a4070fd00dc2f0",
+        "preview": [
+          {
+            "task_id": "Bindambc-whatsapp-business-java-api-362caf5eb33c_4cd01b7e4356e842",
+            "repo_url": "https://github.com/Bindambc/whatsapp-business-java-api",
+            "class_path": "src/main/java/com/whatsapp/api/domain/messages/Language.java"
+          }
+        ]
+      },
+      "catlm": {
+        "path": "Shards/_shared/assignments/quang/catlm.csv",
+        "task_count": 12,
+        "repository_count": 10,
+        "bytes": 4235,
+        "sha256": "81af8c39d5a8aa49a24ae6f3678c061a6cf622731ef3c04b2060f195286fedcd",
+        "preview": [
+          {
+            "task_id": "catlm-Java-Techie-jt__spring-boot-soap-ws_35d9a68d82b903c9",
+            "repo_url": "https://github.com/Java-Techie-jt/spring-boot-soap-ws",
+            "class_path": "src/main/java/com/javatechie/spring/soap/api/SpringBootSopaWsApplication.java"
+          }
+        ]
+      }
+    }
+  }
+}

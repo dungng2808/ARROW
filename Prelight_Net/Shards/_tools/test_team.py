@@ -2,6 +2,7 @@ import copy
 import importlib.util
 import pathlib
 import random
+import sqlite3
 import contextlib
 import io
 import json
@@ -19,6 +20,43 @@ def task(i,repo='https://github.com/o/r'):
         'pinned_revision':{'checkout_sha':'b'*40},'extra':{'catlm.java_archive_sha256':'c'*64,'catlm.java_archive_bytes':'123'}}
 
 class AssignmentTests(unittest.TestCase):
+    def test_reallocation_is_exact_swap_of_quang_and_chinh(self):
+        tasks=[task(i,f'https://github.com/o/r{i//3}') for i in range(240)]
+        old_members={'dung':40,'ka':20,'quang':15,'han':15,'chinh':10}
+        with mock.patch.object(TEAM,'MEMBERS',old_members):old=TEAM.allocate(tasks)
+        new=TEAM.allocate(tasks)
+        self.assertEqual(new['quang'],old['chinh'])
+        self.assertEqual(new['chinh'],old['quang'])
+        for member in ('dung','ka','han'):self.assertEqual(new[member],old[member])
+
+    def shard_inputs(self,root):
+        tasks=[task(1),task(2)]
+        index=root/'state/class_index.sqlite';index.parent.mkdir(parents=True)
+        with contextlib.closing(sqlite3.connect(index)) as db, db:
+            db.execute('CREATE TABLE normalized_tasks(task_id TEXT,task_json TEXT)')
+            db.executemany('INSERT INTO normalized_tasks VALUES(?,?)',[(t['candidate']['task_id'],json.dumps(t)) for t in tasks])
+        plan=root/'plan.json'
+        TEAM.write(plan,{'datasets':{'classes2test':{'pool_sha256':TEAM.pool_hash(tasks,'classes2test'),'assignments':{'quang':['1']}}}})
+        return types.SimpleNamespace(plan=plan,dataset='classes2test',member='quang',index=index,output=root/'local-shard.json')
+
+    def test_existing_shard_reused_only_when_assignment_is_unchanged(self):
+        with tempfile.TemporaryDirectory() as temporary,contextlib.redirect_stdout(io.StringIO()):
+            args=self.shard_inputs(pathlib.Path(temporary))
+            TEAM.shard(args);before=args.output.read_bytes();TEAM.shard(args)
+            self.assertEqual(before,args.output.read_bytes())
+            plan=TEAM.read(args.plan);plan['datasets']['classes2test']['assignments']['quang']=['2'];TEAM.write(args.plan,plan)
+            with self.assertRaisesRegex(ValueError,'another assignment'):TEAM.shard(args)
+            self.assertEqual(before,args.output.read_bytes())
+
+    def test_checkpoint_from_previous_assignment_is_not_resumed(self):
+        with tempfile.TemporaryDirectory() as temporary,contextlib.redirect_stdout(io.StringIO()):
+            args=self.shard_inputs(pathlib.Path(temporary))
+            checkpoint=args.index.with_name('run_state.sqlite')
+            with contextlib.closing(sqlite3.connect(checkpoint)) as db, db:
+                db.execute('CREATE TABLE tasks(task_id TEXT)');db.execute("INSERT INTO tasks VALUES('2')")
+            with self.assertRaisesRegex(ValueError,'Checkpoint belongs to a different assignment'):TEAM.shard(args)
+            self.assertFalse(args.output.exists())
+
     def test_complete_disjoint_repo_assignment_and_deterministic_order(self):
         tasks=[task(i,f'https://github.com/o/r{i//3}') for i in range(240)]
         first=TEAM.allocate(tasks);random.Random(42).shuffle(tasks)

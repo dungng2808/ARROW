@@ -1,18 +1,25 @@
 """Keep the five standalone handoff documents consistent with the common guide."""
 import json
 import pathlib
+from team import digest
 
 ROOT=pathlib.Path(__file__).resolve().parents[2]
-DOC=ROOT/'docs/team-experiment'
-COMMON=(DOC/'README.md').read_text(encoding='utf-8')
-PLAN=json.loads((DOC/'team-plan.json').read_text(encoding='utf-8'))
-MEMBERS=[('may-toi','01_MAY_CUA_BAN.md','Máy của bạn',3,4),('han','02_HAN.md','Hán',3,4),('ka','03_KA.md','KA',4,5),('chinh','04_CHINH.md','Chính',2,3),('dung','05_DUNG_MAC.md','Dũng — Mac M4 Pro',8,10)]
+DOC=ROOT/'Shards'
+COMMON=(DOC/'_shared/README.md').read_text(encoding='utf-8')
+PLAN=json.loads((DOC/'_shared/team-plan.json').read_text(encoding='utf-8'))
+FILES=json.loads((DOC/'_shared/assignment-files.json').read_text(encoding='utf-8'))
+if FILES['plan_sha256']!=digest(PLAN):
+    raise ValueError('Assignment CSVs refer to another plan; regenerate them before the guides.')
+MEMBERS=[('dung','01-DUNG.md','Dũng — Mac M4 Pro',8,10),('ka','02-KIEU_ANH.md','KA',4,5),('quang','03-QUANG.md','Quang',2,3),('chinh','04-CHINH.md','Chính',2,3),('han','05-HAN.md','Hán',3,4)]
+for _,file,_,_,_ in MEMBERS:
+    COMMON=COMMON.replace('](../'+file+')',']('+file+')')
+COMMON=COMMON.replace('](assignment-files.json)','](_shared/assignment-files.json)')
 WINDOWS=r'''
 ```powershell
 $member = '{member}'
 $workers = {workers}
 $cli = 'src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll'
-$plan = 'docs/team-experiment/team-plan.json'
+$plan = 'Shards/_shared/team-plan.json'
 $sessionConfig = Get-Content preflight.local.json -Raw | ConvertFrom-Json
 $env:JAVA_HOME = $sessionConfig.java.default_home
 $env:PATH = (Join-Path $env:JAVA_HOME 'bin') + [IO.Path]::PathSeparator + $env:PATH
@@ -24,10 +31,8 @@ foreach ($dataset in @('gitbug-java','catlm','classes2test')) {{
         dotnet $cli normalize --dataset $dataset --config preflight.local.json --output-dir $run --probe-profile $profile
         if ($LASTEXITCODE -ne 0) {{ throw "Normalize failed: $dataset" }}
     }}
-    if (!(Test-Path $shard)) {{
-        python -B tools/team-experiment/team.py shard --plan $plan --dataset $dataset --member $member --index "$run/state/class_index.sqlite" --output $shard
-        if ($LASTEXITCODE -ne 0) {{ throw "Pool mismatch: $dataset" }}
-    }}
+    python -B Shards/_tools/team.py shard --plan $plan --dataset $dataset --member $member --index "$run/state/class_index.sqlite" --output $shard
+    if ($LASTEXITCODE -ne 0) {{ throw "Pool/shard/checkpoint mismatch: $dataset" }}
     $complete = (Get-Content "$run/provenance.json" -Raw | ConvertFrom-Json).run_status -eq 'COMPLETED'
     if (!$complete) {{
         if (Test-Path "$run/state/run_state.sqlite") {{
@@ -38,11 +43,11 @@ foreach ($dataset in @('gitbug-java','catlm','classes2test')) {{
         if ($LASTEXITCODE -ne 0) {{ throw "Run interrupted: $dataset; inspect and resume." }}
     }}
     if (!(Test-Path "results/team-r1/$member/$dataset/export.json")) {{
-        python -B tools/team-experiment/team.py export --plan $plan --dataset $dataset --member $member --run $run
+        python -B Shards/_tools/team.py export --plan $plan --dataset $dataset --member $member --run $run
         if ($LASTEXITCODE -ne 0) {{ throw "Export failed: $dataset" }}
     }}
 }}
-python -B tools/team-experiment/team.py publish --plan $plan --member $member
+python -B Shards/_tools/team.py publish --plan $plan --member $member
 if ($LASTEXITCODE -ne 0) {{ throw 'Results preserved locally; inspect Git authentication/staging/branch before publishing again.' }}
 ```
 '''
@@ -52,7 +57,7 @@ set -e
 member=dung
 workers=8
 cli=src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll
-plan=docs/team-experiment/team-plan.json
+plan=Shards/_shared/team-plan.json
 export JAVA_HOME="$(python3 -c 'import json;print(json.load(open("preflight.local.json"))["java"]["default_home"])')"
 export PATH="$JAVA_HOME/bin:$PATH"
 for dataset in gitbug-java catlm classes2test; do
@@ -63,9 +68,7 @@ for dataset in gitbug-java catlm classes2test; do
   if [ ! -f "$run/state/normalize.json" ]; then
     dotnet "$cli" normalize --dataset "$dataset" --config preflight.local.json --output-dir "$run" --probe-profile "$profile" || break
   fi
-  if [ ! -f "$shard" ]; then
-    python3 -B tools/team-experiment/team.py shard --plan "$plan" --dataset "$dataset" --member "$member" --index "$run/state/class_index.sqlite" --output "$shard" || break
-  fi
+  python3 -B Shards/_tools/team.py shard --plan "$plan" --dataset "$dataset" --member "$member" --index "$run/state/class_index.sqlite" --output "$shard" || break
   complete=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["run_status"])' "$run/provenance.json")
   if [ "$complete" != COMPLETED ]; then
     if [ -f "$run/state/run_state.sqlite" ]; then
@@ -75,10 +78,10 @@ for dataset in gitbug-java catlm classes2test; do
     fi
   fi
   if [ ! -f "results/team-r1/$member/$dataset/export.json" ]; then
-    python3 -B tools/team-experiment/team.py export --plan "$plan" --dataset "$dataset" --member "$member" --run "$run" || break
+    python3 -B Shards/_tools/team.py export --plan "$plan" --dataset "$dataset" --member "$member" --run "$run" || break
   fi
 done
-python3 -B tools/team-experiment/team.py publish --plan "$plan" --member "$member"
+python3 -B Shards/_tools/team.py publish --plan "$plan" --member "$member"
 ```
 '''
 for member,file,name,workers,ceiling in MEMBERS:
@@ -99,6 +102,50 @@ và cấu hình `preflight.local.json` trên **máy này** trước. Không sử
 có đường dẫn của máy khác. Nhắc dọn pilot cũ trước chạy thật; chưa có chỉ dẫn xóa
 thì giữ pilot và dùng thư mục run mới tách biệt.
 
+'''
+    identification=f'''
+## Chính xác phần dữ liệu {name} phải chạy
+
+Mã phân công: **`team-r1 / revision {PLAN['assignment_revision']} / {member}`**.
+Không tự chọn ngẫu nhiên hoặc lấy N dòng đầu dataset. Danh sách task đã chốt tại
+`Shards/_shared/team-plan.json` → `datasets.<dataset>.assignments.{member}`.
+Các CSV dưới đây liệt kê **toàn bộ task cụ thể** của người này, không chỉ số lượng:
+Agent dùng script đọc/đối chiếu CSV, không nạp nguyên CSV hoặc plan lớn vào context;
+chỉ in counts, checksum và vài dòng ví dụ. Lệnh sinh shard đã tự chọn đúng task_id.
+
+| Dataset | Dòng được giao trong CSV riêng | Repository | Danh sách task/class/test |
+| --- | ---: | ---: | --- |
+'''
+    for dataset in ('classes2test','gitbug-java','catlm'):
+        info=FILES['members'][member][dataset]
+        assert info['task_count']==counts[dataset]
+        relative=info['path'].removeprefix('Shards/')
+        identification+=f"| {dataset} | 1–{counts[dataset]} | {info['repository_count']} | [{member}/{dataset}.csv]({relative}) |\n"
+    identification+='''
+Mỗi dòng CSV có `task_id`, `repo_url`, `class_path`, `test_class_paths`, commit
+pinned nếu có, `source_json_path` và số evidence. `assigned_row` là số thứ tự
+trong phần của riêng bạn; `population_row` là vị trí trong toàn pool đã sắp theo
+task_id. Do chia theo repository, các population_row thường **không liên tục**.
+Không biến số nhỏ nhất/lớn nhất thành một khoảng để chạy cả những mẫu của người khác.
+`source_json_path` là evidence đầu tiên của CUT; CUT có thể có nhiều JSON evidence.
+
+Ví dụ định danh thật lấy ngay từ danh sách người này:
+
+'''
+    for dataset in ('classes2test','gitbug-java','catlm'):
+        row=FILES['members'][member][dataset]['preview'][0]
+        identification+=f"- **{dataset}**: task `{row['task_id']}`, repo `{row['repo_url']}`, class `{row['class_path']}`.\n"
+    identification+='''
+CSV là bảng để người/agent kiểm tra phân công, không phải input dataset hoặc
+shard CLI có thể truyền thẳng vào `--shard`. Agent normalize input local đầy đủ,
+chạy `Shards/_tools/team.py shard --member` đúng slug ở cuối tài liệu; công cụ
+chỉ chọn các task_id trong plan của người này và tạo shard hợp lệ trên máy đó.
+Hiện pipeline cần đầy đủ input pool để kiểm hash rồi mới lọc phần riêng. Không
+chỉ đưa một mẩu CSV/JSON của người này cho bước normalize toàn pool.
+
+Sau khi sinh shard, đối chiếu `class_count` với số dòng CSV và danh sách task_id;
+lệnh chạy luôn có `--shard`, không được bỏ flag đó vì sẽ chạy cả dataset.
+Trước chạy báo người dùng slug, ba file CSV đã dùng và ba số lượng để kiểm tra.
 '''
     tail=f'''
 
@@ -153,5 +200,5 @@ giữ commit local và báo chủ repo cấp collaborator. Không yêu cầu ng�
 đưa token vào chat. Khi xong báo counts, pass%, thời gian, lỗi hạ tầng, link PR;
 không xóa output/checkpoint/pilot nếu chưa có yêu cầu.
 '''
-    (DOC/file).write_bytes((header+COMMON+tail).encode('utf-8'))
+    (DOC/file).write_bytes((header+identification+'\n'+COMMON+tail).encode('utf-8'))
 print('Wrote five standalone Vietnamese handoff documents.')

@@ -1,18 +1,58 @@
-# Bàn giao riêng cho Dũng — Mac M4 Pro — slug `dung`
+# Bàn giao riêng cho Hán — slug `han`
 
-Gửi nguyên file này cho agent trên máy Dũng — Mac M4 Pro. Agent chưa cần biết lịch sử chat;
+Gửi nguyên file này cho agent trên máy Hán. Agent chưa cần biết lịch sử chat;
 quy trình chung đầy đủ đã được chép bên dưới. Repository:
 https://github.com/dungng2808/ARROW.git. Tìm clone hiện có trước, nếu chưa có mới
 clone. Giữ source, dataset và output cũ cho tới khi người dùng cho phép dọn.
 
-**Phần riêng:** C2T **34327** CUT, GitBug **92**,
-CAT-LM **47**. Bắt đầu **8 workers**, trần hiệu chỉnh
-**10**; đây là số repo song song, không phải cam kết tối ưu cho mọi build.
+**Phần riêng:** C2T **12873** CUT, GitBug **27**,
+CAT-LM **18**. Bắt đầu **3 workers**, trần hiệu chỉnh
+**4**; đây là số repo song song, không phải cam kết tối ưu cho mọi build.
 Làm các bước 1–7 bên dưới trước khi chạy khối lệnh riêng ở cuối file.
 Mọi đường dẫn thao tác bắt đầu từ `ARROW/Prelight_Net`, phải tìm đường dẫn thực tế
 và cấu hình `preflight.local.json` trên **máy này** trước. Không sử dụng config
 có đường dẫn của máy khác. Nhắc dọn pilot cũ trước chạy thật; chưa có chỉ dẫn xóa
 thì giữ pilot và dùng thư mục run mới tách biệt.
+
+
+## Chính xác phần dữ liệu Hán phải chạy
+
+Mã phân công: **`team-r1 / revision 2 / han`**.
+Không tự chọn ngẫu nhiên hoặc lấy N dòng đầu dataset. Danh sách task đã chốt tại
+`Shards/_shared/team-plan.json` → `datasets.<dataset>.assignments.han`.
+Các CSV dưới đây liệt kê **toàn bộ task cụ thể** của người này, không chỉ số lượng:
+Agent dùng script đọc/đối chiếu CSV, không nạp nguyên CSV hoặc plan lớn vào context;
+chỉ in counts, checksum và vài dòng ví dụ. Lệnh sinh shard đã tự chọn đúng task_id.
+
+| Dataset | Dòng được giao trong CSV riêng | Repository | Danh sách task/class/test |
+| --- | ---: | ---: | --- |
+| classes2test | 1–12873 | 1413 | [han/classes2test.csv](_shared/assignments/han/classes2test.csv) |
+| gitbug-java | 1–27 | 15 | [han/gitbug-java.csv](_shared/assignments/han/gitbug-java.csv) |
+| catlm | 1–18 | 15 | [han/catlm.csv](_shared/assignments/han/catlm.csv) |
+
+Mỗi dòng CSV có `task_id`, `repo_url`, `class_path`, `test_class_paths`, commit
+pinned nếu có, `source_json_path` và số evidence. `assigned_row` là số thứ tự
+trong phần của riêng bạn; `population_row` là vị trí trong toàn pool đã sắp theo
+task_id. Do chia theo repository, các population_row thường **không liên tục**.
+Không biến số nhỏ nhất/lớn nhất thành một khoảng để chạy cả những mẫu của người khác.
+`source_json_path` là evidence đầu tiên của CUT; CUT có thể có nhiều JSON evidence.
+
+Ví dụ định danh thật lấy ngay từ danh sách người này:
+
+- **classes2test**: task `100295611_c3fb9b12520eb0d1`, repo `https://github.com/ralscha/wamp2spring`, class `wamp2spring-core/src/main/java/ch/rasc/wamp2spring/message/EventMessage.java`.
+- **gitbug-java**: task `AuthMe-ConfigMe-7bf10c513479_5db35da89b9d8088`, repo `https://github.com/AuthMe/ConfigMe`, class `src/main/java/ch/jalu/configme/configurationdata/PropertyListBuilder.java`.
+- **catlm**: task `catlm-Java-Techie-jt__spring-boot-mockito_3e3e87df9cbd19b4`, repo `https://github.com/Java-Techie-jt/spring-boot-mockito`, class `src/main/java/com/javatechie/spring/mockito/api/SpringBootMockitoApplication.java`.
+
+CSV là bảng để người/agent kiểm tra phân công, không phải input dataset hoặc
+shard CLI có thể truyền thẳng vào `--shard`. Agent normalize input local đầy đủ,
+chạy `Shards/_tools/team.py shard --member` đúng slug ở cuối tài liệu; công cụ
+chỉ chọn các task_id trong plan của người này và tạo shard hợp lệ trên máy đó.
+Hiện pipeline cần đầy đủ input pool để kiểm hash rồi mới lọc phần riêng. Không
+chỉ đưa một mẩu CSV/JSON của người này cho bước normalize toàn pool.
+
+Sau khi sinh shard, đối chiếu `class_count` với số dòng CSV và danh sách task_id;
+lệnh chạy luôn có `--shard`, không được bỏ flag đó vì sẽ chạy cả dataset.
+Trước chạy báo người dùng slug, ba file CSV đã dùng và ba số lượng để kiểm tra.
 
 # Thực nghiệm Prelight_Net trên 5 máy — team-r1
 
@@ -21,9 +61,36 @@ https://github.com/dungng2808/ARROW.git. Engine ở `ARROW/Prelight_Net`, chạy
 không cần chạy framework LLM, Docker hay Python Preflight cũ. Python 3.11+ chỉ dùng
 cho công cụ chia việc, dựng thư viện native trên Mac và xuất/tổng hợp báo cáo.
 
-File giao riêng: [máy của bạn](01_MAY_CUA_BAN.md), [Hán](02_HAN.md),
-[KA](03_KA.md), [Chính](04_CHINH.md), [Dũng/Mac](05_DUNG_MAC.md).
+File giao riêng: [Dũng/Mac](01-DUNG.md), [KA](02-KIEU_ANH.md),
+[Quang](03-QUANG.md), [Chính](04-CHINH.md), [Hán](05-HAN.md).
 Mỗi file đã chứa quy trình chung đầy đủ và lệnh riêng của thành viên.
+
+Toàn bộ bộ chia việc được gom trong `Prelight_Net/Shards/`: đúng 5 file Markdown
+ở ngoài cùng cho 5 agent, `_shared/` chứa plan/tài liệu chung, `_tools/` chứa
+công cụ chia shard, xuất kết quả và dựng native Mac. Không cần bộ tài liệu cũ ở
+`docs` hoặc công cụ ở `tools` để chạy kế hoạch này.
+
+## Danh tính mẫu được giao nằm ở đâu?
+
+Phân công đã có **task_id cụ thể**, không chỉ có số lượng. Nguồn chốt là
+`Shards/_shared/team-plan.json`, khóa `datasets.<dataset>.assignments.<slug>`.
+Để dễ xem, có **15 file CSV** ở `Shards/_shared/assignments/<slug>/<dataset>.csv`:
+mỗi người ba file cho Classes2Test, GitBug-Java và CAT-LM. Mỗi MD liên kết thẳng
+ba CSV của chính người đó ở ngay đầu file. [Danh mục/checksum](_shared/assignment-files.json)
+ghi số task, số repo và SHA-256 của từng CSV.
+Agent đọc các file lớn bằng script, không in toàn bộ vào context; chỉ báo số dòng,
+checksum và một vài ví dụ. Việc chọn task thực hiện tự động qua lệnh sinh shard.
+
+CSV có thứ tự trong phần riêng (`assigned_row`), thứ tự trong pool đã sắp theo
+task_id (`population_row`), task_id, repo URL, class path, test paths, commit
+pinned nếu có, JSON evidence đầu tiên và số evidence. Toàn bộ dòng trong CSV
+của người nào là phần người đó chạy. **Không lấy một khoảng population_row** vì
+chia theo repo tạo các nhóm không liên tục, không lấy N mẫu đầu dataset.
+
+Các CSV là bảng nhận diện để đọc/đối chiếu, không phải dataset body hay shard
+CLI. Bước sinh shard dùng index local và danh sách task_id từ plan; bước run bắt
+buộc có `--shard`. Mỗi máy hiện cần đầy đủ input pool để normalize/kiểm hash,
+nhưng chỉ clone/build các repo/task thuộc shard của mình trong bước run.
 
 ## 1. Phân công đã khóa, không chia lại theo kết quả pass
 
@@ -31,20 +98,28 @@ Mỗi file đã chứa quy trình chung đầy đủ và lệnh riêng của th�
 | --- | --- | ---: | ---: | ---: | ---: | ---: |
 | Dũng / `dung` | M4 Pro, RAM 48 GB, SSD 1 TB | 34327 | 92 | 47 | 8 | 10, phụ thuộc số core thực và RAM |
 | KA / `ka` | Ryzen 7 6800H, RAM 24 GB | 17164 | 37 | 24 | 4 | 5 |
-| Máy chủ yêu cầu / `may-toi` | Ryzen 5 5600H, RAM 24 GB, RX 5500M | 12873 | 28 | 18 | 3 | 4 |
+| Quang / `quang` | Ryzen 5 5600H, RAM 24 GB, RX 5500M | 8582 | 18 | 12 | 2 | 3 |
 | Hán / `han` | Ryzen 5 5600H, RAM 24 GB, RTX 3050 | 12873 | 27 | 18 | 3 | 4 |
-| Chính / `chinh` | i5-11400H, RAM 16 GB, GTX 1650 | 8582 | 18 | 12 | 2 | 3 |
+| Chính / `chinh` | i5-11400H, RAM 16 GB, GTX 1650 | 12873 | 28 | 18 | 2 | 3 |
 | Tổng | 5 máy | **85819** | **202** | **119** | | |
 
-Tên thật của chủ máy hiện tại chưa được cung cấp; dùng slug `may-toi`, không gộp
-với Dũng dùng Mac. GPU không tăng tốc clone/Java compile. Workers là số repository
+Quang dùng máy Ryzen 5 5600H/RAM 24 GB/RX 5500M, slug `quang`; đây là thành viên
+khác Dũng dùng Mac. GPU không tăng tốc clone/Java compile. Workers là số repository
 song song, không phải số CPU thread. Trần trên là giới hạn để hiệu chỉnh, chưa phải
 benchmark chứng minh tối ưu. Mỗi máy chỉ chạy một dataset tại một thời điểm.
 
 `team-plan.json` đã chia theo repository, không cắt một repo giữa hai người trong
-cùng dataset. Mục tiêu C2T là 40/20/15/15/10%; GitBug/CAT-LM lệch nhẹ do giữ nguyên
+cùng dataset. Mục tiêu C2T là Dũng 40%, KA 20%, Chính 15%, Hán 15%, Quang 10%;
+GitBug/CAT-LM lệch nhẹ do giữ nguyên
 repo. Dũng nhận 34327 C2T + 92 GitBug + 47 CAT-LM. Tải thật còn phụ thuộc độ lớn repo.
 Không dùng lại `shards-5` cũ vì chúng chia đều và gán tên thành viên khác.
+
+**Phân công revision 2:** đã đổi nguyên phần việc `quang` và `chinh`, không
+chọn lại mẫu; Dũng/KA/Hán và pool dữ liệu giữ nguyên. Theo yêu cầu mới, máy Quang
+nhận ít việc hơn Chính. Workers của Chính vẫn 2→3 theo RAM 16 GB, không tự tăng
+đồng thời chỉ vì nhận thêm mẫu. Mọi thành viên phải lấy bản `Shards/` mới trước
+chạy. Nếu đã có shard/checkpoint theo phân công cũ, công cụ sẽ chặn phần không
+khớp; giữ nguyên dữ liệu đó để điều phối viên xử lý, không xóa/ghi đè tự động.
 
 Population: C2T 362414 evidence → 85819 CUT, 9410 repo; GitBug **202 CUT đã ghép
 cặp** trên 42 repo (không tuyên bố bao phủ mọi bug/file không có cặp của benchmark
@@ -56,7 +131,7 @@ không bỏ lỗi clone/build hoặc loại mẫu để tăng pass.
 1. Xác nhận đúng slug và máy thực tế. Đọc file thành viên tương ứng.
 2. Nếu chưa có workspace, clone ARROW. Nếu đã có, kiểm `git status`; giữ thay đổi
    của người dùng rồi mới cập nhật. Không reset/clean toàn workspace.
-3. Trước chạy thật, **nhắc dọn pilot cũ**. Riêng máy `may-toi`, user đã yêu cầu
+3. Trước chạy thật, **nhắc dọn pilot cũ**. Riêng máy `quang`, user đã yêu cầu
    giữ output pilot tới khi cho phép dọn: hỏi rõ trước khi xóa
    `Dataset/_pilot30_seed42` và `file.md/pilot-30-seed42`. Không xóa ngầm. Chạy mới
    dùng tên khác nên không trộn output pilot. Không đụng dataset gốc.
@@ -234,7 +309,7 @@ Mac (chưa được chạy thử trên máy Mac tại thời điểm viết plan
 ```bash
 uname -m                       # arm64
 xcrun --find clang             # nếu thiếu: xcode-select --install
-python3 -B tools/team-experiment/build_native_macos.py
+python3 -B Shards/_tools/build_native_macos.py
 export DOTNET_CLI_HOME="$PWD/Dataset/_team-setup/dotnet-home"
 export NUGET_PACKAGES="$PWD/Dataset/_team-setup/nuget"
 dotnet restore PreflightNet.sln
@@ -380,7 +455,7 @@ trong lúc run còn hoạt động.
 Sau khi đủ output 5 người đã merge, điều phối viên chạy từ Prelight_Net:
 
 ```text
-python -B tools/team-experiment/team.py aggregate --plan docs/team-experiment/team-plan.json
+python -B Shards/_tools/team.py aggregate --plan Shards/_shared/team-plan.json
 ```
 
 Mac dùng `python3`. Kết quả là `results/team-r1/_aggregate/full-summary.json` và
@@ -406,13 +481,13 @@ Tài liệu chính thức: [.NET macOS](https://learn.microsoft.com/en-us/dotnet
 [giới hạn file GitHub](https://docs.github.com/en/repositories/working-with-files/managing-large-files/about-large-files-on-github).
 
 
-## Lệnh riêng cho Dũng — Mac M4 Pro: chạy/resume và xuất kết quả
+## Lệnh riêng cho Hán: chạy/resume và xuất kết quả
 
-Sau khi setup và gate đã qua, tạo branch `experiment/team-r1-dung` từ bản
-source chung đã chốt: `git switch -c experiment/team-r1-dung`. Nếu branch
+Sau khi setup và gate đã qua, tạo branch `experiment/team-r1-han` từ bản
+source chung đã chốt: `git switch -c experiment/team-r1-han`. Nếu branch
 đã có thì kiểm trạng thái rồi dùng branch đó, không ghi đè thay đổi người dùng.
-Workers trong config là 8; thay `<SLUG>` ở cache bằng `dung`.
-Lưu `results/team-r1/dung/machine.json` với CPU/RAM/OS/core thực,
+Workers trong config là 3; thay `<SLUG>` ở cache bằng `han`.
+Lưu `results/team-r1/han/machine.json` với CPU/RAM/OS/core thực,
 workers thực tế, SDK/runtime/JDK/Maven/Gradle full version, SHA native và thời điểm.
 Không copy config local vào Git.
 
@@ -423,55 +498,56 @@ Khối lệnh tự commit/push **chỉ output thành viên** sau khi đủ ba da
 checksum hợp lệ. Kiểm quyền GitHub, branch và staging trước khi chạy nền.
 Nếu push lỗi, output/commit local vẫn giữ; không tự force-push hay bỏ qua secret scan.
 
-```bash
-set -e
-member=dung
-workers=8
-cli=src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll
-plan=docs/team-experiment/team-plan.json
-export JAVA_HOME="$(python3 -c 'import json;print(json.load(open("preflight.local.json"))["java"]["default_home"])')"
-export PATH="$JAVA_HOME/bin:$PATH"
-for dataset in gitbug-java catlm classes2test; do
-  run="Dataset/_team-r1/$member/$dataset"
-  shard="Dataset/_team-r1/$member/$dataset-shard.json"
-  profile=v2
-  if [ "$dataset" = classes2test ]; then profile=v1; fi
-  if [ ! -f "$run/state/normalize.json" ]; then
-    dotnet "$cli" normalize --dataset "$dataset" --config preflight.local.json --output-dir "$run" --probe-profile "$profile" || break
-  fi
-  if [ ! -f "$shard" ]; then
-    python3 -B tools/team-experiment/team.py shard --plan "$plan" --dataset "$dataset" --member "$member" --index "$run/state/class_index.sqlite" --output "$shard" || break
-  fi
-  complete=$(python3 -c 'import json,sys;print(json.load(open(sys.argv[1]))["run_status"])' "$run/provenance.json")
-  if [ "$complete" != COMPLETED ]; then
-    if [ -f "$run/state/run_state.sqlite" ]; then
-      caffeinate -i dotnet "$cli" resume --output-dir "$run" --workers "$workers" || break
-    else
-      caffeinate -i dotnet "$cli" run --output-dir "$run" --shard "$shard" --workers "$workers" || break
-    fi
-  fi
-  if [ ! -f "results/team-r1/$member/$dataset/export.json" ]; then
-    python3 -B tools/team-experiment/team.py export --plan "$plan" --dataset "$dataset" --member "$member" --run "$run" || break
-  fi
-done
-python3 -B tools/team-experiment/team.py publish --plan "$plan" --member "$member"
+```powershell
+$member = 'han'
+$workers = 3
+$cli = 'src/Preflight.Cli/bin/Release/net8.0/preflight-net.dll'
+$plan = 'Shards/_shared/team-plan.json'
+$sessionConfig = Get-Content preflight.local.json -Raw | ConvertFrom-Json
+$env:JAVA_HOME = $sessionConfig.java.default_home
+$env:PATH = (Join-Path $env:JAVA_HOME 'bin') + [IO.Path]::PathSeparator + $env:PATH
+foreach ($dataset in @('gitbug-java','catlm','classes2test')) {
+    $run = "Dataset/_team-r1/$member/$dataset"
+    $shard = "Dataset/_team-r1/$member/$dataset-shard.json"
+    $profile = if ($dataset -eq 'classes2test') { 'v1' } else { 'v2' }
+    if (!(Test-Path "$run/state/normalize.json")) {
+        dotnet $cli normalize --dataset $dataset --config preflight.local.json --output-dir $run --probe-profile $profile
+        if ($LASTEXITCODE -ne 0) { throw "Normalize failed: $dataset" }
+    }
+    python -B Shards/_tools/team.py shard --plan $plan --dataset $dataset --member $member --index "$run/state/class_index.sqlite" --output $shard
+    if ($LASTEXITCODE -ne 0) { throw "Pool/shard/checkpoint mismatch: $dataset" }
+    $complete = (Get-Content "$run/provenance.json" -Raw | ConvertFrom-Json).run_status -eq 'COMPLETED'
+    if (!$complete) {
+        if (Test-Path "$run/state/run_state.sqlite") {
+            dotnet $cli resume --output-dir $run --workers $workers
+        } else {
+            dotnet $cli run --output-dir $run --shard $shard --workers $workers
+        }
+        if ($LASTEXITCODE -ne 0) { throw "Run interrupted: $dataset; inspect and resume." }
+    }
+    if (!(Test-Path "results/team-r1/$member/$dataset/export.json")) {
+        python -B Shards/_tools/team.py export --plan $plan --dataset $dataset --member $member --run $run
+        if ($LASTEXITCODE -ne 0) { throw "Export failed: $dataset" }
+    }
+}
+python -B Shards/_tools/team.py publish --plan $plan --member $member
+if ($LASTEXITCODE -ne 0) { throw 'Results preserved locally; inspect Git authentication/staging/branch before publishing again.' }
 ```
 
-Mac: phải dùng terminal ARM64, clang và dylib ở mục 7, chạy smoke parser + SQLite
-trước. Không dùng DLL Windows hoặc build_native Windows. Khởi đầu 8 workers;
-chỉ nâng lên min(10, số physical core thực) sau 15–30 phút ổn định và đủ RAM.
-Sửa `workers` trong shell để resume, không rebuild/sửa config khi run đang dở.
-Nếu gate Mac chưa qua thì báo nhóm, chưa chạy để biến lỗi platform thành lỗi mẫu.
+Ctrl+C giữ checkpoint. Nếu cần đổi workers, đổi `$workers` trong khối lệnh và
+gọi lại sau khi CLI cũ dừng, tối đa 4 sau calibration. Không sửa config
+hoặc rebuild binary giữa run. Khối lệnh dừng khi có lỗi/thiếu disk, không bỏ qua
+mẫu và không chuyển dataset nếu dataset trước chưa hoàn tất.
 
-Ba run phải COMPLETED; kiểm đủ 34327/92/47
+Ba run phải COMPLETED; kiểm đủ 12873/27/18
 CUT tương ứng C2T/GitBug/CAT-LM. Tỷ lệ pass lấy trên đủ mẫu đã giao, không lọc lỗi.
 Sau khi đã kiểm các file export, từ **root ARROW**:
 
 ```text
-git add -- Prelight_Net/results/team-r1/dung/
+git add -- Prelight_Net/results/team-r1/han/
 git diff --cached --stat
-git commit -m "Add team-r1 results for dung"
-git push -u origin experiment/team-r1-dung
+git commit -m "Add team-r1 results for han"
+git push -u origin experiment/team-r1-han
 ```
 
 Chỉ stage thư mục results của mình; không `git add .`, không force push.

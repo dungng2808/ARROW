@@ -5,6 +5,14 @@ GitBug-Java và CAT-LM dùng chung pipeline Git → revision → AST Java → bu
 → policy → API → compile probe → manifest. Runtime xử lý nghiệp vụ bằng C#;
 không gọi Python để normalize, lọc CUT hay quyết định eligibility.
 
+## Chạy thực nghiệm trên 5 máy
+
+Toàn bộ phân công và hướng dẫn agent nằm trong [`Shards/`](Shards/):
+[Dũng](Shards/01-DUNG.md), [KA](Shards/02-KIEU_ANH.md),
+[Quang](Shards/03-QUANG.md), [Chính](Shards/04-CHINH.md),
+[Hán](Shards/05-HAN.md). Plan chung ở `Shards/_shared/team-plan.json`;
+revision 2 đã đổi phần việc của bạn và Chính theo yêu cầu.
+
 ## Build và test
 
 Chạy từ `D:/ki9/SET490/ARROW/Prelight_Net`. SDK hiện tại là 10.0.403, target net8.0.
