@@ -2,6 +2,7 @@
 !/*
 !/**
 
-# Only these two directories stay local.
+# Local datasets, documents, and machine-specific configuration.
 /Dataset/
 /file.md/
+/preflight.local.json
