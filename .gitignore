@@ -1,5 +1,11 @@
 # Local Class2Test dataset and cloned repositories
 /classes2test/
+/classes2test-main/
+
+# Prelight .NET datasets and internal markdown
+/Prelight_Net/Dataset/
+/Prelight_Net/file.md/
+
 
 # Repository tải về và workspace build của pilot_tool (mặc định ARROW/repo)
 /repo/

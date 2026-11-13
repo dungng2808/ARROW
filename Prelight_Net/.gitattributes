@@ -1,0 +1,3 @@
+# Preserve full golden inputs through Git LFS without changing their bytes.
+.work/golden-full/failure_status.jsonl filter=lfs diff=lfs merge=lfs -text
+.work/golden-full/record_identity.jsonl filter=lfs diff=lfs merge=lfs -text

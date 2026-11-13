@@ -1,0 +1,1000 @@
+{"input":"RosieUseCase useCase","output":"RosieUseCase"}
+{"input":"RosiePresenter.View view","output":"RosiePresenter.View"}
+{"input":"RosiePresenter presenter","output":"RosiePresenter"}
+{"input":"ReadPolicy policy","output":"ReadPolicy"}
+{"input":"@Nonnull final ErrorList aErrorList","output":"ErrorList"}
+{"input":"@Nonnull final ErrorList aErrorList","output":"ErrorList"}
+{"input":"@Nonnull final IPMode aPMode","output":"IPMode"}
+{"input":"@Nonnull final String sMsg","output":"String"}
+{"input":"@Nonnull final IPMode aPMode","output":"IPMode"}
+{"input":"@Nonnull final String sMsg","output":"String"}
+{"input":"@Nonnull final IPMode aPMode","output":"IPMode"}
+{"input":"@Nonnull final Ebms3SignalMessage aSignalMsg","output":"Ebms3SignalMessage"}
+{"input":"@Nullable final String sResponderAddress","output":"String"}
+{"input":"@Nonnull final PModeLeg aPModeLeg","output":"PModeLeg"}
+{"input":"@Nonnull final IPMode aPMode","output":"IPMode"}
+{"input":"StreamObserver<UploadProductResponse> responseObserver","output":"StreamObserver"}
+{"input":"int element","output":"int"}
+{"input":"Node left","output":"Node"}
+{"input":"String addrress","output":"String"}
+{"input":"short ofs","output":"short"}
+{"input":"@NonNull final String password","output":"String"}
+{"input":"@NonNull final String email","output":"String"}
+{"input":"@NonNull final ParseFile file","output":"ParseFile"}
+{"input":"String walletAddress","output":"String"}
+{"input":"List<Token> tokens","output":"List"}
+{"input":"long wei","output":"long"}
+{"input":"Question question","output":"Question"}
+{"input":"Question question","output":"Question"}
+{"input":"String raw","output":"String"}
+{"input":"final CharSequence cs","output":"CharSequence"}
+{"input":"Throwable originalException","output":"Throwable"}
+{"input":"List<Pair<String, List<String>>> extraResponseHeaders","output":"List"}
+{"input":"ServerWebExchange exchange","output":"ServerWebExchange"}
+{"input":"int order","output":"int"}
+{"input":"ExcludedRefs excludedRefs","output":"ExcludedRefs"}
+{"input":"final GQLDocument doc","output":"GQLDocument"}
+{"input":"VisitPath visitPath","output":"VisitPath"}
+{"input":"String passsword","output":"String"}
+{"input":"long user_id","output":"long"}
+{"input":"Map<K, V> map","output":"Map"}
+{"input":"String url","output":"String"}
+{"input":"String searchPattern","output":"String"}
+{"input":"@XPath(value = \"/order:order/order:date\"","output":"(value="}
+{"input":"namespaces = @NamespacePrefix(prefix = \"order\"","output":"namespaces=(prefix="}
+{"input":"String message","output":"String"}
+{"input":"String key","output":"String"}
+{"input":"String trimChars","output":"String"}
+{"input":"Doc doc","output":"Doc"}
+{"input":"FieldType fieldType","output":"FieldType"}
+{"input":"Map<String, String> patternsBank","output":"Map"}
+{"input":"final OutputStream os","output":"OutputStream"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"final InputStream in","output":"InputStream"}
+{"input":"Place place","output":"Place"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonWriter writer","output":"JsonWriter"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"final InputStream in","output":"InputStream"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"JsonReader reader","output":"JsonReader"}
+{"input":"MotionEvent ev","output":"MotionEvent"}
+{"input":"JsonElement element","output":"JsonElement"}
+{"input":"Function<JsonElement, T> componentParser","output":"Function"}
+{"input":"@Descriptor(\"PID prefix\") String prefix","output":"String"}
+{"input":"Triple t","output":"Triple"}
+{"input":"@NonNull NavigationDetails navDetails","output":"NavigationDetails"}
+{"input":"@NonNull NavigationDetails navDetails","output":"NavigationDetails"}
+{"input":"@NonNull NavigationDetails entering","output":"NavigationDetails"}
+{"input":"LifecycleEvent lifecycleEvent","output":"LifecycleEvent"}
+{"input":"@NonNull NavigationDetails newViewNavigationDetails","output":"NavigationDetails"}
+{"input":"@NonNull RootActivityContract activityContract","output":"RootActivityContract"}
+{"input":"SimpleEntry<T, U>... entries","output":"SimpleEntry[]"}
+{"input":"String userId","output":"String"}
+{"input":"BitmessageAddress address","output":"BitmessageAddress"}
+{"input":"String where","output":"String"}
+{"input":"String address","output":"String"}
+{"input":"long stream","output":"long"}
+{"input":"String where","output":"String"}
+{"input":"BitmessageAddress address","output":"BitmessageAddress"}
+{"input":"@NonNull final UUID uuid","output":"UUID"}
+{"input":"File rootDir","output":"File"}
+{"input":"File dir","output":"File"}
+{"input":"String glob","output":"String"}
+{"input":"IndexKey key","output":"IndexKey"}
+{"input":"@NotNull String shortArgument","output":"String"}
+{"input":"@NotNull List<String> args","output":"List"}
+{"input":"@NotNull String prefix","output":"String"}
+{"input":"FunctionTableExpression expr","output":"FunctionTableExpression"}
+{"input":"@NotNull ModuleExpression expr","output":"ModuleExpression"}
+{"input":"@NotNull List<String> args","output":"List"}
+{"input":"@NotNull List<String> args","output":"List"}
+{"input":"@NotNull Object... args","output":"Object[]"}
+{"input":"@Nullable Expression expr","output":"Expression"}
+{"input":"@NotNull List<String> args","output":"List"}
+{"input":"String version","output":"String"}
+{"input":"GeneratorEnvironment environment","output":"GeneratorEnvironment"}
+{"input":"@NotNull GeneratorEnvironment environment","output":"GeneratorEnvironment"}
+{"input":"@NotNull List<String> args","output":"List"}
+{"input":"Model model","output":"Model"}
+{"input":"PortfolioEntry portfolioEntry","output":"PortfolioEntry"}
+{"input":"PortfolioEntry portfolioEntry","output":"PortfolioEntry"}
+{"input":"String[] selectFields","output":"String[]"}
+{"input":"@Nonnull final String table","output":"String"}
+{"input":"@Nonnull final String sourceTable","output":"String"}
+{"input":"@Nonnull final String targetSchema","output":"String"}
+{"input":"String hiveType","output":"String"}
+{"input":"@Nonnull final String format","output":"String"}
+{"input":"ID feedId","output":"ID"}
+{"input":"@Nonnull DataSetOptions options","output":"DataSetOptions"}
+{"input":"String theAction","output":"String"}
+{"input":"Entry nextEntry","output":"Entry"}
+{"input":"String theString","output":"String"}
+{"input":"IdDt nextResourceId","output":"IdDt"}
+{"input":"String theUrl","output":"String"}
+{"input":"Bundle theResources","output":"Bundle"}
+{"input":"AuthenticationDataSource authenticationDataSource","output":"AuthenticationDataSource"}
+{"input":"SchemaInfo schemaInfo","output":"SchemaInfo"}
+{"input":"String key","output":"String"}
+{"input":"SchemaInfo schemaInfo","output":"SchemaInfo"}
+{"input":"boolean readCompacted","output":"boolean"}
+{"input":"boolean batchIndexAcknowledgmentEnabled","output":"boolean"}
+{"input":"MessageId messageId","output":"MessageId"}
+{"input":"PulsarClientException exception","output":"PulsarClientException"}
+{"input":"List<Long> ackSet","output":"List"}
+{"input":"ByteBuf headersAndPayload","output":"ByteBuf"}
+{"input":"MessageIdImpl msgId","output":"MessageIdImpl"}
+{"input":"ClientCnx cnx","output":"ClientCnx"}
+{"input":"MessageId lastMessageIdInBroker","output":"MessageId"}
+{"input":"Object config","output":"Object"}
+{"input":"Object v","output":"Object"}
+{"input":"ChannelHandlerContext ctx","output":"ChannelHandlerContext"}
+{"input":"Topic topic","output":"Topic"}
+{"input":"ByteBuf metadataAndPayload","output":"ByteBuf"}
+{"input":"String destPkgUrl","output":"String"}
+{"input":"Object obj","output":"Object"}
+{"input":"String tenant","output":"String"}
+{"input":"Class<?> funClass","output":"Class"}
+{"input":"String fqcn","output":"String"}
+{"input":"PaxMarker marker","output":"PaxMarker"}
+{"input":"Object... arguments","output":"Object[]"}
+{"input":"PaxMarker marker","output":"PaxMarker"}
+{"input":"String format","output":"String"}
+{"input":"PaxMarker marker","output":"PaxMarker"}
+{"input":"String message","output":"String"}
+{"input":"String fqcn","output":"String"}
+{"input":"byte[] bytes","output":"byte[]"}
+{"input":"String beanName","output":"String"}
+{"input":"Class<T> clazz","output":"Class"}
+{"input":"float meters","output":"float"}
+{"input":"final GitHub gitHub","output":"GitHub"}
+{"input":"final List<Project> projectList","output":"List"}
+{"input":"final List<Project> projectsStart","output":"List"}
+{"input":"final Optional<String> language","output":"Optional"}
+{"input":"final GitHub gitHub","output":"GitHub"}
+{"input":"final Optional<Integer> offset","output":"Optional"}
+{"input":"final Project startProject","output":"Project"}
+{"input":"final Optional<String> language","output":"Optional"}
+{"input":"Date snapshotDate","output":"Date"}
+{"input":"String msgid","output":"String"}
+{"input":"long n","output":"long"}
+{"input":"String msgid","output":"String"}
+{"input":"long n","output":"long"}
+{"input":"Locale locale","output":"Locale"}
+{"input":"String context","output":"String"}
+{"input":"Class<T> clazz","output":"Class"}
+{"input":"Iterable<T> iterable","output":"Iterable"}
+{"input":"String targetFQN","output":"String"}
+{"input":"String string","output":"String"}
+{"input":"Object obj","output":"Object"}
+{"input":"Types typeUtils","output":"Types"}
+{"input":"TypeMirror mirror2","output":"TypeMirror"}
+{"input":"SourceRHS sourceRHS","output":"SourceRHS"}
+{"input":"String name","output":"String"}
+{"input":"final Type targetType","output":"Type"}
+{"input":"Type targetType","output":"Type"}
+{"input":"final Function<? super T, ? extends R> mapper","output":"Function"}
+{"input":"final HttpServletRequest request","output":"HttpServletRequest"}
+{"input":"final Object handler","output":"Object"}
+{"input":"final HttpServletResponse response","output":"HttpServletResponse"}
+{"input":"final HttpServletResponse response","output":"HttpServletResponse"}
+{"input":"String detailName","output":"String"}
+{"input":"String detailValue","output":"String"}
+{"input":"String item","output":"String"}
+{"input":"Calendar eventTimeStamp","output":"Calendar"}
+{"input":"String range","output":"String"}
+{"input":"Object current","output":"Object"}
+{"input":"CompletionId completionId","output":"CompletionId"}
+{"input":"FlowId flowId","output":"FlowId"}
+{"input":"byte[] data","output":"byte[]"}
+{"input":"Integer depth","output":"Integer"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String jenkinsCrumb","output":"String"}
+{"input":"String contentType","output":"String"}
+{"input":"String token","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String body","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String name","output":"String"}
+{"input":"String from","output":"String"}
+{"input":"String mode","output":"String"}
+{"input":"String contentType","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final ApiCallback<Void> callback","output":"ApiCallback"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String contentType","output":"String"}
+{"input":"String contentType","output":"String"}
+{"input":"String json","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String jenkinsCrumb","output":"String"}
+{"input":"ApiClient apiClient","output":"ApiClient"}
+{"input":"String name","output":"String"}
+{"input":"final ApiCallback<Queue> callback","output":"ApiCallback"}
+{"input":"String number","output":"String"}
+{"input":"String contentType","output":"String"}
+{"input":"String jenkinsCrumb","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String jenkinsCrumb","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String contentType","output":"String"}
+{"input":"final ApiCallback<Void> callback","output":"ApiCallback"}
+{"input":"String body","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String body","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"Integer expiryTimeInMins","output":"Integer"}
+{"input":"Integer maxExpiryTimeInMins","output":"Integer"}
+{"input":"Integer expiryTimeInMins","output":"Integer"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String run","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ApiCallback<PipelineRun> callback","output":"ApiCallback"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String run","output":"String"}
+{"input":"String step","output":"String"}
+{"input":"String run","output":"String"}
+{"input":"String node","output":"String"}
+{"input":"String scmOrganisation","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String run","output":"String"}
+{"input":"String q","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String contentType","output":"String"}
+{"input":"String body","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String jenkinsCrumb","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String body","output":"String"}
+{"input":"String token","output":"String"}
+{"input":"String json","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String jenkinsCrumb","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ApiCallback<Queue> callback","output":"ApiCallback"}
+{"input":"final ApiCallback<Void> callback","output":"ApiCallback"}
+{"input":"String contentType","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String queue","output":"String"}
+{"input":"final ApiCallback<User> callback","output":"ApiCallback"}
+{"input":"String propertyClass","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String run","output":"String"}
+{"input":"String node","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String node","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"String scmOrganisation","output":"String"}
+{"input":"String credentialId","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String run","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String organization","output":"String"}
+{"input":"String q","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String name","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ApiCallback<Void> callback","output":"ApiCallback"}
+{"input":"String name","output":"String"}
+{"input":"String token","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ApiCallback<String> callback","output":"ApiCallback"}
+{"input":"String run","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ApiCallback<PipelineRunNode> callback","output":"ApiCallback"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ApiCallback<ScmOrganisations> callback","output":"ApiCallback"}
+{"input":"String scm","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ApiCallback<String> callback","output":"ApiCallback"}
+{"input":"String organization","output":"String"}
+{"input":"Integer key","output":"Integer"}
+{"input":"final ApiCallback<String> callback","output":"ApiCallback"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String run","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String scm","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"ApiClient apiClient","output":"ApiClient"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ApiCallback<String> callback","output":"ApiCallback"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"Integer expiryTimeInMins","output":"Integer"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String step","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"Integer pageNumber","output":"Integer"}
+{"input":"String scm","output":"String"}
+{"input":"String run","output":"String"}
+{"input":"Integer timeOutInSecs","output":"Integer"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String branch","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String branch","output":"String"}
+{"input":"String folder","output":"String"}
+{"input":"Boolean download","output":"Boolean"}
+{"input":"String organization","output":"String"}
+{"input":"String step","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String organization","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"String credentialId","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"Body body","output":"Body"}
+{"input":"String run","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String queue","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String propertyClass","output":"String"}
+{"input":"Integer key","output":"Integer"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"Boolean download","output":"Boolean"}
+{"input":"String pipeline","output":"String"}
+{"input":"Integer start","output":"Integer"}
+{"input":"String run","output":"String"}
+{"input":"String node","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String node","output":"String"}
+{"input":"final ApiCallback<String> callback","output":"ApiCallback"}
+{"input":"String pipeline","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"String scmOrganisation","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String q","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String queue","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"String branch","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String node","output":"String"}
+{"input":"String run","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String credentialId","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String run","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String organization","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String organization","output":"String"}
+{"input":"final ApiCallback<PipelineRun> callback","output":"ApiCallback"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String organization","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String organization","output":"String"}
+{"input":"String folder","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"Integer start","output":"Integer"}
+{"input":"Boolean download","output":"Boolean"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String run","output":"String"}
+{"input":"String node","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"Integer pageSize","output":"Integer"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"Body body","output":"Body"}
+{"input":"Body body","output":"Body"}
+{"input":"String queue","output":"String"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String branch","output":"String"}
+{"input":"final ProgressRequestBody.ProgressRequestListener progressRequestListener","output":"ProgressRequestBody.ProgressRequestListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"final ApiCallback<PipelineRun> callback","output":"ApiCallback"}
+{"input":"Integer start","output":"Integer"}
+{"input":"String node","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"String scm","output":"String"}
+{"input":"Integer pageSize","output":"Integer"}
+{"input":"String scm","output":"String"}
+{"input":"String organization","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String pipeline","output":"String"}
+{"input":"final ProgressResponseBody.ProgressListener progressListener","output":"ProgressResponseBody.ProgressListener"}
+{"input":"String run","output":"String"}
+{"input":"final ApiCallback<String> callback","output":"ApiCallback"}
+{"input":"final MinijaxMetamodel metamodel","output":"MinijaxMetamodel"}
+{"input":"final Expression<? extends Y> x","output":"Expression"}
+{"input":"final Expression<? extends Number> x","output":"Expression"}
+{"input":"final Expression<? extends N> x","output":"Expression"}
+{"input":"final Expression<Integer> y","output":"Expression"}
+{"input":"final Expression<String> x","output":"Expression"}
+{"input":"final Trimspec ts","output":"Trimspec"}
+{"input":"final Expression<String> x","output":"Expression"}
+{"input":"final String name","output":"String"}
+{"input":"int port","output":"int"}
+{"input":"JSONArray coords","output":"JSONArray"}
+{"input":"UniversalId uid","output":"UniversalId"}
+{"input":"T input","output":"T"}
+{"input":"String input","output":"String"}
+{"input":"Attribute<O, A> attribute","output":"Attribute"}
+{"input":"final Query<O> query","output":"Query"}
+{"input":"QueryOptions queryOptions","output":"QueryOptions"}
+{"input":"boolean comparativeQueriesPresent","output":"boolean"}
+{"input":"Object o","output":"Object"}
+{"input":"Class<O> pojoClass","output":"Class"}
+{"input":"A lowerBound","output":"A"}
+{"input":"Class<O> objectType","output":"Class"}
+{"input":"final String tableName","output":"String"}
+{"input":"final Connection connection","output":"Connection"}
+{"input":"final String tableName","output":"String"}
+{"input":"Index<O> index","output":"Index"}
+{"input":"QueryOptions queryOptions","output":"QueryOptions"}
+{"input":"ResultSet<O> storedResultSet","output":"ResultSet"}
+{"input":"Attribute<O, A> attribute","output":"Attribute"}
+{"input":"Date date","output":"Date"}
+{"input":"Object value","output":"Object"}
+{"input":"final LogRecord record","output":"LogRecord"}
+{"input":"int msgnum","output":"int"}
+{"input":"Message.RecipientType type","output":"Message.RecipientType"}
+{"input":"Message.RecipientType type","output":"Message.RecipientType"}
+{"input":"final LogRecord record","output":"LogRecord"}
+{"input":"final LogRecord record","output":"LogRecord"}
+{"input":"final Class<?> k","output":"Class"}
+{"input":"int msgnum","output":"int"}
+{"input":"String description","output":"String"}
+{"input":"Object o","output":"Object"}
+{"input":"String text","output":"String"}
+{"input":"final LogRecord record","output":"LogRecord"}
+{"input":"final Class<?> k","output":"Class"}
+{"input":"final CharSequence value","output":"CharSequence"}
+{"input":"String name","output":"String"}
+{"input":"final LogRecord record","output":"LogRecord"}
+{"input":"Object[] p","output":"Object[]"}
+{"input":"Path path","output":"Path"}
+{"input":"Path item","output":"Path"}
+{"input":"Bundle dataBundle","output":"Bundle"}
+{"input":"Path next","output":"Path"}
+{"input":"ImageRepository imageRepository","output":"ImageRepository"}
+{"input":"QueryMessage queryMessage","output":"QueryMessage"}
+{"input":"ClientMessage message","output":"ClientMessage"}
+{"input":"ClientMessage message","output":"ClientMessage"}
+{"input":"PendingHashImageRepository pendingRepository","output":"PendingHashImageRepository"}
+{"input":"long pHash","output":"long"}
+{"input":"String name","output":"String"}
+{"input":"@NotNull final String taskId","output":"String"}
+{"input":"@NotNull final String ip","output":"String"}
+{"input":"final OptionsInterval interval","output":"OptionsInterval"}
+{"input":"final Long maxRequests","output":"Long"}
+{"input":"final String key","output":"String"}
+{"input":"final String key","output":"String"}
+{"input":"final boolean treatMissingAsDisabled","output":"boolean"}
+{"input":"int n","output":"int"}
+{"input":"double d","output":"double"}
+{"input":"Point b","output":"Point"}
+{"input":"List<Result> results","output":"List"}
+{"input":"List<Rss> rss2","output":"List"}
+{"input":"Predicate<Throwable> exceptionFilter","output":"Predicate"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"Timer timer","output":"Timer"}
+{"input":"String name","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"ThrowableCallable<T> callable","output":"ThrowableCallable"}
+{"input":"BigDecimal balance","output":"BigDecimal"}
+{"input":"String delimiter","output":"String"}
+{"input":"String uriString","output":"String"}
+{"input":"Wallet wallet","output":"Wallet"}
+{"input":"List<Field> fields","output":"List"}
+{"input":"String seedPhrase","output":"String"}
+{"input":"Long expectedVersionId","output":"Long"}
+{"input":"String value","output":"String"}
+{"input":"String modulePath","output":"String"}
+{"input":"String defaultValue","output":"String"}
+{"input":"String value","output":"String"}
+{"input":"String value","output":"String"}
+{"input":"boolean isRequired","output":"boolean"}
+{"input":"String propertyAnnotations","output":"String"}
+{"input":"String moduleName","output":"String"}
+{"input":"String propertyDefinition","output":"String"}
+{"input":"String annotationDefinition","output":"String"}
+{"input":"String defaultValue","output":"String"}
+{"input":"Object object","output":"Object"}
+{"input":"String cerberusUrl","output":"String"}
+{"input":"List<ALBAccessLogEvent> events","output":"List"}
+{"input":"ObjectMapper objectMapper","output":"ObjectMapper"}
+{"input":"AmazonS3 amazonS3","output":"AmazonS3"}
+{"input":"LogProcessorLambdaConfig config","output":"LogProcessorLambdaConfig"}
+{"input":"int retryCount","output":"int"}
+{"input":"String principalName","output":"String"}
+{"input":"Map<String, List<String>> summary","output":"Map"}
+{"input":"Map<String, Integer> reqIdCountMap","output":"Map"}
+{"input":"LogProcessorLambdaConfig config","output":"LogProcessorLambdaConfig"}
+{"input":"DefaultCerberusCredentialsProviderChain chain","output":"DefaultCerberusCredentialsProviderChain"}
+{"input":"SlackMessage message","output":"SlackMessage"}
+{"input":"String environment","output":"String"}
+{"input":"String template","output":"String"}
+{"input":"String string","output":"String"}
+{"input":"byte[] bytes","output":"byte[]"}
+{"input":"int count","output":"int"}
+{"input":"String string","output":"String"}
+{"input":"int val","output":"int"}
+{"input":"ByteBuffer bytes","output":"ByteBuffer"}
+{"input":"byte[] bytes","output":"byte[]"}
+{"input":"String string","output":"String"}
+{"input":"String string","output":"String"}
+{"input":"ByteBuffer bytes","output":"ByteBuffer"}
+{"input":"String encoding","output":"String"}
+{"input":"byte[] buffer","output":"byte[]"}
+{"input":"String string","output":"String"}
+{"input":"String encoding","output":"String"}
+{"input":"String encoding","output":"String"}
+{"input":"ByteBuffer bb","output":"ByteBuffer"}
+{"input":"RecordReaderListener<I> recordReaderListener","output":"RecordReaderListener"}
+{"input":"PipelineListener pipelineListener","output":"PipelineListener"}
+{"input":"Batch<P> batch","output":"Batch"}
+{"input":"final XStream xStream","output":"XStream"}
+{"input":"final Record<String> record","output":"Record"}
+{"input":"final Record<String> record","output":"Record"}
+{"input":"char delimiter","output":"char"}
+{"input":"@StyleRes final int style","output":"int"}
+{"input":"@NonNull final String filePath","output":"String"}
+{"input":"@StyleRes final int defStyleRes","output":"int"}
+{"input":"@Nullable final AttributeSet attrs","output":"AttributeSet"}
+{"input":"int aid","output":"int"}
+{"input":"@Nullable final String sScheme","output":"String"}
+{"input":"DatabaseClient client","output":"DatabaseClient"}
+{"input":"Class<T> type","output":"Class"}
+{"input":"ClassLoader loader","output":"ClassLoader"}
+{"input":"String urlString","output":"String"}
+{"input":"String resource","output":"String"}
+{"input":"String[] args","output":"String[]"}
+{"input":"Matrix x","output":"Matrix"}
+{"input":"String[] originalArgs","output":"String[]"}
+{"input":"String[] originalArgs","output":"String[]"}
+{"input":"int length","output":"int"}
+{"input":"int nThreads","output":"int"}
+{"input":"Map<String, String> properties","output":"Map"}
+{"input":"String... elements","output":"String[]"}
+{"input":"String key","output":"String"}
+{"input":"ConsoleLogger logger","output":"ConsoleLogger"}
+{"input":"RunnerCounter counts","output":"RunnerCounter"}
+{"input":"JUnitCoreParameters jUnitCoreParameters","output":"JUnitCoreParameters"}
+{"input":"int threads","output":"int"}
+{"input":"@Nullable String s","output":"String"}
+{"input":"@Nullable String stringA","output":"String"}
+{"input":"@Nullable String s","output":"String"}
+{"input":"@Nullable String s","output":"String"}
+{"input":"@Nullable Object value","output":"Object"}
+{"input":"int maxLineLength","output":"int"}
+{"input":"@Nullable String s","output":"String"}
+{"input":"@Nonnull Consumer<String> consumer","output":"Consumer"}
+{"input":"String input","output":"String"}
+{"input":"String hexTraceId","output":"String"}
+{"input":"Channel channel","output":"Channel"}
+{"input":"R request","output":"R"}
+{"input":"byte[] traceIdPrefixedSpan","output":"byte[]"}
+{"input":"R request","output":"R"}
+{"input":"TimeUnit timeUnit","output":"TimeUnit"}
+{"input":"@NonNull final SequenceItem item","output":"SequenceItem"}
+{"input":"String candidate","output":"String"}
+{"input":"Method method","output":"Method"}
+{"input":"Class<V> argType","output":"Class"}
+{"input":"int fetchSize","output":"int"}
+{"input":"RowMapper<T> rowMapper","output":"RowMapper"}
+{"input":"Object[] args","output":"Object[]"}
+{"input":"TypedExpression<V> expression","output":"TypedExpression"}
+{"input":"TypeToken<T> targetType","output":"TypeToken"}
+{"input":"UnionType unionType","output":"UnionType"}
+{"input":"Scope outerScope","output":"Scope"}
+{"input":"BooleanExpression e","output":"BooleanExpression"}
+{"input":"Scope actualScope","output":"Scope"}
+{"input":"String sql","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"Scope scope","output":"Scope"}
+{"input":"Function<? super T, ? extends V> valueGenerator","output":"Function"}
+{"input":"Collection<ConfigResource> resources","output":"Collection"}
+{"input":"File child","output":"File"}
+{"input":"String url","output":"String"}
+{"input":"Throwable cause","output":"Throwable"}
+{"input":"String numberWithPotentialUnit","output":"String"}
+{"input":"String string","output":"String"}
+{"input":"@Nullable final Transition transition","output":"Transition"}
+{"input":"@NonNull final ViewGroup sceneRoot","output":"ViewGroup"}
+{"input":"@Nullable final AttributeSet attrs","output":"AttributeSet"}
+{"input":"final float endY","output":"float"}
+{"input":"@NonNull final AnimatorListener listener","output":"AnimatorListener"}
+{"input":"@NonNull final Activity caller","output":"Activity"}
+{"input":"@IntRange(from = 0) final int centerX","output":"int"}
+{"input":"@Nullable final TransitionValues startValues","output":"TransitionValues"}
+{"input":"@Nullable final Transition transition","output":"Transition"}
+{"input":"final boolean allow","output":"boolean"}
+{"input":"@NonNull final Activity caller","output":"Activity"}
+{"input":"@Description.ValueRelativity final int xRelativity","output":"int"}
+{"input":"@NonNull final View view","output":"View"}
+{"input":"to = 1) final float fractionY","output":"to=1)float"}
+{"input":"@NonNull final TransitionValues transitionValues","output":"TransitionValues"}
+{"input":"@NonNull final Activity caller","output":"Activity"}
+{"input":"@Nullable final Transition transition","output":"Transition"}
+{"input":"@IntRange(from = 0) final long delay","output":"long"}
+{"input":"@Nullable final Bundle extras","output":"Bundle"}
+{"input":"@Nullable final Transition transition","output":"Transition"}
+{"input":"final float startX","output":"float"}
+{"input":"@Nullable final TransitionValues startValues","output":"TransitionValues"}
+{"input":"@Nullable final TransitionValues endValues","output":"TransitionValues"}
+{"input":"String s","output":"String"}
+{"input":"String htmlText","output":"String"}
+{"input":"String htmlText","output":"String"}
+{"input":"int id","output":"int"}
+{"input":"int containerElementId","output":"int"}
+{"input":"String noteText","output":"String"}
+{"input":"@NonNull String string","output":"String"}
+{"input":"final HSERVICE hService","output":"HSERVICE"}
+{"input":"Type wfsResult","output":"Type"}
+{"input":"final DWORD timeOut","output":"DWORD"}
+{"input":"Type lpszAppID","output":"Type"}
+{"input":"String registrationControlCode","output":"String"}
+{"input":"String usersIp","output":"String"}
+{"input":"final TranslationService translationService","output":"TranslationService"}
+{"input":"String title","output":"String"}
+{"input":"byte b","output":"byte"}
+{"input":"String args[]","output":"String"}
+{"input":"int numBits","output":"int"}
+{"input":"final DAG<IRVertex, IREdge> dag","output":"DAG"}
+{"input":"Iterable tokens","output":"Iterable"}
+{"input":"CharSequence delimiter","output":"CharSequence"}
+{"input":"Object item","output":"Object"}
+{"input":"String name","output":"String"}
+{"input":"RepoListUpdate update","output":"RepoListUpdate"}
+{"input":"@Valid @RequestBody CodeTemplateUpdateDTO codeTemplateUpdateDTO","output":"CodeTemplateUpdateDTO"}
+{"input":"TypeVariable<? extends GenericDeclaration> type","output":"TypeVariable"}
+{"input":"Number num","output":"Number"}
+{"input":"final boolean skipNull","output":"boolean"}
+{"input":"final String value","output":"String"}
+{"input":"Number num","output":"Number"}
+{"input":"String awaited","output":"String"}
+{"input":"boolean indentation","output":"boolean"}
+{"input":"final JsonType jsonType","output":"JsonType"}
+{"input":"int cursor","output":"int"}
+{"input":"ObjectWriter writer","output":"ObjectWriter"}
+{"input":"final Boolean value","output":"Boolean"}
+{"input":"Class<?> clazz","output":"Class"}
+{"input":"Type oType","output":"Type"}
+{"input":"Type fromType","output":"Type"}
+{"input":"Type type","output":"Type"}
+{"input":"Class<?> declaringClass","output":"Class"}
+{"input":"String str","output":"String"}
+{"input":"JSONObject json","output":"JSONObject"}
+{"input":"JSONObject json","output":"JSONObject"}
+{"input":"final URI uri","output":"URI"}
+{"input":"Callable<T> callable","output":"Callable"}
+{"input":"@Nullable final JSONObject postEntity","output":"JSONObject"}
+{"input":"RequestContent requestContent","output":"RequestContent"}
+{"input":"String sourceName","output":"String"}
+{"input":"String name","output":"String"}
+{"input":"final String numeric","output":"String"}
+{"input":"@ApiParam(\n            value = \"Tag identifier\"","output":"(\nvalue=\"Tag"}
+{"input":"Pageable pageRequest","output":"Pageable"}
+{"input":"@Nonnull String isoDate","output":"String"}
+{"input":"CategoryPath categoryPath","output":"CategoryPath"}
+{"input":"required = false","output":"required="}
+{"input":"required = false","output":"required="}
+{"input":"0","output":"0"}
+{"input":"0","output":"0"}
+{"input":"@Nonnull final Path to","output":"Path"}
+{"input":"ShibbolethUserConfiguration config","output":"ShibbolethUserConfiguration"}
+{"input":"List<LDAPRoleConverter> vals","output":"List"}
+{"input":"int value","output":"int"}
+{"input":"defaultValue = \"application/x-gn-mef-2-zip\"\n        )\n            String acceptHeader","output":"defaultValue=\"application/x-gn-mef-2-zip\"\n)\nString"}
+{"input":"application/zip","output":"application/zip"}
+{"input":"@ApiParam(value = \"Download as a file\"","output":"(value=\"Downloadasa"}
+{"input":"defaultValue = \"false\")\n            boolean attachment","output":"defaultValue=\"false\")\nboolean"}
+{"input":"RelatedResponse.Fcat fcat","output":"RelatedResponse.Fcat"}
+{"input":"String group","output":"String"}
+{"input":"PropertyMetaData propertyMetaData","output":"PropertyMetaData"}
+{"input":"final String... value","output":"String[]"}
+{"input":"final Collection<ByteBuffer> values","output":"Collection"}
+{"input":"ReducerContext context","output":"ReducerContext"}
+{"input":"int inPosition","output":"int"}
+{"input":"ByteBuffer inByteBuffer","output":"ByteBuffer"}
+{"input":"int inLength","output":"int"}
+{"input":"Brotli.Parameter parameter","output":"Brotli.Parameter"}
+{"input":"ByteBuffer inByteBuffer","output":"ByteBuffer"}
+{"input":"int inPosition","output":"int"}
+{"input":"byte[] out","output":"byte[]"}
+{"input":"int outPosition","output":"int"}
+{"input":"int quality","output":"int"}
+{"input":"int lgblock","output":"int"}
+{"input":"OptionMap options","output":"OptionMap"}
+{"input":"int bufferSize","output":"int"}
+{"input":"MediaType mediaType","output":"MediaType"}
+{"input":"HttpRequest request","output":"HttpRequest"}
+{"input":"List<Throttle> throttles","output":"List"}
+{"input":"String key","output":"String"}
+{"input":"Class<?> contextRawType","output":"Class"}
+{"input":"Object o","output":"Object"}
+{"input":"Class<?> contextRawType","output":"Class"}
+{"input":"Type b","output":"Type"}
+{"input":"Object[] array","output":"Object[]"}
+{"input":"Object toFind","output":"Object"}
+{"input":"SharedPreferences.Editor editor","output":"SharedPreferences.Editor"}
+{"input":"long taskIdToMove","output":"long"}
+{"input":"final boolean sizeOnly","output":"boolean"}
+{"input":"ArgumentParser parser","output":"ArgumentParser"}
+{"input":"String value","output":"String"}
+{"input":"DataSource dataSource","output":"DataSource"}
+{"input":"Long id","output":"Long"}
+{"input":"Path<?> path","output":"Path"}
+{"input":"K toKey","output":"K"}
+{"input":"File basedir","output":"File"}
+{"input":"final boolean hasPhoto","output":"boolean"}
+{"input":"final Context context","output":"Context"}
+{"input":"final Bitmap srcOwnPhotoInactive","output":"Bitmap"}
+{"input":"final int maxSize","output":"int"}
+{"input":"final Paint paint","output":"Paint"}
+{"input":"final boolean stationActive","output":"boolean"}
+{"input":"final boolean ownPhoto","output":"boolean"}
+{"input":"final Paint paint","output":"Paint"}
+{"input":"boolean fromCache","output":"boolean"}
+{"input":"Future<V> future","output":"Future"}
+{"input":"TimelineMetricMetadataManager metricMetadataManager","output":"TimelineMetricMetadataManager"}
+{"input":"String overridesUrl","output":"String"}
+{"input":"File dest","output":"File"}
+{"input":"String id","output":"String"}
+{"input":"String id","output":"String"}
+{"input":"String id","output":"String"}
+{"input":"String repo","output":"String"}
+{"input":"String tag","output":"String"}
+{"input":"boolean noprune","output":"boolean"}
+{"input":"String term","output":"String"}
+{"input":"String id","output":"String"}
+{"input":"boolean verbose","output":"boolean"}
+{"input":"ArchiveInputStream is","output":"ArchiveInputStream"}
+{"input":"BundleContext bundleContext","output":"BundleContext"}
+{"input":"File storageLocation","output":"File"}
+{"input":"boolean details","output":"boolean"}
+{"input":"String tag","output":"String"}
+{"input":"String url","output":"String"}
+{"input":"BundleContext bundleContext","output":"BundleContext"}
+{"input":"final ProxyClient<CloudFormationClient> proxyClient","output":"ProxyClient"}
+{"input":"User user","output":"User"}
+{"input":"Instance instance","output":"Instance"}
+{"input":"String value","output":"String"}
+{"input":"String value","output":"String"}
+{"input":"final K[] path","output":"K[]"}
+{"input":"Api api","output":"Api"}
+{"input":"Exchange exchange","output":"Exchange"}
+{"input":"Map<String, String> changesToConfirm","output":"Map"}
+{"input":"final DeploymentSlotSetting slotSetting","output":"DeploymentSlotSetting"}
+{"input":"final Consumer<String> setter","output":"Consumer"}
+{"input":"final List<FunctionTemplate> templates","output":"List"}
+{"input":"final String newFunctionClass","output":"String"}
+{"input":"final String input","output":"String"}
+{"input":"AbstractWebAppMojo mojo","output":"AbstractWebAppMojo"}
+{"input":"String targetPath","output":"String"}
+{"input":"String promotePrefix","output":"String"}
+{"input":"List<T> entities","output":"List"}
+{"input":"BooleanBag from","output":"BooleanBag"}
+{"input":"BooleanBag from","output":"BooleanBag"}
+{"input":"int fromOffset","output":"int"}
+{"input":"int toOffset","output":"int"}
+{"input":"int value","output":"int"}
+{"input":"int value","output":"int"}
+{"input":"int fromOffset","output":"int"}
+{"input":"int index","output":"int"}
+{"input":"int value","output":"int"}
+{"input":"BooleanBag from","output":"BooleanBag"}
+{"input":"boolean value","output":"boolean"}
+{"input":"int toOffset","output":"int"}
+{"input":"IntBag from","output":"IntBag"}
+{"input":"ByteBag from","output":"ByteBag"}
+{"input":"boolean clearExceeding","output":"boolean"}
+{"input":"FloatBag from","output":"FloatBag"}
+{"input":"LambdaProxyRequest input","output":"LambdaProxyRequest"}
+{"input":"HttpServletResponse resp","output":"HttpServletResponse"}
+{"input":"Object obj","output":"Object"}
+{"input":"LambdaProxyRequest input","output":"LambdaProxyRequest"}
+{"input":"@Nullable Class<? extends LambdaResponseSerializer<?>> cls","output":"Class"}
+{"input":"Class<?> cls","output":"Class"}
+{"input":"Annotation annotation","output":"Annotation"}
+{"input":"LambdaProxyRequest request","output":"LambdaProxyRequest"}
+{"input":"LambdaFunction lambdaFunction","output":"LambdaFunction"}
+{"input":"LambdaProxyRequest request","output":"LambdaProxyRequest"}
+{"input":"LambdaProxyRequest request","output":"LambdaProxyRequest"}
+{"input":"@NonNull final Gson gson","output":"Gson"}
+{"input":"@NonNull final String route","output":"String"}
+{"input":"String str","output":"String"}
+{"input":"IElasticSearchMapping mapping","output":"IElasticSearchMapping"}
+{"input":"String indexName","output":"String"}
+{"input":"IElasticSearchMapping mapping","output":"IElasticSearchMapping"}
+{"input":"TEntity entity","output":"TEntity"}
+{"input":"long executionId","output":"long"}
+{"input":"RestHighLevelClient client","output":"RestHighLevelClient"}
+{"input":"String indexName","output":"String"}
+{"input":"@NonNull Application app","output":"Application"}
+{"input":"RouterFunction<T> routerFunction","output":"RouterFunction"}
+{"input":"Resource location","output":"Resource"}
+{"input":"final String keyStoreFile","output":"String"}
+{"input":"final boolean pemFormat","output":"boolean"}
+{"input":"boolean includingPropagatingEvents","output":"boolean"}
+{"input":"boolean includingPropagatingEvents","output":"boolean"}
+{"input":"Map<String, Object> values","output":"Map"}
+{"input":"Class<T> typeClass","output":"Class"}
+{"input":"String query","output":"String"}
+{"input":"Statement n1qlQuery","output":"Statement"}
+{"input":"String query","output":"String"}
+{"input":"Object... params","output":"Object[]"}
+{"input":"Object... params","output":"Object[]"}
+{"input":"String userName","output":"String"}
+{"input":"int[] selectedXBoxIds","output":"int[]"}
+{"input":"boolean gameOverNoWinner","output":"boolean"}
+{"input":"SearchAndDiscoveryInterfaces searchAndDiscoveryInterfaces","output":"SearchAndDiscoveryInterfaces"}
+{"input":"final String number","output":"String"}
+{"input":"ServletContext servletContext","output":"ServletContext"}
+{"input":"boolean extendedStats","output":"boolean"}
+{"input":"@NonNull String registrationIdJson","output":"String"}
+{"input":"String loginJson","output":"String"}
+{"input":"AttributeGroupDto capabilities","output":"AttributeGroupDto"}
+{"input":"AttributeValueDto attributeValueDto","output":"AttributeValueDto"}
+{"input":"String expression","output":"String"}
+{"input":"String path","output":"String"}
+{"input":"String expression","output":"String"}
+{"input":"NumberInterval interval","output":"NumberInterval"}
+{"input":"String path","output":"String"}
+{"input":"int page","output":"int"}
+{"input":"String repo","output":"String"}
+{"input":"TreeNode<Dir> dirNode","output":"TreeNode"}
+{"input":"int page","output":"int"}
+{"input":"int page","output":"int"}
+{"input":"int page","output":"int"}
+{"input":"String repo","output":"String"}
+{"input":"String repo","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"String repo","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"String repo","output":"String"}
+{"input":"final ShowCase showcase","output":"ShowCase"}
+{"input":"SortType_Repo sort","output":"SortType_Repo"}
+{"input":"String repo","output":"String"}
+{"input":"List<GitTree.TreeEntity> treeEntities","output":"List"}
+{"input":"String password","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"String repo","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"final String owner","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"String owner","output":"String"}
+{"input":"String repo","output":"String"}
+{"input":"int index","output":"int"}
+{"input":"String user","output":"String"}
+{"input":"SortType_Repo sort","output":"SortType_Repo"}
+{"input":"String user","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"String user","output":"String"}
+{"input":"String fileName","output":"String"}
+{"input":"XmlSerializer serializer","output":"XmlSerializer"}
+{"input":"Integer... progress","output":"Integer[]"}
+{"input":"String defaultName","output":"String"}
+{"input":"String text","output":"String"}
+{"input":"InputStream is","output":"InputStream"}
+{"input":"Uri input","output":"Uri"}
+{"input":"String fileName","output":"String"}
+{"input":"String chosenFileName","output":"String"}
+{"input":"String identifierType","output":"String"}
+{"input":"String identifier","output":"String"}
+{"input":"DeleteAlertTagsRequest params","output":"DeleteAlertTagsRequest"}
+{"input":"EscalateAlertToNextRequest body","output":"EscalateAlertToNextRequest"}
+{"input":"String requestId","output":"String"}
+{"input":"String identifierType","output":"String"}
+{"input":"UnAcknowledgeAlertRequest body","output":"UnAcknowledgeAlertRequest"}
+{"input":"String actionName","output":"String"}
+{"input":"String identifierType","output":"String"}
+{"input":"ApiClient apiClient","output":"ApiClient"}
+{"input":"String identifierType","output":"String"}
+{"input":"String identifier","output":"String"}
+{"input":"String identifier","output":"String"}
+{"input":"AddAlertTagsRequest body","output":"AddAlertTagsRequest"}
+{"input":"String identifierType","output":"String"}
+{"input":"String identifier","output":"String"}
+{"input":"Long attachmentId","output":"Long"}
+{"input":"String identifierType","output":"String"}

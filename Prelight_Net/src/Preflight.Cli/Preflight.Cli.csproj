@@ -1,0 +1,1 @@
+<Project Sdk="Microsoft.NET.Sdk"><PropertyGroup><OutputType>Exe</OutputType><AssemblyName>preflight-net</AssemblyName></PropertyGroup><ItemGroup><ProjectReference Include="../Preflight.Models/Preflight.Models.csproj" /><ProjectReference Include="../Preflight.Service/Preflight.Service.csproj" /></ItemGroup></Project>

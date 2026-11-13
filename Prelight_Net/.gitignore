@@ -1,0 +1,7 @@
+# Include everything in Prelight_Net, overriding inherited ignore rules.
+!/*
+!/**
+
+# Only these two directories stay local.
+/Dataset/
+/file.md/

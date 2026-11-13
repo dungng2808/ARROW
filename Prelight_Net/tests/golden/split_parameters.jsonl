@@ -1,0 +1,1000 @@
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(RosiePresenter.View view)","output":["RosiePresenter.View view"]}
+{"input":"()","output":[]}
+{"input":"(V value)","output":["V value"]}
+{"input":"(K key)","output":["K key"]}
+{"input":"(V value)","output":["V value"]}
+{"input":"()","output":[]}
+{"input":"(V value)","output":["V value"]}
+{"input":"(\n      R... writeableDataSources)","output":["R... writeableDataSources"]}
+{"input":"()","output":[]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(Object source)","output":["Object source"]}
+{"input":"()","output":[]}
+{"input":"(@Nonnull final IPMode aPMode, @Nonnull final ErrorList aErrorList)","output":["@Nonnull final IPMode aPMode","@Nonnull final ErrorList aErrorList"]}
+{"input":"(@Nonnull final String sMsg)","output":["@Nonnull final String sMsg"]}
+{"input":"(@Nonnull final Ebms3SignalMessage aSignalMsg, @Nonnull final ErrorList aErrorList)","output":["@Nonnull final Ebms3SignalMessage aSignalMsg","@Nonnull final ErrorList aErrorList"]}
+{"input":"(@Nonnull final Ebms3UserMessage aUserMsg, @Nonnull final ErrorList aErrorList)","output":["@Nonnull final Ebms3UserMessage aUserMsg","@Nonnull final ErrorList aErrorList"]}
+{"input":"(@Nonnull final Ebms3UserMessage aUserMsg, @Nonnull final ErrorList aErrorList)","output":["@Nonnull final Ebms3UserMessage aUserMsg","@Nonnull final ErrorList aErrorList"]}
+{"input":"()","output":[]}
+{"input":"(@Nonnull final String sMsg)","output":["@Nonnull final String sMsg"]}
+{"input":"(@Nonnull final IPMode aPMode,\n                                          @Nonnull final ErrorList aErrorList,\n                                          @Nonnull final PModeLeg aPModeLeg)","output":["@Nonnull final IPMode aPMode","@Nonnull final ErrorList aErrorList","@Nonnull final PModeLeg aPModeLeg"]}
+{"input":"()","output":[]}
+{"input":"(Product product, PublishSubject<CalculateProductScoreResponse> downloadStream)","output":["Product product","PublishSubject<CalculateProductScoreResponse> downloadStream"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(SearchProductsRequest request)","output":["SearchProductsRequest request"]}
+{"input":"()","output":[]}
+{"input":"(long index)","output":["long index"]}
+{"input":"()","output":[]}
+{"input":"(@PathVariable String name, @Valid @RequestBody Todo todo)","output":["@PathVariable String name","@Valid @RequestBody Todo todo"]}
+{"input":"(@NonNull final R object)","output":["@NonNull final R object"]}
+{"input":"(@NonNull final String channel)","output":["@NonNull final String channel"]}
+{"input":"(int current, String walletAddress, BigDecimal tokenNoDiscount)","output":["int current","String walletAddress","BigDecimal tokenNoDiscount"]}
+{"input":"()","output":[]}
+{"input":"(int current, long blockNrBTC, long blockNrETH, long satoshi, long wei, String walletAddress)","output":["int current","long blockNrBTC","long blockNrETH","long satoshi","long wei","String walletAddress"]}
+{"input":"(List<Payin> list)","output":["List<Payin> list"]}
+{"input":"(boolean forceRemote)","output":["boolean forceRemote"]}
+{"input":"(long questionId)","output":["long questionId"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(QuestionDao questionDao)","output":["QuestionDao questionDao"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(String raw)","output":["String raw"]}
+{"input":"(DefaultErrorContractDTO errorContractDTO,\n                                                                      int httpStatusCode,\n                                                                      Collection<ApiError> rawFilteredApiErrors,\n                                                                      Throwable originalException,\n                                                                      RequestInfoForLogging request)","output":["DefaultErrorContractDTO errorContractDTO","int httpStatusCode","Collection<ApiError> rawFilteredApiErrors","Throwable originalException","RequestInfoForLogging request"]}
+{"input":"(DefaultErrorContractDTO errorContractDTO,\n                                                                      int httpStatusCode,\n                                                                      Collection<ApiError> rawFilteredApiErrors,\n                                                                      Throwable originalException,\n                                                                      RequestInfoForLogging request)","output":["DefaultErrorContractDTO errorContractDTO","int httpStatusCode","Collection<ApiError> rawFilteredApiErrors","Throwable originalException","RequestInfoForLogging request"]}
+{"input":"(@NotNull RequestInfoForLogging request)","output":["@NotNull RequestInfoForLogging request"]}
+{"input":"(\n        int statusCode, Collection<ApiError> filteredClientErrors, Throwable originalException,\n        Throwable coreException, RequestInfoForLogging request\n    )","output":["int statusCode","Collection<ApiError> filteredClientErrors","Throwable originalException","Throwable coreException","RequestInfoForLogging request"]}
+{"input":"(Class<T> type)","output":["Class<T> type"]}
+{"input":"(\n        ApiError error,\n        List<Pair<String, String>> extraDetailsForLogging\n    )","output":["ApiError error","List<Pair<String, String>> extraDetailsForLogging"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(final String input)","output":["final String input"]}
+{"input":"()","output":[]}
+{"input":"(final String doc, final GQLSourceInput source)","output":["final String doc","final GQLSourceInput source"]}
+{"input":"()","output":[]}
+{"input":"(Map<K, V> map)","output":["Map<K, V> map"]}
+{"input":"(String string, String searchPattern, StringReplacer replacer)","output":["String string","String searchPattern","StringReplacer replacer"]}
+{"input":"(\n\t\t\t@HttpTrigger(name = \"req\", methods = { \"get\",\n\t\t\t\t\t\"post\" }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,\n\t\t\tfinal ExecutionContext context)","output":["@HttpTrigger(name = \"req\"","methods = { \"get\"","\"post\" }","authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request","final ExecutionContext context"]}
+{"input":"(Class<?> clazz)","output":["Class<?> clazz"]}
+{"input":"()","output":[]}
+{"input":"(String field,\n                             Template targetField,\n                             List<String> includeKeys,\n                             List<String> excludeKeys,\n                             String fieldSplit,\n                             String valueSplit,\n                             boolean allowDuplicateValues,\n                             boolean includeBrackets,\n                             String prefix,\n                             boolean recursive,\n                             String trim,\n                             String trimKey,\n                             int maxKeyLength)","output":["String field","Template targetField","List<String> includeKeys","List<String> excludeKeys","String fieldSplit","String valueSplit","boolean allowDuplicateValues","boolean includeBrackets","String prefix","boolean recursive","String trim","String trimKey","int maxKeyLength"]}
+{"input":"(String key, String trimChars)","output":["String key","String trimChars"]}
+{"input":"(Pipeline pipeline, Doc doc)","output":["Pipeline pipeline","Doc doc"]}
+{"input":"(String field, List<String> matchExpressions, Map<String, String> patternsBank, List<String> overwrite, boolean ignoreMissing, List<String> tagsOnFailure)","output":["String field","List<String> matchExpressions","Map<String, String> patternsBank","List<String> overwrite","boolean ignoreMissing","List<String> tagsOnFailure"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(final InputStream is)","output":["final InputStream is"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonWriter writer, List<PlaceType> placeTypes)","output":["JsonWriter writer","List<PlaceType> placeTypes"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonWriter writer, List<DescriptionTerm> descriptionTerms)","output":["JsonWriter writer","List<DescriptionTerm> descriptionTerms"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(final InputStream in)","output":["final InputStream in"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(final OutputStream os, final List<Place> places)","output":["final OutputStream os","final List<Place> places"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonWriter writer, List<DescriptionTerm> descriptionTerms)","output":["JsonWriter writer","List<DescriptionTerm> descriptionTerms"]}
+{"input":"(final InputStream is)","output":["final InputStream is"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(JsonReader reader)","output":["JsonReader reader"]}
+{"input":"(ConfigurationAdmin configAdmin)","output":["ConfigurationAdmin configAdmin"]}
+{"input":"(String label, JsonElement element)","output":["String label","JsonElement element"]}
+{"input":"(JsonPrimitive primitive)","output":["JsonPrimitive primitive"]}
+{"input":"(SparqlEndpoint endpoint, String cacheDirectory, Dictionary wordnetDirectory, Lexicon lexicon)","output":["SparqlEndpoint endpoint","String cacheDirectory","Dictionary wordnetDirectory","Lexicon lexicon"]}
+{"input":"(Triple t)","output":["Triple t"]}
+{"input":"(@NonNull ContentViewContract removableView)","output":["@NonNull ContentViewContract removableView"]}
+{"input":"(@NonNull ContentViewContract view)","output":["@NonNull ContentViewContract view"]}
+{"input":"()","output":[]}
+{"input":"(Throwable e)","output":["Throwable e"]}
+{"input":"()","output":[]}
+{"input":"(@NonNull GraphProvider graphProvider)","output":["@NonNull GraphProvider graphProvider"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(@NonNull NavigationDetails navDetails)","output":["@NonNull NavigationDetails navDetails"]}
+{"input":"(@NonNull GraphProvider graphProvider)","output":["@NonNull GraphProvider graphProvider"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(@NonNull NavigationDetails firstViewNavDetails)","output":["@NonNull NavigationDetails firstViewNavDetails"]}
+{"input":"(@NonNull ContentViewContract removableView)","output":["@NonNull ContentViewContract removableView"]}
+{"input":"(@NonNull NavigationDetails entering,\n                         @Nullable NavigationDetails leaving,\n                         boolean push)","output":["@NonNull NavigationDetails entering","@Nullable NavigationDetails leaving","boolean push"]}
+{"input":"(LifecycleEvent lifecycleEvent)","output":["LifecycleEvent lifecycleEvent"]}
+{"input":"(Throwable e)","output":["Throwable e"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(@NonNull NavigationDetails firstViewNavDetails)","output":["@NonNull NavigationDetails firstViewNavDetails"]}
+{"input":"(@NonNull ContentViewContract view, boolean newInstance)","output":["@NonNull ContentViewContract view","boolean newInstance"]}
+{"input":"()","output":[]}
+{"input":"(Throwable e)","output":["Throwable e"]}
+{"input":"(Point point)","output":["Point point"]}
+{"input":"(@RequestParam @NotBlank String userId)","output":["@RequestParam @NotBlank String userId"]}
+{"input":"(@RequestBody @Valid VerifyPasswordRequest request)","output":["@RequestBody @Valid VerifyPasswordRequest request"]}
+{"input":"(String userId)","output":["String userId"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(ResultSet rs)","output":["ResultSet rs"]}
+{"input":"(Plaintext message)","output":["Plaintext message"]}
+{"input":"(byte[] initialHash)","output":["byte[] initialHash"]}
+{"input":"(long value, OutputStream stream)","output":["long value","OutputStream stream"]}
+{"input":"(long value, OutputStream stream, AccessCounter counter)","output":["long value","OutputStream stream","AccessCounter counter"]}
+{"input":"(String value, OutputStream out)","output":["String value","OutputStream out"]}
+{"input":"(byte[] ripeOrTag)","output":["byte[] ripeOrTag"]}
+{"input":"(BitmessageAddress address)","output":["BitmessageAddress address"]}
+{"input":"(BitmessageAddress address)","output":["BitmessageAddress address"]}
+{"input":"(Connection connection, String where)","output":["Connection connection","String where"]}
+{"input":"()","output":[]}
+{"input":"(byte[] initialHash)","output":["byte[] initialHash"]}
+{"input":"(InternalContext context)","output":["InternalContext context"]}
+{"input":"(String where)","output":["String where"]}
+{"input":"(String address)","output":["String address"]}
+{"input":"(JSONObject myjson)","output":["JSONObject myjson"]}
+{"input":"(@NonNull final String apiUrl,\n                         final int timeout,\n                         @NonNull final String myUserAgent)","output":["@NonNull final String apiUrl","final int timeout","@NonNull final String myUserAgent"]}
+{"input":"()","output":[]}
+{"input":"(long lastModified)","output":["long lastModified"]}
+{"input":"()","output":[]}
+{"input":"(String location)","output":["String location"]}
+{"input":"(String connectionString)","output":["String connectionString"]}
+{"input":"(@NotNull GeneratorEnvironment environment,\n                           @NotNull FunctionTableExpression table)","output":["@NotNull GeneratorEnvironment environment","@NotNull FunctionTableExpression table"]}
+{"input":"()","output":[]}
+{"input":"(@NotNull List<String> args)","output":["@NotNull List<String> args"]}
+{"input":"(@NotNull String[] argArray, boolean showFirstExceptionStack)","output":["@NotNull String[] argArray","boolean showFirstExceptionStack"]}
+{"input":"(@NotNull List<String> args)","output":["@NotNull List<String> args"]}
+{"input":"(@NotNull List<String> args)","output":["@NotNull List<String> args"]}
+{"input":"(@NotNull ModuleArchiveExpression expr)","output":["@NotNull ModuleArchiveExpression expr"]}
+{"input":"(@NotNull AbortExpression expr)","output":["@NotNull AbortExpression expr"]}
+{"input":"(@NotNull List<String> args)","output":["@NotNull List<String> args"]}
+{"input":"(@NotNull List<String> args)","output":["@NotNull List<String> args"]}
+{"input":"(@NotNull String[] args)","output":["@NotNull String[] args"]}
+{"input":"(@NotNull List<String> args)","output":["@NotNull List<String> args"]}
+{"input":"()","output":[]}
+{"input":"(@NotNull String prefix,\n                                     @NotNull Expression expr,\n                                     @Nullable String assignResult)","output":["@NotNull String prefix","@NotNull Expression expr","@Nullable String assignResult"]}
+{"input":"(@NotNull Expression expr)","output":["@NotNull Expression expr"]}
+{"input":"(@NotNull IfSwitchExpression expr)","output":["@NotNull IfSwitchExpression expr"]}
+{"input":"(@NotNull String text)","output":["@NotNull String text"]}
+{"input":"(@NotNull String[] argArray, boolean showFirstExceptionStack)","output":["@NotNull String[] argArray","boolean showFirstExceptionStack"]}
+{"input":"(@PathVariable String coinId, Model model)","output":["@PathVariable String coinId","Model model"]}
+{"input":"(String[] configurations)","output":["String[] configurations"]}
+{"input":"(ColumnSpec[] specs, String leftTableAlias, String rightTableAlias)","output":["ColumnSpec[] specs","String leftTableAlias","String rightTableAlias"]}
+{"input":"(ID feedId, Set<Principal> principals)","output":["ID feedId","Set<Principal> principals"]}
+{"input":"()","output":[]}
+{"input":"(java.io.ObjectInputStream in)","output":["java.io.ObjectInputStream in"]}
+{"input":"(Throwable e)","output":["Throwable e"]}
+{"input":"(@Nonnull final String systemName)","output":["@Nonnull final String systemName"]}
+{"input":"(@Nonnull final User user)","output":["@Nonnull final User user"]}
+{"input":"(@Nonnull final String key, final long value)","output":["@Nonnull final String key","final long value"]}
+{"input":"()","output":[]}
+{"input":"(Bundle theResources)","output":["Bundle theResources"]}
+{"input":"(Entry nextEntry, HTTPVerbEnum verb)","output":["Entry nextEntry","HTTPVerbEnum verb"]}
+{"input":"(String theValue)","output":["String theValue"]}
+{"input":"(String theAction, String theUrl)","output":["String theAction","String theUrl"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Map<String, List<Instance>> workerToAssignmentMap)","output":["Map<String, List<Instance>> workerToAssignmentMap"]}
+{"input":"(ReflectData reflectData, boolean jsr310ConversionEnabled)","output":["ReflectData reflectData","boolean jsr310ConversionEnabled"]}
+{"input":"(PulsarClientImpl client, ConsumerConfigurationData<T> conf, Schema<T> schema)","output":["PulsarClientImpl client","ConsumerConfigurationData<T> conf","Schema<T> schema"]}
+{"input":"(boolean autoAckOldestChunkedMessageOnQueueFull)","output":["boolean autoAckOldestChunkedMessageOnQueueFull"]}
+{"input":"(@NonNull RegexSubscriptionMode mode)","output":["@NonNull RegexSubscriptionMode mode"]}
+{"input":"()","output":[]}
+{"input":"(Message<?> msg)","output":["Message<?> msg"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Object other)","output":["Object other"]}
+{"input":"(String namespaceBundle)","output":["String namespaceBundle"]}
+{"input":"(ChannelHandlerContext ctx)","output":["ChannelHandlerContext ctx"]}
+{"input":"(int clientProtoVersion, String clientVersion)","output":["int clientProtoVersion","String clientVersion"]}
+{"input":"(long bufferSize)","output":["long bufferSize"]}
+{"input":"()","output":[]}
+{"input":"(String userClassName, ClassLoader classLoader)","output":["String userClassName","ClassLoader classLoader"]}
+{"input":"(SourceConfig existingConfig, SourceConfig newConfig)","output":["SourceConfig existingConfig","SourceConfig newConfig"]}
+{"input":"(FunctionConfig functionConfig, File functionPackageFile)","output":["FunctionConfig functionConfig","File functionPackageFile"]}
+{"input":"(PaxMarker marker)","output":["PaxMarker marker"]}
+{"input":"(PaxMarker marker, String message)","output":["PaxMarker marker","String message"]}
+{"input":"(String format, Object... arguments)","output":["String format","Object... arguments"]}
+{"input":"(PaxMarker marker, String format, Object... arguments)","output":["PaxMarker marker","String format","Object... arguments"]}
+{"input":"(String fqcn, String message, Throwable t)","output":["String fqcn","String message","Throwable t"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Class<T> clazz)","output":["Class<T> clazz"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Collection<Statistics> statistics)","output":["Collection<Statistics> statistics"]}
+{"input":"(Integer personalProjectsCount)","output":["Integer personalProjectsCount"]}
+{"input":"(final List<Project> projectList, final Optional<String> sortBy)","output":["final List<Project> projectList","final Optional<String> sortBy"]}
+{"input":"(String languageName, List<Integer> projectCounts, List<Date> snapshotDates)","output":["String languageName","List<Integer> projectCounts","List<Date> snapshotDates"]}
+{"input":"(final List<Project> projects)","output":["final List<Project> projects"]}
+{"input":"()","output":[]}
+{"input":"(final String text)","output":["final String text"]}
+{"input":"(String msgctx, String msgid)","output":["String msgctx","String msgid"]}
+{"input":"(String msgid, String msgidPlural, long n)","output":["String msgid","String msgidPlural","long n"]}
+{"input":"(Locale locale, String msgctx, String msgid, String msgidPlural, long n)","output":["Locale locale","String msgctx","String msgid","String msgidPlural","long n"]}
+{"input":"( String sourceFQN, String targetFQN )","output":["String sourceFQN","String targetFQN"]}
+{"input":"(Class<T> mapperType, Iterable<ClassLoader> classLoaders)","output":["Class<T> mapperType","Iterable<ClassLoader> classLoaders"]}
+{"input":"(String identifier)","output":["String identifier"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(List<TypeMirror> qualifiers, List<String> qualifyingNames, TypeMirror resultType,\n        Types typeUtils, SourceRHS sourceRHS)","output":["List<TypeMirror> qualifiers","List<String> qualifyingNames","TypeMirror resultType","Types typeUtils","SourceRHS sourceRHS"]}
+{"input":"()","output":[]}
+{"input":"(Class<?> clazz)","output":["Class<?> clazz"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"(List<TypeMirror> qualifiers, List<String> qualifyingNames, TypeMirror resultType,\n        Types typeUtils, SourceRHS sourceRHS)","output":["List<TypeMirror> qualifiers","List<String> qualifyingNames","TypeMirror resultType","Types typeUtils","SourceRHS sourceRHS"]}
+{"input":"()","output":[]}
+{"input":"(String name)","output":["String name"]}
+{"input":"()","output":[]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"(String word, Collection<String> similarWords)","output":["String word","Collection<String> similarWords"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(int index)","output":["int index"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Integer eventCount)","output":["Integer eventCount"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(TxDetailType detailName, String detailValue)","output":["TxDetailType detailName","String detailValue"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Collection<Module> modules)","output":["Collection<Module> modules"]}
+{"input":"()","output":[]}
+{"input":"(StatusReportType statusReport)","output":["StatusReportType statusReport"]}
+{"input":"(String text)","output":["String text"]}
+{"input":"(FlowId flowId)","output":["FlowId flowId"]}
+{"input":"(final Instant waitingSince)","output":["final Instant waitingSince"]}
+{"input":"()","output":[]}
+{"input":"(final Instant waitingSince)","output":["final Instant waitingSince"]}
+{"input":"(Integer depth)","output":["Integer depth"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"()","output":[]}
+{"input":"(String name, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String jenkinsCrumb","String contentType","String body","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String json, String token, String jenkinsCrumb)","output":["String name","String json","String token","String jenkinsCrumb"]}
+{"input":"(Integer depth, final ApiCallback<ComputerSet> callback)","output":["Integer depth","final ApiCallback<ComputerSet> callback"]}
+{"input":"(String name, final ApiCallback<String> callback)","output":["String name","final ApiCallback<String> callback"]}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String jenkinsCrumb, String contentType, String body)","output":["String name","String jenkinsCrumb","String contentType","String body"]}
+{"input":"(String name, String body, String jenkinsCrumb)","output":["String name","String body","String jenkinsCrumb"]}
+{"input":"(String name, String body, String jenkinsCrumb)","output":["String name","String body","String jenkinsCrumb"]}
+{"input":"(Integer depth)","output":["Integer depth"]}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, final ApiCallback<String> callback)","output":["String name","final ApiCallback<String> callback"]}
+{"input":"()","output":[]}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":["String name","String jenkinsCrumb","final ApiCallback<Void> callback"]}
+{"input":"(String name, String jenkinsCrumb)","output":["String name","String jenkinsCrumb"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String jenkinsCrumb","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"()","output":[]}
+{"input":"(String number)","output":["String number"]}
+{"input":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(final ApiCallback<Void> callback)","output":["final ApiCallback<Void> callback"]}
+{"input":"(String name, String json, String token, String jenkinsCrumb)","output":["String name","String json","String token","String jenkinsCrumb"]}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String jenkinsCrumb","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String body, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String body","String jenkinsCrumb","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(ApiClient apiClient)","output":["ApiClient apiClient"]}
+{"input":"(String propertyClass, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String propertyClass","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(Integer key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["Integer key","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String branch, String run)","output":["String organization","String pipeline","String branch","String run"]}
+{"input":"(String organization, String pipeline, String run, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","String run","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String scm, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String scm","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String scm, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String scm","String credentialId","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String user)","output":["String organization","String user"]}
+{"input":"(String organization, String user, final ApiCallback<User> callback)","output":["String organization","String user","final ApiCallback<User> callback"]}
+{"input":"(String organization)","output":["String organization"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String q","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"()","output":[]}
+{"input":"(String name, String number, String start, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String number","String start","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String number, String start)","output":["String name","String number","String start"]}
+{"input":"(String number)","output":["String number"]}
+{"input":"(String name, String from, String mode, String jenkinsCrumb, String contentType, String body, final ApiCallback<Void> callback)","output":["String name","String from","String mode","String jenkinsCrumb","String contentType","String body","final ApiCallback<Void> callback"]}
+{"input":"(String name, String jenkinsCrumb)","output":["String name","String jenkinsCrumb"]}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":["String name","String jenkinsCrumb","final ApiCallback<Void> callback"]}
+{"input":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":["String name","String jenkinsCrumb","final ApiCallback<Void> callback"]}
+{"input":"(String name, String body, String jenkinsCrumb)","output":["String name","String body","String jenkinsCrumb"]}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String jenkinsCrumb","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String jenkinsCrumb)","output":["String name","String jenkinsCrumb"]}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String jenkinsCrumb","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String body, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String body","String jenkinsCrumb","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(ApiClient apiClient)","output":["ApiClient apiClient"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(Integer key, final ApiCallback<String> callback)","output":["Integer key","final ApiCallback<String> callback"]}
+{"input":"()","output":[]}
+{"input":"(String organization, String pipeline, String run, String node)","output":["String organization","String pipeline","String run","String node"]}
+{"input":"(String organization, String pipeline, String run, String node, String step, final ApiCallback<PipelineStepImpl> callback)","output":["String organization","String pipeline","String run","String node","String step","final ApiCallback<PipelineStepImpl> callback"]}
+{"input":"(String organization, String pipeline, String run, final ApiCallback<PipelineRunNodes> callback)","output":["String organization","String pipeline","String run","final ApiCallback<PipelineRunNodes> callback"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String user, final ApiCallback<User> callback)","output":["String organization","String user","final ApiCallback<User> callback"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(Integer depth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["Integer depth","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"()","output":[]}
+{"input":"(String number, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String number","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String from, String mode, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String from","String mode","String jenkinsCrumb","String contentType","String body","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String name","String jenkinsCrumb","String contentType","String body","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":["String name","String jenkinsCrumb","final ApiCallback<Void> callback"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline)","output":["String organization","String pipeline"]}
+{"input":"(String organization, String pipeline, String run, String node, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","String run","String node","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String run, String node)","output":["String organization","String pipeline","String run","String node"]}
+{"input":"(String organization, String pipeline, String run, String node, final ApiCallback<PipelineRunNodeSteps> callback)","output":["String organization","String pipeline","String run","String node","final ApiCallback<PipelineRunNodeSteps> callback"]}
+{"input":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins)","output":["Integer expiryTimeInMins","Integer maxExpiryTimeInMins"]}
+{"input":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins, final ApiCallback<String> callback)","output":["Integer expiryTimeInMins","Integer maxExpiryTimeInMins","final ApiCallback<String> callback"]}
+{"input":"(String organization)","output":["String organization"]}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download, final ApiCallback<String> callback)","output":["String organization","String pipeline","String run","Integer start","Boolean download","final ApiCallback<String> callback"]}
+{"input":"(String organization, String pipeline, String run, final ApiCallback<PipelineRunNodes> callback)","output":["String organization","String pipeline","String run","final ApiCallback<PipelineRunNodes> callback"]}
+{"input":"(String user)","output":["String user"]}
+{"input":"(String organization, String pipeline, Body body)","output":["String organization","String pipeline","Body body"]}
+{"input":"(String organization, String pipeline, Body body, final ApiCallback<FavoriteImpl> callback)","output":["String organization","String pipeline","Body body","final ApiCallback<FavoriteImpl> callback"]}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String q","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String queue)","output":["String organization","String pipeline","String queue"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"()","output":[]}
+{"input":"(String organization, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String folder","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String run, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","String run","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String run, final ApiCallback<PipelineRun> callback)","output":["String organization","String pipeline","String run","final ApiCallback<PipelineRun> callback"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String organization, String scm)","output":["String organization","String scm"]}
+{"input":"(String organization, String pipeline)","output":["String organization","String pipeline"]}
+{"input":"(String organization, final ApiCallback<User> callback)","output":["String organization","final ApiCallback<User> callback"]}
+{"input":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["Integer expiryTimeInMins","Integer maxExpiryTimeInMins","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String branch, String run)","output":["String organization","String pipeline","String branch","String run"]}
+{"input":"(String organization, String pipeline, String folder)","output":["String organization","String pipeline","String folder"]}
+{"input":"(String organization, String pipeline, String folder, final ApiCallback<PipelineImpl> callback)","output":["String organization","String pipeline","String folder","final ApiCallback<PipelineImpl> callback"]}
+{"input":"(String user)","output":["String user"]}
+{"input":"(String organization, String pipeline)","output":["String organization","String pipeline"]}
+{"input":"(String organization, String pipeline, String run, String blocking, Integer timeOutInSecs, final ApiCallback<PipelineRun> callback)","output":["String organization","String pipeline","String run","String blocking","Integer timeOutInSecs","final ApiCallback<PipelineRun> callback"]}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String q","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization)","output":["String organization"]}
+{"input":"(String organization, String pipeline, String branch)","output":["String organization","String pipeline","String branch"]}
+{"input":"(String organization, String pipeline, String branch, String run)","output":["String organization","String pipeline","String branch","String run"]}
+{"input":"(String organization, String pipeline, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","String folder","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download)","output":["String organization","String pipeline","String run","Integer start","Boolean download"]}
+{"input":"(String organization, String pipeline, final ApiCallback<PipelineRuns> callback)","output":["String organization","String pipeline","final ApiCallback<PipelineRuns> callback"]}
+{"input":"(String organization, String scm)","output":["String organization","String scm"]}
+{"input":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ApiCallback<ScmOrganisations> callback)","output":["String organization","String scm","String scmOrganisation","String repository","String credentialId","final ApiCallback<ScmOrganisations> callback"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String propertyClass)","output":["String propertyClass"]}
+{"input":"(Integer key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["Integer key","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String folder)","output":["String organization","String folder"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String q)","output":["String q"]}
+{"input":"()","output":[]}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String branch, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","String branch","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download)","output":["String organization","String pipeline","String run","Integer start","Boolean download"]}
+{"input":"(String organization, final ApiCallback<Pipelines> callback)","output":["String organization","final ApiCallback<Pipelines> callback"]}
+{"input":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String scm","String scmOrganisation","String repository","String credentialId","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization)","output":["String organization"]}
+{"input":"(String organization, String pipeline, final ApiCallback<Pipeline> callback)","output":["String organization","String pipeline","final ApiCallback<Pipeline> callback"]}
+{"input":"(String organization, String pipeline, String branch, String run, final ApiCallback<PipelineRun> callback)","output":["String organization","String pipeline","String branch","String run","final ApiCallback<PipelineRun> callback"]}
+{"input":"(String organization, String pipeline, String folder)","output":["String organization","String pipeline","String folder"]}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String pipeline","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download)","output":["String organization","String pipeline","String run","Integer start","Boolean download"]}
+{"input":"(String organization, String pipeline, String run)","output":["String organization","String pipeline","String run"]}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String organization, String scm, final ApiCallback<GithubScm> callback)","output":["String organization","String scm","final ApiCallback<GithubScm> callback"]}
+{"input":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String organization","String scm","String scmOrganisation","String repository","String credentialId","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":["String q","final ProgressResponseBody.ProgressListener progressListener","final ProgressRequestBody.ProgressRequestListener progressRequestListener"]}
+{"input":"(final Selection<?>... selections)","output":["final Selection<?>... selections"]}
+{"input":"(final Class<T> targetEntity)","output":["final Class<T> targetEntity"]}
+{"input":"(final Expression<? extends N> x, final Expression<? extends N> y)","output":["final Expression<? extends N> x","final Expression<? extends N> y"]}
+{"input":"(final Expression<N> x)","output":["final Expression<N> x"]}
+{"input":"(final Expression<? extends Number> number)","output":["final Expression<? extends Number> number"]}
+{"input":"(final C collection)","output":["final C collection"]}
+{"input":"(final E elem, final Expression<C> collection)","output":["final E elem","final Expression<C> collection"]}
+{"input":"()","output":[]}
+{"input":"(final JsonObject raw)","output":["final JsonObject raw"]}
+{"input":"(boolean ensureOgcSfsCompliancy)","output":["boolean ensureOgcSfsCompliancy"]}
+{"input":"(JSONArray geometries)","output":["JSONArray geometries"]}
+{"input":"(int index, int maxLengthBytes)","output":["int index","int maxLengthBytes"]}
+{"input":"(StreamSchema<T> schema)","output":["StreamSchema<T> schema"]}
+{"input":"(T input)","output":["T input"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(TypeInformation<T> typeInfo, String... fieldNames)","output":["TypeInformation<T> typeInfo","String... fieldNames"]}
+{"input":"(final Connection connection)","output":["final Connection connection"]}
+{"input":"(final String selectPrefix,\n                                                                         final String groupingAndSorting,\n                                                                         final List<WhereClause> additionalWhereClauses,\n                                                                         final Query<O> query,\n                                                                         final Connection connection)","output":["final String selectPrefix","final String groupingAndSorting","final List<WhereClause> additionalWhereClauses","final Query<O> query","final Connection connection"]}
+{"input":"(final Query<O> query, QueryOptions queryOptions, SortedKeyStatisticsIndex<?, O> indexForOrdering, List<AttributeOrder<O>> allSortOrders, RangeBounds<?> rangeBoundsFromQuery, boolean attributeCanHaveMoreThanOneValue, boolean primarySortDescending)","output":["final Query<O> query","QueryOptions queryOptions","SortedKeyStatisticsIndex<?, O> indexForOrdering","List<AttributeOrder<O>> allSortOrders","RangeBounds<?> rangeBoundsFromQuery","boolean attributeCanHaveMoreThanOneValue","boolean primarySortDescending"]}
+{"input":"(QueryOptions queryOptions)","output":["QueryOptions queryOptions"]}
+{"input":"(QueryOptions queryOptions)","output":["QueryOptions queryOptions"]}
+{"input":"(O object, QueryOptions queryOptions)","output":["O object","QueryOptions queryOptions"]}
+{"input":"(Class<O> pojoClass, Class<A> attributeValueType, String fieldName, String attributeName)","output":["Class<O> pojoClass","Class<A> attributeValueType","String fieldName","String attributeName"]}
+{"input":"(Class<O> pojoClass, Class<A> attributeValueType, String getterMethodName, String getterParameter, boolean componentValuesNullable, String attributeName)","output":["Class<O> pojoClass","Class<A> attributeValueType","String getterMethodName","String getterParameter","boolean componentValuesNullable","String attributeName"]}
+{"input":"(Class<?> primitiveType)","output":["Class<?> primitiveType"]}
+{"input":"(A lowerBound, boolean lowerInclusive, A upperBound, boolean upperInclusive)","output":["A lowerBound","boolean lowerInclusive","A upperBound","boolean upperInclusive"]}
+{"input":"()","output":[]}
+{"input":"(Factory<ConcurrentMap<A, StoredResultSet<O>>> indexMapFactory, Factory<StoredResultSet<O>> valueSetFactory, Attribute<O, A> attribute)","output":["Factory<ConcurrentMap<A, StoredResultSet<O>>> indexMapFactory","Factory<StoredResultSet<O>> valueSetFactory","Attribute<O, A> attribute"]}
+{"input":"(final Query<O> query, final QueryOptions queryOptions)","output":["final Query<O> query","final QueryOptions queryOptions"]}
+{"input":"(QueryOptions queryOptions)","output":["QueryOptions queryOptions"]}
+{"input":"(final Connection connection)","output":["final Connection connection"]}
+{"input":"(final K key , final String tableName, final Connection connection)","output":["final K key","final String tableName","final Connection connection"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(O object, QueryOptions queryOptions)","output":["O object","QueryOptions queryOptions"]}
+{"input":"(Factory<ConcurrentNavigableMap<A, StoredResultSet<O>>> indexMapFactory, Factory<StoredResultSet<O>> valueSetFactory, Attribute<O, A> attribute)","output":["Factory<ConcurrentNavigableMap<A, StoredResultSet<O>>> indexMapFactory","Factory<StoredResultSet<O>> valueSetFactory","Attribute<O, A> attribute"]}
+{"input":"(QueryOptions queryOptions)","output":["QueryOptions queryOptions"]}
+{"input":"(QueryOptions queryOptions)","output":["QueryOptions queryOptions"]}
+{"input":"(final int startIndex, final PreparedStatement preparedStatement, final Iterable values)","output":["final int startIndex","final PreparedStatement preparedStatement","final Iterable values"]}
+{"input":"(Calendar newCalendar)","output":["Calendar newCalendar"]}
+{"input":"(final LogRecord record)","output":["final LogRecord record"]}
+{"input":"()","output":[]}
+{"input":"(Address address)","output":["Address address"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(final StackTraceElement s)","output":["final StackTraceElement s"]}
+{"input":"(String msg, Object[] p)","output":["String msg","Object[] p"]}
+{"input":"()","output":[]}
+{"input":"(Message.RecipientType type, Address[] addresses)","output":["Message.RecipientType type","Address[] addresses"]}
+{"input":"()","output":[]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(Session session,\n\t\t\t\tString name, int def)","output":["Session session","String name","int def"]}
+{"input":"(final CharSequence value)","output":["final CharSequence value"]}
+{"input":"(final Object key)","output":["final Object key"]}
+{"input":"(final LogRecord record)","output":["final LogRecord record"]}
+{"input":"(final StackTraceElement s)","output":["final StackTraceElement s"]}
+{"input":"(final LogRecord record)","output":["final LogRecord record"]}
+{"input":"(final StackTraceElement s)","output":["final StackTraceElement s"]}
+{"input":"(final Locale locale)","output":["final Locale locale"]}
+{"input":"(final LogRecord record)","output":["final LogRecord record"]}
+{"input":"(final String p)","output":["final String p"]}
+{"input":"()","output":[]}
+{"input":"(LogRecord record)","output":["LogRecord record"]}
+{"input":"(final Properties parent)","output":["final Properties parent"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(final Properties parent, final String prefix)","output":["final Properties parent","final String prefix"]}
+{"input":"(final Throwable t)","output":["final Throwable t"]}
+{"input":"(final LogRecord record)","output":["final LogRecord record"]}
+{"input":"(Properties props, String name, int def)","output":["Properties props","String name","int def"]}
+{"input":"(Path path, URI reference)","output":["Path path","URI reference"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(ImageRecord o)","output":["ImageRecord o"]}
+{"input":"()","output":[]}
+{"input":"(BufferedImage originalImage)","output":["BufferedImage originalImage"]}
+{"input":"(Path path, String name)","output":["Path path","String name"]}
+{"input":"()","output":[]}
+{"input":"(String text, Charset encoding)","output":["String text","Charset encoding"]}
+{"input":"(@NotNull final String taskId)","output":["@NotNull final String taskId"]}
+{"input":"()","output":[]}
+{"input":"(final String key, final Long maxRequests, final OptionsInterval interval)","output":["final String key","final Long maxRequests","final OptionsInterval interval"]}
+{"input":"(final String key, final String keyExpression, final JoinPoint joinPoint)","output":["final String key","final String keyExpression","final JoinPoint joinPoint"]}
+{"input":"(final String key, final JoinPoint joinPoint)","output":["final String key","final JoinPoint joinPoint"]}
+{"input":"(Instant timestamp)","output":["Instant timestamp"]}
+{"input":"(int x, int y)","output":["int x","int y"]}
+{"input":"()","output":[]}
+{"input":"(\n            CheckedRunnable runnable,\n            String name,\n            Optional<Double> errorThreshold\n    )","output":["CheckedRunnable runnable","String name","Optional<Double> errorThreshold"]}
+{"input":"()","output":[]}
+{"input":"(String name, Optional<Double> errorThreshold)","output":["String name","Optional<Double> errorThreshold"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(\n            Runnable runnable,\n            String name,\n            double errorThreshold\n    )","output":["Runnable runnable","String name","double errorThreshold"]}
+{"input":"(\n            Callable<T> callable,\n            String name,\n            double errorThreshold\n    )","output":["Callable<T> callable","String name","double errorThreshold"]}
+{"input":"(\n            final Supplier<? extends Number> numerator,\n            final Supplier<? extends Number> denominator\n    )","output":["final Supplier<? extends Number> numerator","final Supplier<? extends Number> denominator"]}
+{"input":"()","output":[]}
+{"input":"(NetworkParameters params, String seedPhrase)","output":["NetworkParameters params","String seedPhrase"]}
+{"input":"(NetworkParameters params, String seedPhrase)","output":["NetworkParameters params","String seedPhrase"]}
+{"input":"(NetworkParameters params, byte[] entropy)","output":["NetworkParameters params","byte[] entropy"]}
+{"input":"(Wallet wallet)","output":["Wallet wallet"]}
+{"input":"(String moduleId)","output":["String moduleId"]}
+{"input":"(AnnotationType annotationType, String propertyAnnotations)","output":["AnnotationType annotationType","String propertyAnnotations"]}
+{"input":"(String initialGroupDN)","output":["String initialGroupDN"]}
+{"input":"(ParentGroupsDNRetriever parentGroupsDNRetriever)","output":["ParentGroupsDNRetriever parentGroupsDNRetriever"]}
+{"input":"(PropertyVisitorsSequence propertyVisitorsSequence)","output":["PropertyVisitorsSequence propertyVisitorsSequence"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"()","output":[]}
+{"input":"(String value, String errorMessage)","output":["String value","String errorMessage"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String annotationDefinition)","output":["String annotationDefinition"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(AnnotationType annotationType, String propertyAnnotations)","output":["AnnotationType annotationType","String propertyAnnotations"]}
+{"input":"(String annotationDefinition)","output":["String annotationDefinition"]}
+{"input":"(ModuleCommands moduleCommands,\n                          ModuleQueries moduleQueries,\n                          TechnoQueries technoQueries,\n                          PlatformQueries platformQueries,\n                          EventCommands eventCommands)","output":["ModuleCommands moduleCommands","ModuleQueries moduleQueries","TechnoQueries technoQueries","PlatformQueries platformQueries","EventCommands eventCommands"]}
+{"input":"(String propertyDefinition)","output":["String propertyDefinition"]}
+{"input":"(String value, String errorMessage)","output":["String value","String errorMessage"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String annotationDefinition, AnnotationType annotationType, String propertyAnnotations)","output":["String annotationDefinition","AnnotationType annotationType","String propertyAnnotations"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(String sql)","output":["String sql"]}
+{"input":"()","output":[]}
+{"input":"(int curSize, double percent)","output":["int curSize","double percent"]}
+{"input":"(SlackMessage message, String environment)","output":["SlackMessage message","String environment"]}
+{"input":"(Map<String, List<String>> summary, LogProcessorLambdaConfig config)","output":["Map<String, List<String>> summary","LogProcessorLambdaConfig config"]}
+{"input":"(LogProcessorLambdaConfig config)","output":["LogProcessorLambdaConfig config"]}
+{"input":"(ObjectMapper objectMapper, AWSWAFRegional awsWaf, AmazonS3 amazonS3)","output":["ObjectMapper objectMapper","AWSWAFRegional awsWaf","AmazonS3 amazonS3"]}
+{"input":"(List<ALBAccessLogEvent> events, LogProcessorLambdaConfig config, String bucketName)","output":["List<ALBAccessLogEvent> events","LogProcessorLambdaConfig config","String bucketName"]}
+{"input":"(ArrayList<Map<String, String>> sdbMetadata, String sdbName, String principalName)","output":["ArrayList<Map<String, String>> sdbMetadata","String sdbName","String principalName"]}
+{"input":"()","output":[]}
+{"input":"(Map<String, List<String>> summary, LogProcessorLambdaConfig config)","output":["Map<String, List<String>> summary","LogProcessorLambdaConfig config"]}
+{"input":"(String ip)","output":["String ip"]}
+{"input":"(LogProcessorLambdaConfig config)","output":["LogProcessorLambdaConfig config"]}
+{"input":"(String ipSetId, int retryCount)","output":["String ipSetId","int retryCount"]}
+{"input":"()","output":[]}
+{"input":"(LogstashLayoutSerializationContext oldContext)","output":["LogstashLayoutSerializationContext oldContext"]}
+{"input":"(Path sourcePath, Path sourceRoot, Path targetRoot)","output":["Path sourcePath","Path sourceRoot","Path targetRoot"]}
+{"input":"(int count)","output":["int count"]}
+{"input":"(byte[] buffer)","output":["byte[] buffer"]}
+{"input":"(int count)","output":["int count"]}
+{"input":"(int maxAddressLength)","output":["int maxAddressLength"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(byte[] bytes)","output":["byte[] bytes"]}
+{"input":"(byte[] bytes, int count)","output":["byte[] bytes","int count"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"(byte[] buffer)","output":["byte[] buffer"]}
+{"input":"(int size, String encoding)","output":["int size","String encoding"]}
+{"input":"(int count)","output":["int count"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"(int count)","output":["int count"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"(String string, int count, String encoding)","output":["String string","int count","String encoding"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(byte[] buffer)","output":["byte[] buffer"]}
+{"input":"()","output":[]}
+{"input":"(int size, String encoding)","output":["int size","String encoding"]}
+{"input":"(byte[] buffer)","output":["byte[] buffer"]}
+{"input":"(String string)","output":["String string"]}
+{"input":"()","output":[]}
+{"input":"(byte[] bytes, int count)","output":["byte[] bytes","int count"]}
+{"input":"(byte[] bytes)","output":["byte[] bytes"]}
+{"input":"(byte[] bytes, int count)","output":["byte[] bytes","int count"]}
+{"input":"()","output":[]}
+{"input":"(JobParameters parameters)","output":["JobParameters parameters"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(List<QueueSender> queues)","output":["List<QueueSender> queues"]}
+{"input":"(final Class<P> type)","output":["final Class<P> type"]}
+{"input":"()","output":[]}
+{"input":"(List<BlockingQueue<Record<P>>> queues)","output":["List<BlockingQueue<Record<P>>> queues"]}
+{"input":"(@NonNull final String fontPath)","output":["@NonNull final String fontPath"]}
+{"input":"(@Nullable final String basePath)","output":["@Nullable final String basePath"]}
+{"input":"(final String filePath)","output":["final String filePath"]}
+{"input":"(\n\t\t\t@NonNull final Context context,\n\t\t\t@Nullable final AttributeSet attrs,\n\t\t\t@AttrRes final int defStyleAttr,\n\t\t\t@StyleRes final int defStyleRes\n\t)","output":["@NonNull final Context context","@Nullable final AttributeSet attrs","@AttrRes final int defStyleAttr","@StyleRes final int defStyleRes"]}
+{"input":"(final String filePath)","output":["final String filePath"]}
+{"input":"(@NonNull final Context context)","output":["@NonNull final Context context"]}
+{"input":"(LANG l)","output":["LANG l"]}
+{"input":"( )","output":[]}
+{"input":"()","output":[]}
+{"input":"(List<? extends DocumentWriteOperation> items)","output":["List<? extends DocumentWriteOperation> items"]}
+{"input":"(DatabaseClient client)","output":["DatabaseClient client"]}
+{"input":"(WriteFailureListener listener)","output":["WriteFailureListener listener"]}
+{"input":"(Class<T> type, List<Class<?>> constructorArgTypes, List<Object> constructorArgs)","output":["Class<T> type","List<Class<?>> constructorArgTypes","List<Object> constructorArgs"]}
+{"input":"()","output":[]}
+{"input":"(ClassLoader loader, String resource)","output":["ClassLoader loader","String resource"]}
+{"input":"(Closeable closeable)","output":["Closeable closeable"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(String alias, Class<?> value)","output":["String alias","Class<?> value"]}
+{"input":"()","output":[]}
+{"input":"(List<Object> list, Class<?> targetType)","output":["List<Object> list","Class<?> targetType"]}
+{"input":"(String sql, Object... args)","output":["String sql","Object... args"]}
+{"input":"()","output":[]}
+{"input":"(String[] args)","output":["String[] args"]}
+{"input":"(String locale)","output":["String locale"]}
+{"input":"(String locale)","output":["String locale"]}
+{"input":"(boolean fromJSON)","output":["boolean fromJSON"]}
+{"input":"(String[] args)","output":["String[] args"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"( Map<String, String> properties, String key, int fallback )","output":["Map<String, String> properties","String key","int fallback"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"( Map<String, String> properties, String key, int fallback )","output":["Map<String, String> properties","String key","int fallback"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"( Concurrency concurrency )","output":["Concurrency concurrency"]}
+{"input":"( JUnitCoreParameters jUnitCoreParameters )","output":["JUnitCoreParameters jUnitCoreParameters"]}
+{"input":"(@Nullable String s)","output":["@Nullable String s"]}
+{"input":"(@Nonnull Object value, @Nonnull String fieldName, ToStringOptions options)","output":["@Nonnull Object value","@Nonnull String fieldName","ToStringOptions options"]}
+{"input":"(byte[] value, byte[] key)","output":["byte[] value","byte[] key"]}
+{"input":"(String traceTrueToken)","output":["String traceTrueToken"]}
+{"input":"(String traceId)","output":["String traceId"]}
+{"input":"(String input)","output":["String input"]}
+{"input":"(List<Span> spans)","output":["List<Span> spans"]}
+{"input":"(int traceIdPrefixedSpanSize)","output":["int traceIdPrefixedSpanSize"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(MessageSource messageSource)","output":["MessageSource messageSource"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(BooleanExpression booleanExpression, TypedExpression<T> value)","output":["BooleanExpression booleanExpression","TypedExpression<T> value"]}
+{"input":"()","output":[]}
+{"input":"(String alias, Function1<X,R> method)","output":["String alias","Function1<X,R> method"]}
+{"input":"(String arg)","output":["String arg"]}
+{"input":"(TypeToken<T> targetClass, Class<?> argType, Field field)","output":["TypeToken<T> targetClass","Class<?> argType","Field field"]}
+{"input":"(Class<A> annotationClass, Method method)","output":["Class<A> annotationClass","Method method"]}
+{"input":"(Function1<T,V> methodReference)","output":["Function1<T,V> methodReference"]}
+{"input":"(Class<?> aClass, String name, Class<?>... parameterTypes)","output":["Class<?> aClass","String name","Class<?>... parameterTypes"]}
+{"input":"(Class<T> aClass, Class<A> annotationClass)","output":["Class<T> aClass","Class<A> annotationClass"]}
+{"input":"(Class<?> aClass)","output":["Class<?> aClass"]}
+{"input":"(Class<T> aClass, Class<?>... parameterTypes)","output":["Class<T> aClass","Class<?>... parameterTypes"]}
+{"input":"(Scope scope, String label)","output":["Scope scope","String label"]}
+{"input":"(SqlExecutor sqlExecutor)","output":["SqlExecutor sqlExecutor"]}
+{"input":"(SqlExecutor sqlExecutor)","output":["SqlExecutor sqlExecutor"]}
+{"input":"()","output":[]}
+{"input":"(Map<ConfigResource, Config> configs, AlterConfigsOptions options)","output":["Map<ConfigResource, Config> configs","AlterConfigsOptions options"]}
+{"input":"(Collection<Integer> brokers, DescribeLogDirsOptions options)","output":["Collection<Integer> brokers","DescribeLogDirsOptions options"]}
+{"input":"(String url)","output":["String url"]}
+{"input":"(Throwable cause)","output":["Throwable cause"]}
+{"input":"()","output":[]}
+{"input":"(File parent, File child)","output":["File parent","File child"]}
+{"input":"(char c)","output":["char c"]}
+{"input":"(String message)","output":["String message"]}
+{"input":"(ItemGetParam param)","output":["ItemGetParam param"]}
+{"input":"(Args args, String key, PrintStream err )","output":["Args args","String key","PrintStream err"]}
+{"input":"( Collection<Args.Option<File[]>> nodesFiles,\n                                           Collection<Args.Option<File[]>> edgesFiles )","output":["Collection<Args.Option<File[]>> nodesFiles","Collection<Args.Option<File[]>> edgesFiles"]}
+{"input":"(File storeDir, Collection<Args.Option<File[]>> nodesFiles,\n                                      Collection<Args.Option<File[]>> edgesFiles,\n                                      Configuration configuration, PrintStream out)","output":["File storeDir","Collection<Args.Option<File[]>> nodesFiles","Collection<Args.Option<File[]>> edgesFiles","Configuration configuration","PrintStream out"]}
+{"input":"()","output":[]}
+{"input":"(@NonNull final AnimatorListener listener)","output":["@NonNull final AnimatorListener listener"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"(@NonNull final View view)","output":["@NonNull final View view"]}
+{"input":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0) final float radiusStart,\n\t\t\t@FloatRange(from = 0) final float radiusEnd\n\t)","output":["@NonNull final View view","@FloatRange(from = 0) final float radiusStart","@FloatRange(from = 0) final float radiusEnd"]}
+{"input":"()","output":[]}
+{"input":"(final int visibility)","output":["final int visibility"]}
+{"input":"(\n\t\t\t@NonNull final ViewGroup sceneRoot,\n\t\t\t@NonNull final View view,\n\t\t\t@Nullable final TransitionValues startValues,\n\t\t\t@Nullable final TransitionValues endValues\n\t)","output":["@NonNull final ViewGroup sceneRoot","@NonNull final View view","@Nullable final TransitionValues startValues","@Nullable final TransitionValues endValues"]}
+{"input":"()","output":[]}
+{"input":"(final View view)","output":["final View view"]}
+{"input":"(@Nullable final Bundle extras)","output":["@Nullable final Bundle extras"]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"()","output":[]}
+{"input":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0, to = 1) final float centerXFraction,\n\t\t\t@FloatRange(from = 0, to = 1) final float centerYFraction\n\t)","output":["@NonNull final View view","@FloatRange(from = 0","to = 1) final float centerXFraction","@FloatRange(from = 0","to = 1) final float centerYFraction"]}
+{"input":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0) final float radiusStart,\n\t\t\t@FloatRange(from = 0) final float radiusEnd\n\t)","output":["@NonNull final View view","@FloatRange(from = 0) final float radiusStart","@FloatRange(from = 0) final float radiusEnd"]}
+{"input":"(final View view)","output":["final View view"]}
+{"input":"(\n\t\t\t@AnimRes final int startEnterAnim,\n\t\t\t@AnimRes final int startExitAnim,\n\t\t\t@AnimRes final int finishEnterAnim,\n\t\t\t@AnimRes final int finishExitAnim\n\t)","output":["@AnimRes final int startEnterAnim","@AnimRes final int startExitAnim","@AnimRes final int finishEnterAnim","@AnimRes final int finishExitAnim"]}
+{"input":"()","output":[]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"()","output":[]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(@Nullable final Transition transition)","output":["@Nullable final Transition transition"]}
+{"input":"(final boolean useOverlay)","output":["final boolean useOverlay"]}
+{"input":"(@NonNull final Context context, final int resource, @NonNull final ViewGroup sceneRoot)","output":["@NonNull final Context context","final int resource","@NonNull final ViewGroup sceneRoot"]}
+{"input":"(@NonNull final View element, @NonNull final String elementName)","output":["@NonNull final View element","@NonNull final String elementName"]}
+{"input":"(@NonNull final Activity caller)","output":["@NonNull final Activity caller"]}
+{"input":"(@NonNull final Fragment caller)","output":["@NonNull final Fragment caller"]}
+{"input":"(@NonNull final Animator animator)","output":["@NonNull final Animator animator"]}
+{"input":"(@WrapperFeatures final int feature)","output":["@WrapperFeatures final int feature"]}
+{"input":"(@NonNull Object instance)","output":["@NonNull Object instance"]}
+{"input":"(String s)","output":["String s"]}
+{"input":"(@NonNull String string)","output":["@NonNull String string"]}
+{"input":"(@NonNull String className)","output":["@NonNull String className"]}
+{"input":"(final long errorCode)","output":["final long errorCode"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(boolean b)","output":["boolean b"]}
+{"input":"(short value)","output":["short value"]}
+{"input":"(final String hex)","output":["final String hex"]}
+{"input":"(final String hex)","output":["final String hex"]}
+{"input":"(char c)","output":["char c"]}
+{"input":"(String userEmail, String userName)","output":["String userEmail","String userName"]}
+{"input":"(ObjectInputStream in)","output":["ObjectInputStream in"]}
+{"input":"(byte[] bytes)","output":["byte[] bytes"]}
+{"input":"()","output":[]}
+{"input":"(final String title, final int message)","output":["final String title","final int message"]}
+{"input":"(final CoordinatorLayout layout, final Context context, final String message)","output":["final CoordinatorLayout layout","final Context context","final String message"]}
+{"input":"()","output":[]}
+{"input":"(ByteBuffer bb)","output":["ByteBuffer bb"]}
+{"input":"(ByteBuffer bb)","output":["ByteBuffer bb"]}
+{"input":"(ByteBuffer bb)","output":["ByteBuffer bb"]}
+{"input":"(boolean sampleIsDifferenceSample)","output":["boolean sampleIsDifferenceSample"]}
+{"input":"(Track track, Movie m)","output":["Track track","Movie m"]}
+{"input":"(ByteBuffer bb)","output":["ByteBuffer bb"]}
+{"input":"()","output":[]}
+{"input":"(int i, int numBits)","output":["int i","int numBits"]}
+{"input":"(Track track)","output":["Track track"]}
+{"input":"(final RelayVertex relayVertex, final IREdge edgeToStreamize)","output":["final RelayVertex relayVertex","final IREdge edgeToStreamize"]}
+{"input":"(final IRVertex vertexToDelete)","output":["final IRVertex vertexToDelete"]}
+{"input":"()","output":[]}
+{"input":"(Object obj)","output":["Object obj"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(BindableLayout<T> itemView)","output":["BindableLayout<T> itemView"]}
+{"input":"(double x0, double y0, double theta0, double gainDB)","output":["double x0","double y0","double theta0","double gainDB"]}
+{"input":"(double power)","output":["double power"]}
+{"input":"(Class<?> ofClass, Class<?> inClass)","output":["Class<?> ofClass","Class<?> inClass"]}
+{"input":"(Type type)","output":["Type type"]}
+{"input":"(Type type)","output":["Type type"]}
+{"input":"()","output":[]}
+{"input":"(float value)","output":["float value"]}
+{"input":"()","output":[]}
+{"input":"(String name, String value)","output":["String name","String value"]}
+{"input":"(final Type type, final Type rootType)","output":["final Type type","final Type rootType"]}
+{"input":"(Type type)","output":["Type type"]}
+{"input":"()","output":[]}
+{"input":"(final double value)","output":["final double value"]}
+{"input":"(byte[] value)","output":["byte[] value"]}
+{"input":"(Number num)","output":["Number num"]}
+{"input":"(final String value)","output":["final String value"]}
+{"input":"()","output":[]}
+{"input":"(String name, Boolean value)","output":["String name","Boolean value"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(char[] str)","output":["char[] str"]}
+{"input":"()","output":[]}
+{"input":"(int cursor)","output":["int cursor"]}
+{"input":"()","output":[]}
+{"input":"(final JsonType jsonType, final char token)","output":["final JsonType jsonType","final char token"]}
+{"input":"(String name)","output":["String name"]}
+{"input":"(int cur, long longValue, boolean negative)","output":["int cur","long longValue","boolean negative"]}
+{"input":"()","output":[]}
+{"input":"(TypeVariable<? extends GenericDeclaration> type,\n                                                Class<?> declaringClass, Class<?> inClass)","output":["TypeVariable<? extends GenericDeclaration> type","Class<?> declaringClass","Class<?> inClass"]}
+{"input":"(int parameterIdx, Type fromType)","output":["int parameterIdx","Type fromType"]}
+{"input":"()","output":[]}
+{"input":"(int localCursor)","output":["int localCursor"]}
+{"input":"()","output":[]}
+{"input":"(final String value)","output":["final String value"]}
+{"input":"(final Number value)","output":["final Number value"]}
+{"input":"(String name, String value)","output":["String name","String value"]}
+{"input":"()","output":[]}
+{"input":"(Type type, Class<?> inClass)","output":["Type type","Class<?> inClass"]}
+{"input":"(Type type)","output":["Type type"]}
+{"input":"(final URI uri, @Nullable final JSONObject postEntity, final JsonParser<T> parser, ProgressMonitor progressMonitor)","output":["final URI uri","@Nullable final JSONObject postEntity","final JsonParser<T> parser","ProgressMonitor progressMonitor"]}
+{"input":"(final URI uri, final JsonArrayParser<T> parser, ProgressMonitor progressMonitor)","output":["final URI uri","final JsonArrayParser<T> parser","ProgressMonitor progressMonitor"]}
+{"input":"(final URI uri, @Nullable final JSONObject postEntity, ProgressMonitor progressMonitor)","output":["final URI uri","@Nullable final JSONObject postEntity","ProgressMonitor progressMonitor"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Challenge challenge, RequestContent requestContent, Authorization authorization)","output":["Challenge challenge","RequestContent requestContent","Authorization authorization"]}
+{"input":"(Keychain keychain, KeyId keyId)","output":["Keychain keychain","KeyId keyId"]}
+{"input":"(InputStream configurationStream)","output":["InputStream configurationStream"]}
+{"input":"()","output":[]}
+{"input":"(\n        @ApiParam(\n            value = \"Tag identifier\",\n            required = true\n        )\n        @PathVariable\n            Integer tagIdentifier\n    )","output":["@ApiParam(\n            value = \"Tag identifier\"","required = true\n        )\n        @PathVariable\n            Integer tagIdentifier"]}
+{"input":"(\n        JSONObject filter,\n        Integer[] groupIdFilter,\n        Integer[] groupOwnerIdFilter,\n        Pageable pageRequest,\n        UserSession userSession)","output":["JSONObject filter","Integer[] groupIdFilter","Integer[] groupOwnerIdFilter","Pageable pageRequest","UserSession userSession"]}
+{"input":"(String expr)","output":["String expr"]}
+{"input":"(String expr)","output":["String expr"]}
+{"input":"(FileSystem newFileSystem)","output":["FileSystem newFileSystem"]}
+{"input":"(String pname)","output":["String pname"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(\n        @ApiParam(\n            value = API_PARAM_RECORD_UUID,\n            required = true)\n        @PathVariable\n            String metadataUuid,\n        @ApiParam(\n            value = \"MEF file format.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"FULL\")\n            MEFLib.Format format,\n        @ApiParam(\n            value = \"With related records (parent and service).\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean withRelated,\n        @ApiParam(\n            value = \"Resolve XLinks in the records.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean withXLinksResolved,\n        @ApiParam(\n            value = \"Preserve XLink URLs in the records.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"false\")\n            boolean withXLinkAttribute,\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean addSchemaLocation,\n        @ApiParam(value = \"Download the approved version\",\n            required = false)\n        @RequestParam(required = false, defaultValue = \"true\")\n            boolean approved,\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT,\n            defaultValue = \"application/x-gn-mef-2-zip\"\n        )\n            String acceptHeader,\n        HttpServletResponse response,\n        HttpServletRequest request\n    )","output":["@ApiParam(\n            value = API_PARAM_RECORD_UUID","required = true)\n        @PathVariable\n            String metadataUuid","@ApiParam(\n            value = \"MEF file format.\"","required = false)\n        @RequestParam(\n            required = false","defaultValue = \"FULL\")\n            MEFLib.Format format","@ApiParam(\n            value = \"With related records (parent and service).\"","required = false)\n        @RequestParam(\n            required = false","defaultValue = \"true\")\n            boolean withRelated","@ApiParam(\n            value = \"Resolve XLinks in the records.\"","required = false)\n        @RequestParam(\n            required = false","defaultValue = \"true\")\n            boolean withXLinksResolved","@ApiParam(\n            value = \"Preserve XLink URLs in the records.\"","required = false)\n        @RequestParam(\n            required = false","defaultValue = \"false\")\n            boolean withXLinkAttribute","@RequestParam(\n            required = false","defaultValue = \"true\")\n            boolean addSchemaLocation","@ApiParam(value = \"Download the approved version\"","required = false)\n        @RequestParam(required = false","defaultValue = \"true\")\n            boolean approved","@RequestHeader(\n            value = HttpHeaders.ACCEPT","defaultValue = \"application/x-gn-mef-2-zip\"\n        )\n            String acceptHeader","HttpServletResponse response","HttpServletRequest request"]}
+{"input":"(\n        @ApiParam(value = API_PARAM_RECORD_UUID,\n            required = true)\n        @PathVariable\n            String metadataUuid,\n        @ApiParam(value = \"Accept header should indicate which is the appropriate format \" +\n            \"to return. It could be text/html, application/xml, application/zip, ...\" +\n            \"If no appropriate Accept header found, the XML format is returned.\",\n            required = true)\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT,\n            defaultValue = MediaType.APPLICATION_XML_VALUE,\n            required = false\n        )\n            String acceptHeader,\n        HttpServletResponse response,\n        HttpServletRequest request\n    )","output":["@ApiParam(value = API_PARAM_RECORD_UUID","required = true)\n        @PathVariable\n            String metadataUuid","@ApiParam(value = \"Accept header should indicate which is the appropriate format \" +\n            \"to return. It could be text/html","application/xml","application/zip","...\" +\n            \"If no appropriate Accept header found","the XML format is returned.\"","required = true)\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT","defaultValue = MediaType.APPLICATION_XML_VALUE","required = false\n        )\n            String acceptHeader","HttpServletResponse response","HttpServletRequest request"]}
+{"input":"(String uuid, String name, String group)","output":["String uuid","String name","String group"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(int order)","output":["int order"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(VariableIdentifierExpr variableIdentifierExpr)","output":["VariableIdentifierExpr variableIdentifierExpr"]}
+{"input":"(String headerString)","output":["String headerString"]}
+{"input":"(byte[] b)","output":["byte[] b"]}
+{"input":"()","output":[]}
+{"input":"(Header contentEncoding)","output":["Header contentEncoding"]}
+{"input":"(byte[] in, int inPosition, int inLength, byte[] out, int outPosition, int outLength)","output":["byte[] in","int inPosition","int inLength","byte[] out","int outPosition","int outLength"]}
+{"input":"()","output":[]}
+{"input":"(boolean enable, OptionMap options)","output":["boolean enable","OptionMap options"]}
+{"input":"(InputStream in, Long contentLength, String contentType, int bufferSize)","output":["InputStream in","Long contentLength","String contentType","int bufferSize"]}
+{"input":"(Method method, HttpRequest request)","output":["Method method","HttpRequest request"]}
+{"input":"(String unencoded, String encoding)","output":["String unencoded","String encoding"]}
+{"input":"(String encoded, String encoding)","output":["String encoded","String encoding"]}
+{"input":"(BankAccount to, BankAccount from, Money money)","output":["BankAccount to","BankAccount from","Money money"]}
+{"input":"(Object o)","output":["Object o"]}
+{"input":"(TypeVariable<?> typeVariable)","output":["TypeVariable<?> typeVariable"]}
+{"input":"()","output":[]}
+{"input":"(Object object)","output":["Object object"]}
+{"input":"(Object object)","output":["Object object"]}
+{"input":"(ApplicationEvent applicationEvent)","output":["ApplicationEvent applicationEvent"]}
+{"input":"(File file)","output":["File file"]}
+{"input":"()","output":[]}
+{"input":"(EmailAddress emailAddress)","output":["EmailAddress emailAddress"]}
+{"input":"(DataSource dataSource)","output":["DataSource dataSource"]}
+{"input":"(Object key)","output":["Object key"]}
+{"input":"(K key)","output":["K key"]}
+{"input":"()","output":[]}
+{"input":"(XMLStreamReader2 reader)","output":["XMLStreamReader2 reader"]}
+{"input":"(final String title, final Paint paint)","output":["final String title","final Paint paint"]}
+{"input":"(final Context context, final Bitmap srcWithoutPhoto, final Bitmap srcWithPhoto, final Bitmap srcOwnPhoto,\n                        final Bitmap srcWithoutPhotoInactive, final Bitmap srcWithPhotoInactive, final Bitmap srcOwnPhotoInactive,\n                        final Point grid, final float textSize, final int maxSize, final Paint paint)","output":["final Context context","final Bitmap srcWithoutPhoto","final Bitmap srcWithPhoto","final Bitmap srcOwnPhoto","final Bitmap srcWithoutPhotoInactive","final Bitmap srcWithPhotoInactive","final Bitmap srcOwnPhotoInactive","final Point grid","final float textSize","final int maxSize","final Paint paint"]}
+{"input":"()","output":[]}
+{"input":"(Future<V> future)","output":["Future<V> future"]}
+{"input":"(Future<V> future, long pollPeriod, TimeUnit unit)","output":["Future<V> future","long pollPeriod","TimeUnit unit"]}
+{"input":"(Future<V> future, long pollPeriod, TimeUnit unit)","output":["Future<V> future","long pollPeriod","TimeUnit unit"]}
+{"input":"(Miner miner)","output":["Miner miner"]}
+{"input":"(LocationPattern locationPattern)","output":["LocationPattern locationPattern"]}
+{"input":"(String name, String version)","output":["String name","String version"]}
+{"input":"(String[] names)","output":["String[] names"]}
+{"input":"( Collection<String> protocols )","output":["Collection<String> protocols"]}
+{"input":"(String url)","output":["String url"]}
+{"input":"(InputStream is)","output":["InputStream is"]}
+{"input":"(String name, boolean force, boolean noprune)","output":["String name","boolean force","boolean noprune"]}
+{"input":"(String url)","output":["String url"]}
+{"input":"(Object featureService)","output":["Object featureService"]}
+{"input":"(File storageLocation)","output":["File storageLocation"]}
+{"input":"(String name, String url)","output":["String name","String url"]}
+{"input":"(String image, String repo, String tag, String url)","output":["String image","String repo","String tag","String url"]}
+{"input":"(ServiceReference<?> sr)","output":["ServiceReference<?> sr"]}
+{"input":"()","output":[]}
+{"input":"(Integer id)","output":["Integer id"]}
+{"input":"(String value)","output":["String value"]}
+{"input":"(Exchange exchange, String value)","output":["Exchange exchange","String value"]}
+{"input":"(Exchange exchange, Api api)","output":["Exchange exchange","Api api"]}
+{"input":"(IAuthDataAccess dataAcccess)","output":["IAuthDataAccess dataAcccess"]}
+{"input":"(@NotNull Class<T> clazz, @NotNull ParamsType paramsType)","output":["@NotNull Class<T> clazz","@NotNull ParamsType paramsType"]}
+{"input":"(String templateId, boolean autoApplyDefault, Object cliParameter)","output":["String templateId","boolean autoApplyDefault","Object cliParameter"]}
+{"input":"()","output":[]}
+{"input":"(String templateId)","output":["String templateId"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(final Map<String, String> params)","output":["final Map<String, String> params"]}
+{"input":"(final String input, final Function<String, Boolean> validator,\n                                          final Consumer<String> setter, final boolean required)","output":["final String input","final Function<String, Boolean> validator","final Consumer<String> setter","final boolean required"]}
+{"input":"(List<String> options, String item)","output":["List<String> options","String item"]}
+{"input":"(final Process process)","output":["final Process process"]}
+{"input":"()","output":[]}
+{"input":"(String runtimeVersion)","output":["String runtimeVersion"]}
+{"input":"(final String os)","output":["final String os"]}
+{"input":"(String text)","output":["String text"]}
+{"input":"()","output":[]}
+{"input":"(BooleanBag from)","output":["BooleanBag from"]}
+{"input":"(IntBag from, int length)","output":["IntBag from","int length"]}
+{"input":"(Bag<T> from, int fromOffset, int length, boolean clearExceeding)","output":["Bag<T> from","int fromOffset","int length","boolean clearExceeding"]}
+{"input":"(int value)","output":["int value"]}
+{"input":"(Bag<T> from, int fromOffset, int toOffset, int length)","output":["Bag<T> from","int fromOffset","int toOffset","int length"]}
+{"input":"(int capacity)","output":["int capacity"]}
+{"input":"(Mask mask)","output":["Mask mask"]}
+{"input":"()","output":[]}
+{"input":"(FamilyConfig config)","output":["FamilyConfig config"]}
+{"input":"(int index, double value)","output":["int index","double value"]}
+{"input":"()","output":[]}
+{"input":"(int capacity)","output":["int capacity"]}
+{"input":"(LambdaProxyRequest request)","output":["LambdaProxyRequest request"]}
+{"input":"(LambdaProxyRequest request)","output":["LambdaProxyRequest request"]}
+{"input":"(HttpServletRequest req,\n                              HttpServletResponse resp,\n                              LambdaFunction lambdaFunction)","output":["HttpServletRequest req","HttpServletResponse resp","LambdaFunction lambdaFunction"]}
+{"input":"(List<String> packageNames)","output":["List<String> packageNames"]}
+{"input":"(HttpServletRequest req, HttpServletResponse resp)","output":["HttpServletRequest req","HttpServletResponse resp"]}
+{"input":"(String path,\n                                        String handler,\n                                        Class<? extends LambdaRequestDeserializer<?>> deserializerClass,\n                                        Class<? extends LambdaResponseSerializer<?>> serializerClass)","output":["String path","String handler","Class<? extends LambdaRequestDeserializer<?>> deserializerClass","Class<? extends LambdaResponseSerializer<?>> serializerClass"]}
+{"input":"(CrossOrigin classCrossOrigin)","output":["CrossOrigin classCrossOrigin"]}
+{"input":"(ServletConfig config)","output":["ServletConfig config"]}
+{"input":"(HttpServletRequest req)","output":["HttpServletRequest req"]}
+{"input":"()","output":[]}
+{"input":"(LambdaProxyRequest input)","output":["LambdaProxyRequest input"]}
+{"input":"(@NonNull final String route,\n\t\t\t@NonNull final String url, @NonNull final Gson gson)","output":["@NonNull final String route","@NonNull final String url","@NonNull final Gson gson"]}
+{"input":"()","output":[]}
+{"input":"(Socket socket)","output":["Socket socket"]}
+{"input":"(Socket socket, String query)","output":["Socket socket","String query"]}
+{"input":"(Socket socket)","output":["Socket socket"]}
+{"input":"(ByteArrayOutputStream out)","output":["ByteArrayOutputStream out"]}
+{"input":"(Client client, String indexName, IElasticSearchMapping mapping)","output":["Client client","String indexName","IElasticSearchMapping mapping"]}
+{"input":"(Client client, String indexName, IElasticSearchMapping mapping)","output":["Client client","String indexName","IElasticSearchMapping mapping"]}
+{"input":"(Client client, String indexName)","output":["Client client","String indexName"]}
+{"input":"()","output":[]}
+{"input":"(CatalogReader catalogReader)","output":["CatalogReader catalogReader"]}
+{"input":"(int maxKeyLength)","output":["int maxKeyLength"]}
+{"input":"(@NonNull Application app, @NonNull\n        Emitter.BackpressureMode backpressureMode)","output":["@NonNull Application app","@NonNull\n        Emitter.BackpressureMode backpressureMode"]}
+{"input":"(@NonNull AppStateRecognizer recognizer)","output":["@NonNull AppStateRecognizer recognizer"]}
+{"input":"(final String file)","output":["final String file"]}
+{"input":"(final String keyFile)","output":["final String keyFile"]}
+{"input":"(Object listener, boolean includingPropagatingEvents)","output":["Object listener","boolean includingPropagatingEvents"]}
+{"input":"(String query, Map<String, Object> values)","output":["String query","Map<String, Object> values"]}
+{"input":"(Instance<ArangoDBDocumentCollectionManager> manager,\n                            DocumentEntityConverter converter, DocumentWorkflow flow,\n                            DocumentEventPersistManager persistManager,\n                            ClassMappings mappings,\n                            Converters converters)","output":["Instance<ArangoDBDocumentCollectionManager> manager","DocumentEntityConverter converter","DocumentWorkflow flow","DocumentEventPersistManager persistManager","ClassMappings mappings","Converters converters"]}
+{"input":"()","output":[]}
+{"input":"(ColumnQuery query, ConsistencyLevel level)","output":["ColumnQuery query","ConsistencyLevel level"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(Statement n1qlQuery, JsonObject params)","output":["Statement n1qlQuery","JsonObject params"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(String query)","output":["String query"]}
+{"input":"(String n1qlQuery)","output":["String n1qlQuery"]}
+{"input":"(Object attribute)","output":["Object attribute"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(File sourceDir, List<String> compilePaths)","output":["File sourceDir","List<String> compilePaths"]}
+{"input":"(int[] selectedXBoxIds, int[] selectedOBoxIds, int totalBoxesSelected)","output":["int[] selectedXBoxIds","int[] selectedOBoxIds","int totalBoxesSelected"]}
+{"input":"(ApplicationProfilesRepository applicationProfilesRepository)","output":["ApplicationProfilesRepository applicationProfilesRepository"]}
+{"input":"(FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub)","output":["FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub"]}
+{"input":"(FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub)","output":["FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub"]}
+{"input":"(final Context context, final String filter)","output":["final Context context","final String filter"]}
+{"input":"(int minimumAttendance, boolean extendedStats)","output":["int minimumAttendance","boolean extendedStats"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(@NonNull String loginJson, @NonNull String attendanceJson)","output":["@NonNull String loginJson","@NonNull String attendanceJson"]}
+{"input":"(String loginJson)","output":["String loginJson"]}
+{"input":"()","output":[]}
+{"input":"(int minimumAttendance, boolean extendedStats)","output":["int minimumAttendance","boolean extendedStats"]}
+{"input":"(@NonNull String registrationIdJson)","output":["@NonNull String registrationIdJson"]}
+{"input":"(String attendanceJson)","output":["String attendanceJson"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(NumberIntervalBoundary low)","output":["NumberIntervalBoundary low"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(NumberIntervalBoundary low)","output":["NumberIntervalBoundary low"]}
+{"input":"(Router router)","output":["Router router"]}
+{"input":"(RouterObjectRef routerObjectRef)","output":["RouterObjectRef routerObjectRef"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(String owner, String repo)","output":["String owner","String repo"]}
+{"input":"(String owner, String repo)","output":["String owner","String repo"]}
+{"input":"(String user)","output":["String user"]}
+{"input":"(String owner, String repo, int page)","output":["String owner","String repo","int page"]}
+{"input":"(String owner, String repo)","output":["String owner","String repo"]}
+{"input":"(final String owner, final String repo, final Branch branch)","output":["final String owner","final String repo","final Branch branch"]}
+{"input":"(String owner, String repo)","output":["String owner","String repo"]}
+{"input":"(GithubAuthRetrofit authRetrofit, UserService userApi, Context ctx)","output":["GithubAuthRetrofit authRetrofit","UserService userApi","Context ctx"]}
+{"input":"(String owner, String repo, int page)","output":["String owner","String repo","int page"]}
+{"input":"(String keyWord, String language, int page)","output":["String keyWord","String language","int page"]}
+{"input":"(String owner, String repo, int page)","output":["String owner","String repo","int page"]}
+{"input":"(String user)","output":["String user"]}
+{"input":"(String user)","output":["String user"]}
+{"input":"(List<GitTree.TreeEntity> treeEntities, int index, TreeNode<Dir> dirNode,\n                              String dirPath, final String owner, final String repo, String branchName)","output":["List<GitTree.TreeEntity> treeEntities","int index","TreeNode<Dir> dirNode","String dirPath","final String owner","final String repo","String branchName"]}
+{"input":"(String user)","output":["String user"]}
+{"input":"(String user, int page)","output":["String user","int page"]}
+{"input":"()","output":[]}
+{"input":"(Context context, Uri trackUri, String chosenFileName, ProgressListener listener)","output":["Context context","Uri trackUri","String chosenFileName","ProgressListener listener"]}
+{"input":"()","output":[]}
+{"input":"(DeleteAlertTagsRequest params)","output":["DeleteAlertTagsRequest params"]}
+{"input":"(String identifier, Long attachmentId, String alertIdentifierType)","output":["String identifier","Long attachmentId","String alertIdentifierType"]}
+{"input":"(ListAlertsRequest params)","output":["ListAlertsRequest params"]}
+{"input":"(String identifier, AddAlertNoteRequest body, String identifierType)","output":["String identifier","AddAlertNoteRequest body","String identifierType"]}
+{"input":"(CreateAlertRequest body)","output":["CreateAlertRequest body"]}
+{"input":"(DeleteAlertTagsRequest params)","output":["DeleteAlertTagsRequest params"]}
+{"input":"(String requestId)","output":["String requestId"]}
+{"input":"()","output":[]}
+{"input":"()","output":[]}
+{"input":"(String identifier, AddAlertDetailsRequest body, String identifierType)","output":["String identifier","AddAlertDetailsRequest body","String identifierType"]}
+{"input":"(DeleteAlertRequest params)","output":["DeleteAlertRequest params"]}

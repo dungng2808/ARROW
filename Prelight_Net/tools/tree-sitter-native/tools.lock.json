@@ -1,0 +1,16 @@
+{
+  "compiler": "ziglang==0.13.0",
+  "sources": {
+    "tree-sitter": {
+      "version": "0.24.0",
+      "url": "https://files.pythonhosted.org/packages/a7/a2/698b9d31d08ad5558f8bfbfe3a0781bd4b1f284e89bde3ad18e05101a892/tree-sitter-0.24.0.tar.gz",
+      "sha256": "abd95af65ca2f4f7eca356343391ed669e764f37748b5352946f00f7fc78e734"
+    },
+    "tree-sitter-java": {
+      "version": "0.23.5",
+      "url": "https://files.pythonhosted.org/packages/fa/dc/eb9c8f96304e5d8ae1663126d89967a622a80937ad2909903569ccb7ec8f/tree_sitter_java-0.23.5.tar.gz",
+      "sha256": "f5cd57b8f1270a7f0438878750d02ccc79421d45cca65ff284f1527e9ef02e38"
+    }
+  },
+  "dll_sha256": "51eb547d0bafac241829c251b83c3c6df0611b24f14ef2bb05c6ee4def4e7f1c"
+}

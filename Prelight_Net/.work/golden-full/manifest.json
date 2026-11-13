@@ -1,0 +1,140 @@
+{
+  "credential_redaction": "Octopus API-key-like strings replaced in generated payloads before Python oracle evaluation",
+  "files": {
+    "cast_arguments.jsonl": {
+      "bytes": 2906192,
+      "count": 20000,
+      "sha256": "91b5be74b68926e101a5f05763d17a078a5d7f8ba67fb743640be766cc10fba7"
+    },
+    "class_policy.jsonl": {
+      "bytes": 36084,
+      "count": 120,
+      "sha256": "8f5d7b798468e993825813250b17ac96cf1fbd90c4eaedf69f7de20c05458fbf"
+    },
+    "eligibility.jsonl": {
+      "bytes": 7831,
+      "count": 96,
+      "sha256": "8b7b210099cde278eb83f7e63400a38e74b22e37cd167e6ffbaada33465dee98"
+    },
+    "erased_type.jsonl": {
+      "bytes": 1853794,
+      "count": 31808,
+      "sha256": "bbf23444f05f55f114ec816185228401eba1f28dab9f94e1cb3bf9661a5ebef9"
+    },
+    "failure_status.jsonl": {
+      "bytes": 238277600,
+      "count": 49772,
+      "sha256": "34a8180b1d6c0f0dd5613370ac65619584797025ff75818bff3320bb6ee7245f"
+    },
+    "framework.jsonl": {
+      "bytes": 1811,
+      "count": 25,
+      "sha256": "36f2f6e93c16570d7c84a09514da983903744776d691e21d4620ce35b3dad3bf"
+    },
+    "isspace.jsonl": {
+      "bytes": 7566,
+      "count": 265,
+      "sha256": "e25b47a79b42ea4d2b61de5cb1d8862a21e025df737d475039d68addc26cc26d"
+    },
+    "java_target.jsonl": {
+      "bytes": 135312,
+      "count": 60,
+      "sha256": "3c4a83a8ddd10e62a7ea3bb1436ca71577124f9fc0eaabe95ec58f710f9df06e"
+    },
+    "json_format.jsonl": {
+      "bytes": 1476,
+      "count": 9,
+      "sha256": "b3b06ed8335836106e518b5e8bb56a17606924530d57c544548bbfe90f17a4af"
+    },
+    "normalize_java.jsonl": {
+      "bytes": 23360983,
+      "count": 20009,
+      "sha256": "f35a37543b63eb7103dd3acbbab9cdf60186f3397cee323918b1d5a36c74cfb2"
+    },
+    "path_candidates.jsonl": {
+      "bytes": 1302,
+      "count": 13,
+      "sha256": "63487030d5b4d1f46e506fe1458c1095b0e7e644ec63c062d2758f9027f9d12b"
+    },
+    "primary_status.jsonl": {
+      "bytes": 9853,
+      "count": 138,
+      "sha256": "f3752195b64d1977c9a6d9757c3a0799193a4059394e6ce62ad8aa2e87983b73"
+    },
+    "primitive_arguments.jsonl": {
+      "bytes": 1511820,
+      "count": 20000,
+      "sha256": "b5b4c97bf6b81f5cc284e8a593dd4296cf435d175a08fafa4b43349a7dd131e5"
+    },
+    "probe_source.jsonl": {
+      "bytes": 102528,
+      "count": 128,
+      "sha256": "424b43188b422f82904354e48cc3c85986efc444af73b5ece1fe90439a62e4d1"
+    },
+    "pystr.jsonl": {
+      "bytes": 38724,
+      "count": 400,
+      "sha256": "8d474869773b9aab0a74e1c350e5a143a7ffa419c5a013b05ef9b9d2534c4fe3"
+    },
+    "record_identity.jsonl": {
+      "bytes": 253623514,
+      "count": 10023,
+      "sha256": "49c8b1b21a656dc0135a1cb469a0d2fe268716809f4ebba99f0af5a58b3400e3"
+    },
+    "regex.jsonl": {
+      "bytes": 3508,
+      "count": 36,
+      "sha256": "645d788fd0d99d69dff568d6a5b709d75b7fb11302c7162514146d9fb3a9594d"
+    },
+    "regex_unicode.jsonl": {
+      "bytes": 4730,
+      "count": 50,
+      "sha256": "5a19823f7e8a353bc03f3d1c7baed39b6641d10bf438e7996811c0897d696370"
+    },
+    "resolve_path.jsonl": {
+      "bytes": 1219,
+      "count": 13,
+      "sha256": "5a58cbd65b14c2465f5d857f6140d82aab855ce32209b4e4e312cd1bb1926729"
+    },
+    "revision_map.jsonl": {
+      "bytes": 11931,
+      "count": 39,
+      "sha256": "63c16efad6b3dfee7fee265e68e593440e658baab0d2df3a906710dceeaa97fb"
+    },
+    "split_parameters.jsonl": {
+      "bytes": 2175217,
+      "count": 20000,
+      "sha256": "9fa71277ce23f875a6965d8ef8dc225e34c02930e662339aaf21a2f0c3328b6d"
+    },
+    "task_id.jsonl": {
+      "bytes": 18445596,
+      "count": 85822,
+      "sha256": "4b6b677f491d3580ab0b871330c87fbeda083dd039b62abdf7bd8cd26c1c70fd"
+    },
+    "test_source_root.jsonl": {
+      "bytes": 500,
+      "count": 5,
+      "sha256": "111007b26d7d367169192aadf14ee5b1a75b198ec0b74f2bd3942a42ee1a936d"
+    },
+    "uses_release_flag.jsonl": {
+      "bytes": 67198,
+      "count": 30,
+      "sha256": "26c22804b9e51424519c03bb3eb01af9ae4d2443c7603859cfe81bee21e73c8a"
+    }
+  },
+  "limit": 0,
+  "python_version": "3.11.9",
+  "real_build_files": 8,
+  "real_logs": 24832,
+  "schema_version": 1,
+  "seed": 42,
+  "sources": {
+    "preflight_manifest/01-DUNG/class_candidates.jsonl": "084528be0588f4cf0e17a2517e2d930281cbccfaae4987decff1b2fd20f5ac3c",
+    "preflight_manifest/02-KIEU_ANH/class_candidates.jsonl": "50bde634701d9bb0df9918bb6ddd5dfb4ce67bf0abc919dc0fec59bdd24bc0c2",
+    "preflight_manifest/03-QUANG/class_candidates.jsonl": "2edc8749236c5b6c9dc23360a46a4127814dcb9f6055c2ae13e6caf0081013a4",
+    "preflight_manifest/04-CHINH/class_candidates.jsonl": "1d7c37c1be9c3b5508f7f2338ce53880932bca48bad451c76d2d24a61d3063b3",
+    "preflight_manifest/05-HAN/class_candidates.jsonl": "a603b61c55f0d5ad16e695074964bd535870979f067df45a5d79cb228a83f7ff"
+  },
+  "tree_sitter": "0.24.0",
+  "tree_sitter_java": "0.23.5"
+}

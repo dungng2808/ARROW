@@ -1,0 +1,13 @@
+{"input":{"files":["src/main/java/X.java"],"relative":"src/main/java/X.java"},"output":["src/main/java/X.java","main/java/X.java"]}
+{"input":{"files":["src/main/java/X.java"],"relative":"proj/src/main/java/X.java"},"output":["proj/src/main/java/X.java","src/main/java/X.java"]}
+{"input":{"files":["src/main/java/X.java"],"relative":"src\\main\\java\\X.java"},"output":["src/main/java/X.java","main/java/X.java"]}
+{"input":{"files":["src/main/java/X.java"],"relative":"X.java"},"output":["X.java"]}
+{"input":{"files":["src/main/java/X.java"],"relative":""},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"/etc/passwd"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"../secret.java"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"src/../secret.java"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"C:X.java"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"C:/X.java"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"\\\\server\\share\\X.java"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"src/\u0000X.java"},"output":[]}
+{"input":{"files":["src/main/java/X.java"],"relative":"./src//main/java/X.java"},"output":["src/main/java/X.java","main/java/X.java"]}

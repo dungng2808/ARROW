@@ -1,0 +1,400 @@
+{"input":{"chars":" ","max_split":-1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":" ","max_split":-1,"operation":"removeprefix","text":" a b "},"output":"a b "}
+{"input":{"chars":" ","max_split":-1,"operation":"rstrip","text":" a b "},"output":" a b"}
+{"input":{"chars":" ","max_split":-1,"operation":"split","text":" a b "},"output":["","a","b",""]}
+{"input":{"chars":" ","max_split":-1,"operation":"rsplit","text":" a b "},"output":["","a","b",""]}
+{"input":{"chars":" ","max_split":0,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":" ","max_split":0,"operation":"removeprefix","text":" a b "},"output":"a b "}
+{"input":{"chars":" ","max_split":0,"operation":"rstrip","text":" a b "},"output":" a b"}
+{"input":{"chars":" ","max_split":0,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":" ","max_split":0,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":" ","max_split":1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":" ","max_split":1,"operation":"removeprefix","text":" a b "},"output":"a b "}
+{"input":{"chars":" ","max_split":1,"operation":"rstrip","text":" a b "},"output":" a b"}
+{"input":{"chars":" ","max_split":1,"operation":"split","text":" a b "},"output":["","a b "]}
+{"input":{"chars":" ","max_split":1,"operation":"rsplit","text":" a b "},"output":[" a b",""]}
+{"input":{"chars":" ","max_split":2,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":" ","max_split":2,"operation":"removeprefix","text":" a b "},"output":"a b "}
+{"input":{"chars":" ","max_split":2,"operation":"rstrip","text":" a b "},"output":" a b"}
+{"input":{"chars":" ","max_split":2,"operation":"split","text":" a b "},"output":["","a","b "]}
+{"input":{"chars":" ","max_split":2,"operation":"rsplit","text":" a b "},"output":[" a","b",""]}
+{"input":{"chars":".","max_split":-1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":".","max_split":-1,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":-1,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":-1,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":-1,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":0,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":".","max_split":0,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":0,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":0,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":0,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":".","max_split":1,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":1,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":1,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":1,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":2,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":".","max_split":2,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":2,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":".","max_split":2,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":".","max_split":2,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":-1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":";","max_split":-1,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":-1,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":-1,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":-1,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":0,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":";","max_split":0,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":0,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":0,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":0,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":";","max_split":1,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":1,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":1,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":1,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":2,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":";","max_split":2,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":2,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":";","max_split":2,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":";","max_split":2,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":"a","max_split":-1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":"a","max_split":-1,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":-1,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":-1,"operation":"split","text":" a b "},"output":[" "," b "]}
+{"input":{"chars":"a","max_split":-1,"operation":"rsplit","text":" a b "},"output":[" "," b "]}
+{"input":{"chars":"a","max_split":0,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":"a","max_split":0,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":0,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":0,"operation":"split","text":" a b "},"output":[" a b "]}
+{"input":{"chars":"a","max_split":0,"operation":"rsplit","text":" a b "},"output":[" a b "]}
+{"input":{"chars":"a","max_split":1,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":"a","max_split":1,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":1,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":1,"operation":"split","text":" a b "},"output":[" "," b "]}
+{"input":{"chars":"a","max_split":1,"operation":"rsplit","text":" a b "},"output":[" "," b "]}
+{"input":{"chars":"a","max_split":2,"operation":"strip","text":" a b "},"output":"a b"}
+{"input":{"chars":"a","max_split":2,"operation":"removeprefix","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":2,"operation":"rstrip","text":" a b "},"output":" a b "}
+{"input":{"chars":"a","max_split":2,"operation":"split","text":" a b "},"output":[" "," b "]}
+{"input":{"chars":"a","max_split":2,"operation":"rsplit","text":" a b "},"output":[" "," b "]}
+{"input":{"chars":" ","max_split":-1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":-1,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":-1,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":-1,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":-1,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":0,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":0,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":0,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":0,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":0,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":1,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":1,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":1,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":1,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":2,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":2,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":2,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":" ","max_split":2,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":" ","max_split":2,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":".","max_split":-1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":-1,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":-1,"operation":"rstrip","text":"a..b.."},"output":"a..b"}
+{"input":{"chars":".","max_split":-1,"operation":"split","text":"a..b.."},"output":["a","","b","",""]}
+{"input":{"chars":".","max_split":-1,"operation":"rsplit","text":"a..b.."},"output":["a","","b","",""]}
+{"input":{"chars":".","max_split":0,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":0,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":0,"operation":"rstrip","text":"a..b.."},"output":"a..b"}
+{"input":{"chars":".","max_split":0,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":".","max_split":0,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":".","max_split":1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":1,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":1,"operation":"rstrip","text":"a..b.."},"output":"a..b"}
+{"input":{"chars":".","max_split":1,"operation":"split","text":"a..b.."},"output":["a",".b.."]}
+{"input":{"chars":".","max_split":1,"operation":"rsplit","text":"a..b.."},"output":["a..b.",""]}
+{"input":{"chars":".","max_split":2,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":2,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":".","max_split":2,"operation":"rstrip","text":"a..b.."},"output":"a..b"}
+{"input":{"chars":".","max_split":2,"operation":"split","text":"a..b.."},"output":["a","","b.."]}
+{"input":{"chars":".","max_split":2,"operation":"rsplit","text":"a..b.."},"output":["a..b","",""]}
+{"input":{"chars":";","max_split":-1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":-1,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":-1,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":-1,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":-1,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":0,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":0,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":0,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":0,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":0,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":1,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":1,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":1,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":1,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":2,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":2,"operation":"removeprefix","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":2,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":";","max_split":2,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":";","max_split":2,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":"a","max_split":-1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":-1,"operation":"removeprefix","text":"a..b.."},"output":"..b.."}
+{"input":{"chars":"a","max_split":-1,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":-1,"operation":"split","text":"a..b.."},"output":["","..b.."]}
+{"input":{"chars":"a","max_split":-1,"operation":"rsplit","text":"a..b.."},"output":["","..b.."]}
+{"input":{"chars":"a","max_split":0,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":0,"operation":"removeprefix","text":"a..b.."},"output":"..b.."}
+{"input":{"chars":"a","max_split":0,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":0,"operation":"split","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":"a","max_split":0,"operation":"rsplit","text":"a..b.."},"output":["a..b.."]}
+{"input":{"chars":"a","max_split":1,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":1,"operation":"removeprefix","text":"a..b.."},"output":"..b.."}
+{"input":{"chars":"a","max_split":1,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":1,"operation":"split","text":"a..b.."},"output":["","..b.."]}
+{"input":{"chars":"a","max_split":1,"operation":"rsplit","text":"a..b.."},"output":["","..b.."]}
+{"input":{"chars":"a","max_split":2,"operation":"strip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":2,"operation":"removeprefix","text":"a..b.."},"output":"..b.."}
+{"input":{"chars":"a","max_split":2,"operation":"rstrip","text":"a..b.."},"output":"a..b.."}
+{"input":{"chars":"a","max_split":2,"operation":"split","text":"a..b.."},"output":["","..b.."]}
+{"input":{"chars":"a","max_split":2,"operation":"rsplit","text":"a..b.."},"output":["","..b.."]}
+{"input":{"chars":" ","max_split":-1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":" ","max_split":-1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":-1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":-1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c ","text","\u001f"]}
+{"input":{"chars":" ","max_split":-1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c ","text","\u001f"]}
+{"input":{"chars":" ","max_split":0,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":" ","max_split":0,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":0,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":0,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":" ","max_split":0,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":" ","max_split":1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":" ","max_split":1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c ","text \u001f"]}
+{"input":{"chars":" ","max_split":1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text","\u001f"]}
+{"input":{"chars":" ","max_split":2,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":" ","max_split":2,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":2,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":" ","max_split":2,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c ","text","\u001f"]}
+{"input":{"chars":" ","max_split":2,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c ","text","\u001f"]}
+{"input":{"chars":".","max_split":-1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":".","max_split":-1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":-1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":-1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":-1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":0,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":".","max_split":0,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":0,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":0,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":0,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":".","max_split":1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":2,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":".","max_split":2,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":2,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":".","max_split":2,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":".","max_split":2,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":-1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":";","max_split":-1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":-1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":-1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":-1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":0,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":";","max_split":0,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":0,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":0,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":0,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":";","max_split":1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":2,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":";","max_split":2,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":2,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":";","max_split":2,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":";","max_split":2,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":-1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":"a","max_split":-1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":-1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":-1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":-1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":0,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":"a","max_split":0,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":0,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":0,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":0,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":1,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":"a","max_split":1,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":1,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":1,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":1,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":2,"operation":"strip","text":"\u001c  text \u001f"},"output":"text"}
+{"input":{"chars":"a","max_split":2,"operation":"removeprefix","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":2,"operation":"rstrip","text":"\u001c  text \u001f"},"output":"\u001c  text \u001f"}
+{"input":{"chars":"a","max_split":2,"operation":"split","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":"a","max_split":2,"operation":"rsplit","text":"\u001c  text \u001f"},"output":["\u001c  text \u001f"]}
+{"input":{"chars":" ","max_split":-1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":" ","max_split":-1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":" ","max_split":-1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":" ","max_split":-1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":-1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":0,"operation":"strip","text":""},"output":""}
+{"input":{"chars":" ","max_split":0,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":" ","max_split":0,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":" ","max_split":0,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":0,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":" ","max_split":1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":" ","max_split":1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":" ","max_split":1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":2,"operation":"strip","text":""},"output":""}
+{"input":{"chars":" ","max_split":2,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":" ","max_split":2,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":" ","max_split":2,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":2,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":".","max_split":-1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":".","max_split":-1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":".","max_split":-1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":".","max_split":-1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":".","max_split":-1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":".","max_split":0,"operation":"strip","text":""},"output":""}
+{"input":{"chars":".","max_split":0,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":".","max_split":0,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":".","max_split":0,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":".","max_split":0,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":".","max_split":1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":".","max_split":1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":".","max_split":1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":".","max_split":1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":".","max_split":1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":".","max_split":2,"operation":"strip","text":""},"output":""}
+{"input":{"chars":".","max_split":2,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":".","max_split":2,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":".","max_split":2,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":".","max_split":2,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":";","max_split":-1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":";","max_split":-1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":";","max_split":-1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":";","max_split":-1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":";","max_split":-1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":";","max_split":0,"operation":"strip","text":""},"output":""}
+{"input":{"chars":";","max_split":0,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":";","max_split":0,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":";","max_split":0,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":";","max_split":0,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":";","max_split":1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":";","max_split":1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":";","max_split":1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":";","max_split":1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":";","max_split":1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":";","max_split":2,"operation":"strip","text":""},"output":""}
+{"input":{"chars":";","max_split":2,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":";","max_split":2,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":";","max_split":2,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":";","max_split":2,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":-1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":"a","max_split":-1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":"a","max_split":-1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":"a","max_split":-1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":-1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":0,"operation":"strip","text":""},"output":""}
+{"input":{"chars":"a","max_split":0,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":"a","max_split":0,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":"a","max_split":0,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":0,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":1,"operation":"strip","text":""},"output":""}
+{"input":{"chars":"a","max_split":1,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":"a","max_split":1,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":"a","max_split":1,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":1,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":2,"operation":"strip","text":""},"output":""}
+{"input":{"chars":"a","max_split":2,"operation":"removeprefix","text":""},"output":""}
+{"input":{"chars":"a","max_split":2,"operation":"rstrip","text":""},"output":""}
+{"input":{"chars":"a","max_split":2,"operation":"split","text":""},"output":[""]}
+{"input":{"chars":"a","max_split":2,"operation":"rsplit","text":""},"output":[""]}
+{"input":{"chars":" ","max_split":-1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":-1,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":-1,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":-1,"operation":"split","text":"a a a"},"output":["a","a","a"]}
+{"input":{"chars":" ","max_split":-1,"operation":"rsplit","text":"a a a"},"output":["a","a","a"]}
+{"input":{"chars":" ","max_split":0,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":0,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":0,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":0,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":" ","max_split":0,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":" ","max_split":1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":1,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":1,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":1,"operation":"split","text":"a a a"},"output":["a","a a"]}
+{"input":{"chars":" ","max_split":1,"operation":"rsplit","text":"a a a"},"output":["a a","a"]}
+{"input":{"chars":" ","max_split":2,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":2,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":2,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":" ","max_split":2,"operation":"split","text":"a a a"},"output":["a","a","a"]}
+{"input":{"chars":" ","max_split":2,"operation":"rsplit","text":"a a a"},"output":["a","a","a"]}
+{"input":{"chars":".","max_split":-1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":-1,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":-1,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":-1,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":-1,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":0,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":0,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":0,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":0,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":0,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":1,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":1,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":1,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":1,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":2,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":2,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":2,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":".","max_split":2,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":".","max_split":2,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":-1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":-1,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":-1,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":-1,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":-1,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":0,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":0,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":0,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":0,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":0,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":1,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":1,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":1,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":1,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":2,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":2,"operation":"removeprefix","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":2,"operation":"rstrip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":";","max_split":2,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":";","max_split":2,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":"a","max_split":-1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":"a","max_split":-1,"operation":"removeprefix","text":"a a a"},"output":" a a"}
+{"input":{"chars":"a","max_split":-1,"operation":"rstrip","text":"a a a"},"output":"a a "}
+{"input":{"chars":"a","max_split":-1,"operation":"split","text":"a a a"},"output":[""," "," ",""]}
+{"input":{"chars":"a","max_split":-1,"operation":"rsplit","text":"a a a"},"output":[""," "," ",""]}
+{"input":{"chars":"a","max_split":0,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":"a","max_split":0,"operation":"removeprefix","text":"a a a"},"output":" a a"}
+{"input":{"chars":"a","max_split":0,"operation":"rstrip","text":"a a a"},"output":"a a "}
+{"input":{"chars":"a","max_split":0,"operation":"split","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":"a","max_split":0,"operation":"rsplit","text":"a a a"},"output":["a a a"]}
+{"input":{"chars":"a","max_split":1,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":"a","max_split":1,"operation":"removeprefix","text":"a a a"},"output":" a a"}
+{"input":{"chars":"a","max_split":1,"operation":"rstrip","text":"a a a"},"output":"a a "}
+{"input":{"chars":"a","max_split":1,"operation":"split","text":"a a a"},"output":[""," a a"]}
+{"input":{"chars":"a","max_split":1,"operation":"rsplit","text":"a a a"},"output":["a a ",""]}
+{"input":{"chars":"a","max_split":2,"operation":"strip","text":"a a a"},"output":"a a a"}
+{"input":{"chars":"a","max_split":2,"operation":"removeprefix","text":"a a a"},"output":" a a"}
+{"input":{"chars":"a","max_split":2,"operation":"rstrip","text":"a a a"},"output":"a a "}
+{"input":{"chars":"a","max_split":2,"operation":"split","text":"a a a"},"output":[""," "," a"]}
+{"input":{"chars":"a","max_split":2,"operation":"rsplit","text":"a a a"},"output":["a "," ",""]}

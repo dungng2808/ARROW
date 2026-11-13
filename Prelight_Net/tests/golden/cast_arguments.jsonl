@@ -1,0 +1,1000 @@
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(RosiePresenter.View view)"},"output":"(RosiePresenter.View) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(V value)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(K key)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(V value)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(V value)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n      R... writeableDataSources)"},"output":"(Object[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object source)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final IPMode aPMode, @Nonnull final ErrorList aErrorList)"},"output":"(IPMode) null, (ErrorList) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final String sMsg)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final Ebms3SignalMessage aSignalMsg, @Nonnull final ErrorList aErrorList)"},"output":"(Ebms3SignalMessage) null, (ErrorList) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final Ebms3UserMessage aUserMsg, @Nonnull final ErrorList aErrorList)"},"output":"(Ebms3UserMessage) null, (ErrorList) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final Ebms3UserMessage aUserMsg, @Nonnull final ErrorList aErrorList)"},"output":"(Ebms3UserMessage) null, (ErrorList) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final String sMsg)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final IPMode aPMode,\n                                          @Nonnull final ErrorList aErrorList,\n                                          @Nonnull final PModeLeg aPModeLeg)"},"output":"(IPMode) null, (ErrorList) null, (PModeLeg) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Product product, PublishSubject<CalculateProductScoreResponse> downloadStream)"},"output":"(Product) null, (PublishSubject) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(SearchProductsRequest request)"},"output":"(SearchProductsRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(long index)"},"output":"0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@PathVariable String name, @Valid @RequestBody Todo todo)"},"output":"(String) null, (Todo) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final R object)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final String channel)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int current, String walletAddress, BigDecimal tokenNoDiscount)"},"output":"0, (String) null, (BigDecimal) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int current, long blockNrBTC, long blockNrETH, long satoshi, long wei, String walletAddress)"},"output":"0, 0L, 0L, 0L, 0L, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<Payin> list)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean forceRemote)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(long questionId)"},"output":"0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(QuestionDao questionDao)"},"output":"(QuestionDao) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String raw)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DefaultErrorContractDTO errorContractDTO,\n                                                                      int httpStatusCode,\n                                                                      Collection<ApiError> rawFilteredApiErrors,\n                                                                      Throwable originalException,\n                                                                      RequestInfoForLogging request)"},"output":"(DefaultErrorContractDTO) null, 0, (Collection) null, (Throwable) null, (RequestInfoForLogging) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DefaultErrorContractDTO errorContractDTO,\n                                                                      int httpStatusCode,\n                                                                      Collection<ApiError> rawFilteredApiErrors,\n                                                                      Throwable originalException,\n                                                                      RequestInfoForLogging request)"},"output":"(DefaultErrorContractDTO) null, 0, (Collection) null, (Throwable) null, (RequestInfoForLogging) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull RequestInfoForLogging request)"},"output":"(RequestInfoForLogging) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n        int statusCode, Collection<ApiError> filteredClientErrors, Throwable originalException,\n        Throwable coreException, RequestInfoForLogging request\n    )"},"output":"0, (Collection) null, (Throwable) null, (Throwable) null, (RequestInfoForLogging) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<T> type)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n        ApiError error,\n        List<Pair<String, String>> extraDetailsForLogging\n    )"},"output":"(ApiError) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String input)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String doc, final GQLSourceInput source)"},"output":"(String) null, (GQLSourceInput) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Map<K, V> map)"},"output":"(Map) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string, String searchPattern, StringReplacer replacer)"},"output":"(String) null, (String) null, (StringReplacer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@HttpTrigger(name = \"req\", methods = { \"get\",\n\t\t\t\t\t\"post\" }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,\n\t\t\tfinal ExecutionContext context)"},"output":"((name=) null, (methods={) null, (\"post\") null, (authLevel=AuthorizationLevel.ANONYMOUS)HttpRequestMessage) null, (ExecutionContext) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<?> clazz)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String field,\n                             Template targetField,\n                             List<String> includeKeys,\n                             List<String> excludeKeys,\n                             String fieldSplit,\n                             String valueSplit,\n                             boolean allowDuplicateValues,\n                             boolean includeBrackets,\n                             String prefix,\n                             boolean recursive,\n                             String trim,\n                             String trimKey,\n                             int maxKeyLength)"},"output":"(String) null, (Template) null, (List) null, (List) null, (String) null, (String) null, false, false, (String) null, false, (String) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String key, String trimChars)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Pipeline pipeline, Doc doc)"},"output":"(Pipeline) null, (Doc) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String field, List<String> matchExpressions, Map<String, String> patternsBank, List<String> overwrite, boolean ignoreMissing, List<String> tagsOnFailure)"},"output":"(String) null, (List) null, (Map) null, (List) null, false, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final InputStream is)"},"output":"(InputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonWriter writer, List<PlaceType> placeTypes)"},"output":"(JsonWriter) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonWriter writer, List<DescriptionTerm> descriptionTerms)"},"output":"(JsonWriter) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final InputStream in)"},"output":"(InputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final OutputStream os, final List<Place> places)"},"output":"(OutputStream) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonWriter writer, List<DescriptionTerm> descriptionTerms)"},"output":"(JsonWriter) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final InputStream is)"},"output":"(InputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonReader reader)"},"output":"(JsonReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ConfigurationAdmin configAdmin)"},"output":"(ConfigurationAdmin) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String label, JsonElement element)"},"output":"(String) null, (JsonElement) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JsonPrimitive primitive)"},"output":"(JsonPrimitive) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(SparqlEndpoint endpoint, String cacheDirectory, Dictionary wordnetDirectory, Lexicon lexicon)"},"output":"(SparqlEndpoint) null, (String) null, (Dictionary) null, (Lexicon) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Triple t)"},"output":"(Triple) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull ContentViewContract removableView)"},"output":"(ContentViewContract) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull ContentViewContract view)"},"output":"(ContentViewContract) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Throwable e)"},"output":"(Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull GraphProvider graphProvider)"},"output":"(GraphProvider) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull NavigationDetails navDetails)"},"output":"(NavigationDetails) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull GraphProvider graphProvider)"},"output":"(GraphProvider) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull NavigationDetails firstViewNavDetails)"},"output":"(NavigationDetails) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull ContentViewContract removableView)"},"output":"(ContentViewContract) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull NavigationDetails entering,\n                         @Nullable NavigationDetails leaving,\n                         boolean push)"},"output":"(NavigationDetails) null, (NavigationDetails) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LifecycleEvent lifecycleEvent)"},"output":"(LifecycleEvent) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Throwable e)"},"output":"(Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull NavigationDetails firstViewNavDetails)"},"output":"(NavigationDetails) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull ContentViewContract view, boolean newInstance)"},"output":"(ContentViewContract) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Throwable e)"},"output":"(Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Point point)"},"output":"(Point) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@RequestParam @NotBlank String userId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@RequestBody @Valid VerifyPasswordRequest request)"},"output":"(VerifyPasswordRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String userId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ResultSet rs)"},"output":"(ResultSet) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Plaintext message)"},"output":"(Plaintext) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] initialHash)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(long value, OutputStream stream)"},"output":"0L, (OutputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(long value, OutputStream stream, AccessCounter counter)"},"output":"0L, (OutputStream) null, (AccessCounter) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value, OutputStream out)"},"output":"(String) null, (OutputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] ripeOrTag)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BitmessageAddress address)"},"output":"(BitmessageAddress) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BitmessageAddress address)"},"output":"(BitmessageAddress) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Connection connection, String where)"},"output":"(Connection) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] initialHash)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(InternalContext context)"},"output":"(InternalContext) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String where)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String address)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JSONObject myjson)"},"output":"(JSONObject) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final String apiUrl,\n                         final int timeout,\n                         @NonNull final String myUserAgent)"},"output":"(String) null, 0, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(long lastModified)"},"output":"0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String location)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String connectionString)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull GeneratorEnvironment environment,\n                           @NotNull FunctionTableExpression table)"},"output":"(GeneratorEnvironment) null, (FunctionTableExpression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull List<String> args)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull String[] argArray, boolean showFirstExceptionStack)"},"output":"(String[]) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull List<String> args)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull List<String> args)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull ModuleArchiveExpression expr)"},"output":"(ModuleArchiveExpression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull AbortExpression expr)"},"output":"(AbortExpression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull List<String> args)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull List<String> args)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull String[] args)"},"output":"(String[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull List<String> args)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull String prefix,\n                                     @NotNull Expression expr,\n                                     @Nullable String assignResult)"},"output":"(String) null, (Expression) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull Expression expr)"},"output":"(Expression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull IfSwitchExpression expr)"},"output":"(IfSwitchExpression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull String text)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull String[] argArray, boolean showFirstExceptionStack)"},"output":"(String[]) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@PathVariable String coinId, Model model)"},"output":"(String) null, (Model) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String[] configurations)"},"output":"(String[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ColumnSpec[] specs, String leftTableAlias, String rightTableAlias)"},"output":"(ColumnSpec[]) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ID feedId, Set<Principal> principals)"},"output":"(Object) null, (Set) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(java.io.ObjectInputStream in)"},"output":"(java.io.ObjectInputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Throwable e)"},"output":"(Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final String systemName)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final User user)"},"output":"(User) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull final String key, final long value)"},"output":"(String) null, 0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Bundle theResources)"},"output":"(Bundle) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Entry nextEntry, HTTPVerbEnum verb)"},"output":"(Entry) null, (HTTPVerbEnum) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String theValue)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String theAction, String theUrl)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Map<String, List<Instance>> workerToAssignmentMap)"},"output":"(Map) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ReflectData reflectData, boolean jsr310ConversionEnabled)"},"output":"(ReflectData) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(PulsarClientImpl client, ConsumerConfigurationData<T> conf, Schema<T> schema)"},"output":"(PulsarClientImpl) null, (ConsumerConfigurationData) null, (Schema) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean autoAckOldestChunkedMessageOnQueueFull)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull RegexSubscriptionMode mode)"},"output":"(RegexSubscriptionMode) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Message<?> msg)"},"output":"(Message) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object other)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String namespaceBundle)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ChannelHandlerContext ctx)"},"output":"(ChannelHandlerContext) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int clientProtoVersion, String clientVersion)"},"output":"0, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(long bufferSize)"},"output":"0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String userClassName, ClassLoader classLoader)"},"output":"(String) null, (ClassLoader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(SourceConfig existingConfig, SourceConfig newConfig)"},"output":"(SourceConfig) null, (SourceConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(FunctionConfig functionConfig, File functionPackageFile)"},"output":"(FunctionConfig) null, (File) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(PaxMarker marker)"},"output":"(PaxMarker) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(PaxMarker marker, String message)"},"output":"(PaxMarker) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String format, Object... arguments)"},"output":"(String) null, (Object[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(PaxMarker marker, String format, Object... arguments)"},"output":"(PaxMarker) null, (String) null, (Object[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String fqcn, String message, Throwable t)"},"output":"(String) null, (String) null, (Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<T> clazz)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Collection<Statistics> statistics)"},"output":"(Collection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer personalProjectsCount)"},"output":"(Integer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final List<Project> projectList, final Optional<String> sortBy)"},"output":"(List) null, (Optional) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String languageName, List<Integer> projectCounts, List<Date> snapshotDates)"},"output":"(String) null, (List) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final List<Project> projects)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String text)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String msgctx, String msgid)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String msgid, String msgidPlural, long n)"},"output":"(String) null, (String) null, 0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Locale locale, String msgctx, String msgid, String msgidPlural, long n)"},"output":"(Locale) null, (String) null, (String) null, (String) null, 0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( String sourceFQN, String targetFQN )"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<T> mapperType, Iterable<ClassLoader> classLoaders)"},"output":"(Class) null, (Iterable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String identifier)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<TypeMirror> qualifiers, List<String> qualifyingNames, TypeMirror resultType,\n        Types typeUtils, SourceRHS sourceRHS)"},"output":"(List) null, (List) null, (TypeMirror) null, (Types) null, (SourceRHS) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<?> clazz)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<TypeMirror> qualifiers, List<String> qualifyingNames, TypeMirror resultType,\n        Types typeUtils, SourceRHS sourceRHS)"},"output":"(List) null, (List) null, (TypeMirror) null, (Types) null, (SourceRHS) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String word, Collection<String> similarWords)"},"output":"(String) null, (Collection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int index)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer eventCount)"},"output":"(Integer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(TxDetailType detailName, String detailValue)"},"output":"(TxDetailType) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Collection<Module> modules)"},"output":"(Collection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(StatusReportType statusReport)"},"output":"(StatusReportType) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String text)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(FlowId flowId)"},"output":"(FlowId) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Instant waitingSince)"},"output":"(Instant) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Instant waitingSince)"},"output":"(Instant) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer depth)"},"output":"(Integer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String json, String token, String jenkinsCrumb)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer depth, final ApiCallback<ComputerSet> callback)"},"output":"(Integer) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, final ApiCallback<String> callback)"},"output":"(String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, String contentType, String body)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String body, String jenkinsCrumb)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String body, String jenkinsCrumb)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer depth)"},"output":"(Integer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, final ApiCallback<String> callback)"},"output":"(String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String number)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final ApiCallback<Void> callback)"},"output":"(ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String json, String token, String jenkinsCrumb)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String body, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ApiClient apiClient)"},"output":"(ApiClient) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String propertyClass, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(Integer) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String branch, String run)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String user)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String user, final ApiCallback<User> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String number, String start, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String number, String start)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String number)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String from, String mode, String jenkinsCrumb, String contentType, String body, final ApiCallback<Void> callback)"},"output":"(String) null, (String) null, (String) null, (String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String body, String jenkinsCrumb)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String body, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ApiClient apiClient)"},"output":"(ApiClient) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer key, final ApiCallback<String> callback)"},"output":"(Integer) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, String node)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, String node, String step, final ApiCallback<PipelineStepImpl> callback)"},"output":"(String) null, (String) null, (String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, final ApiCallback<PipelineRunNodes> callback)"},"output":"(String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String user, final ApiCallback<User> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer depth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(Integer) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String number, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String from, String mode, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, String node, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, String node)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, String node, final ApiCallback<PipelineRunNodeSteps> callback)"},"output":"(String) null, (String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins)"},"output":"(Integer) null, (Integer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins, final ApiCallback<String> callback)"},"output":"(Integer) null, (Integer) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, Integer start, Boolean download, final ApiCallback<String> callback)"},"output":"(String) null, (String) null, (String) null, (Integer) null, (Boolean) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, final ApiCallback<PipelineRunNodes> callback)"},"output":"(String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, Body body)"},"output":"(String) null, (String) null, (Body) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, Body body, final ApiCallback<FavoriteImpl> callback)"},"output":"(String) null, (String) null, (Body) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String queue)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, final ApiCallback<PipelineRun> callback)"},"output":"(String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ApiCallback<User> callback)"},"output":"(String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(Integer) null, (Integer) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String branch, String run)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String folder)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String folder, final ApiCallback<PipelineImpl> callback)"},"output":"(String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, String blocking, Integer timeOutInSecs, final ApiCallback<PipelineRun> callback)"},"output":"(String) null, (String) null, (String) null, (String) null, (Integer) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String branch)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String branch, String run)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, Integer start, Boolean download)"},"output":"(String) null, (String) null, (String) null, (Integer) null, (Boolean) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ApiCallback<PipelineRuns> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ApiCallback<ScmOrganisations> callback)"},"output":"(String) null, (String) null, (String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String propertyClass)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(Integer) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String folder)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String q)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String branch, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, Integer start, Boolean download)"},"output":"(String) null, (String) null, (String) null, (Integer) null, (Boolean) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ApiCallback<Pipelines> callback)"},"output":"(String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ApiCallback<Pipeline> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String branch, String run, final ApiCallback<PipelineRun> callback)"},"output":"(String) null, (String) null, (String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String folder)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run, Integer start, Boolean download)"},"output":"(String) null, (String) null, (String) null, (Integer) null, (Boolean) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String pipeline, String run)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm, final ApiCallback<GithubScm> callback)"},"output":"(String) null, (String) null, (ApiCallback) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (String) null, (String) null, (String) null, (String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)"},"output":"(String) null, (ProgressResponseBody.ProgressListener) null, (ProgressRequestBody.ProgressRequestListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Selection<?>... selections)"},"output":"(Selection[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Class<T> targetEntity)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Expression<? extends N> x, final Expression<? extends N> y)"},"output":"(Expression) null, (Expression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Expression<N> x)"},"output":"(Expression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Expression<? extends Number> number)"},"output":"(Expression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final C collection)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final E elem, final Expression<C> collection)"},"output":"(Object) null, (Expression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final JsonObject raw)"},"output":"(JsonObject) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean ensureOgcSfsCompliancy)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JSONArray geometries)"},"output":"(JSONArray) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int index, int maxLengthBytes)"},"output":"0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(StreamSchema<T> schema)"},"output":"(StreamSchema) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(T input)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(TypeInformation<T> typeInfo, String... fieldNames)"},"output":"(TypeInformation) null, (String[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Connection connection)"},"output":"(Connection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String selectPrefix,\n                                                                         final String groupingAndSorting,\n                                                                         final List<WhereClause> additionalWhereClauses,\n                                                                         final Query<O> query,\n                                                                         final Connection connection)"},"output":"(String) null, (String) null, (List) null, (Query) null, (Connection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Query<O> query, QueryOptions queryOptions, SortedKeyStatisticsIndex<?, O> indexForOrdering, List<AttributeOrder<O>> allSortOrders, RangeBounds<?> rangeBoundsFromQuery, boolean attributeCanHaveMoreThanOneValue, boolean primarySortDescending)"},"output":"(Query) null, (QueryOptions) null, (SortedKeyStatisticsIndex) null, (List) null, (RangeBounds) null, false, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(QueryOptions queryOptions)"},"output":"(QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(QueryOptions queryOptions)"},"output":"(QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(O object, QueryOptions queryOptions)"},"output":"(Object) null, (QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<O> pojoClass, Class<A> attributeValueType, String fieldName, String attributeName)"},"output":"(Class) null, (Class) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<O> pojoClass, Class<A> attributeValueType, String getterMethodName, String getterParameter, boolean componentValuesNullable, String attributeName)"},"output":"(Class) null, (Class) null, (String) null, (String) null, false, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<?> primitiveType)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(A lowerBound, boolean lowerInclusive, A upperBound, boolean upperInclusive)"},"output":"(Object) null, false, (Object) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Factory<ConcurrentMap<A, StoredResultSet<O>>> indexMapFactory, Factory<StoredResultSet<O>> valueSetFactory, Attribute<O, A> attribute)"},"output":"(Factory) null, (Factory) null, (Attribute) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Query<O> query, final QueryOptions queryOptions)"},"output":"(Query) null, (QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(QueryOptions queryOptions)"},"output":"(QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Connection connection)"},"output":"(Connection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final K key , final String tableName, final Connection connection)"},"output":"(Object) null, (String) null, (Connection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(O object, QueryOptions queryOptions)"},"output":"(Object) null, (QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Factory<ConcurrentNavigableMap<A, StoredResultSet<O>>> indexMapFactory, Factory<StoredResultSet<O>> valueSetFactory, Attribute<O, A> attribute)"},"output":"(Factory) null, (Factory) null, (Attribute) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(QueryOptions queryOptions)"},"output":"(QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(QueryOptions queryOptions)"},"output":"(QueryOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final int startIndex, final PreparedStatement preparedStatement, final Iterable values)"},"output":"0, (PreparedStatement) null, (Iterable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Calendar newCalendar)"},"output":"(Calendar) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final LogRecord record)"},"output":"(LogRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Address address)"},"output":"(Address) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final StackTraceElement s)"},"output":"(StackTraceElement) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String msg, Object[] p)"},"output":"(String) null, (Object[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Message.RecipientType type, Address[] addresses)"},"output":"(Message.RecipientType) null, (Address[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Session session,\n\t\t\t\tString name, int def)"},"output":"(Session) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final CharSequence value)"},"output":"(CharSequence) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Object key)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final LogRecord record)"},"output":"(LogRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final StackTraceElement s)"},"output":"(StackTraceElement) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final LogRecord record)"},"output":"(LogRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final StackTraceElement s)"},"output":"(StackTraceElement) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Locale locale)"},"output":"(Locale) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final LogRecord record)"},"output":"(LogRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String p)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LogRecord record)"},"output":"(LogRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Properties parent)"},"output":"(Properties) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Properties parent, final String prefix)"},"output":"(Properties) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Throwable t)"},"output":"(Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final LogRecord record)"},"output":"(LogRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Properties props, String name, int def)"},"output":"(Properties) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Path path, URI reference)"},"output":"(Path) null, (URI) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ImageRecord o)"},"output":"(ImageRecord) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BufferedImage originalImage)"},"output":"(BufferedImage) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Path path, String name)"},"output":"(Path) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String text, Charset encoding)"},"output":"(String) null, (Charset) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull final String taskId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String key, final Long maxRequests, final OptionsInterval interval)"},"output":"(String) null, (Long) null, (OptionsInterval) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String key, final String keyExpression, final JoinPoint joinPoint)"},"output":"(String) null, (String) null, (JoinPoint) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String key, final JoinPoint joinPoint)"},"output":"(String) null, (JoinPoint) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Instant timestamp)"},"output":"(Instant) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int x, int y)"},"output":"0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n            CheckedRunnable runnable,\n            String name,\n            Optional<Double> errorThreshold\n    )"},"output":"(CheckedRunnable) null, (String) null, (Optional) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, Optional<Double> errorThreshold)"},"output":"(String) null, (Optional) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n            Runnable runnable,\n            String name,\n            double errorThreshold\n    )"},"output":"(Runnable) null, (String) null, 0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n            Callable<T> callable,\n            String name,\n            double errorThreshold\n    )"},"output":"(Callable) null, (String) null, 0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n            final Supplier<? extends Number> numerator,\n            final Supplier<? extends Number> denominator\n    )"},"output":"(Supplier) null, (Supplier) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(NetworkParameters params, String seedPhrase)"},"output":"(NetworkParameters) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(NetworkParameters params, String seedPhrase)"},"output":"(NetworkParameters) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(NetworkParameters params, byte[] entropy)"},"output":"(NetworkParameters) null, (byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Wallet wallet)"},"output":"(Wallet) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String moduleId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(AnnotationType annotationType, String propertyAnnotations)"},"output":"(AnnotationType) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String initialGroupDN)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ParentGroupsDNRetriever parentGroupsDNRetriever)"},"output":"(ParentGroupsDNRetriever) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(PropertyVisitorsSequence propertyVisitorsSequence)"},"output":"(PropertyVisitorsSequence) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value, String errorMessage)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String annotationDefinition)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(AnnotationType annotationType, String propertyAnnotations)"},"output":"(AnnotationType) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String annotationDefinition)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ModuleCommands moduleCommands,\n                          ModuleQueries moduleQueries,\n                          TechnoQueries technoQueries,\n                          PlatformQueries platformQueries,\n                          EventCommands eventCommands)"},"output":"(ModuleCommands) null, (ModuleQueries) null, (TechnoQueries) null, (PlatformQueries) null, (EventCommands) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String propertyDefinition)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value, String errorMessage)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String annotationDefinition, AnnotationType annotationType, String propertyAnnotations)"},"output":"(String) null, (AnnotationType) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String sql)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int curSize, double percent)"},"output":"0, 0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(SlackMessage message, String environment)"},"output":"(SlackMessage) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Map<String, List<String>> summary, LogProcessorLambdaConfig config)"},"output":"(Map) null, (LogProcessorLambdaConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LogProcessorLambdaConfig config)"},"output":"(LogProcessorLambdaConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ObjectMapper objectMapper, AWSWAFRegional awsWaf, AmazonS3 amazonS3)"},"output":"(ObjectMapper) null, (AWSWAFRegional) null, (AmazonS3) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<ALBAccessLogEvent> events, LogProcessorLambdaConfig config, String bucketName)"},"output":"(List) null, (LogProcessorLambdaConfig) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ArrayList<Map<String, String>> sdbMetadata, String sdbName, String principalName)"},"output":"(ArrayList) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Map<String, List<String>> summary, LogProcessorLambdaConfig config)"},"output":"(Map) null, (LogProcessorLambdaConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String ip)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LogProcessorLambdaConfig config)"},"output":"(LogProcessorLambdaConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String ipSetId, int retryCount)"},"output":"(String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LogstashLayoutSerializationContext oldContext)"},"output":"(LogstashLayoutSerializationContext) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Path sourcePath, Path sourceRoot, Path targetRoot)"},"output":"(Path) null, (Path) null, (Path) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int count)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] buffer)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int count)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int maxAddressLength)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] bytes)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] bytes, int count)"},"output":"(byte[]) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] buffer)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int size, String encoding)"},"output":"0, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int count)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int count)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string, int count, String encoding)"},"output":"(String) null, 0, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] buffer)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int size, String encoding)"},"output":"0, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] buffer)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] bytes, int count)"},"output":"(byte[]) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] bytes)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] bytes, int count)"},"output":"(byte[]) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(JobParameters parameters)"},"output":"(JobParameters) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<QueueSender> queues)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Class<P> type)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<BlockingQueue<Record<P>>> queues)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final String fontPath)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final String basePath)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String filePath)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@NonNull final Context context,\n\t\t\t@Nullable final AttributeSet attrs,\n\t\t\t@AttrRes final int defStyleAttr,\n\t\t\t@StyleRes final int defStyleRes\n\t)"},"output":"(Context) null, (AttributeSet) null, 0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String filePath)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final Context context)"},"output":"(Context) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LANG l)"},"output":"(LANG) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( )"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<? extends DocumentWriteOperation> items)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DatabaseClient client)"},"output":"(DatabaseClient) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(WriteFailureListener listener)"},"output":"(WriteFailureListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<T> type, List<Class<?>> constructorArgTypes, List<Object> constructorArgs)"},"output":"(Class) null, (List) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ClassLoader loader, String resource)"},"output":"(ClassLoader) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Closeable closeable)"},"output":"(Closeable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String alias, Class<?> value)"},"output":"(String) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<Object> list, Class<?> targetType)"},"output":"(List) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String sql, Object... args)"},"output":"(String) null, (Object[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String[] args)"},"output":"(String[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String locale)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String locale)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean fromJSON)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String[] args)"},"output":"(String[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( Map<String, String> properties, String key, int fallback )"},"output":"(Map) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( Map<String, String> properties, String key, int fallback )"},"output":"(Map) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( Concurrency concurrency )"},"output":"(Concurrency) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( JUnitCoreParameters jUnitCoreParameters )"},"output":"(JUnitCoreParameters) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable String s)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nonnull Object value, @Nonnull String fieldName, ToStringOptions options)"},"output":"(Object) null, (String) null, (ToStringOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] value, byte[] key)"},"output":"(byte[]) null, (byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String traceTrueToken)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String traceId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String input)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<Span> spans)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int traceIdPrefixedSpanSize)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(MessageSource messageSource)"},"output":"(MessageSource) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BooleanExpression booleanExpression, TypedExpression<T> value)"},"output":"(BooleanExpression) null, (TypedExpression) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String alias, Function1<X,R> method)"},"output":"(String) null, (Function1) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String arg)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(TypeToken<T> targetClass, Class<?> argType, Field field)"},"output":"(TypeToken) null, (Class) null, (Field) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<A> annotationClass, Method method)"},"output":"(Class) null, (Method) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Function1<T,V> methodReference)"},"output":"(Function1) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<?> aClass, String name, Class<?>... parameterTypes)"},"output":"(Class) null, (String) null, (Class[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<T> aClass, Class<A> annotationClass)"},"output":"(Class) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<?> aClass)"},"output":"(Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<T> aClass, Class<?>... parameterTypes)"},"output":"(Class) null, (Class[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Scope scope, String label)"},"output":"(Scope) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(SqlExecutor sqlExecutor)"},"output":"(SqlExecutor) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(SqlExecutor sqlExecutor)"},"output":"(SqlExecutor) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Map<ConfigResource, Config> configs, AlterConfigsOptions options)"},"output":"(Map) null, (AlterConfigsOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Collection<Integer> brokers, DescribeLogDirsOptions options)"},"output":"(Collection) null, (DescribeLogDirsOptions) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String url)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Throwable cause)"},"output":"(Throwable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(File parent, File child)"},"output":"(File) null, (File) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(char c)"},"output":"'\\0'"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String message)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ItemGetParam param)"},"output":"(ItemGetParam) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Args args, String key, PrintStream err )"},"output":"(Args) null, (String) null, (PrintStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( Collection<Args.Option<File[]>> nodesFiles,\n                                           Collection<Args.Option<File[]>> edgesFiles )"},"output":"(Collection) null, (Collection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(File storeDir, Collection<Args.Option<File[]>> nodesFiles,\n                                      Collection<Args.Option<File[]>> edgesFiles,\n                                      Configuration configuration, PrintStream out)"},"output":"(File) null, (Collection) null, (Collection) null, (Configuration) null, (PrintStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final AnimatorListener listener)"},"output":"(AnimatorListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final View view)"},"output":"(View) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0) final float radiusStart,\n\t\t\t@FloatRange(from = 0) final float radiusEnd\n\t)"},"output":"(View) null, 0F, 0F"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final int visibility)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@NonNull final ViewGroup sceneRoot,\n\t\t\t@NonNull final View view,\n\t\t\t@Nullable final TransitionValues startValues,\n\t\t\t@Nullable final TransitionValues endValues\n\t)"},"output":"(ViewGroup) null, (View) null, (TransitionValues) null, (TransitionValues) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final View view)"},"output":"(View) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Bundle extras)"},"output":"(Bundle) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0, to = 1) final float centerXFraction,\n\t\t\t@FloatRange(from = 0, to = 1) final float centerYFraction\n\t)"},"output":"(View) null, ((from=) null, (to=1)float) null, ((from=) null, (to=1)float) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0) final float radiusStart,\n\t\t\t@FloatRange(from = 0) final float radiusEnd\n\t)"},"output":"(View) null, 0F, 0F"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final View view)"},"output":"(View) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n\t\t\t@AnimRes final int startEnterAnim,\n\t\t\t@AnimRes final int startExitAnim,\n\t\t\t@AnimRes final int finishEnterAnim,\n\t\t\t@AnimRes final int finishExitAnim\n\t)"},"output":"0, 0, 0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@Nullable final Transition transition)"},"output":"(Transition) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final boolean useOverlay)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final Context context, final int resource, @NonNull final ViewGroup sceneRoot)"},"output":"(Context) null, 0, (ViewGroup) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final View element, @NonNull final String elementName)"},"output":"(View) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final Activity caller)"},"output":"(Activity) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final Fragment caller)"},"output":"(Fragment) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final Animator animator)"},"output":"(Animator) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@WrapperFeatures final int feature)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull Object instance)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String s)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull String string)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull String className)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final long errorCode)"},"output":"0L"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean b)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(short value)"},"output":"(short) 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String hex)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String hex)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(char c)"},"output":"'\\0'"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String userEmail, String userName)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ObjectInputStream in)"},"output":"(ObjectInputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] bytes)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String title, final int message)"},"output":"(String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final CoordinatorLayout layout, final Context context, final String message)"},"output":"(CoordinatorLayout) null, (Context) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ByteBuffer bb)"},"output":"(ByteBuffer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ByteBuffer bb)"},"output":"(ByteBuffer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ByteBuffer bb)"},"output":"(ByteBuffer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean sampleIsDifferenceSample)"},"output":"false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Track track, Movie m)"},"output":"(Track) null, (Movie) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ByteBuffer bb)"},"output":"(ByteBuffer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int i, int numBits)"},"output":"0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Track track)"},"output":"(Track) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final RelayVertex relayVertex, final IREdge edgeToStreamize)"},"output":"(RelayVertex) null, (IREdge) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final IRVertex vertexToDelete)"},"output":"(IRVertex) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object obj)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BindableLayout<T> itemView)"},"output":"(BindableLayout) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(double x0, double y0, double theta0, double gainDB)"},"output":"0D, 0D, 0D, 0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(double power)"},"output":"0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Class<?> ofClass, Class<?> inClass)"},"output":"(Class) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Type type)"},"output":"(Type) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Type type)"},"output":"(Type) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(float value)"},"output":"0F"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String value)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Type type, final Type rootType)"},"output":"(Type) null, (Type) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Type type)"},"output":"(Type) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final double value)"},"output":"0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] value)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Number num)"},"output":"(Number) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, Boolean value)"},"output":"(String) null, (Boolean) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(char[] str)"},"output":"(char[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int cursor)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final JsonType jsonType, final char token)"},"output":"(JsonType) null, '\\0'"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int cur, long longValue, boolean negative)"},"output":"0, 0L, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(TypeVariable<? extends GenericDeclaration> type,\n                                                Class<?> declaringClass, Class<?> inClass)"},"output":"(TypeVariable) null, (Class) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int parameterIdx, Type fromType)"},"output":"0, (Type) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int localCursor)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Number value)"},"output":"(Number) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String value)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Type type, Class<?> inClass)"},"output":"(Type) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Type type)"},"output":"(Type) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final URI uri, @Nullable final JSONObject postEntity, final JsonParser<T> parser, ProgressMonitor progressMonitor)"},"output":"(URI) null, (JSONObject) null, (JsonParser) null, (ProgressMonitor) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final URI uri, final JsonArrayParser<T> parser, ProgressMonitor progressMonitor)"},"output":"(URI) null, (JsonArrayParser) null, (ProgressMonitor) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final URI uri, @Nullable final JSONObject postEntity, ProgressMonitor progressMonitor)"},"output":"(URI) null, (JSONObject) null, (ProgressMonitor) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Challenge challenge, RequestContent requestContent, Authorization authorization)"},"output":"(Challenge) null, (RequestContent) null, (Authorization) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Keychain keychain, KeyId keyId)"},"output":"(Keychain) null, (KeyId) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(InputStream configurationStream)"},"output":"(InputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n        @ApiParam(\n            value = \"Tag identifier\",\n            required = true\n        )\n        @PathVariable\n            Integer tagIdentifier\n    )"},"output":"((\nvalue=\"Tag) null, (required=true\n)\n\nInteger) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n        JSONObject filter,\n        Integer[] groupIdFilter,\n        Integer[] groupOwnerIdFilter,\n        Pageable pageRequest,\n        UserSession userSession)"},"output":"(JSONObject) null, (Integer[]) null, (Integer[]) null, (Pageable) null, (UserSession) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String expr)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String expr)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(FileSystem newFileSystem)"},"output":"(FileSystem) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String pname)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n        @ApiParam(\n            value = API_PARAM_RECORD_UUID,\n            required = true)\n        @PathVariable\n            String metadataUuid,\n        @ApiParam(\n            value = \"MEF file format.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"FULL\")\n            MEFLib.Format format,\n        @ApiParam(\n            value = \"With related records (parent and service).\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean withRelated,\n        @ApiParam(\n            value = \"Resolve XLinks in the records.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean withXLinksResolved,\n        @ApiParam(\n            value = \"Preserve XLink URLs in the records.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"false\")\n            boolean withXLinkAttribute,\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean addSchemaLocation,\n        @ApiParam(value = \"Download the approved version\",\n            required = false)\n        @RequestParam(required = false, defaultValue = \"true\")\n            boolean approved,\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT,\n            defaultValue = \"application/x-gn-mef-2-zip\"\n        )\n            String acceptHeader,\n        HttpServletResponse response,\n        HttpServletRequest request\n    )"},"output":"((\nvalue=) null, (required=true)\n\nString) null, ((\nvalue=\"MEFfile) null, (required=false)\n(\nrequired=) null, (defaultValue=\"FULL\")\nMEFLib.Format) null, (.\") null, (required=false)\n(\nrequired=) null, (defaultValue=\"true\")\nboolean) null, ((\nvalue=\"ResolveXLinksinthe) null, (required=false)\n(\nrequired=) null, (defaultValue=\"true\")\nboolean) null, ((\nvalue=\"PreserveXLinkURLsinthe) null, (required=false)\n(\nrequired=) null, (defaultValue=\"false\")\nboolean) null, ((\nrequired=) null, (defaultValue=\"true\")\nboolean) null, ((value=\"Downloadtheapproved) null, (required=false)\n(required=) null, (defaultValue=\"true\")\nboolean) null, ((\nvalue=) null, (defaultValue=\"application/x-gn-mef-2-zip\"\n)\nString) null, (HttpServletResponse) null, (HttpServletRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(\n        @ApiParam(value = API_PARAM_RECORD_UUID,\n            required = true)\n        @PathVariable\n            String metadataUuid,\n        @ApiParam(value = \"Accept header should indicate which is the appropriate format \" +\n            \"to return. It could be text/html, application/xml, application/zip, ...\" +\n            \"If no appropriate Accept header found, the XML format is returned.\",\n            required = true)\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT,\n            defaultValue = MediaType.APPLICATION_XML_VALUE,\n            required = false\n        )\n            String acceptHeader,\n        HttpServletResponse response,\n        HttpServletRequest request\n    )"},"output":"((value=) null, (required=true)\n\nString) null, ((value=\"Acceptheadershouldindicatewhichistheappropriateformat\"+\n\"toreturn.Itcouldbe) null, (application/xml) null, (application/zip) null, ([]\"+\n\"IfnoappropriateAcceptheader) null, (theXMLformatis) null, (required=true)\n(\nvalue=) null, (defaultValue=) null, (required=false\n)\nString) null, (HttpServletResponse) null, (HttpServletRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String uuid, String name, String group)"},"output":"(String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int order)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(VariableIdentifierExpr variableIdentifierExpr)"},"output":"(VariableIdentifierExpr) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String headerString)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] b)"},"output":"(byte[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Header contentEncoding)"},"output":"(Header) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(byte[] in, int inPosition, int inLength, byte[] out, int outPosition, int outLength)"},"output":"(byte[]) null, 0, 0, (byte[]) null, 0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(boolean enable, OptionMap options)"},"output":"false, (OptionMap) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(InputStream in, Long contentLength, String contentType, int bufferSize)"},"output":"(InputStream) null, (Long) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Method method, HttpRequest request)"},"output":"(Method) null, (HttpRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String unencoded, String encoding)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String encoded, String encoding)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BankAccount to, BankAccount from, Money money)"},"output":"(BankAccount) null, (BankAccount) null, (Money) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object o)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(TypeVariable<?> typeVariable)"},"output":"(TypeVariable) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object object)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object object)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ApplicationEvent applicationEvent)"},"output":"(ApplicationEvent) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(File file)"},"output":"(File) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(EmailAddress emailAddress)"},"output":"(EmailAddress) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DataSource dataSource)"},"output":"(DataSource) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object key)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(K key)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(XMLStreamReader2 reader)"},"output":"(XMLStreamReader2) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String title, final Paint paint)"},"output":"(String) null, (Paint) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Context context, final Bitmap srcWithoutPhoto, final Bitmap srcWithPhoto, final Bitmap srcOwnPhoto,\n                        final Bitmap srcWithoutPhotoInactive, final Bitmap srcWithPhotoInactive, final Bitmap srcOwnPhotoInactive,\n                        final Point grid, final float textSize, final int maxSize, final Paint paint)"},"output":"(Context) null, (Bitmap) null, (Bitmap) null, (Bitmap) null, (Bitmap) null, (Bitmap) null, (Bitmap) null, (Point) null, 0F, 0, (Paint) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Future<V> future)"},"output":"(Future) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Future<V> future, long pollPeriod, TimeUnit unit)"},"output":"(Future) null, 0L, (TimeUnit) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Future<V> future, long pollPeriod, TimeUnit unit)"},"output":"(Future) null, 0L, (TimeUnit) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Miner miner)"},"output":"(Miner) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LocationPattern locationPattern)"},"output":"(LocationPattern) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String version)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String[] names)"},"output":"(String[]) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"( Collection<String> protocols )"},"output":"(Collection) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String url)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(InputStream is)"},"output":"(InputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, boolean force, boolean noprune)"},"output":"(String) null, false, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String url)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object featureService)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(File storageLocation)"},"output":"(File) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String name, String url)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String image, String repo, String tag, String url)"},"output":"(String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ServiceReference<?> sr)"},"output":"(ServiceReference) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Integer id)"},"output":"(Integer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String value)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Exchange exchange, String value)"},"output":"(Exchange) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Exchange exchange, Api api)"},"output":"(Exchange) null, (Api) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(IAuthDataAccess dataAcccess)"},"output":"(IAuthDataAccess) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NotNull Class<T> clazz, @NotNull ParamsType paramsType)"},"output":"(Class) null, (ParamsType) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String templateId, boolean autoApplyDefault, Object cliParameter)"},"output":"(String) null, false, (Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String templateId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Map<String, String> params)"},"output":"(Map) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String input, final Function<String, Boolean> validator,\n                                          final Consumer<String> setter, final boolean required)"},"output":"(String) null, (Function) null, (Consumer) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<String> options, String item)"},"output":"(List) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Process process)"},"output":"(Process) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String runtimeVersion)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String os)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String text)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(BooleanBag from)"},"output":"(BooleanBag) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(IntBag from, int length)"},"output":"(IntBag) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Bag<T> from, int fromOffset, int length, boolean clearExceeding)"},"output":"(Bag) null, 0, 0, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int value)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Bag<T> from, int fromOffset, int toOffset, int length)"},"output":"(Bag) null, 0, 0, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int capacity)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Mask mask)"},"output":"(Mask) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(FamilyConfig config)"},"output":"(FamilyConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int index, double value)"},"output":"0, 0D"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int capacity)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LambdaProxyRequest request)"},"output":"(LambdaProxyRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LambdaProxyRequest request)"},"output":"(LambdaProxyRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(HttpServletRequest req,\n                              HttpServletResponse resp,\n                              LambdaFunction lambdaFunction)"},"output":"(HttpServletRequest) null, (HttpServletResponse) null, (LambdaFunction) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<String> packageNames)"},"output":"(List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(HttpServletRequest req, HttpServletResponse resp)"},"output":"(HttpServletRequest) null, (HttpServletResponse) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String path,\n                                        String handler,\n                                        Class<? extends LambdaRequestDeserializer<?>> deserializerClass,\n                                        Class<? extends LambdaResponseSerializer<?>> serializerClass)"},"output":"(String) null, (String) null, (Class) null, (Class) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(CrossOrigin classCrossOrigin)"},"output":"(CrossOrigin) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ServletConfig config)"},"output":"(ServletConfig) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(HttpServletRequest req)"},"output":"(HttpServletRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(LambdaProxyRequest input)"},"output":"(LambdaProxyRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull final String route,\n\t\t\t@NonNull final String url, @NonNull final Gson gson)"},"output":"(String) null, (String) null, (Gson) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Socket socket)"},"output":"(Socket) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Socket socket, String query)"},"output":"(Socket) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Socket socket)"},"output":"(Socket) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ByteArrayOutputStream out)"},"output":"(ByteArrayOutputStream) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Client client, String indexName, IElasticSearchMapping mapping)"},"output":"(Client) null, (String) null, (IElasticSearchMapping) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Client client, String indexName, IElasticSearchMapping mapping)"},"output":"(Client) null, (String) null, (IElasticSearchMapping) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Client client, String indexName)"},"output":"(Client) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(CatalogReader catalogReader)"},"output":"(CatalogReader) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int maxKeyLength)"},"output":"0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull Application app, @NonNull\n        Emitter.BackpressureMode backpressureMode)"},"output":"(Application) null, (Emitter.BackpressureMode) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull AppStateRecognizer recognizer)"},"output":"(AppStateRecognizer) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String file)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String keyFile)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object listener, boolean includingPropagatingEvents)"},"output":"(Object) null, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String query, Map<String, Object> values)"},"output":"(String) null, (Map) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Instance<ArangoDBDocumentCollectionManager> manager,\n                            DocumentEntityConverter converter, DocumentWorkflow flow,\n                            DocumentEventPersistManager persistManager,\n                            ClassMappings mappings,\n                            Converters converters)"},"output":"(Instance) null, (DocumentEntityConverter) null, (DocumentWorkflow) null, (DocumentEventPersistManager) null, (ClassMappings) null, (Converters) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ColumnQuery query, ConsistencyLevel level)"},"output":"(ColumnQuery) null, (ConsistencyLevel) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Statement n1qlQuery, JsonObject params)"},"output":"(Statement) null, (JsonObject) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String query)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String n1qlQuery)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Object attribute)"},"output":"(Object) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(File sourceDir, List<String> compilePaths)"},"output":"(File) null, (List) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int[] selectedXBoxIds, int[] selectedOBoxIds, int totalBoxesSelected)"},"output":"(int[]) null, (int[]) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ApplicationProfilesRepository applicationProfilesRepository)"},"output":"(ApplicationProfilesRepository) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub)"},"output":"(FilteredBroadcastMessenger) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub)"},"output":"(FilteredBroadcastMessenger) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final Context context, final String filter)"},"output":"(Context) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int minimumAttendance, boolean extendedStats)"},"output":"0, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull String loginJson, @NonNull String attendanceJson)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String loginJson)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(int minimumAttendance, boolean extendedStats)"},"output":"0, false"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(@NonNull String registrationIdJson)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String attendanceJson)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(NumberIntervalBoundary low)"},"output":"(NumberIntervalBoundary) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(NumberIntervalBoundary low)"},"output":"(NumberIntervalBoundary) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Router router)"},"output":"(Router) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(RouterObjectRef routerObjectRef)"},"output":"(RouterObjectRef) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo, int page)"},"output":"(String) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(final String owner, final String repo, final Branch branch)"},"output":"(String) null, (String) null, (Branch) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo)"},"output":"(String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(GithubAuthRetrofit authRetrofit, UserService userApi, Context ctx)"},"output":"(GithubAuthRetrofit) null, (UserService) null, (Context) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo, int page)"},"output":"(String) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String keyWord, String language, int page)"},"output":"(String) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String owner, String repo, int page)"},"output":"(String) null, (String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(List<GitTree.TreeEntity> treeEntities, int index, TreeNode<Dir> dirNode,\n                              String dirPath, final String owner, final String repo, String branchName)"},"output":"(List) null, 0, (TreeNode) null, (String) null, (String) null, (String) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String user, int page)"},"output":"(String) null, 0"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(Context context, Uri trackUri, String chosenFileName, ProgressListener listener)"},"output":"(Context) null, (Uri) null, (String) null, (ProgressListener) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DeleteAlertTagsRequest params)"},"output":"(DeleteAlertTagsRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String identifier, Long attachmentId, String alertIdentifierType)"},"output":"(String) null, (Long) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(ListAlertsRequest params)"},"output":"(ListAlertsRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String identifier, AddAlertNoteRequest body, String identifierType)"},"output":"(String) null, (AddAlertNoteRequest) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(CreateAlertRequest body)"},"output":"(CreateAlertRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DeleteAlertTagsRequest params)"},"output":"(DeleteAlertTagsRequest) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String requestId)"},"output":"(String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"()"},"output":""}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(String identifier, AddAlertDetailsRequest body, String identifierType)"},"output":"(String) null, (AddAlertDetailsRequest) null, (String) null"}
+{"input":{"nested":["Inner"],"outer":"Outer","parameters":"(DeleteAlertRequest params)"},"output":"(DeleteAlertRequest) null"}

@@ -1,0 +1,9 @@
+{
+  "count": 5000,
+  "sha256": "fac8cee66112ac56755cc57a8e640e4475bb0e27a5e310a6c3916d7c5b6b7005",
+  "raw_sha256": "c63fe732a5ee02aade0c1a074657f5764dc874f21696f4225e8919f4bc3e6810",
+  "oracle": "preflight.java_ast.parse_java_source",
+  "tree_sitter": "0.24.0",
+  "tree_sitter_java": "0.23.5",
+  "read_only_source": "CAT-LM Java snapshot"
+}

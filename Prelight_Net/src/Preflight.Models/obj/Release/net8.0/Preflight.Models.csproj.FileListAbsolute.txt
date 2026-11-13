@@ -1,0 +1,15 @@
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\bin\Release\net8.0\Preflight.Models.deps.json
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\bin\Release\net8.0\Preflight.Models.dll
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\bin\Release\net8.0\Preflight.Models.pdb
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.GeneratedMSBuildEditorConfig.editorconfig
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.AssemblyInfoInputs.cache
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.AssemblyInfo.cs
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.csproj.CoreCompileInputs.cache
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.sourcelink.json
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.dll
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\refint\Preflight.Models.dll
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\Preflight.Models.pdb
+D:\ki9\SET490\ARROW\Prelight_Net\src\Preflight.Models\obj\Release\net8.0\ref\Preflight.Models.dll
+D:\ki9\SET490\ARROW\Prelight_Net\.work\cli\Preflight.Models.deps.json
+D:\ki9\SET490\ARROW\Prelight_Net\.work\cli\Preflight.Models.dll
+D:\ki9\SET490\ARROW\Prelight_Net\.work\cli\Preflight.Models.pdb

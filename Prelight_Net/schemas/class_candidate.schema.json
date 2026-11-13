@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Preflight .NET class candidate (Python compatible, additive dataset metadata)",
+  "type": "object",
+  "required": ["task_id", "project_id", "repo_url", "class_path", "class_fqn", "class_name", "source_json_path", "source_json_sha256", "source_json_paths", "source_json_sha256s", "test_class_paths"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "project_id": {"type": "string"},
+    "repo_url": {"type": "string", "minLength": 1},
+    "class_path": {"type": "string", "minLength": 1},
+    "class_fqn": {"type": "string"},
+    "class_name": {"type": "string", "minLength": 1},
+    "source_json_path": {"type": "string"},
+    "source_json_sha256": {"type": "string", "pattern": "^[0-9a-f]{64}$"},
+    "source_json_paths": {"type": "array", "minItems": 1, "items": {"type": "string"}},
+    "source_json_sha256s": {"type": "array", "minItems": 1, "items": {"type": "string", "pattern": "^[0-9a-f]{64}$"}},
+    "test_class_path": {"type": "string"},
+    "test_class_paths": {"type": "array", "items": {"type": "string"}},
+    "dataset": {"enum": ["classes2test", "gitbug-java", "catlm"]},
+    "pairing_method": {"type": "string"}
+  },
+  "additionalProperties": true
+}

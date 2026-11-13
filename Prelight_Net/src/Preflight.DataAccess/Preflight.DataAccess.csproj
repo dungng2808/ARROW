@@ -1,0 +1,1 @@
+<Project Sdk="Microsoft.NET.Sdk"><ItemGroup><ProjectReference Include="../Preflight.Models/Preflight.Models.csproj" /><PackageReference Include="Microsoft.Data.Sqlite" Version="8.0.22" /></ItemGroup></Project>

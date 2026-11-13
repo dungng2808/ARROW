@@ -1,0 +1,9 @@
+{"input":{"compact":false,"indented":false,"value":{"a":"dữ liệu\n\u001c ","float":0.0,"z":1}},"output":"{\"a\": \"dữ liệu\\n\\u001c \", \"float\": 0.0, \"z\": 1}"}
+{"input":{"compact":true,"indented":false,"value":{"a":"dữ liệu\n\u001c ","float":0.0,"z":1}},"output":"{\"a\":\"dữ liệu\\n\\u001c \",\"float\":0.0,\"z\":1}"}
+{"input":{"compact":false,"indented":true,"value":{"a":"dữ liệu\n\u001c ","float":0.0,"z":1}},"output":"{\n  \"a\": \"dữ liệu\\n\\u001c \",\n  \"float\": 0.0,\n  \"z\": 1\n}"}
+{"input":{"compact":false,"indented":false,"value":{"x":[true,null,"quote\"",1.0,1e-05,1e+16,-0.0]}},"output":"{\"x\": [true, null, \"quote\\\"\", 1.0, 1e-05, 1e+16, -0.0]}"}
+{"input":{"compact":true,"indented":false,"value":{"x":[true,null,"quote\"",1.0,1e-05,1e+16,-0.0]}},"output":"{\"x\":[true,null,\"quote\\\"\",1.0,1e-05,1e+16,-0.0]}"}
+{"input":{"compact":false,"indented":true,"value":{"x":[true,null,"quote\"",1.0,1e-05,1e+16,-0.0]}},"output":"{\n  \"x\": [\n    true,\n    null,\n    \"quote\\\"\",\n    1.0,\n    1e-05,\n    1e+16,\n    -0.0\n  ]\n}"}
+{"input":{"compact":false,"indented":false,"value":{"e":1.2345678901234567e-20}},"output":"{\"e\": 1.2345678901234567e-20}"}
+{"input":{"compact":true,"indented":false,"value":{"e":1.2345678901234567e-20}},"output":"{\"e\":1.2345678901234567e-20}"}
+{"input":{"compact":false,"indented":true,"value":{"e":1.2345678901234567e-20}},"output":"{\n  \"e\": 1.2345678901234567e-20\n}"}

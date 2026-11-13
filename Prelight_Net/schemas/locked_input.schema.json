@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Actual locked input record: checkout_sha / revision_verification_status",
+  "type": "object",
+  "required": ["task_id", "repo_url", "class_path", "checkout_sha", "revision_provenance", "revision_verification_status", "run_mode", "source_json_paths", "source_json_sha256s"],
+  "properties": {
+    "task_id": {"type": "string", "minLength": 1},
+    "repo_url": {"type": "string"},
+    "class_path": {"type": "string"},
+    "checkout_sha": {"type": "string", "pattern": "^([0-9a-f]{40})?$"},
+    "revision_provenance": {"type": "string"},
+    "revision_verification_status": {"enum": ["UPSTREAM_PINNED", "CONTENT_MATCHED", "UNVERIFIED"]},
+    "run_mode": {"enum": ["STRICT", "DISCOVERY_ONLY"]},
+    "source_json_paths": {"type": "array", "items": {"type": "string"}},
+    "source_json_sha256s": {"type": "array", "items": {"type": "string"}},
+    "dataset": {"type": "string"},
+    "probe_profile": {"enum": ["v1", "v2"]},
+    "revision_evidence_ref": {"type": "string"},
+    "extra": {"type": "object"}
+  },
+  "additionalProperties": true
+}

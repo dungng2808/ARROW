@@ -1,0 +1,1000 @@
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(RosiePresenter.View view)","output":"null"}
+{"input":"()","output":""}
+{"input":"(V value)","output":"null"}
+{"input":"(K key)","output":"null"}
+{"input":"(V value)","output":"null"}
+{"input":"()","output":""}
+{"input":"(V value)","output":"null"}
+{"input":"(\n      R... writeableDataSources)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String name)","output":"null"}
+{"input":"(Object source)","output":"null"}
+{"input":"()","output":""}
+{"input":"(@Nonnull final IPMode aPMode, @Nonnull final ErrorList aErrorList)","output":"null, null"}
+{"input":"(@Nonnull final String sMsg)","output":"null"}
+{"input":"(@Nonnull final Ebms3SignalMessage aSignalMsg, @Nonnull final ErrorList aErrorList)","output":"null, null"}
+{"input":"(@Nonnull final Ebms3UserMessage aUserMsg, @Nonnull final ErrorList aErrorList)","output":"null, null"}
+{"input":"(@Nonnull final Ebms3UserMessage aUserMsg, @Nonnull final ErrorList aErrorList)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(@Nonnull final String sMsg)","output":"null"}
+{"input":"(@Nonnull final IPMode aPMode,\n                                          @Nonnull final ErrorList aErrorList,\n                                          @Nonnull final PModeLeg aPModeLeg)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(Product product, PublishSubject<CalculateProductScoreResponse> downloadStream)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(SearchProductsRequest request)","output":"null"}
+{"input":"()","output":""}
+{"input":"(long index)","output":"0L"}
+{"input":"()","output":""}
+{"input":"(@PathVariable String name, @Valid @RequestBody Todo todo)","output":"null, null"}
+{"input":"(@NonNull final R object)","output":"null"}
+{"input":"(@NonNull final String channel)","output":"null"}
+{"input":"(int current, String walletAddress, BigDecimal tokenNoDiscount)","output":"0, null, null"}
+{"input":"()","output":""}
+{"input":"(int current, long blockNrBTC, long blockNrETH, long satoshi, long wei, String walletAddress)","output":"0, 0L, 0L, 0L, 0L, null"}
+{"input":"(List<Payin> list)","output":"null"}
+{"input":"(boolean forceRemote)","output":"false"}
+{"input":"(long questionId)","output":"0L"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(QuestionDao questionDao)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(String raw)","output":"null"}
+{"input":"(DefaultErrorContractDTO errorContractDTO,\n                                                                      int httpStatusCode,\n                                                                      Collection<ApiError> rawFilteredApiErrors,\n                                                                      Throwable originalException,\n                                                                      RequestInfoForLogging request)","output":"null, 0, null, null, null"}
+{"input":"(DefaultErrorContractDTO errorContractDTO,\n                                                                      int httpStatusCode,\n                                                                      Collection<ApiError> rawFilteredApiErrors,\n                                                                      Throwable originalException,\n                                                                      RequestInfoForLogging request)","output":"null, 0, null, null, null"}
+{"input":"(@NotNull RequestInfoForLogging request)","output":"null"}
+{"input":"(\n        int statusCode, Collection<ApiError> filteredClientErrors, Throwable originalException,\n        Throwable coreException, RequestInfoForLogging request\n    )","output":"0, null, null, null, null"}
+{"input":"(Class<T> type)","output":"null"}
+{"input":"(\n        ApiError error,\n        List<Pair<String, String>> extraDetailsForLogging\n    )","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(final String input)","output":"null"}
+{"input":"()","output":""}
+{"input":"(final String doc, final GQLSourceInput source)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(Map<K, V> map)","output":"null"}
+{"input":"(String string, String searchPattern, StringReplacer replacer)","output":"null, null, null"}
+{"input":"(\n\t\t\t@HttpTrigger(name = \"req\", methods = { \"get\",\n\t\t\t\t\t\"post\" }, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,\n\t\t\tfinal ExecutionContext context)","output":"null, null, null, null, null"}
+{"input":"(Class<?> clazz)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String field,\n                             Template targetField,\n                             List<String> includeKeys,\n                             List<String> excludeKeys,\n                             String fieldSplit,\n                             String valueSplit,\n                             boolean allowDuplicateValues,\n                             boolean includeBrackets,\n                             String prefix,\n                             boolean recursive,\n                             String trim,\n                             String trimKey,\n                             int maxKeyLength)","output":"null, null, null, null, null, null, false, false, null, false, null, null, 0"}
+{"input":"(String key, String trimChars)","output":"null, null"}
+{"input":"(Pipeline pipeline, Doc doc)","output":"null, null"}
+{"input":"(String field, List<String> matchExpressions, Map<String, String> patternsBank, List<String> overwrite, boolean ignoreMissing, List<String> tagsOnFailure)","output":"null, null, null, null, false, null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(final InputStream is)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonWriter writer, List<PlaceType> placeTypes)","output":"null, null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonWriter writer, List<DescriptionTerm> descriptionTerms)","output":"null, null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(final InputStream in)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(final OutputStream os, final List<Place> places)","output":"null, null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonWriter writer, List<DescriptionTerm> descriptionTerms)","output":"null, null"}
+{"input":"(final InputStream is)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(JsonReader reader)","output":"null"}
+{"input":"(ConfigurationAdmin configAdmin)","output":"null"}
+{"input":"(String label, JsonElement element)","output":"null, null"}
+{"input":"(JsonPrimitive primitive)","output":"null"}
+{"input":"(SparqlEndpoint endpoint, String cacheDirectory, Dictionary wordnetDirectory, Lexicon lexicon)","output":"null, null, null, null"}
+{"input":"(Triple t)","output":"null"}
+{"input":"(@NonNull ContentViewContract removableView)","output":"null"}
+{"input":"(@NonNull ContentViewContract view)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Throwable e)","output":"null"}
+{"input":"()","output":""}
+{"input":"(@NonNull GraphProvider graphProvider)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(@NonNull NavigationDetails navDetails)","output":"null"}
+{"input":"(@NonNull GraphProvider graphProvider)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(@NonNull NavigationDetails firstViewNavDetails)","output":"null"}
+{"input":"(@NonNull ContentViewContract removableView)","output":"null"}
+{"input":"(@NonNull NavigationDetails entering,\n                         @Nullable NavigationDetails leaving,\n                         boolean push)","output":"null, null, false"}
+{"input":"(LifecycleEvent lifecycleEvent)","output":"null"}
+{"input":"(Throwable e)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(@NonNull NavigationDetails firstViewNavDetails)","output":"null"}
+{"input":"(@NonNull ContentViewContract view, boolean newInstance)","output":"null, false"}
+{"input":"()","output":""}
+{"input":"(Throwable e)","output":"null"}
+{"input":"(Point point)","output":"null"}
+{"input":"(@RequestParam @NotBlank String userId)","output":"null"}
+{"input":"(@RequestBody @Valid VerifyPasswordRequest request)","output":"null"}
+{"input":"(String userId)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(ResultSet rs)","output":"null"}
+{"input":"(Plaintext message)","output":"null"}
+{"input":"(byte[] initialHash)","output":"null"}
+{"input":"(long value, OutputStream stream)","output":"0L, null"}
+{"input":"(long value, OutputStream stream, AccessCounter counter)","output":"0L, null, null"}
+{"input":"(String value, OutputStream out)","output":"null, null"}
+{"input":"(byte[] ripeOrTag)","output":"null"}
+{"input":"(BitmessageAddress address)","output":"null"}
+{"input":"(BitmessageAddress address)","output":"null"}
+{"input":"(Connection connection, String where)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(byte[] initialHash)","output":"null"}
+{"input":"(InternalContext context)","output":"null"}
+{"input":"(String where)","output":"null"}
+{"input":"(String address)","output":"null"}
+{"input":"(JSONObject myjson)","output":"null"}
+{"input":"(@NonNull final String apiUrl,\n                         final int timeout,\n                         @NonNull final String myUserAgent)","output":"null, 0, null"}
+{"input":"()","output":""}
+{"input":"(long lastModified)","output":"0L"}
+{"input":"()","output":""}
+{"input":"(String location)","output":"null"}
+{"input":"(String connectionString)","output":"null"}
+{"input":"(@NotNull GeneratorEnvironment environment,\n                           @NotNull FunctionTableExpression table)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(@NotNull List<String> args)","output":"null"}
+{"input":"(@NotNull String[] argArray, boolean showFirstExceptionStack)","output":"null, false"}
+{"input":"(@NotNull List<String> args)","output":"null"}
+{"input":"(@NotNull List<String> args)","output":"null"}
+{"input":"(@NotNull ModuleArchiveExpression expr)","output":"null"}
+{"input":"(@NotNull AbortExpression expr)","output":"null"}
+{"input":"(@NotNull List<String> args)","output":"null"}
+{"input":"(@NotNull List<String> args)","output":"null"}
+{"input":"(@NotNull String[] args)","output":"null"}
+{"input":"(@NotNull List<String> args)","output":"null"}
+{"input":"()","output":""}
+{"input":"(@NotNull String prefix,\n                                     @NotNull Expression expr,\n                                     @Nullable String assignResult)","output":"null, null, null"}
+{"input":"(@NotNull Expression expr)","output":"null"}
+{"input":"(@NotNull IfSwitchExpression expr)","output":"null"}
+{"input":"(@NotNull String text)","output":"null"}
+{"input":"(@NotNull String[] argArray, boolean showFirstExceptionStack)","output":"null, false"}
+{"input":"(@PathVariable String coinId, Model model)","output":"null, null"}
+{"input":"(String[] configurations)","output":"null"}
+{"input":"(ColumnSpec[] specs, String leftTableAlias, String rightTableAlias)","output":"null, null, null"}
+{"input":"(ID feedId, Set<Principal> principals)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(java.io.ObjectInputStream in)","output":"null"}
+{"input":"(Throwable e)","output":"null"}
+{"input":"(@Nonnull final String systemName)","output":"null"}
+{"input":"(@Nonnull final User user)","output":"null"}
+{"input":"(@Nonnull final String key, final long value)","output":"null, 0L"}
+{"input":"()","output":""}
+{"input":"(Bundle theResources)","output":"null"}
+{"input":"(Entry nextEntry, HTTPVerbEnum verb)","output":"null, null"}
+{"input":"(String theValue)","output":"null"}
+{"input":"(String theAction, String theUrl)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Map<String, List<Instance>> workerToAssignmentMap)","output":"null, null"}
+{"input":"(ReflectData reflectData, boolean jsr310ConversionEnabled)","output":"null, false"}
+{"input":"(PulsarClientImpl client, ConsumerConfigurationData<T> conf, Schema<T> schema)","output":"null, null, null"}
+{"input":"(boolean autoAckOldestChunkedMessageOnQueueFull)","output":"false"}
+{"input":"(@NonNull RegexSubscriptionMode mode)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Message<?> msg)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Object other)","output":"null"}
+{"input":"(String namespaceBundle)","output":"null"}
+{"input":"(ChannelHandlerContext ctx)","output":"null"}
+{"input":"(int clientProtoVersion, String clientVersion)","output":"0, null"}
+{"input":"(long bufferSize)","output":"0L"}
+{"input":"()","output":""}
+{"input":"(String userClassName, ClassLoader classLoader)","output":"null, null"}
+{"input":"(SourceConfig existingConfig, SourceConfig newConfig)","output":"null, null"}
+{"input":"(FunctionConfig functionConfig, File functionPackageFile)","output":"null, null"}
+{"input":"(PaxMarker marker)","output":"null"}
+{"input":"(PaxMarker marker, String message)","output":"null, null"}
+{"input":"(String format, Object... arguments)","output":"null, null"}
+{"input":"(PaxMarker marker, String format, Object... arguments)","output":"null, null, null"}
+{"input":"(String fqcn, String message, Throwable t)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Class<T> clazz)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Collection<Statistics> statistics)","output":"null"}
+{"input":"(Integer personalProjectsCount)","output":"null"}
+{"input":"(final List<Project> projectList, final Optional<String> sortBy)","output":"null, null"}
+{"input":"(String languageName, List<Integer> projectCounts, List<Date> snapshotDates)","output":"null, null, null"}
+{"input":"(final List<Project> projects)","output":"null"}
+{"input":"()","output":""}
+{"input":"(final String text)","output":"null"}
+{"input":"(String msgctx, String msgid)","output":"null, null"}
+{"input":"(String msgid, String msgidPlural, long n)","output":"null, null, 0L"}
+{"input":"(Locale locale, String msgctx, String msgid, String msgidPlural, long n)","output":"null, null, null, null, 0L"}
+{"input":"( String sourceFQN, String targetFQN )","output":"null, null"}
+{"input":"(Class<T> mapperType, Iterable<ClassLoader> classLoaders)","output":"null, null"}
+{"input":"(String identifier)","output":"null"}
+{"input":"(String name)","output":"null"}
+{"input":"(List<TypeMirror> qualifiers, List<String> qualifyingNames, TypeMirror resultType,\n        Types typeUtils, SourceRHS sourceRHS)","output":"null, null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(Class<?> clazz)","output":"null"}
+{"input":"(String string)","output":"null"}
+{"input":"(String string)","output":"null"}
+{"input":"(List<TypeMirror> qualifiers, List<String> qualifyingNames, TypeMirror resultType,\n        Types typeUtils, SourceRHS sourceRHS)","output":"null, null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(String name)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String name)","output":"null"}
+{"input":"(String string)","output":"null"}
+{"input":"(String word, Collection<String> similarWords)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(int index)","output":"0"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Integer eventCount)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(TxDetailType detailName, String detailValue)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Collection<Module> modules)","output":"null"}
+{"input":"()","output":""}
+{"input":"(StatusReportType statusReport)","output":"null"}
+{"input":"(String text)","output":"null"}
+{"input":"(FlowId flowId)","output":"null"}
+{"input":"(final Instant waitingSince)","output":"null"}
+{"input":"()","output":""}
+{"input":"(final Instant waitingSince)","output":"null"}
+{"input":"(Integer depth)","output":"null"}
+{"input":"(String name)","output":"null"}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null"}
+{"input":"(String name)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String name, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null, null"}
+{"input":"(String name, String json, String token, String jenkinsCrumb)","output":"null, null, null, null"}
+{"input":"(Integer depth, final ApiCallback<ComputerSet> callback)","output":"null, null"}
+{"input":"(String name, final ApiCallback<String> callback)","output":"null, null"}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null"}
+{"input":"(String name, String jenkinsCrumb, String contentType, String body)","output":"null, null, null, null"}
+{"input":"(String name, String body, String jenkinsCrumb)","output":"null, null, null"}
+{"input":"(String name, String body, String jenkinsCrumb)","output":"null, null, null"}
+{"input":"(Integer depth)","output":"null"}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null"}
+{"input":"(String name, final ApiCallback<String> callback)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":"null, null, null"}
+{"input":"(String name, String jenkinsCrumb)","output":"null, null"}
+{"input":"(String name)","output":"null"}
+{"input":"(String name)","output":"null"}
+{"input":"(String name)","output":"null"}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(String number)","output":"null"}
+{"input":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(final ApiCallback<Void> callback)","output":"null"}
+{"input":"(String name, String json, String token, String jenkinsCrumb)","output":"null, null, null, null"}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String name, String body, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(ApiClient apiClient)","output":"null"}
+{"input":"(String propertyClass, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(Integer key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String branch, String run)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String scm, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String scm, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(String organization, String user)","output":"null, null"}
+{"input":"(String organization, String user, final ApiCallback<User> callback)","output":"null, null, null"}
+{"input":"(String organization)","output":"null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(String name, String number, String start, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(String name, String number, String start)","output":"null, null, null"}
+{"input":"(String number)","output":"null"}
+{"input":"(String name, String from, String mode, String jenkinsCrumb, String contentType, String body, final ApiCallback<Void> callback)","output":"null, null, null, null, null, null, null"}
+{"input":"(String name, String jenkinsCrumb)","output":"null, null"}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":"null, null, null"}
+{"input":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String name, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null"}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":"null, null, null"}
+{"input":"(String name, String body, String jenkinsCrumb)","output":"null, null, null"}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String name, String jenkinsCrumb)","output":"null, null"}
+{"input":"(String name, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String name, String body, String jenkinsCrumb, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(ApiClient apiClient)","output":"null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(Integer key, final ApiCallback<String> callback)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(String organization, String pipeline, String run, String node)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, String node, String step, final ApiCallback<PipelineStepImpl> callback)","output":"null, null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, final ApiCallback<PipelineRunNodes> callback)","output":"null, null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String user, final ApiCallback<User> callback)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(Integer depth, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(String number, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String name, String from, String mode, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null, null, null, null"}
+{"input":"(String name, String jenkinsCrumb, String contentType, String body, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null, null"}
+{"input":"(String name, String jenkinsCrumb, final ApiCallback<Void> callback)","output":"null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String pipeline)","output":"null, null"}
+{"input":"(String organization, String pipeline, String run, String node, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, String node)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, String node, final ApiCallback<PipelineRunNodeSteps> callback)","output":"null, null, null, null, null"}
+{"input":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins)","output":"null, null"}
+{"input":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins, final ApiCallback<String> callback)","output":"null, null, null"}
+{"input":"(String organization)","output":"null"}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download, final ApiCallback<String> callback)","output":"null, null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, final ApiCallback<PipelineRunNodes> callback)","output":"null, null, null, null"}
+{"input":"(String user)","output":"null"}
+{"input":"(String organization, String pipeline, Body body)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, Body body, final ApiCallback<FavoriteImpl> callback)","output":"null, null, null, null"}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String queue)","output":"null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(String organization, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, final ApiCallback<PipelineRun> callback)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String organization, String scm)","output":"null, null"}
+{"input":"(String organization, String pipeline)","output":"null, null"}
+{"input":"(String organization, final ApiCallback<User> callback)","output":"null, null"}
+{"input":"(Integer expiryTimeInMins, Integer maxExpiryTimeInMins, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String branch, String run)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String folder)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String folder, final ApiCallback<PipelineImpl> callback)","output":"null, null, null, null"}
+{"input":"(String user)","output":"null"}
+{"input":"(String organization, String pipeline)","output":"null, null"}
+{"input":"(String organization, String pipeline, String run, String blocking, Integer timeOutInSecs, final ApiCallback<PipelineRun> callback)","output":"null, null, null, null, null, null"}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization)","output":"null"}
+{"input":"(String organization, String pipeline, String branch)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String branch, String run)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String folder, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download)","output":"null, null, null, null, null"}
+{"input":"(String organization, String pipeline, final ApiCallback<PipelineRuns> callback)","output":"null, null, null"}
+{"input":"(String organization, String scm)","output":"null, null"}
+{"input":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ApiCallback<ScmOrganisations> callback)","output":"null, null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String propertyClass)","output":"null"}
+{"input":"(Integer key, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String folder)","output":"null, null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String q)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String branch, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download)","output":"null, null, null, null, null"}
+{"input":"(String organization, final ApiCallback<Pipelines> callback)","output":"null, null"}
+{"input":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null, null, null"}
+{"input":"(String organization)","output":"null"}
+{"input":"(String organization, String pipeline, final ApiCallback<Pipeline> callback)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, String branch, String run, final ApiCallback<PipelineRun> callback)","output":"null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String folder)","output":"null, null, null"}
+{"input":"(String organization, String pipeline, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null"}
+{"input":"(String organization, String pipeline, String run, Integer start, Boolean download)","output":"null, null, null, null, null"}
+{"input":"(String organization, String pipeline, String run)","output":"null, null, null"}
+{"input":"(String organization, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(String organization, String scm, final ApiCallback<GithubScm> callback)","output":"null, null, null"}
+{"input":"(String organization, String scm, String scmOrganisation, String repository, String credentialId, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null, null, null, null, null"}
+{"input":"(String q, final ProgressResponseBody.ProgressListener progressListener, final ProgressRequestBody.ProgressRequestListener progressRequestListener)","output":"null, null, null"}
+{"input":"(final Selection<?>... selections)","output":"null"}
+{"input":"(final Class<T> targetEntity)","output":"null"}
+{"input":"(final Expression<? extends N> x, final Expression<? extends N> y)","output":"null, null"}
+{"input":"(final Expression<N> x)","output":"null"}
+{"input":"(final Expression<? extends Number> number)","output":"null"}
+{"input":"(final C collection)","output":"null"}
+{"input":"(final E elem, final Expression<C> collection)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(final JsonObject raw)","output":"null"}
+{"input":"(boolean ensureOgcSfsCompliancy)","output":"false"}
+{"input":"(JSONArray geometries)","output":"null"}
+{"input":"(int index, int maxLengthBytes)","output":"0, 0"}
+{"input":"(StreamSchema<T> schema)","output":"null"}
+{"input":"(T input)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(TypeInformation<T> typeInfo, String... fieldNames)","output":"null, null"}
+{"input":"(final Connection connection)","output":"null"}
+{"input":"(final String selectPrefix,\n                                                                         final String groupingAndSorting,\n                                                                         final List<WhereClause> additionalWhereClauses,\n                                                                         final Query<O> query,\n                                                                         final Connection connection)","output":"null, null, null, null, null"}
+{"input":"(final Query<O> query, QueryOptions queryOptions, SortedKeyStatisticsIndex<?, O> indexForOrdering, List<AttributeOrder<O>> allSortOrders, RangeBounds<?> rangeBoundsFromQuery, boolean attributeCanHaveMoreThanOneValue, boolean primarySortDescending)","output":"null, null, null, null, null, false, false"}
+{"input":"(QueryOptions queryOptions)","output":"null"}
+{"input":"(QueryOptions queryOptions)","output":"null"}
+{"input":"(O object, QueryOptions queryOptions)","output":"null, null"}
+{"input":"(Class<O> pojoClass, Class<A> attributeValueType, String fieldName, String attributeName)","output":"null, null, null, null"}
+{"input":"(Class<O> pojoClass, Class<A> attributeValueType, String getterMethodName, String getterParameter, boolean componentValuesNullable, String attributeName)","output":"null, null, null, null, false, null"}
+{"input":"(Class<?> primitiveType)","output":"null"}
+{"input":"(A lowerBound, boolean lowerInclusive, A upperBound, boolean upperInclusive)","output":"null, false, null, false"}
+{"input":"()","output":""}
+{"input":"(Factory<ConcurrentMap<A, StoredResultSet<O>>> indexMapFactory, Factory<StoredResultSet<O>> valueSetFactory, Attribute<O, A> attribute)","output":"null, null, null, null"}
+{"input":"(final Query<O> query, final QueryOptions queryOptions)","output":"null, null"}
+{"input":"(QueryOptions queryOptions)","output":"null"}
+{"input":"(final Connection connection)","output":"null"}
+{"input":"(final K key , final String tableName, final Connection connection)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(O object, QueryOptions queryOptions)","output":"null, null"}
+{"input":"(Factory<ConcurrentNavigableMap<A, StoredResultSet<O>>> indexMapFactory, Factory<StoredResultSet<O>> valueSetFactory, Attribute<O, A> attribute)","output":"null, null, null, null"}
+{"input":"(QueryOptions queryOptions)","output":"null"}
+{"input":"(QueryOptions queryOptions)","output":"null"}
+{"input":"(final int startIndex, final PreparedStatement preparedStatement, final Iterable values)","output":"0, null, null"}
+{"input":"(Calendar newCalendar)","output":"null"}
+{"input":"(final LogRecord record)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Address address)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(final StackTraceElement s)","output":"null"}
+{"input":"(String msg, Object[] p)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(Message.RecipientType type, Address[] addresses)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(String name)","output":"null"}
+{"input":"(Session session,\n\t\t\t\tString name, int def)","output":"null, null, 0"}
+{"input":"(final CharSequence value)","output":"null"}
+{"input":"(final Object key)","output":"null"}
+{"input":"(final LogRecord record)","output":"null"}
+{"input":"(final StackTraceElement s)","output":"null"}
+{"input":"(final LogRecord record)","output":"null"}
+{"input":"(final StackTraceElement s)","output":"null"}
+{"input":"(final Locale locale)","output":"null"}
+{"input":"(final LogRecord record)","output":"null"}
+{"input":"(final String p)","output":"null"}
+{"input":"()","output":""}
+{"input":"(LogRecord record)","output":"null"}
+{"input":"(final Properties parent)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(String name)","output":"null"}
+{"input":"(final Properties parent, final String prefix)","output":"null, null"}
+{"input":"(final Throwable t)","output":"null"}
+{"input":"(final LogRecord record)","output":"null"}
+{"input":"(Properties props, String name, int def)","output":"null, null, 0"}
+{"input":"(Path path, URI reference)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(ImageRecord o)","output":"null"}
+{"input":"()","output":""}
+{"input":"(BufferedImage originalImage)","output":"null"}
+{"input":"(Path path, String name)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(String text, Charset encoding)","output":"null, null"}
+{"input":"(@NotNull final String taskId)","output":"null"}
+{"input":"()","output":""}
+{"input":"(final String key, final Long maxRequests, final OptionsInterval interval)","output":"null, null, null"}
+{"input":"(final String key, final String keyExpression, final JoinPoint joinPoint)","output":"null, null, null"}
+{"input":"(final String key, final JoinPoint joinPoint)","output":"null, null"}
+{"input":"(Instant timestamp)","output":"null"}
+{"input":"(int x, int y)","output":"0, 0"}
+{"input":"()","output":""}
+{"input":"(\n            CheckedRunnable runnable,\n            String name,\n            Optional<Double> errorThreshold\n    )","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(String name, Optional<Double> errorThreshold)","output":"null, null"}
+{"input":"(String name)","output":"null"}
+{"input":"(\n            Runnable runnable,\n            String name,\n            double errorThreshold\n    )","output":"null, null, 0D"}
+{"input":"(\n            Callable<T> callable,\n            String name,\n            double errorThreshold\n    )","output":"null, null, 0D"}
+{"input":"(\n            final Supplier<? extends Number> numerator,\n            final Supplier<? extends Number> denominator\n    )","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(NetworkParameters params, String seedPhrase)","output":"null, null"}
+{"input":"(NetworkParameters params, String seedPhrase)","output":"null, null"}
+{"input":"(NetworkParameters params, byte[] entropy)","output":"null, null"}
+{"input":"(Wallet wallet)","output":"null"}
+{"input":"(String moduleId)","output":"null"}
+{"input":"(AnnotationType annotationType, String propertyAnnotations)","output":"null, null"}
+{"input":"(String initialGroupDN)","output":"null"}
+{"input":"(ParentGroupsDNRetriever parentGroupsDNRetriever)","output":"null"}
+{"input":"(PropertyVisitorsSequence propertyVisitorsSequence)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String value, String errorMessage)","output":"null, null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String annotationDefinition)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(AnnotationType annotationType, String propertyAnnotations)","output":"null, null"}
+{"input":"(String annotationDefinition)","output":"null"}
+{"input":"(ModuleCommands moduleCommands,\n                          ModuleQueries moduleQueries,\n                          TechnoQueries technoQueries,\n                          PlatformQueries platformQueries,\n                          EventCommands eventCommands)","output":"null, null, null, null, null"}
+{"input":"(String propertyDefinition)","output":"null"}
+{"input":"(String value, String errorMessage)","output":"null, null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String annotationDefinition, AnnotationType annotationType, String propertyAnnotations)","output":"null, null, null"}
+{"input":"(String value)","output":"null"}
+{"input":"(String sql)","output":"null"}
+{"input":"()","output":""}
+{"input":"(int curSize, double percent)","output":"0, 0D"}
+{"input":"(SlackMessage message, String environment)","output":"null, null"}
+{"input":"(Map<String, List<String>> summary, LogProcessorLambdaConfig config)","output":"null, null, null"}
+{"input":"(LogProcessorLambdaConfig config)","output":"null"}
+{"input":"(ObjectMapper objectMapper, AWSWAFRegional awsWaf, AmazonS3 amazonS3)","output":"null, null, null"}
+{"input":"(List<ALBAccessLogEvent> events, LogProcessorLambdaConfig config, String bucketName)","output":"null, null, null"}
+{"input":"(ArrayList<Map<String, String>> sdbMetadata, String sdbName, String principalName)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(Map<String, List<String>> summary, LogProcessorLambdaConfig config)","output":"null, null, null"}
+{"input":"(String ip)","output":"null"}
+{"input":"(LogProcessorLambdaConfig config)","output":"null"}
+{"input":"(String ipSetId, int retryCount)","output":"null, 0"}
+{"input":"()","output":""}
+{"input":"(LogstashLayoutSerializationContext oldContext)","output":"null"}
+{"input":"(Path sourcePath, Path sourceRoot, Path targetRoot)","output":"null, null, null"}
+{"input":"(int count)","output":"0"}
+{"input":"(byte[] buffer)","output":"null"}
+{"input":"(int count)","output":"0"}
+{"input":"(int maxAddressLength)","output":"0"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(byte[] bytes)","output":"null"}
+{"input":"(byte[] bytes, int count)","output":"null, 0"}
+{"input":"(String string)","output":"null"}
+{"input":"(byte[] buffer)","output":"null"}
+{"input":"(int size, String encoding)","output":"0, null"}
+{"input":"(int count)","output":"0"}
+{"input":"(String string)","output":"null"}
+{"input":"(int count)","output":"0"}
+{"input":"(String string)","output":"null"}
+{"input":"(String string, int count, String encoding)","output":"null, 0, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(byte[] buffer)","output":"null"}
+{"input":"()","output":""}
+{"input":"(int size, String encoding)","output":"0, null"}
+{"input":"(byte[] buffer)","output":"null"}
+{"input":"(String string)","output":"null"}
+{"input":"()","output":""}
+{"input":"(byte[] bytes, int count)","output":"null, 0"}
+{"input":"(byte[] bytes)","output":"null"}
+{"input":"(byte[] bytes, int count)","output":"null, 0"}
+{"input":"()","output":""}
+{"input":"(JobParameters parameters)","output":"null"}
+{"input":"(String name)","output":"null"}
+{"input":"(List<QueueSender> queues)","output":"null"}
+{"input":"(final Class<P> type)","output":"null"}
+{"input":"()","output":""}
+{"input":"(List<BlockingQueue<Record<P>>> queues)","output":"null"}
+{"input":"(@NonNull final String fontPath)","output":"null"}
+{"input":"(@Nullable final String basePath)","output":"null"}
+{"input":"(final String filePath)","output":"null"}
+{"input":"(\n\t\t\t@NonNull final Context context,\n\t\t\t@Nullable final AttributeSet attrs,\n\t\t\t@AttrRes final int defStyleAttr,\n\t\t\t@StyleRes final int defStyleRes\n\t)","output":"null, null, 0, 0"}
+{"input":"(final String filePath)","output":"null"}
+{"input":"(@NonNull final Context context)","output":"null"}
+{"input":"(LANG l)","output":"null"}
+{"input":"( )","output":""}
+{"input":"()","output":""}
+{"input":"(List<? extends DocumentWriteOperation> items)","output":"null"}
+{"input":"(DatabaseClient client)","output":"null"}
+{"input":"(WriteFailureListener listener)","output":"null"}
+{"input":"(Class<T> type, List<Class<?>> constructorArgTypes, List<Object> constructorArgs)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(ClassLoader loader, String resource)","output":"null, null"}
+{"input":"(Closeable closeable)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(String alias, Class<?> value)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(List<Object> list, Class<?> targetType)","output":"null, null"}
+{"input":"(String sql, Object... args)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(String[] args)","output":"null"}
+{"input":"(String locale)","output":"null"}
+{"input":"(String locale)","output":"null"}
+{"input":"(boolean fromJSON)","output":"false"}
+{"input":"(String[] args)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"( Map<String, String> properties, String key, int fallback )","output":"null, null, 0"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"( Map<String, String> properties, String key, int fallback )","output":"null, null, 0"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"( Concurrency concurrency )","output":"null"}
+{"input":"( JUnitCoreParameters jUnitCoreParameters )","output":"null"}
+{"input":"(@Nullable String s)","output":"null"}
+{"input":"(@Nonnull Object value, @Nonnull String fieldName, ToStringOptions options)","output":"null, null, null"}
+{"input":"(byte[] value, byte[] key)","output":"null, null"}
+{"input":"(String traceTrueToken)","output":"null"}
+{"input":"(String traceId)","output":"null"}
+{"input":"(String input)","output":"null"}
+{"input":"(List<Span> spans)","output":"null"}
+{"input":"(int traceIdPrefixedSpanSize)","output":"0"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(MessageSource messageSource)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(BooleanExpression booleanExpression, TypedExpression<T> value)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(String alias, Function1<X,R> method)","output":"null, null"}
+{"input":"(String arg)","output":"null"}
+{"input":"(TypeToken<T> targetClass, Class<?> argType, Field field)","output":"null, null, null"}
+{"input":"(Class<A> annotationClass, Method method)","output":"null, null"}
+{"input":"(Function1<T,V> methodReference)","output":"null"}
+{"input":"(Class<?> aClass, String name, Class<?>... parameterTypes)","output":"null, null, null"}
+{"input":"(Class<T> aClass, Class<A> annotationClass)","output":"null, null"}
+{"input":"(Class<?> aClass)","output":"null"}
+{"input":"(Class<T> aClass, Class<?>... parameterTypes)","output":"null, null"}
+{"input":"(Scope scope, String label)","output":"null, null"}
+{"input":"(SqlExecutor sqlExecutor)","output":"null"}
+{"input":"(SqlExecutor sqlExecutor)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Map<ConfigResource, Config> configs, AlterConfigsOptions options)","output":"null, null"}
+{"input":"(Collection<Integer> brokers, DescribeLogDirsOptions options)","output":"null, null"}
+{"input":"(String url)","output":"null"}
+{"input":"(Throwable cause)","output":"null"}
+{"input":"()","output":""}
+{"input":"(File parent, File child)","output":"null, null"}
+{"input":"(char c)","output":"'\\0'"}
+{"input":"(String message)","output":"null"}
+{"input":"(ItemGetParam param)","output":"null"}
+{"input":"(Args args, String key, PrintStream err )","output":"null, null, null"}
+{"input":"( Collection<Args.Option<File[]>> nodesFiles,\n                                           Collection<Args.Option<File[]>> edgesFiles )","output":"null, null"}
+{"input":"(File storeDir, Collection<Args.Option<File[]>> nodesFiles,\n                                      Collection<Args.Option<File[]>> edgesFiles,\n                                      Configuration configuration, PrintStream out)","output":"null, null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(@NonNull final AnimatorListener listener)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"(@NonNull final View view)","output":"null"}
+{"input":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0) final float radiusStart,\n\t\t\t@FloatRange(from = 0) final float radiusEnd\n\t)","output":"null, 0F, 0F"}
+{"input":"()","output":""}
+{"input":"(final int visibility)","output":"0"}
+{"input":"(\n\t\t\t@NonNull final ViewGroup sceneRoot,\n\t\t\t@NonNull final View view,\n\t\t\t@Nullable final TransitionValues startValues,\n\t\t\t@Nullable final TransitionValues endValues\n\t)","output":"null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(final View view)","output":"null"}
+{"input":"(@Nullable final Bundle extras)","output":"null"}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"()","output":""}
+{"input":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0, to = 1) final float centerXFraction,\n\t\t\t@FloatRange(from = 0, to = 1) final float centerYFraction\n\t)","output":"null, null, null, null, null"}
+{"input":"(\n\t\t\t@NonNull final View view,\n\t\t\t@FloatRange(from = 0) final float radiusStart,\n\t\t\t@FloatRange(from = 0) final float radiusEnd\n\t)","output":"null, 0F, 0F"}
+{"input":"(final View view)","output":"null"}
+{"input":"(\n\t\t\t@AnimRes final int startEnterAnim,\n\t\t\t@AnimRes final int startExitAnim,\n\t\t\t@AnimRes final int finishEnterAnim,\n\t\t\t@AnimRes final int finishExitAnim\n\t)","output":"0, 0, 0, 0"}
+{"input":"()","output":""}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"()","output":""}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(@Nullable final Transition transition)","output":"null"}
+{"input":"(final boolean useOverlay)","output":"false"}
+{"input":"(@NonNull final Context context, final int resource, @NonNull final ViewGroup sceneRoot)","output":"null, 0, null"}
+{"input":"(@NonNull final View element, @NonNull final String elementName)","output":"null, null"}
+{"input":"(@NonNull final Activity caller)","output":"null"}
+{"input":"(@NonNull final Fragment caller)","output":"null"}
+{"input":"(@NonNull final Animator animator)","output":"null"}
+{"input":"(@WrapperFeatures final int feature)","output":"0"}
+{"input":"(@NonNull Object instance)","output":"null"}
+{"input":"(String s)","output":"null"}
+{"input":"(@NonNull String string)","output":"null"}
+{"input":"(@NonNull String className)","output":"null"}
+{"input":"(final long errorCode)","output":"0L"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(boolean b)","output":"false"}
+{"input":"(short value)","output":"(short) 0"}
+{"input":"(final String hex)","output":"null"}
+{"input":"(final String hex)","output":"null"}
+{"input":"(char c)","output":"'\\0'"}
+{"input":"(String userEmail, String userName)","output":"null, null"}
+{"input":"(ObjectInputStream in)","output":"null"}
+{"input":"(byte[] bytes)","output":"null"}
+{"input":"()","output":""}
+{"input":"(final String title, final int message)","output":"null, 0"}
+{"input":"(final CoordinatorLayout layout, final Context context, final String message)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(ByteBuffer bb)","output":"null"}
+{"input":"(ByteBuffer bb)","output":"null"}
+{"input":"(ByteBuffer bb)","output":"null"}
+{"input":"(boolean sampleIsDifferenceSample)","output":"false"}
+{"input":"(Track track, Movie m)","output":"null, null"}
+{"input":"(ByteBuffer bb)","output":"null"}
+{"input":"()","output":""}
+{"input":"(int i, int numBits)","output":"0, 0"}
+{"input":"(Track track)","output":"null"}
+{"input":"(final RelayVertex relayVertex, final IREdge edgeToStreamize)","output":"null, null"}
+{"input":"(final IRVertex vertexToDelete)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Object obj)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(BindableLayout<T> itemView)","output":"null"}
+{"input":"(double x0, double y0, double theta0, double gainDB)","output":"0D, 0D, 0D, 0D"}
+{"input":"(double power)","output":"0D"}
+{"input":"(Class<?> ofClass, Class<?> inClass)","output":"null, null"}
+{"input":"(Type type)","output":"null"}
+{"input":"(Type type)","output":"null"}
+{"input":"()","output":""}
+{"input":"(float value)","output":"0F"}
+{"input":"()","output":""}
+{"input":"(String name, String value)","output":"null, null"}
+{"input":"(final Type type, final Type rootType)","output":"null, null"}
+{"input":"(Type type)","output":"null"}
+{"input":"()","output":""}
+{"input":"(final double value)","output":"0D"}
+{"input":"(byte[] value)","output":"null"}
+{"input":"(Number num)","output":"null"}
+{"input":"(final String value)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String name, Boolean value)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(char[] str)","output":"null"}
+{"input":"()","output":""}
+{"input":"(int cursor)","output":"0"}
+{"input":"()","output":""}
+{"input":"(final JsonType jsonType, final char token)","output":"null, '\\0'"}
+{"input":"(String name)","output":"null"}
+{"input":"(int cur, long longValue, boolean negative)","output":"0, 0L, false"}
+{"input":"()","output":""}
+{"input":"(TypeVariable<? extends GenericDeclaration> type,\n                                                Class<?> declaringClass, Class<?> inClass)","output":"null, null, null"}
+{"input":"(int parameterIdx, Type fromType)","output":"0, null"}
+{"input":"()","output":""}
+{"input":"(int localCursor)","output":"0"}
+{"input":"()","output":""}
+{"input":"(final String value)","output":"null"}
+{"input":"(final Number value)","output":"null"}
+{"input":"(String name, String value)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(Type type, Class<?> inClass)","output":"null, null"}
+{"input":"(Type type)","output":"null"}
+{"input":"(final URI uri, @Nullable final JSONObject postEntity, final JsonParser<T> parser, ProgressMonitor progressMonitor)","output":"null, null, null, null"}
+{"input":"(final URI uri, final JsonArrayParser<T> parser, ProgressMonitor progressMonitor)","output":"null, null, null"}
+{"input":"(final URI uri, @Nullable final JSONObject postEntity, ProgressMonitor progressMonitor)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Challenge challenge, RequestContent requestContent, Authorization authorization)","output":"null, null, null"}
+{"input":"(Keychain keychain, KeyId keyId)","output":"null, null"}
+{"input":"(InputStream configurationStream)","output":"null"}
+{"input":"()","output":""}
+{"input":"(\n        @ApiParam(\n            value = \"Tag identifier\",\n            required = true\n        )\n        @PathVariable\n            Integer tagIdentifier\n    )","output":"null, null"}
+{"input":"(\n        JSONObject filter,\n        Integer[] groupIdFilter,\n        Integer[] groupOwnerIdFilter,\n        Pageable pageRequest,\n        UserSession userSession)","output":"null, null, null, null, null"}
+{"input":"(String expr)","output":"null"}
+{"input":"(String expr)","output":"null"}
+{"input":"(FileSystem newFileSystem)","output":"null"}
+{"input":"(String pname)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(\n        @ApiParam(\n            value = API_PARAM_RECORD_UUID,\n            required = true)\n        @PathVariable\n            String metadataUuid,\n        @ApiParam(\n            value = \"MEF file format.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"FULL\")\n            MEFLib.Format format,\n        @ApiParam(\n            value = \"With related records (parent and service).\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean withRelated,\n        @ApiParam(\n            value = \"Resolve XLinks in the records.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean withXLinksResolved,\n        @ApiParam(\n            value = \"Preserve XLink URLs in the records.\",\n            required = false)\n        @RequestParam(\n            required = false,\n            defaultValue = \"false\")\n            boolean withXLinkAttribute,\n        @RequestParam(\n            required = false,\n            defaultValue = \"true\")\n            boolean addSchemaLocation,\n        @ApiParam(value = \"Download the approved version\",\n            required = false)\n        @RequestParam(required = false, defaultValue = \"true\")\n            boolean approved,\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT,\n            defaultValue = \"application/x-gn-mef-2-zip\"\n        )\n            String acceptHeader,\n        HttpServletResponse response,\n        HttpServletRequest request\n    )","output":"null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null"}
+{"input":"(\n        @ApiParam(value = API_PARAM_RECORD_UUID,\n            required = true)\n        @PathVariable\n            String metadataUuid,\n        @ApiParam(value = \"Accept header should indicate which is the appropriate format \" +\n            \"to return. It could be text/html, application/xml, application/zip, ...\" +\n            \"If no appropriate Accept header found, the XML format is returned.\",\n            required = true)\n        @RequestHeader(\n            value = HttpHeaders.ACCEPT,\n            defaultValue = MediaType.APPLICATION_XML_VALUE,\n            required = false\n        )\n            String acceptHeader,\n        HttpServletResponse response,\n        HttpServletRequest request\n    )","output":"null, null, null, null, null, null, null, null, null, null, null, null"}
+{"input":"(String uuid, String name, String group)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(int order)","output":"0"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(VariableIdentifierExpr variableIdentifierExpr)","output":"null"}
+{"input":"(String headerString)","output":"null"}
+{"input":"(byte[] b)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Header contentEncoding)","output":"null"}
+{"input":"(byte[] in, int inPosition, int inLength, byte[] out, int outPosition, int outLength)","output":"null, 0, 0, null, 0, 0"}
+{"input":"()","output":""}
+{"input":"(boolean enable, OptionMap options)","output":"false, null"}
+{"input":"(InputStream in, Long contentLength, String contentType, int bufferSize)","output":"null, null, null, 0"}
+{"input":"(Method method, HttpRequest request)","output":"null, null"}
+{"input":"(String unencoded, String encoding)","output":"null, null"}
+{"input":"(String encoded, String encoding)","output":"null, null"}
+{"input":"(BankAccount to, BankAccount from, Money money)","output":"null, null, null"}
+{"input":"(Object o)","output":"null"}
+{"input":"(TypeVariable<?> typeVariable)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Object object)","output":"null"}
+{"input":"(Object object)","output":"null"}
+{"input":"(ApplicationEvent applicationEvent)","output":"null"}
+{"input":"(File file)","output":"null"}
+{"input":"()","output":""}
+{"input":"(EmailAddress emailAddress)","output":"null"}
+{"input":"(DataSource dataSource)","output":"null"}
+{"input":"(Object key)","output":"null"}
+{"input":"(K key)","output":"null"}
+{"input":"()","output":""}
+{"input":"(XMLStreamReader2 reader)","output":"null"}
+{"input":"(final String title, final Paint paint)","output":"null, null"}
+{"input":"(final Context context, final Bitmap srcWithoutPhoto, final Bitmap srcWithPhoto, final Bitmap srcOwnPhoto,\n                        final Bitmap srcWithoutPhotoInactive, final Bitmap srcWithPhotoInactive, final Bitmap srcOwnPhotoInactive,\n                        final Point grid, final float textSize, final int maxSize, final Paint paint)","output":"null, null, null, null, null, null, null, null, 0F, 0, null"}
+{"input":"()","output":""}
+{"input":"(Future<V> future)","output":"null"}
+{"input":"(Future<V> future, long pollPeriod, TimeUnit unit)","output":"null, 0L, null"}
+{"input":"(Future<V> future, long pollPeriod, TimeUnit unit)","output":"null, 0L, null"}
+{"input":"(Miner miner)","output":"null"}
+{"input":"(LocationPattern locationPattern)","output":"null"}
+{"input":"(String name, String version)","output":"null, null"}
+{"input":"(String[] names)","output":"null"}
+{"input":"( Collection<String> protocols )","output":"null"}
+{"input":"(String url)","output":"null"}
+{"input":"(InputStream is)","output":"null"}
+{"input":"(String name, boolean force, boolean noprune)","output":"null, false, false"}
+{"input":"(String url)","output":"null"}
+{"input":"(Object featureService)","output":"null"}
+{"input":"(File storageLocation)","output":"null"}
+{"input":"(String name, String url)","output":"null, null"}
+{"input":"(String image, String repo, String tag, String url)","output":"null, null, null, null"}
+{"input":"(ServiceReference<?> sr)","output":"null"}
+{"input":"()","output":""}
+{"input":"(Integer id)","output":"null"}
+{"input":"(String value)","output":"null"}
+{"input":"(Exchange exchange, String value)","output":"null, null"}
+{"input":"(Exchange exchange, Api api)","output":"null, null"}
+{"input":"(IAuthDataAccess dataAcccess)","output":"null"}
+{"input":"(@NotNull Class<T> clazz, @NotNull ParamsType paramsType)","output":"null, null"}
+{"input":"(String templateId, boolean autoApplyDefault, Object cliParameter)","output":"null, false, null"}
+{"input":"()","output":""}
+{"input":"(String templateId)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(final Map<String, String> params)","output":"null"}
+{"input":"(final String input, final Function<String, Boolean> validator,\n                                          final Consumer<String> setter, final boolean required)","output":"null, null, null, false"}
+{"input":"(List<String> options, String item)","output":"null, null"}
+{"input":"(final Process process)","output":"null"}
+{"input":"()","output":""}
+{"input":"(String runtimeVersion)","output":"null"}
+{"input":"(final String os)","output":"null"}
+{"input":"(String text)","output":"null"}
+{"input":"()","output":""}
+{"input":"(BooleanBag from)","output":"null"}
+{"input":"(IntBag from, int length)","output":"null, 0"}
+{"input":"(Bag<T> from, int fromOffset, int length, boolean clearExceeding)","output":"null, 0, 0, false"}
+{"input":"(int value)","output":"0"}
+{"input":"(Bag<T> from, int fromOffset, int toOffset, int length)","output":"null, 0, 0, 0"}
+{"input":"(int capacity)","output":"0"}
+{"input":"(Mask mask)","output":"null"}
+{"input":"()","output":""}
+{"input":"(FamilyConfig config)","output":"null"}
+{"input":"(int index, double value)","output":"0, 0D"}
+{"input":"()","output":""}
+{"input":"(int capacity)","output":"0"}
+{"input":"(LambdaProxyRequest request)","output":"null"}
+{"input":"(LambdaProxyRequest request)","output":"null"}
+{"input":"(HttpServletRequest req,\n                              HttpServletResponse resp,\n                              LambdaFunction lambdaFunction)","output":"null, null, null"}
+{"input":"(List<String> packageNames)","output":"null"}
+{"input":"(HttpServletRequest req, HttpServletResponse resp)","output":"null, null"}
+{"input":"(String path,\n                                        String handler,\n                                        Class<? extends LambdaRequestDeserializer<?>> deserializerClass,\n                                        Class<? extends LambdaResponseSerializer<?>> serializerClass)","output":"null, null, null, null"}
+{"input":"(CrossOrigin classCrossOrigin)","output":"null"}
+{"input":"(ServletConfig config)","output":"null"}
+{"input":"(HttpServletRequest req)","output":"null"}
+{"input":"()","output":""}
+{"input":"(LambdaProxyRequest input)","output":"null"}
+{"input":"(@NonNull final String route,\n\t\t\t@NonNull final String url, @NonNull final Gson gson)","output":"null, null, null"}
+{"input":"()","output":""}
+{"input":"(Socket socket)","output":"null"}
+{"input":"(Socket socket, String query)","output":"null, null"}
+{"input":"(Socket socket)","output":"null"}
+{"input":"(ByteArrayOutputStream out)","output":"null"}
+{"input":"(Client client, String indexName, IElasticSearchMapping mapping)","output":"null, null, null"}
+{"input":"(Client client, String indexName, IElasticSearchMapping mapping)","output":"null, null, null"}
+{"input":"(Client client, String indexName)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"(CatalogReader catalogReader)","output":"null"}
+{"input":"(int maxKeyLength)","output":"0"}
+{"input":"(@NonNull Application app, @NonNull\n        Emitter.BackpressureMode backpressureMode)","output":"null, null"}
+{"input":"(@NonNull AppStateRecognizer recognizer)","output":"null"}
+{"input":"(final String file)","output":"null"}
+{"input":"(final String keyFile)","output":"null"}
+{"input":"(Object listener, boolean includingPropagatingEvents)","output":"null, false"}
+{"input":"(String query, Map<String, Object> values)","output":"null, null"}
+{"input":"(Instance<ArangoDBDocumentCollectionManager> manager,\n                            DocumentEntityConverter converter, DocumentWorkflow flow,\n                            DocumentEventPersistManager persistManager,\n                            ClassMappings mappings,\n                            Converters converters)","output":"null, null, null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(ColumnQuery query, ConsistencyLevel level)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(Statement n1qlQuery, JsonObject params)","output":"null, null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(String query)","output":"null"}
+{"input":"(String n1qlQuery)","output":"null"}
+{"input":"(Object attribute)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(File sourceDir, List<String> compilePaths)","output":"null, null"}
+{"input":"(int[] selectedXBoxIds, int[] selectedOBoxIds, int totalBoxesSelected)","output":"null, null, 0"}
+{"input":"(ApplicationProfilesRepository applicationProfilesRepository)","output":"null"}
+{"input":"(FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub)","output":"null"}
+{"input":"(FilteredBroadcastMessenger<TaggedTelemetryEvent> updateHub)","output":"null"}
+{"input":"(final Context context, final String filter)","output":"null, null"}
+{"input":"(int minimumAttendance, boolean extendedStats)","output":"0, false"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(@NonNull String loginJson, @NonNull String attendanceJson)","output":"null, null"}
+{"input":"(String loginJson)","output":"null"}
+{"input":"()","output":""}
+{"input":"(int minimumAttendance, boolean extendedStats)","output":"0, false"}
+{"input":"(@NonNull String registrationIdJson)","output":"null"}
+{"input":"(String attendanceJson)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(NumberIntervalBoundary low)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(NumberIntervalBoundary low)","output":"null"}
+{"input":"(Router router)","output":"null"}
+{"input":"(RouterObjectRef routerObjectRef)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(String owner, String repo)","output":"null, null"}
+{"input":"(String owner, String repo)","output":"null, null"}
+{"input":"(String user)","output":"null"}
+{"input":"(String owner, String repo, int page)","output":"null, null, 0"}
+{"input":"(String owner, String repo)","output":"null, null"}
+{"input":"(final String owner, final String repo, final Branch branch)","output":"null, null, null"}
+{"input":"(String owner, String repo)","output":"null, null"}
+{"input":"(GithubAuthRetrofit authRetrofit, UserService userApi, Context ctx)","output":"null, null, null"}
+{"input":"(String owner, String repo, int page)","output":"null, null, 0"}
+{"input":"(String keyWord, String language, int page)","output":"null, null, 0"}
+{"input":"(String owner, String repo, int page)","output":"null, null, 0"}
+{"input":"(String user)","output":"null"}
+{"input":"(String user)","output":"null"}
+{"input":"(List<GitTree.TreeEntity> treeEntities, int index, TreeNode<Dir> dirNode,\n                              String dirPath, final String owner, final String repo, String branchName)","output":"null, 0, null, null, null, null, null"}
+{"input":"(String user)","output":"null"}
+{"input":"(String user, int page)","output":"null, 0"}
+{"input":"()","output":""}
+{"input":"(Context context, Uri trackUri, String chosenFileName, ProgressListener listener)","output":"null, null, null, null"}
+{"input":"()","output":""}
+{"input":"(DeleteAlertTagsRequest params)","output":"null"}
+{"input":"(String identifier, Long attachmentId, String alertIdentifierType)","output":"null, null, null"}
+{"input":"(ListAlertsRequest params)","output":"null"}
+{"input":"(String identifier, AddAlertNoteRequest body, String identifierType)","output":"null, null, null"}
+{"input":"(CreateAlertRequest body)","output":"null"}
+{"input":"(DeleteAlertTagsRequest params)","output":"null"}
+{"input":"(String requestId)","output":"null"}
+{"input":"()","output":""}
+{"input":"()","output":""}
+{"input":"(String identifier, AddAlertDetailsRequest body, String identifierType)","output":"null, null, null"}
+{"input":"(DeleteAlertRequest params)","output":"null"}

@@ -1,0 +1,5 @@
+{"input":{"class_file":"src/main/java/acme/X.java","module_root":"module"},"output":"src/test/java"}
+{"input":{"class_file":"a/src/main/java/X.java","module_root":"module"},"output":"a/src/test/java"}
+{"input":{"class_file":"a/SRC/MAIN/JAVA/X.java","module_root":"module"},"output":"a/src/test/java"}
+{"input":{"class_file":"custom/X.java","module_root":"module"},"output":"module/src/test/java"}
+{"input":{"class_file":"src/main/kotlin/X.kt","module_root":"module"},"output":"module/src/test/java"}

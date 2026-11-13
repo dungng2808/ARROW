@@ -1,0 +1,1 @@
+<Project><PropertyGroup><TargetFramework>net8.0</TargetFramework><Nullable>enable</Nullable><TreatWarningsAsErrors>true</TreatWarningsAsErrors><ImplicitUsings>enable</ImplicitUsings><InvariantGlobalization>true</InvariantGlobalization><LangVersion>latest</LangVersion><Deterministic>true</Deterministic></PropertyGroup></Project>

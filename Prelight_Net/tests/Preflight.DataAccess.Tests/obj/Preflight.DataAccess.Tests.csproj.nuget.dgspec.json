@@ -1,0 +1,241 @@
+{
+  "format": 1,
+  "restore": {
+    "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\tests\\Preflight.DataAccess.Tests\\Preflight.DataAccess.Tests.csproj": {}
+  },
+  "projects": {
+    "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.DataAccess\\Preflight.DataAccess.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.DataAccess\\Preflight.DataAccess.csproj",
+        "projectName": "Preflight.DataAccess",
+        "projectPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.DataAccess\\Preflight.DataAccess.csproj",
+        "packagesPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\.nuget\\packages",
+        "outputPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.DataAccess\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "framework": "net8.0",
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.Models\\Preflight.Models.csproj": {
+                "projectPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.Models\\Preflight.Models.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.400"
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Data.Sqlite": {
+              "target": "Package",
+              "version": "[8.0.22, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.Models\\Preflight.Models.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.Models\\Preflight.Models.csproj",
+        "projectName": "Preflight.Models",
+        "projectPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.Models\\Preflight.Models.csproj",
+        "packagesPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\.nuget\\packages",
+        "outputPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.Models\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "framework": "net8.0",
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.400"
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\tests\\Preflight.DataAccess.Tests\\Preflight.DataAccess.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\tests\\Preflight.DataAccess.Tests\\Preflight.DataAccess.Tests.csproj",
+        "projectName": "Preflight.DataAccess.Tests",
+        "projectPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\tests\\Preflight.DataAccess.Tests\\Preflight.DataAccess.Tests.csproj",
+        "packagesPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\.nuget\\packages",
+        "outputPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\tests\\Preflight.DataAccess.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\NuGet.Config",
+          "C:\\Users\\pc\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "framework": "net8.0",
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.DataAccess\\Preflight.DataAccess.csproj": {
+                "projectPath": "D:\\ki9\\SET490\\ARROW\\Prelight_Net\\src\\Preflight.DataAccess\\Preflight.DataAccess.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "allWarningsAsErrors": true,
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        },
+        "SdkAnalysisLevel": "10.0.400"
+      },
+      "frameworks": {
+        "net8.0": {
+          "framework": "net8.0",
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.11.1, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.9.2, )"
+            },
+            "xunit.runner.visualstudio": {
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[2.8.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
