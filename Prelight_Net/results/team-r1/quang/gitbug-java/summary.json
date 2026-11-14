@@ -1,0 +1,16 @@
+{
+  "by_status": {
+    "CLONE_FAILED": 1,
+    "DEPENDENCY_UNAVAILABLE": 2,
+    "ELIGIBLE": 11,
+    "EXCLUDED": 3,
+    "JDK_UNSUPPORTED": 1
+  },
+  "repo_cleanup": {
+    "ABSENT": 1,
+    "DELETED": 9
+  },
+  "strict_eligible": 11,
+  "technical_eligible": 11,
+  "total": 18
+}

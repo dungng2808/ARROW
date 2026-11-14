@@ -1,0 +1,56 @@
+{
+  "experiment_id": "team-r1",
+  "member": "quang",
+  "dataset": "gitbug-java",
+  "total": 18,
+  "technical_pass": 11,
+  "pass_percent": 61.111,
+  "strict_pass": 11,
+  "by_status": {
+    "EXCLUDED": 3,
+    "ELIGIBLE": 11,
+    "JDK_UNSUPPORTED": 1,
+    "CLONE_FAILED": 1,
+    "DEPENDENCY_UNAVAILABLE": 2
+  },
+  "plan_sha256": "eef913bfae84c1d39f32d10cdd10db85e2b1c082bdd0709fd74a11e774377f58",
+  "pool_sha256": "845ad270a33b2fe53a2c4e711a58fb66eb798047594bd1b91bfaaeed418e3861",
+  "os": "Windows-10-10.0.19045-SP0",
+  "architecture": "AMD64",
+  "python_for_reporting": "3.11.9",
+  "git_commit": "426a0efb1c280b56f7e464268b2dcbcf9a66bb88",
+  "files": {
+    "preflight_results.part-0001.jsonl": {
+      "bytes": 84494,
+      "sha256": "558d2aa2953832fbaf05bfded74c3752efb211dca68574f1b3d1f7d71be6eb1b"
+    },
+    "summary.json": {
+      "bytes": 272,
+      "sha256": "eb5253db6a775e141c2630011e3ca716e513adddb09d8a805ab67b3d315554c7"
+    },
+    "repo_cleanup.part-0001.jsonl": {
+      "bytes": 2773,
+      "sha256": "b1fbac32fa6245ab19ea2d1e5e5d3655e969c2bf2b4dc83c7a5d663062365080"
+    },
+    "provenance.json": {
+      "bytes": 798,
+      "sha256": "c6596cf46d0395efd766954943c31deb152577bdc0fa0b3f70ba4c33faa76f33"
+    },
+    "manifests-class_candidates.part-0001.jsonl": {
+      "bytes": 16032,
+      "sha256": "1ba6661410a95072c8f3da99bbcc07cc65205c85cf08c6b7ef811793672d2535"
+    },
+    "manifests-locked_input_manifest.part-0001.jsonl": {
+      "bytes": 32097,
+      "sha256": "8ba97ee14798640f3adfa9b516fc76755e756c18ca580362c27eb098b75c9ce0"
+    },
+    "manifests-strict_eligible_manifest.part-0001.jsonl": {
+      "bytes": 58591,
+      "sha256": "ebec752d9f371a1646208032085bb7748ccb350e12565863b4f7ac5e79e23e83"
+    },
+    "manifests-technical_eligible_manifest.part-0001.jsonl": {
+      "bytes": 58591,
+      "sha256": "ebec752d9f371a1646208032085bb7748ccb350e12565863b4f7ac5e79e23e83"
+    }
+  }
+}

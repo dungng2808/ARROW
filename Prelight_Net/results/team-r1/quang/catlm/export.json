@@ -1,0 +1,51 @@
+{
+  "experiment_id": "team-r1",
+  "member": "quang",
+  "dataset": "catlm",
+  "total": 12,
+  "technical_pass": 6,
+  "pass_percent": 50.0,
+  "strict_pass": 0,
+  "by_status": {
+    "ELIGIBLE": 6,
+    "MAIN_BUILD_FAILED": 4,
+    "PROBE_FAILED": 1,
+    "EXCLUDED": 1
+  },
+  "plan_sha256": "eef913bfae84c1d39f32d10cdd10db85e2b1c082bdd0709fd74a11e774377f58",
+  "pool_sha256": "2882c7fefd9ae5d782aeef9585e8a4e58fcd8bfddfd44c75b0439f85856ba0c3",
+  "os": "Windows-10-10.0.19045-SP0",
+  "architecture": "AMD64",
+  "python_for_reporting": "3.11.9",
+  "git_commit": "426a0efb1c280b56f7e464268b2dcbcf9a66bb88",
+  "files": {
+    "preflight_results.part-0001.jsonl": {
+      "bytes": 65765,
+      "sha256": "95474e73a6360b662e9ae17c2185ca429956bc875a2dc571e2887e2fee9e5454"
+    },
+    "summary.json": {
+      "bytes": 222,
+      "sha256": "f8f6f901e48d172ed9804f3c83cb3f2d05a3fdfef72ca85d6ffaa15bb92f0f42"
+    },
+    "repo_cleanup.part-0001.jsonl": {
+      "bytes": 2784,
+      "sha256": "363e709229e36f684dd5b1496ab126044f5ce863344b581c8549fffd7bccb688"
+    },
+    "provenance.json": {
+      "bytes": 760,
+      "sha256": "7b36cb311289b746a060ca5157a654841a03979ccb0de45571d7727a27cc24f7"
+    },
+    "manifests-class_candidates.part-0001.jsonl": {
+      "bytes": 13499,
+      "sha256": "6293df3084f930864f0822b15a40a16e6ede56e599da5766219148e3cb5271b8"
+    },
+    "manifests-locked_input_manifest.part-0001.jsonl": {
+      "bytes": 31325,
+      "sha256": "094eba16af15bca87a7935251ddb11e71aa6ace0a30502b2bf8b7fc217f33e46"
+    },
+    "manifests-technical_eligible_manifest.part-0001.jsonl": {
+      "bytes": 36429,
+      "sha256": "f6b1122ae2b99ec86bbd3e1ad8b2af5079e100d0a377362bb511575460e90815"
+    }
+  }
+}
