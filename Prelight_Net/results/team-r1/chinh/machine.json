@@ -1,0 +1,24 @@
+{
+  "member": "chinh",
+  "machine": "Chính",
+  "os": "Microsoft Windows 11 Pro 10.0.26100",
+  "cpu": "11th Gen Intel(R) Core(TM) i5-11400H @ 2.70GHz",
+  "physical_cores": 6,
+  "logical_processors": 12,
+  "ram_total_bytes": 16931676160,
+  "ram_human": "16 GB",
+  "workers_initial": 2,
+  "workers_ceiling": 3,
+  "dotnet_sdk": "10.0.404",
+  "dotnet_runtime": "Microsoft.NETCore.App 8.0.33",
+  "jdk": {
+    "8": "Temurin-1.8.0_512-b09",
+    "11": "Temurin-11.0.32.1+1",
+    "17": "Oracle-17.0.12+8-LTS-286",
+    "21": "JBR-21.0.10+-14961533-b1163.108"
+  },
+  "maven": "Apache Maven 3.9.9",
+  "gradle": "Gradle 8.10.2",
+  "tree_sitter_native_sha256": "51eb547d0bafac241829c251b83c3c6df0611b24f14ef2bb05c6ee4def4e7f1c",
+  "recorded_at_utc": "2026-11-13T20:12:00Z"
+}
