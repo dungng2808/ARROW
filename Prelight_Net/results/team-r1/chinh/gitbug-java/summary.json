@@ -1,0 +1,15 @@
+{
+  "by_status": {
+    "ELIGIBLE": 20,
+    "EXCLUDED": 3,
+    "JDK_UNSUPPORTED": 1,
+    "MAIN_BUILD_FAILED": 3,
+    "NEEDS_REVIEW": 1
+  },
+  "repo_cleanup": {
+    "DELETED": 15
+  },
+  "strict_eligible": 20,
+  "technical_eligible": 20,
+  "total": 28
+}
