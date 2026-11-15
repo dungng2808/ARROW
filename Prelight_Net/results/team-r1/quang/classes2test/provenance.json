@@ -1,0 +1,37 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 8582,
+  "dataset": "classes2test",
+  "deduplicated_classes": 85819,
+  "input_root": "Dataset/classes2test-main",
+  "probe_profile": "v1",
+  "raw_json_indexed": 362414,
+  "resume_count": 1,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": null,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-13T20:30:57.9892926+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T20:13:30.7048288+00:00",
+      "status": "ABANDONED",
+      "workers": 2
+    },
+    {
+      "completed_after": 8582,
+      "completed_before": 31,
+      "ended_at_utc": "2026-11-14T10:54:21.2315903+00:00",
+      "reason": null,
+      "session_id": 2,
+      "started_at_utc": "2026-11-13T20:30:57.9908604+00:00",
+      "status": "COMPLETED",
+      "workers": 4
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:13:22.5129261+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "2b4867ca62492c5525400476da22f92dda65244acf024b88002ecb93b6ca3768"
+}

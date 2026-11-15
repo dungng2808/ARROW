@@ -1,0 +1,67 @@
+{
+  "experiment_id": "team-r1",
+  "member": "quang",
+  "dataset": "classes2test",
+  "total": 8582,
+  "technical_pass": 827,
+  "pass_percent": 9.636,
+  "strict_pass": 0,
+  "by_status": {
+    "JDK_UNSUPPORTED": 1995,
+    "ELIGIBLE": 827,
+    "MAIN_BUILD_FAILED": 2598,
+    "DEPENDENCY_UNAVAILABLE": 1944,
+    "BUILD_TOOL_UNSUPPORTED": 124,
+    "PROBE_FAILED": 307,
+    "CLONE_FAILED": 479,
+    "TEST_COMPILE_FAILED": 69,
+    "EXCLUDED": 65,
+    "CHECKOUT_FAILED": 92,
+    "NEEDS_REVIEW": 2,
+    "SOURCE_INVALID": 80
+  },
+  "plan_sha256": "eef913bfae84c1d39f32d10cdd10db85e2b1c082bdd0709fd74a11e774377f58",
+  "pool_sha256": "503efbdbf7e2eab6ddd0718e807c337f6cad2c108f4f6bd688a35aeba434d6e1",
+  "os": "Windows-10-10.0.19045-SP0",
+  "architecture": "AMD64",
+  "python_for_reporting": "3.11.9",
+  "git_commit": "426a0efb1c280b56f7e464268b2dcbcf9a66bb88",
+  "files": {
+    "preflight_results.part-0001.jsonl": {
+      "bytes": 20965359,
+      "sha256": "0ebe36368ee00c6ef059a813f0199f74544e43f296c50e55e9783023892384aa"
+    },
+    "preflight_results.part-0002.jsonl": {
+      "bytes": 17368372,
+      "sha256": "83031a6560323300ffeb8fc644d28b04ad67105fb73e879b8a85d72673a84835"
+    },
+    "summary.json": {
+      "bytes": 485,
+      "sha256": "f942acb8944592bbbbf9468abb0923966aa4cf93e6643b607ca809d0566137bb"
+    },
+    "repo_cleanup.part-0001.jsonl": {
+      "bytes": 261793,
+      "sha256": "4decfc4ed53b4abd9f3ac0b1b9ee64578e0d7a3a9de303f81460052e10f23687"
+    },
+    "provenance.json": {
+      "bytes": 1088,
+      "sha256": "2ec6bda27abadef4314983b95ee8fb2cb3325c00db292e6c69250eed5a6a9b3e"
+    },
+    "manifests-class_candidates.part-0001.jsonl": {
+      "bytes": 10157804,
+      "sha256": "7a043665cca75b9cc700b69bde0c660f22a7f9c6cab3e9cf89dc0b029f8decab"
+    },
+    "manifests-locked_input_manifest.part-0001.jsonl": {
+      "bytes": 20970611,
+      "sha256": "00d477859bb49ef32bd5046e579fd563c9631f3b0240530516621ec392a014d2"
+    },
+    "manifests-locked_input_manifest.part-0002.jsonl": {
+      "bytes": 1857809,
+      "sha256": "ee0c5e21265188f98bc2d65035322141e0d500973164f3de0c3cabfb976b7ba7"
+    },
+    "manifests-technical_eligible_manifest.part-0001.jsonl": {
+      "bytes": 4723603,
+      "sha256": "59c2628dfcb869a50cc898b227664c164a7a0401ee1e40963ab1244d37a75259"
+    }
+  }
+}

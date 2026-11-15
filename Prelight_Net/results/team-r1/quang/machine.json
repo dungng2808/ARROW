@@ -1,0 +1,21 @@
+﻿{
+    "member":  "quang",
+    "timestamp":  "2026-11-13T19:53:42Z",
+    "cpu":  "AMD Ryzen 5 5600H with Radeon Graphics",
+    "cores":  6,
+    "logical_processors":  12,
+    "ram_gb":  24,
+    "os":  "Microsoft Windows 10 Pro 10.0.19045",
+    "workers":  2,
+    "dotnet_sdk":  "10.0.403",
+    "dotnet_runtime":  "Microsoft.NETCore.App 8.0.33",
+    "tree_sitter_sha256":  "51eb547d0bafac241829c251b83c3c6df0611b24f14ef2bb05c6ee4def4e7f1c",
+    "maven_version":  "3.9.9",
+    "gradle_version":  "8.10.2",
+    "jdk_versions":  {
+                         "8":  "1.8.0_504",
+                         "11":  "11.0.32.1",
+                         "17":  "17.0.20.1",
+                         "21":  "21.0.12.1"
+                     }
+}

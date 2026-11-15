@@ -1,0 +1,14 @@
+{
+  "by_status": {
+    "ELIGIBLE": 6,
+    "EXCLUDED": 1,
+    "MAIN_BUILD_FAILED": 4,
+    "PROBE_FAILED": 1
+  },
+  "repo_cleanup": {
+    "DELETED": 10
+  },
+  "strict_eligible": 0,
+  "technical_eligible": 6,
+  "total": 12
+}
