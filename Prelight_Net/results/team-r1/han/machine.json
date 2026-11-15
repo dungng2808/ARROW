@@ -1,0 +1,43 @@
+{
+  "member": "han",
+  "experiment_id": "team-r1",
+  "timestamp": "2026-11-14T02:53:00+07:00",
+  "hardware": {
+    "cpu": "AMD Ryzen 5 6600H with Radeon Graphics",
+    "cores": 6,
+    "logical_processors": 12,
+    "ram_total_kb": 24441640,
+    "ram_total_gb": 23.3,
+    "gpu": [
+      "NVIDIA GeForce RTX 3050 6GB Laptop GPU",
+      "AMD Radeon(TM) Graphics"
+    ]
+  },
+  "os": {
+    "platform": "Windows 11 Home Single Language",
+    "version": "10.0.26200",
+    "architecture": "AMD64"
+  },
+  "execution": {
+    "initial_workers": 3,
+    "ceiling_workers": 6,
+    "active_workers": 5,
+    "note": "User requested removal of old ceiling; configured 5 workers for 6-core Ryzen 5 6600H with 24GB RAM"
+  },
+  "runtimes": {
+    "dotnet_sdk": "10.0.301",
+    "dotnet_runtime": "8.0.22",
+    "python": "3.12.10",
+    "git": "2.54.0.windows.1",
+    "jdk_8": "Zulu 8.96.0.205-CA-win64 (1.8.0_504)",
+    "jdk_11": "Zulu 11.90+205-CA (11.0.32.1)",
+    "jdk_17": "Zulu 17.68+203-CA (17.0.20.1)",
+    "jdk_21": "Zulu 21.52+203-CA (21.0.12.1)",
+    "maven": "3.9.9",
+    "gradle": "8.10.2"
+  },
+  "native": {
+    "library": "tools/tree-sitter-native/bin/tree_sitter_java_preflight.dll",
+    "sha256": "51eb547d0bafac241829c251b83c3c6df0611b24f14ef2bb05c6ee4def4e7f1c"
+  }
+}

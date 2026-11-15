@@ -1,0 +1,97 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 18,
+  "dataset": "catlm",
+  "deduplicated_classes": 119,
+  "input_root": "",
+  "probe_profile": "v2",
+  "raw_json_indexed": 119,
+  "resume_count": 7,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": 3,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-13T21:01:13.6673813+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T21:00:15.8083669+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 2
+    },
+    {
+      "completed_after": 3,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:03:18.1676912+00:00",
+      "reason": null,
+      "session_id": 2,
+      "started_at_utc": "2026-11-13T21:03:13.1866921+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 3
+    },
+    {
+      "completed_after": 3,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:03:26.6509411+00:00",
+      "reason": null,
+      "session_id": 3,
+      "started_at_utc": "2026-11-13T21:03:21.7199036+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 3
+    },
+    {
+      "completed_after": 3,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:06:41.1874161+00:00",
+      "reason": null,
+      "session_id": 4,
+      "started_at_utc": "2026-11-13T21:06:36.1055165+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 3
+    },
+    {
+      "completed_after": 3,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:06:50.2638894+00:00",
+      "reason": null,
+      "session_id": 5,
+      "started_at_utc": "2026-11-13T21:06:45.1122939+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 3
+    },
+    {
+      "completed_after": 3,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:06:59.2424523+00:00",
+      "reason": null,
+      "session_id": 6,
+      "started_at_utc": "2026-11-13T21:06:54.2058194+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 3
+    },
+    {
+      "completed_after": 3,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:07:07.5263752+00:00",
+      "reason": null,
+      "session_id": 7,
+      "started_at_utc": "2026-11-13T21:07:02.4721313+00:00",
+      "status": "INTERRUPTED",
+      "workers": 3
+    },
+    {
+      "completed_after": 18,
+      "completed_before": 3,
+      "ended_at_utc": "2026-11-13T21:09:30.3633368+00:00",
+      "reason": null,
+      "session_id": 8,
+      "started_at_utc": "2026-11-13T21:07:39.3472567+00:00",
+      "status": "COMPLETED",
+      "workers": 3
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:59:38.1922886+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "ab81455b57843abe44b7d309466e642158ce0ca0907e8bee22041e99ec16f57e"
+}

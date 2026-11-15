@@ -40,9 +40,3 @@ __pycache__/
 !Prelight_Net/tools/tree-sitter-native/bin/tree_sitter_java_preflight.dll
 TestResults/
 *.trx
-
-# Team member local results
-/Prelight_Net/results/team-r1/han/
-restore_han.bat
-
-
