@@ -6,7 +6,6 @@
 /Prelight_Net/Dataset/
 /Prelight_Net/file.md/
 
-
 # Repository tải về và workspace build của pilot_tool (mặc định ARROW/repo)
 /repo/
 
@@ -34,3 +33,10 @@
 /preflight_tool/coverage.json
 /preflight_tool/config.local.toml
 __pycache__/
+
+# .NET build output
+[Bb]in/
+[Oo]bj/
+!Prelight_Net/tools/tree-sitter-native/bin/tree_sitter_java_preflight.dll
+TestResults/
+*.trx

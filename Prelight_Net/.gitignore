@@ -1,8 +1,19 @@
-# Include everything in Prelight_Net, overriding inherited ignore rules.
-!/*
-!/**
+# Build outputs
+[Bb]in/
+[Oo]bj/
+!tools/tree-sitter-native/bin/tree_sitter_java_preflight.dll
+TestResults/
+*.trx
+
+# IDE and local tool state
+.vs/
+.idea/
+.vscode/
+*.user
+*.suo
 
 # Local datasets, documents, and machine-specific configuration.
 /Dataset/
 /file.md/
 /preflight.local.json
+*.local.json
