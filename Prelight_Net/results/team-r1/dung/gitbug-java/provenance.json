@@ -1,0 +1,27 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 92,
+  "dataset": "gitbug-java",
+  "deduplicated_classes": 202,
+  "input_root": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/gitbug_input",
+  "probe_profile": "v2",
+  "raw_json_indexed": 202,
+  "resume_count": 0,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": 92,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-13T20:48:36.9595950+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T20:13:37.8551900+00:00",
+      "status": "COMPLETED",
+      "workers": 8
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:13:11.0676620+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "ed1443fd08a7e8ba130e8e85bebe79f7853ea726bb2771bf4b1461d5f6b99e08"
+}

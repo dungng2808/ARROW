@@ -1,0 +1,12 @@
+{
+  "by_status": {
+    "CLONE_FAILED": 1,
+    "ELIGIBLE": 91
+  },
+  "repo_cleanup": {
+    "DELETED": 1
+  },
+  "strict_eligible": 91,
+  "technical_eligible": 91,
+  "total": 92
+}

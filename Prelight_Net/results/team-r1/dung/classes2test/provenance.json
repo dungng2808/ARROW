@@ -1,0 +1,97 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 34327,
+  "dataset": "classes2test",
+  "deduplicated_classes": 85819,
+  "input_root": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/classes2test",
+  "probe_profile": "v1",
+  "raw_json_indexed": 362414,
+  "resume_count": 7,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": null,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-13T20:55:30.7526540+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T20:51:07.3853370+00:00",
+      "status": "ABANDONED",
+      "workers": 8
+    },
+    {
+      "completed_after": null,
+      "completed_before": 15,
+      "ended_at_utc": "2026-11-13T21:25:04.1777680+00:00",
+      "reason": null,
+      "session_id": 2,
+      "started_at_utc": "2026-11-13T20:55:30.7529410+00:00",
+      "status": "ABANDONED",
+      "workers": 12
+    },
+    {
+      "completed_after": null,
+      "completed_before": 172,
+      "ended_at_utc": "2026-11-13T21:55:01.2854630+00:00",
+      "reason": null,
+      "session_id": 3,
+      "started_at_utc": "2026-11-13T21:25:04.1780770+00:00",
+      "status": "ABANDONED",
+      "workers": 16
+    },
+    {
+      "completed_after": null,
+      "completed_before": 371,
+      "ended_at_utc": "2026-11-13T22:25:02.8559610+00:00",
+      "reason": null,
+      "session_id": 4,
+      "started_at_utc": "2026-11-13T21:55:01.2859150+00:00",
+      "status": "ABANDONED",
+      "workers": 20
+    },
+    {
+      "completed_after": null,
+      "completed_before": 601,
+      "ended_at_utc": "2026-11-13T22:55:02.6044350+00:00",
+      "reason": null,
+      "session_id": 5,
+      "started_at_utc": "2026-11-13T22:25:02.8563910+00:00",
+      "status": "ABANDONED",
+      "workers": 24
+    },
+    {
+      "completed_after": null,
+      "completed_before": 864,
+      "ended_at_utc": "2026-11-13T23:25:03.1609090+00:00",
+      "reason": null,
+      "session_id": 6,
+      "started_at_utc": "2026-11-13T22:55:02.6049310+00:00",
+      "status": "ABANDONED",
+      "workers": 28
+    },
+    {
+      "completed_after": null,
+      "completed_before": 1067,
+      "ended_at_utc": "2026-11-14T16:57:44.9399160+00:00",
+      "reason": null,
+      "session_id": 7,
+      "started_at_utc": "2026-11-13T23:25:03.1616050+00:00",
+      "status": "ABANDONED",
+      "workers": 24
+    },
+    {
+      "completed_after": 34327,
+      "completed_before": 28703,
+      "ended_at_utc": "2026-11-15T02:45:50.7909170+00:00",
+      "reason": null,
+      "session_id": 8,
+      "started_at_utc": "2026-11-14T16:57:44.9405540+00:00",
+      "status": "COMPLETED",
+      "workers": 24
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:51:02.4830460+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "ed1443fd08a7e8ba130e8e85bebe79f7853ea726bb2771bf4b1461d5f6b99e08"
+}

@@ -1,0 +1,20 @@
+{
+  "by_status": {
+    "BUILD_TOOL_UNSUPPORTED": 2,
+    "DEPENDENCY_UNAVAILABLE": 1,
+    "ELIGIBLE": 26,
+    "EXCLUDED": 3,
+    "JDK_UNSUPPORTED": 7,
+    "MAIN_BUILD_FAILED": 3,
+    "NEEDS_REVIEW": 1,
+    "PROBE_FAILED": 2,
+    "SOURCE_INVALID": 1,
+    "TEST_COMPILE_FAILED": 1
+  },
+  "repo_cleanup": {
+    "DELETED": 38
+  },
+  "strict_eligible": 0,
+  "technical_eligible": 26,
+  "total": 47
+}

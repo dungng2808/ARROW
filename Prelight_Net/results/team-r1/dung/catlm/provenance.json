@@ -1,0 +1,27 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 47,
+  "dataset": "catlm",
+  "deduplicated_classes": 119,
+  "input_root": "",
+  "probe_profile": "v2",
+  "raw_json_indexed": 119,
+  "resume_count": 0,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": 47,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-13T20:50:41.4347330+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T20:48:55.3733230+00:00",
+      "status": "COMPLETED",
+      "workers": 8
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:48:55.1917480+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "ed1443fd08a7e8ba130e8e85bebe79f7853ea726bb2771bf4b1461d5f6b99e08"
+}
