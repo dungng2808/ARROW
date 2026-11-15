@@ -1,0 +1,15 @@
+# Text files use LF in the repository and in the working tree on every platform (matches .editorconfig).
+* text=auto eol=lf
+
+# Scripts that must keep their native line endings on every platform
+*.sh text eol=lf
+mvnw text eol=lf
+gradlew text eol=lf
+*.cmd text eol=crlf
+*.bat text eol=crlf
+*.ps1 text eol=crlf
+
+# Binary files
+*.jar binary
+*.png binary
+*.zip binary
