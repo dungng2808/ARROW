@@ -17,3 +17,6 @@ TestResults/
 /file.md/
 /preflight.local.json
 *.local.json
+
+# Local results
+/results/team-r1/han/
