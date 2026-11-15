@@ -1,0 +1,53 @@
+{
+  "member": "dung",
+  "os": "macOS-15.8.1-arm64-arm-64bit",
+  "arch": "arm64",
+  "cpu_brand": "Apple M4 Pro",
+  "physical_cpu": 14,
+  "logical_cpu": 14,
+  "ram_bytes": 51539607552,
+  "workers_initial": 8,
+  "workers_cap": 10,
+  "dotnet_sdk_active": "10.0.302",
+  "dotnet_sdks": [
+    "8.0.423 [/usr/local/share/dotnet/sdk]",
+    "10.0.302 [/usr/local/share/dotnet/sdk]"
+  ],
+  "dotnet_runtimes": [
+    "Microsoft.AspNetCore.App 8.0.29 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]",
+    "Microsoft.AspNetCore.App 10.0.10 [/usr/local/share/dotnet/shared/Microsoft.AspNetCore.App]",
+    "Microsoft.NETCore.App 8.0.29 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]",
+    "Microsoft.NETCore.App 10.0.10 [/usr/local/share/dotnet/shared/Microsoft.NETCore.App]"
+  ],
+  "python": "Python 3.12.13",
+  "clang": "/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang",
+  "native_library": {
+    "path": ".work/native-macos/libtree_sitter_java_preflight.dylib",
+    "sha256": "0fd199d7412e915e1ed2db416b3c4dbbba8a77f6c32e2683607cfef231f1b423"
+  },
+  "jdks": {
+    "8": [
+      "openjdk version \"1.8.0_504\"",
+      "OpenJDK Runtime Environment (Zulu 8.96.0.205-CA-macos-aarch64) (build 1.8.0_504-b01)",
+      "OpenJDK 64-Bit Server VM (Zulu 8.96.0.205-CA-macos-aarch64) (build 25.504-b01, mixed mode)"
+    ],
+    "11": [
+      "openjdk version \"11.0.32.1\" 2026-08-18 LTS",
+      "OpenJDK Runtime Environment Zulu11.90+205-CA (build 11.0.32.1+1-LTS)",
+      "OpenJDK 64-Bit Server VM Zulu11.90+205-CA (build 11.0.32.1+1-LTS, mixed mode)"
+    ],
+    "17": [
+      "openjdk version \"17.0.20.1\" 2026-08-18 LTS",
+      "OpenJDK Runtime Environment Zulu17.68+203-CA (build 17.0.20.1+1-LTS)",
+      "OpenJDK 64-Bit Server VM Zulu17.68+203-CA (build 17.0.20.1+1-LTS, mixed mode, sharing)"
+    ],
+    "21": [
+      "openjdk version \"21.0.12.1\" 2026-08-18 LTS",
+      "OpenJDK Runtime Environment Zulu21.52+203-CA (build 21.0.12.1+1-LTS)",
+      "OpenJDK 64-Bit Server VM Zulu21.52+203-CA (build 21.0.12.1+1-LTS, mixed mode, sharing)"
+    ]
+  },
+  "maven_fallback": "Apache Maven 3.9.9",
+  "gradle_fallback": "Gradle 8.10.2",
+  "recorded_at": "2026-11-13T20:04:12.642812+00:00"
+}
