@@ -1,0 +1,6 @@
+<Project Sdk="Microsoft.NET.Sdk">
+  <!-- Integration and E2E tests on fixtures with real JDKs, Maven and Gradle (P11 §1). Never a real LLM. -->
+  <ItemGroup>
+    <ProjectReference Include="..\..\src\Arrow.Cli\Arrow.Cli.csproj" />
+  </ItemGroup>
+</Project>
