@@ -1,0 +1,47 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 12873,
+  "dataset": "classes2test",
+  "deduplicated_classes": 85819,
+  "input_root": "D:/Ky9/DoAn/DoAnARROW/dataset/classes2test",
+  "probe_profile": "v1",
+  "raw_json_indexed": 362414,
+  "resume_count": 2,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": null,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-14T03:58:31.0685801+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T20:47:04.8323925+00:00",
+      "status": "ABANDONED",
+      "workers": 4
+    },
+    {
+      "completed_after": null,
+      "completed_before": 1595,
+      "ended_at_utc": "2026-11-14T08:33:50.5234849+00:00",
+      "reason": null,
+      "session_id": 2,
+      "started_at_utc": "2026-11-14T03:58:31.0708184+00:00",
+      "status": "ABANDONED",
+      "workers": 4
+    },
+    {
+      "completed_after": 12873,
+      "completed_before": 3879,
+      "ended_at_utc": "2026-11-14T17:48:10.7772411+00:00",
+      "reason": null,
+      "session_id": 3,
+      "started_at_utc": "2026-11-14T08:33:50.5252970+00:00",
+      "status": "COMPLETED",
+      "workers": 4
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:20:20.1955445+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "45e4ffcd9bc9dbc5f70bdf88dc00cb0b9bd0bd8c3744158aeeabf9bf081fbb33"
+}

@@ -1,0 +1,27 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 28,
+  "dataset": "gitbug-java",
+  "deduplicated_classes": 202,
+  "input_root": "D:/Ky9/DoAn/DoAnARROW/gitbug_input",
+  "probe_profile": "v2",
+  "raw_json_indexed": 202,
+  "resume_count": 0,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": 28,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-13T20:31:48.8612039+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-13T20:20:57.5175226+00:00",
+      "status": "COMPLETED",
+      "workers": 3
+    }
+  ],
+  "started_at_utc": "2026-11-13T20:12:34.4971529+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "45e4ffcd9bc9dbc5f70bdf88dc00cb0b9bd0bd8c3744158aeeabf9bf081fbb33"
+}

@@ -1,0 +1,15 @@
+{
+  "by_status": {
+    "BUILD_TOOL_UNSUPPORTED": 2,
+    "ELIGIBLE": 11,
+    "JDK_UNSUPPORTED": 2,
+    "MAIN_BUILD_FAILED": 2,
+    "PROBE_FAILED": 1
+  },
+  "repo_cleanup": {
+    "DELETED": 15
+  },
+  "strict_eligible": 0,
+  "technical_eligible": 11,
+  "total": 18
+}
