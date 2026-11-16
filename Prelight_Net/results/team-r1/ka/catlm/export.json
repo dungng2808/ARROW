@@ -1,0 +1,52 @@
+{
+  "experiment_id": "team-r1",
+  "member": "ka",
+  "dataset": "catlm",
+  "total": 24,
+  "technical_pass": 12,
+  "pass_percent": 50.0,
+  "strict_pass": 0,
+  "by_status": {
+    "MAIN_BUILD_FAILED": 2,
+    "ELIGIBLE": 12,
+    "BUILD_TOOL_UNSUPPORTED": 6,
+    "DEPENDENCY_UNAVAILABLE": 1,
+    "JDK_UNSUPPORTED": 3
+  },
+  "plan_sha256": "eef913bfae84c1d39f32d10cdd10db85e2b1c082bdd0709fd74a11e774377f58",
+  "pool_sha256": "2882c7fefd9ae5d782aeef9585e8a4e58fcd8bfddfd44c75b0439f85856ba0c3",
+  "os": "macOS-15.8.1-arm64-arm-64bit",
+  "architecture": "arm64",
+  "python_for_reporting": "3.12.13",
+  "git_commit": "426a0efb1c280b56f7e464268b2dcbcf9a66bb88",
+  "files": {
+    "preflight_results.part-0001.jsonl": {
+      "bytes": 119321,
+      "sha256": "bf752d6ffebc0823c776b8cb526b26c949c1015e79546db9b238f620df35955c"
+    },
+    "summary.json": {
+      "bytes": 274,
+      "sha256": "cb801a75fcba581b615ff2cd845d6b834eb216c21479f3b9a2ef1aa09bb0c093"
+    },
+    "repo_cleanup.part-0001.jsonl": {
+      "bytes": 5804,
+      "sha256": "a3cfc1c9a8dfa34c1a5e290b9974eaf8579e7a59483e7c5b588ce513d8108455"
+    },
+    "provenance.json": {
+      "bytes": 761,
+      "sha256": "98f2bd10f51795d960067653ad3e6b76329fe211c918ce160e74cfba341f4a00"
+    },
+    "manifests-class_candidates.part-0001.jsonl": {
+      "bytes": 26846,
+      "sha256": "979f01ab5d2b21fb5a703de9b8996fec8773938bbeafc37734d2647b101e1a97"
+    },
+    "manifests-locked_input_manifest.part-0001.jsonl": {
+      "bytes": 60612,
+      "sha256": "ac24efc6cb322fc4054d9283e7ddd1488fac5f208bbd0436ed497682ee449c5f"
+    },
+    "manifests-technical_eligible_manifest.part-0001.jsonl": {
+      "bytes": 77994,
+      "sha256": "97a751d53500cd9e18c161f4b9a6015bf4bc9ff0d6b8bcd9d3b528378f4d854c"
+    }
+  }
+}

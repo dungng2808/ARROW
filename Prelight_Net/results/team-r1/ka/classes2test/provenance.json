@@ -1,0 +1,47 @@
+{
+  "checkpoint_schema_version": 3,
+  "classes_selected": 17164,
+  "dataset": "classes2test",
+  "deduplicated_classes": 85819,
+  "input_root": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/classes2test",
+  "probe_profile": "v1",
+  "raw_json_indexed": 362414,
+  "resume_count": 2,
+  "revision_policy": "snapshot_unverified",
+  "run_status": "COMPLETED",
+  "sessions": [
+    {
+      "completed_after": null,
+      "completed_before": 0,
+      "ended_at_utc": "2026-11-15T14:16:31.7330500+00:00",
+      "reason": null,
+      "session_id": 1,
+      "started_at_utc": "2026-11-15T08:09:58.8451840+00:00",
+      "status": "ABANDONED",
+      "workers": 24
+    },
+    {
+      "completed_after": 12530,
+      "completed_before": 8471,
+      "ended_at_utc": "2026-11-15T16:00:09.9522930+00:00",
+      "reason": null,
+      "session_id": 2,
+      "started_at_utc": "2026-11-15T14:16:31.7337000+00:00",
+      "status": "INFRA_DISK_FULL",
+      "workers": 24
+    },
+    {
+      "completed_after": 17164,
+      "completed_before": 12530,
+      "ended_at_utc": "2026-11-16T00:26:38.6079150+00:00",
+      "reason": null,
+      "session_id": 3,
+      "started_at_utc": "2026-11-15T16:03:02.8778680+00:00",
+      "status": "COMPLETED",
+      "workers": 24
+    }
+  ],
+  "started_at_utc": "2026-11-15T08:09:54.5111890+00:00",
+  "tool": "preflight-net",
+  "tool_fingerprint": "ed1443fd08a7e8ba130e8e85bebe79f7853ea726bb2771bf4b1461d5f6b99e08"
+}
