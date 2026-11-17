@@ -23,6 +23,10 @@ Cách chạy:
     logs/<task_id>.err     tiến độ và lỗi `arrow inspect` in ra
     homes/w1, w2, ...      ARROW_HOME riêng của từng worker
 
+Dọn đĩa: sau mỗi lớp, script xóa bản clone repo của lớp đó (`mirrors/` của
+worker). Tool tự xóa bản sao để build (`work/`), nhưng giữ bản clone mãi;
+screen vài trăm repo thì phần này lên tới hàng chục GB.
+
 Chạy tiếp được: bị ngắt giữa chừng thì chạy lại đúng lệnh cũ, script bỏ qua
 các lớp đã có kết quả.
 """
@@ -30,6 +34,7 @@ import argparse
 import json
 import os
 import queue
+import shutil
 import signal
 import subprocess
 import threading
@@ -118,6 +123,23 @@ def prepare_home(arrow, home):
     subprocess.run([arrow, "config", "set", "java.jdk_homes", json.dumps(jdks),
                     "--home", home, "--plain"],
                    check=True, stdout=subprocess.DEVNULL, stdin=subprocess.DEVNULL)
+
+
+def clean_home(home):
+    """Xóa repo đã clone sau khi xong một lớp, để không đầy đĩa.
+
+    - mirrors/: bản clone gốc tool giữ lại để dùng lần sau. Mỗi repo chỉ được
+      screen một lần nên giữ lại không có lợi gì.
+    - work/: bản sao để build. Bình thường tool tự xóa; chỉ còn sót lại khi
+      script phải dừng tool giữa chừng vì quá giờ.
+    An toàn vì lúc này không lớp nào khác đang dùng ARROW_HOME này.
+    runs/ (vài chục KB mỗi lớp, chứa log khối 1) được giữ lại để xem lại.
+    """
+    for sub in ("mirrors", "work"):
+        path = os.path.join(home, sub)
+        if os.path.isdir(path):
+            shutil.rmtree(path, ignore_errors=True)
+            os.makedirs(path, exist_ok=True)
 
 
 # ---------------------------------------------------------------------------
@@ -329,7 +351,8 @@ def main():
         except Exception as e:  # lỗi của chính script: ghi lại, không dừng cả lô
             r = dict(cand, status="ERROR", reason="SCRIPT_EXCEPTION", detail=repr(e))
         finally:
-            homes.put(home)  # trả lại
+            clean_home(home)  # xóa repo vừa clone trước khi cho lớp khác dùng
+            homes.put(home)   # trả lại
         r["arrow_version"] = version
         # Ghi ngay từng dòng, để bị ngắt thì không mất kết quả đã có.
         with write_lock:
