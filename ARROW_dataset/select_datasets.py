@@ -150,7 +150,9 @@ def write_group(out_dir, name, dataset, rows, written):
 
     csv_path = os.path.join(out_dir, name + ".csv")
     with open(csv_path, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f)
+        # lineterminator="\n": xuống dòng kiểu LF. Mặc định csv ghi CRLF, mà Git
+        # của repo đổi mọi file về LF, nên file lấy về sẽ lệch checksum.
+        w = csv.writer(f, lineterminator="\n")
         w.writerow(["order", "repository", "task_id", "class_path", "test_class_path",
                     "pairing_method", "testing_framework", "revision_verification_status",
                     "eligible_classes_in_repo", "order_key", "source_file"])
@@ -165,12 +167,17 @@ def write_group(out_dir, name, dataset, rows, written):
 
 def write_checksums(out_dir, written):
     """SHA256SUMS.txt: checksum của mọi file đã ghi và của chính script này.
-    Dùng để chứng minh danh sách không bị sửa sau khi commit."""
+    Dùng để chứng minh danh sách không bị sửa sau khi commit.
+
+    Đường dẫn ghi tương đối so với thư mục đầu ra (script là ../select_datasets.py),
+    nên kiểm được bằng:  cd <thư mục đầu ra> && shasum -a 256 -c SHA256SUMS.txt
+    """
     with open(os.path.join(out_dir, "SHA256SUMS.txt"), "w", encoding="utf-8", newline="\n") as f:
         for path in written + [os.path.abspath(__file__)]:
             with open(path, "rb") as g:
                 digest = hashlib.sha256(g.read()).hexdigest()
-            f.write(f"{digest}  {os.path.basename(path)}\n")
+            rel = os.path.relpath(os.path.abspath(path), os.path.abspath(out_dir))
+            f.write(f"{digest}  {rel}\n")
 
 
 # ---------------------------------------------------------------------------
