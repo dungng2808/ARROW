@@ -87,7 +87,7 @@ public static class TargetPipeline
             repair.Enabled, repair.Rounds, repair.EarlyStopP, shared.Model,
             (runs.ReadText(run.Run, $"{dir}/block1/metadata_prompt.txt") ?? "").TrimEnd('\n'),
             TimeSpan.FromSeconds(settings.Verification.StepTimeoutSeconds), settings.Verification.InfraAttempts,
-            TimeSpan.FromSeconds(settings.Verification.InfraWaitSeconds), settings.Run.KeepWorkspaces);
+            TimeSpan.FromSeconds(settings.Verification.InfraWaitSeconds), settings.Run.KeepWorkspaces, settings.Verification.RegressionRuns);
         var generator = new TestGenerator(shared.Llm, shared.Host.JavaHelpers, shared.Templates, runs);
 
         TargetRun Done(TargetOutcome outcome, VerificationState? c0State, FinalTestSuite? final, ErrorInfo? error, double? block2, double? block3, Usage? usage = null, QualityResult? quality = null, double? block4 = null) =>
@@ -98,7 +98,7 @@ public static class TargetPipeline
         GenerationResult c0;
         try
         {
-            c0 = await generator.GenerateAsync(new GenerationContext(run.Run, m.Cut.Fqn, m, repairOptions.MetadataPrompt, task.CutSource, shared.Model, $"{dir}/block2", run.Progress), ct).ConfigureAwait(false);
+            c0 = await generator.GenerateAsync(new GenerationContext(run.Run, m.Cut.Fqn, m, repairOptions.MetadataPrompt, task.CutSource, shared.Model, $"{dir}/block2", run.Progress, shared.Settings.Prompts.Strategy), ct).ConfigureAwait(false);
         }
         catch (ArrowException ex)
         {
@@ -145,6 +145,12 @@ public static class TargetPipeline
             _ => final.FinalState.ToOutcome(),
         };
 
+        // P04 §3.5: existing tests that failed in some runs of step 5 only (verification.regression_runs > 1).
+        if (final.Success && final.Verify.ModuleFlaky.Count > 0)
+        {
+            warnings.Add($"{m.Cut.SimpleName}: test sẵn có lúc pass lúc fail khi chạy cùng test mới (không tính là regression): {string.Join(", ", final.Verify.ModuleFlaky)}");
+        }
+
         // Block 4: only the final VALID suite, when measuring is on (P05 §2).
         QualityResult? quality = null;
         double? block4 = null;
@@ -154,7 +160,8 @@ public static class TargetPipeline
             var suite = new SuiteToMeasure(final.Candidate.TestFqn, final.Candidate.TestPath, final.Candidate.Code!);
             quality = await QualityServiceOf(shared).MeasureAsync(suite, task, shared.Measure, ct).ConfigureAwait(false);
             block4 = watch.Elapsed.TotalSeconds;
-            foreach (var (tool, state) in quality.Tools.Where(t => t.Value.Status != ToolStatus.Ok))
+            // A tool skipped on purpose (no code: PIT with line 0%) is not a failure to report.
+            foreach (var (tool, state) in quality.Tools.Where(t => t.Value.Status != ToolStatus.Ok && !(t.Value.Status == ToolStatus.Skipped && t.Value.Code is null)))
             {
                 warnings.Add($"{m.Cut.SimpleName}: chưa đo được {tool} ({state.Code}); xem {Path.Combine(run.Run.Root, "targets", m.Cut.Fqn, "block4", "logs")}");
             }
@@ -225,10 +232,10 @@ public static class TargetPipeline
         var preparer = new SuitePreparer(host.Builds, host.Workspaces);
         return new QualityService(
         [
-            new JacocoTool(preparer, host.Builds, shared.Tools, java, host.Workspaces, shared.Runs),
-            new PitTool(preparer, shared.Tools, java, host.Workspaces, shared.Runs),
+            new JacocoTool(preparer, host.Builds, shared.Tools, java, shared.Runs),
+            new PitTool(preparer, shared.Tools, java, shared.Runs),
             new TsDetectTool(shared.Tools, host.JavaHelpers, java, host.Workspaces, shared.Runs),
-        ], shared.Runs, shared.Catalog);
+        ], shared.Runs, shared.Catalog, preparer: preparer);
     }
 
     /// <summary>Model calls, tokens and cost of a target.</summary>

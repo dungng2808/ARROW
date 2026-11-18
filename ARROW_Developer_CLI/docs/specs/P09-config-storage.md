@@ -42,6 +42,7 @@ ARROW_HOME/
   tools/                         công cụ ngoài đã tải (Mục 6)
     tools.installed.json
   mirrors/<host>/<owner>/<repo>.git   bản sao git dùng chung (P01)
+  cache/baseline/<khoá>.json     baseline đã đo, dùng lại tối đa 7 ngày (P01 §6.2); xoá thư mục này an toàn
   work/<run_id>/                 workspace tạm: base, snapshot, bản sao xác minh; xoá khi run xong
   runs/<run_id>/                 kết quả từng lần chạy (Mục 5)
   logs/arrow-<yyyyMMdd>.log      log của công cụ (Mục 7)
@@ -100,12 +101,12 @@ Tầng sau ghi đè tầng trước, theo **từng khoá**, không thay cả đ�
     "git_path": null
   },
   "repair": { "enabled": true, "rounds": 5, "early_stop_p": 3 },
-  "verification": { "baseline_runs": 2, "step_timeout_seconds": 900, "infra_attempts": 3, "infra_wait_seconds": 30 },
+  "verification": { "baseline_runs": 2, "step_timeout_seconds": 900, "infra_attempts": 3, "infra_wait_seconds": 30, "baseline_cache": true, "regression_runs": 1 },
   "quality": { "enabled": true, "tools": ["jacoco", "pit", "tsdetect"], "pit_timeout_seconds": 1800, "tsdetect_timeout_seconds": 300 },
   "apply": { "confirm": true },
   "run": { "jobs": 1, "max_tokens": null, "confirm_cost_from_classes": 5, "keep_workspaces": false },
   "ui": { "color": "auto", "language": "vi" },
-  "prompts": { "override_dir": null }
+  "prompts": { "override_dir": null, "strategy": "zero_shot_project_aware" }
 }
 ```
 
@@ -123,6 +124,8 @@ Tầng sau ghi đè tầng trước, theo **từng khoá**, không thay cả đ�
 | `repair.rounds` | int 1–10 | 5 | N |
 | `repair.early_stop_p` | int? ≥ 3 | 3 | `null` = không dừng sớm. Đặt nhỏ hơn 3 thì báo `CFG_INVALID` (P04) |
 | `verification.*` | | như trên | P01, P04 |
+| `verification.regression_runs` | int 1–5 | 1 | Số lần chạy tối đa của bước 5 để xác nhận regression (P04 §3.5); 1 = như R03. Thêm 18/11/2026 |
+| `verification.baseline_cache` | bool | true | Dùng lại baseline đã đo của lần chạy trước (P01 §6.2); `false` = luôn đo. Thêm 16/11/2026 |
 | `quality.enabled` | bool | true | `false` giống `--no-metrics` |
 | `quality.tools` | list | cả ba | Bỏ bớt công cụ |
 | `apply.confirm` | bool | true | `false` giống `--yes` |
@@ -133,6 +136,7 @@ Tầng sau ghi đè tầng trước, theo **từng khoá**, không thay cả đ�
 | `ui.color` | `auto` \| `always` \| `never` | `auto` | P08 |
 | `ui.language` | `vi` \| `en` | `vi` | Ngôn ngữ của thông báo |
 | `prompts.override_dir` | string? | `null` | Thư mục template thay cho bản nhúng (P02) |
+| `prompts.strategy` | string | `"zero_shot_project_aware"` | Quy trình sinh c0: `zero_shot_project_aware`, `zero_shot` hoặc `few_shot` (P02 §3.1). Thêm 18/11/2026 |
 
 ### 3.3 Đọc và kiểm tra
 

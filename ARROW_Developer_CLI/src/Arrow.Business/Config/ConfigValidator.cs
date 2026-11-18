@@ -1,6 +1,7 @@
 using System.Globalization;
 using Arrow.Common.Config;
 using Arrow.Common.Errors;
+using Arrow.Common.Generation;
 using Arrow.Common.Json;
 
 namespace Arrow.Business.Config;
@@ -70,6 +71,7 @@ public static class ConfigValidator
         Check(verification.BaselineRuns >= 1, "verification.baseline_runs", verification.BaselineRuns, "số nguyên ≥ 1");
         Check(verification.StepTimeoutSeconds >= 1, "verification.step_timeout_seconds", verification.StepTimeoutSeconds, "số nguyên ≥ 1");
         Check(verification.InfraAttempts >= 1, "verification.infra_attempts", verification.InfraAttempts, "số nguyên ≥ 1");
+        Check(verification.RegressionRuns is >= 1 and <= 5, "verification.regression_runs", verification.RegressionRuns, "số nguyên từ 1 đến 5");
         Check(verification.InfraWaitSeconds >= 0, "verification.infra_wait_seconds", verification.InfraWaitSeconds, "số nguyên ≥ 0");
 
         var quality = config.Quality;
@@ -82,6 +84,7 @@ public static class ConfigValidator
         Check(config.Run.ConfirmCostFromClasses >= 1, "run.confirm_cost_from_classes", config.Run.ConfirmCostFromClasses, "số nguyên ≥ 1");
 
         Check(Languages.Contains(config.Ui.Language), "ui.language", config.Ui.Language, "vi hoặc en");
+        Check(GenerationStrategies.IsKnown(config.Prompts.Strategy), "prompts.strategy", config.Prompts.Strategy, string.Join(", ", GenerationStrategies.All));
         return issues;
     }
 

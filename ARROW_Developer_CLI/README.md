@@ -73,12 +73,16 @@ arrow show <run> OrderService                          # chi tiết từng vòng
 
 Run bị ngắt (Ctrl+C, mất mạng, hết ngân sách token) chạy tiếp được: `arrow gen` tự đề nghị, hoặc `arrow gen --resume <run>`. Lượt gọi model đã có được phát lại, không tốn tiền lại.
 
+Quy trình sinh test lần đầu (c0) mặc định đưa cấu hình project vào prompt (`zero_shot_project_aware`). Để thử hai quy trình khác của nghiên cứu: `arrow config set prompts.strategy zero_shot` hoặc `few_shot` (2 ví dụ có sẵn); hai quy trình này không cho model biết test framework của project nên dễ lỗi biên dịch hơn. Trả về mặc định: `arrow config unset prompts.strategy`.
+
+Lần chạy sau trên cùng project (project, build và JDK không đổi, trong 7 ngày) dùng lại kết quả chạy test sẵn có đã đo, nên nhanh hơn lần đầu. `--fresh-baseline` buộc đo lại.
+
 ### Phiên tương tác
 
 Gõ `arrow` không kèm lệnh để mở phiên:
 
 ```
- ARROW · LLM unit test generation for Java · v0.1.0
+ ARROW · LLM unit test generation for Java · v0.2.0
  project  my-project  (Maven · Java 17 · JUnit 5)
  model    gpt-x · api.example.com · repair adaptive N=5
 arrow> /gen

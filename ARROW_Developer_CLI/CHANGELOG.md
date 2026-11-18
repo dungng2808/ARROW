@@ -6,7 +6,20 @@
 
 ### Thêm
 
+- Chọn quy trình sinh test c0 bằng `arrow config set prompts.strategy <tên>`: `zero_shot_project_aware` (mặc định, có cấu hình project), `zero_shot` hoặc `few_shot` (2 ví dụ cố định). Hai quy trình sau không cho model biết test framework của project nên dễ lỗi biên dịch hơn; ARROW cảnh báo khi dùng chúng. `arrow show` và khung đầu phiên tương tác hiện quy trình đã dùng; chạy tiếp một run giữ quy trình cũ.
+- `arrow gen --regression-runs <n>` (hoặc `verification.regression_runs`, mặc định 1): khi bước 5 thấy test sẵn có bị hỏng, chạy lại tối đa n lần để xác nhận. Test chỉ fail ở một vài lần là flaky: không tính là regression, chỉ cảnh báo. Test sinh ra fail ở bất kỳ lần nào vẫn là regression.
+
+## [0.2.0] - 2026-11-16
+
+### Thêm
+
 - `arrow gen --no-pit`: không đo mutation bằng PIT (bước đo lâu nhất); JaCoCo và tsDetect vẫn đo. Chạy tiếp một run giữ đúng lựa chọn này.
+
+### Nhanh hơn
+
+- Khối 4 biên dịch bộ test **một lần** cho cả JaCoCo và PIT; trước đây PIT biên dịch lại (8–23 s mỗi class trên repo thật). Số đo không đổi.
+- Khối 4 bỏ PIT khi JaCoCo đo được line 0%: test không chạy dòng nào của class thì mọi mutant đều sống.
+- Khối 1 **dùng lại baseline** đã đo của lần chạy trước khi project, build và JDK không đổi (tối đa 7 ngày): lần `inspect` hay `gen` thứ hai trên cùng project không chạy lại test sẵn có. `--fresh-baseline` buộc đo lại; `verification.baseline_cache = false` tắt hẳn.
 
 ## [0.1.0] - 2026-11-15
 

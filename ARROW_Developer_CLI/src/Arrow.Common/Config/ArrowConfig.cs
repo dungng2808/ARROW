@@ -67,8 +67,8 @@ public sealed record JavaSettings(
 /// <summary><c>repair.*</c> (P04).</summary>
 public sealed record RepairSettings(bool Enabled, int Rounds, int? EarlyStopP);
 
-/// <summary><c>verification.*</c> (P01, P04).</summary>
-public sealed record VerificationSettings(int BaselineRuns, int StepTimeoutSeconds, int InfraAttempts, int InfraWaitSeconds);
+/// <summary><c>verification.*</c> (P01, P04). <paramref name="BaselineCache"/>: reuse a baseline measured by an earlier run (P01 §6.2).</summary>
+public sealed record VerificationSettings(int BaselineRuns, int StepTimeoutSeconds, int InfraAttempts, int InfraWaitSeconds, bool BaselineCache = true, int RegressionRuns = 1);
 
 /// <summary><c>quality.*</c> (P05).</summary>
 public sealed record QualitySettings(bool Enabled, IReadOnlyList<string> Tools, int PitTimeoutSeconds, int TsdetectTimeoutSeconds);
@@ -96,4 +96,6 @@ public enum ColorMode
 }
 
 /// <summary><c>prompts.*</c> (P02).</summary>
-public sealed record PromptsSettings(string? OverrideDir);
+/// <param name="OverrideDir">Folder of templates that replace the embedded ones.</param>
+/// <param name="Strategy">Prompting strategy of c0 (P02 §3.1): <c>zero_shot_project_aware</c>, <c>zero_shot</c> or <c>few_shot</c>.</param>
+public sealed record PromptsSettings(string? OverrideDir, string Strategy = Generation.GenerationStrategies.Default);
