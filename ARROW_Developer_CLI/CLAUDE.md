@@ -7,7 +7,7 @@ This file provides guidance to Claude Code when working in this repository.
 - Chính (GitHub `Duc-Chinh1907`) owns this project and **codes it alone**. Other members of team SET490_G2 only review the docs, watch the milestone demos and may help run the GĐ7 validation.
 - Reply in **Vietnamese**, addressing the user as "anh" and referring to yourself as "em".
 - Code, identifiers and commit messages are in English. User-facing CLI messages are in Vietnamese (`ui.language = vi`).
-- Push to GitHub, create releases or publish packages **only when Chính asks**. The repo `Duc-Chinh1907/Arrow_Developer` is **public** (his choice), so never commit secrets, `runs/`, `work/`, `docs.zip` or machine-specific config.
+- Push to GitHub, create releases or publish packages **only when Chính asks**. The repo `Duc-Chinh1907/Arrow_Developer` is **private** now (it was public; release downloads need access), but still never commit secrets, `runs/`, `work/`, `docs.zip` or machine-specific config.
 
 ## What this is
 
@@ -57,6 +57,8 @@ It is the product version of the team's research framework. There is **no resear
   - extra `count_assertions` kinds (GĐ1).
 - Decided 15/11/2026: command `arrow`, `PackageId` `ArrowDev` (assembly stays `Arrow.Cli`), license MIT, releases on GitHub only (no NuGet.org).
 - Decided 15/11/2026: repair defaults stay N = 5, P = 3; `arrow gen --no-pit` skips PIT (`GenerateTestsUseCase.MeasuredTools`, `RunConfig.NoPit`).
+- Decided 18/11/2026: `prompts.strategy` (config only, no CLI flag) chooses the c0 prompt among the three R02 §3 strategies; default `zero_shot_project_aware`. `zero_shot.md`, `few_shot.md`, `user/default.md` and `fewshot_provenance.json` were copied verbatim from `ARROW_Framework/prompts/generation`. Repair prompts do not depend on it. A non-default strategy prints a warning; `run.json` `config.strategy` keeps it for `--resume`.
+- Decided 18/11/2026: `--regression-runs <n>` / `verification.regression_runs` (1–5, default 1 = R03) re-runs step 5 on new copies when the first run finds a regression of existing tests; only tests failing in every run are regressions, the others go to `module_flaky` with a warning. A generated test failing with the module in any run stays a regression (not re-run). P04 §3.5 marks it "khác R03".
 - Nothing is open for the team review any more.
 
 ## Secrets
@@ -196,4 +198,9 @@ It is the product version of the team's research framework. There is **no resear
   - Trials: `v0.1.0-rc.1` failed on win-x64 (`tee /dev/stderr` in Git Bash on the Windows runner; tag left as it is), `v0.1.0-rc.2` released as a pre-release. `CliApp.Version` reads the informational version so that a suffix like `-rc.2` is kept.
   - Clean-machine check (P11 §9) on Windows Sandbox with rc.2: passed (`docs/release-check.md`); Ubuntu is left for after 0.1.0. The sandbox kit (JDK 17, Maven, release zip, fixture, `arrow-test.wsb`) is in `D:\arrow-sandbox`, outside the repo.
   - 0.1.0 released from PR `gd8/v0.1.0` with the tag `v0.1.0`.
+- Team copy (Chính, 15/11/2026): the team repo `dungng2808/ARROW` holds this project in `ARROW_Developer_CLI/`, added with `git subtree add` (history kept) through its PR #3. This repo stays the source: development, CI and releases happen here. To bring changes into the team repo, use the clone `D:\arrow-team` (not `D:\Ky9\DoAn\ARROW`, which has uncommitted files): a branch from its `main`, `git subtree pull --prefix=ARROW_Developer_CLI https://github.com/Duc-Chinh1907/Arrow_Developer.git main`, then a PR there. Chính has push rights there, not admin.
+- After 0.1.0 (15–16/11/2026), from the review `docs/phanbien/chay-song-song-khoi-1-va-khoi-4.md` §5 (parallel modes not done):
+  - PR #41: block 4 compiles the suite once (`SuitePreparer` shares one copy; `QualityService` releases it) and skips PIT when JaCoCo line is 0%.
+  - PR #42: block 1 reuses a baseline from `ARROW_HOME/cache/baseline/<key>.json` (`BaselineCacheKey`, `BaselineCacheStore`, 7 days; `--fresh-baseline`; `verification.baseline_cache`). P01 §6.2 marks it "khác R01".
+  - 0.2.0 released from PR `gd8/v0.2.0` with the tag `v0.2.0`.
 - `docs.zip` in the root is a copy Chính made for the team. Keep it out of git.

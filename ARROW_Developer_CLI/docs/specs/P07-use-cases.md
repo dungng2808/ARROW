@@ -137,7 +137,7 @@ Khác thì báo `GEN_RESUME_MISMATCH` (`Project đã thay đổi kể từ run <
 - **Run do ARROW tự tìm ra** (không có `--resume`): project được so **trước khi hỏi**. Khác thì không hỏi, in `[!] Run <id> chưa xong nhưng project đã thay đổi kể từ run đó: bắt đầu run mới.`, rồi tạo run mới. `GEN_RESUME_MISMATCH` chỉ dành cho `--resume <id>`. Thêm ở GĐ7 (14/11/2026): trước đó, một run tự tìm ra của project đã đổi làm mọi lần `arrow gen --yes` của project đó dừng với `GEN_RESUME_MISMATCH` trong 7 ngày, và gợi ý "chạy `arrow gen` mới, không dùng `--resume`" không làm theo được.
 - Repo GitHub: `--ref` là SHA đầy đủ khác commit của run cũ thì coi là project đã đổi. `--ref` là nhánh hay tag thì chạy tiếp lấy đúng commit của run cũ.
 
-Tham số ảnh hưởng tới kết quả (model, N, `early_stop_p`, có sửa hay không, có đo hay không, có đo PIT hay không) **lấy theo `run.json` cũ**. Người dùng truyền giá trị khác thì in `[!] Dùng cấu hình của run cũ: …`.
+Tham số ảnh hưởng tới kết quả (model, N, `early_stop_p`, có sửa hay không, có đo hay không, có đo PIT hay không, quy trình sinh `prompts.strategy`, số lần chạy bước 5 `regression_runs`) **lấy theo `run.json` cũ**. Người dùng truyền giá trị khác thì in `[!] Dùng cấu hình của run cũ: …`.
 
 ### 5.3 Làm lại những gì
 
@@ -148,7 +148,7 @@ Tham số ảnh hưởng tới kết quả (model, N, `early_stop_p`, có sửa 
 | `DONE`, `result` khác `BLOCKED` và `INFRA` | Giữ nguyên, không chạy lại. Chưa có `apply.json` thì vẫn đưa vào bước ghi file |
 | `DONE`, `result` là `BLOCKED` hoặc `INFRA` | Chạy lại từ đầu, vì lỗi có thể đã được sửa |
 | `PENDING` | Chạy từ đầu |
-| `RUNNING` (bị ngắt bởi Ctrl+C hoặc P03 dừng run) | Xoá `block2/`, `block3/`, `block4/` của target rồi chạy lại từ khối 2. Khối 1 dùng lại nếu đã có `block1/outcome.json` và snapshot còn; không thì làm lại khối 1. Các lượt gọi model đã có trong `llm_cache/` được **phát lại, không tốn tiền** (P03 §5) |
+| `RUNNING` (bị ngắt bởi Ctrl+C hoặc P03 dừng run) | Xoá `block2/`, `block3/`, `block4/` của target rồi chạy lại từ khối 2. Khối 1 dùng lại nếu đã có `block1/outcome.json` và snapshot còn; không thì làm lại khối 1. Khi làm lại, baseline đã đo được dùng lại từ cache nếu project không đổi (P01 §6.2), nên chỉ tốn thời gian biên dịch. Các lượt gọi model đã có trong `llm_cache/` được **phát lại, không tốn tiền** (P03 §5) |
 
 ## 6. Chạy một CUT
 
