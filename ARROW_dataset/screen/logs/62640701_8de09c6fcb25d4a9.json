@@ -1,0 +1,327 @@
+{
+  "run_id": "20261118-010216-7wk2",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-010216-7wk2",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 28.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 28.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "service-criticality-app",
+        "url": "https://github.com/maxim-tschumak/service-criticality-app",
+        "git_commit": "1dd6e7cf69b26a88957892f6fb1792b965cebcc9",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "architectures",
+        "build_mode": "standalone",
+        "build_file": "architectures/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/*Tests.java",
+          "**/*Test.java"
+        ],
+        "test_excludes": [
+          "**/Abstract*.java"
+        ]
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-web",
+            "version": "1.3.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-data-jpa",
+            "version": "1.3.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.projectlombok",
+            "artifact": "lombok",
+            "version": "1.16.8",
+            "scope": "provided"
+          },
+          {
+            "group": "com.zaxxer",
+            "artifact": "HikariCP",
+            "version": "2.4.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.postgresql",
+            "artifact": "postgresql",
+            "version": "9.4.1208.jre7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.flywaydb",
+            "artifact": "flyway-core",
+            "version": "4.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "com.opentable.components",
+            "artifact": "otj-pg-embedded",
+            "version": "0.4.4",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "1.3.3.RELEASE",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 82
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "architectures",
+        "module_root": "architectures",
+        "packages": [
+          "org.service.criticality.architectures.service",
+          "org.service.criticality.architectures",
+          "org.service.criticality.architectures.helper",
+          "org.service.criticality.architectures.persistence.domain",
+          "org.service.criticality.architectures.persistence.repository",
+          "org.service.criticality.architectures.web.rest",
+          "org.service.criticality.architectures.web.rest.domain"
+        ]
+      },
+      "paths": {
+        "source_root": "architectures/src/main/java",
+        "test_root": "architectures/src/test/java",
+        "cut_path": "architectures/src/main/java/org/service/criticality/architectures/service/ArchitectureManagement.java",
+        "generated_test_path": "architectures/src/test/java/org/service/criticality/architectures/service/ArchitectureManagement_ArrowTest.java",
+        "generated_test_fqn": "org.service.criticality.architectures.service.ArchitectureManagement_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.service.criticality.architectures.service.ArchitectureManagement",
+        "simple_name": "ArchitectureManagement",
+        "package": "org.service.criticality.architectures.service",
+        "kind": "class",
+        "source_sha256": "6864aa94d3da136c7546fa681b91f580565e30dde57ab62940be21cd9b2e8634"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "architectures",
+      "passing_in_all_runs": [
+        "org.service.criticality.architectures.helper.DomainObjectMapperTest#architectureDTOFromArchitectureTest",
+        "org.service.criticality.architectures.helper.DomainObjectMapperTest#serviceDTOFromServiceTest",
+        "org.service.criticality.architectures.service.ArchitectureManagementTest#createNewArchitectureTest",
+        "org.service.criticality.architectures.service.ArchitectureManagementTest#deleteArchitectureTest",
+        "org.service.criticality.architectures.service.ArchitectureManagementTest#getAllArchitecturesTest",
+        "org.service.criticality.architectures.service.ArchitectureManagementTest#getArchitectureByIdTest",
+        "org.service.criticality.architectures.service.ArchitectureManagementTest#getArchitecturesByNameTest",
+        "org.service.criticality.architectures.service.DependencyManagementTest#createDependencyWithinArchitectureTest",
+        "org.service.criticality.architectures.service.DependencyManagementTest#deleteDependencyTest",
+        "org.service.criticality.architectures.service.DependencyManagementTest#getDependenciesOfAServiceTest",
+        "org.service.criticality.architectures.service.ServiceManagementTest#createServiceWithinArchitectureTest",
+        "org.service.criticality.architectures.service.ServiceManagementTest#deleteServiceTest",
+        "org.service.criticality.architectures.service.ServiceManagementTest#getServicesByArchitectureIdTest",
+        "org.service.criticality.architectures.web.rest.ArchitectureControllerTest#deleteArchitectureTest",
+        "org.service.criticality.architectures.web.rest.ArchitectureControllerTest#getAllArchitecturesTest",
+        "org.service.criticality.architectures.web.rest.ArchitectureControllerTest#getArchitectureTest",
+        "org.service.criticality.architectures.web.rest.ArchitectureControllerTest#getArchitecturesByNameTest",
+        "org.service.criticality.architectures.web.rest.ArchitectureControllerTest#postArchitectureTest",
+        "org.service.criticality.architectures.web.rest.DependencyControllerTest#addNewDependencyToArchitectureTest",
+        "org.service.criticality.architectures.web.rest.DependencyControllerTest#deleteDependencyTest",
+        "org.service.criticality.architectures.web.rest.DependencyControllerTest#getDependenciesByServiceId",
+        "org.service.criticality.architectures.web.rest.ServiceControllerTest#addNewServiceToArchitectureTest",
+        "org.service.criticality.architectures.web.rest.ServiceControllerTest#deleteServiceTest",
+        "org.service.criticality.architectures.web.rest.ServiceControllerTest#getAllServicesOfArchitecture"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 20.4,
+        "module_test": [
+          3.1,
+          3.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010216-7wk2/base",
+      "compiled_snapshot": "work/20261118-010216-7wk2/snapshot-cbc0742b",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "architectures",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.service.criticality.architectures.service.ArchitectureManagement",
+      "simple_name": "ArchitectureManagement",
+      "package": "org.service.criticality.architectures.service",
+      "kind": "class",
+      "cut_path": "architectures/src/main/java/org/service/criticality/architectures/service/ArchitectureManagement.java",
+      "source_sha256": "6864aa94d3da136c7546fa681b91f580565e30dde57ab62940be21cd9b2e8634",
+      "generated_test_path": "architectures/src/test/java/org/service/criticality/architectures/service/ArchitectureManagement_ArrowTest.java",
+      "generated_test_fqn": "org.service.criticality.architectures.service.ArchitectureManagement_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 1.7,
+      "compile": 20.4,
+      "baseline": [
+        3.1,
+        3.3
+      ],
+      "total": 28.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

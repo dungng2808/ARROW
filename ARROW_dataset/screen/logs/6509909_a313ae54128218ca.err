@@ -1,0 +1,4 @@
+[>] Tải https://github.com/novoda/dojos
+[>] Liệt kê class
+[X] B1_CUT_AMBIGUOUS · Có nhiều class tên HaikuReview: HaikuReview, HaikuReview
+  → Cách sửa: Dùng FQN, ví dụ com.acme.shop.OrderService.

@@ -1,0 +1,367 @@
+{
+  "run_id": "20261118-023416-q7fp",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-023416-q7fp",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 10.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 10.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "scram",
+        "url": "https://github.com/ongres/scram",
+        "git_commit": "959cfc0a12ff2893344e96025d39f599db292672",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": true,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "common",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "annotations",
+            "version": "3.0.1",
+            "scope": "provided"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.1",
+            "scope": "provided"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 5
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "common",
+          "client"
+        ],
+        "target_module": "common",
+        "module_root": "common",
+        "packages": [
+          "com.ongres.scram.common.util",
+          "com.ongres.scram.common",
+          "com.ongres.scram.common.bouncycastle.base64",
+          "com.ongres.scram.common.bouncycastle.pbkdf2",
+          "com.ongres.scram.common.exception",
+          "com.ongres.scram.common.gssapi",
+          "com.ongres.scram.common.message",
+          "com.ongres.scram.common.stringprep"
+        ]
+      },
+      "paths": {
+        "source_root": "common/src/main/java",
+        "test_root": "common/src/test/java",
+        "cut_path": "common/src/main/java/com/ongres/scram/common/util/CryptoUtil.java",
+        "generated_test_path": "common/src/test/java/com/ongres/scram/common/util/CryptoUtil_ArrowTest.java",
+        "generated_test_fqn": "com.ongres.scram.common.util.CryptoUtil_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.ongres.scram.common.util.CryptoUtil",
+        "simple_name": "CryptoUtil",
+        "package": "com.ongres.scram.common.util",
+        "kind": "class",
+        "source_sha256": "bed48c8c338ce1427d4c31de9e292697afda82149fcd133ac828e82e1d320598"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "common",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "common",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.ongres.scram.common.ScramAttributeValueTest#constructorDoesNotAllowNullValue",
+        "com.ongres.scram.common.ScramAttributeValueTest#parseIllegalValuesInvalidSCRAMAttibute",
+        "com.ongres.scram.common.ScramAttributeValueTest#parseIllegalValuesStructure",
+        "com.ongres.scram.common.ScramAttributeValueTest#parseLegalValues",
+        "com.ongres.scram.common.ScramFunctionsTest#clientKey",
+        "com.ongres.scram.common.ScramFunctionsTest#clientKeySha256",
+        "com.ongres.scram.common.ScramFunctionsTest#clientProof",
+        "com.ongres.scram.common.ScramFunctionsTest#clientProofSha256",
+        "com.ongres.scram.common.ScramFunctionsTest#clientSignature",
+        "com.ongres.scram.common.ScramFunctionsTest#clientSignatureSha256",
+        "com.ongres.scram.common.ScramFunctionsTest#hmac",
+        "com.ongres.scram.common.ScramFunctionsTest#saltedPassword",
+        "com.ongres.scram.common.ScramFunctionsTest#saltedPasswordSha256",
+        "com.ongres.scram.common.ScramFunctionsTest#serverKey",
+        "com.ongres.scram.common.ScramFunctionsTest#serverKeySha256",
+        "com.ongres.scram.common.ScramFunctionsTest#serverSignature",
+        "com.ongres.scram.common.ScramFunctionsTest#serverSignatureSha256",
+        "com.ongres.scram.common.ScramFunctionsTest#storedKey",
+        "com.ongres.scram.common.ScramFunctionsTest#storedKeySha256",
+        "com.ongres.scram.common.ScramFunctionsTest#verifyClientProof",
+        "com.ongres.scram.common.ScramFunctionsTest#verifyClientProofSha256",
+        "com.ongres.scram.common.ScramFunctionsTest#verifyServerSignature",
+        "com.ongres.scram.common.ScramFunctionsTest#verifyServerSignatureSha256",
+        "com.ongres.scram.common.ScramMechanismsTest#TestHMACSupportedByJVM",
+        "com.ongres.scram.common.ScramMechanismsTest#TestHashSupportedByJVM",
+        "com.ongres.scram.common.ScramMechanismsTest#byNameInvalid",
+        "com.ongres.scram.common.ScramMechanismsTest#byNameValid",
+        "com.ongres.scram.common.ScramMechanismsTest#selectMatchingMechanism",
+        "com.ongres.scram.common.ScramStringFormattingTest#fromSaslNameNoCharactersToBeEscaped",
+        "com.ongres.scram.common.ScramStringFormattingTest#fromSaslNameWithCharactersToBeUnescaped",
+        "com.ongres.scram.common.ScramStringFormattingTest#fromSaslNameWithInvalidCharacters",
+        "com.ongres.scram.common.ScramStringFormattingTest#toSaslNameNoCharactersToBeEscaped",
+        "com.ongres.scram.common.ScramStringFormattingTest#toSaslNameWithCharactersToBeEscaped",
+        "com.ongres.scram.common.gssapi.Gs2AttributeValueTest#constructorAllowsNullValue",
+        "com.ongres.scram.common.gssapi.Gs2AttributeValueTest#parseIllegalValuesInvalidGS2Attibute",
+        "com.ongres.scram.common.gssapi.Gs2AttributeValueTest#parseIllegalValuesStructure",
+        "com.ongres.scram.common.gssapi.Gs2AttributeValueTest#parseLegalValues",
+        "com.ongres.scram.common.gssapi.Gs2AttributeValueTest#parseNullValue",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#constructorInvalid1",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#constructorInvalid2",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#constructorInvalid3",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#constructorInvalid4",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#constructorValid",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#parseFromInvalid",
+        "com.ongres.scram.common.gssapi.Gs2HeaderTest#parseFromValid",
+        "com.ongres.scram.common.message.ClientFinalMessageTest#writeToWithoutProofValid",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#constructorTestInvalid1",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#constructorTestInvalid2",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#constructorTestInvalid3",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#constructorTestInvalid4",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#constructorTestInvalid5",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#parseFromInvalidValues",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#parseFromValidValues",
+        "com.ongres.scram.common.message.ClientFirstMessageTest#writeToValidValues",
+        "com.ongres.scram.common.message.ServerFinalMessageTest#validConstructor",
+        "com.ongres.scram.common.message.ServerFinalMessageTest#validParseFrom",
+        "com.ongres.scram.common.message.ServerFirstMessageTest#validConstructor",
+        "com.ongres.scram.common.message.ServerFirstMessageTest#validParseFrom",
+        "com.ongres.scram.common.stringprep.SaslPrepTest#bidi2",
+        "com.ongres.scram.common.stringprep.SaslPrepTest#mappedToSpace",
+        "com.ongres.scram.common.stringprep.SaslPrepTest#rfc4013Examples",
+        "com.ongres.scram.common.stringprep.SaslPrepTest#unassigned",
+        "com.ongres.scram.common.stringprep.StringPreparationTest#doNormalizeNoPreparationEmptyAfterNormalization",
+        "com.ongres.scram.common.stringprep.StringPreparationTest#doNormalizeNoPreparationNonEmptyAfterNormalization",
+        "com.ongres.scram.common.stringprep.StringPreparationTest#doNormalizeNullEmpty",
+        "com.ongres.scram.common.stringprep.StringPreparationTest#doNormalizeValidAsciiCases",
+        "com.ongres.scram.common.stringprep.StringPreparationTest#doNormalizeValidAsciiRandom",
+        "com.ongres.scram.common.util.AbstractCharAttributeValueTest#constructorEmptyValue",
+        "com.ongres.scram.common.util.AbstractCharAttributeValueTest#constructorNullAttribute",
+        "com.ongres.scram.common.util.AbstractCharAttributeValueTest#writeToEscapedValues",
+        "com.ongres.scram.common.util.AbstractCharAttributeValueTest#writeToNonNullValues",
+        "com.ongres.scram.common.util.AbstractCharAttributeValueTest#writeToNullValue",
+        "com.ongres.scram.common.util.Base64Test#rfcTest",
+        "com.ongres.scram.common.util.CryptoUtilTest#nonceInvalidSize1",
+        "com.ongres.scram.common.util.CryptoUtilTest#nonceInvalidSize2",
+        "com.ongres.scram.common.util.CryptoUtilTest#nonceValid",
+        "com.ongres.scram.common.util.StringWritableCsvTest#parseFromEmpty",
+        "com.ongres.scram.common.util.StringWritableCsvTest#parseFromOneArgWithLimitsOffsets",
+        "com.ongres.scram.common.util.StringWritableCsvTest#parseFromSeveralArgsWithLimitsOffsets",
+        "com.ongres.scram.common.util.StringWritableCsvTest#writeToNullOrEmpty",
+        "com.ongres.scram.common.util.StringWritableCsvTest#writeToOneArg",
+        "com.ongres.scram.common.util.StringWritableCsvTest#writeToSeveralArgs",
+        "com.ongres.scram.common.util.UsAsciiUtilsTest#toPrintableAllPrintable",
+        "com.ongres.scram.common.util.UsAsciiUtilsTest#toPrintableNonASCII",
+        "com.ongres.scram.common.util.UsAsciiUtilsTest#toPrintableNonPrintable",
+        "com.ongres.scram.common.util.UsAsciiUtilsTest#toPrintableNull"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 3.5,
+        "module_test": [
+          2.2,
+          2.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023416-q7fp/base",
+      "compiled_snapshot": "work/20261118-023416-q7fp/snapshot-92a5dc04",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "common",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.ongres.scram.common.util.CryptoUtil",
+      "simple_name": "CryptoUtil",
+      "package": "com.ongres.scram.common.util",
+      "kind": "class",
+      "cut_path": "common/src/main/java/com/ongres/scram/common/util/CryptoUtil.java",
+      "source_sha256": "bed48c8c338ce1427d4c31de9e292697afda82149fcd133ac828e82e1d320598",
+      "generated_test_path": "common/src/test/java/com/ongres/scram/common/util/CryptoUtil_ArrowTest.java",
+      "generated_test_fqn": "com.ongres.scram.common.util.CryptoUtil_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Wrapper mvnw không chạy được; dùng Maven của máy."
+    ],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 2.4,
+      "compile": 3.5,
+      "baseline": [
+        2.2,
+        2.2
+      ],
+      "total": 10.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Wrapper mvnw không chạy được; dùng Maven của máy."
+  ]
+}

@@ -1,0 +1,358 @@
+{
+  "run_id": "20261118-020109-2dos",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-020109-2dos",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 6.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 6.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "mockito-collections",
+        "url": "https://github.com/jameskennard/mockito-collections",
+        "git_commit": "9f84db71e32ad0a8ee0c48597735d9a535c83fa9",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "mockito-collections-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": null,
+        "declared_source": null,
+        "major": null,
+        "jdk_major": 17,
+        "jdk_choice_reason": "default"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.10",
+            "scope": "compile"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.9.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 3
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.10",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.9.0"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "mockito-collections-core",
+          "mockito-collections-core-integration-tests",
+          "mockito-collections-samples"
+        ],
+        "target_module": "mockito-collections-core",
+        "module_root": "mockito-collections-core",
+        "packages": [
+          "uk.co.webamoeba.mockito.collections.inject",
+          "uk.co.webamoeba.mockito.collections",
+          "uk.co.webamoeba.mockito.collections.annotation",
+          "uk.co.webamoeba.mockito.collections.exception",
+          "uk.co.webamoeba.mockito.collections.util"
+        ]
+      },
+      "paths": {
+        "source_root": "mockito-collections-core/src/main/java",
+        "test_root": "mockito-collections-core/src/test/java",
+        "cut_path": "mockito-collections-core/src/main/java/uk/co/webamoeba/mockito/collections/inject/DefaultMockStrategy.java",
+        "generated_test_path": "mockito-collections-core/src/test/java/uk/co/webamoeba/mockito/collections/inject/DefaultMockStrategy_ArrowTest.java",
+        "generated_test_fqn": "uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategy_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategy",
+        "simple_name": "DefaultMockStrategy",
+        "package": "uk.co.webamoeba.mockito.collections.inject",
+        "kind": "class",
+        "source_sha256": "765c24eb66454f5cc6c15b1b771d0584b9887e41ed1d436517c52fc2f39cd8b3"
+      },
+      "missing_reasons": {
+        "java": "file build không khai báo mức Java"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "mockito-collections-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "mockito-collections-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenCollection",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenCollectionAndContents",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenList",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenListAndContents",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenSet",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenSetAndContents",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenSortedSet",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenSortedSetAndContents",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenSpecificType",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldCreateCollectionGivenSpecificTypeAndContents",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldFailToCreateCollectionGivenCannotInstantiateSpecificType",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionFactoryTest#shouldFailToCreateCollectionGivenCannotInstantiateSpecificTypeAndContents",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldFailToGetInjectableCollectionGivenNullInjectableCollectionSet",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldFailToGetInjectableCollectionGivenNullTypeOfElements",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionTest#shouldMatchesGivenEqualTypeOfCollection",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionTest#shouldMatchesGivenEqualTypeOfCollectionAndEqualTypeOfElement",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionTest#shouldMatchesGivenEqualTypeOfElement",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionTest#shouldMatchesGivenSelf",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsTest#shouldFailToConstructGivenNullInjectableCollections",
+        "uk.co.webamoeba.mockito.collections.util.AnnotatedFieldRetrieverTest#shouldGetAnnotatedFieldsGivenExtendedClass",
+        "uk.co.webamoeba.mockito.collections.util.AnnotatedFieldRetrieverTest#shouldGetAnnotatedFieldsGivenPackageField",
+        "uk.co.webamoeba.mockito.collections.util.AnnotatedFieldRetrieverTest#shouldGetAnnotatedFieldsGivenPrivateField",
+        "uk.co.webamoeba.mockito.collections.util.AnnotatedFieldRetrieverTest#shouldGetAnnotatedFieldsGivenProtectedField",
+        "uk.co.webamoeba.mockito.collections.util.AnnotatedFieldRetrieverTest#shouldGetAnnotatedFieldsGivenPublicField",
+        "uk.co.webamoeba.mockito.collections.util.FieldValueMutatorTest#shouldFailToSetGivenIncompatibleType",
+        "uk.co.webamoeba.mockito.collections.util.FieldValueMutatorTest#shouldSetGivenPublicField",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenArrayCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenDoubleExtendedHardCodedTypeCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenExtendedHardCodedTypeCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenHardCodedTypeCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenRawCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenTypeCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenWildcardCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenWildcardLowerBoundCollection",
+        "uk.co.webamoeba.mockito.collections.util.GenericCollectionTypeResolverTest#shouldGetCollectionFieldTypeGivenWildcardUpperBoundCollection",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldAddAllGivenElementsInOrder",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldAddGivenElementsInOrder",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldAddGivenGivenElementAlreadyInSet",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldAddGivenSetAlreadyContainsSomeElements",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldClear",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldContainsAllGivenDoesContainAll",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldContainsAllGivenDoesNotContainAll",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldContainsAllGivenDoesNotContainAny",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldContainsGivenDoesContainElement",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldContainsGivenDoesNotContainElement",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldNextGivenIteratorHasNoElements",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldNextGivenIteratorHasNoMoreElements",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldRemove",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldRemoveGivenIsFirstElement",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldRemoveGivenIsLastElement"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "uk.co.webamoeba.mockito.collections.AssertTest#shouldVerifyGivenVerificationOfUnusedMethod",
+        "uk.co.webamoeba.mockito.collections.AssertTest#shouldVerifyGivenVerificationOfUsedMethod",
+        "uk.co.webamoeba.mockito.collections.AssertTest#shouldVerifyGivenVerificationOfUsedMethodWithDifferentParameters",
+        "uk.co.webamoeba.mockito.collections.AssertTest#shouldVerifyNoMoreInteractions",
+        "uk.co.webamoeba.mockito.collections.AssertTest#shouldVerifyNoMoreInteractionsGivenMoreInteractionsArePresent",
+        "uk.co.webamoeba.mockito.collections.ExampleTest#",
+        "uk.co.webamoeba.mockito.collections.MockitoCollectionAnnotationIntegrationTest#shouldInject",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionInitialiserTest#",
+        "uk.co.webamoeba.mockito.collections.inject.CollectionInjectorTest#",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldFailToGetInjectableCollectionGivenNullTypeOfCollection",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldGetInjectableCollectionGivenNoMatchingInjectableCollection",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldGetInjectableCollectionGivenTwoTypesOfCollection",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldGetInjectableCollectionGivenTwoTypesOfElement",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldGetInjectables",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultInjectableSelectionStrategyTest#shouldGetInjectablesGivenNoMatchingInjectables",
+        "uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategyTest#shouldCreateMock",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionSetTest#shouldAddNonMatchingInjectableCollection",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionSetTest#shouldConstructGivenCollection",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionSetTest#shouldConstructGivenNonMatchingInjectableCollections",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionSetTest#shouldConstructGivenVarArg",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionSetTest#shouldFailToAddMatchingInjectableCollection",
+        "uk.co.webamoeba.mockito.collections.inject.InjectableCollectionSetTest#shouldFailToConstructGivenMatchingInjectableCollections",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsFactoryTest#",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsTest#shouldFailToConstructGivenNullInjectCollections",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsTest#shouldFailToConstructGivenNullInjectables",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsTest#shouldGetInjectCollections",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsTest#shouldGetInjectableCollectionSet",
+        "uk.co.webamoeba.mockito.collections.inject.InjectionDetailsTest#shouldGetInjectables",
+        "uk.co.webamoeba.mockito.collections.util.FieldValueMutatorTest#shouldSetGivenPrivateField",
+        "uk.co.webamoeba.mockito.collections.util.HashOrderedSetTest#shouldRemoveGivenIsOnlyElement"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2.8,
+        "module_test": [
+          1.5,
+          1.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-020109-2dos/base",
+      "compiled_snapshot": "work/20261118-020109-2dos/snapshot-2bb42276",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "mockito-collections-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategy",
+      "simple_name": "DefaultMockStrategy",
+      "package": "uk.co.webamoeba.mockito.collections.inject",
+      "kind": "class",
+      "cut_path": "mockito-collections-core/src/main/java/uk/co/webamoeba/mockito/collections/inject/DefaultMockStrategy.java",
+      "source_sha256": "765c24eb66454f5cc6c15b1b771d0584b9887e41ed1d436517c52fc2f39cd8b3",
+      "generated_test_path": "mockito-collections-core/src/test/java/uk/co/webamoeba/mockito/collections/inject/DefaultMockStrategy_ArrowTest.java",
+      "generated_test_fqn": "uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategy_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 30 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 1,
+      "compile": 2.8,
+      "baseline": [
+        1.5,
+        1.5
+      ],
+      "total": 6.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 30 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

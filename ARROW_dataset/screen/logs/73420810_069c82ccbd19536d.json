@@ -1,0 +1,250 @@
+{
+  "run_id": "20261118-011329-a5gu",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-011329-a5gu",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 6.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 6.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "creating-maintainable-apis",
+        "url": "https://github.com/Apress/creating-maintainable-apis",
+        "git_commit": "d8f6cffd05d555cc04593eb8fd06e0918a57eb91",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "chapter3/java/randomized-queue",
+        "build_mode": "standalone",
+        "build_file": "chapter3/java/randomized-queue/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "chapter3/java/randomized-queue",
+        "module_root": "chapter3/java/randomized-queue",
+        "packages": [
+          "rs.exproit.util"
+        ]
+      },
+      "paths": {
+        "source_root": "chapter3/java/randomized-queue/src/main/java",
+        "test_root": "chapter3/java/randomized-queue/src/test/java",
+        "cut_path": "chapter3/java/randomized-queue/src/main/java/rs/exproit/util/RandomizedBag.java",
+        "generated_test_path": "chapter3/java/randomized-queue/src/test/java/rs/exproit/util/RandomizedBag_ArrowTest.java",
+        "generated_test_fqn": "rs.exproit.util.RandomizedBag_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "rs.exproit.util.RandomizedBag",
+        "simple_name": "RandomizedBag",
+        "package": "rs.exproit.util",
+        "kind": "class",
+        "source_sha256": "cf473a1f052695109a810f6fbaec59e9496bffa4b9d8e8d3100a4e8419115395"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "chapter3/java/randomized-queue",
+      "passing_in_all_runs": [
+        "rs.exproit.util.RandomizedBagTest#addElementsAndIterateOverThem",
+        "rs.exproit.util.RandomizedBagTest#removeElementRandomly",
+        "rs.exproit.util.RandomizedBagTest#testConstructorWithCollection",
+        "rs.exproit.util.RandomizedBagTest#testConstructorWithCollectionAndSeed",
+        "rs.exproit.util.RandomizedBagTest#testConstructorWithoutCollection",
+        "rs.exproit.util.RandomizedBagTest#testSerialization"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.9,
+        "module_test": [
+          1.7,
+          1.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011329-a5gu/base",
+      "compiled_snapshot": "work/20261118-011329-a5gu/snapshot-12ce88c5",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "chapter3/java/randomized-queue",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "rs.exproit.util.RandomizedBag",
+      "simple_name": "RandomizedBag",
+      "package": "rs.exproit.util",
+      "kind": "class",
+      "cut_path": "chapter3/java/randomized-queue/src/main/java/rs/exproit/util/RandomizedBag.java",
+      "source_sha256": "cf473a1f052695109a810f6fbaec59e9496bffa4b9d8e8d3100a4e8419115395",
+      "generated_test_path": "chapter3/java/randomized-queue/src/test/java/rs/exproit/util/RandomizedBag_ArrowTest.java",
+      "generated_test_fqn": "rs.exproit.util.RandomizedBag_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.2,
+      "plan": 1.4,
+      "compile": 1.9,
+      "baseline": [
+        1.7,
+        1.6
+      ],
+      "total": 6.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

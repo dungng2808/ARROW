@@ -1,0 +1,329 @@
+{
+  "run_id": "20261118-021432-6dhc",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-021432-6dhc",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 49
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 49
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "cukes",
+        "url": "https://github.com/ctco/cukes",
+        "git_commit": "3475345814ff4a704a3a7dc8ec53126cdc0c2a09",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "cukes-ldap",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "lv.ctco.cukes",
+            "artifact": "cukes-core",
+            "version": "0.0.36-SNAPSHOT",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 43
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:3.3.3"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "cukes-core",
+          "cukes-http",
+          "cukes-rest",
+          "cukes-rest-loadrunner",
+          "cukes-graphql",
+          "cukes-ldap",
+          "cukes-rabbitmq",
+          "cukes-samples",
+          "cukes-documentation-generator",
+          "cukes-http-mock",
+          "cukes-sql",
+          "cukes-environment-variables-plugin",
+          "cukes-oauth",
+          "cukes-samples/cukes-graphql-sample",
+          "cukes-samples/cukes-ldap-sample",
+          "cukes-samples/cukes-rabbitmq-sample",
+          "cukes-samples/cukes-rest-sample",
+          "cukes-samples/cukes-soap-sample",
+          "cukes-samples/cukes-plugin-sample",
+          "cukes-samples/cukes-http-mock-sample",
+          "cukes-samples/cukes-oauth-sample"
+        ],
+        "target_module": "cukes-ldap",
+        "module_root": "cukes-ldap",
+        "packages": [
+          "lv.ctco.cukes.ldap.facade",
+          "lv.ctco.cukes.ldap",
+          "lv.ctco.cukes.ldap.api",
+          "lv.ctco.cukes.ldap.internal",
+          "lv.ctco.cukes.ldap.internal.ldif"
+        ]
+      },
+      "paths": {
+        "source_root": "cukes-ldap/src/main/java",
+        "test_root": "cukes-ldap/src/test/java",
+        "cut_path": "cukes-ldap/src/main/java/lv/ctco/cukes/ldap/facade/EntityFacade.java",
+        "generated_test_path": "cukes-ldap/src/test/java/lv/ctco/cukes/ldap/facade/EntityFacade_ArrowTest.java",
+        "generated_test_fqn": "lv.ctco.cukes.ldap.facade.EntityFacade_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "lv.ctco.cukes.ldap.facade.EntityFacade",
+        "simple_name": "EntityFacade",
+        "package": "lv.ctco.cukes.ldap.facade",
+        "kind": "class",
+        "source_sha256": "89995ca8092b312671e922d1dcc852f163515f8902d037e53efe5142f47ebdc1"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "cukes-ldap",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "cukes-ldap",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "lv.ctco.cukes.core.RunCukesTest#And let variable \"var2\" to be random UUID",
+        "lv.ctco.cukes.core.RunCukesTest#Given let variable \"var1\" to be random UUID",
+        "lv.ctco.cukes.core.RunCukesTest#Scenario: should generate password with provided length",
+        "lv.ctco.cukes.core.RunCukesTest#Scenario: should generate proper report",
+        "lv.ctco.cukes.core.RunCukesTest#Then variable \"var1\" is set to \"{(var1)}\"",
+        "lv.ctco.cukes.core.RunCukesTest#Then variable \"var2\" is set to \"{(var2)}\"",
+        "lv.ctco.cukes.core.RunCukesTest#When let variable \"var1\" to be random password with length 8",
+        "lv.ctco.cukes.core.di.SingletonObjectFactoryTests#shouldSupportScenarioScope",
+        "lv.ctco.cukes.core.di.SingletonObjectFactoryTests#shouldThrowExceptionWhenAlreadyUsed",
+        "lv.ctco.cukes.core.facade.RandomGeneratorFacadeImplTest#byInvalidPattern",
+        "lv.ctco.cukes.core.facade.RandomGeneratorFacadeImplTest#byPattern1",
+        "lv.ctco.cukes.core.facade.RandomGeneratorFacadeImplTest#withLength",
+        "lv.ctco.cukes.core.internal.context.BaseContextHandlerTest#shouldExtractDotSeparatedName",
+        "lv.ctco.cukes.core.internal.context.BaseContextHandlerTest#shouldExtractGroupsInPatternWithUnderscoreInName",
+        "lv.ctco.cukes.core.internal.context.BaseContextHandlerTest#shouldExtractNoGroupsInPattern",
+        "lv.ctco.cukes.core.internal.context.BaseContextHandlerTest#shouldExtractSingleGroupInPattern",
+        "lv.ctco.cukes.core.internal.context.BaseContextHandlerTest#shouldExtractTwoGroupsInPattern",
+        "lv.ctco.cukes.core.internal.context.BaseContextHandlerTest#shouldNotExtractGroupsInPatternWithSpacesInName",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldCaptureValuesFromMinimalPattern",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldCaptureValuesFromSimplePattern",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldInvokeCaptureValuesFromPatternIfAtLeastOneGroupFound",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldNotInvokeCaptureValuesFromPatternIfNoGroupsFound",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldNotInvokeCaptureValuesFromPatternIfRegexDoesNotMatchValue",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldTransformMultiplePatternToValidRegex",
+        "lv.ctco.cukes.core.internal.context.ContextCapturerTest#shouldTransformPatternToValidRegex",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_emptyWorld",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_halfEmpty",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_multipleEmpty",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_multipleExist",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_multipleSameEmpty",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_multipleSameExist",
+        "lv.ctco.cukes.core.internal.context.ContextInflaterTest#testInflateGroups_withPlainText",
+        "lv.ctco.cukes.ldap.facade.EntityFacadeTest#byteArrayValueIsCheckedAsString",
+        "lv.ctco.cukes.ldap.facade.EntityFacadeTest#charArrayValueIsCheckedAsString",
+        "lv.ctco.cukes.ldap.facade.EntityFacadeTest#intArrayValueIsCheckedAsString",
+        "lv.ctco.cukes.ldap.facade.EntityFacadeTest#intValueIsCheckedAsString",
+        "lv.ctco.cukes.ldap.facade.EntityFacadeTest#stringValueIsCheckedAsString",
+        "lv.ctco.cukes.ldap.internal.DnComparatorTest#compare_differentTrees",
+        "lv.ctco.cukes.ldap.internal.DnComparatorTest#compare_sameTree",
+        "lv.ctco.cukes.ldap.internal.DnComparatorTest#sort",
+        "lv.ctco.cukes.ldap.internal.ldif.LDIFUtilsTest#read",
+        "lv.ctco.cukes.ldap.internal.ldif.LDIFUtilsTest#readMultipleEntities",
+        "lv.ctco.cukes.ldap.internal.ldif.LDIFUtilsTest#readSingleEntity",
+        "lv.ctco.cukes.ldap.internal.ldif.LDIFUtilsTest#readWithLineBreaks"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 31.4,
+        "module_test": [
+          8.6,
+          7.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021432-6dhc/base",
+      "compiled_snapshot": "work/20261118-021432-6dhc/snapshot-81b2b052",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "cukes-ldap",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "lv.ctco.cukes.ldap.facade.EntityFacade",
+      "simple_name": "EntityFacade",
+      "package": "lv.ctco.cukes.ldap.facade",
+      "kind": "class",
+      "cut_path": "cukes-ldap/src/main/java/lv/ctco/cukes/ldap/facade/EntityFacade.java",
+      "source_sha256": "89995ca8092b312671e922d1dcc852f163515f8902d037e53efe5142f47ebdc1",
+      "generated_test_path": "cukes-ldap/src/test/java/lv/ctco/cukes/ldap/facade/EntityFacade_ArrowTest.java",
+      "generated_test_fqn": "lv.ctco.cukes.ldap.facade.EntityFacade_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 1.1,
+      "compile": 31.4,
+      "baseline": [
+        8.6,
+        7.8
+      ],
+      "total": 49
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

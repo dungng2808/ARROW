@@ -1,0 +1,671 @@
+{
+  "run_id": "20261118-023110-et2q",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-023110-et2q",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 42
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 42
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "db-scheduler",
+        "url": "https://github.com/kagkarlsson/db-scheduler",
+        "git_commit": "14776dd48b43b470fc8b0e10bfe2ebd62e39ded6",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "db-scheduler",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.github.kagkarlsson",
+            "artifact": "micro-jdbc",
+            "version": "0.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.36",
+            "scope": "compile"
+          },
+          {
+            "group": "com.cronutils",
+            "artifact": "cron-utils",
+            "version": "9.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.micrometer",
+            "artifact": "micrometer-core",
+            "version": "1.9.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.9.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.13.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-core",
+            "version": "2.13.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.13.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.datatype",
+            "artifact": "jackson-datatype-jsr310",
+            "version": "2.13.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.2.10",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-core",
+            "version": "1.2.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter",
+            "version": "5.8.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-api",
+            "version": "5.8.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-params",
+            "version": "5.8.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-core",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-library",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "co.unruly",
+            "artifact": "java-8-matchers",
+            "version": "1.6",
+            "scope": "test"
+          },
+          {
+            "group": "nl.jqno.equalsverifier",
+            "artifact": "equalsverifier",
+            "version": "3.10.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.12.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.hsqldb",
+            "artifact": "hsqldb",
+            "version": "2.7.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.postgresql",
+            "artifact": "postgresql",
+            "version": "42.5.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.opentable.components",
+            "artifact": "otj-pg-embedded",
+            "version": "1.0.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.zaxxer",
+            "artifact": "HikariCP",
+            "version": "4.0.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "postgresql",
+            "version": "1.17.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "mysql",
+            "version": "1.17.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "mssqlserver",
+            "version": "1.17.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "oracle-xe",
+            "version": "1.17.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "junit-jupiter",
+            "version": "1.17.3",
+            "scope": "test"
+          },
+          {
+            "group": "mysql",
+            "artifact": "mysql-connector-java",
+            "version": "8.0.28",
+            "scope": "test"
+          },
+          {
+            "group": "com.microsoft.sqlserver",
+            "artifact": "mssql-jdbc",
+            "version": "8.2.1.jre8",
+            "scope": "test"
+          },
+          {
+            "group": "com.oracle.database.jdbc",
+            "artifact": "ojdbc8",
+            "version": "21.5.0.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "4.8.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-junit-jupiter",
+            "version": "4.5.1",
+            "scope": "test"
+          },
+          {
+            "group": "net.bytebuddy",
+            "artifact": "byte-buddy",
+            "version": "1.12.16",
+            "scope": "test"
+          },
+          {
+            "group": "net.bytebuddy",
+            "artifact": "byte-buddy-agent",
+            "version": "1.12.16",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "31.1-jre",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 63
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.8.2",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:4.8.0",
+          "org.mockito:mockito-junit-jupiter:4.5.1"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-core:1.3",
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test); imports 49 org.junit.jupiter, 1 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "db-scheduler",
+          "db-scheduler-boot-starter",
+          "examples",
+          "examples/features",
+          "examples/spring-boot-example"
+        ],
+        "target_module": "db-scheduler",
+        "module_root": "db-scheduler",
+        "packages": [
+          "com.github.kagkarlsson.scheduler.task.schedule",
+          "com.github.kagkarlsson.scheduler",
+          "com.github.kagkarlsson.scheduler.task",
+          "com.github.kagkarlsson.scheduler.concurrent",
+          "com.github.kagkarlsson.scheduler.exceptions",
+          "com.github.kagkarlsson.scheduler.jdbc",
+          "com.github.kagkarlsson.scheduler.logging",
+          "com.github.kagkarlsson.scheduler.serializer",
+          "com.github.kagkarlsson.scheduler.serializer.gson",
+          "com.github.kagkarlsson.scheduler.serializer.jackson",
+          "com.github.kagkarlsson.scheduler.stats",
+          "com.github.kagkarlsson.scheduler.task.helper",
+          "com.github.kagkarlsson.scheduler.testhelper"
+        ]
+      },
+      "paths": {
+        "source_root": "db-scheduler/src/main/java",
+        "test_root": "db-scheduler/src/test/java",
+        "cut_path": "db-scheduler/src/main/java/com/github/kagkarlsson/scheduler/task/schedule/CompositeParser.java",
+        "generated_test_path": "db-scheduler/src/test/java/com/github/kagkarlsson/scheduler/task/schedule/CompositeParser_ArrowTest.java",
+        "generated_test_fqn": "com.github.kagkarlsson.scheduler.task.schedule.CompositeParser_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.github.kagkarlsson.scheduler.task.schedule.CompositeParser",
+        "simple_name": "CompositeParser",
+        "package": "com.github.kagkarlsson.scheduler.task.schedule",
+        "kind": "class",
+        "source_sha256": "3b1c7ae56a8104a277f9a35211544d66dbbc4fb145933838d9cf08f2d387b014"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "db-scheduler",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "db-scheduler",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.github.kagkarlsson.scheduler.DueExecutionsBatchTest#test_trigger_check_for_more_due",
+        "com.github.kagkarlsson.scheduler.ExecutionTest#test_equals",
+        "com.github.kagkarlsson.scheduler.RunUntilShutdownTest#should_wait_on_ok_execution",
+        "com.github.kagkarlsson.scheduler.RunUntilShutdownTest#should_wait_on_runtime_exception",
+        "com.github.kagkarlsson.scheduler.ScheduledExecutionTest#test_data_class_type_equals",
+        "com.github.kagkarlsson.scheduler.ScheduledExecutionTest#test_data_class_type_not_equals",
+        "com.github.kagkarlsson.scheduler.ScheduledExecutionTest#test_equals",
+        "com.github.kagkarlsson.scheduler.SchedulerClientExceptionsTest#failsToCancelWhenATaskIsPickedAndExecuting",
+        "com.github.kagkarlsson.scheduler.SchedulerClientExceptionsTest#failsToCancelWhenTaskIsNotFound",
+        "com.github.kagkarlsson.scheduler.SchedulerClientExceptionsTest#failsToRescheduleWhenATaskIsPickedAndExecuting",
+        "com.github.kagkarlsson.scheduler.SchedulerClientExceptionsTest#failsToRescheduleWhenTaskIsNotFound",
+        "com.github.kagkarlsson.scheduler.SerializerExceptionsTest#onDeserializeFailureWillThrowExpectedException",
+        "com.github.kagkarlsson.scheduler.SerializerExceptionsTest#onSerializeFailureWillThrowExpectedException",
+        "com.github.kagkarlsson.scheduler.StringUtilsTest#test_truncate",
+        "com.github.kagkarlsson.scheduler.WaiterTest#should_not_wait_if_instructed_to_skip_next",
+        "com.github.kagkarlsson.scheduler.WaiterTest#should_wait_at_least_duration",
+        "com.github.kagkarlsson.scheduler.WaiterTest#should_wait_for_duration_even_if_prematurely_notified",
+        "com.github.kagkarlsson.scheduler.WaiterTest#should_wait_until_woken",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#createIfNotExistsFailsToAddNewTask",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#getExecutionIsMoreThanOne",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#removesUnexpectedNumberOfRows{int}[1]",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#removesUnexpectedNumberOfRows{int}[2]",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#rescheduleUpdatesUnexpectedNumberOfRowsWithNewData{int}[1]",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#rescheduleUpdatesUnexpectedNumberOfRowsWithNewData{int}[2]",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#rescheduleUpdatesUnexpectedNumberOfRowsWithoutNewData{int}[1]",
+        "com.github.kagkarlsson.scheduler.jdbc.JdbcTaskRepositoryExceptionsTest#rescheduleUpdatesUnexpectedNumberOfRowsWithoutNewData{int}[2]",
+        "com.github.kagkarlsson.scheduler.jdbc.QueryBuilderTest#test",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_nothing_with_log_level_OFF",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_stack_trace_if_configured{LogLevel}[1]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_stack_trace_if_configured{LogLevel}[2]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_stack_trace_if_configured{LogLevel}[3]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_stack_trace_if_configured{LogLevel}[4]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_stack_trace_if_configured{LogLevel}[5]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_using_correct_log_level{LogLevel}[1]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_using_correct_log_level{LogLevel}[2]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_using_correct_log_level{LogLevel}[3]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_using_correct_log_level{LogLevel}[4]",
+        "com.github.kagkarlsson.scheduler.logging.ConfigurableLoggerTest#should_log_using_correct_log_level{LogLevel}[5]",
+        "com.github.kagkarlsson.scheduler.serializer.gson.GsonSerializerTest#serialize_cron",
+        "com.github.kagkarlsson.scheduler.serializer.gson.GsonSerializerTest#serialize_daily",
+        "com.github.kagkarlsson.scheduler.serializer.gson.GsonSerializerTest#serialize_fixed_delay",
+        "com.github.kagkarlsson.scheduler.serializer.gson.GsonSerializerTest#serialize_instant",
+        "com.github.kagkarlsson.scheduler.serializer.gson.GsonSerializerTest#serialize_schedule_and_data",
+        "com.github.kagkarlsson.scheduler.serializer.jackson.JacksonSerializerTest#serialize_cron",
+        "com.github.kagkarlsson.scheduler.serializer.jackson.JacksonSerializerTest#serialize_daily",
+        "com.github.kagkarlsson.scheduler.serializer.jackson.JacksonSerializerTest#serialize_fixed_delay",
+        "com.github.kagkarlsson.scheduler.serializer.jackson.JacksonSerializerTest#serialize_instant",
+        "com.github.kagkarlsson.scheduler.serializer.jackson.JacksonSerializerTest#serialize_plain_schedule_and_data",
+        "com.github.kagkarlsson.scheduler.serializer.jackson.JacksonSerializerTest#serialize_schedule_and_data",
+        "com.github.kagkarlsson.scheduler.task.CronTest#should_always_use_time_zone",
+        "com.github.kagkarlsson.scheduler.task.CronTest#should_generate_next_date_correctly",
+        "com.github.kagkarlsson.scheduler.task.CronTest#should_mark_schedule_as_disabled",
+        "com.github.kagkarlsson.scheduler.task.CronTest#should_take_time_zone_into_account",
+        "com.github.kagkarlsson.scheduler.task.CronTest#should_validate_pattern",
+        "com.github.kagkarlsson.scheduler.task.CronTest#should_validate_zone",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#equals_and_hash_code",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly_during_daylight_saving_time",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly_during_standard_time",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly_on_the_day_before_time_changes_to_daylight_saving",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly_on_the_day_before_time_changes_to_standard",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly_on_the_day_when_time_changes_to_daylight_saving",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_generate_next_date_correctly_on_the_day_when_time_changes_to_standard",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_not_allow_empty_times",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#should_not_allow_null_zone_id",
+        "com.github.kagkarlsson.scheduler.task.DailyTest#to_string",
+        "com.github.kagkarlsson.scheduler.task.SchedulesTest#should_validate_pattern",
+        "com.github.kagkarlsson.scheduler.task.SerializableSchedulesTest#cron_schedule",
+        "com.github.kagkarlsson.scheduler.task.helper.ScheduleRecurringOnStartupTest#checkForNewExecutionTime_no_new_execution_time_if_execution_imminent",
+        "com.github.kagkarlsson.scheduler.task.helper.ScheduleRecurringOnStartupTest#checkForNewExecutionTime_updated_if_deterministic_schedule_change",
+        "com.github.kagkarlsson.scheduler.task.helper.ScheduleRecurringOnStartupTest#checkForNewExecutionTime_updated_if_non_deterministic_schedule_change_to_sooner",
+        "com.github.kagkarlsson.scheduler.task.helper.ScheduleRecurringOnStartupTest#test_differenceGreaterThan",
+        "com.github.kagkarlsson.scheduler.task.schedule.CompositeParserTest#cannot_create_from_null_or_empty_list",
+        "com.github.kagkarlsson.scheduler.task.schedule.CompositeParserTest#examples_should_be_parsable",
+        "com.github.kagkarlsson.scheduler.task.schedule.CompositeParserTest#examples_should_come_from_delegates",
+        "com.github.kagkarlsson.scheduler.task.schedule.CompositeParserTest#fails_when_no_successful_parsers",
+        "com.github.kagkarlsson.scheduler.task.schedule.CompositeParserTest#fails_when_one_required_delegate_fails",
+        "com.github.kagkarlsson.scheduler.task.schedule.CompositeParserTest#returns_schedule_from_the_first_matching_parser",
+        "com.github.kagkarlsson.scheduler.task.schedule.DailyParserTest#examples_should_be_parsable",
+        "com.github.kagkarlsson.scheduler.task.schedule.DailyParserTest#should_fail_when_unable_to_parse_timezone",
+        "com.github.kagkarlsson.scheduler.task.schedule.DailyParserTest#should_recognize_correct_schedule_string_without_timezone",
+        "com.github.kagkarlsson.scheduler.task.schedule.DailyParserTest#should_recognize_correct_schedule_with_timezone_string",
+        "com.github.kagkarlsson.scheduler.task.schedule.DailyParserTest#should_return_empty_for_non_matching_string",
+        "com.github.kagkarlsson.scheduler.task.schedule.FixedDelayParserTest#examples_should_be_parsable",
+        "com.github.kagkarlsson.scheduler.task.schedule.FixedDelayParserTest#should_fail_on_unrecognizable_schedule_string",
+        "com.github.kagkarlsson.scheduler.task.schedule.FixedDelayParserTest#should_recognize_correct_schedule_string",
+        "com.github.kagkarlsson.scheduler.task.schedule.FixedDelayTest#equals_and_hash_code",
+        "com.github.kagkarlsson.scheduler.task.schedule.FixedDelayTest#to_string",
+        "com.github.kagkarlsson.scheduler.task.schedule.UnrecognizableScheduleTest#contains_correct_message"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.github.kagkarlsson.scheduler.ClusterTest#test_concurrency_optimistic_locking",
+        "com.github.kagkarlsson.scheduler.ClusterTest#test_concurrency_recurring",
+        "com.github.kagkarlsson.scheduler.ClusterTest#test_concurrency_select_for_update",
+        "com.github.kagkarlsson.scheduler.CustomTableNameTest#can_customize_table_name",
+        "com.github.kagkarlsson.scheduler.DeadExecutionsTest#scheduler_should_detect_dead_execution_that_never_updated_heartbeat",
+        "com.github.kagkarlsson.scheduler.DeadExecutionsTest#scheduler_should_handle_dead_executions",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_dead_executions_should_not_include_previously_unresolved",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_due_should_be_sorted",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_due_should_honor_max_results_limit",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_due_should_not_include_previously_unresolved",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_due_should_only_include_due_executions",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_scheduled_by_task_name",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_scheduled_executions",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#get_scheduled_executions_should_work_with_unresolved",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#lockAndGetDue_should_not_include_previously_unresolved",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#lockAndGetDue_should_pick_due",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#picked_execution_should_have_information_about_which_scheduler_processes_it",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#picked_executions_should_not_be_returned_as_due",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#reschedule_should_move_execution_in_time",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#reschedule_should_persist_consecutive_failures",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#reschedule_should_update_data_if_specified",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#should_not_be_able_to_pick_execution_that_has_been_rescheduled",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#test_createIfNotExists",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#test_get_failing_executions",
+        "com.github.kagkarlsson.scheduler.JdbcTaskRepositoryTest#test_replace",
+        "com.github.kagkarlsson.scheduler.SchedulerClientTest#client_should_be_able_to_fetch_executions_for_task",
+        "com.github.kagkarlsson.scheduler.SchedulerClientTest#client_should_be_able_to_fetch_single_scheduled_execution",
+        "com.github.kagkarlsson.scheduler.SchedulerClientTest#client_should_be_able_to_reschedule_executions",
+        "com.github.kagkarlsson.scheduler.SchedulerClientTest#client_should_be_able_to_schedule_executions",
+        "com.github.kagkarlsson.scheduler.SchedulerClientTest#should_be_able_to_schedule_other_executions_from_an_executionhandler",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#scheduler_should_execute_recurring_task_and_reschedule",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#scheduler_should_execute_rescheduled_task_when_exactly_due",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#scheduler_should_execute_task_when_exactly_due",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#scheduler_should_not_execute_canceled_tasks",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#scheduler_should_track_duration",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#should_expose_cause_of_failure_to_completion_handler",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#should_only_attempt_task_when_max_retries_handler_used",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#should_reschedule_failure_on_exponential_backoff_with_default_rate",
+        "com.github.kagkarlsson.scheduler.SchedulerTest#should_reschedule_failure_on_exponential_backoff_with_defined_rate",
+        "com.github.kagkarlsson.scheduler.compatibility.PostgresqlCompatibilityTest#test_compatibility_fetch_and_lock_on_execute",
+        "com.github.kagkarlsson.scheduler.compatibility.PostgresqlCompatibilityTest#test_compatibility_lock_and_fetch",
+        "com.github.kagkarlsson.scheduler.compatibility.PostgresqlCompatibilityTest#test_jdbc_repository_compatibility",
+        "com.github.kagkarlsson.scheduler.compatibility.PostgresqlCompatibilityTest#test_jdbc_repository_compatibility_set_data",
+        "com.github.kagkarlsson.scheduler.compatibility.PostgresqlCompatibilityTest#test_jdbc_repository_compatibility_with_data",
+        "com.github.kagkarlsson.scheduler.compatibility.PostgresqlCompatibilityTest#test_jdbc_repository_select_for_update_compatibility",
+        "com.github.kagkarlsson.scheduler.functional.DeadExecutionTest#test_dead_execution",
+        "com.github.kagkarlsson.scheduler.functional.DeleteUnresolvedTest#should_delete_executions_with_old_unresolved_tasknames",
+        "com.github.kagkarlsson.scheduler.functional.DisabledCronTaskTest#should_remove_existing_executions_for_tasks_with_disabled_schedule",
+        "com.github.kagkarlsson.scheduler.functional.DynamicRecurringTaskTest#should_schedule_multiple_instances_with_different_schedules",
+        "com.github.kagkarlsson.scheduler.functional.DynamicRecurringTaskTest#should_support_statechanging_tasks",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[10]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[1]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[2]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[3]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[4]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[5]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[6]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[7]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[8]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_happy[9]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[10]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[1]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[2]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[3]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[4]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[5]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[6]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[7]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[8]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_high_volume[9]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[10]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[1]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[2]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[3]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[4]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[5]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[6]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[7]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[8]",
+        "com.github.kagkarlsson.scheduler.functional.ExecutorPoolTest#test_execute_until_none_left_low_polling_limit[9]",
+        "com.github.kagkarlsson.scheduler.functional.ImmediateExecutionTest#test_immediate_execution",
+        "com.github.kagkarlsson.scheduler.functional.ImmediateExecutionTest#test_immediate_execution_by_completion_handler",
+        "com.github.kagkarlsson.scheduler.functional.RecurringTaskTest#should_have_starttime_according_to_schedule_by_default",
+        "com.github.kagkarlsson.scheduler.functional.RecurringTaskTest#should_have_starttime_now_if_overridden_by_schedule",
+        "com.github.kagkarlsson.scheduler.functional.RecurringTaskTest#should_not_update_data_of_preexisting_exeutions_even_if_rescheduling_because_of_updated_schedule",
+        "com.github.kagkarlsson.scheduler.functional.RecurringTaskTest#should_update_preexisting_exeutions_with_new_deterministic_schedule_if_new_next_execution_time_after_preexisting",
+        "com.github.kagkarlsson.scheduler.functional.RecurringTaskTest#should_update_preexisting_exeutions_with_new_schedule_if_new_next_execution_time_before_preexisting",
+        "com.github.kagkarlsson.scheduler.jdbc.PostgreSqlJdbcCustomizationTest#test"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 25.1,
+        "module_test": [
+          6.6,
+          4.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023110-et2q/base",
+      "compiled_snapshot": "work/20261118-023110-et2q/snapshot-80e2f0ab",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "db-scheduler",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.github.kagkarlsson.scheduler.task.schedule.CompositeParser",
+      "simple_name": "CompositeParser",
+      "package": "com.github.kagkarlsson.scheduler.task.schedule",
+      "kind": "class",
+      "cut_path": "db-scheduler/src/main/java/com/github/kagkarlsson/scheduler/task/schedule/CompositeParser.java",
+      "source_sha256": "3b1c7ae56a8104a277f9a35211544d66dbbc4fb145933838d9cf08f2d387b014",
+      "generated_test_path": "db-scheduler/src/test/java/com/github/kagkarlsson/scheduler/task/schedule/CompositeParser_ArrowTest.java",
+      "generated_test_fqn": "com.github.kagkarlsson.scheduler.task.schedule.CompositeParser_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 88 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 2.2,
+      "locate": 0.2,
+      "plan": 6,
+      "compile": 25.1,
+      "baseline": [
+        6.6,
+        4.3
+      ],
+      "total": 42
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 88 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

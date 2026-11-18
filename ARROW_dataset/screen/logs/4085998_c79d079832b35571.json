@@ -1,0 +1,40 @@
+{
+  "run_id": "20261118-043253-6ncu",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-043253-6ncu",
+  "outcome": {
+    "outcome": "INFRA",
+    "code": "B1_BASELINE_TIMEOUT",
+    "message": "Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).",
+    "hint": "Tăng verification.step_timeout_seconds.",
+    "first_error": null,
+    "log": "block1/logs/baseline-1.log",
+    "seconds": 910.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "INFRA",
+      "code": "B1_BASELINE_TIMEOUT",
+      "message": "Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).",
+      "hint": "Tăng verification.step_timeout_seconds.",
+      "first_error": null,
+      "log": "block1/logs/baseline-1.log",
+      "seconds": 910.2
+    },
+    "metadata": null,
+    "baseline": null,
+    "workspace": null,
+    "cut": null,
+    "warnings": [],
+    "timings": {
+      "checkout": 5.4,
+      "locate": 1.7,
+      "plan": 0,
+      "compile": 0,
+      "baseline": [],
+      "total": 910.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

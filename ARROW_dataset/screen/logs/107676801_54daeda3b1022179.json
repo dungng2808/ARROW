@@ -1,0 +1,457 @@
+{
+  "run_id": "20261118-022105-rzr0",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-022105-rzr0",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 510.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 510.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "configuration-as-code-plugin",
+        "url": "https://github.com/jenkinsci/configuration-as-code-plugin",
+        "git_commit": "14ca71acab5d19c6c2ae5fa179dfb7bca88a23fd",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "plugin",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "11",
+        "declared_source": "maven.compiler.release",
+        "major": 11,
+        "jdk_major": 11,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.2",
+            "scope": "compile"
+          },
+          {
+            "group": "io.jenkins.plugins",
+            "artifact": "caffeine-api",
+            "version": "2.9.3-65.v6a_47d0f4d1fe",
+            "scope": "compile"
+          },
+          {
+            "group": "io.jenkins.plugins",
+            "artifact": "commons-text-api",
+            "version": "1.10.0-36.vc008c8fcda_7b_",
+            "scope": "compile"
+          },
+          {
+            "group": "io.jenkins.plugins",
+            "artifact": "snakeyaml-api",
+            "version": "1.33-95.va_b_a_e3e47b_fa_4",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vavr",
+            "artifact": "vavr",
+            "version": "0.10.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.json",
+            "artifact": "json",
+            "version": "20230227",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jenkins-ci.main",
+            "artifact": "jenkins-core",
+            "version": "2.387.1",
+            "scope": "provided"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "3.1.0",
+            "scope": "provided"
+          },
+          {
+            "group": "commons-logging",
+            "artifact": "commons-logging",
+            "version": "1.2",
+            "scope": "provided"
+          }
+        ],
+        "test": [
+          {
+            "group": "com.github.stefanbirkner",
+            "artifact": "system-rules",
+            "version": "1.19.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.jenkins-ci.main",
+            "artifact": "jenkins-war",
+            "version": "2.387.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.jenkins-ci.main",
+            "artifact": "jenkins-test-harness",
+            "version": "1952.v3a_b_0cd3f5a_03",
+            "scope": "test"
+          },
+          {
+            "group": "org.jenkins-ci",
+            "artifact": "test-annotations",
+            "version": "1.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter",
+            "version": "5.9.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.vintage",
+            "artifact": "junit-vintage-engine",
+            "version": "5.9.2",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 151
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.2",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest:2.2",
+          "org.hamcrest:hamcrest-library:2.2"
+        ],
+        "evidence": "dependency junit:junit (test); imports 0 org.junit.jupiter, 17 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "plugin",
+          "test-harness",
+          "integrations"
+        ],
+        "target_module": "plugin",
+        "module_root": "plugin",
+        "packages": [
+          "io.jenkins.plugins.casc.impl.configurators",
+          "io.jenkins.plugins.casc",
+          "io.jenkins.plugins.casc.impl",
+          "io.jenkins.plugins.casc.cli",
+          "io.jenkins.plugins.casc.core",
+          "io.jenkins.plugins.casc.impl.attributes",
+          "io.jenkins.plugins.casc.impl.secrets",
+          "io.jenkins.plugins.casc.model",
+          "io.jenkins.plugins.casc.util",
+          "io.jenkins.plugins.casc.yaml"
+        ]
+      },
+      "paths": {
+        "source_root": "plugin/src/main/java",
+        "test_root": "plugin/src/test/java",
+        "cut_path": "plugin/src/main/java/io/jenkins/plugins/casc/impl/configurators/PrimitiveConfigurator.java",
+        "generated_test_path": "plugin/src/test/java/io/jenkins/plugins/casc/impl/configurators/PrimitiveConfigurator_ArrowTest.java",
+        "generated_test_fqn": "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfigurator_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfigurator",
+        "simple_name": "PrimitiveConfigurator",
+        "package": "io.jenkins.plugins.casc.impl.configurators",
+        "kind": "class",
+        "source_sha256": "92e9e73ac7e1127e829c0422b21def26b5ea5a98fc72edf2e210c580c3d39347"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "plugin",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "plugin",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "InjectedTest#testCliSanity",
+        "InjectedTest#testPluginActive",
+        "io.jenkins.plugins.casc.AttributeTest#checkCommonSecretPatterns",
+        "io.jenkins.plugins.casc.AttributeTest#checkCommonSecretPatternsForOverrides",
+        "io.jenkins.plugins.casc.AttributeTest#checkNonSecretPatterns",
+        "io.jenkins.plugins.casc.AttributeTest#checkStaticResolution",
+        "io.jenkins.plugins.casc.IgnoreAliasEntryTest#UnknownRootElementShouldReturnTrue",
+        "io.jenkins.plugins.casc.IgnoreAliasEntryTest#aliasKeyIsNull",
+        "io.jenkins.plugins.casc.IgnoreAliasEntryTest#aliasKeyStartsWithX",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_Base64",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_Base64NestedEnv",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_BinaryFileBase64",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_File",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileBase64",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileBase64NestedEnv",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileBase64NotFound",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileKey",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileNotFound",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileWithRelative",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileWithSpace",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_FileWithSpaceAndRelative",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_Json",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_JsonFromFile",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_JsonMissingKey",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_JsonWithNewlineBetweenTokens",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_JsonWithNewlineInValue",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_JsonWithSpaceInKey",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_SystemProperty",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_SystemPropertyNotFound",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_blank",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_defaultValueLimit",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_empty",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_emptyDefault",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_emptyDefaultEnvDefined",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_mixedMultipleEntries",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_mixedMultipleEntriesEscaped",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_mixedMultipleEntriesWithDefault",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_mixedSingleEntry",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_mixedSingleEntryEscaped",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_mixedSingleEntryWithDefault",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_multipleEntries",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_multipleEntriesEscaped",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_multipleEntriesWithDefaultValue",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_multipleEntriesWithDefaultValueAndEnvDefined",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_multipleEntriesWithoutDefaultValue",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_noInterpolatorStringLookupForARegularFileOrBase64Variable",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_nothing",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_nothingBrackets",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_nothingDefault",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_nothingSpace",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_preservesPrefixesNotCoveredBySubstitutors",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_singleEntry",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_singleEntryDoubleEscaped",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_singleEntryEscaped",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_singleEntryWithDefaultValue",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_singleEntryWithDefaultValueAndWithEnvDefined",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#resolve_singleEntryWithoutDefaultValue",
+        "io.jenkins.plugins.casc.SecretSourceResolverTest#shouldEncodeInternalVarsProperly",
+        "io.jenkins.plugins.casc.TokenReloadCrumbExclusionTest#crumbExclusionChecksRequestPath",
+        "io.jenkins.plugins.casc.TokenReloadCrumbExclusionTest#crumbExclusionIsDisabledByDefault",
+        "io.jenkins.plugins.casc.TokenReloadCrumbExclusionTest#crumbExclustionAllowsReloadIfEnabledAndRequestPathMatch",
+        "io.jenkins.plugins.casc.UnknownRootElementTest#ignoreKnownAlias",
+        "io.jenkins.plugins.casc.UnknownRootElementTest#oneUnknown",
+        "io.jenkins.plugins.casc.UnknownRootElementTest#twoUnknown",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_Integer",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_Integer_env",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_boolean",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_enum",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_enum2",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_int",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_int_env_default",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_string",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_string_env",
+        "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfiguratorTest#_string_env_default",
+        "io.jenkins.plugins.casc.model.MappingTest#empty",
+        "io.jenkins.plugins.casc.model.MappingTest#notEmpty",
+        "io.jenkins.plugins.casc.permissions.PermissionsTest#checkPermissionsForAdmin",
+        "io.jenkins.plugins.casc.permissions.PermissionsTest#checkPermissionsForManager",
+        "io.jenkins.plugins.casc.permissions.PermissionsTest#checkPermissionsForReader",
+        "io.jenkins.plugins.casc.permissions.PermissionsTest#checkPermissionsForSystemReader",
+        "io.jenkins.plugins.casc.yaml.ErrorOnConflictMergeStrategyTest#hasCorrectDefaultName",
+        "io.jenkins.plugins.casc.yaml.ErrorOnConflictMergeStrategyTest#incompatible",
+        "io.jenkins.plugins.casc.yaml.ErrorOnConflictMergeStrategyTest#merge",
+        "io.jenkins.plugins.casc.yaml.ExportTest#shouldNotExportValuesWithSecretConstructors",
+        "io.jenkins.plugins.casc.yaml.ExportTest#shouldNotExportValuesWithSecretFields",
+        "io.jenkins.plugins.casc.yaml.ExportTest#shouldNotExportValuesWithSecretGetters",
+        "io.jenkins.plugins.casc.yaml.MergeStrategyActionTest#test",
+        "io.jenkins.plugins.casc.yaml.MergeStrategyTest#haveTheDefaultStrategy",
+        "io.jenkins.plugins.casc.yaml.OverrideMergeStrategyTest#hasCorrectDefaultName",
+        "io.jenkins.plugins.casc.yaml.OverrideMergeStrategyTest#incompatible",
+        "io.jenkins.plugins.casc.yaml.OverrideMergeStrategyTest#merge",
+        "io.jenkins.plugins.casc.yaml.OverrideMergeStrategyTest#multipleKeys",
+        "io.jenkins.plugins.casc.yaml.OverrideMergeStrategyTest#sequenceValue",
+        "io.jenkins.plugins.casc.yaml.OverrideMergeStrategyTest#simpleStringValue",
+        "io.jenkins.plugins.casc.yaml.YamlExportTest#shouldDiscoverSecretsBasedOnTheAttributeType",
+        "io.jenkins.plugins.casc.yaml.YamlSourceTest#shouldHaveInformativeToStringForPathSource",
+        "io.jenkins.plugins.casc.yaml.YamlSourceTest#shouldHaveInformativeToStringForRequestSource",
+        "io.jenkins.plugins.casc.yaml.YamlSourceTest#shouldHaveInformativeToStringForUrlSource",
+        "io.jenkins.plugins.casc.yaml.YamlSourceTest#shouldUseToStringOfSourceInToStringForInputStream",
+        "org.jvnet.hudson.test.JellyTestSuiteBuilder$JellyCheck#",
+        "org.jvnet.hudson.test.PropertiesTestSuite$PropertiesTest#",
+        "org.jvnet.hudson.test.junit.FailedTest#"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 262.7,
+        "module_test": [
+          55.4,
+          48.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022105-rzr0/base",
+      "compiled_snapshot": "work/20261118-022105-rzr0/snapshot-5e689e2b",
+      "source_tree_hash": null,
+      "jdk_major": 11,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-11/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "plugin",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfigurator",
+      "simple_name": "PrimitiveConfigurator",
+      "package": "io.jenkins.plugins.casc.impl.configurators",
+      "kind": "class",
+      "cut_path": "plugin/src/main/java/io/jenkins/plugins/casc/impl/configurators/PrimitiveConfigurator.java",
+      "source_sha256": "92e9e73ac7e1127e829c0422b21def26b5ea5a98fc72edf2e210c580c3d39347",
+      "generated_test_path": "plugin/src/test/java/io/jenkins/plugins/casc/impl/configurators/PrimitiveConfigurator_ArrowTest.java",
+      "generated_test_fqn": "io.jenkins.plugins.casc.impl.configurators.PrimitiveConfigurator_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.9,
+      "locate": 0.2,
+      "plan": 143.5,
+      "compile": 262.7,
+      "baseline": [
+        55.4,
+        48.8
+      ],
+      "total": 510.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

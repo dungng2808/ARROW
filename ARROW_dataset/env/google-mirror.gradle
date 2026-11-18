@@ -1,0 +1,64 @@
+// Tải Maven Central qua bản sao của Google (17–18/11/2026): Maven Central và
+// JCenter trả 429 Too Many Requests khi screen dataset ARROW. Xóa file này để bỏ.
+//
+// 1. Kho trỏ tới Maven Central -> đổi sang bản sao Google (cùng nội dung).
+// 2. Mọi danh sách kho (pluginManagement, buildscript, repositories): thêm bản
+//    sao Google lên ĐẦU. Gradle Plugin Portal tự chuyển nhiều file sang Maven
+//    Central; tìm ở bản sao trước thì không bị chuyển nữa.
+// JCenter giữ nguyên, KHÔNG đổi sang bản sao: một số plugin cũ chỉ có trên
+// JCenter, đổi đi thì build hỏng và lớp bị loại oan. Nhờ bản sao đứng đầu,
+// chỉ những file chỉ có trên JCenter mới phải tải từ JCenter.
+//
+// Chỉ dùng API có từ Gradle cũ (all, addFirst, settingsEvaluated, allprojects)
+// để không làm hỏng build của dự án dùng Gradle wrapper đời cũ.
+
+def MIRROR = 'https://maven-central.storage-download.googleapis.com/maven2/'
+def REPLACED = ['://repo.maven.apache.org/maven2', '://repo1.maven.org/maven2']
+
+def redirect = { repos ->
+    repos.all { r ->
+        if (r instanceof MavenArtifactRepository && r.url != null
+                && REPLACED.any { r.url.toString().contains(it) }) {
+            r.url = MIRROR
+        }
+    }
+}
+
+// Thêm bản sao lên đầu một danh sách kho (bỏ qua nếu đã có).
+def mirrorFirst = { repos ->
+    if (repos.any { it instanceof MavenArtifactRepository && it.url?.toString() == MIRROR && it.name == 'googleMavenCentralMirror' }) return
+    def m = repos.maven { name = 'googleMavenCentralMirror'; url = MIRROR }
+    repos.remove(m)
+    repos.addFirst(m)
+}
+
+// beforeSettings (Gradle 6.0+): chạy trước settings.gradle, để cả plugin khai báo
+// ngay trong settings.gradle (vd. com.gradle.develocity) cũng tải qua bản sao.
+// Gradle cũ hơn không có hook này (và cũng không có plugin trong settings).
+try {
+    gradle.beforeSettings { s ->
+        def repos = s.pluginManagement.repositories
+        if (repos.isEmpty()) { repos.gradlePluginPortal() }
+        mirrorFirst(repos)
+    }
+} catch (Exception ignored) { }
+
+gradle.settingsEvaluated { s ->
+    // pluginManagement chỉ có từ Gradle 3.5; Gradle cũ hơn thì bỏ qua.
+    try {
+        def repos = s.pluginManagement.repositories
+        // Danh sách rỗng = Gradle dùng Plugin Portal mặc định. Thêm bản sao vào
+        // thì mặc định mất, nên phải thêm lại Plugin Portal.
+        if (repos.isEmpty()) { repos.gradlePluginPortal() }
+        redirect(repos)
+        mirrorFirst(repos)
+    } catch (Exception ignored) { }
+}
+
+gradle.allprojects { p ->
+    redirect(p.buildscript.repositories)
+    redirect(p.repositories)
+    // Chạy trước build script của dự án, nên bản sao đứng đầu cả hai danh sách.
+    mirrorFirst(p.buildscript.repositories)
+    mirrorFirst(p.repositories)
+}

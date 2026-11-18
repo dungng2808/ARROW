@@ -1,0 +1,383 @@
+{
+  "run_id": "20261118-023254-bh4x",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-023254-bh4x",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 59.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 59.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "KissMDA",
+        "url": "https://github.com/crowdcode-de/KissMDA",
+        "git_commit": "376fcbf92546696e8e8660d3e37795abf508fcca",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "maven/kissmda-maven-plugin",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-plugin-api",
+            "version": "3.3.9",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-core",
+            "version": "3.3.9",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-artifact",
+            "version": "3.3.9",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-model",
+            "version": "3.3.9",
+            "scope": "compile"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.10",
+            "scope": "compile"
+          },
+          {
+            "group": "de.crowdcode.kissmda.core",
+            "artifact": "kissmda-core",
+            "version": "2.1.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.reflections",
+            "artifact": "reflections",
+            "version": "0.9.8",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 48
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.10",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "kissmda-parent",
+          "profiles/kissmda-profile-datatype",
+          "profiles/kissmda-profile-core",
+          "core/kissmda-core",
+          "maven/kissmda-maven-plugin",
+          "maven/kissmda-maven-app-archetype",
+          "maven/kissmda-maven-cartridge-archetype",
+          "cartridges/kissmda-cartridges-simple-java",
+          "cartridges/kissmda-extensions-examples",
+          "cartridges/kissmda-extensions-import-packer",
+          "app-examples/kissmda-app-test"
+        ],
+        "target_module": "maven/kissmda-maven-plugin",
+        "module_root": "maven/kissmda-maven-plugin",
+        "packages": [
+          "de.crowdcode.kissmda.maven.plugin"
+        ]
+      },
+      "paths": {
+        "source_root": "maven/kissmda-maven-plugin/src/main/java",
+        "test_root": "maven/kissmda-maven-plugin/src/test/java",
+        "cut_path": "maven/kissmda-maven-plugin/src/main/java/de/crowdcode/kissmda/maven/plugin/KissMdaMojo.java",
+        "generated_test_path": "maven/kissmda-maven-plugin/src/test/java/de/crowdcode/kissmda/maven/plugin/KissMdaMojo_ArrowTest.java",
+        "generated_test_fqn": "de.crowdcode.kissmda.maven.plugin.KissMdaMojo_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "de.crowdcode.kissmda.maven.plugin.KissMdaMojo",
+        "simple_name": "KissMdaMojo",
+        "package": "de.crowdcode.kissmda.maven.plugin",
+        "kind": "class",
+        "source_sha256": "edc66088d0de7c2dcee7aaeb54de51877c1866534253ec607e86811f16f6497b"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "maven/kissmda-maven-plugin",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "maven/kissmda-maven-plugin",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "de.crowdcode.kissmda.core.file.FileWriterTest#testCreateFile",
+        "de.crowdcode.kissmda.core.file.JavaFileWriterTest#testCreateFile",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsArrayType1",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsArrayType2",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsJavaType1",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsJavaType2",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsNotParameterizedType",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsParameterizedType1",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsParameterizedType2",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsPrimitiveType1",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testIsPrimitiveType2",
+        "de.crowdcode.kissmda.core.jdt.DataTypeUtilsTest#testOverwriteJavaTypes",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateFullQualifiedTypeAsName",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateParameterTypes",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateParameterTypesAsCollection",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateReturnType",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateReturnTypeAsCollectionResultCollection",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateReturnTypeAsCollectionResultList",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateReturnTypeAsCollectionResultSet",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateReturnTypeAsCollectionResultSortedSet",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testCreateReturnTypeGenericsAsCollectionResultSortedSet",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstArrayTypePrimitive",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedType",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedTypeWithFullyQualifiedName",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedTypesComplex1",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedTypesComplex2",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedTypesComplex3",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedTypesWithEmptySpace",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstParameterizedTypesWithoutEmptySpace",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstPrimitiveType",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstPrimitiveTypeBoolean",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstSimpleTypeJavaTypeCollection",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstSimpleTypeJavaTypeList",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstSimpleTypeJavaTypeNotNull",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetAstSimpleTypeJavaTypeNull",
+        "de.crowdcode.kissmda.core.jdt.JdtHelperTest#testGetClassName",
+        "de.crowdcode.kissmda.core.jdt.MethodHelperTest#testAdderName",
+        "de.crowdcode.kissmda.core.jdt.MethodHelperTest#testGetGetterName",
+        "de.crowdcode.kissmda.core.jdt.MethodHelperTest#testGetPluralName",
+        "de.crowdcode.kissmda.core.jdt.MethodHelperTest#testGetSetterName",
+        "de.crowdcode.kissmda.core.jdt.MethodHelperTest#testGetSingularName",
+        "de.crowdcode.kissmda.core.jdt.MethodHelperTest#testIsName",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithClass",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithCompanyWithDataAndUmlPrefixes",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithGenerics",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithGenericsDataBindings1",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithGenericsDataBindings2",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithGenericsDataBindings3",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithString",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithStringAlreadyOk",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithStringAlreadyOkWithoutSourceDirectoryPackageName",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithStringNonData",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testGetFullPackageNameWithStringWithDataAndUmlPrefixes",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes1",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes10",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes11",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes12",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes13",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes14",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes2",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes3",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes4",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes5",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes6",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes7",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes8",
+        "de.crowdcode.kissmda.core.uml.PackageHelperTest#testRemoveUmlPrefixes9",
+        "de.crowdcode.kissmda.core.uml.ReaderWriterTest#testTestUml",
+        "de.crowdcode.kissmda.core.uml.UmlHelperTest#testCheckParameterizedTypeForTemplateParameterSubstitution",
+        "de.crowdcode.kissmda.core.uml.UmlHelperTest#testCheckParameterizedTypeForTemplateParameterSubstitutionWithNoSubstitution",
+        "de.crowdcode.kissmda.core.uml.UmlHelperTest#testGetTemplateParameterSubstitutionNotPrimitiveType",
+        "de.crowdcode.kissmda.core.uml.UmlHelperTest#testGetTemplateParameterSubstitutionNotPrimitiveTypeButJavaType",
+        "de.crowdcode.kissmda.core.uml.UmlHelperTest#testGetTemplateParameterSubstitutionPrimitiveType",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testContextObject",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testExecuteNamesWithOrderOk",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testExecuteScanPackageNamesManyGuiceModules",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testExecuteScanPackageNamesNoGuiceModule",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testExecuteScanPackageNamesOk",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testExecuteScanPackageNamesWithGuiceModuleButInTheDifferentPackage",
+        "de.crowdcode.kissmda.maven.plugin.KissMdaMojoTest#testGetGuiceModuleName",
+        "de.crowdcode.kissmda.maven.plugin.LoggingLevelMapperTest#testGetLevel"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 41.4,
+        "module_test": [
+          10.4,
+          4.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023254-bh4x/base",
+      "compiled_snapshot": "work/20261118-023254-bh4x/snapshot-0f562087",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "maven/kissmda-maven-plugin",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "de.crowdcode.kissmda.maven.plugin.KissMdaMojo",
+      "simple_name": "KissMdaMojo",
+      "package": "de.crowdcode.kissmda.maven.plugin",
+      "kind": "class",
+      "cut_path": "maven/kissmda-maven-plugin/src/main/java/de/crowdcode/kissmda/maven/plugin/KissMdaMojo.java",
+      "source_sha256": "edc66088d0de7c2dcee7aaeb54de51877c1866534253ec607e86811f16f6497b",
+      "generated_test_path": "maven/kissmda-maven-plugin/src/test/java/de/crowdcode/kissmda/maven/plugin/KissMdaMojo_ArrowTest.java",
+      "generated_test_fqn": "de.crowdcode.kissmda.maven.plugin.KissMdaMojo_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.1,
+      "plan": 3,
+      "compile": 41.4,
+      "baseline": [
+        10.4,
+        4.6
+      ],
+      "total": 59.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

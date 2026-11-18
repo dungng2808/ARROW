@@ -1,0 +1,210 @@
+{
+  "run_id": "20261118-023012-qbnn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-023012-qbnn",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 11.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 11.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "java8-the-missing-tutorial-zh",
+        "url": "https://github.com/leege100/java8-the-missing-tutorial-zh",
+        "git_commit": "a8b972ea4046f7b71abe4653a6c6d165237badc0",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "2.5",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": "code",
+        "build_mode": "standalone",
+        "build_file": "code/build.gradle",
+        "reactor_module": ":",
+        "build_root_source": "detected:standalone",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 3
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "code",
+        "module_root": "code",
+        "packages": [
+          "com.shekhargulati.java8_tutorial.ch06",
+          "com.shekhargulati.java8_tutorial.ch01",
+          "com.shekhargulati.java8_tutorial.ch02",
+          "com.shekhargulati.java8_tutorial.ch03",
+          "com.shekhargulati.java8_tutorial.ch05",
+          "com.shekhargulati.java8_tutorial.ch05.domain",
+          "com.shekhargulati.java8_tutorial.ch09",
+          "com.shekhargulati.java8_tutorial.ch10",
+          "com.shekhargulati.java8_tutorial.ch12",
+          "com.shekhargulati.java8_tutorial.domain",
+          "com.shekhargulati.java8_tutorial.utils"
+        ]
+      },
+      "paths": {
+        "source_root": "code/src/main/java",
+        "test_root": "code/src/test/java",
+        "cut_path": "code/src/main/java/com/shekhargulati/java8_tutorial/ch06/MapExample.java",
+        "generated_test_path": "code/src/test/java/com/shekhargulati/java8_tutorial/ch06/MapExample_ArrowTest.java",
+        "generated_test_fqn": "com.shekhargulati.java8_tutorial.ch06.MapExample_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.shekhargulati.java8_tutorial.ch06.MapExample",
+        "simple_name": "MapExample",
+        "package": "com.shekhargulati.java8_tutorial.ch06",
+        "kind": "class",
+        "source_sha256": "07a65ace92c05e047a1b13877d2a1cbdaaea7417038df20ad560488110fc854e"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "code/gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/work/20261118-023012-qbnn/block1-5694d08a/arrow-info.gradle",
+          ":testClasses",
+          ":arrowClasspath"
+        ],
+        "module_test": [
+          "code/gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/work/20261118-023012-qbnn/block1-5694d08a/arrow-info.gradle",
+          ":test",
+          "--continue"
+        ]
+      },
+      "working_dir": "code",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2.2,
+        "module_test": [
+          3.3,
+          3.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023012-qbnn/base",
+      "compiled_snapshot": "work/20261118-023012-qbnn/snapshot-5694d08a",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "code/gradlew",
+      "executable_in_repo": true,
+      "build_root": "code",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": ":",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/work/20261118-023012-qbnn/block1-5694d08a/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "com.shekhargulati.java8_tutorial.ch06.MapExample",
+      "simple_name": "MapExample",
+      "package": "com.shekhargulati.java8_tutorial.ch06",
+      "kind": "class",
+      "cut_path": "code/src/main/java/com/shekhargulati/java8_tutorial/ch06/MapExample.java",
+      "source_sha256": "07a65ace92c05e047a1b13877d2a1cbdaaea7417038df20ad560488110fc854e",
+      "generated_test_path": "code/src/test/java/com/shekhargulati/java8_tutorial/ch06/MapExample_ArrowTest.java",
+      "generated_test_fqn": "com.shekhargulati.java8_tutorial.ch06.MapExample_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+    ],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.1,
+      "plan": 2.8,
+      "compile": 2.2,
+      "baseline": [
+        3.3,
+        3.5
+      ],
+      "total": 11.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+  ]
+}

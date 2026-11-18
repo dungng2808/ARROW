@@ -1,0 +1,341 @@
+{
+  "run_id": "20261118-020752-ou5c",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-020752-ou5c",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 10.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 10.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "elements-of-programming-interviews",
+        "url": "https://github.com/gardncl/elements-of-programming-interviews",
+        "git_commit": "08515d508d22617624b708b5dd5bed2e7a2ed71e",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "binarysearchtrees",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "gardncl",
+            "artifact": "utils",
+            "version": "1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "gardncl",
+            "artifact": "datastructures",
+            "version": "1.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.10.19",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 7
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "datastructures",
+          "utils",
+          "primatives",
+          "arrays",
+          "strings",
+          "linkedlists",
+          "stacksandqueues",
+          "binarytrees",
+          "heaps",
+          "searching",
+          "hashtables",
+          "sorting",
+          "binarysearchtrees",
+          "recursion",
+          "dynamicprogramming",
+          "greedyalgorithms",
+          "graphs",
+          "parallelcomputing"
+        ],
+        "target_module": "binarysearchtrees",
+        "module_root": "binarysearchtrees",
+        "packages": []
+      },
+      "paths": {
+        "source_root": "binarysearchtrees/src/main/java",
+        "test_root": "binarysearchtrees/src/test/java",
+        "cut_path": "binarysearchtrees/src/main/java/InsertionAndDeletionBST.java",
+        "generated_test_path": "binarysearchtrees/src/test/java/InsertionAndDeletionBST_ArrowTest.java",
+        "generated_test_fqn": "InsertionAndDeletionBST_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "InsertionAndDeletionBST",
+        "simple_name": "InsertionAndDeletionBST",
+        "package": "",
+        "kind": "class",
+        "source_sha256": "b121e64132303f04702d4f2002d0bffee604c1b94beeba6770e3298a2f633c4d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "binarysearchtrees",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "binarysearchtrees",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "IsBSTTest#isBST1",
+        "IsBSTTest#isBST3"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "AreNodesOrderedTest#totallyOrdered1",
+        "AreNodesOrderedTest#totallyOrdered2",
+        "AreNodesOrderedTest#totallyOrdered3",
+        "AreNodesOrderedTest#totallyOrdered4",
+        "ClientCreditsInfoTest#test",
+        "ClosestEntriesTest#findMin1",
+        "ClosestEntriesTest#findMin2",
+        "ComputeLCATest#findLCA1",
+        "ComputeLCATest#findLCA2",
+        "EnumerateEntriesTest#generateFirst1",
+        "EnumerateEntriesTest#generateFirst2",
+        "EnumerateEntriesTest#generateFirst3",
+        "FindKLargestTest#findLargest1",
+        "FindKLargestTest#findLargest2",
+        "FindKLargestTest#findLargest3",
+        "FirstGreaterThanTest#find1",
+        "FirstGreaterThanTest#find2",
+        "FirstGreaterThanTest#find3",
+        "InsertionAndDeletionBSTTest#test1",
+        "InsertionAndDeletionBSTTest#test2",
+        "IsBSTTest#isBST2",
+        "IsBSTTest#isBST4",
+        "MinimumHeightBSTTest#build1",
+        "MinimumHeightBSTTest#build2",
+        "MinimumHeightBSTTest#build3",
+        "MostVisitedPagesTest#findMostVisited1",
+        "MostVisitedPagesTest#findMostVisited2",
+        "MostVisitedPagesTest#findMostVisited3",
+        "RangeLookupTest#range1",
+        "RangeLookupTest#range2",
+        "RangeLookupTest#range3",
+        "RangeLookupTest#range4",
+        "ReconstructBSTTest#reconstruct1",
+        "ReconstructBSTTest#reconstruct2"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 5.8,
+        "module_test": [
+          1.6,
+          1.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-020752-ou5c/base",
+      "compiled_snapshot": "work/20261118-020752-ou5c/snapshot-d6133b42",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "binarysearchtrees",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "InsertionAndDeletionBST",
+      "simple_name": "InsertionAndDeletionBST",
+      "package": "",
+      "kind": "class",
+      "cut_path": "binarysearchtrees/src/main/java/InsertionAndDeletionBST.java",
+      "source_sha256": "b121e64132303f04702d4f2002d0bffee604c1b94beeba6770e3298a2f633c4d",
+      "generated_test_path": "binarysearchtrees/src/test/java/InsertionAndDeletionBST_ArrowTest.java",
+      "generated_test_fqn": "InsertionAndDeletionBST_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 34 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.9,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 5.8,
+      "baseline": [
+        1.6,
+        1.7
+      ],
+      "total": 10.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 34 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

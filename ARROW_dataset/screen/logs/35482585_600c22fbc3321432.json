@@ -1,0 +1,373 @@
+{
+  "run_id": "20261118-004308-p0g5",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-004308-p0g5",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 11.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 11.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "jopa",
+        "url": "https://github.com/kbss-cvut/jopa",
+        "git_commit": "0bc4578b405eec11d276dec679af1467f9c230b3",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "jopa-api",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.30",
+            "scope": "compile"
+          },
+          {
+            "group": "org.junit.vintage",
+            "artifact": "junit-vintage-engine",
+            "version": "5.6.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-api",
+            "version": "5.6.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-params",
+            "version": "5.6.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-engine",
+            "version": "5.6.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.28.2",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.2.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 17
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.6.2",
+        "vintage": true,
+        "mocking": [
+          "org.mockito:mockito-core:2.28.2"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-api (test); imports 7 org.junit.jupiter, 2 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "jopa-api",
+          "ontodriver-api",
+          "jopa-owlapi-utils",
+          "jopa-owl2java",
+          "jopa-maven-plugin",
+          "ontodriver-sesame",
+          "ontodriver-owlapi",
+          "ontodriver-jena",
+          "jopa-impl",
+          "jopa-integration-tests",
+          "jopa-integration-tests-sesame",
+          "jopa-integration-tests-owlapi",
+          "jopa-integration-tests-jena",
+          "jopa-distribution"
+        ],
+        "target_module": "jopa-api",
+        "module_root": "jopa-api",
+        "packages": [
+          "cz.cvut.kbss.jopa.model",
+          "cz.cvut.kbss.jopa",
+          "cz.cvut.kbss.jopa.model.annotations",
+          "cz.cvut.kbss.jopa.model.descriptors",
+          "cz.cvut.kbss.jopa.model.metamodel",
+          "cz.cvut.kbss.jopa.model.query",
+          "cz.cvut.kbss.jopa.exceptions",
+          "cz.cvut.kbss.jopa.sessions",
+          "cz.cvut.kbss.jopa.transactions",
+          "cz.cvut.kbss.jopa.utils",
+          "cz.cvut.kbss.jopa.vocabulary"
+        ]
+      },
+      "paths": {
+        "source_root": "jopa-api/src/main/java",
+        "test_root": "jopa-api/src/test/java",
+        "cut_path": "jopa-api/src/main/java/cz/cvut/kbss/jopa/model/MultilingualString.java",
+        "generated_test_path": "jopa-api/src/test/java/cz/cvut/kbss/jopa/model/MultilingualString_ArrowTest.java",
+        "generated_test_fqn": "cz.cvut.kbss.jopa.model.MultilingualString_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "cz.cvut.kbss.jopa.model.MultilingualString",
+        "simple_name": "MultilingualString",
+        "package": "cz.cvut.kbss.jopa.model",
+        "kind": "class",
+        "source_sha256": "67a1f6de28f841beafc5c75d2d6a7a27f85542206e6ba24b5702654a8e9fbebb"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "jopa-api",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "jopa-api",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "cz.cvut.kbss.jopa.PersistenceTest#createEmfThrowsIllegalArgumentWhenConfiguredClassIsNotPersistenceProvider",
+        "cz.cvut.kbss.jopa.PersistenceTest#createEmfThrowsIllegalArgumentWhenProviderIsNotConfigured",
+        "cz.cvut.kbss.jopa.PersistenceTest#createEmfWithPropertiesInstantiatesPersistenceProviderFromProperties",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#clearCachedProvidersEvictsProviderCache",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#getPersistenceProviderCachesProviderInstances",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#getPersistenceProvidersInstantiatesProvidersOfRegisteredTypes",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#getProvidersReturnsProvidersFoundOnClasspathViaMetaInfConfiguration",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#getProvidersSkipsNonInstantiableProviderClasses",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#registerProviderClassSkipsClassConfiguredOnClasspathAndNotPersistenceProviderImplementation",
+        "cz.cvut.kbss.jopa.model.DefaultPersistenceProviderResolverTest#registerProviderClassSkipsClassesConfiguredOnClasspathButNotFound",
+        "cz.cvut.kbss.jopa.model.IRITest#twoInstancesAreEqualWhenTheirValueEqual",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#containsReturnsTrueForExistingLanguageValue",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#containsReturnsTrueForNullArgumentWhenAtLeastOneLanguageTaggedValueExists",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#containsSimpleReturnsTrueForSimpleLiteral",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#equalityWorksBasedOnTranslations",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getLanguagesReturnsSetOfLanguagesPresentInInstance",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getReturnsNullWhenValueInSpecifiedLanguageIsNotAvailable",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getWithNullArgumentReturnsNullWhenNeitherSimpleLiteralNorTranslationsAreAvailable",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getWithNullLanguageReturnsAnyExistingLanguageTaggedValueWhenSimpleLiteralIsNotPresent",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getWithNullLanguageReturnsSimpleLiteralValue",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getWithoutArgumentReturnsAnyExistingLanguageTaggedValueWhenSimpleLiteralIsNotPresent",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#getWithoutArgumentReturnsSimpleLiteralValue",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#isEmptyReturnsTrueForMissingTranslations",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#removeRemovesTranslationInSpecifiedLanguage",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#setOverridesPreexistingValueForSpecifiedLanguage",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#setSetsValueInSpecifiedLanguage",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#setWithoutLanguageSetsSimpleLiteralValue",
+        "cz.cvut.kbss.jopa.model.MultilingualStringTest#staticCreateMethodInitializesStringWithSpecifiedValueAndLanguage",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#addAttributeDescriptorProvidesCorrectContextOnRetrieval",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#anyLanguageSetsLanguageTagToSupportAny",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#equalsHandlesOneRecursiveDescriptorAndOtherNormal",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#equalsHandlesRecursiveDescriptors",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#equalsReturnsFalseWhenFieldDescriptorCountDiffers",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#fieldDescriptorByDefaultInheritsEntityContext",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#fieldDescriptorByDefaultInheritsEntityLanguageTag",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#fieldDescriptorHasItsOwnContextWhenItIsSetForIt",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#fieldDescriptorHasLanguageSetToItThroughEntityDescriptor",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#fieldDescriptorInheritsChangeOfLanguageTagFromEntityDescriptor",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#getAttributeContextReturnsAttributeContextWhenAssertionsInSubjectContextIsFalse",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#getAttributeContextReturnsAttributeContextWhenItOverridesSubjectContext",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#getAttributeContextReturnsSubjectContextWhenAssertionsInSubjectContextIsTrue",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#gettingFieldDescriptorFromEntityDescriptorLeavesItsHasLanguageStatusEmpty",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#hasLanguageReturnsTrueForLanguageSetExplicitlyToNull",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#hashCodeHandlesRecursiveDescriptors",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#twoDescriptorsWithDifferentAttributeLanguageTagsAreNotEqual",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#twoDescriptorsWithDifferentLanguageTagsAreNotEqual",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#twoDescriptorsWithNullLanguageTagSetAreEqual",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#twoDescriptorsWithSameAttributeLanguageTagsAreEqual",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#twoEntityDescriptorsAreEqualWhenTheirFieldDescriptorsHaveTheSameContexts",
+        "cz.cvut.kbss.jopa.model.descriptors.EntityDescriptorTest#twoEntityDescriptorsAreNotEqualWhenTheyDifferInFieldContext",
+        "cz.cvut.kbss.jopa.model.descriptors.FieldDescriptorTest#testEquality{URI, URI, String, String, boolean}[1]",
+        "cz.cvut.kbss.jopa.model.descriptors.FieldDescriptorTest#testEquality{URI, URI, String, String, boolean}[2]",
+        "cz.cvut.kbss.jopa.model.descriptors.FieldDescriptorTest#testEquality{URI, URI, String, String, boolean}[3]",
+        "cz.cvut.kbss.jopa.model.descriptors.FieldDescriptorTest#testEquality{URI, URI, String, String, boolean}[4]",
+        "cz.cvut.kbss.jopa.model.descriptors.ObjectPropertyCollectionDescriptorTest#getAttributeContextRetrievesAttributeContextFromElementDescriptor"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2.6,
+        "module_test": [
+          3.3,
+          3.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004308-p0g5/base",
+      "compiled_snapshot": "work/20261118-004308-p0g5/snapshot-d797e446",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "jopa-api",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "cz.cvut.kbss.jopa.model.MultilingualString",
+      "simple_name": "MultilingualString",
+      "package": "cz.cvut.kbss.jopa.model",
+      "kind": "class",
+      "cut_path": "jopa-api/src/main/java/cz/cvut/kbss/jopa/model/MultilingualString.java",
+      "source_sha256": "67a1f6de28f841beafc5c75d2d6a7a27f85542206e6ba24b5702654a8e9fbebb",
+      "generated_test_path": "jopa-api/src/test/java/cz/cvut/kbss/jopa/model/MultilingualString_ArrowTest.java",
+      "generated_test_fqn": "cz.cvut.kbss.jopa.model.MultilingualString_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.7,
+      "locate": 0.5,
+      "plan": 2.4,
+      "compile": 2.6,
+      "baseline": [
+        3.3,
+        3.1
+      ],
+      "total": 11.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

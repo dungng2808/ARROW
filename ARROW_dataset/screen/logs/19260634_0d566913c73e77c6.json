@@ -1,0 +1,310 @@
+{
+  "run_id": "20261118-024447-krol",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-024447-krol",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 98.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 98.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "liason",
+        "url": "https://github.com/EmirWeb/liason",
+        "git_commit": "2d47034515d7224b69d44e6266e94c60d8aa5027",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "loaders",
+        "build_mode": "standalone",
+        "build_file": "loaders/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": [
+          "**/Test*.java"
+        ]
+      },
+      "java": {
+        "declared": null,
+        "declared_source": null,
+        "major": null,
+        "jdk_major": 17,
+        "jdk_choice_reason": "default"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.android",
+            "artifact": "android",
+            "version": "4.1.1.4",
+            "scope": "provided"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava-collections",
+            "version": "r03",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.robolectric",
+            "artifact": "robolectric",
+            "version": "2.3",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.8.4",
+            "scope": "test"
+          },
+          {
+            "group": "com.squareup",
+            "artifact": "fest-android",
+            "version": "1.0.7",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 52
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.8.4"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "loaders",
+        "module_root": "loaders",
+        "packages": [
+          "mobi.liason.loaders"
+        ]
+      },
+      "paths": {
+        "source_root": "loaders/src/main/java",
+        "test_root": "loaders/src/test/java",
+        "cut_path": "loaders/src/main/java/mobi/liason/loaders/Path.java",
+        "generated_test_path": "loaders/src/test/java/mobi/liason/loaders/Path_ArrowTest.java",
+        "generated_test_fqn": "mobi.liason.loaders.Path_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "mobi.liason.loaders.Path",
+        "simple_name": "Path",
+        "package": "mobi.liason.loaders",
+        "kind": "class",
+        "source_sha256": "3177613959f0cb215249571216ad9459c1dcdeb29dfbf32c8ef97caf67bb076d"
+      },
+      "missing_reasons": {
+        "java": "file build không khai báo mức Java"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "loaders",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "mobi.liason.loaders.BindingManagerTest#addingDefinitionAfterStartedCallsInitLoaderTwice",
+        "mobi.liason.loaders.BindingManagerTest#addingDefinitionBeforeStartedDoesNotCallInit",
+        "mobi.liason.loaders.BindingManagerTest#onStartCallsInitLoaderTwice",
+        "mobi.liason.loaders.BindingManagerTest#onStartDoesNotCallInitLoader",
+        "mobi.liason.loaders.ContentTest#insertCallsInsertWithRightNameAndReturnsCorrectUri",
+        "mobi.liason.loaders.ContentTest#insertCallsInsertWithRightNameAndReturnsCorrectUri_withDifferentIncomingUri",
+        "mobi.liason.loaders.ContentTest#onNoUpgrade_doesNotdropAndCreateTable",
+        "mobi.liason.loaders.ContentTest#onUpgrade_dropsTableAndCreatesTable",
+        "mobi.liason.loaders.DatabaseHelperTest#onCreateWithMultipleContentWritesSQLCorrectly",
+        "mobi.liason.loaders.DatabaseHelperTest#onCreateWithOneContentWritesSQLCorrectly",
+        "mobi.liason.loaders.DatabaseHelperTest#onUpgradeWithMultipleContentWritesSQLCorrectly",
+        "mobi.liason.loaders.PathTest#getPathWithStringWhenShouldBeNumeric_throwsException",
+        "mobi.liason.loaders.PathTest#mathcingUris",
+        "mobi.liason.loaders.PathTest#multiplePathSegmentPathTest",
+        "mobi.liason.loaders.PathTest#multiplePathSegmentPath_return",
+        "mobi.liason.loaders.PathTest#multiplePathSegmentStringPathTest",
+        "mobi.liason.loaders.PathTest#passingMoreValuesThanBindingsThrowsException",
+        "mobi.liason.loaders.PathTest#singlePathSegmentStringPathTest",
+        "mobi.liason.loaders.PathTest#whenUsingListGetPathWithNumbers_returnsPathWithNumbers",
+        "mobi.liason.loaders.PathTest#whenUsingStringGetPathWithNumbers_returnsPathWithNumbers",
+        "mobi.liason.loaders.PathTest#whenUsingStringGetPathWithStrings_returnsPathWithStrings",
+        "mobi.liason.loaders.ProviderTest#queryingViewModelWithValues_callsQueryOnCorrectViewModel",
+        "mobi.liason.loaders.ProviderTest#queryingViewModel_callsQueryOnCorrectViewModel"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.7,
+        "module_test": [
+          18.6,
+          1.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024447-krol/base",
+      "compiled_snapshot": "work/20261118-024447-krol/snapshot-ee69c3aa",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "loaders",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "mobi.liason.loaders.Path",
+      "simple_name": "Path",
+      "package": "mobi.liason.loaders",
+      "kind": "class",
+      "cut_path": "loaders/src/main/java/mobi/liason/loaders/Path.java",
+      "source_sha256": "3177613959f0cb215249571216ad9459c1dcdeb29dfbf32c8ef97caf67bb076d",
+      "generated_test_path": "loaders/src/test/java/mobi/liason/loaders/Path_ArrowTest.java",
+      "generated_test_fqn": "mobi.liason.loaders.Path_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "loaders có cả pom.xml và file Gradle; ARROW dùng Maven.",
+      "Có 23 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 76.5,
+      "compile": 1.7,
+      "baseline": [
+        18.6,
+        1.8
+      ],
+      "total": 98.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "loaders có cả pom.xml và file Gradle; ARROW dùng Maven.",
+    "Có 23 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

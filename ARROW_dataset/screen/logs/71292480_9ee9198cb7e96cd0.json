@@ -1,0 +1,360 @@
+{
+  "run_id": "20261118-010122-b4mp",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-010122-b4mp",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 13.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 13.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Design",
+        "url": "https://github.com/AutomationRockstars/Design",
+        "git_commit": "7d7577694b5e4eb1c3d331fcbe502ee230b5d9ec",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "execution/bmo-event-processor",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.automationrockstars",
+            "artifact": "gunter-rabbit",
+            "version": "1.0.3-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "fluent-hc",
+            "version": "4.5.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.webbitserver",
+            "artifact": "webbit",
+            "version": "0.4.15",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-api-mockito",
+            "version": "1.6.5",
+            "scope": "test"
+          },
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-module-junit4",
+            "version": "1.6.5",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 40
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.powermock:powermock-api-mockito:1.6.5",
+          "org.mockito:mockito-core:1.10.19",
+          "org.powermock:powermock-api-mockito-common:1.6.5",
+          "org.powermock:powermock-api-support:1.6.5",
+          "org.powermock:powermock-module-junit4:1.6.5",
+          "org.powermock:powermock-module-junit4-common:1.6.5",
+          "org.powermock:powermock-core:1.6.5",
+          "org.powermock:powermock-reflect:1.6.5"
+        ],
+        "assertion_libs": [
+          "org.exparity:hamcrest-date:1.1.0",
+          "org.hamcrest:hamcrest-library:1.3",
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "bmo-bom",
+          "execution",
+          "reporting",
+          "design",
+          "execution/bmo",
+          "execution/bmo-event-processor",
+          "reporting/gunter-events",
+          "reporting/gunter-rabbit",
+          "reporting/gunter-allure",
+          "design/gir",
+          "design/gir-data",
+          "design/gir-cli",
+          "design/gir-webdriver",
+          "design/gireat",
+          "design/gir-rest",
+          "design/gir-mobile"
+        ],
+        "target_module": "execution/bmo-event-processor",
+        "module_root": "execution/bmo-event-processor",
+        "packages": [
+          "com.automationrockstars.bmo.event.processor",
+          "com.automationrockstars.bmo.event.processor.annotations",
+          "com.automationrockstars.bmo.event.processor.internal"
+        ]
+      },
+      "paths": {
+        "source_root": "execution/bmo-event-processor/src/main/java",
+        "test_root": "execution/bmo-event-processor/src/test/java",
+        "cut_path": "execution/bmo-event-processor/src/main/java/com/automationrockstars/bmo/event/processor/SelectiveActionBuilder.java",
+        "generated_test_path": "execution/bmo-event-processor/src/test/java/com/automationrockstars/bmo/event/processor/SelectiveActionBuilder_ArrowTest.java",
+        "generated_test_fqn": "com.automationrockstars.bmo.event.processor.SelectiveActionBuilder_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.automationrockstars.bmo.event.processor.SelectiveActionBuilder",
+        "simple_name": "SelectiveActionBuilder",
+        "package": "com.automationrockstars.bmo.event.processor",
+        "kind": "class",
+        "source_sha256": "0d6fd39254b4847531b2b4d4503f7257ce47a3de9416620ab1f7c42c2eec25d5"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "execution/bmo-event-processor",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "execution/bmo-event-processor",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.automationrockstars.asserts.AssertsTest#softAssertsTest",
+        "com.automationrockstars.asserts.AssertsTest#test",
+        "com.automationrockstars.base.ConfigLoaderTest#getConfig",
+        "com.automationrockstars.base.ConfigLoaderTest#should_readFromSystem",
+        "com.automationrockstars.base.JarUtilsTest#should_getProperFileName",
+        "com.automationrockstars.base.JarUtilsTest#should_getPropertyFile",
+        "com.automationrockstars.base.JarUtilsTest#should_unzipFile",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_addUnderCondition",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_checkForEventExistense",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_clean",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_cleanTree",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_provideChildren",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_provideFullTree",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_provideParent",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_provideParentOfType",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_provideTestStepFinishFromAllChildren",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_provideTestSuiteStartFromDirechChildren",
+        "com.automationrockstars.bmo.event.processor.EventStorageTest#should_remove",
+        "com.automationrockstars.bmo.event.processor.HttpContentTest#should_returnPopulatePut",
+        "com.automationrockstars.bmo.event.processor.HttpContentTest#should_returnPopulatedPost",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_keepOrderOfActions",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_reactOnDifferentEvents",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_returnNullMessageOnDO_NOTHING",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_returnNullMessageOnDefaultSelector",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_returnOriginalMessageOnPASS_TROUGH",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_useTruePredicateOnUnspecifiedEvents",
+        "com.automationrockstars.bmo.event.processor.SelectiveActionBuilderTest#should_useTypeToRecognizeEvent",
+        "com.automationrockstars.bmo.event.processor.SenderReceiverTest#detectRules",
+        "com.automationrockstars.bmo.event.processor.ServerTest#should_unloadAllRules",
+        "com.automationrockstars.gunter.IdUtilsTest#testIdEventType",
+        "com.automationrockstars.gunter.IdUtilsTest#testIdStringEventType",
+        "com.automationrockstars.gunter.events.EventFactoryTest#chain",
+        "com.automationrockstars.gunter.events.EventFactoryTest#commit",
+        "com.automationrockstars.gunter.events.EventFactoryTest#executionStart",
+        "com.automationrockstars.gunter.events.EventStoreTest#test",
+        "com.automationrockstars.gunter.events.impl.EventImplUtilsTest#classFetching",
+        "com.automationrockstars.gunter.events.impl.EventImplUtilsTest#should_keppMapIn"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.1,
+        "module_test": [
+          4.2,
+          4.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010122-b4mp/base",
+      "compiled_snapshot": "work/20261118-010122-b4mp/snapshot-4bb8fdec",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "execution/bmo-event-processor",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.automationrockstars.bmo.event.processor.SelectiveActionBuilder",
+      "simple_name": "SelectiveActionBuilder",
+      "package": "com.automationrockstars.bmo.event.processor",
+      "kind": "class",
+      "cut_path": "execution/bmo-event-processor/src/main/java/com/automationrockstars/bmo/event/processor/SelectiveActionBuilder.java",
+      "source_sha256": "0d6fd39254b4847531b2b4d4503f7257ce47a3de9416620ab1f7c42c2eec25d5",
+      "generated_test_path": "execution/bmo-event-processor/src/test/java/com/automationrockstars/bmo/event/processor/SelectiveActionBuilder_ArrowTest.java",
+      "generated_test_fqn": "com.automationrockstars.bmo.event.processor.SelectiveActionBuilder_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 4.1,
+      "baseline": [
+        4.2,
+        4.2
+      ],
+      "total": 13.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

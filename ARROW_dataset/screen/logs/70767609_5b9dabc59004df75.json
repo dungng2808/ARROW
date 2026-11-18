@@ -1,0 +1,260 @@
+{
+  "run_id": "20261118-015017-po5j",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-015017-po5j",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 51.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 51.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "spring-ws",
+        "url": "https://github.com/code-not-found/spring-ws",
+        "git_commit": "16fec8c415977a5e8af899066219cb0e44e8e909",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "spring-ws-log-http-headers",
+        "build_mode": "standalone",
+        "build_file": "spring-ws-log-http-headers/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/*Tests.java",
+          "**/*Test.java"
+        ],
+        "test_excludes": [
+          "**/Abstract*.java"
+        ]
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-web-services",
+            "version": "1.5.2.RELEASE",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "1.5.2.RELEASE",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 50
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:2.6.0",
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "spring-ws-log-http-headers",
+        "module_root": "spring-ws-log-http-headers",
+        "packages": [
+          "com.codenotfound.ws.client",
+          "com.codenotfound.ws",
+          "com.codenotfound.ws.endpoint",
+          "com.codenotfound.ws.interceptor"
+        ]
+      },
+      "paths": {
+        "source_root": "spring-ws-log-http-headers/src/main/java",
+        "test_root": "spring-ws-log-http-headers/src/test/java",
+        "cut_path": "spring-ws-log-http-headers/src/main/java/com/codenotfound/ws/client/TicketAgentClient.java",
+        "generated_test_path": "spring-ws-log-http-headers/src/test/java/com/codenotfound/ws/client/TicketAgentClient_ArrowTest.java",
+        "generated_test_fqn": "com.codenotfound.ws.client.TicketAgentClient_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.codenotfound.ws.client.TicketAgentClient",
+        "simple_name": "TicketAgentClient",
+        "package": "com.codenotfound.ws.client",
+        "kind": "class",
+        "source_sha256": "8c7c120e11f6e0946544ba8a90776f1aef5afb7f4089041de69ea81f6eb3ed6f"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "spring-ws-log-http-headers",
+      "passing_in_all_runs": [
+        "com.codenotfound.ws.SpringWsApplicationTests#testListFlights"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 39.3,
+        "module_test": [
+          3.4,
+          3.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-015017-po5j/base",
+      "compiled_snapshot": "work/20261118-015017-po5j/snapshot-e1522d79",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "spring-ws-log-http-headers",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.codenotfound.ws.client.TicketAgentClient",
+      "simple_name": "TicketAgentClient",
+      "package": "com.codenotfound.ws.client",
+      "kind": "class",
+      "cut_path": "spring-ws-log-http-headers/src/main/java/com/codenotfound/ws/client/TicketAgentClient.java",
+      "source_sha256": "8c7c120e11f6e0946544ba8a90776f1aef5afb7f4089041de69ea81f6eb3ed6f",
+      "generated_test_path": "spring-ws-log-http-headers/src/test/java/com/codenotfound/ws/client/TicketAgentClient_ArrowTest.java",
+      "generated_test_fqn": "com.codenotfound.ws.client.TicketAgentClient_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 4.8,
+      "compile": 39.3,
+      "baseline": [
+        3.4,
+        3.9
+      ],
+      "total": 51.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

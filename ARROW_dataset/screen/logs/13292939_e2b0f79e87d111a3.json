@@ -1,0 +1,296 @@
+{
+  "run_id": "20261118-005408-s9aa",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-005408-s9aa",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 6.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 6.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Biblio-Transformation-Engine",
+        "url": "https://github.com/EKT/Biblio-Transformation-Engine",
+        "git_commit": "ba7b5607005d1ec49009d9a781be75dbb13f717a",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "bte-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": null,
+        "declared_source": null,
+        "major": null,
+        "jdk_major": 17,
+        "jdk_choice_reason": "default"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "compile"
+          },
+          {
+            "group": "log4j",
+            "artifact": "log4j",
+            "version": "1.2.17",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.opencsv",
+            "artifact": "opencsv",
+            "version": "2.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.2.4",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 5
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "bte-core",
+          "bte-io"
+        ],
+        "target_module": "bte-core",
+        "module_root": "bte-core",
+        "packages": [
+          "gr.ekt.bte.record",
+          "gr.ekt.bte.core",
+          "gr.ekt.bte.dataloader",
+          "gr.ekt.bte.exceptions"
+        ]
+      },
+      "paths": {
+        "source_root": "bte-core/src/main/java",
+        "test_root": "bte-core/src/test/java",
+        "cut_path": "bte-core/src/main/java/gr/ekt/bte/record/XPathRecord.java",
+        "generated_test_path": "bte-core/src/test/java/gr/ekt/bte/record/XPathRecord_ArrowTest.java",
+        "generated_test_fqn": "gr.ekt.bte.record.XPathRecord_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "gr.ekt.bte.record.XPathRecord",
+        "simple_name": "XPathRecord",
+        "package": "gr.ekt.bte.record",
+        "kind": "class",
+        "source_sha256": "0aaaeb4183acaef4def72eefb5df0547c82533366d23a0347304e1022223cdb1"
+      },
+      "missing_reasons": {
+        "java": "file build không khai báo mức Java"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "bte-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "bte-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "gr.ekt.bte.core.TransformationEngineTest#testTransform",
+        "gr.ekt.bte.core.TransformationEngineTest#testTransformWithFullFilter",
+        "gr.ekt.bte.core.TransformationEngineTest#testTransformWithHalfFilter",
+        "gr.ekt.bte.record.MapRecordTest#testAddField",
+        "gr.ekt.bte.record.MapRecordTest#testAddValue",
+        "gr.ekt.bte.record.MapRecordTest#testGetValues",
+        "gr.ekt.bte.record.MapRecordTest#testRemoveField",
+        "gr.ekt.bte.record.MapRecordTest#testRemoveValue",
+        "gr.ekt.bte.record.MapRecordTest#testUpdateField",
+        "gr.ekt.bte.record.MapRecordTest#testUpdateValue",
+        "gr.ekt.bte.record.XPathRecordTest#testGetValues_Attributes",
+        "gr.ekt.bte.record.XPathRecordTest#testGetValues_Empty",
+        "gr.ekt.bte.record.XPathRecordTest#testGetValues_NotExisting",
+        "gr.ekt.bte.record.XPathRecordTest#testGetValues_Text",
+        "gr.ekt.bte.record.XPathRecordTest#testIsMutable",
+        "gr.ekt.bte.record.XPathRecordTest#testMakeMutable"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.7,
+        "module_test": [
+          1.5,
+          1.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005408-s9aa/base",
+      "compiled_snapshot": "work/20261118-005408-s9aa/snapshot-ed2d79fc",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "bte-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "gr.ekt.bte.record.XPathRecord",
+      "simple_name": "XPathRecord",
+      "package": "gr.ekt.bte.record",
+      "kind": "class",
+      "cut_path": "bte-core/src/main/java/gr/ekt/bte/record/XPathRecord.java",
+      "source_sha256": "0aaaeb4183acaef4def72eefb5df0547c82533366d23a0347304e1022223cdb1",
+      "generated_test_path": "bte-core/src/test/java/gr/ekt/bte/record/XPathRecord_ArrowTest.java",
+      "generated_test_fqn": "gr.ekt.bte.record.XPathRecord_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 1.3,
+      "compile": 1.7,
+      "baseline": [
+        1.5,
+        1.6
+      ],
+      "total": 6.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

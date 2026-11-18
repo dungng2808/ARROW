@@ -1,0 +1,4 @@
+[>] Tải https://github.com/factoryfx/factoryfx
+[>] Liệt kê class
+[X] B1_CUT_MISSING · không có class io.github.factoryfx.factory.datastorage.oracle.OracledbDataStorageHistory
+  → Cách sửa: Dùng FQN hoặc đường dẫn file .java; xem các tên gần giống ở trên.

@@ -1,0 +1,280 @@
+{
+  "run_id": "20261118-002431-mgq5",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-002431-mgq5",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 6.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 6.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "prj-algo2",
+        "url": "https://github.com/vseloved/prj-algo2",
+        "git_commit": "203cd82bc6c369dc17d8d92d5caea2eb048b7e5d",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "tasks/ykushch",
+        "build_mode": "standalone",
+        "build_file": "tasks/ykushch/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.5.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.21",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.21",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 6
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.5.2"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "tasks/ykushch",
+        "module_root": "tasks/ykushch",
+        "packages": [
+          "com.ykushch.prjalgo2.task1",
+          "com.ykushch.prjalgo2.task4",
+          "com.ykushch.prjalgo2.task5"
+        ]
+      },
+      "paths": {
+        "source_root": "tasks/ykushch/src/main/java",
+        "test_root": "tasks/ykushch/src/test/java",
+        "cut_path": "tasks/ykushch/src/main/java/com/ykushch/prjalgo2/task1/WordBreak.java",
+        "generated_test_path": "tasks/ykushch/src/test/java/com/ykushch/prjalgo2/task1/WordBreak_ArrowTest.java",
+        "generated_test_fqn": "com.ykushch.prjalgo2.task1.WordBreak_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.ykushch.prjalgo2.task1.WordBreak",
+        "simple_name": "WordBreak",
+        "package": "com.ykushch.prjalgo2.task1",
+        "kind": "class",
+        "source_sha256": "02c7045448ef51e7c7643e4ed4a5b14960c79b924138effd9cef9381826e0625"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "tasks/ykushch",
+      "passing_in_all_runs": [
+        "com.ykushch.prjalgo2.task1.WordBreakTest#breakWordDp",
+        "com.ykushch.prjalgo2.task1.WordBreakTest#shouldBreakSentenceIntoWordsWhenValidInputSent",
+        "com.ykushch.prjalgo2.task1.WordBreakTest#shouldBreakSentenceRecursivelyIntoWordsWhenValidInputSent",
+        "com.ykushch.prjalgo2.task4.EditDistanceRecursiveTest#shouldFindLongestCommonSequenceWhenValidValuesPassed",
+        "com.ykushch.prjalgo2.task4.EditDistanceRecursiveTest#shouldReturnCorrectSequenceWhenValidInputPassed",
+        "com.ykushch.prjalgo2.task4.EditDistanceTest#shouldComputeMinEditDistanceWhenCorrectArgsPassed",
+        "com.ykushch.prjalgo2.task5.BinaryHeapTest#shouldCorrectlyBuildBinaryHeapMaxWhenUnorderedArrayIsPassed"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2.3,
+        "module_test": [
+          1.8,
+          1.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-002431-mgq5/base",
+      "compiled_snapshot": "work/20261118-002431-mgq5/snapshot-c59a7930",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "tasks/ykushch",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.ykushch.prjalgo2.task1.WordBreak",
+      "simple_name": "WordBreak",
+      "package": "com.ykushch.prjalgo2.task1",
+      "kind": "class",
+      "cut_path": "tasks/ykushch/src/main/java/com/ykushch/prjalgo2/task1/WordBreak.java",
+      "source_sha256": "02c7045448ef51e7c7643e4ed4a5b14960c79b924138effd9cef9381826e0625",
+      "generated_test_path": "tasks/ykushch/src/test/java/com/ykushch/prjalgo2/task1/WordBreak_ArrowTest.java",
+      "generated_test_fqn": "com.ykushch.prjalgo2.task1.WordBreak_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 3.2,
+      "locate": 0.1,
+      "plan": 1.2,
+      "compile": 2.3,
+      "baseline": [
+        1.8,
+        1.6
+      ],
+      "total": 6.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

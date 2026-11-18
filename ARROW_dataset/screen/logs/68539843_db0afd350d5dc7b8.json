@@ -1,0 +1,406 @@
+{
+  "run_id": "20261118-004258-th9v",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w8/runs/20261118-004258-th9v",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 12.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 12.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "microbule",
+        "url": "https://github.com/Microbule/microbule",
+        "git_commit": "91d63d59121b17f6b7b6b339e51beabba16631a4",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "config/core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.microbule",
+            "artifact": "microbule-container-api",
+            "version": "0.3.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.microbule",
+            "artifact": "microbule-config-api",
+            "version": "0.3.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.microbule",
+            "artifact": "microbule-config-spi",
+            "version": "0.3.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "21.0",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.inject",
+            "artifact": "javax.inject",
+            "version": "1",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.annotation",
+            "artifact": "javax.annotation-api",
+            "version": "1.2",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.ws.rs",
+            "artifact": "javax.ws.rs-api",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.microbule",
+            "artifact": "microbule-test-core",
+            "version": "0.3.0-SNAPSHOT",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 21
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.7.22"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "all",
+          "api",
+          "spi",
+          "core",
+          "osgi",
+          "test",
+          "errormap",
+          "gzip",
+          "logging",
+          "swagger",
+          "cors",
+          "cache",
+          "validation",
+          "requestlog",
+          "timeout",
+          "circuitbreaker",
+          "tracer",
+          "gson",
+          "example",
+          "features",
+          "itest",
+          "config",
+          "spring",
+          "cdi",
+          "container",
+          "util",
+          "cglib",
+          "annotation",
+          "scheduler",
+          "osgi/blueprint",
+          "osgi/config",
+          "osgi/container",
+          "test/core",
+          "test/osgi",
+          "test/server",
+          "test/cdi",
+          "errormap/api",
+          "errormap/spi",
+          "errormap/core",
+          "errormap/decorator",
+          "cache/annnotation",
+          "cache/decorator",
+          "validation/decorator",
+          "validation/annotation",
+          "tracer/spi",
+          "tracer/decorator",
+          "gson/api",
+          "gson/spi",
+          "gson/core",
+          "gson/provider",
+          "gson/decorator",
+          "example/common",
+          "example/cdi",
+          "example/scr",
+          "example/blueprint",
+          "example/activator",
+          "example/cloudfoundry",
+          "itest/karaf",
+          "config/api",
+          "config/spi",
+          "config/core",
+          "config/consul",
+          "config/etcd",
+          "config/env",
+          "config/sysprop",
+          "config/annotation",
+          "spring/container",
+          "spring/config",
+          "spring/bootstrap",
+          "cdi/container",
+          "container/api",
+          "container/core",
+          "scheduler/api",
+          "scheduler/core"
+        ],
+        "target_module": "config/core",
+        "module_root": "config/core",
+        "packages": [
+          "org.microbule.config.core"
+        ]
+      },
+      "paths": {
+        "source_root": "config/core/src/main/java",
+        "test_root": "config/core/src/test/java",
+        "cut_path": "config/core/src/main/java/org/microbule/config/core/CompositeConfig.java",
+        "generated_test_path": "config/core/src/test/java/org/microbule/config/core/CompositeConfig_ArrowTest.java",
+        "generated_test_fqn": "org.microbule.config.core.CompositeConfig_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.microbule.config.core.CompositeConfig",
+        "simple_name": "CompositeConfig",
+        "package": "org.microbule.config.core",
+        "kind": "class",
+        "source_sha256": "1a0672d846a6a878d06809392842111e90e2441d8e74d20e2f67eaa633da338e"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "config/core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "config/core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.microbule.config.api.ConfigTest#testBooleanValue",
+        "org.microbule.config.api.ConfigTest#testDoubleValue",
+        "org.microbule.config.api.ConfigTest#testEnumValue",
+        "org.microbule.config.api.ConfigTest#testIntegerValue",
+        "org.microbule.config.api.ConfigTest#testLongValue",
+        "org.microbule.config.api.ConfigurationExceptionTest#testConstructor",
+        "org.microbule.config.api.ConfigurationExceptionTest#testConstructorWithCause",
+        "org.microbule.config.core.CompositeConfigTest#testCreate",
+        "org.microbule.config.core.CompositeConfigTest#testGroup",
+        "org.microbule.config.core.CompositeConfigTest#testValue",
+        "org.microbule.config.core.ConfigUtilsTest#testBootstrapConfig",
+        "org.microbule.config.core.ConfigUtilsTest#testIsUtilsClass",
+        "org.microbule.config.core.DefaultConfigServiceTest#testWithNoConfigProviders",
+        "org.microbule.config.core.EmptyConfigTest#testGroup",
+        "org.microbule.config.core.EmptyConfigTest#testValue",
+        "org.microbule.config.core.MapConfigTest#testFilteredWithNoPaths",
+        "org.microbule.config.core.MapConfigTest#testValue",
+        "org.microbule.config.core.MapConfigTest#testWithCustomSeparator"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.5,
+        "module_test": [
+          3,
+          3.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004258-th9v/base",
+      "compiled_snapshot": "work/20261118-004258-th9v/snapshot-371b39f3",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "config/core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.microbule.config.core.CompositeConfig",
+      "simple_name": "CompositeConfig",
+      "package": "org.microbule.config.core",
+      "kind": "class",
+      "cut_path": "config/core/src/main/java/org/microbule/config/core/CompositeConfig.java",
+      "source_sha256": "1a0672d846a6a878d06809392842111e90e2441d8e74d20e2f67eaa633da338e",
+      "generated_test_path": "config/core/src/test/java/org/microbule/config/core/CompositeConfig_ArrowTest.java",
+      "generated_test_fqn": "org.microbule.config.core.CompositeConfig_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.5,
+      "locate": 0.2,
+      "plan": 1.4,
+      "compile": 4.5,
+      "baseline": [
+        3,
+        3.6
+      ],
+      "total": 12.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,300 @@
+{
+  "run_id": "20261118-005653-kav8",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-005653-kav8",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 8.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 8.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "pwnedpasswords4j",
+        "url": "https://github.com/nbaars/pwnedpasswords4j",
+        "git_commit": "9010091b45eaa6893f6f097e7a8cec41e35b3ca8",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "pwnedpasswords4j-client",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.squareup.okhttp3",
+            "artifact": "okhttp",
+            "version": "3.10.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.10.19",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.tomakehurst",
+            "artifact": "wiremock",
+            "version": "2.16.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.7.25",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 39
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "pwnedpasswords4j-client",
+          "pwnedpasswords4j-spring-boot-starter",
+          "pwnedpasswords4j-demo"
+        ],
+        "target_module": "pwnedpasswords4j-client",
+        "module_root": "pwnedpasswords4j-client",
+        "packages": [
+          "com.github.nbaars.pwnedpasswords4j.client"
+        ]
+      },
+      "paths": {
+        "source_root": "pwnedpasswords4j-client/src/main/java",
+        "test_root": "pwnedpasswords4j-client/src/test/java",
+        "cut_path": "pwnedpasswords4j-client/src/main/java/com/github/nbaars/pwnedpasswords4j/client/PwnedPasswordClient.java",
+        "generated_test_path": "pwnedpasswords4j-client/src/test/java/com/github/nbaars/pwnedpasswords4j/client/PwnedPasswordClient_ArrowTest.java",
+        "generated_test_fqn": "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClient_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClient",
+        "simple_name": "PwnedPasswordClient",
+        "package": "com.github.nbaars.pwnedpasswords4j.client",
+        "kind": "class",
+        "source_sha256": "9ca98d596225a42c68dc096e6d71dfd4bdcd64090b5372c788f92bddf950b6bb"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pwnedpasswords4j-client",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pwnedpasswords4j-client",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordCheckerTest#asyncMultipleHashesWithPasswordShouldFindPassword",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordCheckerTest#multipleHashesWithPasswordShouldFindPassword",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordCheckerTest#noResultsFromClientShouldNotFindPassword",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordCheckerTest#resultsFromClientWithMatchShouldFindPassword",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordCheckerTest#resultsFromClientWithoutMatchShouldNotFindPassword",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClientTest#responseIsEmptyShouldReturnEmptyList",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClientTest#responseIsNotFoundShouldThrowException",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClientTest#wrongHashReturns400",
+        "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClientTest#wrongURLShouldThrowException"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2.9,
+        "module_test": [
+          2.3,
+          2.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005653-kav8/base",
+      "compiled_snapshot": "work/20261118-005653-kav8/snapshot-6d2fc689",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "pwnedpasswords4j-client",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClient",
+      "simple_name": "PwnedPasswordClient",
+      "package": "com.github.nbaars.pwnedpasswords4j.client",
+      "kind": "class",
+      "cut_path": "pwnedpasswords4j-client/src/main/java/com/github/nbaars/pwnedpasswords4j/client/PwnedPasswordClient.java",
+      "source_sha256": "9ca98d596225a42c68dc096e6d71dfd4bdcd64090b5372c788f92bddf950b6bb",
+      "generated_test_path": "pwnedpasswords4j-client/src/test/java/com/github/nbaars/pwnedpasswords4j/client/PwnedPasswordClient_ArrowTest.java",
+      "generated_test_fqn": "com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClient_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 1.2,
+      "compile": 2.9,
+      "baseline": [
+        2.3,
+        2.4
+      ],
+      "total": 8.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

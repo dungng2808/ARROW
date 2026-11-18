@@ -1,0 +1,10 @@
+[>] Tải https://github.com/DSpace/DSpace
+[>] Liệt kê class
+[>] Build root dspace-api (standalone)
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module dspace-api: [ERROR] Failed to execute goal on project dspace-api: Could not resolve dependencies for project org.dspace:dspace-api:jar:10.0-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module dspace-api: [ERROR] Failed to execute goal on project dspace-api: Could not resolve dependencies for project org.dspace:dspace-api:jar:10.0-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

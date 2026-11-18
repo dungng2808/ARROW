@@ -1,0 +1,822 @@
+{
+  "run_id": "20261118-022039-q1xd",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-022039-q1xd",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 198.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 198.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "wavefront-proxy",
+        "url": "https://github.com/wavefrontHQ/wavefront-proxy",
+        "git_commit": "172c23d90dcff28c7d1a69b4fac9144e95876f56",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "proxy",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 11,
+        "jdk_choice_reason": "fallback:8,11"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.wavefront",
+            "artifact": "java-lib",
+            "version": "2020-08.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.wavefront",
+            "artifact": "wavefront-sdk-java",
+            "version": "2.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.wavefront",
+            "artifact": "wavefront-internal-reporter-java",
+            "version": "1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk-sqs",
+            "version": "1.11.327",
+            "scope": "compile"
+          },
+          {
+            "group": "com.beust",
+            "artifact": "jcommander",
+            "version": "1.72",
+            "scope": "compile"
+          },
+          {
+            "group": "com.squareup.tape2",
+            "artifact": "tape",
+            "version": "2.0.0-beta1",
+            "scope": "compile"
+          },
+          {
+            "group": "io.grpc",
+            "artifact": "grpc-netty",
+            "version": "1.29.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.grpc",
+            "artifact": "grpc-protobuf",
+            "version": "1.29.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.grpc",
+            "artifact": "grpc-stub",
+            "version": "1.29.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.jaegertracing",
+            "artifact": "jaeger-thrift",
+            "version": "1.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentelemetry",
+            "artifact": "opentelemetry-exporters-jaeger",
+            "version": "0.4.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.uber.tchannel",
+            "artifact": "tchannel-core",
+            "version": "0.8.29",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.thrift",
+            "artifact": "libthrift",
+            "version": "0.13.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.zipkin2",
+            "artifact": "zipkin",
+            "version": "2.11.12",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-lang",
+            "artifact": "commons-lang",
+            "version": "2.6",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-collections",
+            "artifact": "commons-collections",
+            "version": "3.2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "28.1-jre",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.protobuf",
+            "artifact": "protobuf-java-util",
+            "version": "3.5.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jboss.resteasy",
+            "artifact": "resteasy-jaxrs",
+            "version": "3.13.0.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jboss.resteasy",
+            "artifact": "resteasy-client",
+            "version": "3.13.0.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jboss.resteasy",
+            "artifact": "resteasy-jackson2-provider",
+            "version": "3.13.0.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "com.yammer.metrics",
+            "artifact": "metrics-core",
+            "version": "2.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.annotation",
+            "artifact": "javax.annotation-api",
+            "version": "1.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.tdunning",
+            "artifact": "t-digest",
+            "version": "3.2",
+            "scope": "compile"
+          },
+          {
+            "group": "net.openhft",
+            "artifact": "chronicle-map",
+            "version": "3.17.8",
+            "scope": "compile"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-codec",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-codec-http",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-handler",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-buffer",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-transport",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-resolver",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-transport-native-epoll",
+            "version": "4.1.50.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-daemon",
+            "artifact": "commons-daemon",
+            "version": "1.0.15",
+            "scope": "compile"
+          },
+          {
+            "group": "org.yaml",
+            "artifact": "snakeyaml",
+            "version": "1.26",
+            "scope": "compile"
+          },
+          {
+            "group": "net.jpountz.lz4",
+            "artifact": "lz4",
+            "version": "1.3.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-core",
+            "version": "2.13.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-api",
+            "version": "2.13.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-1.2-api",
+            "version": "2.13.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-slf4j-impl",
+            "version": "2.13.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-jul",
+            "version": "2.13.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-web",
+            "version": "2.13.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.lmax",
+            "artifact": "disruptor",
+            "version": "3.3.7",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.module",
+            "artifact": "jackson-module-afterburner",
+            "version": "2.11.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.11.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.11.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.dataformat",
+            "artifact": "jackson-dataformat-yaml",
+            "version": "2.11.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.ben-manes.caffeine",
+            "artifact": "caffeine",
+            "version": "2.8.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.thekraken",
+            "artifact": "grok",
+            "version": "0.1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "net.jafama",
+            "artifact": "jafama",
+            "version": "2.1.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.easymock",
+            "artifact": "easymock",
+            "version": "4.0.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.truth",
+            "artifact": "truth",
+            "version": "0.29",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 151
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.easymock:easymock:4.0.1"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3",
+          "com.google.truth:truth:0.29"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "proxy"
+        ],
+        "target_module": "proxy",
+        "module_root": "proxy",
+        "packages": [
+          "com.wavefront.agent.queueing",
+          "com.wavefront.agent",
+          "com.tdunning.math.stats",
+          "com.wavefront.agent.api",
+          "com.wavefront.agent.auth",
+          "com.wavefront.agent.channel",
+          "com.wavefront.agent.config",
+          "com.wavefront.agent.data",
+          "com.wavefront.agent.formatter",
+          "com.wavefront.agent.handlers",
+          "com.wavefront.agent.histogram",
+          "com.wavefront.agent.histogram.accumulator",
+          "com.wavefront.agent.listeners",
+          "com.wavefront.agent.listeners.tracing",
+          "com.wavefront.agent.logsharvesting",
+          "com.wavefront.agent.preprocessor",
+          "com.wavefront.agent.sampler",
+          "com.wavefront.common",
+          "org.logstash.beats",
+          "org.logstash.netty"
+        ]
+      },
+      "paths": {
+        "source_root": "proxy/src/main/java",
+        "test_root": "proxy/src/test/java",
+        "cut_path": "proxy/src/main/java/com/wavefront/agent/queueing/SQSQueueFactoryImpl.java",
+        "generated_test_path": "proxy/src/test/java/com/wavefront/agent/queueing/SQSQueueFactoryImpl_ArrowTest.java",
+        "generated_test_fqn": "com.wavefront.agent.queueing.SQSQueueFactoryImpl_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.wavefront.agent.queueing.SQSQueueFactoryImpl",
+        "simple_name": "SQSQueueFactoryImpl",
+        "package": "com.wavefront.agent.queueing",
+        "kind": "class",
+        "source_sha256": "0089529e7426d0cfb326279480426ba564e86c407a15a01a837ab07bbe9d95d1"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "proxy",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "proxy",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.wavefront.agent.HttpClientTest#httpClientTimeoutsWork",
+        "com.wavefront.agent.HttpEndToEndTest#testEndToEndEvents",
+        "com.wavefront.agent.HttpEndToEndTest#testEndToEndHistograms",
+        "com.wavefront.agent.HttpEndToEndTest#testEndToEndMetrics",
+        "com.wavefront.agent.HttpEndToEndTest#testEndToEndSourceTags",
+        "com.wavefront.agent.HttpEndToEndTest#testEndToEndSpans",
+        "com.wavefront.agent.HttpEndToEndTest#testEndToEndSpans_SpanLogsWithSpanField",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testDontRetryCheckinOnBadCredentials",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testDontRetryCheckinOnMisconfiguredUrlThatEndsWithApi",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testHttpErrors",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testNetworkErrors",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testNormalCheckin",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testNormalCheckinWithBadConsumer",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testNormalCheckinWithRemoteShutdown",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testRetryCheckinOnMisconfiguredUrl",
+        "com.wavefront.agent.ProxyCheckInSchedulerTest#testRetryCheckinOnMisconfiguredUrlFailsTwiceTerminates",
+        "com.wavefront.agent.ProxyConfigTest#testTaskQueueLevelParsing",
+        "com.wavefront.agent.ProxyConfigTest#testTokenValidationMethodParsing",
+        "com.wavefront.agent.ProxyConfigTest#testVersionOrHelpReturnFalse",
+        "com.wavefront.agent.ProxyUtilTest#testLoadProxyIdFromFile",
+        "com.wavefront.agent.PushAgentTest#testCustomTraceUnifiedPortHandlerDerivedMetrics",
+        "com.wavefront.agent.PushAgentTest#testCustomTraceUnifiedPortHandlerPlaintext",
+        "com.wavefront.agent.PushAgentTest#testDataDogUnifiedPortHandler",
+        "com.wavefront.agent.PushAgentTest#testDeltaCounterHandlerDataStream",
+        "com.wavefront.agent.PushAgentTest#testDeltaCounterHandlerMixedData",
+        "com.wavefront.agent.PushAgentTest#testHealthCheckAdminPorts",
+        "com.wavefront.agent.PushAgentTest#testHistogramDataOnWavefrontUnifiedPortHandlerPlaintextUncompressed",
+        "com.wavefront.agent.PushAgentTest#testJsonMetricsPortHandler",
+        "com.wavefront.agent.PushAgentTest#testLargeHistogramDataOnWavefrontUnifiedPortHandler",
+        "com.wavefront.agent.PushAgentTest#testOpenTSDBPortHandler",
+        "com.wavefront.agent.PushAgentTest#testRelayPortHandlerGzipped",
+        "com.wavefront.agent.PushAgentTest#testSecureAll",
+        "com.wavefront.agent.PushAgentTest#testTraceUnifiedPortHandlerPlaintext",
+        "com.wavefront.agent.PushAgentTest#testTraceUnifiedPortHandlerPlaintextDebugSampling",
+        "com.wavefront.agent.PushAgentTest#testWavefrontHandlerAsDDIEndpoint",
+        "com.wavefront.agent.PushAgentTest#testWavefrontUnifiedPortHandlerGzippedPlaintextStream",
+        "com.wavefront.agent.PushAgentTest#testWavefrontUnifiedPortHandlerHttpGzipped",
+        "com.wavefront.agent.PushAgentTest#testWavefrontUnifiedPortHandlerPlaintextOverHttp",
+        "com.wavefront.agent.PushAgentTest#testWavefrontUnifiedPortHandlerPlaintextUncompressed",
+        "com.wavefront.agent.PushAgentTest#testWavefrontUnifiedPortHandlerPlaintextUncompressedMixedDataPayload",
+        "com.wavefront.agent.PushAgentTest#testWriteHttpJsonMetricsPortHandler",
+        "com.wavefront.agent.auth.DummyAuthenticatorTest#testAnyTokenWorks",
+        "com.wavefront.agent.auth.HttpGetTokenIntrospectionAuthenticatorTest#testIntrospectionUrlCachedLastResultExpires",
+        "com.wavefront.agent.auth.HttpGetTokenIntrospectionAuthenticatorTest#testIntrospectionUrlInvocation",
+        "com.wavefront.agent.auth.Oauth2TokenIntrospectionAuthenticatorTest#testIntrospectionUrlCachedLastResultExpires",
+        "com.wavefront.agent.auth.Oauth2TokenIntrospectionAuthenticatorTest#testIntrospectionUrlInvalidResponseThrows",
+        "com.wavefront.agent.auth.Oauth2TokenIntrospectionAuthenticatorTest#testIntrospectionUrlInvocation",
+        "com.wavefront.agent.auth.StaticTokenAuthenticatorTest#testValidTokenWorks",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderHttpGetIncompleteArguments2Throws",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderHttpGetIncompleteArgumentsThrows",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderInvalidMethodThrows",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderOauth2IncompleteArguments2Throws",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderOauth2IncompleteArgumentsThrows",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderOutput",
+        "com.wavefront.agent.auth.TokenAuthenticatorBuilderTest#testBuilderStaticTokenIncompleteArgumentsThrows",
+        "com.wavefront.agent.channel.SharedGraphiteHostAnnotatorTest#testHostAnnotator",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testEmptyHost",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testEmptyMetric",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testEquals",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testGetHost",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testGetMetric",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testGetTags",
+        "com.wavefront.agent.common.HostMetricTagsPairTest#testToString",
+        "com.wavefront.agent.data.LineDelimitedDataSubmissionTaskTest#testSplitTask",
+        "com.wavefront.agent.data.SourceTagSubmissionTaskTest#test200",
+        "com.wavefront.agent.data.SourceTagSubmissionTaskTest#test404",
+        "com.wavefront.agent.data.SourceTagSubmissionTaskTest#test500",
+        "com.wavefront.agent.formatter.GraphiteFormatterTest#testCollectdGraphiteParsing",
+        "com.wavefront.agent.formatter.GraphiteFormatterTest#testFieldsToRemove",
+        "com.wavefront.agent.formatter.GraphiteFormatterTest#testFieldsToRemoveInvalidFormats",
+        "com.wavefront.agent.handlers.ReportSourceTagHandlerTest#testSourceAddDescription",
+        "com.wavefront.agent.handlers.ReportSourceTagHandlerTest#testSourceDeleteDescription",
+        "com.wavefront.agent.handlers.ReportSourceTagHandlerTest#testSourceTagAppend",
+        "com.wavefront.agent.handlers.ReportSourceTagHandlerTest#testSourceTagDelete",
+        "com.wavefront.agent.handlers.ReportSourceTagHandlerTest#testSourceTagsSetting",
+        "com.wavefront.agent.handlers.ReportSourceTagHandlerTest#testSourceTagsTaskAffinity",
+        "com.wavefront.agent.histogram.HistogramRecompressorTest#testHistogramRecompressor",
+        "com.wavefront.agent.histogram.MapLoaderTest#testCorruptedFileThrows",
+        "com.wavefront.agent.histogram.MapLoaderTest#testDoNotPersist",
+        "com.wavefront.agent.histogram.PointHandlerDispatcherTest#testBasicDispatch",
+        "com.wavefront.agent.histogram.PointHandlerDispatcherTest#testOnlyRipeEntriesAreDispatched",
+        "com.wavefront.agent.histogram.accumulator.AccumulationCacheTest#testAddCache",
+        "com.wavefront.agent.histogram.accumulator.AccumulationCacheTest#testChronicleMapOverflow",
+        "com.wavefront.agent.histogram.accumulator.AccumulationCacheTest#testEvictsOnCapacityExceeded",
+        "com.wavefront.agent.histogram.accumulator.AccumulationCacheTest#testResolveOnExistingKey",
+        "com.wavefront.agent.histogram.accumulator.AccumulationCacheTest#testResolveOnNewKey",
+        "com.wavefront.agent.listeners.tracing.JaegerGrpcCollectorHandlerTest#testApplicationTagPriority",
+        "com.wavefront.agent.listeners.tracing.JaegerGrpcCollectorHandlerTest#testJaegerDebugOverride",
+        "com.wavefront.agent.listeners.tracing.JaegerGrpcCollectorHandlerTest#testJaegerDurationSampler",
+        "com.wavefront.agent.listeners.tracing.JaegerGrpcCollectorHandlerTest#testJaegerGrpcCollector",
+        "com.wavefront.agent.listeners.tracing.JaegerGrpcCollectorHandlerTest#testJaegerPreprocessedDerivedMetrics",
+        "com.wavefront.agent.listeners.tracing.JaegerGrpcCollectorHandlerTest#testSourceTagPriority",
+        "com.wavefront.agent.listeners.tracing.JaegerPortUnificationHandlerTest#testJaegerPortUnificationHandler",
+        "com.wavefront.agent.listeners.tracing.JaegerPortUnificationHandlerTest#testJaegerPreprocessedDerivedMetrics",
+        "com.wavefront.agent.listeners.tracing.JaegerTChannelCollectorHandlerTest#testApplicationTagPriority",
+        "com.wavefront.agent.listeners.tracing.JaegerTChannelCollectorHandlerTest#testJaegerDebugOverride",
+        "com.wavefront.agent.listeners.tracing.JaegerTChannelCollectorHandlerTest#testJaegerDurationSampler",
+        "com.wavefront.agent.listeners.tracing.JaegerTChannelCollectorHandlerTest#testJaegerTChannelCollector",
+        "com.wavefront.agent.listeners.tracing.JaegerTChannelCollectorHandlerTest#testSourceTagPriority",
+        "com.wavefront.agent.listeners.tracing.ZipkinPortUnificationHandlerTest#testZipkinCustomSource",
+        "com.wavefront.agent.listeners.tracing.ZipkinPortUnificationHandlerTest#testZipkinDebugOverride",
+        "com.wavefront.agent.listeners.tracing.ZipkinPortUnificationHandlerTest#testZipkinDurationSampler",
+        "com.wavefront.agent.listeners.tracing.ZipkinPortUnificationHandlerTest#testZipkinHandler",
+        "com.wavefront.agent.listeners.tracing.ZipkinPortUnificationHandlerTest#testZipkinPreprocessedDerivedMetrics",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testAdditionalPatterns",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testBadName",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testDynamicLabels",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testDynamicTagValues",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testEmptyTagValuesIgnored",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testEvictedDeltaMetricReportingAgain",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testEvictedMetricReportingAgain",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testExtractHostname",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testFilebeat7Ingester",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testFilebeat7IngesterAlternativeHostname",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testFilebeatIngesterDefaultHostname",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testFilebeatIngesterOverrideHostname",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testGaugeWithoutValue",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testHistogram",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testHotloadedConfigClearsOldMetrics",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testIncrementCounterWithImplied1",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testMetricsAggregation",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testMetricsAggregationNonDeltaCounters",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testParseValueFromCombinedApacheLog",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testPrefixIsApplied",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testProxyLogLine",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testRawLogsIngester",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testTagsNonParallelArrays",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testWavefrontHistogram",
+        "com.wavefront.agent.logsharvesting.LogsIngesterTest#testWavefrontHistogramMultipleCentroids",
+        "com.wavefront.agent.preprocessor.AgentConfigurationTest#testEmptyRules",
+        "com.wavefront.agent.preprocessor.AgentConfigurationTest#testLoadInvalidRules",
+        "com.wavefront.agent.preprocessor.AgentConfigurationTest#testLoadValidRules",
+        "com.wavefront.agent.preprocessor.AgentConfigurationTest#testMultiPortPreprocessorRules",
+        "com.wavefront.agent.preprocessor.AgentConfigurationTest#testPreprocessorRulesOrder",
+        "com.wavefront.agent.preprocessor.PreprocessorRuleV2PredicateTest#testPreprocessorReportPointLogicalOps",
+        "com.wavefront.agent.preprocessor.PreprocessorRuleV2PredicateTest#testPreprocessorSpanLogicalOps",
+        "com.wavefront.agent.preprocessor.PreprocessorRuleV2PredicateTest#testReportPointPreprocessorComparisonOps",
+        "com.wavefront.agent.preprocessor.PreprocessorRuleV2PredicateTest#testReportPointPreprocessorComparisonOpsList",
+        "com.wavefront.agent.preprocessor.PreprocessorRuleV2PredicateTest#testSpanPreprocessorComparisonOps",
+        "com.wavefront.agent.preprocessor.PreprocessorRuleV2PredicateTest#testSpanPreprocessorComparisonOpsList",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testAgentPreprocessorForPointLine",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testAgentPreprocessorForReportPoint",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testAllFilters",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testLineAllowNullMatchThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testLineBlockNullMatchThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testLineReplaceRegexBlankMatchThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testLineReplaceRegexNullMatchThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPointAllowNullMatchThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPointAllowNullScopeThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPointBlockNullMatchThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPointBlockNullScopeThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPointInRangeCorrectForTimeRanges",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPointLineRules",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPreprocessorRulesHotReload",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testPreprocessorUtil",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointFiltersWithValidV2AndInvalidV1Predicate",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointFiltersWithValidV2AndV1Predicate",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointLimitRule",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointLimitRuleDropMetricNameThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointLimitRuleDropSourceNameThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointLimitRuleTruncateWithEllipsisMaxLengthLessThan3Throws",
+        "com.wavefront.agent.preprocessor.PreprocessorRulesTest#testReportPointRules",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanAddAnnotationIfNotExistsRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanAddAnnotationRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanAllowBlockRules",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanDropAnnotationRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanExtractAnnotationIfNotExistsRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanExtractAnnotationRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanFiltersWithValidV2AndInvalidV1Predicate",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanFiltersWithValidV2AndV1Predicate",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanForceLowercaseRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanLimitRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanLimitRuleDropSourceNameThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanLimitRuleDropSpanNameThrows",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanLimitRuleTruncateWithEllipsisMaxLengthLessThan3Throws",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanRenameTagRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanReplaceRegexRule",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanSanitizeTransformer",
+        "com.wavefront.agent.preprocessor.PreprocessorSpanRulesTest#testSpanWhitelistAnnotation",
+        "com.wavefront.agent.queueing.ConcurrentShardedQueueFileTest#nextFileNameTest",
+        "com.wavefront.agent.queueing.ConcurrentShardedQueueFileTest#testConcurrency",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[0]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[1]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[2]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[3]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[4]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[5]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[6]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[7]",
+        "com.wavefront.agent.queueing.InMemorySubmissionQueueTest#testTaskRead[8]",
+        "com.wavefront.agent.queueing.InstrumentedTaskQueueDelegateTest#testEventTask",
+        "com.wavefront.agent.queueing.InstrumentedTaskQueueDelegateTest#testLineDelimitedTask",
+        "com.wavefront.agent.queueing.InstrumentedTaskQueueDelegateTest#testSourceTagTask",
+        "com.wavefront.agent.queueing.QueueExporterTest#testQueueExporter",
+        "com.wavefront.agent.queueing.QueueExporterTest#testQueueExporterWithRetainData",
+        "com.wavefront.agent.queueing.RetryTaskConverterTest#testTaskSerialize",
+        "com.wavefront.agent.queueing.SQSQueueFactoryImplTest#testQueueNameGeneration",
+        "com.wavefront.agent.queueing.SQSQueueFactoryImplTest#testQueueTemplate",
+        "com.wavefront.agent.queueing.SQSSubmissionQueueTest#testTaskRead[0]",
+        "com.wavefront.agent.queueing.SQSSubmissionQueueTest#testTaskRead[1]",
+        "com.wavefront.agent.queueing.SQSSubmissionQueueTest#testTaskRead[2]",
+        "com.wavefront.agent.queueing.SQSSubmissionQueueTest#testTaskRead[3]",
+        "com.wavefront.agent.queueing.SQSSubmissionQueueTest#testTaskRead[4]",
+        "com.wavefront.agent.queueing.SQSSubmissionQueueTest#testTaskRead[5]",
+        "com.wavefront.agent.sampler.SpanSamplerTest#testAlwaysSampleErrors",
+        "com.wavefront.agent.sampler.SpanSamplerTest#testSample",
+        "com.wavefront.common.HistogramUtilsTest#testIsWavefrontResponse",
+        "com.wavefront.common.MessageDedupingLoggerTest#testLogger",
+        "com.wavefront.common.SamplingLoggerTest#test25PercentSamplingThroughIsLoggable",
+        "com.wavefront.common.SamplingLoggerTest#test75PercentSamplingLogger",
+        "com.wavefront.common.SamplingLoggerTest#testAlwaysActiveLogger",
+        "org.logstash.beats.BatchIdentityTest#testCreateFromMessage",
+        "org.logstash.beats.BatchIdentityTest#testEquals"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.wavefront.agent.histogram.MapLoaderTest#testFileDoesNotExist",
+        "com.wavefront.agent.histogram.MapLoaderTest#testPersistence",
+        "com.wavefront.agent.histogram.MapLoaderTest#testReconfigureMap"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 154,
+        "module_test": [
+          12.4,
+          12.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022039-q1xd/base",
+      "compiled_snapshot": "work/20261118-022039-q1xd/snapshot-1241936d",
+      "source_tree_hash": null,
+      "jdk_major": 11,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-11/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "proxy",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.wavefront.agent.queueing.SQSQueueFactoryImpl",
+      "simple_name": "SQSQueueFactoryImpl",
+      "package": "com.wavefront.agent.queueing",
+      "kind": "class",
+      "cut_path": "proxy/src/main/java/com/wavefront/agent/queueing/SQSQueueFactoryImpl.java",
+      "source_sha256": "0089529e7426d0cfb326279480426ba564e86c407a15a01a837ab07bbe9d95d1",
+      "generated_test_path": "proxy/src/test/java/com/wavefront/agent/queueing/SQSQueueFactoryImpl_ArrowTest.java",
+      "generated_test_fqn": "com.wavefront.agent.queueing.SQSQueueFactoryImpl_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "JVM chạy test không khởi động được với JDK 8; thử JDK khác.",
+      "Có 3 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.8,
+      "locate": 0.3,
+      "plan": 4,
+      "compile": 154,
+      "baseline": [
+        12.4,
+        12.9
+      ],
+      "total": 198.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "JVM chạy test không khởi động được với JDK 8; thử JDK khác.",
+    "Có 3 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

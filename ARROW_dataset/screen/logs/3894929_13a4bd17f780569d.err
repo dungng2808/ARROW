@@ -1,0 +1,10 @@
+[>] Tải https://github.com/hamcrest/JavaHamcrest
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 21
+[X] B1_BASELINE_BUILD_FAILED: Không biên dịch được module hamcrest với JDK 17, 8, 11, 21
+[X] B1_BASELINE_BUILD_FAILED · Không biên dịch được module hamcrest với JDK 17, 8, 11, 21
+  → Cách sửa: Xem lỗi đầu tiên ở trên; chạy "mvn -q test-compile" trong project để xem lỗi đầy đủ.

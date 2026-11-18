@@ -1,0 +1,313 @@
+{
+  "run_id": "20261118-011455-swd9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-011455-swd9",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 25.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 25.2
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Coding-Pratice",
+        "url": "https://github.com/hzy38324/Coding-Pratice",
+        "git_commit": "3ae7b5048e8343ee87c4c362e177ec06d8192989",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "CodePractice",
+        "build_mode": "standalone",
+        "build_file": "CodePractice/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": null,
+        "declared_source": null,
+        "major": null,
+        "jdk_major": 17,
+        "jdk_choice_reason": "default"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-log4j12",
+            "version": "1.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "log4j",
+            "artifact": "log4j",
+            "version": "1.2.16",
+            "scope": "runtime"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "3.1.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 6
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "CodePractice",
+        "module_root": "CodePractice",
+        "packages": [
+          "com.sexycode.codepractice.exam.primefactors",
+          "com.sexycode.codepractice.concurrency.cache.betterDesign",
+          "com.sexycode.codepractice.concurrency.cache.poorDesign",
+          "com.sexycode.codepractice.concurrency.htmlRender",
+          "com.sexycode.codepractice.concurrency.syncTool",
+          "com.sexycode.codepractice.concurrency.synchronize",
+          "com.sexycode.codepractice.concurrency.unthreadsafe",
+          "com.sexycode.codepractice.concurrency.volatilePractice",
+          "com.sexycode.codepractice.concurrency.webServer.betterDesign",
+          "com.sexycode.codepractice.concurrency.webServer.poorDesign",
+          "com.sexycode.codepractice.designPattern.singleinstance",
+          "com.sexycode.codepractice.designPattern.singleton",
+          "com.sexycode.codepractice.exam.fibonacci",
+          "com.sexycode.codepractice.exam.replaceblank",
+          "com.sexycode.codepractice.javase.io",
+          "com.sexycode.codepractice.javase.mapDemo",
+          "com.sexycode.codepractice.javase.socketServer"
+        ]
+      },
+      "paths": {
+        "source_root": "CodePractice/src/main/java",
+        "test_root": "CodePractice/src/test/java",
+        "cut_path": "CodePractice/src/main/java/com/sexycode/codepractice/exam/primefactors/PrimeFactors.java",
+        "generated_test_path": "CodePractice/src/test/java/com/sexycode/codepractice/exam/primefactors/PrimeFactors_ArrowTest.java",
+        "generated_test_fqn": "com.sexycode.codepractice.exam.primefactors.PrimeFactors_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.sexycode.codepractice.exam.primefactors.PrimeFactors",
+        "simple_name": "PrimeFactors",
+        "package": "com.sexycode.codepractice.exam.primefactors",
+        "kind": "class",
+        "source_sha256": "0ffd38b8417d84bad783bd6dc957ee4e89a8492e00e606b91fc4678e56c4eaa7"
+      },
+      "missing_reasons": {
+        "java": "file build không khai báo mức Java"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "CodePractice",
+      "passing_in_all_runs": [
+        "com.sexycode.codepractice.concurrency.cache.MemoizerTest#test_Memozier",
+        "com.sexycode.codepractice.concurrency.cache.MemoizerTest#test_Memozier1",
+        "com.sexycode.codepractice.concurrency.cache.MemoizerTest#test_Memozier2",
+        "com.sexycode.codepractice.concurrency.synchronize.SynchronizeProcessTest#test_SynchronizeBlockCountingProcessor",
+        "com.sexycode.codepractice.concurrency.synchronize.SynchronizeProcessTest#test_SynchronizeMethodCountingProcessor",
+        "com.sexycode.codepractice.concurrency.synchronize.SynchronizeProcessTest#test_UnThreadSafeCountingProcessor",
+        "com.sexycode.codepractice.designPattern.singleinstance.SolutionTest#test1",
+        "com.sexycode.codepractice.designPattern.singleton.SingletonHungryManTest#testClassLoader",
+        "com.sexycode.codepractice.exam.fibonacci.FibonacciTest#test_1",
+        "com.sexycode.codepractice.exam.fibonacci.FibonacciTest#test_2",
+        "com.sexycode.codepractice.exam.fibonacci.FibonacciTest#test_3",
+        "com.sexycode.codepractice.exam.fibonacci.FibonacciTest#test_4",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#test100",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testFive",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testFour",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testNonPositive",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testOne",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testSix",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testThree",
+        "com.sexycode.codepractice.exam.primefactors.PrimeFactorsTest#testTwo",
+        "com.sexycode.codepractice.exam.replaceblank.SolutionTest#test1"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.sexycode.codepractice.designPattern.singleton.SingletonHungryManTest#testReflection"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.4,
+        "module_test": [
+          11.4,
+          11.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011455-swd9/base",
+      "compiled_snapshot": "work/20261118-011455-swd9/snapshot-e29e5cce",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "CodePractice",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.sexycode.codepractice.exam.primefactors.PrimeFactors",
+      "simple_name": "PrimeFactors",
+      "package": "com.sexycode.codepractice.exam.primefactors",
+      "kind": "class",
+      "cut_path": "CodePractice/src/main/java/com/sexycode/codepractice/exam/primefactors/PrimeFactors.java",
+      "source_sha256": "0ffd38b8417d84bad783bd6dc957ee4e89a8492e00e606b91fc4678e56c4eaa7",
+      "generated_test_path": "CodePractice/src/test/java/com/sexycode/codepractice/exam/primefactors/PrimeFactors_ArrowTest.java",
+      "generated_test_fqn": "com.sexycode.codepractice.exam.primefactors.PrimeFactors_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 1.4,
+      "baseline": [
+        11.4,
+        11.3
+      ],
+      "total": 25.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

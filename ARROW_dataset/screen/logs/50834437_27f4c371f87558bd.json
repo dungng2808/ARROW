@@ -1,0 +1,324 @@
+{
+  "run_id": "20261118-024235-dx0k",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-024235-dx0k",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 193.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 193.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "sec-group-broker-filter",
+        "url": "https://github.com/orange-cloudfoundry/sec-group-broker-filter",
+        "git_commit": "507df2641d24a0b9804ac6de91d0c099349a5526",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "service-broker-filter-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.cloud",
+            "artifact": "spring-cloud-starter-open-service-broker",
+            "version": "3.1.2.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.cloud",
+            "artifact": "spring-cloud-starter-openfeign",
+            "version": "2.2.4.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-actuator",
+            "version": "2.3.2.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.projectlombok",
+            "artifact": "lombok",
+            "version": "1.18.12",
+            "scope": "provided"
+          },
+          {
+            "group": "io.github.openfeign",
+            "artifact": "feign-okhttp",
+            "version": "10.10.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.squareup.okhttp3",
+            "artifact": "okhttp",
+            "version": "3.14.9",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.3.2.RELEASE",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 106
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:3.3.3",
+          "org.mockito:mockito-junit-jupiter:3.3.3"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.16.1",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency junit:junit (test); imports 0 org.junit.jupiter, 7 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "service-broker-filter-core",
+          "service-broker-filter-securitygroups",
+          "integration-test"
+        ],
+        "target_module": "service-broker-filter-core",
+        "module_root": "service-broker-filter-core",
+        "packages": [
+          "com.orange.cloud.servicebroker.filter.core.service.mapper",
+          "com.orange.cloud.servicebroker.filter.core",
+          "com.orange.cloud.servicebroker.filter.core.service",
+          "com.orange.cloud.servicebroker.filter.core.config",
+          "com.orange.cloud.servicebroker.filter.core.filters"
+        ]
+      },
+      "paths": {
+        "source_root": "service-broker-filter-core/src/main/java",
+        "test_root": "service-broker-filter-core/src/test/java",
+        "cut_path": "service-broker-filter-core/src/main/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper.java",
+        "generated_test_path": "service-broker-filter-core/src/test/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper_ArrowTest.java",
+        "generated_test_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper",
+        "simple_name": "SuffixedCatalogMapper",
+        "package": "com.orange.cloud.servicebroker.filter.core.service.mapper",
+        "kind": "class",
+        "source_sha256": "0ee1116d0f94efed5a15716983e7ac0603a72001b39ad87b100cd3a3cfe2779d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "service-broker-filter-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "service-broker-filter-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.orange.cloud.servicebroker.filter.core.config.ServiceOfferingMapperConfigTest#default_service_offering_mapper",
+        "com.orange.cloud.servicebroker.filter.core.config.ServiceOfferingMapperConfigTest#suffixed_service_offering_mapper",
+        "com.orange.cloud.servicebroker.filter.core.filters.ServiceInstanceBindingFilterRunnerTest#should_only_run_create_service_instance_binding_post_filter_on_post_binding",
+        "com.orange.cloud.servicebroker.filter.core.filters.ServiceInstanceBindingFilterRunnerTest#should_only_run_create_service_instance_binding_pre_filter_on_pre_binding",
+        "com.orange.cloud.servicebroker.filter.core.filters.ServiceInstanceBindingFilterRunnerTest#should_only_run_delete_service_instance_binding_post_filter_on_post_unbinding",
+        "com.orange.cloud.servicebroker.filter.core.filters.ServiceInstanceBindingFilterRunnerTest#should_only_run_delete_service_instance_binding_pre_filter_on_pre_unbinding",
+        "com.orange.cloud.servicebroker.filter.core.service.ServiceInstanceBindingServiceProxyTest#should_fail_to_create_service_instance_instance_when_any_post_filter_fails",
+        "com.orange.cloud.servicebroker.filter.core.service.ServiceInstanceBindingServiceProxyTest#should_fail_to_create_service_instance_instance_when_any_pre_filter_fails",
+        "com.orange.cloud.servicebroker.filter.core.service.ServiceInstanceBindingServiceProxyTest#should_proxy_create_service_instance_binding_request_to_filtered_broker",
+        "com.orange.cloud.servicebroker.filter.core.service.ServiceInstanceBindingServiceProxyTest#should_proxy_delete_service_instance_binding_request_to_filtered_broker",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapperTest#should_get_catalog_with_prefixed_service_offering",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapperTest#withSuffix",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceBindingRequestMapperTest#should_map_create_service_instance_binding_request",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceBindingRequestMapperTest#should_map_delete_service_instance_binding_request",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceRequestMapperTest#should_map_create_service_instance_request",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceRequestMapperTest#should_map_delete_service_instance_request",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceRequestMapperTest#should_map_get_last_service_operation_request",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceRequestMapperTest#should_map_update_service_instance_request",
+        "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedServiceInstanceRequestMapperTest#withoutSuffix"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 85.1,
+        "module_test": [
+          3.6,
+          3.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024235-dx0k/base",
+      "compiled_snapshot": "work/20261118-024235-dx0k/snapshot-623866cc",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "service-broker-filter-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper",
+      "simple_name": "SuffixedCatalogMapper",
+      "package": "com.orange.cloud.servicebroker.filter.core.service.mapper",
+      "kind": "class",
+      "cut_path": "service-broker-filter-core/src/main/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper.java",
+      "source_sha256": "0ee1116d0f94efed5a15716983e7ac0603a72001b39ad87b100cd3a3cfe2779d",
+      "generated_test_path": "service-broker-filter-core/src/test/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper_ArrowTest.java",
+      "generated_test_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 101.2,
+      "compile": 85.1,
+      "baseline": [
+        3.6,
+        3.6
+      ],
+      "total": 193.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

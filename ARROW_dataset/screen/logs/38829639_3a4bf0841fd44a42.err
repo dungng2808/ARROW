@@ -1,0 +1,17 @@
+[>] Tải https://github.com/fabric8io/kubernetes-client
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Wrapper lỗi, dùng Maven của máy
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[>] Build root kubernetes-client (standalone)
+[>] Wrapper lỗi, dùng Maven của máy
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module kubernetes-client: [ERROR] Failed to execute goal on project kubernetes-client: Could not resolve dependencies for project io.fabric8:kubernetes-client:jar:6.3-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module kubernetes-client: [ERROR] Failed to execute goal on project kubernetes-client: Could not resolve dependencies for project io.fabric8:kubernetes-client:jar:6.3-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

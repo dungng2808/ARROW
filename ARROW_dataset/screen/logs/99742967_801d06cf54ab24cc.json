@@ -1,0 +1,363 @@
+{
+  "run_id": "20261118-005938-cruc",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-005938-cruc",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 25.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 25.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "swage",
+        "url": "https://github.com/awslabs/swage",
+        "git_commit": "4e04e90b99ce22e1704ae027f2b92389ff54d079",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "metrics-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "software.amazon.swage",
+            "artifact": "metrics-api",
+            "version": "1.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "software.amazon.swage",
+            "artifact": "thread-context",
+            "version": "1.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "software.amazon.swage",
+            "artifact": "type-safe",
+            "version": "1.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk-bundle",
+            "version": "1.11.125",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-api",
+            "version": "2.8.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.7.22",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 11
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.7.22"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "disseminating-executors",
+          "type-safe",
+          "thread-context",
+          "metrics-api",
+          "metrics-core"
+        ],
+        "target_module": "metrics-core",
+        "module_root": "metrics-core",
+        "packages": [
+          "software.amazon.swage.metrics.jmx",
+          "software.amazon.swage.metrics",
+          "software.amazon.swage.metrics.jmx.sensor",
+          "software.amazon.swage.metrics.measures",
+          "software.amazon.swage.metrics.record.cloudwatch",
+          "software.amazon.swage.metrics.record.file",
+          "software.amazon.swage.metrics.scoped"
+        ]
+      },
+      "paths": {
+        "source_root": "metrics-core/src/main/java",
+        "test_root": "metrics-core/src/test/java",
+        "cut_path": "metrics-core/src/main/java/software/amazon/swage/metrics/jmx/MXBeanPoller.java",
+        "generated_test_path": "metrics-core/src/test/java/software/amazon/swage/metrics/jmx/MXBeanPoller_ArrowTest.java",
+        "generated_test_fqn": "software.amazon.swage.metrics.jmx.MXBeanPoller_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "software.amazon.swage.metrics.jmx.MXBeanPoller",
+        "simple_name": "MXBeanPoller",
+        "package": "software.amazon.swage.metrics.jmx",
+        "kind": "class",
+        "source_sha256": "b055c282e19499d3ea339aefcae85cda9d851ef43d0e947ce1d3370885dfc52a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "metrics-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "metrics-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "software.amazon.swage.collection.ImmutableTypedMapTest#empty_constant",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#forEach",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#forEachTyped",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#get_typesafe",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#iterator",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#iterator_remove",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#keyset",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#no_entry",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#typedIterator",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#typedIterator_remove",
+        "software.amazon.swage.collection.ImmutableTypedMapTest#typedKeyset",
+        "software.amazon.swage.metrics.MetricTest#validation",
+        "software.amazon.swage.metrics.StandardMetricTest#validate",
+        "software.amazon.swage.metrics.UnitTest#forSymbol",
+        "software.amazon.swage.metrics.jmx.MXBeanPollerTest#senses",
+        "software.amazon.swage.metrics.jmx.MXBeanPollerTest#shutdown",
+        "software.amazon.swage.metrics.record.MetricRecorderTest#recorderContextReturnsSuppliedAttributes",
+        "software.amazon.swage.metrics.record.MetricRecorderTest#recorderDelegatesToImplementation",
+        "software.amazon.swage.metrics.record.MultiRecorderTest#closeIsSentToAllDelegates",
+        "software.amazon.swage.metrics.record.MultiRecorderTest#countIsSentToAllDelegates",
+        "software.amazon.swage.metrics.record.MultiRecorderTest#recordIsSentToAllDelegates",
+        "software.amazon.swage.metrics.record.NullRecorderTest#contextReturnsAttributes",
+        "software.amazon.swage.metrics.record.cloudwatch.CloudWatchRecorderTest#aggregation",
+        "software.amazon.swage.metrics.record.cloudwatch.CloudWatchRecorderTest#no_aggregation",
+        "software.amazon.swage.metrics.record.cloudwatch.CloudWatchRecorderTest#record_and_shutdown",
+        "software.amazon.swage.metrics.record.cloudwatch.DimensionMapperTest#global_and_normal_dimensions_combine",
+        "software.amazon.swage.metrics.record.cloudwatch.DimensionMapperTest#mappings",
+        "software.amazon.swage.metrics.record.cloudwatch.DimensionMapperTest#no_mappings",
+        "software.amazon.swage.metrics.record.cloudwatch.DimensionMapperTest#one_global",
+        "software.amazon.swage.metrics.record.cloudwatch.DimensionMapperTest#one_global_empty_context",
+        "software.amazon.swage.metrics.record.cloudwatch.MetricDataAggregatorTest#aggregate",
+        "software.amazon.swage.metrics.record.cloudwatch.MetricDataAggregatorTest#non_aggregated",
+        "software.amazon.swage.metrics.record.cloudwatch.MetricDataAggregatorTest#single",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#createDirectory",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#filenameLocalZone",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#filenameMinute",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#filenameUTC",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#nullDir",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#nullName",
+        "software.amazon.swage.metrics.record.file.RollingFileWriterTest#nullZone",
+        "software.amazon.swage.metrics.scoped.ScopedMetricsTest#count",
+        "software.amazon.swage.metrics.scoped.ScopedMetricsTest#sample",
+        "software.amazon.swage.metrics.scoped.ScopedMetricsTest#sample_and_count",
+        "software.amazon.swage.threadcontext.ContextAwareExecutorTest#currentContextIsPropagatedToTask",
+        "software.amazon.swage.threadcontext.ContextAwareExecutorTest#withNoContextDefaultIsUsed",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextIsDetachedOnClose",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextIsPassedToCallable",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextIsPassedToRunnable",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextIsPassedToSupplier",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextIsRestoredOnClose",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextReturnsNullForMissingKey",
+        "software.amazon.swage.threadcontext.ThreadContextTest#contextReturnsValueForKey",
+        "software.amazon.swage.threadcontext.ThreadContextTest#keyAccessesCurrentContext",
+        "software.amazon.swage.threadcontext.ThreadContextTest#keyValuesAreAdditive",
+        "software.amazon.swage.threadcontext.ThreadContextTest#keyValuesAreOverride",
+        "software.amazon.swage.threadcontext.ThreadContextTest#multipleValuesCanBeAdded",
+        "software.amazon.swage.threadcontext.ThreadContextTest#withNoActiveContextAnEmptyContextIsReturned",
+        "software.amazon.swage.threadcontext.ThreadContextTest#wraperContextIsUsedEvenIfOuterContextExists"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 8.2,
+        "module_test": [
+          7.9,
+          8.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005938-cruc/base",
+      "compiled_snapshot": "work/20261118-005938-cruc/snapshot-de82914c",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "metrics-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "software.amazon.swage.metrics.jmx.MXBeanPoller",
+      "simple_name": "MXBeanPoller",
+      "package": "software.amazon.swage.metrics.jmx",
+      "kind": "class",
+      "cut_path": "metrics-core/src/main/java/software/amazon/swage/metrics/jmx/MXBeanPoller.java",
+      "source_sha256": "b055c282e19499d3ea339aefcae85cda9d851ef43d0e947ce1d3370885dfc52a",
+      "generated_test_path": "metrics-core/src/test/java/software/amazon/swage/metrics/jmx/MXBeanPoller_ArrowTest.java",
+      "generated_test_fqn": "software.amazon.swage.metrics.jmx.MXBeanPoller_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 8.2,
+      "baseline": [
+        7.9,
+        8.1
+      ],
+      "total": 25.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

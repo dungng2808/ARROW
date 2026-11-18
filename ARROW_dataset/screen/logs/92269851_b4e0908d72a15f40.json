@@ -1,0 +1,476 @@
+{
+  "run_id": "20261118-021813-go0h",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-021813-go0h",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 107.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 107.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "spring-boot-student",
+        "url": "https://github.com/wyh-spring-ecosystem-student/spring-boot-student",
+        "git_commit": "74bf7b0fea7951f0b1a36b35e1e51321730a7314",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "spring-boot-student-sentinel-dashboard",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.alibaba.csp",
+            "artifact": "sentinel-core",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.csp",
+            "artifact": "sentinel-web-servlet",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.csp",
+            "artifact": "sentinel-transport-simple-http",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.csp",
+            "artifact": "sentinel-parameter-flow-control",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.csp",
+            "artifact": "sentinel-api-gateway-adapter-common",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-web",
+            "version": "2.0.5.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-logging",
+            "version": "2.0.5.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "log4j",
+            "artifact": "log4j",
+            "version": "1.2.14",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-lang",
+            "artifact": "commons-lang",
+            "version": "2.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpcore",
+            "version": "4.4.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpasyncclient",
+            "version": "4.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpcore-nio",
+            "version": "4.4.6",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba",
+            "artifact": "fastjson",
+            "version": "1.2.68",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.0.5.RELEASE",
+            "scope": "test"
+          },
+          {
+            "group": "com.alibaba.csp",
+            "artifact": "sentinel-datasource-nacos",
+            "version": "1.7.2",
+            "scope": "test"
+          },
+          {
+            "group": "com.ctrip.framework.apollo",
+            "artifact": "apollo-openapi",
+            "version": "1.2.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.curator",
+            "artifact": "curator-recipes",
+            "version": "4.0.1",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.28.2",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.stefanbirkner",
+            "artifact": "system-rules",
+            "version": "1.16.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 95
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.28.2"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.12.1",
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "spring-boot-student-banner",
+          "spring-boot-student-config",
+          "spring-boot-student-log",
+          "spring-boot-student-profile",
+          "spring-boot-student-data-jpa",
+          "spring-boot-student-mybatis",
+          "spring-boot-student-mybatis-ehcache",
+          "spring-boot-student-mybatis-redis",
+          "spring-boot-student-mybatis-druid",
+          "spring-boot-student-encode",
+          "spring-boot-student-mybatis-druid-2",
+          "spring-boot-student-data-jpa-transaction",
+          "spring-boot-student-cache",
+          "spring-boot-student-cache-ehcache",
+          "spring-boot-student-cache-redis",
+          "spring-boot-student-cache-redis-2",
+          "spring-boot-student-cache-caffeine",
+          "spring-boot-student-cache-redis-caffeine",
+          "spring-boot-student-data-mongo",
+          "spring-boot-student-data-redis",
+          "spring-boot-student-data-redis-distributed-lock",
+          "spring-boot-student-drools",
+          "spring-boot-student-stock-redis",
+          "spring-boot-student-rabbitmq",
+          "spring-boot-student-monitor",
+          "spring-boot-student-validated",
+          "spring-boot-student-guava-retrying",
+          "spring-boot-student-spring-retry",
+          "spring-boot-student-layering-cache",
+          "spring-boot-student-hystrix",
+          "spring-boot-student-completable-future",
+          "spring-boot-student-mybatis-plus",
+          "spring-boot-student-concurrent",
+          "spring-boot-student-spring",
+          "spring-boot-student-okhttp",
+          "spring-boot-student-jvm",
+          "spring-boot-student-netty",
+          "spring-boot-student-sentinel",
+          "spring-boot-student-sentinel-dashboard"
+        ],
+        "target_module": "spring-boot-student-sentinel-dashboard",
+        "module_root": "spring-boot-student-sentinel-dashboard",
+        "packages": [
+          "com.alibaba.csp.sentinel.dashboard.datasource.entity",
+          "com.alibaba.csp.sentinel.dashboard",
+          "com.alibaba.csp.sentinel.dashboard.datasource.entity.gateway",
+          "com.alibaba.csp.sentinel.dashboard.datasource.entity.rule",
+          "com.alibaba.csp.sentinel.dashboard.auth",
+          "com.alibaba.csp.sentinel.dashboard.client",
+          "com.alibaba.csp.sentinel.dashboard.config",
+          "com.alibaba.csp.sentinel.dashboard.controller",
+          "com.alibaba.csp.sentinel.dashboard.controller.cluster",
+          "com.alibaba.csp.sentinel.dashboard.controller.gateway",
+          "com.alibaba.csp.sentinel.dashboard.controller.v2",
+          "com.alibaba.csp.sentinel.dashboard.discovery",
+          "com.alibaba.csp.sentinel.dashboard.domain",
+          "com.alibaba.csp.sentinel.dashboard.domain.cluster",
+          "com.alibaba.csp.sentinel.dashboard.domain.cluster.config",
+          "com.alibaba.csp.sentinel.dashboard.domain.cluster.request",
+          "com.alibaba.csp.sentinel.dashboard.domain.cluster.state",
+          "com.alibaba.csp.sentinel.dashboard.domain.vo",
+          "com.alibaba.csp.sentinel.dashboard.domain.vo.gateway.api",
+          "com.alibaba.csp.sentinel.dashboard.domain.vo.gateway.rule",
+          "com.alibaba.csp.sentinel.dashboard.metric",
+          "com.alibaba.csp.sentinel.dashboard.repository.gateway",
+          "com.alibaba.csp.sentinel.dashboard.repository.metric",
+          "com.alibaba.csp.sentinel.dashboard.repository.rule",
+          "com.alibaba.csp.sentinel.dashboard.rule",
+          "com.alibaba.csp.sentinel.dashboard.service",
+          "com.alibaba.csp.sentinel.dashboard.util"
+        ]
+      },
+      "paths": {
+        "source_root": "spring-boot-student-sentinel-dashboard/src/main/java",
+        "test_root": "spring-boot-student-sentinel-dashboard/src/test/java",
+        "cut_path": "spring-boot-student-sentinel-dashboard/src/main/java/com/alibaba/csp/sentinel/dashboard/datasource/entity/SentinelVersion.java",
+        "generated_test_path": "spring-boot-student-sentinel-dashboard/src/test/java/com/alibaba/csp/sentinel/dashboard/datasource/entity/SentinelVersion_ArrowTest.java",
+        "generated_test_fqn": "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion",
+        "simple_name": "SentinelVersion",
+        "package": "com.alibaba.csp.sentinel.dashboard.datasource.entity",
+        "kind": "class",
+        "source_sha256": "318cf5922de7d9a2d5fd3644f5a75d81561dd24f984fcb8b24f07d3a6237dda7"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "spring-boot-student-sentinel-dashboard",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "spring-boot-student-sentinel-dashboard",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.alibaba.csp.sentinel.dashboard.client.SentinelApiClientTest#postRequest",
+        "com.alibaba.csp.sentinel.dashboard.config.DashboardConfigTest#testGetConfigInt",
+        "com.alibaba.csp.sentinel.dashboard.config.DashboardConfigTest#testGetConfigStr",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayApiControllerTest#testAddApi",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayApiControllerTest#testDeleteApi",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayApiControllerTest#testQueryApis",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayApiControllerTest#testUpdateApi",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayFlowRuleControllerTest#testAddFlowRule",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayFlowRuleControllerTest#testDeleteFlowRule",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayFlowRuleControllerTest#testQueryFlowRules",
+        "com.alibaba.csp.sentinel.dashboard.controller.gateway.GatewayFlowRuleControllerTest#testUpdateFlowRule",
+        "com.alibaba.csp.sentinel.dashboard.datasource.entity.JsonSerializeTest#authorityRuleJsonSerializeTest",
+        "com.alibaba.csp.sentinel.dashboard.datasource.entity.JsonSerializeTest#paramFlowRuleSerializeTest",
+        "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersionTest#testEqual",
+        "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersionTest#testGreater",
+        "com.alibaba.csp.sentinel.dashboard.discovery.AppInfoTest#addRemoveMachineTest",
+        "com.alibaba.csp.sentinel.dashboard.discovery.AppInfoTest#testConcurrentGetMachines",
+        "com.alibaba.csp.sentinel.dashboard.discovery.AppInfoTest#testHealthyAndDead",
+        "com.alibaba.csp.sentinel.dashboard.discovery.MachineInfoTest#testHealthyAndDead",
+        "com.alibaba.csp.sentinel.dashboard.repository.metric.InMemoryMetricsRepositoryTest#testConcurrentPutAndGet",
+        "com.alibaba.csp.sentinel.dashboard.repository.metric.InMemoryMetricsRepositoryTest#testExpireMetric",
+        "com.alibaba.csp.sentinel.dashboard.repository.metric.InMemoryMetricsRepositoryTest#testSave",
+        "com.alibaba.csp.sentinel.dashboard.repository.metric.InMemoryMetricsRepositoryTest#testSaveAll",
+        "com.alibaba.csp.sentinel.dashboard.util.VersionUtilsTest#test"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.xiaolyuh.SpringBootStudentSentinelDashboardApplicationTests#initializationError"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 76.2,
+        "module_test": [
+          6.2,
+          6.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021813-go0h/base",
+      "compiled_snapshot": "work/20261118-021813-go0h/snapshot-4bb3a16f",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "spring-boot-student-sentinel-dashboard",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion",
+      "simple_name": "SentinelVersion",
+      "package": "com.alibaba.csp.sentinel.dashboard.datasource.entity",
+      "kind": "class",
+      "cut_path": "spring-boot-student-sentinel-dashboard/src/main/java/com/alibaba/csp/sentinel/dashboard/datasource/entity/SentinelVersion.java",
+      "source_sha256": "318cf5922de7d9a2d5fd3644f5a75d81561dd24f984fcb8b24f07d3a6237dda7",
+      "generated_test_path": "spring-boot-student-sentinel-dashboard/src/test/java/com/alibaba/csp/sentinel/dashboard/datasource/entity/SentinelVersion_ArrowTest.java",
+      "generated_test_fqn": "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.4,
+      "plan": 17.7,
+      "compile": 76.2,
+      "baseline": [
+        6.2,
+        6.9
+      ],
+      "total": 107.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

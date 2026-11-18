@@ -1,0 +1,371 @@
+{
+  "run_id": "20261118-024629-34mm",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-024629-34mm",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 33.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 33.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "graphast",
+        "url": "https://github.com/InsightLab/graphast",
+        "git_commit": "10720d58856271e7f9c2e52e2354f088bfb06b4f",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "core",
+        "build_mode": "standalone",
+        "build_file": "core/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "23.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.insightlab",
+            "artifact": "huge-data-access",
+            "version": "0.1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.openstreetmap.osmosis",
+            "artifact": "osmosis-core",
+            "version": "0.46",
+            "scope": "compile"
+          },
+          {
+            "group": "org.openstreetmap.osmosis",
+            "artifact": "osmosis-xml",
+            "version": "0.46",
+            "scope": "compile"
+          },
+          {
+            "group": "org.openstreetmap.osmosis",
+            "artifact": "osmosis-pbf",
+            "version": "0.46",
+            "scope": "compile"
+          },
+          {
+            "group": "com.esotericsoftware",
+            "artifact": "kryo",
+            "version": "4.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "de.javakaffee",
+            "artifact": "kryo-serializers",
+            "version": "0.41",
+            "scope": "compile"
+          },
+          {
+            "group": "com.carrotsearch",
+            "artifact": "hppc",
+            "version": "0.8.1",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 33
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "core",
+        "module_root": "core",
+        "packages": [
+          "br.ufc.insightlab.graphast.model",
+          "br.ufc.insightlab.graphast.model.components",
+          "br.ufc.insightlab.graphast.model.components.cost_list_components",
+          "br.ufc.insightlab.graphast.model.components.spatial_components",
+          "br.ufc.insightlab.graphast.model.listeners",
+          "br.ufc.insightlab.graphast.exceptions",
+          "br.ufc.insightlab.graphast.query.cost_functions",
+          "br.ufc.insightlab.graphast.query.map_matching",
+          "br.ufc.insightlab.graphast.query.shortestpath",
+          "br.ufc.insightlab.graphast.query.utils",
+          "br.ufc.insightlab.graphast.serialization",
+          "br.ufc.insightlab.graphast.structure",
+          "br.ufc.insightlab.graphast.utils"
+        ]
+      },
+      "paths": {
+        "source_root": "core/src/main/java",
+        "test_root": "core/src/test/java",
+        "cut_path": "core/src/main/java/br/ufc/insightlab/graphast/model/Node.java",
+        "generated_test_path": "core/src/test/java/br/ufc/insightlab/graphast/model/Node_ArrowTest.java",
+        "generated_test_fqn": "br.ufc.insightlab.graphast.model.Node_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "br.ufc.insightlab.graphast.model.Node",
+        "simple_name": "Node",
+        "package": "br.ufc.insightlab.graphast.model",
+        "kind": "class",
+        "source_sha256": "8b6f99ea1ccd988f002caa75c3671dff2ac5a2ce3d7cb14b2f295dfa9d81e70a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "core",
+      "passing_in_all_runs": [
+        "br.ufc.insightlab.components.ComponentTest#getSubClassAndOnAttachTest",
+        "br.ufc.insightlab.components.ComponentTest#linearTimeDependentDijkstraTest",
+        "br.ufc.insightlab.components.ComponentTest#spatialTest",
+        "br.ufc.insightlab.components.ComponentTest#stepTimeDependentDijkstraTest",
+        "br.ufc.insightlab.components.ComponentTest#temporalTest",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testAddEdge",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testAddEdgeException",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testAddEdges",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testAddNode",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testAddNodes",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testContainsNode",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testEdgeDirectionUpdate",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testGetEdgesRemoving",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testGetInEdges",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testGetNeighborhood",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testGetNumberOfEdges",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testGetNumberOfNodes",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testGetOutEdges",
+        "br.ufc.insightlab.graphast.model.DefaultGraphTest#testNeighborhoodPertinenceOnException",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testBidirectional",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testConstructor1",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testConstructor2",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testConstructor3",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testConstructor4",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testCost",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testEquals",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testFromNode",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testGetAdjacent",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testHashCode",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testSetCost",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testSetFromNode",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testSetToNode",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testToNode",
+        "br.ufc.insightlab.graphast.model.EdgeTest#testToString",
+        "br.ufc.insightlab.graphast.model.GraphObjectTest#testEdge",
+        "br.ufc.insightlab.graphast.model.GraphObjectTest#testFloat",
+        "br.ufc.insightlab.graphast.model.GraphObjectTest#testInteger",
+        "br.ufc.insightlab.graphast.model.GraphObjectTest#testNull",
+        "br.ufc.insightlab.graphast.model.GraphObjectTest#testString",
+        "br.ufc.insightlab.graphast.model.MMapGraphTest#testGetInEdges",
+        "br.ufc.insightlab.graphast.model.MMapGraphTest#testGetNeighborhood",
+        "br.ufc.insightlab.graphast.model.MMapGraphTest#testGetOutEdges",
+        "br.ufc.insightlab.graphast.model.MMapGraphTest#testNumberOfEdges",
+        "br.ufc.insightlab.graphast.model.MMapGraphTest#testNumberOfNodes",
+        "br.ufc.insightlab.graphast.model.MMapGraphTest#testReopenGraph",
+        "br.ufc.insightlab.graphast.model.NodeTest#testEquals",
+        "br.ufc.insightlab.graphast.model.NodeTest#testGetId",
+        "br.ufc.insightlab.graphast.model.NodeTest#testHashCode",
+        "br.ufc.insightlab.graphast.query.shortestpath.DijkstraTest#testNoNodeToAllException",
+        "br.ufc.insightlab.graphast.query.shortestpath.DijkstraTest#testOneToAll",
+        "br.ufc.insightlab.graphast.query.shortestpath.DijkstraTest#testOneToNoNodeException",
+        "br.ufc.insightlab.graphast.query.shortestpath.DijkstraTest#testOneToOne",
+        "br.ufc.insightlab.graphast.query.shortestpath.MMapDijkstraTest#testOneToAll",
+        "br.ufc.insightlab.graphast.query.shortestpath.MMapDijkstraTest#testOneToOne",
+        "br.ufc.insightlab.graphast.query.utils.DistanceVectorTest#testGetDistance",
+        "br.ufc.insightlab.graphast.query.utils.DistanceVectorTest#testGetElement",
+        "br.ufc.insightlab.graphast.utils.RandomGraphGeneratorTest#testDijkstra",
+        "br.ufc.insightlab.graphast.utils.RandomGraphGeneratorTest#testSizes"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 28.6,
+        "module_test": [
+          2,
+          2.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024629-34mm/base",
+      "compiled_snapshot": "work/20261118-024629-34mm/snapshot-0d45f5fd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "core",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "br.ufc.insightlab.graphast.model.Node",
+      "simple_name": "Node",
+      "package": "br.ufc.insightlab.graphast.model",
+      "kind": "class",
+      "cut_path": "core/src/main/java/br/ufc/insightlab/graphast/model/Node.java",
+      "source_sha256": "8b6f99ea1ccd988f002caa75c3671dff2ac5a2ce3d7cb14b2f295dfa9d81e70a",
+      "generated_test_path": "core/src/test/java/br/ufc/insightlab/graphast/model/Node_ArrowTest.java",
+      "generated_test_fqn": "br.ufc.insightlab.graphast.model.Node_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.8,
+      "locate": 0.1,
+      "plan": 1,
+      "compile": 28.6,
+      "baseline": [
+        2,
+        2.1
+      ],
+      "total": 33.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

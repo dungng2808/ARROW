@@ -1,0 +1,4 @@
+[>] Tải https://github.com/qmetric/spark-authentication
+[X] B1_AUTH_REQUIRED · Repo không tồn tại hoặc cần đăng nhập: remote: Repository not found.
+fatal: repository 'https://github.com/qmetric/spark-authentication/' not found
+  → Cách sửa: Đăng nhập GitHub bằng "gh auth login" hoặc Git Credential Manager.

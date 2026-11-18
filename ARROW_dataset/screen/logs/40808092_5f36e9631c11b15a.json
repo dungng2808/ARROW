@@ -1,0 +1,304 @@
+{
+  "run_id": "20261118-005042-f3p9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-005042-f3p9",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 5.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 5.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "java-design-patterns",
+        "url": "https://github.com/amikey/java-design-patterns",
+        "git_commit": "8524c75ba6fd1e2bfe1f5cba3d3c9211bdcbbfcb",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "singleton",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "abstract-factory",
+          "builder",
+          "factory-method",
+          "prototype",
+          "singleton",
+          "adapter",
+          "bridge",
+          "composite",
+          "dao",
+          "decorator",
+          "facade",
+          "flyweight",
+          "proxy",
+          "chain",
+          "command",
+          "interpreter",
+          "iterator",
+          "mediator",
+          "memento",
+          "model-view-presenter",
+          "observer",
+          "state",
+          "strategy",
+          "template-method",
+          "visitor",
+          "double-checked-locking",
+          "servant",
+          "service-locator",
+          "null-object",
+          "event-aggregator",
+          "callback",
+          "execute-around",
+          "property",
+          "intercepting-filter",
+          "poison-pill",
+          "lazy-loading",
+          "service-layer",
+          "specification",
+          "tolerant-reader",
+          "model-view-controller",
+          "flux",
+          "double-dispatch",
+          "multiton",
+          "resource-acquisition-is-initialization",
+          "thread-pool",
+          "private-class-data",
+          "object-pool",
+          "dependency-injection"
+        ],
+        "target_module": "singleton",
+        "module_root": "singleton",
+        "packages": [
+          "com.iluwatar.singleton"
+        ]
+      },
+      "paths": {
+        "source_root": "singleton/src/main/java",
+        "test_root": "singleton/src/test/java",
+        "cut_path": "singleton/src/main/java/com/iluwatar/singleton/App.java",
+        "generated_test_path": "singleton/src/test/java/com/iluwatar/singleton/App_ArrowTest.java",
+        "generated_test_fqn": "com.iluwatar.singleton.App_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.iluwatar.singleton.App",
+        "simple_name": "App",
+        "package": "com.iluwatar.singleton",
+        "kind": "class",
+        "source_sha256": "61d90b6e90c0937d5fe411bcac91196621ed9b9c288a960c515e8c2b7c555bb2"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "singleton",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "singleton",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.iluwatar.singleton.AppTest#test"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.4,
+        "module_test": [
+          1.6,
+          1.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005042-f3p9/base",
+      "compiled_snapshot": "work/20261118-005042-f3p9/snapshot-e234ee35",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "singleton",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.iluwatar.singleton.App",
+      "simple_name": "App",
+      "package": "com.iluwatar.singleton",
+      "kind": "class",
+      "cut_path": "singleton/src/main/java/com/iluwatar/singleton/App.java",
+      "source_sha256": "61d90b6e90c0937d5fe411bcac91196621ed9b9c288a960c515e8c2b7c555bb2",
+      "generated_test_path": "singleton/src/test/java/com/iluwatar/singleton/App_ArrowTest.java",
+      "generated_test_fqn": "com.iluwatar.singleton.App_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.4,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 1.4,
+      "baseline": [
+        1.6,
+        1.6
+      ],
+      "total": 5.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

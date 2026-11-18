@@ -1,0 +1,422 @@
+{
+  "run_id": "20261118-023224-6pyn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-023224-6pyn",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 31.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 31.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "openmpf",
+        "url": "https://github.com/openmpf/openmpf",
+        "git_commit": "0ff5076d4fd2e9d9381a8457273be38e1f728fef",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "trunk/node-manager",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "17",
+        "declared_source": "maven.compiler.source",
+        "major": 17,
+        "jdk_major": 17,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.mitre.mpf",
+            "artifact": "mpf-logging-dependencies",
+            "version": "7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.annotation",
+            "artifact": "javax.annotation-api",
+            "version": "1.3.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jgroups",
+            "artifact": "jgroups",
+            "version": "4.0.11.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.10",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.spullara.mustache.java",
+            "artifact": "compiler",
+            "version": "0.9.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.ini4j",
+            "artifact": "ini4j",
+            "version": "0.5.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-configuration2",
+            "version": "2.8.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-beanutils",
+            "artifact": "commons-beanutils",
+            "version": "1.9.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-context-support",
+            "version": "5.3.20",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-tx",
+            "version": "5.3.20",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "27.0.1-jre",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-core",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.datatype",
+            "artifact": "jackson-datatype-jsr310",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.datatype",
+            "artifact": "jackson-datatype-jdk8",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "net.bytebuddy",
+            "artifact": "byte-buddy",
+            "version": "1.12.18",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "4.9.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-test",
+            "version": "5.3.20",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 45
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:4.9.0"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          ".",
+          "trunk",
+          "trunk/protobuf",
+          "trunk/interop",
+          "trunk/markup",
+          "trunk/video-overlay",
+          "trunk/node-manager",
+          "trunk/mpf-rest-api",
+          "trunk/mpf-rest-client",
+          "trunk/workflow-manager",
+          "trunk/mpf-system-tests",
+          "trunk/mpf-install",
+          "trunk/detection/executor/java",
+          "trunk/detection/test-components/java",
+          "trunk/detection/test-components/java/JavaTestDetection"
+        ],
+        "target_module": "trunk/node-manager",
+        "module_root": "trunk/node-manager",
+        "packages": [
+          "org.mitre.mpf.nms.streaming",
+          "org.mitre.mpf.nms",
+          "org.mitre.mpf.nms.streaming.messages",
+          "org.mitre.mpf.nms.json",
+          "org.mitre.mpf.nms.util"
+        ]
+      },
+      "paths": {
+        "source_root": "trunk/node-manager/src/main/java",
+        "test_root": "trunk/node-manager/src/test/java",
+        "cut_path": "trunk/node-manager/src/main/java/org/mitre/mpf/nms/streaming/ChildStreamingJobManager.java",
+        "generated_test_path": "trunk/node-manager/src/test/java/org/mitre/mpf/nms/streaming/ChildStreamingJobManager_ArrowTest.java",
+        "generated_test_fqn": "org.mitre.mpf.nms.streaming.ChildStreamingJobManager_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.mitre.mpf.nms.streaming.ChildStreamingJobManager",
+        "simple_name": "ChildStreamingJobManager",
+        "package": "org.mitre.mpf.nms.streaming",
+        "kind": "class",
+        "source_sha256": "89f54467c3d222adc286b379835ac616b2bd15df4fff4e48d2f1f20b459bc9d6"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "trunk/node-manager",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "trunk/node-manager",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.mitre.mpf.nms.json.TestNodeManagers#testToJson",
+        "org.mitre.mpf.nms.streaming.TestChildStreamingJobManager#canHandleGeneralJobException",
+        "org.mitre.mpf.nms.streaming.TestChildStreamingJobManager#canHandleJobStartAndStop",
+        "org.mitre.mpf.nms.streaming.TestChildStreamingJobManager#canHandleStreamStalled",
+        "org.mitre.mpf.nms.streaming.TestIniManager#canCreateIniFiles",
+        "org.mitre.mpf.nms.streaming.TestMasterStreamingJobManager#doesNotRemoveJobUntilResponseFromChild",
+        "org.mitre.mpf.nms.streaming.TestMasterStreamingJobManager#doesNotStartSameJobMultipleTimes",
+        "org.mitre.mpf.nms.streaming.TestMasterStreamingJobManager#jobsStartOnNodeWithMinJobs",
+        "org.mitre.mpf.nms.streaming.TestMasterStreamingJobManager#noMessagesSentWhenStoppingInvalidJobId",
+        "org.mitre.mpf.nms.streaming.TestMasterStreamingJobManager#sendsStopToCorrectChild",
+        "org.mitre.mpf.nms.streaming.TestStreamingJob#testShutdownException",
+        "org.mitre.mpf.nms.streaming.TestStreamingJob#testShutdownOrder",
+        "org.mitre.mpf.nms.streaming.TestStreamingProcess#componentRunsUntilQuitRequested",
+        "org.mitre.mpf.nms.streaming.TestStreamingProcess#testRestartLimit",
+        "org.mitre.mpf.nms.streaming.TestStreamingProcess#throwsExitException"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "org.mitre.mpf.nms.util.TestPropertiesUtil#testPropertiesUtilGetters"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 14.9,
+        "module_test": [
+          4.2,
+          4.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023224-6pyn/base",
+      "compiled_snapshot": "work/20261118-023224-6pyn/snapshot-f7c20946",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "trunk/node-manager",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.mitre.mpf.nms.streaming.ChildStreamingJobManager",
+      "simple_name": "ChildStreamingJobManager",
+      "package": "org.mitre.mpf.nms.streaming",
+      "kind": "class",
+      "cut_path": "trunk/node-manager/src/main/java/org/mitre/mpf/nms/streaming/ChildStreamingJobManager.java",
+      "source_sha256": "89f54467c3d222adc286b379835ac616b2bd15df4fff4e48d2f1f20b459bc9d6",
+      "generated_test_path": "trunk/node-manager/src/test/java/org/mitre/mpf/nms/streaming/ChildStreamingJobManager_ArrowTest.java",
+      "generated_test_fqn": "org.mitre.mpf.nms.streaming.ChildStreamingJobManager_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "1 file .java không đọc được (ví dụ trunk/workflow-manager/src/main/java/org/mitre/mpf/wfm/camel/DefaultTaskSplitter.java: Parse error. Found \".\", expected one of  \",\" \";\" \"=\" \"@\" \"[\").",
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 53.4,
+      "locate": 0.5,
+      "plan": 8.2,
+      "compile": 14.9,
+      "baseline": [
+        4.2,
+        4.1
+      ],
+      "total": 31.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "1 file .java không đọc được (ví dụ trunk/workflow-manager/src/main/java/org/mitre/mpf/wfm/camel/DefaultTaskSplitter.java: Parse error. Found \".\", expected one of  \",\" \";\" \"=\" \"@\" \"[\").",
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

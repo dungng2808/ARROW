@@ -1,0 +1,460 @@
+{
+  "run_id": "20261118-010349-xxdp",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-010349-xxdp",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 44
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 44
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "monticore",
+        "url": "https://github.com/MontiCore/monticore",
+        "git_commit": "0e462bf5efce459437b9905dac94d51fb7d8a627",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "monticore-runtime",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "de.se_rwth.commons",
+            "artifact": "se-commons-utilities",
+            "version": "1.7.7",
+            "scope": "compile"
+          },
+          {
+            "group": "de.se_rwth.commons",
+            "artifact": "se-commons-logging",
+            "version": "1.7.7",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "18.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.reflections",
+            "artifact": "reflections",
+            "version": "0.9.9",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.antlr",
+            "artifact": "antlr4",
+            "version": "4.5.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.freemarker",
+            "artifact": "freemarker",
+            "version": "2.3.23",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.1.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.codehaus.groovy",
+            "artifact": "groovy",
+            "version": "2.3.7",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 17
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "monticore-cli",
+          "monticore-grammar",
+          "monticore-generator",
+          "monticore-maven",
+          "monticore-runtime",
+          "monticore-emf-runtime",
+          "monticore-templateclassgenerator",
+          "monticore-maven/monticore-maven-plugin"
+        ],
+        "target_module": "monticore-runtime",
+        "module_root": "monticore-runtime",
+        "packages": [
+          "de.monticore.generating.templateengine",
+          "de.monticore",
+          "de.monticore.generating",
+          "de.monticore.generating.templateengine.freemarker",
+          "de.monticore.generating.templateengine.reporting",
+          "de.monticore.generating.templateengine.reporting.artifacts",
+          "de.monticore.generating.templateengine.reporting.artifacts.formatter",
+          "de.monticore.generating.templateengine.reporting.artifacts.model",
+          "de.monticore.generating.templateengine.reporting.commons",
+          "de.monticore.generating.templateengine.reporting.reporter",
+          "de.monticore.annotations",
+          "de.monticore.antlr4",
+          "de.monticore.ast",
+          "de.monticore.incremental",
+          "de.monticore.io",
+          "de.monticore.io.paths",
+          "de.monticore.modelloader",
+          "de.monticore.parsing",
+          "de.monticore.prettyprint",
+          "de.monticore.symboltable",
+          "de.monticore.symboltable.modifiers",
+          "de.monticore.symboltable.names",
+          "de.monticore.symboltable.references",
+          "de.monticore.symboltable.resolving",
+          "de.monticore.symboltable.serializing",
+          "de.monticore.symboltable.types",
+          "de.monticore.symboltable.types.references",
+          "de.monticore.symboltable.visibility",
+          "de.monticore.types",
+          "de.monticore.utils"
+        ]
+      },
+      "paths": {
+        "source_root": "monticore-runtime/src/main/java",
+        "test_root": "monticore-runtime/src/test/java",
+        "cut_path": "monticore-runtime/src/main/java/de/monticore/generating/templateengine/ObjectFactory.java",
+        "generated_test_path": "monticore-runtime/src/test/java/de/monticore/generating/templateengine/ObjectFactory_ArrowTest.java",
+        "generated_test_fqn": "de.monticore.generating.templateengine.ObjectFactory_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "de.monticore.generating.templateengine.ObjectFactory",
+        "simple_name": "ObjectFactory",
+        "package": "de.monticore.generating.templateengine",
+        "kind": "class",
+        "source_sha256": "9e1773a2d091d8425e0546d67be19bc8ba9b9c67d8267dfa7f867fd7d1b3518c"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "monticore-runtime",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "monticore-runtime",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "de.monticore.cocos.CocoCheckTest#testUniqueVariableNamesInClass",
+        "de.monticore.cocos.CocoCheckTest#testVariableNameMustStartWithLowerCase",
+        "de.monticore.generating.GeneratorEngineTest#testGenerateInFile",
+        "de.monticore.generating.templateengine.GlobalExtensionManagementGlobalVarsTest#testGlobalVars",
+        "de.monticore.generating.templateengine.ObjectFactoryTest#testInstanciationWithDefaultConstructor",
+        "de.monticore.generating.templateengine.ObjectFactoryTest#testInstanciationWithParams",
+        "de.monticore.generating.templateengine.ObjectFactoryTest#testInstanciationWithTypesAndParams",
+        "de.monticore.generating.templateengine.TemplateAliasingTest#testLogAliases",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testSetCodeHook",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testSetStringHook",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testTemplateStringHook",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testUndefinedHookReturnsEmptyString",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testSignatureMethodInvokedSeveralTimes",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testWrongNumberOfArguments",
+        "de.monticore.generating.templateengine.TemplateControllerTest#testImplicitAstPassing",
+        "de.monticore.generating.templateengine.TemplateControllerTest#testWriteArgs",
+        "de.monticore.generating.templateengine.TemplateLoggerTest#demonstrateTemplateLogging",
+        "de.monticore.generating.templateengine.reporting.commons.ReportingStringHelperTest#testReportingStringHelper",
+        "de.monticore.io.FileReaderWriterTest#testFileHandler",
+        "de.monticore.io.paths.IterablePathTest#simpleBinaryPath",
+        "de.monticore.io.paths.IterablePathTest#testMixingDirsAndFiles",
+        "de.monticore.io.paths.IterablePathTest#testSuperPath",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetBaseName",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetExtension",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetLocation",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetLocationWithWhitespace",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetName",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetPackagePath",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetParentDirectoryPath",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetParentDirectoryPathWithWhitespace",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetQualifiedBaseName",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetQualifiedBasePath",
+        "de.monticore.io.paths.ModelCoordinateTest#testGetQualifiedPath",
+        "de.monticore.io.paths.ModelCoordinateTest#testHasLocation",
+        "de.monticore.io.paths.ModelCoordinateTest#testIsQualified",
+        "de.monticore.io.paths.ModelPathTest#testAmbiguityException",
+        "de.monticore.io.paths.ModelPathTest#testGetFullPathOfEntries",
+        "de.monticore.io.paths.ModelPathTest#testResolveModel",
+        "de.monticore.modelloader.ModelLoaderTest#testLoadAmbiguousModels",
+        "de.monticore.symboltable.AdaptedResolvingTest#testAdaptedResolvingInDifferentScope",
+        "de.monticore.symboltable.AdaptedResolvingTest#testAdaptedResolvingInSameScope",
+        "de.monticore.symboltable.AdaptedResolvingTest#testCircularAdaptedResolvingDependencies",
+        "de.monticore.symboltable.AdaptedResolvingTest#testTransitiveAdaptedResolvingInSameScope",
+        "de.monticore.symboltable.AdaptedResolvingTest#testTransitiveCircularAdaptedResolvingDependencies",
+        "de.monticore.symboltable.ArtifactScopeTest#testArtifactScopeWithImportStatements",
+        "de.monticore.symboltable.ArtifactScopeTest#testArtifactScopeWithoutImportStatements",
+        "de.monticore.symboltable.ArtifactScopeTest#testPackageNameMustBePrefixOfQualifiedSymbolName",
+        "de.monticore.symboltable.ArtifactScopeTest#testResolveInDefaultPackage",
+        "de.monticore.symboltable.ArtifactScopeTest#testResolveUnqualifiedSymbolInSamePackage",
+        "de.monticore.symboltable.LanguageCompositionTest#testLanguageInheritance",
+        "de.monticore.symboltable.ModifierTest#test",
+        "de.monticore.symboltable.NamesTest#testDetermineFullName",
+        "de.monticore.symboltable.NamesTest#testDetermineFullNameWhereEnclosingNameIsSetManually",
+        "de.monticore.symboltable.NamesTest#testDeterminePackageName",
+        "de.monticore.symboltable.NamesTest#testDeterminePackageNameWhereEnclosingNameIsSetManually",
+        "de.monticore.symboltable.ReferencesTest#testVariableReference",
+        "de.monticore.symboltable.ResolvingImportedScopesTest#testOnlyConsiderExplicitlyImportedScopesWhenResolvingInImportedScope",
+        "de.monticore.symboltable.ResolvingImportedScopesTest#testResolutionContinuesWIthPackageLocalModifierIfSuperTypeIsInSamePackage",
+        "de.monticore.symboltable.ResolvingImportedScopesTest#testResolutionContinuesWithProtectedModifierIfSuperTypeIsInDifferentPackage",
+        "de.monticore.symboltable.ResolvingImportedScopesTest#testSymbolInImportedScopeHasHigherPriorityThanSymbolInEnclosingScope",
+        "de.monticore.symboltable.ResolvingTest#testCannotResolveInnerSymbolViaPartialName",
+        "de.monticore.symboltable.ResolvingTest#testResolveInnerSymbol",
+        "de.monticore.symboltable.ResolvingTest#testResolveInnerSymbolWithArtifactScope",
+        "de.monticore.symboltable.ResolvingTest#testSameSymbolOccursOnlyOnce",
+        "de.monticore.symboltable.ResolvingTest#testSpecificResolversForScopes",
+        "de.monticore.symboltable.ResolvingViaPredicateTest#testResolveOnlyActionWithMatchingParameters",
+        "de.monticore.symboltable.ResolvingViaPredicateTest#testResolveOnlyPropertiesSymbolWithMatchingType",
+        "de.monticore.symboltable.ScopeTest#testChangingEnclosingAndSubScopesUsingAddSubScopeMethod",
+        "de.monticore.symboltable.ScopeTest#testChangingEnclosingAndSubScopesUsingSetEnclosingMethod",
+        "de.monticore.symboltable.ScopeTest#testGetAllEncapsulatedSymbols",
+        "de.monticore.symboltable.ScopeTest#testInitEnclosingAndSubScopesUsingAddSubScopeMethod",
+        "de.monticore.symboltable.ScopeTest#testInitEnclosingAndSubScopesUsingConstructors",
+        "de.monticore.symboltable.ScopeTest#testInitEnclosingAndSubScopesUsingSetEnclosingScopeMethod",
+        "de.monticore.symboltable.ShadowingTest#testLocalScopeDoesNotShadowEnclosingScope",
+        "de.monticore.symboltable.ShadowingTest#testLocalScopeShadowsGrandEnclosingScopeIfEnclosingIsShadowingScope",
+        "de.monticore.symboltable.ShadowingTest#testShadowingScopeShadowsEnclosingScope",
+        "de.monticore.symboltable.SymbolKindTest#testKindHierarchy",
+        "de.monticore.symboltable.SymbolKindTest#testSymbolKind",
+        "de.monticore.symboltable.SymbolTableCreatorTest#testEntitySymbolTableCreator",
+        "de.monticore.symboltable.SymbolTableTest#test",
+        "de.monticore.symboltable.SymbolTableTest#testResolveLocallyAllOfOneKind",
+        "de.monticore.symboltable.SymbolTableTest#testResolveWithFilter",
+        "de.monticore.symboltable.serializing.SerializationTest#testSameReferences",
+        "de.monticore.symboltable.serializing.SerializationTest#testSerializeCycle",
+        "de.monticore.symboltable.serializing.SerializationTest#testSerializeInheritance"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "de.monticore.generating.templateengine.TemplateAliasingTest#testIncludeAlias",
+        "de.monticore.generating.templateengine.TemplateAliasingTest#testIncludeArgsAndSignatureAlias",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testAfterTemplates",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testBeforeReplaceAfterCombinations",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testBeforeReplaceAfterInSubtemplates",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testBeforeTemplates",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testReplaceTemplate",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testSetTemplateHook",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testStringHookInSubtemplate",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testStringTemplateCodeHookCombinations",
+        "de.monticore.generating.templateengine.TemplateControllerHookPointsTest#testTemplateHookInSubtemplate",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testArgumentsAreOnlyVisibleInIncludedTemplate",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testNestedSignatureCalls",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testParameterizedInclusionUsage",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testSignatureWithManyParameters",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testSignatureWithOneParameter",
+        "de.monticore.generating.templateengine.TemplateControllerSignatureUsageTest#testSignatureWithThreeParameters"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 15.8,
+        "module_test": [
+          3.7,
+          4.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010349-xxdp/base",
+      "compiled_snapshot": "work/20261118-010349-xxdp/snapshot-3f9db786",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "monticore-runtime",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "de.monticore.generating.templateengine.ObjectFactory",
+      "simple_name": "ObjectFactory",
+      "package": "de.monticore.generating.templateengine",
+      "kind": "class",
+      "cut_path": "monticore-runtime/src/main/java/de/monticore/generating/templateengine/ObjectFactory.java",
+      "source_sha256": "9e1773a2d091d8425e0546d67be19bc8ba9b9c67d8267dfa7f867fd7d1b3518c",
+      "generated_test_path": "monticore-runtime/src/test/java/de/monticore/generating/templateengine/ObjectFactory_ArrowTest.java",
+      "generated_test_fqn": "de.monticore.generating.templateengine.ObjectFactory_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 17 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 4.2,
+      "locate": 0.5,
+      "plan": 20.4,
+      "compile": 15.8,
+      "baseline": [
+        3.7,
+        4.1
+      ],
+      "total": 44
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 17 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,365 @@
+{
+  "run_id": "20261118-030712-5p7w",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-030712-5p7w",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 79.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 79.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "openapi-to-plantuml",
+        "url": "https://github.com/davidmoten/openapi-to-plantuml",
+        "git_commit": "77334086198150825c3eefd7118c0b75ceaa0366",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "standalone",
+        "build_file": "pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.swagger.parser.v3",
+            "artifact": "swagger-parser",
+            "version": "2.1.18",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.davidmoten",
+            "artifact": "kool",
+            "version": "0.1.29",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.davidmoten",
+            "artifact": "guava-mini",
+            "version": "0.1.7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.36",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sourceforge.plantuml",
+            "artifact": "plantuml",
+            "version": "1.2023.12",
+            "scope": "compile"
+          },
+          {
+            "group": "guru.nidi",
+            "artifact": "graphviz-java",
+            "version": "0.18.1",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-slf4j-impl",
+            "version": "2.21.1",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.2",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.davidmoten",
+            "artifact": "junit-extras",
+            "version": "0.4",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 65
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.2",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": ".",
+        "module_root": ".",
+        "packages": [
+          "com.github.davidmoten.oas3.puml",
+          "com.github.davidmoten.oas3.internal",
+          "com.github.davidmoten.oas3.internal.model"
+        ]
+      },
+      "paths": {
+        "source_root": "src/main/java",
+        "test_root": "src/test/java",
+        "cut_path": "src/main/java/com/github/davidmoten/oas3/puml/Converter.java",
+        "generated_test_path": "src/test/java/com/github/davidmoten/oas3/puml/Converter_ArrowTest.java",
+        "generated_test_fqn": "com.github.davidmoten.oas3.puml.Converter_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.github.davidmoten.oas3.puml.Converter",
+        "simple_name": "Converter",
+        "package": "com.github.davidmoten.oas3.puml",
+        "kind": "class",
+        "source_sha256": "11fb109d9b12a58dfe775e839509b6d5534cbfc33c7e5908250ce5355a5995a4"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.github.davidmoten.oas3.internal.CommonTest#testIsUtilityClass",
+        "com.github.davidmoten.oas3.internal.ComponentsHelperTest#testIsUtilityClass",
+        "com.github.davidmoten.oas3.internal.NamesTest#testRefToClassNameNotFound",
+        "com.github.davidmoten.oas3.internal.PathsHelperTest#testIsUtilityClass",
+        "com.github.davidmoten.oas3.internal.UtilTest#testIsUtilityClass",
+        "com.github.davidmoten.oas3.internal.model.AssociationTest#testToString",
+        "com.github.davidmoten.oas3.internal.model.FieldTest#testToString",
+        "com.github.davidmoten.oas3.internal.model.InheritanceTest#testToString",
+        "com.github.davidmoten.oas3.internal.model.ModelTest#testToString",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/additional-properties-complex.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/additional-properties-simple.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/all-of-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/all-of-property-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/anon-nested-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/anon-property-not-required.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/anon-property-required.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/any-of-anon-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/any-of-anon-property-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/any-of-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/any-of-property-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/array-anon-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/array-anon-property-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/array-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/array-property-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/empty.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/enum.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/external-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/one-of-class-level-empty.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/one-of-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/one-of-property-level-required.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/one-of-property-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/parameter-anon-empty-object.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/parameter-anon.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/parameter-ref-complex.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/parameter-ref-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/parameter-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/path-returns-non-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/path-returns-ref-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/path-returns-ref-ref2.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/path-returns-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/petstore-expanded.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/petstore.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/ref-class-level.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/request-body-ref-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/request-body-ref.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/request-body.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/simple-has-refs.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterBatchTest#test[src/test/resources/inputs/simple-types-and-arrays.yml]",
+        "com.github.davidmoten.oas3.puml.ConverterMainTest#isUtilityClass",
+        "com.github.davidmoten.oas3.puml.ConverterMainTest#testSplit",
+        "com.github.davidmoten.oas3.puml.ConverterMainTest#testSplitEgcApiProduceImages",
+        "com.github.davidmoten.oas3.puml.ConverterMainTest#testToImages",
+        "com.github.davidmoten.oas3.puml.ConverterMainTest#testToPuml",
+        "com.github.davidmoten.oas3.puml.ConverterMainTest#testWrongNumberOfArgs",
+        "com.github.davidmoten.oas3.puml.ConverterTest#generateExamplesMd",
+        "com.github.davidmoten.oas3.puml.ConverterTest#testConvert",
+        "com.github.davidmoten.oas3.puml.ConverterTest#testConvertEmpty",
+        "com.github.davidmoten.oas3.puml.ConverterTest#testConvertExternalRef",
+        "com.github.davidmoten.oas3.puml.ConverterTest#testConvertPumlToSvg",
+        "com.github.davidmoten.oas3.puml.ConverterTest#testIsUtility",
+        "com.github.davidmoten.oas3.puml.ConverterTest#testReadString",
+        "com.github.davidmoten.oas3.puml.DeflaterTest#test",
+        "com.github.davidmoten.oas3.puml.DeflaterTest#testEncode",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/bookstore.yml]",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/ebay.yml]",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/ecommerce.yml]",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/news.yml]",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/strava.yml]",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/twitter.yml]",
+        "com.github.davidmoten.oas3.puml.DemoBatchTest#testBatch[src/test/resources/demo/unqork.yml]"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 48.1,
+        "module_test": [
+          22.9,
+          7.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-030712-5p7w/base",
+      "compiled_snapshot": "work/20261118-030712-5p7w/snapshot-cdb4ee2a",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.github.davidmoten.oas3.puml.Converter",
+      "simple_name": "Converter",
+      "package": "com.github.davidmoten.oas3.puml",
+      "kind": "class",
+      "cut_path": "src/main/java/com/github/davidmoten/oas3/puml/Converter.java",
+      "source_sha256": "11fb109d9b12a58dfe775e839509b6d5534cbfc33c7e5908250ce5355a5995a4",
+      "generated_test_path": "src/test/java/com/github/davidmoten/oas3/puml/Converter_ArrowTest.java",
+      "generated_test_fqn": "com.github.davidmoten.oas3.puml.Converter_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.9,
+      "locate": 0.1,
+      "plan": 1.3,
+      "compile": 48.1,
+      "baseline": [
+        22.9,
+        7.5
+      ],
+      "total": 79.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

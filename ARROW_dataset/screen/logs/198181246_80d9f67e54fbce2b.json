@@ -1,0 +1,398 @@
+{
+  "run_id": "20261118-024924-xvxx",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-024924-xvxx",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 106.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 106.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "spring-cloud-huawei",
+        "url": "https://github.com/huaweicloud/spring-cloud-huawei",
+        "git_commit": "226c1c412aac2ffc6b5d8f9d13886ae521604134",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "spring-cloud-huawei-servicecomb-discovery",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/*Tests.java",
+          "**/*Test.java"
+        ],
+        "test_excludes": [
+          "**/Abstract*.java"
+        ]
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-autoconfigure",
+            "version": "2.2.5.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-configuration-processor",
+            "version": "2.2.5.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.cloud",
+            "artifact": "spring-cloud-context",
+            "version": "2.2.2.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.cloud",
+            "artifact": "spring-cloud-commons",
+            "version": "2.2.2.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.cloud",
+            "artifact": "spring-cloud-starter-netflix-ribbon",
+            "version": "2.2.2.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "com.huaweicloud",
+            "artifact": "spring-cloud-huawei-common",
+            "version": "1.3.3-Hoxton-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "27.0.1-jre",
+            "scope": "compile"
+          },
+          {
+            "group": "org.java-websocket",
+            "artifact": "Java-WebSocket",
+            "version": "1.5.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.projectreactor",
+            "artifact": "reactor-core",
+            "version": "3.3.3.RELEASE",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.jmockit",
+            "artifact": "jmockit",
+            "version": "1.36",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-test",
+            "version": "2.2.5.RELEASE",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 99
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.jmockit:jmockit:1.36"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest:2.1"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "spring-cloud-huawei-dependencies",
+          "spring-cloud-huawei-parents",
+          "spring-cloud-huawei-common",
+          "spring-cloud-huawei-servicecomb-discovery",
+          "spring-cloud-huawei-sample",
+          "spring-cloud-starter-huawei",
+          "spring-cloud-huawei-dtm",
+          "spring-cloud-huawei-config",
+          "spring-cloud-huawei-router-core",
+          "spring-cloud-huawei-router-client",
+          "spring-cloud-huawei-swagger",
+          "spring-cloud-huawei-governance",
+          "spring-cloud-huawei-sample/discovery-demo",
+          "spring-cloud-huawei-sample/config-demo",
+          "spring-cloud-huawei-sample/canary-demo",
+          "spring-cloud-huawei-sample/swagger-demo",
+          "spring-cloud-huawei-sample/gateway-demo",
+          "spring-cloud-huawei-sample/governance-demo",
+          "spring-cloud-starter-huawei/spring-cloud-starter-huawei-servicecomb-discovery",
+          "spring-cloud-starter-huawei/spring-cloud-starter-huawei-dtm",
+          "spring-cloud-starter-huawei/spring-cloud-starter-huawei-router",
+          "spring-cloud-starter-huawei/spring-cloud-starter-huawei-config",
+          "spring-cloud-starter-huawei/spring-cloud-starter-huawei-swagger",
+          "spring-cloud-starter-huawei/spring-cloud-starter-huawei-governance",
+          "spring-cloud-huawei-sample/discovery-demo/price-provider",
+          "spring-cloud-huawei-sample/discovery-demo/order-consumer",
+          "spring-cloud-huawei-sample/discovery-demo/product-consumer-feign",
+          "spring-cloud-huawei-sample/discovery-demo/ssl-demo",
+          "spring-cloud-huawei-sample/canary-demo/canary-consumer",
+          "spring-cloud-huawei-sample/canary-demo/canary-provider",
+          "spring-cloud-huawei-sample/canary-demo/canary-provider-beta",
+          "spring-cloud-huawei-sample/canary-demo/canary-consumer-feign-hytrix",
+          "spring-cloud-huawei-sample/swagger-demo/springcloud-provider",
+          "spring-cloud-huawei-sample/swagger-demo/javachassis-consumer",
+          "spring-cloud-huawei-sample/swagger-demo/edge-service",
+          "spring-cloud-huawei-sample/gateway-demo/backend-service",
+          "spring-cloud-huawei-sample/gateway-demo/gateway",
+          "spring-cloud-huawei-sample/gateway-demo/zuul",
+          "spring-cloud-huawei-sample/governance-demo/consumer",
+          "spring-cloud-huawei-sample/governance-demo/provider"
+        ],
+        "target_module": "spring-cloud-huawei-servicecomb-discovery",
+        "module_root": "spring-cloud-huawei-servicecomb-discovery",
+        "packages": [
+          "com.huaweicloud.servicecomb.discovery.client",
+          "com.huaweicloud.servicecomb.discovery",
+          "com.huaweicloud.servicecomb.discovery.client.model",
+          "com.huaweicloud.servicecomb.discovery.discovery",
+          "com.huaweicloud.servicecomb.discovery.event",
+          "com.huaweicloud.servicecomb.discovery.registry",
+          "com.huaweicloud.servicecomb.discovery.ribbon"
+        ]
+      },
+      "paths": {
+        "source_root": "spring-cloud-huawei-servicecomb-discovery/src/main/java",
+        "test_root": "spring-cloud-huawei-servicecomb-discovery/src/test/java",
+        "cut_path": "spring-cloud-huawei-servicecomb-discovery/src/main/java/com/huaweicloud/servicecomb/discovery/client/ServiceCombClient.java",
+        "generated_test_path": "spring-cloud-huawei-servicecomb-discovery/src/test/java/com/huaweicloud/servicecomb/discovery/client/ServiceCombClient_ArrowTest.java",
+        "generated_test_fqn": "com.huaweicloud.servicecomb.discovery.client.ServiceCombClient_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.huaweicloud.servicecomb.discovery.client.ServiceCombClient",
+        "simple_name": "ServiceCombClient",
+        "package": "com.huaweicloud.servicecomb.discovery.client",
+        "kind": "class",
+        "source_sha256": "311b04adc00decc591af9384b727cf0b0406e3bd9cf575af858fc43104a94eac"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "spring-cloud-huawei-servicecomb-discovery",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "spring-cloud-huawei-servicecomb-discovery",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.huaweicloud.common.exception.ExceptionTest#exceptionTest",
+        "com.huaweicloud.common.transport.DefaultHttpTransportTest#newInstance",
+        "com.huaweicloud.common.util.MD5UtilTest#encrypt",
+        "com.huaweicloud.common.util.NetUtilTest#getHost",
+        "com.huaweicloud.common.util.NetUtilTest#getLocalHost",
+        "com.huaweicloud.common.util.NetUtilTest#getPort",
+        "com.huaweicloud.common.util.URLUtilTest#isEquals",
+        "com.huaweicloud.common.util.URLUtilTest#splitIpPort",
+        "com.huaweicloud.common.util.URLUtilTest#transform",
+        "com.huaweicloud.common.util.VersionCompareUtilTest#testVersion"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.huaweicloud.common.transport.DefaultHttpTransportTest#execute",
+        "com.huaweicloud.servicecomb.discovery.client.ServiceCombClientTest#initializationError",
+        "com.huaweicloud.servicecomb.discovery.discovery.MicroserviceHandlerTest#initializationError",
+        "com.huaweicloud.servicecomb.discovery.discovery.ServiceCombDiscoveryClientTest#initializationError",
+        "com.huaweicloud.servicecomb.discovery.registry.HeartbeatSchedulerTest#addAndRemove",
+        "com.huaweicloud.servicecomb.discovery.registry.ServiceCombServiceRegistryTest#deRegisterMicroservice",
+        "com.huaweicloud.servicecomb.discovery.registry.ServiceCombServiceRegistryTest#getStatus",
+        "com.huaweicloud.servicecomb.discovery.registry.ServiceCombServiceRegistryTest#hasRegisterMicroservice",
+        "com.huaweicloud.servicecomb.discovery.registry.ServiceCombServiceRegistryTest#neverRegisterMicroservice",
+        "com.huaweicloud.servicecomb.discovery.registry.ServiceCombServiceRegistryTest#setStatus",
+        "com.huaweicloud.servicecomb.discovery.ribbon.ServiceCombServerListTest#getInitialListOfServers"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 71.9,
+        "module_test": [
+          3.8,
+          3.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024924-xvxx/base",
+      "compiled_snapshot": "work/20261118-024924-xvxx/snapshot-0df64be5",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "spring-cloud-huawei-servicecomb-discovery",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.huaweicloud.servicecomb.discovery.client.ServiceCombClient",
+      "simple_name": "ServiceCombClient",
+      "package": "com.huaweicloud.servicecomb.discovery.client",
+      "kind": "class",
+      "cut_path": "spring-cloud-huawei-servicecomb-discovery/src/main/java/com/huaweicloud/servicecomb/discovery/client/ServiceCombClient.java",
+      "source_sha256": "311b04adc00decc591af9384b727cf0b0406e3bd9cf575af858fc43104a94eac",
+      "generated_test_path": "spring-cloud-huawei-servicecomb-discovery/src/test/java/com/huaweicloud/servicecomb/discovery/client/ServiceCombClient_ArrowTest.java",
+      "generated_test_fqn": "com.huaweicloud.servicecomb.discovery.client.ServiceCombClient_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 11 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 2.7,
+      "locate": 0.2,
+      "plan": 27.4,
+      "compile": 71.9,
+      "baseline": [
+        3.8,
+        3.6
+      ],
+      "total": 106.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 11 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,44 @@
+{
+  "run_id": "20261118-043253-xtoq",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-043253-xtoq",
+  "outcome": {
+    "outcome": "INFRA",
+    "code": "B1_BASELINE_TIMEOUT",
+    "message": "Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).",
+    "hint": "Tăng verification.step_timeout_seconds.",
+    "first_error": null,
+    "log": "block1/logs/baseline-1.log",
+    "seconds": 902.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "INFRA",
+      "code": "B1_BASELINE_TIMEOUT",
+      "message": "Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).",
+      "hint": "Tăng verification.step_timeout_seconds.",
+      "first_error": null,
+      "log": "block1/logs/baseline-1.log",
+      "seconds": 902.5
+    },
+    "metadata": null,
+    "baseline": null,
+    "workspace": null,
+    "cut": null,
+    "warnings": [
+      "3 file .java không đọc được (ví dụ com.onetopic.xml/src/main/java/onetopic/java2xml/Java2xml.java: MalformedInputException: Input length = 1)."
+    ],
+    "timings": {
+      "checkout": 1.7,
+      "locate": 0.1,
+      "plan": 0,
+      "compile": 0,
+      "baseline": [],
+      "total": 902.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "3 file .java không đọc được (ví dụ com.onetopic.xml/src/main/java/onetopic/java2xml/Java2xml.java: MalformedInputException: Input length = 1)."
+  ]
+}

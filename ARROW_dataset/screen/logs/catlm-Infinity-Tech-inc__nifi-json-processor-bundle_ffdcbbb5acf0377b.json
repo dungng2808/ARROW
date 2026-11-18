@@ -1,0 +1,321 @@
+{
+  "run_id": "20261118-002103-j683",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-002103-j683",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 63.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 63.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "nifi-json-processor-bundle",
+        "url": "https://github.com/Infinity-Tech-inc/nifi-json-processor-bundle",
+        "git_commit": "b5f5dd89f75139a379d3cff084978602482375d8",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "nifi-json-processor-processors",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/*Test.class",
+          "**/Test*.class",
+          "**/*Spec.class"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.apache.nifi",
+            "artifact": "nifi-api",
+            "version": "1.5.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.nifi",
+            "artifact": "nifi-utils",
+            "version": "1.5.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.nifi",
+            "artifact": "nifi-processor-utils",
+            "version": "1.5.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.jayway.jsonpath",
+            "artifact": "json-path",
+            "version": "1.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.7.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.4",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.apache.nifi",
+            "artifact": "nifi-mock",
+            "version": "1.5.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.25",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.10.19",
+            "scope": "test"
+          },
+          {
+            "group": "org.codehaus.groovy",
+            "artifact": "groovy-all",
+            "version": "2.4.13",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 32
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "nifi-json-processor-processors",
+          "nifi-json-processor-nar"
+        ],
+        "target_module": "nifi-json-processor-processors",
+        "module_root": "nifi-json-processor-processors",
+        "packages": [
+          "com.nifi.processor.jsonvalidator.processors.jsonprocessor"
+        ]
+      },
+      "paths": {
+        "source_root": "nifi-json-processor-processors/src/main/java",
+        "test_root": "nifi-json-processor-processors/src/test/java",
+        "cut_path": "nifi-json-processor-processors/src/main/java/com/nifi/processor/jsonvalidator/processors/jsonprocessor/JsonFieldExtractorProcessor.java",
+        "generated_test_path": "nifi-json-processor-processors/src/test/java/com/nifi/processor/jsonvalidator/processors/jsonprocessor/JsonFieldExtractorProcessor_ArrowTest.java",
+        "generated_test_fqn": "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor",
+        "simple_name": "JsonFieldExtractorProcessor",
+        "package": "com.nifi.processor.jsonvalidator.processors.jsonprocessor",
+        "kind": "class",
+        "source_sha256": "c4a693b1f5f0bbdd64545856cefb4b903b5df1961b829d2b4dff00efde3f0364"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "nifi-json-processor-processors",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "nifi-json-processor-processors",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessorTest#testProcessor",
+        "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessorTest#testProcessorWithInValidJson"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 24.1,
+        "module_test": [
+          5.7,
+          4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-002103-j683/base",
+      "compiled_snapshot": "work/20261118-002103-j683/snapshot-bd1bfe70",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "nifi-json-processor-processors",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor",
+      "simple_name": "JsonFieldExtractorProcessor",
+      "package": "com.nifi.processor.jsonvalidator.processors.jsonprocessor",
+      "kind": "class",
+      "cut_path": "nifi-json-processor-processors/src/main/java/com/nifi/processor/jsonvalidator/processors/jsonprocessor/JsonFieldExtractorProcessor.java",
+      "source_sha256": "c4a693b1f5f0bbdd64545856cefb4b903b5df1961b829d2b4dff00efde3f0364",
+      "generated_test_path": "nifi-json-processor-processors/src/test/java/com/nifi/processor/jsonvalidator/processors/jsonprocessor/JsonFieldExtractorProcessor_ArrowTest.java",
+      "generated_test_fqn": "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.1,
+      "plan": 29.7,
+      "compile": 24.1,
+      "baseline": [
+        5.7,
+        4
+      ],
+      "total": 63.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

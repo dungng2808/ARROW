@@ -1,0 +1,309 @@
+{
+  "run_id": "20261118-025036-qetk",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-025036-qetk",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 31.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 31.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "astrix",
+        "url": "https://github.com/AvanzaBank/astrix",
+        "git_commit": "0984caec974cca1babdee82117e898afcf50b3d9",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "astrix-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*TestCase.java",
+          "**/*Tests.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit-dep",
+            "version": "4.10",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": null,
+        "version": "",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-core:1.2.1"
+        ],
+        "evidence": "no test framework dependency"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "astrix-core",
+          "astrix-provider",
+          "astrix-gs",
+          "astrix-context",
+          "astrix-versioning",
+          "astrix-fault-tolerance",
+          "astrix-service-registry",
+          "astrix-integration-tests",
+          "astrix-service-registry-pu",
+          "astrix-test-util",
+          "astrix-gs-test-util",
+          "astrix-dashboard",
+          "astrix-spring",
+          "astrix-http",
+          "astrix-remoting",
+          "examples",
+          "doc-snippets",
+          "astrix-config",
+          "tutorial",
+          "astrix-all",
+          "examples/lunch-parent",
+          "examples/lunch-grader-parent",
+          "examples/lunch-astrix-extensions",
+          "examples/example-application-runners",
+          "examples/lunch-web",
+          "examples/lunch-tests",
+          "tutorial/trading-api-parent",
+          "examples/lunch-parent/lunch-pu",
+          "examples/lunch-parent/lunch-api",
+          "examples/lunch-parent/lunch-api-provider",
+          "examples/lunch-grader-parent/lunch-grader-pu",
+          "examples/lunch-grader-parent/lunch-grader-api",
+          "examples/lunch-grader-parent/lunch-grader-api-provider",
+          "tutorial/trading-api-parent/trading-api",
+          "tutorial/trading-api-parent/trading-api-runtime",
+          "tutorial/trading-api-parent/trading-pu"
+        ],
+        "target_module": "astrix-core",
+        "module_root": "astrix-core",
+        "packages": [
+          "com.avanza.astrix.core.util",
+          "com.avanza.astrix.core",
+          "com.avanza.astrix.core.function",
+          "com.avanza.astrix.provider.component",
+          "com.avanza.astrix.provider.core",
+          "com.avanza.astrix.provider.gs",
+          "com.avanza.astrix.provider.subscription",
+          "com.avanza.astrix.provider.test",
+          "com.avanza.astrix.provider.versioning"
+        ]
+      },
+      "paths": {
+        "source_root": "astrix-core/src/main/java",
+        "test_root": "astrix-core/src/test/java",
+        "cut_path": "astrix-core/src/main/java/com/avanza/astrix/core/util/GenericAstrixMapReducer.java",
+        "generated_test_path": "astrix-core/src/test/java/com/avanza/astrix/core/util/GenericAstrixMapReducer_ArrowTest.java",
+        "generated_test_fqn": "com.avanza.astrix.core.util.GenericAstrixMapReducer_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.avanza.astrix.core.util.GenericAstrixMapReducer",
+        "simple_name": "GenericAstrixMapReducer",
+        "package": "com.avanza.astrix.core.util",
+        "kind": "class",
+        "source_sha256": "8bc2280e3f0de130b538c77bbb97dcd54a7c2e2201f15a428267c5dfbb893f4c"
+      },
+      "missing_reasons": {
+        "test_framework": "no test framework dependency"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "astrix-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "astrix-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.avanza.astrix.core.util.GenericAstrixMapReducerTest#reduce_flattensMaps",
+        "com.avanza.astrix.core.util.GenericAstrixMapReducerTest#reduce_rethrowsException"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 6.7,
+        "module_test": [
+          21.8,
+          1.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-025036-qetk/base",
+      "compiled_snapshot": "work/20261118-025036-qetk/snapshot-e548f49e",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "astrix-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.avanza.astrix.core.util.GenericAstrixMapReducer",
+      "simple_name": "GenericAstrixMapReducer",
+      "package": "com.avanza.astrix.core.util",
+      "kind": "class",
+      "cut_path": "astrix-core/src/main/java/com/avanza/astrix/core/util/GenericAstrixMapReducer.java",
+      "source_sha256": "8bc2280e3f0de130b538c77bbb97dcd54a7c2e2201f15a428267c5dfbb893f4c",
+      "generated_test_path": "astrix-core/src/test/java/com/avanza/astrix/core/util/GenericAstrixMapReducer_ArrowTest.java",
+      "generated_test_fqn": "com.avanza.astrix.core.util.GenericAstrixMapReducer_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Không thấy JUnit hay TestNG trong dependency test; nên thêm JUnit vào project."
+    ],
+    "timings": {
+      "checkout": 1.7,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 6.7,
+      "baseline": [
+        21.8,
+        1.7
+      ],
+      "total": 31.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Không thấy JUnit hay TestNG trong dependency test; nên thêm JUnit vào project."
+  ]
+}

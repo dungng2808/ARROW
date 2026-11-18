@@ -1,0 +1,10 @@
+[>] Tải https://github.com/ibissource/iaf
+[>] Liệt kê class
+[>] Build root core (standalone)
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module core: [ERROR] Failed to execute goal on project ibis-adapterframework-core: Could not resolve dependencies for project org.ibissource:ibis-adapterframework-core:jar:7.9.4-SNAPSHOT: The following artifacts could not be resolved: org.ibissource:ibis-adapterframework-commons:jar:7.9.4-SNAPSHOT (absent), org.ibissource:ibis-adapterframework-security:jar:7.9.4-SNAPSHOT (absent), org.ibissource:credentialprovider:jar:7.9.4-SNAPSHOT (absent), org.ibissource:iaf-management-gateway:jar:7.9.4-SNAPSHOT (absent): org.ibissource:ibis-adapterframework-commons:jar:7.9.4-SNAPSHOT was not found in https://nexus.frankframework.org/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of frankframework has elapsed or updates are forced -> [Help 1]
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module core: [ERROR] Failed to execute goal on project ibis-adapterframework-core: Could not resolve dependencies for project org.ibissource:ibis-adapterframework-core:jar:7.9.4-SNAPSHOT: The following artifacts could not be resolved: org.ibissource:ibis-adapterframework-commons:jar:7.9.4-SNAPSHOT (absent), org.ibissource:ibis-adapterframework-security:jar:7.9.4-SNAPSHOT (absent), org.ibissource:credentialprovider:jar:7.9.4-SNAPSHOT (absent), org.ibissource:iaf-management-gateway:jar:7.9.4-SNAPSHOT (absent): org.ibissource:ibis-adapterframework-commons:jar:7.9.4-SNAPSHOT was not found in https://nexus.frankframework.org/content/groups/public during a previous attempt. This failure was cached in the local repository and resolution is not reattempted until the update interval of frankframework has elapsed or updates are forced -> [Help 1]
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

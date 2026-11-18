@@ -1,0 +1,403 @@
+{
+  "run_id": "20261118-022344-wyt5",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-022344-wyt5",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 171.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 171.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "soundwave",
+        "url": "https://github.com/pinterest/soundwave",
+        "git_commit": "85891002667089f47c6f86d1bfc1ffabe630d005",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "commons",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "joda-time",
+            "artifact": "joda-time",
+            "version": "2.9.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.elasticsearch",
+            "artifact": "elasticsearch",
+            "version": "1.4.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.reflections",
+            "artifact": "reflections",
+            "version": "0.9.10",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-configuration",
+            "artifact": "commons-configuration",
+            "version": "1.9",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-beanutils",
+            "artifact": "commons-beanutils",
+            "version": "1.9.1",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-codec",
+            "artifact": "commons-codec",
+            "version": "1.9",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-core",
+            "version": "2.7.5",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.7.5",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.7.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-compress",
+            "version": "1.8",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.4",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.curator",
+            "artifact": "curator-framework",
+            "version": "2.9.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.curator",
+            "artifact": "curator-recipes",
+            "version": "2.9.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk",
+            "version": "1.11.73",
+            "scope": "compile"
+          },
+          {
+            "group": "com.squareup.retrofit2",
+            "artifact": "retrofit",
+            "version": "2.1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.squareup.retrofit2",
+            "artifact": "converter-jackson",
+            "version": "2.1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.twitter",
+            "artifact": "finagle-ostrich4_2.11",
+            "version": "6.25.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 162
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "commons",
+          "worker",
+          "api"
+        ],
+        "target_module": "commons",
+        "module_root": "commons",
+        "packages": [
+          "com.pinterest.soundwave.bean",
+          "com.pinterest",
+          "com.pinterest.aws",
+          "com.pinterest.config",
+          "com.pinterest.job",
+          "com.pinterest.soundwave.aws",
+          "com.pinterest.soundwave.elasticsearch",
+          "com.pinterest.soundwave.pinterest",
+          "com.pinterest.soundwave.utils",
+          "com.pinterest.zookeeper"
+        ]
+      },
+      "paths": {
+        "source_root": "commons/src/main/java",
+        "test_root": "commons/src/test/java",
+        "cut_path": "commons/src/main/java/com/pinterest/soundwave/bean/EsInstance.java",
+        "generated_test_path": "commons/src/test/java/com/pinterest/soundwave/bean/EsInstance_ArrowTest.java",
+        "generated_test_fqn": "com.pinterest.soundwave.bean.EsInstance_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.pinterest.soundwave.bean.EsInstance",
+        "simple_name": "EsInstance",
+        "package": "com.pinterest.soundwave.bean",
+        "kind": "class",
+        "source_sha256": "ef8fe01a87a7b2672df565331a0ceac0e9be6e7cac59e2e43f792f52f0dcc0fb"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "commons",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "commons",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.pinterest.soundwave.bean.EsDailySnapshotInstanceTest#getStringOfPeriod",
+        "com.pinterest.soundwave.bean.EsDailySnapshotInstanceTest#roundToSeconds",
+        "com.pinterest.soundwave.bean.EsInstanceTest#setState",
+        "com.pinterest.soundwave.elasticsearch.EsDailySnapshotStoreTest#findDiff",
+        "com.pinterest.soundwave.elasticsearch.EsIteratorTest#noRetrieval",
+        "com.pinterest.soundwave.elasticsearch.EsIteratorTest#onRetrieval",
+        "com.pinterest.soundwave.elasticsearch.EsPropertyNamingStrategyTest#deserializeWithStrategy",
+        "com.pinterest.soundwave.utils.JsonCompareUtilTest#TestDiff",
+        "com.pinterest.soundwave.utils.JsonCompareUtilTest#findDiff"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 161.7,
+        "module_test": [
+          2.5,
+          2.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022344-wyt5/base",
+      "compiled_snapshot": "work/20261118-022344-wyt5/snapshot-dbfaa5d6",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "commons",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.pinterest.soundwave.bean.EsInstance",
+      "simple_name": "EsInstance",
+      "package": "com.pinterest.soundwave.bean",
+      "kind": "class",
+      "cut_path": "commons/src/main/java/com/pinterest/soundwave/bean/EsInstance.java",
+      "source_sha256": "ef8fe01a87a7b2672df565331a0ceac0e9be6e7cac59e2e43f792f52f0dcc0fb",
+      "generated_test_path": "commons/src/test/java/com/pinterest/soundwave/bean/EsInstance_ArrowTest.java",
+      "generated_test_fqn": "com.pinterest.soundwave.bean.EsInstance_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 4.5,
+      "compile": 161.7,
+      "baseline": [
+        2.5,
+        2.5
+      ],
+      "total": 171.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

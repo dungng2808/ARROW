@@ -1,0 +1,44 @@
+{
+  "run_id": "20261118-022709-4lu7",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-022709-4lu7",
+  "outcome": {
+    "outcome": "BLOCKED",
+    "code": "B1_DEPENDENCY_RESOLUTION",
+    "message": "Thiếu artifact khi biên dịch module problem-spring-webflux: [ERROR] Failed to execute goal on project problem-spring-webflux: Could not resolve dependencies for project org.zalando:problem-spring-webflux:jar:0.28.0-SNAPSHOT",
+    "hint": "Chạy \"mvn -q dependency:resolve\" để xem lỗi; kiểm tra settings.xml và proxy.",
+    "first_error": "[ERROR] Failed to execute goal on project problem-spring-webflux: Could not resolve dependencies for project org.zalando:problem-spring-webflux:jar:0.28.0-SNAPSHOT",
+    "log": "block1/logs/compile-jdk17.log",
+    "seconds": 61.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "BLOCKED",
+      "code": "B1_DEPENDENCY_RESOLUTION",
+      "message": "Thiếu artifact khi biên dịch module problem-spring-webflux: [ERROR] Failed to execute goal on project problem-spring-webflux: Could not resolve dependencies for project org.zalando:problem-spring-webflux:jar:0.28.0-SNAPSHOT",
+      "hint": "Chạy \"mvn -q dependency:resolve\" để xem lỗi; kiểm tra settings.xml và proxy.",
+      "first_error": "[ERROR] Failed to execute goal on project problem-spring-webflux: Could not resolve dependencies for project org.zalando:problem-spring-webflux:jar:0.28.0-SNAPSHOT",
+      "log": "block1/logs/compile-jdk17.log",
+      "seconds": 61.8
+    },
+    "metadata": null,
+    "baseline": null,
+    "workspace": null,
+    "cut": null,
+    "warnings": [
+      "Wrapper mvnw không chạy được; dùng Maven của máy."
+    ],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 0,
+      "compile": 0,
+      "baseline": [],
+      "total": 61.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Wrapper mvnw không chạy được; dùng Maven của máy."
+  ]
+}

@@ -1,0 +1,532 @@
+{
+  "run_id": "20261118-005623-gr2k",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-005623-gr2k",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 15.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 15.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "datamill",
+        "url": "https://github.com/rchodava/datamill",
+        "git_commit": "b4af376587064dde4935cc739219f977fc514d4e",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "21.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.json",
+            "artifact": "json",
+            "version": "20160212",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-common",
+            "version": "4.1.0.CR6",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-buffer",
+            "version": "4.1.0.CR6",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-handler",
+            "version": "4.1.0.CR6",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-transport",
+            "version": "4.1.0.CR6",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-codec-http",
+            "version": "4.1.0.CR6",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-core",
+            "version": "2.7.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.7.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.davidmoten",
+            "artifact": "rxjava-jdbc",
+            "version": "0.7",
+            "scope": "compile"
+          },
+          {
+            "group": "com.zaxxer",
+            "artifact": "HikariCP",
+            "version": "2.5.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.atteo",
+            "artifact": "evo-inflector",
+            "version": "1.2.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.bitbucket.b_c",
+            "artifact": "jose4j",
+            "version": "0.4.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.flywaydb",
+            "artifact": "flyway-core",
+            "version": "3.2.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.javassist",
+            "artifact": "javassist",
+            "version": "3.20.0-GA",
+            "scope": "compile"
+          },
+          {
+            "group": "org.objenesis",
+            "artifact": "objenesis",
+            "version": "2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "io.reactivex",
+            "artifact": "rxjava",
+            "version": "1.2.1",
+            "scope": "compile"
+          },
+          {
+            "group": "io.reactivex",
+            "artifact": "rxjava-async-util",
+            "version": "0.21.0",
+            "scope": "compile"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.10.19",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.stefanbirkner",
+            "artifact": "system-rules",
+            "version": "1.16.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.hsqldb",
+            "artifact": "hsqldb",
+            "version": "2.3.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 37
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.10.19"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "parent",
+          "core",
+          "cucumber",
+          "lambda-api"
+        ],
+        "target_module": "core",
+        "module_root": "core",
+        "packages": [
+          "foundation.stack.datamill.configuration",
+          "foundation.stack.datamill",
+          "foundation.stack.datamill.configuration.impl",
+          "foundation.stack.datamill.db",
+          "foundation.stack.datamill.db.impl",
+          "foundation.stack.datamill.db.test",
+          "foundation.stack.datamill.http",
+          "foundation.stack.datamill.http.annotations",
+          "foundation.stack.datamill.http.builder",
+          "foundation.stack.datamill.http.impl",
+          "foundation.stack.datamill.json",
+          "foundation.stack.datamill.reflection",
+          "foundation.stack.datamill.reflection.impl",
+          "foundation.stack.datamill.security",
+          "foundation.stack.datamill.security.impl",
+          "foundation.stack.datamill.serialization",
+          "foundation.stack.datamill.values"
+        ]
+      },
+      "paths": {
+        "source_root": "core/src/main/java",
+        "test_root": "core/src/test/java",
+        "cut_path": "core/src/main/java/foundation/stack/datamill/configuration/Wiring.java",
+        "generated_test_path": "core/src/test/java/foundation/stack/datamill/configuration/Wiring_ArrowTest.java",
+        "generated_test_fqn": "foundation.stack.datamill.configuration.Wiring_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "foundation.stack.datamill.configuration.Wiring",
+        "simple_name": "Wiring",
+        "package": "foundation.stack.datamill.configuration",
+        "kind": "class",
+        "source_sha256": "821c46c5be5773c8e1c3b5f12263c761ad131351c1548e3eb5fb6d59e0fd86f2"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "foundation.stack.datamill.ProcessRunnerTest#runProcessAndWait_NoOutput_OnSuccessfulCommandExecution",
+        "foundation.stack.datamill.ProcessRunnerTest#runProcess_PerformsAsExpected_OnSuccessfulCommandExecution",
+        "foundation.stack.datamill.configuration.FactoryChainsTest#chains",
+        "foundation.stack.datamill.configuration.FactoryChainsTest#noInfiniteRecursion",
+        "foundation.stack.datamill.configuration.FactoryChainsTest#qualifiedFactories",
+        "foundation.stack.datamill.configuration.FactoryChainsTest#typedFactories",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#chains",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#computation",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#constantClasses",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#conveniences",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#delegating",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#environmentVariables",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#files",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#immediates",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#missingRequiredProperties",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#systemProperties",
+        "foundation.stack.datamill.configuration.PropertySourcesTest#transformers",
+        "foundation.stack.datamill.configuration.WiringTest#autoConstruction",
+        "foundation.stack.datamill.configuration.WiringTest#conveniences",
+        "foundation.stack.datamill.configuration.WiringTest#namedParameters",
+        "foundation.stack.datamill.configuration.WiringTest#scopes",
+        "foundation.stack.datamill.configuration.impl.ConcreteClassFactoryTest#construction",
+        "foundation.stack.datamill.configuration.impl.ConcreteClassFactoryTest#failures",
+        "foundation.stack.datamill.configuration.impl.SimpleValueConverterTest#convert",
+        "foundation.stack.datamill.db.impl.DatabaseClientTest#queries",
+        "foundation.stack.datamill.db.impl.QueryBuilderImplTest#deleteQueries",
+        "foundation.stack.datamill.db.impl.QueryBuilderImplTest#insertQueries",
+        "foundation.stack.datamill.db.impl.QueryBuilderImplTest#selectQueries",
+        "foundation.stack.datamill.db.impl.QueryBuilderImplTest#updateQueries",
+        "foundation.stack.datamill.db.impl.RowBuilderImplTest#mapPreservesOrder",
+        "foundation.stack.datamill.db.impl.RowBuilderImplTest#mapWithValues",
+        "foundation.stack.datamill.db.impl.RowImplTest#indexedValueRetrieval",
+        "foundation.stack.datamill.db.impl.RowImplTest#labeledValueRetrieval",
+        "foundation.stack.datamill.db.impl.RowImplTest#memberNameBasedValueRetrieval",
+        "foundation.stack.datamill.db.impl.RowImplTest#qualifiedLabeledValueRetrieval",
+        "foundation.stack.datamill.db.impl.UnsubscribeOnNextOperatorTest#operator",
+        "foundation.stack.datamill.db.test.TestDatabaseClientTest#databaseMethodsInvoked",
+        "foundation.stack.datamill.db.test.TestDatabaseClientTest#rowBuilding",
+        "foundation.stack.datamill.http.ClientImplTest#deleteRequests",
+        "foundation.stack.datamill.http.ClientImplTest#getRequests",
+        "foundation.stack.datamill.http.ClientImplTest#patchRequests",
+        "foundation.stack.datamill.http.ClientImplTest#postRequests",
+        "foundation.stack.datamill.http.ClientImplTest#putRequests",
+        "foundation.stack.datamill.http.StatusTest#fromResponseCode",
+        "foundation.stack.datamill.http.builder.RouteBuilderTest#anyRouteHonoredIfObservableReturned",
+        "foundation.stack.datamill.http.builder.RouteBuilderTest#elseAnyRouteHonoredIfObservableReturned",
+        "foundation.stack.datamill.http.builder.RouteBuilderTest#elseOfAnyRouteHonoredIfNoObservableReturned",
+        "foundation.stack.datamill.http.builder.RouteBuilderTest#elseOfElseAnyRouteHonoredIfNoObservableReturned",
+        "foundation.stack.datamill.http.builder.UriTemplateTest#templateAsString",
+        "foundation.stack.datamill.http.builder.UriTemplateTest#testMatches",
+        "foundation.stack.datamill.http.impl.BeanMethodMatcherTest#beanMethodMatching",
+        "foundation.stack.datamill.http.impl.BeanMethodMatcherTest#beanMethodMatchingWithOnlyBeanPath",
+        "foundation.stack.datamill.http.impl.BeanMethodMatcherTest#beanMethodMatchingWithOnlyMethodPaths",
+        "foundation.stack.datamill.http.impl.BeanMethodMatcherTest#beanMethodMatchingWithPaths",
+        "foundation.stack.datamill.http.impl.BeanMethodMatcherTest#queryOptions",
+        "foundation.stack.datamill.http.impl.BytesBodyTest#entityTests",
+        "foundation.stack.datamill.http.impl.ClientToServerChannelHandlerTest#multipleResponseChunksSent",
+        "foundation.stack.datamill.http.impl.ClientToServerChannelHandlerTest#readEntitySentWithFullRequest",
+        "foundation.stack.datamill.http.impl.ClientToServerChannelHandlerTest#readEntitySentWithMultipleChunks",
+        "foundation.stack.datamill.http.impl.ClientToServerChannelHandlerTest#sendContinueResponseIfRequested",
+        "foundation.stack.datamill.http.impl.ClientToServerChannelHandlerTest#singleChunkResponseSent",
+        "foundation.stack.datamill.http.impl.InputStreamBodyTest#entityStreaming",
+        "foundation.stack.datamill.http.impl.RequestBuilderImplTest#body",
+        "foundation.stack.datamill.http.impl.RequestBuilderImplTest#methods",
+        "foundation.stack.datamill.http.impl.RequestBuilderImplTest#requestBuilding",
+        "foundation.stack.datamill.http.impl.RequestBuilderImplTest#requestHeaderBuildingIsCaseInsensitive",
+        "foundation.stack.datamill.http.impl.ResponseBuilderTest#responseCodes",
+        "foundation.stack.datamill.http.impl.ResponseBuilderTest#streamingEntites",
+        "foundation.stack.datamill.http.impl.ResponseBuilderTest#streamingJson",
+        "foundation.stack.datamill.http.impl.ServerRequestImplTest#basicRequestProperties",
+        "foundation.stack.datamill.http.impl.ServerRequestImplTest#headerAndQueryMapsAreNonNull",
+        "foundation.stack.datamill.http.impl.ServerRequestImplTest#requestHeaderProcessingIsCaseInsensitive",
+        "foundation.stack.datamill.http.impl.TemplateBasedUriBuilderTest#templateBasedUriBuilding",
+        "foundation.stack.datamill.json.JsonArrayTest#asObjectsTest",
+        "foundation.stack.datamill.json.JsonObjectTest#propertyConversions",
+        "foundation.stack.datamill.json.JsonObjectTest#stringConversion",
+        "foundation.stack.datamill.json.JsonObjectTest#unsupportedConversions",
+        "foundation.stack.datamill.reflection.OutlineBuilderTest#buildDefaultCamelCased",
+        "foundation.stack.datamill.reflection.OutlineBuilderTest#buildDefaultSnakeCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#camelCasedNames",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#getPropertiesCamelCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#getPropertiesCamelCasedDoesNotHaveGetClass",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#getPropertiesSnakeCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#getPropertyCamelCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#getPropertySnakeCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#methods",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#propertyNamesCamelCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#propertyNamesSnakeCased",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#snakeCasedNames",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#unwrapWrappedBean",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#wrapAndBeanGet",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#wrapAndBeanSet",
+        "foundation.stack.datamill.reflection.impl.OutlineImplTest#wrapAndBeanSetCastedValue",
+        "foundation.stack.datamill.reflection.impl.TripleArgumentTypeSwitchTest#doSwitchWithWrappers",
+        "foundation.stack.datamill.reflection.impl.TripleArgumentTypeSwitchTest#doSwitchWithoutWrappers",
+        "foundation.stack.datamill.reflection.impl.TypeSwitchTest#doSwitchWithWrappers",
+        "foundation.stack.datamill.reflection.impl.TypeSwitchTest#doSwitchWithoutWrappers",
+        "foundation.stack.datamill.security.JsonWebTokenTest#testDefaultVerification",
+        "foundation.stack.datamill.security.JsonWebTokenTest#testFailingOnMismatchedSubject",
+        "foundation.stack.datamill.security.JsonWebTokenTest#testFailingOnMissingSubject",
+        "foundation.stack.datamill.security.impl.BCryptTest#basicEncryption",
+        "foundation.stack.datamill.values.StringValueTest#binaryConversion",
+        "foundation.stack.datamill.values.StringValueTest#booleanConversions",
+        "foundation.stack.datamill.values.StringValueTest#characterConversion",
+        "foundation.stack.datamill.values.StringValueTest#floatConversions",
+        "foundation.stack.datamill.values.StringValueTest#integerConversions",
+        "foundation.stack.datamill.values.StringValueTest#stringConversion",
+        "foundation.stack.datamill.values.StringValueTest#timeConversions"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "foundation.stack.datamill.ProcessRunnerTest#runProcessAndWait_ReturnsExpectedResults_OnFailingCommandExecution",
+        "foundation.stack.datamill.ProcessRunnerTest#runProcessAndWait_ReturnsExpectedResults_OnSuccessfulCommandExecution",
+        "foundation.stack.datamill.ProcessRunnerTest#runProcess_NotifiesListenerOfOutput"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 7,
+        "module_test": [
+          3.5,
+          3.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005623-gr2k/base",
+      "compiled_snapshot": "work/20261118-005623-gr2k/snapshot-0d45f5fd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "foundation.stack.datamill.configuration.Wiring",
+      "simple_name": "Wiring",
+      "package": "foundation.stack.datamill.configuration",
+      "kind": "class",
+      "cut_path": "core/src/main/java/foundation/stack/datamill/configuration/Wiring.java",
+      "source_sha256": "821c46c5be5773c8e1c3b5f12263c761ad131351c1548e3eb5fb6d59e0fd86f2",
+      "generated_test_path": "core/src/test/java/foundation/stack/datamill/configuration/Wiring_ArrowTest.java",
+      "generated_test_fqn": "foundation.stack.datamill.configuration.Wiring_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 3 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.3,
+      "plan": 1.3,
+      "compile": 7,
+      "baseline": [
+        3.5,
+        3.4
+      ],
+      "total": 15.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 3 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

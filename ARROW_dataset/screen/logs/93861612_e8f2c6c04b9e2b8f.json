@@ -1,0 +1,393 @@
+{
+  "run_id": "20261118-010818-o62r",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-010818-o62r",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 15.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 15.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "cucable-plugin",
+        "url": "https://github.com/trivago/cucable-plugin",
+        "git_commit": "d36be74b0769107dee32896792a5911ecefff404",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "plugin-code",
+        "build_mode": "standalone",
+        "build_file": "plugin-code/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-plugin-api",
+            "version": "3.5.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven.plugin-tools",
+            "artifact": "maven-plugin-annotations",
+            "version": "3.5.1",
+            "scope": "provided"
+          },
+          {
+            "group": "io.cucumber",
+            "artifact": "gherkin",
+            "version": "5.1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-compat",
+            "version": "3.3.9",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13-beta-1",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.23.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.maven.plugin-testing",
+            "artifact": "maven-plugin-testing-harness",
+            "version": "3.3.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.codehaus.plexus",
+            "artifact": "plexus-component-annotations",
+            "version": "1.7.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.openpojo",
+            "artifact": "openpojo",
+            "version": "0.8.11",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 47
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13-beta-1",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.23.4"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "plugin-code",
+        "module_root": "plugin-code",
+        "packages": [
+          "com.trivago.logging",
+          "com.trivago",
+          "com.trivago.exceptions",
+          "com.trivago.exceptions.filesystem",
+          "com.trivago.exceptions.properties",
+          "com.trivago.features",
+          "com.trivago.files",
+          "com.trivago.gherkin",
+          "com.trivago.properties",
+          "com.trivago.runners",
+          "com.trivago.vo"
+        ]
+      },
+      "paths": {
+        "source_root": "plugin-code/src/main/java",
+        "test_root": "plugin-code/src/test/java",
+        "cut_path": "plugin-code/src/main/java/com/trivago/logging/CucableLogger.java",
+        "generated_test_path": "plugin-code/src/test/java/com/trivago/logging/CucableLogger_ArrowTest.java",
+        "generated_test_fqn": "com.trivago.logging.CucableLogger_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.trivago.logging.CucableLogger",
+        "simple_name": "CucableLogger",
+        "package": "com.trivago.logging",
+        "kind": "class",
+        "source_sha256": "032187cb6d44a7f904afc62349a50790df0574d090104de227748b367a6d87b5"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "plugin-code",
+      "passing_in_all_runs": [
+        "com.trivago.CucablePluginTest#logInvocationTest",
+        "com.trivago.exceptions.CucablePluginExceptionTest#testErrorMessage",
+        "com.trivago.exceptions.filesystem.FeatureFileParseExceptionTest#testErrorMessage",
+        "com.trivago.exceptions.filesystem.FileCreationExceptionTest#testErrorMessage",
+        "com.trivago.exceptions.filesystem.FileDeletionExceptionTest#testErrorMessage",
+        "com.trivago.exceptions.filesystem.MissingFileExceptionTest#testErrorMessage",
+        "com.trivago.exceptions.filesystem.PathCreationExceptionTest#testErrorMessage",
+        "com.trivago.exceptions.properties.WrongOrMissingPropertiesExceptionTest#testErrorMultiplePropertiesMessage",
+        "com.trivago.exceptions.properties.WrongOrMissingPropertiesExceptionTest#testErrorOnePropertyMessage",
+        "com.trivago.features.FeatureFileContentRendererTest#formatDataTableStringTest",
+        "com.trivago.features.FeatureFileContentRendererTest#formatDocStringTest",
+        "com.trivago.features.FeatureFileContentRendererTest#getRenderedFeatureFileContentNonEnglishTest",
+        "com.trivago.features.FeatureFileContentRendererTest#getRenderedFeatureFileContentReplaceBackslashesInCommentsTest",
+        "com.trivago.features.FeatureFileContentRendererTest#getRenderedFeatureFileContentTest",
+        "com.trivago.features.FeatureFileConverterTest#convertEmptyPathListToSingleScenariosAndRunnersTest",
+        "com.trivago.features.FeatureFileConverterTest#convertToSingleScenariosAndMultiRunnersFeaturesModeTest",
+        "com.trivago.features.FeatureFileConverterTest#convertToSingleScenariosAndMultiRunnersTest",
+        "com.trivago.features.FeatureFileConverterTest#convertToSingleScenariosAndRunnersTest",
+        "com.trivago.features.FeatureFileConverterTest#convertToSingleScenariosAndRunnersWithFeaturesModeTest",
+        "com.trivago.features.FeatureFileConverterTest#convertWithInvalidFeatureTest",
+        "com.trivago.features.FeatureFileConverterTest#invalidLineNumberTest",
+        "com.trivago.files.FileIOTest#fileReadWriteTest",
+        "com.trivago.files.FileIOTest#readFromMissingFileTest",
+        "com.trivago.files.FileIOTest#writeToInvalidFileTest",
+        "com.trivago.files.FileSystemManagerTest#getFeatureFilePathsEmptySourceFeaturesTest",
+        "com.trivago.files.FileSystemManagerTest#getFeatureFilePathsInvalidSourceFeaturesTest",
+        "com.trivago.files.FileSystemManagerTest#invalidSourceFeaturesTest",
+        "com.trivago.files.FileSystemManagerTest#notAFeatureFileOrDirectoryTest",
+        "com.trivago.files.FileSystemManagerTest#prepareGeneratedFeatureAndRunnerDirsMissingFeatureDirTest",
+        "com.trivago.files.FileSystemManagerTest#prepareGeneratedFeatureAndRunnerDirsMissingRunnerDirTest",
+        "com.trivago.files.FileSystemManagerTest#prepareGeneratedFeatureAndRunnerDirsTest",
+        "com.trivago.files.FileSystemManagerTest#singleFeatureTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#invalidFeatureTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#nonexistentPlaceholderInOutlineDataTableTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#nonexistentPlaceholderInOutlineNameTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#nonexistentPlaceholderInOutlineStepTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#replaceDataTableExamplePlaceholderTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureOneExcludeOneIncludeTagTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureOneExcludeTagNoScenarioTagsTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureOneExcludeTagTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureOneIncludeTagNoScenarioTagsTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureOneIncludeTagTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureTagIsConsideredInExcludeTags",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureTagIsConsideredInIncludeTags",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureTwoIncludeTagsTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureWithBackgroundScenarioTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureWithDataTableTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureWithScenarioOutlineAndTwoExampleTablesTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validFeatureWithScenarioOutlineTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validScenarioExcludeTagOverridesIncludeTagTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validScenarioNamesWithScenarioOutlineTest",
+        "com.trivago.gherkin.GherkinDocumentParserTest#validScenarioWithLineBreakInExampleTableTest",
+        "com.trivago.gherkin.GherkinToCucableConverterTest#convertGherkinExampleTableToCucableExampleMapTest",
+        "com.trivago.gherkin.GherkinToCucableConverterTest#convertGherkinStepsToCucableStepsTest",
+        "com.trivago.gherkin.GherkinTranslationsTest#getScenarioKeywordTesnt",
+        "com.trivago.logging.CucableLoggerTest#illegalCucableLogLevelShouldBeDefaultTest",
+        "com.trivago.logging.CucableLoggerTest#infoCompactLogLevelTest",
+        "com.trivago.logging.CucableLoggerTest#infoNoLogLevelTest",
+        "com.trivago.logging.CucableLoggerTest#infoTest",
+        "com.trivago.logging.CucableLoggerTest#logInfoSeparatorTest",
+        "com.trivago.properties.PropertyManagerTest#checkForDisallowedParallelizationModePropertiesExcludeTagsSpecified",
+        "com.trivago.properties.PropertyManagerTest#checkForDisallowedParallelizationModePropertiesIncludeTagsSpecified",
+        "com.trivago.properties.PropertyManagerTest#checkForDisallowedParallelizationModePropertiesScenariosMode",
+        "com.trivago.properties.PropertyManagerTest#checkForDisallowedParallelizationModePropertiesSourceFeaturesIsNotDirectoryTest",
+        "com.trivago.properties.PropertyManagerTest#checkForDisallowedParallelizationModePropertiesValid",
+        "com.trivago.properties.PropertyManagerTest#customPlaceholdersTest",
+        "com.trivago.properties.PropertyManagerTest#featureWithInvalidScenarioLineNumberTest",
+        "com.trivago.properties.PropertyManagerTest#featureWithScenarioLineNumberTest",
+        "com.trivago.properties.PropertyManagerTest#featureWithoutScenarioLineNumberTest",
+        "com.trivago.properties.PropertyManagerTest#logExtendedPropertiesTest",
+        "com.trivago.properties.PropertyManagerTest#logMandatoryPropertiesTest",
+        "com.trivago.properties.PropertyManagerTest#logMissingPropertiesTest",
+        "com.trivago.properties.PropertyManagerTest#parallelizationModeTest",
+        "com.trivago.properties.PropertyManagerTest#sourceRunnerTemplateFileTest",
+        "com.trivago.properties.PropertyManagerTest#wrongExcludeTagFormatTest",
+        "com.trivago.properties.PropertyManagerTest#wrongIncludeTagFormatTest",
+        "com.trivago.properties.PropertyManagerTest#wrongParallelizationModeTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#customParametersTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#deprecatedPlaceholderTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#getRenderedFeatureFileContentFromJavaFileTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#getRenderedFeatureFileContentFromTextFileTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#getRenderedFeatureFileContentReplaceBackslashInCommentTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#missingRequiredPlaceholderTest",
+        "com.trivago.runners.RunnerFileContentRendererTest#multipleFeatureRunnerTest",
+        "com.trivago.vo.DataTableTest#validDataTableTest",
+        "com.trivago.vo.PojoTest#ensureExpectedPojoCount",
+        "com.trivago.vo.PojoTest#testPojoStructureAndBehavior"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 6.1,
+        "module_test": [
+          3.9,
+          4.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010818-o62r/base",
+      "compiled_snapshot": "work/20261118-010818-o62r/snapshot-f170abf3",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "plugin-code",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.trivago.logging.CucableLogger",
+      "simple_name": "CucableLogger",
+      "package": "com.trivago.logging",
+      "kind": "class",
+      "cut_path": "plugin-code/src/main/java/com/trivago/logging/CucableLogger.java",
+      "source_sha256": "032187cb6d44a7f904afc62349a50790df0574d090104de227748b367a6d87b5",
+      "generated_test_path": "plugin-code/src/test/java/com/trivago/logging/CucableLogger_ArrowTest.java",
+      "generated_test_fqn": "com.trivago.logging.CucableLogger_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.7,
+      "locate": 0.2,
+      "plan": 1.3,
+      "compile": 6.1,
+      "baseline": [
+        3.9,
+        4.1
+      ],
+      "total": 15.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

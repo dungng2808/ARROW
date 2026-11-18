@@ -1,0 +1,40 @@
+{
+  "run_id": "20261118-025245-ijmd",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-025245-ijmd",
+  "outcome": {
+    "outcome": "BLOCKED",
+    "code": "B1_BUILD_TOOL_MISSING",
+    "message": "Maven của máy (/opt/homebrew/bin/mvn) không chạy được: Initial heap size set to a larger value than the maximum heap size",
+    "hint": "Cài Maven hoặc Gradle, hoặc chạy \"arrow setup\".",
+    "first_error": null,
+    "log": null,
+    "seconds": 0.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "BLOCKED",
+      "code": "B1_BUILD_TOOL_MISSING",
+      "message": "Maven của máy (/opt/homebrew/bin/mvn) không chạy được: Initial heap size set to a larger value than the maximum heap size",
+      "hint": "Cài Maven hoặc Gradle, hoặc chạy \"arrow setup\".",
+      "first_error": null,
+      "log": null,
+      "seconds": 0.6
+    },
+    "metadata": null,
+    "baseline": null,
+    "workspace": null,
+    "cut": null,
+    "warnings": [],
+    "timings": {
+      "checkout": 6.5,
+      "locate": 1.3,
+      "plan": 0,
+      "compile": 0,
+      "baseline": [],
+      "total": 0.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

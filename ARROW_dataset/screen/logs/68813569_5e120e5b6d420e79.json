@@ -1,0 +1,323 @@
+{
+  "run_id": "20261118-004428-rqf9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-004428-rqf9",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 297.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 297.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "netcrusher-java",
+        "url": "https://github.com/NetCrusherOrg/netcrusher-java",
+        "git_commit": "be21af054bc81d1800dad007e1bce8d75c0a1c50",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "core",
+        "build_mode": "standalone",
+        "build_file": "core/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.6.6",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.1.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.fusesource.jansi",
+            "artifact": "jansi",
+            "version": "1.14",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 6
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "core",
+        "module_root": "core",
+        "packages": [
+          "org.netcrusher.core.filter",
+          "org.netcrusher",
+          "org.netcrusher.core.buffer",
+          "org.netcrusher.core.chronometer",
+          "org.netcrusher.core.main",
+          "org.netcrusher.core.meter",
+          "org.netcrusher.core.nio",
+          "org.netcrusher.core.reactor",
+          "org.netcrusher.core.state",
+          "org.netcrusher.core.throttle",
+          "org.netcrusher.core.throttle.rate",
+          "org.netcrusher.datagram",
+          "org.netcrusher.datagram.callback",
+          "org.netcrusher.datagram.main",
+          "org.netcrusher.tcp",
+          "org.netcrusher.tcp.callback",
+          "org.netcrusher.tcp.main"
+        ]
+      },
+      "paths": {
+        "source_root": "core/src/main/java",
+        "test_root": "core/src/test/java",
+        "cut_path": "core/src/main/java/org/netcrusher/core/filter/LoggingFilter.java",
+        "generated_test_path": "core/src/test/java/org/netcrusher/core/filter/LoggingFilter_ArrowTest.java",
+        "generated_test_fqn": "org.netcrusher.core.filter.LoggingFilter_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.netcrusher.core.filter.LoggingFilter",
+        "simple_name": "LoggingFilter",
+        "package": "org.netcrusher.core.filter",
+        "kind": "class",
+        "source_sha256": "3caf369b7e25cb7599885cab95186147b89bd69e8b15bf45f8cbafc3929a79e2"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "core",
+      "passing_in_all_runs": [
+        "org.netcrusher.core.NioUtilsTest#testParseAddress",
+        "org.netcrusher.core.filter.LoggingFilterTest#test",
+        "org.netcrusher.core.meter.RateMeterImplTest#test",
+        "org.netcrusher.core.meter.RateMeterPeriodTest#test",
+        "org.netcrusher.core.throttle.rate.ByteRateThrottlerTest#testBulk",
+        "org.netcrusher.core.throttle.rate.ByteRateThrottlerTest#testSmallRate",
+        "org.netcrusher.core.throttle.rate.PacketRateThrottlerTest#testBulk",
+        "org.netcrusher.core.throttle.rate.PacketRateThrottlerTest#testSmallRate",
+        "org.netcrusher.datagram.BindBeforeConnectDatagramTest#test",
+        "org.netcrusher.datagram.BulkDatagramTest#test",
+        "org.netcrusher.datagram.CycleDatagramTest#doubleClose",
+        "org.netcrusher.datagram.CycleDatagramTest#doubleFreeze",
+        "org.netcrusher.datagram.CycleDatagramTest#doubleOpen",
+        "org.netcrusher.datagram.CycleDatagramTest#doubleUnreeze",
+        "org.netcrusher.datagram.CycleDatagramTest#reopen",
+        "org.netcrusher.datagram.CycleDatagramTest#reopenAfterClose",
+        "org.netcrusher.datagram.CycleDatagramTest#unreezeWithoutFreeze",
+        "org.netcrusher.datagram.EmptyDatagramTest#test",
+        "org.netcrusher.datagram.EmptyDatagramTest#testBlockSockets",
+        "org.netcrusher.datagram.EmptyDatagramTest#testNoCrusher",
+        "org.netcrusher.datagram.UnknownHostDatagramTest#test",
+        "org.netcrusher.datagram.UnknownPortDatagramTest#test",
+        "org.netcrusher.datagram.bulk.DatagramBulkClientTest#test",
+        "org.netcrusher.datagram.bulk.DatagramBulkReflectorTest#test",
+        "org.netcrusher.datagram.thottling.DelayThrottilingDatagramTest#test",
+        "org.netcrusher.datagram.thottling.IncomingByteThottlingDatagramTest#test",
+        "org.netcrusher.datagram.thottling.IncomingCountThottlingDatagramTest#test",
+        "org.netcrusher.datagram.thottling.OutgoingByteThottlingDatagramTest#test",
+        "org.netcrusher.datagram.thottling.OutgoingCountThottlingDatagramTest#test",
+        "org.netcrusher.tcp.BindBeforeConnectTcpTest#testBindBeforeConnect",
+        "org.netcrusher.tcp.BulkTcpTest#testBulk",
+        "org.netcrusher.tcp.CycleTcpTest#doubleClose",
+        "org.netcrusher.tcp.CycleTcpTest#doubleFreeze",
+        "org.netcrusher.tcp.CycleTcpTest#doubleOpen",
+        "org.netcrusher.tcp.CycleTcpTest#doubleUnreeze",
+        "org.netcrusher.tcp.CycleTcpTest#reopen",
+        "org.netcrusher.tcp.CycleTcpTest#reopenAfterClose",
+        "org.netcrusher.tcp.CycleTcpTest#unreezeWithoutFreeze",
+        "org.netcrusher.tcp.UnknownHostTcpTest#test",
+        "org.netcrusher.tcp.UnknownPortTcpTest#test",
+        "org.netcrusher.tcp.bulk.TcpBulkTest#test",
+        "org.netcrusher.tcp.reopen.ServerSocketChannelReopenTest#test",
+        "org.netcrusher.tcp.throttling.DelayThrottlingTcpTest#testDelay",
+        "org.netcrusher.tcp.throttling.RateThrottlingTcpTest#testRate"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 3.8,
+        "module_test": [
+          145.7,
+          146.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004428-rqf9/base",
+      "compiled_snapshot": "work/20261118-004428-rqf9/snapshot-0d45f5fd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "core",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.netcrusher.core.filter.LoggingFilter",
+      "simple_name": "LoggingFilter",
+      "package": "org.netcrusher.core.filter",
+      "kind": "class",
+      "cut_path": "core/src/main/java/org/netcrusher/core/filter/LoggingFilter.java",
+      "source_sha256": "3caf369b7e25cb7599885cab95186147b89bd69e8b15bf45f8cbafc3929a79e2",
+      "generated_test_path": "core/src/test/java/org/netcrusher/core/filter/LoggingFilter_ArrowTest.java",
+      "generated_test_fqn": "org.netcrusher.core.filter.LoggingFilter_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.2,
+      "plan": 1.1,
+      "compile": 3.8,
+      "baseline": [
+        145.7,
+        146.4
+      ],
+      "total": 297.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,290 @@
+{
+  "run_id": "20261118-010120-cu5f",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-010120-cu5f",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 9.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 9.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "splitmap",
+        "url": "https://github.com/richardstartin/splitmap",
+        "git_commit": "a45748d48f6f6558500ea3eaa80d9b1a318d6946",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "splitmap",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.9",
+        "declared_source": "maven.compiler.source",
+        "major": 9,
+        "jdk_major": 11,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.roaringbitmap",
+            "artifact": "RoaringBitmap",
+            "version": "0.7.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.testng",
+            "artifact": "testng",
+            "version": "6.13.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 3
+      },
+      "test_framework": {
+        "name": "testng",
+        "version": "6.13.1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency org.testng:testng (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "splitmap",
+          "jmh"
+        ],
+        "target_module": "splitmap",
+        "module_root": "splitmap",
+        "packages": [
+          "com.openkappa.splitmap",
+          "com.openkappa.splitmap.models",
+          "com.openkappa.splitmap.reduction"
+        ]
+      },
+      "paths": {
+        "source_root": "splitmap/src/main/java",
+        "test_root": "splitmap/src/test/java",
+        "cut_path": "splitmap/src/main/java/com/openkappa/splitmap/Slice.java",
+        "generated_test_path": "splitmap/src/test/java/com/openkappa/splitmap/Slice_ArrowTest.java",
+        "generated_test_fqn": "com.openkappa.splitmap.Slice_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.openkappa.splitmap.Slice",
+        "simple_name": "Slice",
+        "package": "com.openkappa.splitmap",
+        "kind": "class",
+        "source_sha256": "78aa746d0a263dba02029b94aee32c76418f27b68a28bcc4c353cc241a8b500d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "splitmap",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "splitmap",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.openkappa.splitmap.ChunkedDoubleArrayTest#getPageNoCopyShouldGiveBackTransferredPageBack",
+        "com.openkappa.splitmap.ChunkedDoubleArrayTest#getPageNoCopyShouldGiveInsertedPageBack",
+        "com.openkappa.splitmap.ChunkedDoubleArrayTest#reduceShouldProduceCorrectValue",
+        "com.openkappa.splitmap.ChunkedDoubleArrayTest#writeMissingPageToBufferShouldNotSucceed",
+        "com.openkappa.splitmap.ChunkedDoubleArrayTest#writtenPageShouldBeCopied",
+        "com.openkappa.splitmap.CircuitsTest#testCircuit",
+        "com.openkappa.splitmap.CircuitsTest#testIntersect",
+        "com.openkappa.splitmap.HashingTest#testScatterHashIsNotSurjective",
+        "com.openkappa.splitmap.HashingTest#testScatterHashIsSelfInvertible",
+        "com.openkappa.splitmap.IndexAggregatorTest#keysEvaluatingToEmptyAreNotTreatedSpecially",
+        "com.openkappa.splitmap.IndexAggregatorTest#keysEvaluatingToNullShouldBeDroppedFromResult",
+        "com.openkappa.splitmap.MappingTest#mappingPOC",
+        "com.openkappa.splitmap.PrefixIndexTest#ifValueDoesntExisteGetNull",
+        "com.openkappa.splitmap.PrefixIndexTest#shouldRetrieveInsertedValue",
+        "com.openkappa.splitmap.ReductionTest#average",
+        "com.openkappa.splitmap.ReductionTest#sumProduct",
+        "com.openkappa.splitmap.ReductionTest#testProductMomentCorrelationCoefficient",
+        "com.openkappa.splitmap.ReductionTest#testProductMomentCorrelationCoefficientFactors",
+        "com.openkappa.splitmap.SliceTest#shouldGetDefaultValueIfUnset",
+        "com.openkappa.splitmap.SliceTest#shouldGetPopulatedValueBack",
+        "com.openkappa.splitmap.SliceTest#shouldGetPopulatedValuesWhenIterating",
+        "com.openkappa.splitmap.SplitMapTest#testCardinality",
+        "com.openkappa.splitmap.SplitMapTest#testWriteToSplitMap",
+        "com.openkappa.splitmap.SplitMapTest#testWriteToSplitMapWithPermutationHash"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 3.1,
+        "module_test": [
+          2.6,
+          2.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010120-cu5f/base",
+      "compiled_snapshot": "work/20261118-010120-cu5f/snapshot-bc6a577d",
+      "source_tree_hash": null,
+      "jdk_major": 11,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-11/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "splitmap",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.openkappa.splitmap.Slice",
+      "simple_name": "Slice",
+      "package": "com.openkappa.splitmap",
+      "kind": "class",
+      "cut_path": "splitmap/src/main/java/com/openkappa/splitmap/Slice.java",
+      "source_sha256": "78aa746d0a263dba02029b94aee32c76418f27b68a28bcc4c353cc241a8b500d",
+      "generated_test_path": "splitmap/src/test/java/com/openkappa/splitmap/Slice_ArrowTest.java",
+      "generated_test_fqn": "com.openkappa.splitmap.Slice_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 3.1,
+      "baseline": [
+        2.6,
+        2.5
+      ],
+      "total": 9.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,290 @@
+{
+  "run_id": "20261118-014708-57td",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-014708-57td",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 41.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 41.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "wtwu",
+        "url": "https://github.com/baofeidyz/wtwu",
+        "git_commit": "515faa487b257318d22c0973aa5b1918eb0324c5",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "standalone",
+        "build_file": "pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "11",
+        "declared_source": "maven.compiler.source",
+        "major": 11,
+        "jdk_major": 11,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter",
+            "version": "2.4.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-websocket",
+            "version": "2.4.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.projectlombok",
+            "artifact": "lombok",
+            "version": "1.18.16",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.5",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba",
+            "artifact": "fastjson",
+            "version": "1.2.47",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.4.2",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 66
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.7.0",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:3.6.28",
+          "org.mockito:mockito-junit-jupiter:3.6.28"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.18.1",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": ".",
+        "module_root": ".",
+        "packages": [
+          "com.baofeidyz.wtwu",
+          "com.baofeidyz.wtwu.config",
+          "com.baofeidyz.wtwu.constant",
+          "com.baofeidyz.wtwu.pojo.dto",
+          "com.baofeidyz.wtwu.websocket"
+        ]
+      },
+      "paths": {
+        "source_root": "src/main/java",
+        "test_root": "src/test/java",
+        "cut_path": "src/main/java/com/baofeidyz/wtwu/WtwuApplication.java",
+        "generated_test_path": "src/test/java/com/baofeidyz/wtwu/WtwuApplication_ArrowTest.java",
+        "generated_test_fqn": "com.baofeidyz.wtwu.WtwuApplication_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.baofeidyz.wtwu.WtwuApplication",
+        "simple_name": "WtwuApplication",
+        "package": "com.baofeidyz.wtwu",
+        "kind": "class",
+        "source_sha256": "2e3747f63d0ba17b0d01ec843e9c5cab3fab71d8642769332be4a32e8c8a114e"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.baofeidyz.wtwu.WtwuApplicationTests#contextLoads"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 25.1,
+        "module_test": [
+          2.8,
+          2.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-014708-57td/base",
+      "compiled_snapshot": "work/20261118-014708-57td/snapshot-cdb4ee2a",
+      "source_tree_hash": null,
+      "jdk_major": 11,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-11/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.baofeidyz.wtwu.WtwuApplication",
+      "simple_name": "WtwuApplication",
+      "package": "com.baofeidyz.wtwu",
+      "kind": "class",
+      "cut_path": "src/main/java/com/baofeidyz/wtwu/WtwuApplication.java",
+      "source_sha256": "2e3747f63d0ba17b0d01ec843e9c5cab3fab71d8642769332be4a32e8c8a114e",
+      "generated_test_path": "src/test/java/com/baofeidyz/wtwu/WtwuApplication_ArrowTest.java",
+      "generated_test_fqn": "com.baofeidyz.wtwu.WtwuApplication_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 11,
+      "compile": 25.1,
+      "baseline": [
+        2.8,
+        2.8
+      ],
+      "total": 41.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

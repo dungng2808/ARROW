@@ -1,0 +1,522 @@
+{
+  "run_id": "20261118-002553-mgnj",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-002553-mgnj",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 37.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 37.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "event-store-commons",
+        "url": "https://github.com/fuinorg/event-store-commons",
+        "git_commit": "08e67ef336736ddcba3009b5b2a3a7d5b57c4fd5",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.6.3",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "spi",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "17",
+        "declared_source": "maven.compiler.release",
+        "major": 17,
+        "jdk_major": 17,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.fuin.esc",
+            "artifact": "esc-api",
+            "version": "0.7.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.fuin",
+            "artifact": "objects4j",
+            "version": "0.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "jakarta.validation",
+            "artifact": "jakarta.validation-api",
+            "version": "3.0.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "2.0.9",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-codec",
+            "artifact": "commons-codec",
+            "version": "1.16.0",
+            "scope": "compile"
+          },
+          {
+            "group": "jakarta.json",
+            "artifact": "jakarta.json-api",
+            "version": "2.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "jakarta.json.bind",
+            "artifact": "jakarta.json.bind-api",
+            "version": "3.0.0",
+            "scope": "compile"
+          },
+          {
+            "group": "jakarta.xml.bind",
+            "artifact": "jakarta.xml.bind-api",
+            "version": "4.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.4.14",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter",
+            "version": "5.10.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.24.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.fuin",
+            "artifact": "units4j",
+            "version": "0.11.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.xmlunit",
+            "artifact": "xmlunit-core",
+            "version": "2.9.1",
+            "scope": "test"
+          },
+          {
+            "group": "nl.jqno.equalsverifier",
+            "artifact": "equalsverifier",
+            "version": "3.15.5",
+            "scope": "test"
+          },
+          {
+            "group": "org.hibernate.validator",
+            "artifact": "hibernate-validator",
+            "version": "8.0.1.Final",
+            "scope": "test"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.15.1",
+            "scope": "test"
+          },
+          {
+            "group": "net.javacrumbs.json-unit",
+            "artifact": "json-unit-fluent",
+            "version": "3.0.0",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.10.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.eclipse",
+            "artifact": "yasson",
+            "version": "3.0.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.glassfish.jaxb",
+            "artifact": "jaxb-runtime",
+            "version": "4.0.4",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 65
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.10.1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.24.2",
+          "org.hamcrest:hamcrest-core:2.2",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "api",
+          "spi",
+          "mem",
+          "jpa",
+          "eshttp",
+          "esjc",
+          "esgrpc",
+          "test"
+        ],
+        "target_module": "spi",
+        "module_root": "spi",
+        "packages": [
+          "org.fuin.esc.spi"
+        ]
+      },
+      "paths": {
+        "source_root": "spi/src/main/java",
+        "test_root": "spi/src/test/java",
+        "cut_path": "spi/src/main/java/org/fuin/esc/spi/DataWrapper.java",
+        "generated_test_path": "spi/src/test/java/org/fuin/esc/spi/DataWrapper_ArrowTest.java",
+        "generated_test_fqn": "org.fuin.esc.spi.DataWrapper_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.fuin.esc.spi.DataWrapper",
+        "simple_name": "DataWrapper",
+        "package": "org.fuin.esc.spi",
+        "kind": "class",
+        "source_sha256": "1c6339262ea19eacc33df1c2345a016ce6d4f968c8a40c578a2a0ab749c42a96"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "spi",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "spi",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.fuin.esc.api.BaseTest#testCoverage",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testAppendToStreamArrayAnyVersion",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testAppendToStreamArrayExpectedVersion",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testAppendToStreamListAnyVersion",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testAppendToStreamListExpectedVersion",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testClose",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testDeleteStreamAnyVersion",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testDeleteStreamExpectedVersion",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testOpen",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testReadEvent",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testReadEventsBackward",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testReadEventsForward",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testStreamExists",
+        "org.fuin.esc.api.DelegatingAsyncEventStoreTest#testStreamState",
+        "org.fuin.esc.api.EnhancedMimeTypeTest#testConstrcutionAllArgs",
+        "org.fuin.esc.api.EnhancedMimeTypeTest#testConstrcutionPrimarySub",
+        "org.fuin.esc.api.EnhancedMimeTypeTest#testConstrcutionPrimarySubEncoding",
+        "org.fuin.esc.api.EnhancedMimeTypeTest#testEqualsHashCode",
+        "org.fuin.esc.api.EnhancedMimeTypeTest#testGetter",
+        "org.fuin.esc.api.EventIdConverterTest#testMarshal",
+        "org.fuin.esc.api.EventIdConverterTest#testMarshalNull",
+        "org.fuin.esc.api.EventIdConverterTest#testUnmarshal",
+        "org.fuin.esc.api.EventIdConverterTest#testUnmarshalNull",
+        "org.fuin.esc.api.EventIdTest#testConstructInvalidString",
+        "org.fuin.esc.api.EventIdTest#testConstructNullString",
+        "org.fuin.esc.api.EventIdTest#testConstructNullUUID",
+        "org.fuin.esc.api.EventIdTest#testConstructValid",
+        "org.fuin.esc.api.EventIdTest#testSerialize",
+        "org.fuin.esc.api.EventNotFoundExceptionTest#testGetter",
+        "org.fuin.esc.api.EventNotFoundExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.ExpectedVersionTest#testNo",
+        "org.fuin.esc.api.ExpectedVersionTest#testValid",
+        "org.fuin.esc.api.JsonDeSerializerTest#testMarshalUnmarshal",
+        "org.fuin.esc.api.ProjectionNotWritableExceptionTest#testGetter",
+        "org.fuin.esc.api.ProjectionNotWritableExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.ProjectionStreamIdTest#testEqualsHashCode",
+        "org.fuin.esc.api.ProjectionStreamIdTest#testGetSingleParamValue",
+        "org.fuin.esc.api.ProjectionStreamIdTest#testGetter",
+        "org.fuin.esc.api.SerializedDataTypeTest#testConstructEmpty",
+        "org.fuin.esc.api.SerializedDataTypeTest#testConstructNullString",
+        "org.fuin.esc.api.SerializedDataTypeTest#testConstructValid",
+        "org.fuin.esc.api.SerializedDataTypeTest#testSerialize",
+        "org.fuin.esc.api.SimpleCommonEventTest#testEqualsHashCode",
+        "org.fuin.esc.api.SimpleCommonEventTest#testGetter",
+        "org.fuin.esc.api.SimpleSerializedDataTypeRegistryTest#testFindClass",
+        "org.fuin.esc.api.SimpleSerializerDeserializerRegistryTest#testAddGetDeserializer",
+        "org.fuin.esc.api.SimpleSerializerDeserializerRegistryTest#testAddGetSerializer",
+        "org.fuin.esc.api.SimpleSerializerDeserializerRegistryTest#testSetGetDefaultContentType",
+        "org.fuin.esc.api.SimpleStreamIdTest#testEqualsHashCode",
+        "org.fuin.esc.api.SimpleStreamIdTest#testGetSingleParamValue",
+        "org.fuin.esc.api.SimpleStreamIdTest#testGetter",
+        "org.fuin.esc.api.SimpleTenantIdTest#testEqualsHashCode",
+        "org.fuin.esc.api.SimpleTenantIdTest#testGetter",
+        "org.fuin.esc.api.StreamAlreadyExistsExceptionTest#testGetter",
+        "org.fuin.esc.api.StreamAlreadyExistsExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.StreamDeletedExceptionTest#testGetter",
+        "org.fuin.esc.api.StreamDeletedExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.StreamEventsSliceTest#testEqualsHashCode",
+        "org.fuin.esc.api.StreamEventsSliceTest#testGetter",
+        "org.fuin.esc.api.StreamEventsSliceTest#testNullList",
+        "org.fuin.esc.api.StreamNotFoundExceptionTest#testGetter",
+        "org.fuin.esc.api.StreamNotFoundExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.StreamReadOnlyExceptionTest#testGetter",
+        "org.fuin.esc.api.StreamReadOnlyExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.StreamStateTest#testFromDbValue",
+        "org.fuin.esc.api.StreamVersionConflictExceptionTest#testGetter",
+        "org.fuin.esc.api.StreamVersionConflictExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.api.SubscriptionTest#testConstruction",
+        "org.fuin.esc.api.TypeNameTest#testConstructEmpty",
+        "org.fuin.esc.api.TypeNameTest#testConstructNullString",
+        "org.fuin.esc.api.TypeNameTest#testConstructValid",
+        "org.fuin.esc.api.TypeNameTest#testSerialize",
+        "org.fuin.esc.api.WrongExpectedVersionExceptionTest#testGetter",
+        "org.fuin.esc.api.WrongExpectedVersionExceptionTest#testSerializeDeserialize",
+        "org.fuin.esc.spi.Base64DataTest#testMarshal",
+        "org.fuin.esc.spi.Base64DataTest#testUnmarshal",
+        "org.fuin.esc.spi.BaseTest#testCoverage",
+        "org.fuin.esc.spi.DataTest#testIcon",
+        "org.fuin.esc.spi.DataTest#testMarshalUnmarshalEquals",
+        "org.fuin.esc.spi.DataTest#testMarshalUnmarshalXML",
+        "org.fuin.esc.spi.DataTest#testSerializeDeserialize",
+        "org.fuin.esc.spi.DataTest#testUnmarshalJsonContent",
+        "org.fuin.esc.spi.DataTest#testUnmarshalXmlContent",
+        "org.fuin.esc.spi.DataTest#testValueOfJson",
+        "org.fuin.esc.spi.DataTest#testValueOfXml",
+        "org.fuin.esc.spi.DataWrapperTest#testMarshal",
+        "org.fuin.esc.spi.DataWrapperTest#testUnmarshal",
+        "org.fuin.esc.spi.EscEventTest#testMarshalJsonB",
+        "org.fuin.esc.spi.EscEventTest#testMarshalJsonBBase64",
+        "org.fuin.esc.spi.EscEventTest#testMarshalUnmarshalJaxb",
+        "org.fuin.esc.spi.EscEventTest#testToJson",
+        "org.fuin.esc.spi.EscEventTest#testUnmarshalJsonB",
+        "org.fuin.esc.spi.EscEventTest#testUnmarshalJsonBBase64",
+        "org.fuin.esc.spi.EscEventsTest#testMarshalJsonB",
+        "org.fuin.esc.spi.EscEventsTest#testMarshalUnmarshalJaxb",
+        "org.fuin.esc.spi.EscEventsTest#testUnmarshalJsonB",
+        "org.fuin.esc.spi.EscMetaJsonDeSerializerTest#testMarshalUnmarshal",
+        "org.fuin.esc.spi.EscMetaTest#testMarshalJsonB",
+        "org.fuin.esc.spi.EscMetaTest#testMarshalJsonBBase64",
+        "org.fuin.esc.spi.EscMetaTest#testMarshalUnmarshalJaxb",
+        "org.fuin.esc.spi.EscMetaTest#testToJson",
+        "org.fuin.esc.spi.EscMetaTest#testUnmarshalJsonB",
+        "org.fuin.esc.spi.EscMetaTest#testUnmarshalJsonBBase64",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testCreateEscMetaNull",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testCreateEscMetaTargetJsonDataXmlMetaNull",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testCreateEscMetaTargetJsonDataXmlMetaXml",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testCreateEscMetaTargetXmlDataXmlMetaNull",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testCreateEscMetaTargetXmlDataXmlMetaXml",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testDeserializeNoDeserializerFound",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testDeserializeOK",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testEventsEqual",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testJoinJsonbDeserializerArrays",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testJoinJsonbDeserializers",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testJoinJsonbSerializerArrays",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testJoinJsonbSerializers",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testMimeTypeDifferent",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testMimeTypeSame",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testSerializeNoSerializerFound",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testSerializeNull",
+        "org.fuin.esc.spi.EscSpiUtilsTest#testSerializeOK",
+        "org.fuin.esc.spi.EventTest#testEqualsHashCode",
+        "org.fuin.esc.spi.EventTest#testGetter",
+        "org.fuin.esc.spi.EventTest#testMarshalUnmarshalEquals",
+        "org.fuin.esc.spi.EventTest#testMarshalUnmarshalXML",
+        "org.fuin.esc.spi.EventTest#testSerializeDeserialize",
+        "org.fuin.esc.spi.EventsTest#testUnMarshal",
+        "org.fuin.esc.spi.ProjectionJavaScriptBuilderTest#testEventType",
+        "org.fuin.esc.spi.ProjectionJavaScriptBuilderTest#testEventTypes",
+        "org.fuin.esc.spi.ProjectionJavaScriptBuilderTest#testFromAll",
+        "org.fuin.esc.spi.ProjectionJavaScriptBuilderTest#testNoEventType",
+        "org.fuin.esc.spi.ProjectionJavaScriptBuilderTest#testOneEventType",
+        "org.fuin.esc.spi.ProjectionJavaScriptBuilderTest#testTwoEventTypes",
+        "org.fuin.esc.spi.SerializedDataTest#testEqualsHashCode",
+        "org.fuin.esc.spi.SerializedDataTest#testGetter",
+        "org.fuin.esc.spi.TenantStreamIdTest#testEqualsHashCode",
+        "org.fuin.esc.spi.TenantStreamIdTest#testGetSingleParamValue",
+        "org.fuin.esc.spi.TenantStreamIdTest#testGetter",
+        "org.fuin.esc.spi.TextDeSerializerTest#testGetMimeType",
+        "org.fuin.esc.spi.TextDeSerializerTest#testMarshalUnmarshal",
+        "org.fuin.esc.spi.TextDeSerializerTest#testUnmarshalString"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 24.5,
+        "module_test": [
+          6.8,
+          4.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-002553-mgnj/base",
+      "compiled_snapshot": "work/20261118-002553-mgnj/snapshot-8f3c5690",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "spi",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.fuin.esc.spi.DataWrapper",
+      "simple_name": "DataWrapper",
+      "package": "org.fuin.esc.spi",
+      "kind": "class",
+      "cut_path": "spi/src/main/java/org/fuin/esc/spi/DataWrapper.java",
+      "source_sha256": "1c6339262ea19eacc33df1c2345a016ce6d4f968c8a40c578a2a0ab749c42a96",
+      "generated_test_path": "spi/src/test/java/org/fuin/esc/spi/DataWrapper_ArrowTest.java",
+      "generated_test_fqn": "org.fuin.esc.spi.DataWrapper_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 1.5,
+      "compile": 24.5,
+      "baseline": [
+        6.8,
+        4.5
+      ],
+      "total": 37.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,10 @@
+[>] Tải https://github.com/ops4j/org.ops4j.pax.web
+[>] Liệt kê class
+[>] Build root pax-web-jetty (standalone)
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module pax-web-jetty: [ERROR] Failed to execute goal on project pax-web-jetty: Could not resolve dependencies for project org.ops4j.pax.web:pax-web-jetty:bundle:7.4.4-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module pax-web-jetty: [ERROR] Failed to execute goal on project pax-web-jetty: Could not resolve dependencies for project org.ops4j.pax.web:pax-web-jetty:bundle:7.4.4-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

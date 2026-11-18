@@ -1,0 +1,316 @@
+{
+  "run_id": "20261118-010705-lowb",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w8/runs/20261118-010705-lowb",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 7.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 7.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "ljcm",
+        "url": "https://github.com/leberKleber/ljcm",
+        "git_commit": "7c920a243e1ab9da753d6c70ac87112d6f29a747",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "ljcm-minimal-parser",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.github.leberkleber.ljcm",
+            "artifact": "ljcm-core-api",
+            "version": "0.1-SNAPSHOT",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 3
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "ljcm-core-api",
+          "ljcm-core",
+          "ljcm-minimal-parser",
+          "ljcm-minimal-loader",
+          "ljcm-minimal"
+        ],
+        "target_module": "ljcm-minimal-parser",
+        "module_root": "ljcm-minimal-parser",
+        "packages": [
+          "io.github.leberkleber.ljcm.parser.impl"
+        ]
+      },
+      "paths": {
+        "source_root": "ljcm-minimal-parser/src/main/java",
+        "test_root": "ljcm-minimal-parser/src/test/java",
+        "cut_path": "ljcm-minimal-parser/src/main/java/io/github/leberkleber/ljcm/parser/impl/BooleanParser.java",
+        "generated_test_path": "ljcm-minimal-parser/src/test/java/io/github/leberkleber/ljcm/parser/impl/BooleanParser_ArrowTest.java",
+        "generated_test_fqn": "io.github.leberkleber.ljcm.parser.impl.BooleanParser_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.github.leberkleber.ljcm.parser.impl.BooleanParser",
+        "simple_name": "BooleanParser",
+        "package": "io.github.leberkleber.ljcm.parser.impl",
+        "kind": "class",
+        "source_sha256": "df9a74b95aa94000e4d999abb50a6f435f79563f1989e2bf36bf396fbdaca46a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "ljcm-minimal-parser",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "ljcm-minimal-parser",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "io.github.leberkleber.ljcm.parser.ConfigurationParserExceptionTest#testConstructor1",
+        "io.github.leberkleber.ljcm.parser.ConfigurationParserExceptionTest#testConstructor2",
+        "io.github.leberkleber.ljcm.parser.ConfigurationParserExceptionTest#testConstructor3",
+        "io.github.leberkleber.ljcm.parser.ConfigurationParserExceptionTest#testConstructor4",
+        "io.github.leberkleber.ljcm.parser.ConfigurationParserExceptionTest#testConstructor5",
+        "io.github.leberkleber.ljcm.parser.impl.BooleanParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.BooleanParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.BooleanParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.ByteParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.ByteParserTest#parseInvalidNum",
+        "io.github.leberkleber.ljcm.parser.impl.ByteParserTest#parseInvalidString",
+        "io.github.leberkleber.ljcm.parser.impl.ByteParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.ByteParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.CharArrayParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.CharArrayParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.CharArrayParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.CharParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.CharParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.CharParserTest#parseToLongString",
+        "io.github.leberkleber.ljcm.parser.impl.CharParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.DoubleParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.DoubleParserTest#parseInvalidDouble1",
+        "io.github.leberkleber.ljcm.parser.impl.DoubleParserTest#parseInvalidDouble2",
+        "io.github.leberkleber.ljcm.parser.impl.DoubleParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.DoubleParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.FloatParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.FloatParserTest#parseInvalidDouble1",
+        "io.github.leberkleber.ljcm.parser.impl.FloatParserTest#parseInvalidDouble2",
+        "io.github.leberkleber.ljcm.parser.impl.FloatParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.FloatParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.IntParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.IntParserTest#parseInvalidDouble1",
+        "io.github.leberkleber.ljcm.parser.impl.IntParserTest#parseInvalidDouble2",
+        "io.github.leberkleber.ljcm.parser.impl.IntParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.IntParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.LongParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.LongParserTest#parseInvalidDouble1",
+        "io.github.leberkleber.ljcm.parser.impl.LongParserTest#parseInvalidDouble2",
+        "io.github.leberkleber.ljcm.parser.impl.LongParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.LongParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.ParsersTest#getDefaultParsers",
+        "io.github.leberkleber.ljcm.parser.impl.ShortParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.ShortParserTest#parseInvalidDouble1",
+        "io.github.leberkleber.ljcm.parser.impl.ShortParserTest#parseInvalidDouble2",
+        "io.github.leberkleber.ljcm.parser.impl.ShortParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.ShortParserTest#parseValue",
+        "io.github.leberkleber.ljcm.parser.impl.StringParserTest#getResponsibleClasses",
+        "io.github.leberkleber.ljcm.parser.impl.StringParserTest#parseNull",
+        "io.github.leberkleber.ljcm.parser.impl.StringParserTest#parseValue"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.9,
+        "module_test": [
+          2.3,
+          2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010705-lowb/base",
+      "compiled_snapshot": "work/20261118-010705-lowb/snapshot-50049629",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "ljcm-minimal-parser",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.github.leberkleber.ljcm.parser.impl.BooleanParser",
+      "simple_name": "BooleanParser",
+      "package": "io.github.leberkleber.ljcm.parser.impl",
+      "kind": "class",
+      "cut_path": "ljcm-minimal-parser/src/main/java/io/github/leberkleber/ljcm/parser/impl/BooleanParser.java",
+      "source_sha256": "df9a74b95aa94000e4d999abb50a6f435f79563f1989e2bf36bf396fbdaca46a",
+      "generated_test_path": "ljcm-minimal-parser/src/test/java/io/github/leberkleber/ljcm/parser/impl/BooleanParser_ArrowTest.java",
+      "generated_test_fqn": "io.github.leberkleber.ljcm.parser.impl.BooleanParser_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.4,
+      "compile": 1.9,
+      "baseline": [
+        2.3,
+        2
+      ],
+      "total": 7.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

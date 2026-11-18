@@ -1,0 +1,421 @@
+{
+  "run_id": "20261118-005230-voai",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-005230-voai",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 102.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 102.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "swblocks-decisiontree",
+        "url": "https://github.com/jpmorganchase/swblocks-decisiontree",
+        "git_commit": "bf06581e4b18a2facf617130157ae41d2ae4235c",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "3.2.1",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "build.gradle",
+        "reactor_module": ":change",
+        "build_root_source": "detected:reactor",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "org.swblocks.decisiontree",
+            "artifact": "core",
+            "version": "1.1.0-SNAPSHOT",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-module-junit4",
+            "version": "1.6.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-api-mockito",
+            "version": "1.6.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.awaitility",
+            "artifact": "awaitility",
+            "version": "2.0.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.swblocks.decisiontree",
+            "artifact": "core",
+            "version": "1.1.0-SNAPSHOT",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.1.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "log4j-over-slf4j",
+            "version": "1.7.25",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.7.25",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 31
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.powermock:powermock-module-junit4:1.6.4",
+          "org.powermock:powermock-api-mockito:1.6.4",
+          "org.powermock:powermock-module-junit4-common:1.6.4",
+          "org.mockito:mockito-core:1.10.19",
+          "org.powermock:powermock-api-support:1.6.4",
+          "org.powermock:powermock-core:1.6.4",
+          "org.powermock:powermock-reflect:1.6.4"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3",
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "change",
+          "core",
+          "examples",
+          "persistence-cassandra",
+          "persistence-json-jackson"
+        ],
+        "target_module": "change",
+        "module_root": "change",
+        "packages": [
+          "org.swblocks.decisiontree",
+          "org.swblocks.decisiontree.change.domain",
+          "org.swblocks.decisiontree.change.domain.builder",
+          "org.swblocks.decisiontree.domain"
+        ]
+      },
+      "paths": {
+        "source_root": "change/src/main/java",
+        "test_root": "change/src/test/java",
+        "cut_path": "change/src/main/java/org/swblocks/decisiontree/ChangeableDecisionTree.java",
+        "generated_test_path": "change/src/test/java/org/swblocks/decisiontree/ChangeableDecisionTree_ArrowTest.java",
+        "generated_test_fqn": "org.swblocks.decisiontree.ChangeableDecisionTree_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.swblocks.decisiontree.ChangeableDecisionTree",
+        "simple_name": "ChangeableDecisionTree",
+        "package": "org.swblocks.decisiontree",
+        "kind": "class",
+        "source_sha256": "1120c284330a745720234656fc655bb6505ff474cf9131216d7a34fc2a82978a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/work/20261118-005230-voai/block1-12ea12ea/arrow-info.gradle",
+          ":change:testClasses",
+          ":change:arrowClasspath"
+        ],
+        "module_test": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/work/20261118-005230-voai/block1-12ea12ea/arrow-info.gradle",
+          ":change:test",
+          "--continue"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.swblocks.decisiontree.ChangeableDecisionTreeTest#testApplyingChange",
+        "org.swblocks.decisiontree.ChangeableDecisionTreeTest#testCreatingChange",
+        "org.swblocks.decisiontree.ChangeableDecisionTreeTest#testDecisionTreeEvaluation",
+        "org.swblocks.decisiontree.change.domain.AuditTest#equalsCorrect",
+        "org.swblocks.decisiontree.change.domain.AuditTest#hashCodeCorrect",
+        "org.swblocks.decisiontree.change.domain.AuditTest#testConstruction",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#addChange",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#cannotAddNullChange",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#cannotCreateChangeWithNullChangeSet",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#cannotCreateChangeWithNullData",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#cannotCreateChangeWithNullId",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#cannotCreateChangeWithNullName",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#removeChange",
+        "org.swblocks.decisiontree.change.domain.ChangeSetTest#testConstruction",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#addRuleChange",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#addRuleChanges",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#addValueGroupChange",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#cannotAddNullRuleChange",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#cannotAddNullValueGroupChange",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#changeAuditInfo",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#equalsCorrect",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#hashCodeCorrect",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#removeRuleChange",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#removeValueGroup",
+        "org.swblocks.decisiontree.change.domain.ChangeTest#testConstruction",
+        "org.swblocks.decisiontree.change.domain.RuleChangeTest#equalsCorrect",
+        "org.swblocks.decisiontree.change.domain.RuleChangeTest#hashCodeCorrect",
+        "org.swblocks.decisiontree.change.domain.RuleChangeTest#testConstruction",
+        "org.swblocks.decisiontree.change.domain.ValueGroupChangeTest#hashCodeCorrect",
+        "org.swblocks.decisiontree.change.domain.ValueGroupChangeTest#testConstruction",
+        "org.swblocks.decisiontree.change.domain.ValueGroupChangeTest#testEquals",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#cannotCreateMultipleRulesChangeForSameRule",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#cannotCreateValueGroupChangeAndRuleChangeForSameRule",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#createsChangeForExistingGroupsInRuleSet",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#createsChangeWithId",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#createsChangeWithRules",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#createsChangeWithValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#createsChangeWithValueGroupAndDefaultChangeRange",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeBuilderTest#noRuleSet",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#cannotBuildWithBlankName",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#cannotBuildWithoutChanges",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#cannotBuildWithoutName",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#createOutputChangeToCommissionsUkRuleFromToday",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#createValueGroupChangeToCommissionsCmeGroupFromToday",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#createsChangeSetContainingSingleChange",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#createsChangeSetWithChangeCollection",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#noChangesWhenCollectionIsNull",
+        "org.swblocks.decisiontree.change.domain.builder.ChangeSetBuilderTest#noChangesWhenNullChangeAdded",
+        "org.swblocks.decisiontree.change.domain.builder.RollbackChangeBuilderTest#createsChangeWithDate",
+        "org.swblocks.decisiontree.change.domain.builder.RollbackChangeBuilderTest#createsChangeWithDefaultDate",
+        "org.swblocks.decisiontree.change.domain.builder.RollbackChangeBuilderTest#noChangeInformation",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#addsChangeInbetweenFirstAndThirdSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#addsChangeInbetweenFirstAndThirdSegmentOnExactDates",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#addsChangeStartingAfterEndOfThirdSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#addsChangeStartingAtExactEndOfThirdSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeInbetweenFirstAndThirdSegmentWithoutDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeInbetweenFirstAndThirdSegmentWithoutOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeThirdSegmentFinishingAfterFinishWithoutDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeThirdSegmentFinishingAfterFinishWithoutDriversOrOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeThirdSegmentFinishingAfterFinishWithoutOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeToEndOfThirdSegmentWithoutDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotAddChangeToEndOfThirdSegmentWithoutOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotCreateNewChangeBeforeFirstRuleSegmentWithoutDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotCreateNewChangeBeforeFirstRuleSegmentWithoutOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotCreateNewRuleWithoutDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#cannotCreateNewRuleWithoutOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToSecondSegmentAfterStartAndFinishesAtSecondSegmentEnd",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToSecondSegmentAfterStartAndFinishesWithinSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToSecondSegmentAtStartAndFinishesWithinSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToSecondSegmentAtStartAndFinishesWithinSecondSegmentUsesExistingDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToSecondSegmentAtStartAndFinishesWithinSecondSegmentUsesExistingOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToThirdSegmentFinishingAfterFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeAddedToThirdSegmentFinishingAtFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeReplacesSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeReplacesSecondSegmentWhenSegmentsHaveGaps",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeStartsAfterSecondSegmentStartAndFinishesAtThirdSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeStartsAfterSecondSegmentStartAndFinishesBeforeThirdSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeStartsAfterSecondSegmentStartAndFinishesBeforeThirdSegmentFinishNewOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeStartsAfterSecondSegmentStartAndFinishesBeforeThirdSegmentFinishNewOutputsWithRuleGroups",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeStartsAtSecondSegmentFinishAndFinishesAtThirdSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#changeStartsAtSecondSegmentStartAndFinishesBeforeThirdSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeAndFinishingAtEndOfFirstSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeAndFinishingAtEndOfFirstSegmentWithDiscreteGaps",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeAndFinishingInFirstSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeFirstSegmentAndFinishingAfterEndOfThirdSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeFirstSegmentAndFinishingAtEndOfSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeFirstSegmentAndFinishingAtEndOfThirdSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeFirstSegmentAndFinishingInSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createChangeStartingBeforeFirstSegmentAndFinishingInThirdSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createsChangeUsingDefaultPeriod",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createsNewChangeFinishingBeforeFirstRuleSegmentStarts",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createsNewChangeFinishingOnFirstRuleSegmentStart",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#createsNewRule",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#failsWhenDatesNotInChronologicalOrder",
+        "org.swblocks.decisiontree.change.domain.builder.RuleChangeBuilderTest#noDriversOrOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#addsExistingValueGroupToAllMatchingRules",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#addsNewValueGroupToAllMatchingRules",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#addsNewValueGroupToAllMatchingRulesAndMergesRules",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#addsNewValueGroupToAllMatchingRulesMidSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#cannotRemoveActiveValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#changeAfterRuleSegmentsFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#changeBeforeRuleSegmentsStart",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#confirmsRemovalOfValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#failsWithNoRuleset",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#failsWithNoValueGroupChanges",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#noChangesWhenDriverNameNotFound",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#noChangesWhenRulesNotFoundForRuleCode",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#valueGroupAmendedForFirstSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#valueGroupAmendedFromBeforeSecondStartToAfterSecondSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.RuleGroupChangeBuilderTest#willNotAddExistingValueGroupToAllMatchingRulesWithOutRuleInformation",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#amendsEndDateOfFirstSegmentToFinishBeforeSecondSegmentStarts",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#amendsFirstSegmentToFinishAfterLastRuleSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#amendsFirstSegmentToFinishAfterLastRuleSegmentWithNewInputsAndOutputs",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#amendsStartAndFinishOfSecondSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#amendsStartDateOfFirstSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#cannotAmendSecondSegmentWhenNewValueGroupBoundaryExceeded",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#deActivatesFirstRuleSegment",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#noRangeSupplied",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#noRuleFoundForRuleId",
+        "org.swblocks.decisiontree.change.domain.builder.RuleRangeChangeBuilderTest#noRuleFoundForRuleIdWhenNull",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#blankNameProvided",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#cannotCreatesValueGroupChangesForExistingGroupsWithNoDriverName",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#cannotCreatesValueGroupChangesForExistingGroupsWithNoRuleCodes",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsBrandNewValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChange",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeFailsWithNoRuleCodes",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeFinishingBeforeFirstSegmentStarts",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeReplacingExistingSegment",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeStartingAtExistingSegmentStartAndFinishingAfterSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeStartingAtExistingSegmentStartAndFinishingFinishingBeforeSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeStartingBeforeAndFinishingAtFirstSegmentFinish",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeStartingBeforeAndFinishingInFirstSegment",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeStartingBeforeFinishingAfterFirstSegmentFinishes",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeWithNoRuleData",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsNewChangeWithOutOfScopeValueGroups",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#createsValueGroupChangesForExistingValueGroups",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#emptyDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#noRequiredArgumentsProvided",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#noRuleSet",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupChangeBuilderTest#nullNameProvided",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#amendsEndDateOfValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#amendsStartAndEndDateOfValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#amendsStartAndEndDateOfValueGroupAndDrivers",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#amendsStartDateOfValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#deactivatesValueGroup",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#noDateRangeSupplied",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#noGroupsToAmend",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#triesToAmendStartAndEndDateOfValueGroupDatesNotInChronologicalOrder",
+        "org.swblocks.decisiontree.change.domain.builder.ValueGroupRangeChangeBuilderTest#unknownId",
+        "org.swblocks.decisiontree.domain.ChangeApplierTest#hasPrivateConstructor",
+        "org.swblocks.decisiontree.domain.ChangeApplierTest#testAppliesChangeToRuleSet"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 22.2,
+        "module_test": [
+          10.9,
+          5.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005230-voai/base",
+      "compiled_snapshot": "work/20261118-005230-voai/snapshot-12ea12ea",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "gradlew",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [],
+      "gradle_project": ":change",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/work/20261118-005230-voai/block1-12ea12ea/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "org.swblocks.decisiontree.ChangeableDecisionTree",
+      "simple_name": "ChangeableDecisionTree",
+      "package": "org.swblocks.decisiontree",
+      "kind": "class",
+      "cut_path": "change/src/main/java/org/swblocks/decisiontree/ChangeableDecisionTree.java",
+      "source_sha256": "1120c284330a745720234656fc655bb6505ff474cf9131216d7a34fc2a82978a",
+      "generated_test_path": "change/src/test/java/org/swblocks/decisiontree/ChangeableDecisionTree_ArrowTest.java",
+      "generated_test_fqn": "org.swblocks.decisiontree.ChangeableDecisionTree_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 64.3,
+      "compile": 22.2,
+      "baseline": [
+        10.9,
+        5.4
+      ],
+      "total": 102.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

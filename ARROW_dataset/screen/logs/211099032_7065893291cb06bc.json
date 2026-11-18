@@ -1,0 +1,308 @@
+{
+  "run_id": "20261118-024225-5o3e",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-024225-5o3e",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 38
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 38
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "jaeger-analytics-java",
+        "url": "https://github.com/jaegertracing/jaeger-analytics-java",
+        "git_commit": "2142d1c7cb0f2dcd885abab04ee38f9fecc385b7",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.6.2",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "tracedsl",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.jaegertracing",
+            "artifact": "jaeger-proto",
+            "version": "999-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-api",
+            "version": "0.33.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.tinkerpop",
+            "artifact": "tinkergraph-gremlin",
+            "version": "3.4.3",
+            "scope": "compile"
+          },
+          {
+            "group": "io.prometheus",
+            "artifact": "simpleclient_httpserver",
+            "version": "0.7.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 55
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "proto",
+          "tracedsl",
+          "spark"
+        ],
+        "target_module": "tracedsl",
+        "module_root": "tracedsl",
+        "packages": [
+          "io.jaegertracing.analytics",
+          "io.jaegertracing.analytics.gremlin",
+          "io.jaegertracing.analytics.model",
+          "io.jaegertracing.analytics.tracequality"
+        ]
+      },
+      "paths": {
+        "source_root": "tracedsl/src/main/java",
+        "test_root": "tracedsl/src/test/java",
+        "cut_path": "tracedsl/src/main/java/io/jaegertracing/analytics/ServiceHeight.java",
+        "generated_test_path": "tracedsl/src/test/java/io/jaegertracing/analytics/ServiceHeight_ArrowTest.java",
+        "generated_test_fqn": "io.jaegertracing.analytics.ServiceHeight_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.jaegertracing.analytics.ServiceHeight",
+        "simple_name": "ServiceHeight",
+        "package": "io.jaegertracing.analytics",
+        "kind": "class",
+        "source_sha256": "9f713b9160027cae3c878f8d9664318c55cfda0f3886bd75b2b6852b8483829b"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "tracedsl",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "tracedsl",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "io.jaegertracing.analytics.NetworkLatencyTest#calculate",
+        "io.jaegertracing.analytics.NetworkLatencyTest#nameEqualsAndHashCode",
+        "io.jaegertracing.analytics.NumberOfErrorsTest#testCalculate",
+        "io.jaegertracing.analytics.NumberOfErrorsTest#testEmpty",
+        "io.jaegertracing.analytics.ServiceDepthTest#calculate",
+        "io.jaegertracing.analytics.ServiceDepthTest#calculateOnlyRoot",
+        "io.jaegertracing.analytics.ServiceHeightTest#calculate",
+        "io.jaegertracing.analytics.ServiceHeightTest#calculateOnlyRoot",
+        "io.jaegertracing.analytics.TraceHeightTest#calculate",
+        "io.jaegertracing.analytics.TraceHeightTest#calculateEmpty",
+        "io.jaegertracing.analytics.TraceHeightTest#calculateOnlyRoot",
+        "io.jaegertracing.analytics.gremlin.TraceTraversalDslTest#testLeafSpans",
+        "io.jaegertracing.analytics.gremlin.TraceTraversalDslTest#testLeafSpans_onlyRoot",
+        "io.jaegertracing.analytics.model.ConverterTest#testId",
+        "io.jaegertracing.analytics.tracequality.UniqueSpanIdTest#empty",
+        "io.jaegertracing.analytics.tracequality.UniqueSpanIdTest#uniqueSpan"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "io.jaegertracing.api_v2.GrpcQueryTest#testGetService"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 31.5,
+        "module_test": [
+          2.7,
+          2.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024225-5o3e/base",
+      "compiled_snapshot": "work/20261118-024225-5o3e/snapshot-3d7d4957",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "tracedsl",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.jaegertracing.analytics.ServiceHeight",
+      "simple_name": "ServiceHeight",
+      "package": "io.jaegertracing.analytics",
+      "kind": "class",
+      "cut_path": "tracedsl/src/main/java/io/jaegertracing/analytics/ServiceHeight.java",
+      "source_sha256": "9f713b9160027cae3c878f8d9664318c55cfda0f3886bd75b2b6852b8483829b",
+      "generated_test_path": "tracedsl/src/test/java/io/jaegertracing/analytics/ServiceHeight_ArrowTest.java",
+      "generated_test_fqn": "io.jaegertracing.analytics.ServiceHeight_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.7,
+      "locate": 0.3,
+      "plan": 1,
+      "compile": 31.5,
+      "baseline": [
+        2.7,
+        2.7
+      ],
+      "total": 38
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

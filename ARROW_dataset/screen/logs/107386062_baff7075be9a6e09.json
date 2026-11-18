@@ -1,0 +1,309 @@
+{
+  "run_id": "20261118-010212-ihxk",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-010212-ihxk",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 8.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 8.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "caravan",
+        "url": "https://github.com/ctripcorp/caravan",
+        "git_commit": "0d0264aebab312af638453d99fe8dbe73a4bda1a",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "caravan-common",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.21",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "19.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.21",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.10.19",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 6
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.10.19"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "caravan-common",
+          "caravan-configuration",
+          "caravan-util",
+          "caravan-web",
+          "caravan-hystrix",
+          "caravan-ribbon",
+          "caravan-etcd",
+          "caravan-protobuf"
+        ],
+        "target_module": "caravan-common",
+        "module_root": "caravan-common",
+        "packages": [
+          "com.ctrip.soa.caravan.common.value.corrector",
+          "com.ctrip.soa.caravan.common.value",
+          "com.ctrip.soa.caravan.common.collect",
+          "com.ctrip.soa.caravan.common.concurrent",
+          "com.ctrip.soa.caravan.common.concurrent.collect",
+          "com.ctrip.soa.caravan.common.concurrent.collect.circularbuffer.timebucket",
+          "com.ctrip.soa.caravan.common.defensive",
+          "com.ctrip.soa.caravan.common.delegate",
+          "com.ctrip.soa.caravan.common.exception",
+          "com.ctrip.soa.caravan.common.metric",
+          "com.ctrip.soa.caravan.common.net",
+          "com.ctrip.soa.caravan.common.serializer",
+          "com.ctrip.soa.caravan.common.trace",
+          "com.ctrip.soa.caravan.common.value.checker",
+          "com.ctrip.soa.caravan.common.value.converter",
+          "com.ctrip.soa.caravan.common.value.parser"
+        ]
+      },
+      "paths": {
+        "source_root": "caravan-common/src/main/java",
+        "test_root": "caravan-common/src/test/java",
+        "cut_path": "caravan-common/src/main/java/com/ctrip/soa/caravan/common/value/corrector/PatternCorrector.java",
+        "generated_test_path": "caravan-common/src/test/java/com/ctrip/soa/caravan/common/value/corrector/PatternCorrector_ArrowTest.java",
+        "generated_test_fqn": "com.ctrip.soa.caravan.common.value.corrector.PatternCorrector_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.ctrip.soa.caravan.common.value.corrector.PatternCorrector",
+        "simple_name": "PatternCorrector",
+        "package": "com.ctrip.soa.caravan.common.value.corrector",
+        "kind": "class",
+        "source_sha256": "61233636d962756684dabb9764108fd19ff0ef436208fe558fc58c4f27c53a16"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "caravan-common",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "caravan-common",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.ctrip.soa.caravan.common.value.DefaultValuesTest#isDefaultTest",
+        "com.ctrip.soa.caravan.common.value.StringValuesTest#toStringTest",
+        "com.ctrip.soa.caravan.common.value.corrector.PatternCorrectorTest#ipTest",
+        "com.ctrip.soa.caravan.common.value.corrector.PatternCorrectorTest#mailTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2.8,
+        "module_test": [
+          2,
+          2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010212-ihxk/base",
+      "compiled_snapshot": "work/20261118-010212-ihxk/snapshot-97f01dff",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "caravan-common",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.ctrip.soa.caravan.common.value.corrector.PatternCorrector",
+      "simple_name": "PatternCorrector",
+      "package": "com.ctrip.soa.caravan.common.value.corrector",
+      "kind": "class",
+      "cut_path": "caravan-common/src/main/java/com/ctrip/soa/caravan/common/value/corrector/PatternCorrector.java",
+      "source_sha256": "61233636d962756684dabb9764108fd19ff0ef436208fe558fc58c4f27c53a16",
+      "generated_test_path": "caravan-common/src/test/java/com/ctrip/soa/caravan/common/value/corrector/PatternCorrector_ArrowTest.java",
+      "generated_test_fqn": "com.ctrip.soa.caravan.common.value.corrector.PatternCorrector_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.3,
+      "locate": 0.3,
+      "plan": 1.3,
+      "compile": 2.8,
+      "baseline": [
+        2,
+        2
+      ],
+      "total": 8.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

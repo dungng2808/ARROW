@@ -1,0 +1,410 @@
+{
+  "run_id": "20261118-005416-brdq",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-005416-brdq",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 67.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 67.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "XCoLab",
+        "url": "https://github.com/CCI-MIT/XCoLab",
+        "git_commit": "4a18c14beb03305e057ace76c5f367940576f4da",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.5.0",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "util/xcolab-commons",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": [
+          "**/*ControllerTest.java",
+          "**/*ServiceTest.java",
+          "**/*DaoTest.java"
+        ]
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework",
+            "artifact": "spring-webmvc",
+            "version": "4.3.11.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.3",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.json",
+            "artifact": "javax.json-api",
+            "version": "1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish",
+            "artifact": "javax.json",
+            "version": "1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.json",
+            "artifact": "json",
+            "version": "20160212",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.8.10",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "3.1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.nibor.autolink",
+            "artifact": "autolink",
+            "version": "0.7.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jsoup",
+            "artifact": "jsoup",
+            "version": "1.10.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.ocpsoft.prettytime",
+            "artifact": "prettytime",
+            "version": "4.0.1.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-collections4",
+            "version": "4.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-text",
+            "version": "1.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 27
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "microservices",
+          "util",
+          "view",
+          "microservices/services",
+          "microservices/clients",
+          "microservices/cloud",
+          "util/service-utils",
+          "util/xcolab-utils",
+          "util/entity-utils",
+          "util/xcolab-commons",
+          "microservices/services/activities-service",
+          "microservices/services/admin-service",
+          "microservices/services/comment-service",
+          "microservices/services/content-service",
+          "microservices/services/contest-service",
+          "microservices/services/emails-service",
+          "microservices/services/moderation-service",
+          "microservices/services/members-service",
+          "microservices/services/modeling-service",
+          "microservices/services/search-service",
+          "microservices/services/sharedcolab-service",
+          "microservices/services/tracking-service",
+          "microservices/clients/activities-client",
+          "microservices/clients/admin-client",
+          "microservices/clients/ballons-client",
+          "microservices/clients/contents-client",
+          "microservices/clients/contestproposal-client",
+          "microservices/clients/comment-client",
+          "microservices/clients/emails-client",
+          "microservices/clients/files-client",
+          "microservices/clients/flagging-client",
+          "microservices/clients/members-client",
+          "microservices/clients/modeling-client",
+          "microservices/clients/search-client",
+          "microservices/clients/sharedcolab-client",
+          "microservices/clients/tracking-client",
+          "microservices/cloud/eureka-server",
+          "microservices/cloud/service-proxy"
+        ],
+        "target_module": "util/xcolab-commons",
+        "module_root": "util/xcolab-commons",
+        "packages": [
+          "org.xcolab.commons.html",
+          "org.xcolab.commons",
+          "org.xcolab.commons.attributes",
+          "org.xcolab.commons.attributes.basic",
+          "org.xcolab.commons.attributes.exceptions",
+          "org.xcolab.commons.attributes.i18n",
+          "org.xcolab.commons.attributes.transformers",
+          "org.xcolab.commons.attributes.wrappers",
+          "org.xcolab.commons.exceptions",
+          "org.xcolab.commons.http.interceptors",
+          "org.xcolab.commons.http.servlet",
+          "org.xcolab.commons.spring.web.annotation",
+          "org.xcolab.commons.time"
+        ]
+      },
+      "paths": {
+        "source_root": "util/xcolab-commons/src/main/java",
+        "test_root": "util/xcolab-commons/src/test/java",
+        "cut_path": "util/xcolab-commons/src/main/java/org/xcolab/commons/html/HtmlUtil.java",
+        "generated_test_path": "util/xcolab-commons/src/test/java/org/xcolab/commons/html/HtmlUtil_ArrowTest.java",
+        "generated_test_fqn": "org.xcolab.commons.html.HtmlUtil_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.xcolab.commons.html.HtmlUtil",
+        "simple_name": "HtmlUtil",
+        "package": "org.xcolab.commons.html",
+        "kind": "class",
+        "source_sha256": "22173adcb53094c79ed91209655d2f5484c7d7d49167a1ea2c00fa89156fb5f2"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "util/xcolab-commons",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "util/xcolab-commons",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.xcolab.commons.GroupingHelperTest#groupUnique",
+        "org.xcolab.commons.GroupingHelperTest#groupWithDuplicateKeysAndValues",
+        "org.xcolab.commons.GroupingHelperTest#groupWithDuplicateValues",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__anchorTag",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__comma",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__imgTag",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__multipleUrls",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__nestedTag",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__parentheses",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__query",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__simpleUrl",
+        "org.xcolab.commons.html.HtmlUtilTest#testLinkifyUrls__umlauts",
+        "org.xcolab.commons.time.DurationFormatterTest#formatAsDays__givenMoreThan30Days__shouldFormatInDays",
+        "org.xcolab.commons.time.DurationFormatterTest#formatDifferenceAsDays__givenMoreThan30Days__shouldFormatInDays",
+        "org.xcolab.commons.time.DurationFormatterTest#formatDifference__givenDate__shouldFormatInLargestUnit",
+        "org.xcolab.commons.time.DurationFormatterTest#format__givenDate__shouldFormatInLargestUnit"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 37.3,
+        "module_test": [
+          4.8,
+          3.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005416-brdq/base",
+      "compiled_snapshot": "work/20261118-005416-brdq/snapshot-60ee20be",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "util/xcolab-commons",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.xcolab.commons.html.HtmlUtil",
+      "simple_name": "HtmlUtil",
+      "package": "org.xcolab.commons.html",
+      "kind": "class",
+      "cut_path": "util/xcolab-commons/src/main/java/org/xcolab/commons/html/HtmlUtil.java",
+      "source_sha256": "22173adcb53094c79ed91209655d2f5484c7d7d49167a1ea2c00fa89156fb5f2",
+      "generated_test_path": "util/xcolab-commons/src/test/java/org/xcolab/commons/html/HtmlUtil_ArrowTest.java",
+      "generated_test_fqn": "org.xcolab.commons.html.HtmlUtil_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 42.2,
+      "locate": 0.7,
+      "plan": 22.1,
+      "compile": 37.3,
+      "baseline": [
+        4.8,
+        3.5
+      ],
+      "total": 67.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

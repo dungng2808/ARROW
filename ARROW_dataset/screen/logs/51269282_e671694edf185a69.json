@@ -1,0 +1,350 @@
+{
+  "run_id": "20261118-022107-9s8y",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-022107-9s8y",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 83.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 83.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "dropwizard-zipkin",
+        "url": "https://github.com/smoketurner/dropwizard-zipkin",
+        "git_commit": "02b1ff7c4e73094c3e87b60c5ca83b6068708fb4",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": true,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "zipkin-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "8",
+        "declared_source": "maven.compiler.release",
+        "major": 8,
+        "jdk_major": 11,
+        "jdk_choice_reason": "fallback:8,11"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.dropwizard",
+            "artifact": "dropwizard-core",
+            "version": "1.3.12",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.brave",
+            "artifact": "brave-context-slf4j",
+            "version": "5.6.5",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.reporter2",
+            "artifact": "zipkin-sender-urlconnection",
+            "version": "2.8.4",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.reporter2",
+            "artifact": "zipkin-sender-kafka",
+            "version": "2.8.4",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.reporter2",
+            "artifact": "zipkin-sender-amqp-client",
+            "version": "2.8.4",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.brave",
+            "artifact": "brave",
+            "version": "5.6.5",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.brave",
+            "artifact": "brave-instrumentation-jaxrs2",
+            "version": "5.6.5",
+            "scope": "compile"
+          },
+          {
+            "group": "io.zipkin.brave",
+            "artifact": "brave-instrumentation-jersey-server",
+            "version": "5.6.5",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "io.dropwizard",
+            "artifact": "dropwizard-testing",
+            "version": "1.3.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.12.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.27.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.openjdk.jmh",
+            "artifact": "jmh-core",
+            "version": "1.21",
+            "scope": "test"
+          },
+          {
+            "group": "org.openjdk.jmh",
+            "artifact": "jmh-generator-annprocess",
+            "version": "1.21",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 117
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.27.0"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.12.2"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "zipkin-core",
+          "zipkin-client",
+          "zipkin-example"
+        ],
+        "target_module": "zipkin-core",
+        "module_root": "zipkin-core",
+        "packages": [
+          "com.smoketurner.dropwizard.zipkin",
+          "com.smoketurner.dropwizard.zipkin.managed",
+          "com.smoketurner.dropwizard.zipkin.metrics"
+        ]
+      },
+      "paths": {
+        "source_root": "zipkin-core/src/main/java",
+        "test_root": "zipkin-core/src/test/java",
+        "cut_path": "zipkin-core/src/main/java/com/smoketurner/dropwizard/zipkin/HttpZipkinFactory.java",
+        "generated_test_path": "zipkin-core/src/test/java/com/smoketurner/dropwizard/zipkin/HttpZipkinFactory_ArrowTest.java",
+        "generated_test_fqn": "com.smoketurner.dropwizard.zipkin.HttpZipkinFactory_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.smoketurner.dropwizard.zipkin.HttpZipkinFactory",
+        "simple_name": "HttpZipkinFactory",
+        "package": "com.smoketurner.dropwizard.zipkin",
+        "kind": "class",
+        "source_sha256": "ac2d7a9298a0e2a14bdb5c0470c935af265ccb1550d36e1329701611b1937a6a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "zipkin-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "zipkin-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.smoketurner.dropwizard.zipkin.ConsoleZipkinFactoryTest#isDiscoverable",
+        "com.smoketurner.dropwizard.zipkin.EmptyZipkinFactoryTest#isDiscoverable",
+        "com.smoketurner.dropwizard.zipkin.HttpZipkinFactoryTest#isDiscoverable",
+        "com.smoketurner.dropwizard.zipkin.HttpZipkinFactoryTest#shouldBeConfigurable",
+        "com.smoketurner.dropwizard.zipkin.KafkaZipkinFactoryTest#isDiscoverable",
+        "com.smoketurner.dropwizard.zipkin.KafkaZipkinFactoryTest#shouldBeConfigurable",
+        "com.smoketurner.dropwizard.zipkin.RabbitMQZipkinFactoryTest#isDiscoverable",
+        "com.smoketurner.dropwizard.zipkin.RabbitMQZipkinFactoryTest#shouldBeConfigurable",
+        "com.smoketurner.dropwizard.zipkin.ZipkinBundleTest#shouldHaveInitializedZipkin"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 67.5,
+        "module_test": [
+          3.4,
+          3.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022107-9s8y/base",
+      "compiled_snapshot": "work/20261118-022107-9s8y/snapshot-da299b6d",
+      "source_tree_hash": null,
+      "jdk_major": 11,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-11/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "zipkin-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.smoketurner.dropwizard.zipkin.HttpZipkinFactory",
+      "simple_name": "HttpZipkinFactory",
+      "package": "com.smoketurner.dropwizard.zipkin",
+      "kind": "class",
+      "cut_path": "zipkin-core/src/main/java/com/smoketurner/dropwizard/zipkin/HttpZipkinFactory.java",
+      "source_sha256": "ac2d7a9298a0e2a14bdb5c0470c935af265ccb1550d36e1329701611b1937a6a",
+      "generated_test_path": "zipkin-core/src/test/java/com/smoketurner/dropwizard/zipkin/HttpZipkinFactory_ArrowTest.java",
+      "generated_test_fqn": "com.smoketurner.dropwizard.zipkin.HttpZipkinFactory_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Wrapper mvnw không chạy được; dùng Maven của máy."
+    ],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 9.1,
+      "compile": 67.5,
+      "baseline": [
+        3.4,
+        3.7
+      ],
+      "total": 83.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Wrapper mvnw không chạy được; dùng Maven của máy."
+  ]
+}

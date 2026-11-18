@@ -1,0 +1,290 @@
+{
+  "run_id": "20261118-030500-ivlj",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-030500-ivlj",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 44.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 44.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Simple-DSL",
+        "url": "https://github.com/LMAX-Exchange/Simple-DSL",
+        "git_commit": "7d81cd9e2951eb4c90243f62d92b4f365a16fbc1",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "7.2",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "standalone",
+        "build_file": "build.gradle",
+        "reactor_module": ":",
+        "build_root_source": "detected:standalone",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter",
+            "version": "5.8.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 7
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.8.1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-engine (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": ".",
+        "module_root": ".",
+        "packages": [
+          "com.lmax.simpledsl.internal",
+          "com.lmax.simpledsl.api"
+        ]
+      },
+      "paths": {
+        "source_root": "src/main/java",
+        "test_root": "src/test/java",
+        "cut_path": "src/main/java/com/lmax/simpledsl/internal/DslParamsParser.java",
+        "generated_test_path": "src/test/java/com/lmax/simpledsl/internal/DslParamsParser_ArrowTest.java",
+        "generated_test_fqn": "com.lmax.simpledsl.internal.DslParamsParser_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.lmax.simpledsl.internal.DslParamsParser",
+        "simple_name": "DslParamsParser",
+        "package": "com.lmax.simpledsl.internal",
+        "kind": "class",
+        "source_sha256": "b5c07cd3a844f0bfae93f8b0cef75a349a2dcca12069dadc0b9d862a6b41bd94"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/work/20261118-030500-ivlj/block1-cdb4ee2a/arrow-info.gradle",
+          ":testClasses",
+          ":arrowClasspath"
+        ],
+        "module_test": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/work/20261118-030500-ivlj/block1-cdb4ee2a/arrow-info.gradle",
+          ":test",
+          "--continue"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldNotReportOptionalValueAsPresentWhenNoValueProvided",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReportOptionalValueAsPresentWhenEmptyValueProvided",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReportOptionalValueAsPresentWhenValueProvided",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReportRequiredValueAsPresentWhenEmptyValueProvided",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyListWhenValueIsNotSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyListWhenValueIsNotSuppliedAndMappingFunctionIsUsed",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyOptionalDoubleWhenNoValuesAreSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyOptionalIntWhenNoValuesAreSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyOptionalListWhenNoValuesAreSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyOptionalLongWhenNoValuesAreSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyOptionalWhenValueIsNotSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnEmptyOptionalWhenValueIsNotSuppliedAndMappingFunctionIsUsed",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnListWithMultipleValuesWhenValuesAreSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnListWithMultipleValuesWhenValuesAreSuppliedAndMappingFunctionIsUsed",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnListWithValueWhenValueIsSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnListWithValueWhenValueIsSuppliedAndMappingFunctionIsUsed",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnMultipleValues",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnMultipleValuesAsAnEnum",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnMultipleValuesWhenUsingAMappingFunctionToArrayOfSpecificType",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnMultipleValuesWhenUsingAMappingFunctionToGenericArray",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnNullValueAsNamedParamWhenSimpleDslParamNotSpecified",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnNullValueAsParamWhenSimpleDslParamNotSpecified",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnNullValueWhenBigDecimalIsNotFound",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnOptionalListWhenMultipleParameterValueIsSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnOptionalWithValueWhenValueIsSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnOptionalWithValueWhenValueIsSuppliedAndMappingFunctionIsUsed",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValue",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsAnEnum",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsBigDecimal",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsBoolean",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsDouble",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsInt",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsLong",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsNamedParamForOptionalValueThatWasSpecified",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueAsParamForOptionalValueThatWasSpecified",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValueWhenUsingAMappingFunction",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValuesAsBigDecimalArray",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValuesAsDoubleArray",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValuesAsIntArray",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldReturnValuesAsLongArray",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldThrowNullPointerExceptionWhenValueAsBooleanCalledForParameterThatIsNotSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldThrowNullPointerExceptionWhenValueAsDoubleCalledForParameterThatIsNotSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldThrowNullPointerExceptionWhenValueAsIntCalledForParameterThatIsNotSupplied",
+        "com.lmax.simpledsl.internal.DslParamsImplTest#shouldThrowNullPointerExceptionWhenValueAsLongCalledForParameterThatIsNotSupplied",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#maybeShouldThrowExceptionIfRequiredParametersArePassedOutOfOrder",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToDetectAbsenceOfParamsWithMultipleValuesAllowed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToDetectPresenceOfParamsWithMultipleValuesAllowed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleRequiredArgsAndMultipleOptionalArgsWithOptionalArgsInRandomOrder",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleRequiredArgsWhenAllParamsAreNamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleRequiredArgsWhenSubsequentRequiredArgsAreNotNamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleRequiredArgsWhenWithClearBoundariesBetweenArguments",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleValuesForOneParameterUsingTheACustomSeparator",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleValuesForOneParameterUsingTheACustomSeparatorAndIgnoreRegex",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToExtractMultipleValuesForOneParameterUsingTheDefaultSeparator",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToRetrieveArgumentsFollowingTheEndOfARepeatingGroup",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToRetrieveGroupsOfParams",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToRetrieveGroupsOfParamsWhenSomeOptionalValuesAreOmitted",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToSpecifiedNamedRequiredArgsInAnyOrder",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToSpecifyMultipleValuesForParamInGroup",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToSpecifyMultipleValuesForParamInGroupUsingACustomSeparator",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldBeAbleToSpecifyMultipleValuesForParamInGroupUsingTheDefaultSeparator",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractMixedParameterTypesWhenNamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractOptionalArgsFromPositionalArguments",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractOptionalArgsFromPositionalArgumentsWhenNullArgumentsArePresent",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractOptionalArgsWhenNamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractOptionalArgsWhenUnnamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractRequiredArgsWhenNamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldExtractRequiredArgsWhenUnnamed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldIgnoreNullArgumentsAmongstOptionalArgs",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldIgnoreNullArgumentsInRepeatingGroups",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldMatchAllowedValuesCaseInsensitivelyAndReturnValuesUsingTheCaseProvidedInTheDSL",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldMatchAllowedValuesCaseInsensitivelyAndReturnValuesUsingTheCaseProvidedInTheDSLWithinRepeatingGroups",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldMatchAllowedValuesSpecifiedViaABoolean",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldMatchAllowedValuesSpecifiedViaAnEnum",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldMatchParamsIgnoringCase",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldParseAMixtureOfNamedAndUnnamedParametersWhenParametersAreRequired",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfAnUnexpectedParameterValueIsPassedIn",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfInvalidParameterValueIsSpecified",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfInvalidParameterValueIsSpecifiedInRepeatingGroup",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfInvalidParameterValueIsSpecifiedInRepeatingGroupIdentity",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfRequiredParameterMissingFromGroup",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfTwoValuesProvidedWhenMultipleValuesAreNotAllowed",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfUnnamedOptionalArgFollowsNamedOptionalArg",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfUnnamedRequiredArgFollowsNamedOptionalArg",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfUnnamedRequiredArgIsProvidedAfterNamedOptionalArgOutOfDefinitionOrder",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfValuesDoesNotMatchAllowedValuesSpecifiedViaABoolean",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionIfValuesDoesNotMatchAllowedValuesSpecifiedViaAnEnum",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldThrowAnExceptionWhenMissingAValueForARequiredArg",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldUseDefaultValuesForOptionalArgsInRepeatingGroups",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldUseNullForAnOptionalArgsWhenNoValueOrDefaultValueIsProvided",
+        "com.lmax.simpledsl.internal.DslParamsParserTest#shouldUseTheDefaultValueForAnOptionalArgsWhenNoValueIsProvided",
+        "com.lmax.simpledsl.internal.NameValuePairTest#shouldPreserveValueIfMultipleSplitTokensArePresent",
+        "com.lmax.simpledsl.internal.NameValuePairTest#shouldSetTheNameToNullAndAssignsEverythingToTheValueInAnUnnamedPair",
+        "com.lmax.simpledsl.internal.NameValuePairTest#shouldSplitNameAndValueWithColon",
+        "com.lmax.simpledsl.internal.NameValuePairTest#shouldSplitNameAndValueWithEquals",
+        "com.lmax.simpledsl.internal.NameValuePairTest#shouldTrimWhitespace",
+        "com.lmax.simpledsl.internal.NameValuePairTest#shouldUseAnEmptyStringWhenNoValueIsProvided",
+        "com.lmax.simpledsl.internal.SimpleDslParamTest#shouldReturnAllTheValuesAddedWhenMultipleValuesAreAllowed",
+        "com.lmax.simpledsl.internal.SimpleDslParamTest#shouldReturnTheValueAdded",
+        "com.lmax.simpledsl.internal.SimpleDslParamTest#shouldThrowExceptionOnAccessingASingleValueIfTheParamAllowsMultipleValues"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 17,
+        "module_test": [
+          3.7,
+          4.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-030500-ivlj/base",
+      "compiled_snapshot": "work/20261118-030500-ivlj/snapshot-cdb4ee2a",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "gradlew",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": ":",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/work/20261118-030500-ivlj/block1-cdb4ee2a/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "com.lmax.simpledsl.internal.DslParamsParser",
+      "simple_name": "DslParamsParser",
+      "package": "com.lmax.simpledsl.internal",
+      "kind": "class",
+      "cut_path": "src/main/java/com/lmax/simpledsl/internal/DslParamsParser.java",
+      "source_sha256": "b5c07cd3a844f0bfae93f8b0cef75a349a2dcca12069dadc0b9d862a6b41bd94",
+      "generated_test_path": "src/test/java/com/lmax/simpledsl/internal/DslParamsParser_ArrowTest.java",
+      "generated_test_fqn": "com.lmax.simpledsl.internal.DslParamsParser_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 19.3,
+      "compile": 17,
+      "baseline": [
+        3.7,
+        4.1
+      ],
+      "total": 44.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

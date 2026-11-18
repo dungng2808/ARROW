@@ -1,0 +1,262 @@
+{
+  "run_id": "20261118-011032-irxx",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-011032-irxx",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 5.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 5.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "murex-coding-dojo",
+        "url": "https://github.com/murex/murex-coding-dojo",
+        "git_commit": "1d98c0204b0bbe121dbe47bed8d09f95e95e16de",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "Beirut/2016/2016-02-17-even-fibonacci-numbers",
+        "build_mode": "standalone",
+        "build_file": "Beirut/2016/2016-02-17-even-fibonacci-numbers/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": null,
+        "declared_source": null,
+        "major": null,
+        "jdk_major": 17,
+        "jdk_choice_reason": "default"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "r05",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.easytesting",
+            "artifact": "fest-assert-core",
+            "version": "2.0M10",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 5
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "Beirut/2016/2016-02-17-even-fibonacci-numbers",
+        "module_root": "Beirut/2016/2016-02-17-even-fibonacci-numbers",
+        "packages": []
+      },
+      "paths": {
+        "source_root": "Beirut/2016/2016-02-17-even-fibonacci-numbers/src/main/java",
+        "test_root": "Beirut/2016/2016-02-17-even-fibonacci-numbers/src/test/java",
+        "cut_path": "Beirut/2016/2016-02-17-even-fibonacci-numbers/src/main/java/Fibonacci.java",
+        "generated_test_path": "Beirut/2016/2016-02-17-even-fibonacci-numbers/src/test/java/Fibonacci_ArrowTest.java",
+        "generated_test_fqn": "Fibonacci_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "Fibonacci",
+        "simple_name": "Fibonacci",
+        "package": "",
+        "kind": "class",
+        "source_sha256": "0ae389e0399553ff113df560fc95f4f29d0a3f00ec508829cde4f1548c21eef1"
+      },
+      "missing_reasons": {
+        "java": "file build không khai báo mức Java"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "Beirut/2016/2016-02-17-even-fibonacci-numbers",
+      "passing_in_all_runs": [
+        "FibonacciTest#check_if_even_input_is_10",
+        "FibonacciTest#check_if_even_input_is_5",
+        "FibonacciTest#if_input_is_10",
+        "FibonacciTest#if_input_is_1_should_return_1",
+        "FibonacciTest#if_input_is_4000000"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.8,
+        "module_test": [
+          1.4,
+          1.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011032-irxx/base",
+      "compiled_snapshot": "work/20261118-011032-irxx/snapshot-2fa34228",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "Beirut/2016/2016-02-17-even-fibonacci-numbers",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "Fibonacci",
+      "simple_name": "Fibonacci",
+      "package": "",
+      "kind": "class",
+      "cut_path": "Beirut/2016/2016-02-17-even-fibonacci-numbers/src/main/java/Fibonacci.java",
+      "source_sha256": "0ae389e0399553ff113df560fc95f4f29d0a3f00ec508829cde4f1548c21eef1",
+      "generated_test_path": "Beirut/2016/2016-02-17-even-fibonacci-numbers/src/test/java/Fibonacci_ArrowTest.java",
+      "generated_test_fqn": "Fibonacci_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 1.8,
+      "baseline": [
+        1.4,
+        1.3
+      ],
+      "total": 5.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

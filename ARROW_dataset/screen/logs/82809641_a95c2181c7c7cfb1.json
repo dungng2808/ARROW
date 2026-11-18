@@ -1,0 +1,309 @@
+{
+  "run_id": "20261118-022835-qlvd",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-022835-qlvd",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 18.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 18.2
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "java-agent",
+        "url": "https://github.com/opentracing-contrib/java-agent",
+        "git_commit": "27fefa1b77c50492b86719eae5cd4267f03db586",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.5.0",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "opentracing-agent",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven.compiler.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.jboss.byteman",
+            "artifact": "byteman",
+            "version": "4.0.0-BETA5",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-api",
+            "version": "0.31.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-util",
+            "version": "0.31.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-noop",
+            "version": "0.31.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentracing.contrib",
+            "artifact": "opentracing-tracerresolver",
+            "version": "0.1.4",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-mock",
+            "version": "0.31.0",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-util",
+            "version": "0.31.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 9
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "opentracing-agent",
+          "opentracing-agent-itests",
+          "rules",
+          "rules/java-okhttp",
+          "rules/java-web-servlet-filter"
+        ],
+        "target_module": "opentracing-agent",
+        "module_root": "opentracing-agent",
+        "packages": [
+          "io.opentracing.contrib.agent",
+          "io.opentracing.contrib.agent.javanet.propagation"
+        ]
+      },
+      "paths": {
+        "source_root": "opentracing-agent/src/main/java",
+        "test_root": "opentracing-agent/src/test/java",
+        "cut_path": "opentracing-agent/src/main/java/io/opentracing/contrib/agent/OpenTracingHelper.java",
+        "generated_test_path": "opentracing-agent/src/test/java/io/opentracing/contrib/agent/OpenTracingHelper_ArrowTest.java",
+        "generated_test_fqn": "io.opentracing.contrib.agent.OpenTracingHelper_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.opentracing.contrib.agent.OpenTracingHelper",
+        "simple_name": "OpenTracingHelper",
+        "package": "io.opentracing.contrib.agent",
+        "kind": "class",
+        "source_sha256": "bee6c28ef6dbd26e9b0164bc1446514f0a3fea60d8ee2e577fce9d2c710c732a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "opentracing-agent",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "opentracing-agent",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "io.opentracing.contrib.agent.OpenTracingHelperTest#testAssociateSpan",
+        "io.opentracing.contrib.agent.OpenTracingHelperTest#testGetTracerExisting",
+        "io.opentracing.contrib.agent.OpenTracingHelperTest#testGetTracerResolved",
+        "io.opentracing.contrib.agent.OpenTracingHelperTest#testGetTracerWithRulesEnabled",
+        "io.opentracing.contrib.agent.OpenTracingHelperTest#testState"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 14.1,
+        "module_test": [
+          1.4,
+          1.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022835-qlvd/base",
+      "compiled_snapshot": "work/20261118-022835-qlvd/snapshot-92097161",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "opentracing-agent",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.opentracing.contrib.agent.OpenTracingHelper",
+      "simple_name": "OpenTracingHelper",
+      "package": "io.opentracing.contrib.agent",
+      "kind": "class",
+      "cut_path": "opentracing-agent/src/main/java/io/opentracing/contrib/agent/OpenTracingHelper.java",
+      "source_sha256": "bee6c28ef6dbd26e9b0164bc1446514f0a3fea60d8ee2e577fce9d2c710c732a",
+      "generated_test_path": "opentracing-agent/src/test/java/io/opentracing/contrib/agent/OpenTracingHelper_ArrowTest.java",
+      "generated_test_fqn": "io.opentracing.contrib.agent.OpenTracingHelper_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.8,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 14.1,
+      "baseline": [
+        1.4,
+        1.4
+      ],
+      "total": 18.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

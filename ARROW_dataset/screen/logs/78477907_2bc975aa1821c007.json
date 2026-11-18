@@ -1,0 +1,357 @@
+{
+  "run_id": "20261118-023052-bmiz",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-023052-bmiz",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 15.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 15.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "pixel-captcha-project",
+        "url": "https://github.com/salesforce/pixel-captcha-project",
+        "git_commit": "6029e008d8086b1ff00e809c341fb8eb4f13cdc9",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "pixel-captcha",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "18.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.8.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "pl.pragmatists",
+            "artifact": "JUnitParams",
+            "version": "1.0.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.9.5",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 6
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.9.5"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "pixel-captcha",
+          "demo-webapp"
+        ],
+        "target_module": "pixel-captcha",
+        "module_root": "pixel-captcha",
+        "packages": [
+          "com.salesforce.pixelcaptcha.utils",
+          "com.salesforce.pixelcaptcha.utils.impl",
+          "com.salesforce.pixelcaptcha.core",
+          "com.salesforce.pixelcaptcha.dataobj",
+          "com.salesforce.pixelcaptcha.dataobj.impl",
+          "com.salesforce.pixelcaptcha.gui",
+          "com.salesforce.pixelcaptcha.interfaces",
+          "com.salesforce.pixelcaptcha.misc",
+          "com.salesforce.pixelcaptcha.storage",
+          "com.salesforce.pixelcaptcha.storage.impl"
+        ]
+      },
+      "paths": {
+        "source_root": "pixel-captcha/src/main/java",
+        "test_root": "pixel-captcha/src/test/java",
+        "cut_path": "pixel-captcha/src/main/java/com/salesforce/pixelcaptcha/utils/RandomPointFactory.java",
+        "generated_test_path": "pixel-captcha/src/test/java/com/salesforce/pixelcaptcha/utils/RandomPointFactory_ArrowTest.java",
+        "generated_test_fqn": "com.salesforce.pixelcaptcha.utils.RandomPointFactory_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.salesforce.pixelcaptcha.utils.RandomPointFactory",
+        "simple_name": "RandomPointFactory",
+        "package": "com.salesforce.pixelcaptcha.utils",
+        "kind": "class",
+        "source_sha256": "22b0b1cca58e445d2a6ddbc9f4cfc5afdb0b013f69f86c3cd6229aa93efc6848"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pixel-captcha",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pixel-captcha",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.salesforce.pixelcaptcha.core.CaptchaBuilderTest#testBuildImageWithCollapsedChallengeHorizontal",
+        "com.salesforce.pixelcaptcha.core.CaptchaMetadataFactoryTest#testChallengeFontSizeIsWithinRange",
+        "com.salesforce.pixelcaptcha.core.CaptchaMetadataFactoryTest#testChallengePointsAreInChallengeRectangle",
+        "com.salesforce.pixelcaptcha.core.CaptchaMetadataFactoryTest#testSolutionCodePointsAreAsExpected",
+        "com.salesforce.pixelcaptcha.core.CaptchaMetadataFactoryTest#testSolutionFontSizeIsWithinRange",
+        "com.salesforce.pixelcaptcha.core.CaptchaMetadataFactoryTest#testSolutionPointsAreInResponseRectangle",
+        "com.salesforce.pixelcaptcha.core.MasterConfigTest#testAMinMaxFontSizesAreAsExpectedForHorizontalCaptcha",
+        "com.salesforce.pixelcaptcha.core.MasterConfigTest#testAMinMaxFontSizesAreAsExpectedForVerticalCaptcha",
+        "com.salesforce.pixelcaptcha.core.MasterConfigTest#testHorizontalCapthaChallengeAndResponseRectanglesDoNotOverlapAndAreInsideTheCaptchaArea",
+        "com.salesforce.pixelcaptcha.core.MasterConfigTest#testPrintableCodePointsAreNotChanged",
+        "com.salesforce.pixelcaptcha.core.MasterConfigTest#testVerticalCapthaChallengeAndResponseRectanglesDoNotOverlapAndAreInsideTheCaptchaArea",
+        "com.salesforce.pixelcaptcha.core.VerificationEngineTest#testValidateSolutionWithDifferentLengths",
+        "com.salesforce.pixelcaptcha.core.VerificationEngineTest#testValidateSolutionWithTwoChallengesOrdered",
+        "com.salesforce.pixelcaptcha.core.VerificationEngineTest#testValidateSolutionWithTwoChallengesUnOrdered",
+        "com.salesforce.pixelcaptcha.core.VerificationEngineTest#testValidateSolutionWithTwoChallengesUnOrderedNegativePoints",
+        "com.salesforce.pixelcaptcha.dataobj.CaptchaDimensionTest#[0] 0, 0 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.dataobj.CaptchaDimensionTest#[1] 10, -1 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.dataobj.CaptchaDimensionTest#[2] -1, 10 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.dataobj.CaptchaDimensionTest#testNegativeValues",
+        "com.salesforce.pixelcaptcha.dataobj.PixelCaptchaValidationResultTest#testToStringWorksAsExpectedWithNullResponseDetails",
+        "com.salesforce.pixelcaptcha.storage.GeneralTests#testGetInstanceWorkingWithValidValues",
+        "com.salesforce.pixelcaptcha.storage.GeneralTests#testMaximumSizeOfStorage",
+        "com.salesforce.pixelcaptcha.storage.GeneralTests#testStorageSize",
+        "com.salesforce.pixelcaptcha.storage.TestIllegalArguments#[0] 0, 3600 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.storage.TestIllegalArguments#[1] 0, 3600 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.storage.TestIllegalArguments#[2] -1, 3600 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.storage.TestIllegalArguments#[3] 10, 3601 (testInvalidValuesForSizeAndTimeoutThrowExceptions)",
+        "com.salesforce.pixelcaptcha.storage.TestTimeout#testStorageTimeOut",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConstructCodePointArrayFomMinMaxValuesMaxLessThanMin",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConstructCodePointArrayFomMinMaxValuesNegativeMinThrowsException",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConstructCodePointArrayFomMinMaxValuesOneToTen",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConvertCodePointsToSortedIntArrayNoDuplicates",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConvertCodePointsToSortedIntArrayNoDuplicatesBothNull",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConvertCodePointsToSortedIntArrayNoDuplicatesFirstBlankSecondNull",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConvertIntegerListToIntArray",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testConvertStringToIntOrDefault",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testShuffleIntArrayWithEmptyArray",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testShuffleIntArrayWithNullArray",
+        "com.salesforce.pixelcaptcha.utils.HelperTest#testValidateCodePointValues",
+        "com.salesforce.pixelcaptcha.utils.PrintableCharFinderTest#testGetInstance",
+        "com.salesforce.pixelcaptcha.utils.PrintableCharFinderTest#testIsPrintableChar",
+        "com.salesforce.pixelcaptcha.utils.RandomFontFactoryTest#testEnforceCheckFontSize",
+        "com.salesforce.pixelcaptcha.utils.RandomFontFactoryTest#testEnforceMaxFontSize",
+        "com.salesforce.pixelcaptcha.utils.RandomFontFactoryTest#testEnforceMinFontSize",
+        "com.salesforce.pixelcaptcha.utils.RandomFontFactoryTest#testGetRandomFont",
+        "com.salesforce.pixelcaptcha.utils.RandomFontFactoryTest#testRandomFontIsNotNull",
+        "com.salesforce.pixelcaptcha.utils.RandomFontFactoryTest#testUnmodifiableFONTS",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetFirstVChallengePointFromTopInRegionThreeChallenges",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetHChallengePointWrtPercentageSizeOfReferenceFont",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetRandomPoint",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetRandomPointWithDistance",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetRandomPointWithDistanceLargeDistance",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetRandomPointWithDistanceShortDistance10001Points",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetRandomPointWithDistanceShortDistance9999Points",
+        "com.salesforce.pixelcaptcha.utils.RandomPointFactoryTest#testGetVChallengePointWrtPercentageSizeOfReferenceFont",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testCodePointsWithinMinMax",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testGetOneCharStringFontArgument",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testGetOneCharStringNoArgs",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testGetStringFontArgument",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testGetStringMoreThanMaxLengthThrowsExceptionNoFont",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testGetStringNoFont",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testGetStringZeroLengthThrowsExceptionNoFont",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testWithNullArray",
+        "com.salesforce.pixelcaptcha.utils.impl.RandomUnicodeStringFactoryImplTest#testWithZeroLengthArray"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 3.3,
+        "module_test": [
+          5.3,
+          5.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023052-bmiz/base",
+      "compiled_snapshot": "work/20261118-023052-bmiz/snapshot-57a7b165",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "pixel-captcha",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.salesforce.pixelcaptcha.utils.RandomPointFactory",
+      "simple_name": "RandomPointFactory",
+      "package": "com.salesforce.pixelcaptcha.utils",
+      "kind": "class",
+      "cut_path": "pixel-captcha/src/main/java/com/salesforce/pixelcaptcha/utils/RandomPointFactory.java",
+      "source_sha256": "22b0b1cca58e445d2a6ddbc9f4cfc5afdb0b013f69f86c3cd6229aa93efc6848",
+      "generated_test_path": "pixel-captcha/src/test/java/com/salesforce/pixelcaptcha/utils/RandomPointFactory_ArrowTest.java",
+      "generated_test_fqn": "com.salesforce.pixelcaptcha.utils.RandomPointFactory_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.9,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 3.3,
+      "baseline": [
+        5.3,
+        5.4
+      ],
+      "total": 15.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,429 @@
+{
+  "run_id": "20261118-022502-mxr3",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-022502-mxr3",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 208.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 208.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "amazon-neptune-tools",
+        "url": "https://github.com/awslabs/amazon-neptune-tools",
+        "git_commit": "1bc7f13a337902937ea0e8f92212ca21a1058886",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "neptune-export",
+        "build_mode": "standalone",
+        "build_file": "neptune-export/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-csv",
+            "version": "1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.tinkerpop",
+            "artifact": "gremlin-driver",
+            "version": "3.4.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.tinkerpop",
+            "artifact": "gremlin-groovy",
+            "version": "3.4.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk-core",
+            "version": "1.11.648",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk-s3",
+            "version": "1.11.648",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk-neptune",
+            "version": "1.11.648",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk-kinesis",
+            "version": "1.11.648",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "amazon-kinesis-producer",
+            "version": "0.14.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-lambda-java-core",
+            "version": "1.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "amazon-neptune-sigv4-signer",
+            "version": "1.0.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "amazon-neptune-gremlin-java-sigv4",
+            "version": "1.0.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "amazon-neptune-sparql-java-sigv4",
+            "version": "1.0.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.rvesse",
+            "artifact": "airline",
+            "version": "2.6.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "[2.9.8,3.0)",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.dataformat",
+            "artifact": "jackson-dataformat-cbor",
+            "version": "2.10.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.codehaus.plexus",
+            "artifact": "plexus-utils",
+            "version": "3.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.eclipse.rdf4j",
+            "artifact": "rdf4j-repository-sparql",
+            "version": "3.3.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.eclipse.rdf4j",
+            "artifact": "rdf4j-rio-turtle",
+            "version": "3.3.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.eclipse.rdf4j",
+            "artifact": "rdf4j-rio-nquads",
+            "version": "3.3.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.8.0-beta2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.8.0-beta2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.8.0-beta2",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-all",
+            "version": "4.1.42.Final",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.25.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 104
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.1",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.25.0"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "neptune-export",
+        "module_root": "neptune-export",
+        "packages": [
+          "com.amazonaws.services.neptune.util",
+          "com.amazonaws.services.neptune",
+          "com.amazonaws.services.neptune.auth",
+          "com.amazonaws.services.neptune.cli",
+          "com.amazonaws.services.neptune.cluster",
+          "com.amazonaws.services.neptune.export",
+          "com.amazonaws.services.neptune.io",
+          "com.amazonaws.services.neptune.propertygraph",
+          "com.amazonaws.services.neptune.propertygraph.airline",
+          "com.amazonaws.services.neptune.propertygraph.io",
+          "com.amazonaws.services.neptune.propertygraph.metadata",
+          "com.amazonaws.services.neptune.rdf",
+          "com.amazonaws.services.neptune.rdf.io",
+          "org.apache.tinkerpop.gremlin.driver"
+        ]
+      },
+      "paths": {
+        "source_root": "neptune-export/src/main/java",
+        "test_root": "neptune-export/src/test/java",
+        "cut_path": "neptune-export/src/main/java/com/amazonaws/services/neptune/util/S3ObjectInfo.java",
+        "generated_test_path": "neptune-export/src/test/java/com/amazonaws/services/neptune/util/S3ObjectInfo_ArrowTest.java",
+        "generated_test_fqn": "com.amazonaws.services.neptune.util.S3ObjectInfo_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.amazonaws.services.neptune.util.S3ObjectInfo",
+        "simple_name": "S3ObjectInfo",
+        "package": "com.amazonaws.services.neptune.util",
+        "kind": "class",
+        "source_sha256": "00fa0be02e91ced37e7e8978a47169847125cb3a44a4f0e0556f6dbc70f40523"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "neptune-export",
+      "passing_in_all_runs": [
+        "com.amazonaws.services.neptune.export.ArgsTest#shouldAddOption",
+        "com.amazonaws.services.neptune.export.ArgsTest#shouldFormatAsString",
+        "com.amazonaws.services.neptune.export.ArgsTest#shouldRemoveFlags",
+        "com.amazonaws.services.neptune.export.ArgsTest#shouldRemoveMultipleOccurrencesOfOption",
+        "com.amazonaws.services.neptune.export.ArgsTest#shouldRemoveOptions",
+        "com.amazonaws.services.neptune.propertygraph.RangeFactoryTest#shouldCalculateRangesStartingFromSkipNumber",
+        "com.amazonaws.services.neptune.propertygraph.RangeFactoryTest#shouldIndicateThatItIsExhausted",
+        "com.amazonaws.services.neptune.propertygraph.RangeFactoryTest#shouldLeaveLastRangeOpenIfNoUpperLimit",
+        "com.amazonaws.services.neptune.propertygraph.RangeFactoryTest#shouldReturnConsecutiveRanges",
+        "com.amazonaws.services.neptune.propertygraph.RangeFactoryTest#shouldReturnSingleRangeForAllIfRangeSizeIsMinusOne",
+        "com.amazonaws.services.neptune.propertygraph.RangeTest#shouldIndicateIfEmpty",
+        "com.amazonaws.services.neptune.propertygraph.RangeTest#shouldIndicateIfSizeBiggerThanSuupliedValue",
+        "com.amazonaws.services.neptune.propertygraph.RangeTest#shouldIndicateThatRangeCoversAll",
+        "com.amazonaws.services.neptune.propertygraph.io.JsonPropertyGraphPrinterTest#shouldPrintEdge",
+        "com.amazonaws.services.neptune.propertygraph.metadata.DataTypeTest#emptyStringDateValueShouldReturnEmptyString",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canAppendAltSuffixIfNoPlaceholder",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canAppendSuffixIfNoPlaceholder",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canCreateDownloadFileForKeyWithTrailingSlash",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canCreateDownloadFileForKeyWithoutTrailingSlash",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canCreateNewInfoForKeyWithoutTrailingSlash",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canCreateNewKeyForKeyWithTrailingSlash",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canParseBucketFromURI",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canParseKeyWithTrainlingSlashFromURI",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canParseKeyWithoutTrailingSlashFromURI",
+        "com.amazonaws.services.neptune.util.S3ObjectInfoTest#canReplacePlaceholderInKey"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 194.1,
+        "module_test": [
+          9.5,
+          3.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022502-mxr3/base",
+      "compiled_snapshot": "work/20261118-022502-mxr3/snapshot-6a90970b",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "neptune-export",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.amazonaws.services.neptune.util.S3ObjectInfo",
+      "simple_name": "S3ObjectInfo",
+      "package": "com.amazonaws.services.neptune.util",
+      "kind": "class",
+      "cut_path": "neptune-export/src/main/java/com/amazonaws/services/neptune/util/S3ObjectInfo.java",
+      "source_sha256": "00fa0be02e91ced37e7e8978a47169847125cb3a44a4f0e0556f6dbc70f40523",
+      "generated_test_path": "neptune-export/src/test/java/com/amazonaws/services/neptune/util/S3ObjectInfo_ArrowTest.java",
+      "generated_test_fqn": "com.amazonaws.services.neptune.util.S3ObjectInfo_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 194.1,
+      "baseline": [
+        9.5,
+        3.3
+      ],
+      "total": 208.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}
