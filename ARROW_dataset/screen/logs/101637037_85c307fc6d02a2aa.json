@@ -1,0 +1,316 @@
+{
+  "run_id": "20261118-005839-v6j3",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-005839-v6j3",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 15.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 15.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "embedded-jms-junit",
+        "url": "https://github.com/zapodot/embedded-jms-junit",
+        "git_commit": "4334b08ef2e920b64476d956711c53d086c3a18c",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "embedded-jms-junit",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.activemq",
+            "artifact": "activemq-broker",
+            "version": "5.15.6",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "22.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.7.25",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.25",
+            "scope": "test"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-jms",
+            "version": "4.3.10.RELEASE",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.camel",
+            "artifact": "camel-test",
+            "version": "2.22.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.activemq",
+            "artifact": "activemq-camel",
+            "version": "5.15.6",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 40
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "embedded-jms-junit",
+          "embedded-jms-junit5"
+        ],
+        "target_module": "embedded-jms-junit",
+        "module_root": "embedded-jms-junit",
+        "packages": [
+          "org.zapodot.junit.jms.impl",
+          "org.zapodot.junit.jms"
+        ]
+      },
+      "paths": {
+        "source_root": "embedded-jms-junit/src/main/java",
+        "test_root": "embedded-jms-junit/src/test/java",
+        "cut_path": "embedded-jms-junit/src/main/java/org/zapodot/junit/jms/impl/EmbeddedJmsRuleImpl.java",
+        "generated_test_path": "embedded-jms-junit/src/test/java/org/zapodot/junit/jms/impl/EmbeddedJmsRuleImpl_ArrowTest.java",
+        "generated_test_fqn": "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImpl_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImpl",
+        "simple_name": "EmbeddedJmsRuleImpl",
+        "package": "org.zapodot.junit.jms.impl",
+        "kind": "class",
+        "source_sha256": "4082abbf65fb42e42a86bfc66468a520ae4e61d34e92f64f736690f63febd00e"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "embedded-jms-junit",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "embedded-jms-junit",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.zapodot.junit.jms.EmbeddedJmsRuleCamelTest#sendAndReceiveUsingCamel",
+        "org.zapodot.junit.jms.EmbeddedJmsRuleMarshalEnabledTest#sendAndReceiveUsingWireFormat",
+        "org.zapodot.junit.jms.EmbeddedJmsRuleSpringJmsTest#jmsOperation",
+        "org.zapodot.junit.jms.EmbeddedJmsRuleStandardSetupTest#connectAndSendAndReceive",
+        "org.zapodot.junit.jms.EmbeddedJmsRuleStandardSetupTest#connectionFactory",
+        "org.zapodot.junit.jms.EmbeddedJmsRuleStandardSetupTest#usingUri",
+        "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImplTest#activeMqConnectionFactory",
+        "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImplTest#brokerUri",
+        "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImplTest#connectionFactory"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 6.6,
+        "module_test": [
+          4.1,
+          3.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005839-v6j3/base",
+      "compiled_snapshot": "work/20261118-005839-v6j3/snapshot-39a061a5",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "embedded-jms-junit",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImpl",
+      "simple_name": "EmbeddedJmsRuleImpl",
+      "package": "org.zapodot.junit.jms.impl",
+      "kind": "class",
+      "cut_path": "embedded-jms-junit/src/main/java/org/zapodot/junit/jms/impl/EmbeddedJmsRuleImpl.java",
+      "source_sha256": "4082abbf65fb42e42a86bfc66468a520ae4e61d34e92f64f736690f63febd00e",
+      "generated_test_path": "embedded-jms-junit/src/test/java/org/zapodot/junit/jms/impl/EmbeddedJmsRuleImpl_ArrowTest.java",
+      "generated_test_fqn": "org.zapodot.junit.jms.impl.EmbeddedJmsRuleImpl_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 1.3,
+      "compile": 6.6,
+      "baseline": [
+        4.1,
+        3.7
+      ],
+      "total": 15.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,602 @@
+{
+  "run_id": "20261118-022406-cw5n",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-022406-cw5n",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 103.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 103.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "har-replay",
+        "url": "https://github.com/mike10004/har-replay",
+        "git_commit": "5eb2cf2099fcae3c8ed8b9c2a1ff444ee3a64a12",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "virtual-har-server",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.browserup",
+            "artifact": "browserup-proxy-core",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.browserup",
+            "artifact": "browserup-proxy-mitm",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "xyz.rogfam",
+            "artifact": "littleproxy",
+            "version": "2.0.0-beta-5",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-text",
+            "version": "1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "de.sstoehr",
+            "artifact": "har-reader",
+            "version": "2.1.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.brotli",
+            "artifact": "dec",
+            "version": "0.1.2",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-validator",
+            "artifact": "commons-validator",
+            "version": "1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "28.1-jre",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.1",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "com.github.mike10004",
+            "artifact": "har-replay-test-support",
+            "version": "0.32-SNAPSHOT",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.5",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.8.2",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.mike10004",
+            "artifact": "sample-image-generator",
+            "version": "0.3",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.mike10004",
+            "artifact": "native-helper",
+            "version": "10.0.0",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.mike10004",
+            "artifact": "subprocess",
+            "version": "0.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.seleniumhq.selenium",
+            "artifact": "selenium-support",
+            "version": "3.141.59",
+            "scope": "test"
+          },
+          {
+            "group": "org.seleniumhq.selenium",
+            "artifact": "selenium-chrome-driver",
+            "version": "3.141.59",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.mike10004",
+            "artifact": "xvfb-testing",
+            "version": "0.19",
+            "scope": "test"
+          },
+          {
+            "group": "io.github.bonigarcia",
+            "artifact": "webdrivermanager",
+            "version": "3.7.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.easymock",
+            "artifact": "easymock",
+            "version": "3.5.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.opencsv",
+            "artifact": "opencsv",
+            "version": "4.6",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.mike10004",
+            "artifact": "nanohttpd-server",
+            "version": "0.14",
+            "scope": "test"
+          },
+          {
+            "group": "com.jayway.jsonpath",
+            "artifact": "json-path",
+            "version": "2.4.0",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.mike10004",
+            "artifact": "selenium-capture",
+            "version": "0.56",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 79
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.easymock:easymock:3.5.1"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "virtual-har-server",
+          "har-replay-core",
+          "har-replay-exec",
+          "har-replay-test-support",
+          "har-replay-vhs",
+          "har-replay-dist"
+        ],
+        "target_module": "virtual-har-server",
+        "module_root": "virtual-har-server",
+        "packages": [
+          "io.github.mike10004.vhs.harbridge",
+          "io.github.mike10004.vhs",
+          "io.github.mike10004.vhs.harbridge.sstoehr",
+          "io.github.mike10004.vhs.bmp",
+          "io.github.mike10004.vhs.repackaged.org.apache.http",
+          "io.github.mike10004.vhs.repackaged.org.apache.http.client.utils",
+          "io.github.mike10004.vhs.repackaged.org.apache.http.message",
+          "io.github.mike10004.vhs.repackaged.org.apache.http.util"
+        ]
+      },
+      "paths": {
+        "source_root": "virtual-har-server/src/main/java",
+        "test_root": "virtual-har-server/src/test/java",
+        "cut_path": "virtual-har-server/src/main/java/io/github/mike10004/vhs/harbridge/Hars.java",
+        "generated_test_path": "virtual-har-server/src/test/java/io/github/mike10004/vhs/harbridge/Hars_ArrowTest.java",
+        "generated_test_fqn": "io.github.mike10004.vhs.harbridge.Hars_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.github.mike10004.vhs.harbridge.Hars",
+        "simple_name": "Hars",
+        "package": "io.github.mike10004.vhs.harbridge",
+        "kind": "class",
+        "source_sha256": "c127cd18ae32ade0b8ce2d424a73965cffc87b4c3a3efa658ab7da04b5638a80"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "virtual-har-server",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "virtual-har-server",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "io.github.mike10004.harreplay.CommonDeserializerTest#exercise[0]",
+        "io.github.mike10004.harreplay.CommonDeserializerTest#exercise[1]",
+        "io.github.mike10004.harreplay.CommonDeserializerTest#exercise[2]",
+        "io.github.mike10004.harreplay.CommonDeserializerTest#exercise[3]",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#create",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#customDeserializedValuesInList",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#deserializeEmptyList",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#deserializeField_annotation",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#deserializeField_unannotated",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#deserializeImmutableList",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#nestedList_deserialize",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#nestedList_serialize",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#writeList",
+        "io.github.mike10004.harreplay.ImmutableListTypeAdapterFactoryTest#writeStringListHolder_empty",
+        "io.github.mike10004.harreplay.ReplayServerConfig_DeserializationTest#basic",
+        "io.github.mike10004.harreplay.ReplayServerConfig_DeserializationTest#empty",
+        "io.github.mike10004.harreplay.ReplayServerConfig_DeserializationTest#removeHeader",
+        "io.github.mike10004.harreplay.ReplayServerConfig_MappingPathTest#mappingPathResolution",
+        "io.github.mike10004.harreplay.ReplayServerConfig_MappingPathTest#mappingPathResolution_absolutePathSpecified",
+        "io.github.mike10004.harreplay.ReplayServerConfig_ResponseHeaderTransformTest#StringLiteral_isMatchingHeaderName",
+        "io.github.mike10004.harreplay.ReplayServerConfig_ResponseHeaderTransformTest#StringLiteral_transformHeaderName_always",
+        "io.github.mike10004.harreplay.ReplayServerConfig_ResponseHeaderTransformTest#StringLiteral_transformHeaderName_regex",
+        "io.github.mike10004.harreplay.tests.HarExploderTest#explode",
+        "io.github.mike10004.harreplay.tests.TestsTest#fetchWithNoAcceptEncodingRequestHeader",
+        "io.github.mike10004.harreplay.tests.TestsTest#findOpenPort",
+        "io.github.mike10004.harreplay.tests.TrickySiteTest#decodeFavicon",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_bothEmpty_contentTypeAbsent",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_bothEmpty_contentTypeDifferent",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_bothEmpty_contentTypeFormData",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_bothEmpty_contentTypeOctetStream",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_formData_slightlyNotEqual",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_formData_totallyNotEqual",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_formData_veryNotEqual",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_formDatas_reordered",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_formDatas_sameOrder",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_octetStreams_no",
+        "io.github.mike10004.vhs.BasicHeuristicTest$BodyComparisonTest#isSameBody_octetStreams_yes",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateAboveDefaultThresholdTest#rate_aboveDefaultThreshold[0]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateAboveDefaultThresholdTest#rate_aboveDefaultThreshold[1]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateAboveDefaultThresholdTest#rate_aboveDefaultThreshold[2]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateAboveDefaultThresholdTest#rate_aboveDefaultThreshold[3]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateAboveDefaultThresholdTest#rate_aboveDefaultThreshold[4]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[0]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[1]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[2]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[3]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[4]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[5]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[6]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$RateZeroTest#rate_zero[7]",
+        "io.github.mike10004.vhs.BasicHeuristicTest$SmokeTest#comparingEnums",
+        "io.github.mike10004.vhs.BasicHeuristicTest$TolerateDifferentSchemeTest#tolerateHttpInsteadOfHttps",
+        "io.github.mike10004.vhs.BasicHeuristicTest$TolerateDifferentSchemeTest#tolerateHttpsInsteadOfHttp",
+        "io.github.mike10004.vhs.BasicHeuristicTest$UrlsWithDifferentQueriesTest#urlWithQueryString[0]",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#constructRespondable_replaceContentLengthHeaderValue",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#parseConnectRequest",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#parseGetRequest",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#parseUrl_normal",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#parseUrl_strangeConnectUrl",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#replaceContentLengthHeaderValue_removeMultiple",
+        "io.github.mike10004.vhs.HarBridgeEntryParserTest#replaceHeaderValue_noReplacementIfSameValue",
+        "io.github.mike10004.vhs.HeuristicEntryMatcherTest#findTopEntry",
+        "io.github.mike10004.vhs.HttpRequestsTest#parseQuery",
+        "io.github.mike10004.vhs.HttpRequestsTest#parseQuery_paramWithEmptyNameIsIgnored",
+        "io.github.mike10004.vhs.HttpRequestsTest#parseQuery_paramWithNoAssignment",
+        "io.github.mike10004.vhs.StatefulHeuristicEntryMatcherTest#stateful",
+        "io.github.mike10004.vhs.StatefulHeuristicEntryMatcherTest#stateless",
+        "io.github.mike10004.vhs.bmp.BrEncodedResponseTest#seeBrEncodedResponse_jre",
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerTest#basicTest",
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerTest#httpsTest",
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerTest#httpsWithoutCustomTlsEndpointFails",
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerTest#https_rejectUpstreamBadCertificate",
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerTest#unspecifiedEncoding",
+        "io.github.mike10004.vhs.bmp.JreKeystoreGeneratorTest#asciiBytesToChars",
+        "io.github.mike10004.vhs.bmp.KeystoreDataSerializerTest#serialize",
+        "io.github.mike10004.vhs.bmp.KeystoreTypeTest#loadKeyStore",
+        "io.github.mike10004.vhs.bmp.NanohttpdTlsEndpointFactoryTest#createTrustSource",
+        "io.github.mike10004.vhs.bmp.NettyMultipartFormDataParserTest#decode",
+        "io.github.mike10004.vhs.bmp.RealHarFileParsingTest#parseRealHarEntry",
+        "io.github.mike10004.vhs.bmp.RealHarFileParsingTest#testParseRequestWithPostData",
+        "io.github.mike10004.vhs.bmp.RequestCaptureTest#freeze",
+        "io.github.mike10004.vhs.bmp.RequestCaptureTest#queryStringToMultimapOfOptionals",
+        "io.github.mike10004.vhs.bmp.ResponseManufacturingFilterTest#captureRequest",
+        "io.github.mike10004.vhs.bmp.ResponseManufacturingFilterTest#captureRequest_https",
+        "io.github.mike10004.vhs.bmp.ResponseManufacturingFilterTest#isDefaultPortForScheme",
+        "io.github.mike10004.vhs.bmp.ResponseManufacturingFilterTest#reconstructUrlFromFullUrlAndHostHeader",
+        "io.github.mike10004.vhs.bmp.SstoehrEntryParserTest#create",
+        "io.github.mike10004.vhs.harbridge.Base64ByteSourceTest#size",
+        "io.github.mike10004.vhs.harbridge.ContentDispositionTest#parse",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[0]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[10]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[11]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[12]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[13]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[14]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[15]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[16]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[17]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[18]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[19]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[1]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[20]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[21]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[22]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[23]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[24]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[25]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[2]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[3]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[4]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[5]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[6]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[7]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[8]",
+        "io.github.mike10004.vhs.harbridge.ContentTypesTest#isTextLike[9]",
+        "io.github.mike10004.vhs.harbridge.HarResponseDataTransformerTest#filterHeaders",
+        "io.github.mike10004.vhs.harbridge.HarResponseDataTransformerTest#replaceContentType",
+        "io.github.mike10004.vhs.harbridge.HarResponseDataTransformerTest#replaceMultipleHeaders",
+        "io.github.mike10004.vhs.harbridge.HarsTest#adjustCharset",
+        "io.github.mike10004.vhs.harbridge.HarsTest#complicatedTextEncodingIssue",
+        "io.github.mike10004.vhs.harbridge.HarsTest#getRequestPostData",
+        "io.github.mike10004.vhs.harbridge.HarsTest#getUncompressedContent",
+        "io.github.mike10004.vhs.harbridge.HarsTest#getUncompressedContent_brotliEncodedTextInBase64",
+        "io.github.mike10004.vhs.harbridge.HarsTest#getUncompressedContent_brotliEncodedTextInText",
+        "io.github.mike10004.vhs.harbridge.HarsTest#sizeOfBase64DecodedByteSourceIsKnown",
+        "io.github.mike10004.vhs.harbridge.HarsTest#testGzippedHtml",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[0]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[10]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[11]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[12]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[1]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[2]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[3]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[4]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[5]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[6]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[7]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[8]",
+        "io.github.mike10004.vhs.harbridge.Hars_isBase64Test#isBase64Encoded[9]",
+        "io.github.mike10004.vhs.harbridge.HttpContentCodecImplTest#compressAndDecompress_byteArrays[0]",
+        "io.github.mike10004.vhs.harbridge.HttpContentCodecImplTest#compressAndDecompress_byteArrays[1]",
+        "io.github.mike10004.vhs.harbridge.HttpContentCodecImplTest#compressAndDecompress_byteArrays[2]",
+        "io.github.mike10004.vhs.harbridge.HttpContentCodecImplTest#compressAndDecompress_byteArrays[3]",
+        "io.github.mike10004.vhs.harbridge.LzwCompressorTest#compressAndDecompress",
+        "io.github.mike10004.vhs.harbridge.WrappingResponseEncodingTest#canServeOriginalResponseContentEncoding",
+        "io.github.mike10004.vhs.harbridge.WrappingResponseEncodingTest#modifyContentEncodingHeaderInBrotliEncodedResponse_brotliAccepted",
+        "io.github.mike10004.vhs.harbridge.WrappingResponseEncodingTest#modifyContentEncodingHeaderInBrotliEncodedResponse_noAcceptEncodingHeader",
+        "io.github.mike10004.vhs.harbridge.WrappingResponseEncodingTest#testResponseEncodedButAcceptEncodingDisallows",
+        "io.github.mike10004.vhs.harbridge.ZlibCompressorTest#compressAndDecompress",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getContentType_absent",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getRequestData",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getRequestHeaders",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getRequestMethod",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getRequestPostData",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getRequestPostData_params",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getRequestUrl",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getResponseBody_addExMachinaCharsetToContentTypeHeader",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getResponseData",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getResponseData_contentTypeExMachina",
+        "io.github.mike10004.vhs.harbridge.sstoehr.SstoehrHarBridgeTest#getResponseStatus",
+        "io.github.mike10004.vhs.repackaged.org.apache.http.NameValuePairImplTest#equals",
+        "io.github.mike10004.vhs.repackaged.org.apache.http.NameValuePairImplTest#equals_not",
+        "io.github.mike10004.vhs.repackaged.org.apache.http.NameValuePairImplTest#equals_otherImpl",
+        "io.github.mike10004.vhs.repackaged.org.apache.http.client.utils.URLEncodedUtilsTest#parse_string",
+        "io.github.mike10004.vhs.testsupport.NanohttpdFormDataParserTest#decode",
+        "io.github.mike10004.vhs.testsupport.VhsTestsTest#test_isStillAlive"
+      ],
+      "flaky": [
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerTest#httpsTest_pregeneratedMitmCertificate"
+      ],
+      "failing_in_all_runs": [
+        "io.github.mike10004.vhs.bmp.BrEncodedResponseTest#seeBrEncodedResponse_chrome",
+        "io.github.mike10004.vhs.bmp.BrowsermobVirtualHarServerBrowserTest#javascriptRedirect"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 23.3,
+        "module_test": [
+          40.5,
+          38.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022406-cw5n/base",
+      "compiled_snapshot": "work/20261118-022406-cw5n/snapshot-61c12960",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "virtual-har-server",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.github.mike10004.vhs.harbridge.Hars",
+      "simple_name": "Hars",
+      "package": "io.github.mike10004.vhs.harbridge",
+      "kind": "class",
+      "cut_path": "virtual-har-server/src/main/java/io/github/mike10004/vhs/harbridge/Hars.java",
+      "source_sha256": "c127cd18ae32ade0b8ce2d424a73965cffc87b4c3a3efa658ab7da04b5638a80",
+      "generated_test_path": "virtual-har-server/src/test/java/io/github/mike10004/vhs/harbridge/Hars_ArrowTest.java",
+      "generated_test_fqn": "io.github.mike10004.vhs.harbridge.Hars_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.7,
+      "locate": 0.2,
+      "plan": 1.4,
+      "compile": 23.3,
+      "baseline": [
+        40.5,
+        38.4
+      ],
+      "total": 103.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

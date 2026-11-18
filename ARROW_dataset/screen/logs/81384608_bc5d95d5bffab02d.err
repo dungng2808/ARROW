@@ -1,0 +1,6 @@
+[>] Tải https://github.com/Teradata/kylo
+[>] Liệt kê class
+[>] Build root . (reactor)
+[X] B1_BUILD_TOOL_MISSING: Maven của máy (/opt/homebrew/bin/mvn) không chạy được: Initial heap size set to a larger value than the maximum heap size
+[X] B1_BUILD_TOOL_MISSING · Maven của máy (/opt/homebrew/bin/mvn) không chạy được: Initial heap size set to a larger value than the maximum heap size
+  → Cách sửa: Cài Maven hoặc Gradle, hoặc chạy "arrow setup".

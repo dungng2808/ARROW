@@ -1,0 +1,396 @@
+{
+  "run_id": "20261118-022857-7kyo",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-022857-7kyo",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 88.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 88.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "vertx-jersey",
+        "url": "https://github.com/ef-labs/vertx-jersey",
+        "git_commit": "4b3d4e2dfe07b2f2ba735f89c02a446cab99945f",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "vertx-jersey",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/*Test*.java"
+        ],
+        "test_excludes": [
+          "**/integration/**"
+        ]
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-apex",
+            "version": "3.0.0-milestone2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jersey.core",
+            "artifact": "jersey-server",
+            "version": "2.15",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.inject",
+            "artifact": "guice",
+            "version": "3.0",
+            "scope": "provided"
+          },
+          {
+            "group": "com.google.inject.extensions",
+            "artifact": "guice-multibindings",
+            "version": "3.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.glassfish.hk2",
+            "artifact": "guice-bridge",
+            "version": "2.3.0",
+            "scope": "provided"
+          },
+          {
+            "group": "com.englishtown",
+            "artifact": "when.java",
+            "version": "3.0.1",
+            "scope": "provided"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-core",
+            "version": "3.0.0-milestone2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-core",
+            "version": "3.0.0-milestone2",
+            "scope": "test"
+          },
+          {
+            "group": "com.englishtown.vertx",
+            "artifact": "vertx-hk2",
+            "version": "2.0.0-RC1",
+            "scope": "test"
+          },
+          {
+            "group": "org.glassfish.jersey.media",
+            "artifact": "jersey-media-json-jackson",
+            "version": "2.15",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.10.8",
+            "scope": "test"
+          },
+          {
+            "group": "com.englishtown",
+            "artifact": "when.java-testtools",
+            "version": "3.0.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.englishtown.vertx",
+            "artifact": "vertx-when",
+            "version": "4.0.0-RC1",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 64
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.8"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "vertx-jersey",
+          "vertx-jersey-metrics",
+          "examples",
+          "examples/chunked",
+          "examples/filter",
+          "examples/inject-securitycontext",
+          "examples/inject-vertxrequesthandler",
+          "examples/inject-vertx",
+          "examples/jackson",
+          "examples/guice",
+          "examples/when.java"
+        ],
+        "target_module": "vertx-jersey",
+        "module_root": "vertx-jersey",
+        "packages": [
+          "com.englishtown.vertx.guice",
+          "com.englishtown.vertx.hk2",
+          "com.englishtown.vertx.jersey",
+          "com.englishtown.vertx.jersey.impl",
+          "com.englishtown.vertx.jersey.inject",
+          "com.englishtown.vertx.jersey.inject.impl",
+          "com.englishtown.vertx.jersey.promises",
+          "com.englishtown.vertx.jersey.promises.impl",
+          "com.englishtown.vertx.jersey.security"
+        ]
+      },
+      "paths": {
+        "source_root": "vertx-jersey/src/main/java",
+        "test_root": "vertx-jersey/src/test/java",
+        "cut_path": "vertx-jersey/src/main/java/com/englishtown/vertx/guice/BootstrapBinder.java",
+        "generated_test_path": "vertx-jersey/src/test/java/com/englishtown/vertx/guice/BootstrapBinder_ArrowTest.java",
+        "generated_test_fqn": "com.englishtown.vertx.guice.BootstrapBinder_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.englishtown.vertx.guice.BootstrapBinder",
+        "simple_name": "BootstrapBinder",
+        "package": "com.englishtown.vertx.guice",
+        "kind": "class",
+        "source_sha256": "e11f2b2ab5940806b27d5e639d8633917251168a0d1df0a831031f4a1de74f63"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "vertx-jersey",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "vertx-jersey",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.englishtown.vertx.guice.BootstrapBinderTest#testConfigure",
+        "com.englishtown.vertx.guice.GuiceJerseyBinderTest#testConfigure",
+        "com.englishtown.vertx.guice.GuiceJerseyBinderTest#testProviders",
+        "com.englishtown.vertx.guice.GuiceJerseyServerTest#testInjectMultiBindings",
+        "com.englishtown.vertx.hk2.BootstrapBinderTest#testConfigure",
+        "com.englishtown.vertx.hk2.HK2JerseyBinderTest#testVertxPostResponseProcessorFactory",
+        "com.englishtown.vertx.hk2.HK2JerseyBinderTest#testVertxRequestProcessorFactory",
+        "com.englishtown.vertx.hk2.HK2JerseyBinderTest#testVertxResponseProcessorFactory",
+        "com.englishtown.vertx.jersey.JerseyVerticleTest#testStart",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyHandlerTest#testGetAbsoluteURI",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyHandlerTest#testGetBaseURI",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyHandlerTest#testHandle",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyHandlerTest#testHandle_JSON_POST",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyHandlerTest#testHandle_RequestProcessors",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyHandlerTest#testShouldReadData",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyOptionsTest#testGetApplicationHandler",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyOptionsTest#testGetBaseUri",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyOptionsTest#testGetMaxBodySize",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyOptionsTest#testGetResourceConfig",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyOptionsTest#testGetResourceConfig_Missing_Resources",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyOptionsTest#testInit_No_Config",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testGetHandler",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testGetHttpServer",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testInit_Default_Config",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testInit_Listen_Result",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testInit_Route_Match_Handler",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testInit_With_Config",
+        "com.englishtown.vertx.jersey.impl.DefaultJerseyServerTest#testSetupHandler",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testCommit",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testEnableResponseBuffering",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testFailure",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testSetSuspendTimeout",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testSuspend",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testWrite",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testWriteResponseStatusAndHeaders",
+        "com.englishtown.vertx.jersey.impl.VertxResponseWriterTest#testWrite_Chunked",
+        "com.englishtown.vertx.jersey.inject.InternalVertxJerseyBinderTest#testConfigure",
+        "com.englishtown.vertx.jersey.inject.impl.VertxResponseWriterProviderTest#testGet",
+        "com.englishtown.vertx.jersey.promises.impl.DefaultWhenJerseyServerTest#testCreateServer_Fail",
+        "com.englishtown.vertx.jersey.promises.impl.DefaultWhenJerseyServerTest#testCreateServer_Success",
+        "com.englishtown.vertx.jersey.security.DefaultSecurityContextTest#testGetSecurityContext",
+        "com.englishtown.vertx.jersey.security.DefaultSecurityContextTest#testGetSecurityContext_Secure"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 78.5,
+        "module_test": [
+          3.5,
+          2.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022857-7kyo/base",
+      "compiled_snapshot": "work/20261118-022857-7kyo/snapshot-abb5496d",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "vertx-jersey",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.englishtown.vertx.guice.BootstrapBinder",
+      "simple_name": "BootstrapBinder",
+      "package": "com.englishtown.vertx.guice",
+      "kind": "class",
+      "cut_path": "vertx-jersey/src/main/java/com/englishtown/vertx/guice/BootstrapBinder.java",
+      "source_sha256": "e11f2b2ab5940806b27d5e639d8633917251168a0d1df0a831031f4a1de74f63",
+      "generated_test_path": "vertx-jersey/src/test/java/com/englishtown/vertx/guice/BootstrapBinder_ArrowTest.java",
+      "generated_test_fqn": "com.englishtown.vertx.guice.BootstrapBinder_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 4,
+      "compile": 78.5,
+      "baseline": [
+        3.5,
+        2.7
+      ],
+      "total": 88.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,423 @@
+{
+  "run_id": "20261118-010605-jsxj",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-010605-jsxj",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 57.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 57.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "domino-mvp",
+        "url": "https://github.com/DominoKit/domino-mvp",
+        "git_commit": "0ce143bca9f17482825d7e5fc5714ffa9f98b7c2",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "domino-service-discovery",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-service-discovery",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-web-client",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-service-proxy",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-codegen",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-service-proxy",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-jdbc-client",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-redis-client",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-mongo-client",
+            "version": "3.9.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "io.vertx",
+            "artifact": "vertx-unit",
+            "version": "3.9.0",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.7.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 36
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.7.0"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "domino-api-client",
+          "domino-gwt",
+          "domino-api-shared",
+          "domino-api-server",
+          "domino-plugins",
+          "domino-test",
+          "domino-apt",
+          "ssl-server-configurator",
+          "domino-service-discovery",
+          "domino-remote-logging",
+          "domino-desktop",
+          "domino-client-commons",
+          "domino-gwt-view",
+          "domino-log4j-server-logging",
+          "domino",
+          "domino-plugins/domino-resteasy-plugin",
+          "domino-test/domino-client-test",
+          "domino-test/domino-server-test",
+          "domino-test/apt-test",
+          "domino-apt/apt-client",
+          "domino-apt/apt-client-test",
+          "domino-apt/apt-server"
+        ],
+        "target_module": "domino-service-discovery",
+        "module_root": "domino-service-discovery",
+        "packages": [
+          "org.dominokit.domino.service.discovery",
+          "org.dominokit.domino.service.discovery.configuration",
+          "org.dominokit.domino.service.discovery.type"
+        ]
+      },
+      "paths": {
+        "source_root": "domino-service-discovery/src/main/java",
+        "test_root": "domino-service-discovery/src/test/java",
+        "cut_path": "domino-service-discovery/src/main/java/org/dominokit/domino/service/discovery/VertxServiceDiscovery.java",
+        "generated_test_path": "domino-service-discovery/src/test/java/org/dominokit/domino/service/discovery/VertxServiceDiscovery_ArrowTest.java",
+        "generated_test_fqn": "org.dominokit.domino.service.discovery.VertxServiceDiscovery_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.dominokit.domino.service.discovery.VertxServiceDiscovery",
+        "simple_name": "VertxServiceDiscovery",
+        "package": "org.dominokit.domino.service.discovery",
+        "kind": "class",
+        "source_sha256": "61eda1748af5a4caa6943d539c12075aa216a8112a6bc690c5f86f623bc1cc87"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "domino-service-discovery",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "domino-service-discovery",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupByJsonForARecordPassingNull_thenShouldGetTheRecord",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupByJsonForARecordWithAName_thenShouldGetARecordWithThatName",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForARecordIncludingOutOfServicePassingNullFilter_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForARecordIncludingOutOfService_thenShouldGetTheRecord",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForARecordMatchingPredicate_thenShouldGetTheRecord",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForARecordUnmatchingPredicate_thenShouldGetNullRecord",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForARecordWithNullFilter_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsByJsonPassingNull_thenShouldGetAllRecords",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsIncludingOutOfServicePassingNullFilter_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsIncludingOutOfService_thenShouldGetAllRecordsIncludingOutOfService",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsPassingNullFilter_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsWithMatchingPredicate_thenShouldGetAllRecordsMatching",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsWithNameByJson_thenShouldGetAllRecordsMatching",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenLookupForAllRecordsWithUnmatchingPredicate_thenShouldNotGetAnyRecord",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenPublishServiceAndLookupForItsServiceReference_thenShouldGetTheReference",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenPublishServiceWithMetadataAndLookupForItsServiceReferencePassingConfiguration_thenShouldGetTheReferenceUponTheseConfigurations",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRecord_thenTheRecordShouldBePublished",
+        "org.dominokit.domino.service.discovery.VertxServiceDiscoveryTest#givenServiceDiscovery_whenReleasingServiceObject_thenServiceDiscoveryShouldRemoveThisObjectFromBindings",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishEventBusServiceAndAskingForItsProxy_thenShouldGetTheService",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishEventBusServiceAndAskingForItsServiceProxyByJson_thenShouldGetTheService",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishEventBusServiceAndAskingForItsServiceProxy_thenShouldGetTheService",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithEmptyAddress_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithEmptyName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithMetadata_thenTheServiceShouldBePublishedWithThatMetadata",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithNullAddress_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithNullName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithNullServiceClass_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithOnlySpacesAddress_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusServiceWithOnlySpacesName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.EventBusServiceDiscoveryTest#givenServiceDiscovery_whenPublishingEventBusService_thenTheServiceShouldBePublished",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsHttpClientByFilterWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsHttpClientByFilter_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsHttpClientByJsonWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsHttpClientByJson_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsWebClientByFilterWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsWebClientByFilter_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsWebClientByJsonWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishHttpServiceAndAskingForItsWebClientByJson_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithConfigurations_thenShouldPublishHttpServiceMatchingTheseConfigurations",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithEmptyHost_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithEmptyName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithNullHost_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithNullName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithOnlySpacesHost_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpointWithOnlySpacesName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpoint_shouldReceiveThePublishedRecordOnTheHandler",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpoint_thenShouldPublishHttpServiceOnTheHostWithName",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenPublishingHttpEndpoint_thenShouldPublishHttpServiceWithDefaultConfigurations",
+        "org.dominokit.domino.service.discovery.type.HttpServiceDiscoveryTest#givenServiceDiscovery_whenUnPublishingHttpEndpoint_thenShouldBeUnPublished",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingJDBCDataSourceServiceWithEmptyName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingJDBCDataSourceServiceWithMetadata_thenTheServiceShouldBePublishedWithThatMetadata",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingJDBCDataSourceServiceWithNullName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingJDBCDataSourceServiceWithNullUrl_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingJDBCDataSourceServiceWithOnlySpacesName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingJDBCDataSourceService_thenTheServiceShouldBePublished",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceAndAskingForItsClientByJsonWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceAndAskingForItsClientByJson_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceAndAskingForItsClientWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.JDBCServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceAndAskingForItsClient_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceAndAskingForItsConsumerByJson_thenShouldGetTheConsumer",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceAndAskingForItsConsumer_thenShouldGetTheConsumer",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithEmptyAddress_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithEmptyName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithMessageType_thenServiceMustBePublishedWithThatType",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithMetadata_thenServiceMustBePublishedWithThatMetadata",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithNullAddress_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithNullName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithOnlySpacesAddress_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSourceWithOnlySpacesName_thenShouldThrowException",
+        "org.dominokit.domino.service.discovery.type.MessageSourceServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMessageSource_thenServiceMustBePublished",
+        "org.dominokit.domino.service.discovery.type.MongoServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMongoDataSourceServiceWithMetadata_thenTheServiceShouldBePublishedWithThatMetadata",
+        "org.dominokit.domino.service.discovery.type.MongoServiceDiscoveryTest#givenServiceDiscovery_whenPublishingMongoDataSourceService_thenTheServiceShouldBePublished",
+        "org.dominokit.domino.service.discovery.type.MongoServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataAndAskingForItsClientByJsonWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.MongoServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataAndAskingForItsClientByJson_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.MongoServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataSourceAndAskingForItsClient_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.RedisServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataAndAskingForItsClientByJsonWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.RedisServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataAndAskingForItsClientByJson_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.RedisServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataAndAskingForItsClientWithConfiguration_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.RedisServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataSourceAndAskingForItsClient_thenShouldGetTheClient",
+        "org.dominokit.domino.service.discovery.type.RedisServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataSourceServiceWithMetadata_thenTheServiceShouldBePublishedWithThatMetadata",
+        "org.dominokit.domino.service.discovery.type.RedisServiceDiscoveryTest#givenServiceDiscovery_whenPublishingRedisDataSourceService_thenTheServiceShouldBePublished"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 48.2,
+        "module_test": [
+          3.4,
+          3.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010605-jsxj/base",
+      "compiled_snapshot": "work/20261118-010605-jsxj/snapshot-92fc42aa",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "domino-service-discovery",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.dominokit.domino.service.discovery.VertxServiceDiscovery",
+      "simple_name": "VertxServiceDiscovery",
+      "package": "org.dominokit.domino.service.discovery",
+      "kind": "class",
+      "cut_path": "domino-service-discovery/src/main/java/org/dominokit/domino/service/discovery/VertxServiceDiscovery.java",
+      "source_sha256": "61eda1748af5a4caa6943d539c12075aa216a8112a6bc690c5f86f623bc1cc87",
+      "generated_test_path": "domino-service-discovery/src/test/java/org/dominokit/domino/service/discovery/VertxServiceDiscovery_ArrowTest.java",
+      "generated_test_fqn": "org.dominokit.domino.service.discovery.VertxServiceDiscovery_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2,
+      "locate": 0.2,
+      "plan": 2.3,
+      "compile": 48.2,
+      "baseline": [
+        3.4,
+        3.3
+      ],
+      "total": 57.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

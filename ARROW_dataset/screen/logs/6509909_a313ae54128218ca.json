@@ -1,0 +1,16 @@
+{
+  "run_id": "20261118-010316-v1jp",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-010316-v1jp",
+  "outcome": {
+    "outcome": "BLOCKED",
+    "code": "B1_CUT_AMBIGUOUS",
+    "message": "Có nhiều class tên HaikuReview: HaikuReview, HaikuReview",
+    "hint": "Dùng FQN, ví dụ com.acme.shop.OrderService.",
+    "first_error": null,
+    "log": null,
+    "seconds": 0
+  },
+  "analysis": null,
+  "suggestions": [],
+  "warnings": []
+}

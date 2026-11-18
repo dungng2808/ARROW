@@ -1,0 +1,287 @@
+{
+  "run_id": "20261118-021829-dxsr",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-021829-dxsr",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 19
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 19
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "CodeArts",
+        "url": "https://github.com/sevenTiny/CodeArts",
+        "git_commit": "f32cf6f6ce7038744ebcaa167862455258e26052",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "CodeArts.Java",
+        "build_mode": "reactor",
+        "build_file": "CodeArts.Java/pom.xml",
+        "reactor_module": "CodeArts.Arithmetic",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "jstl",
+            "artifact": "jstl",
+            "version": "1.2",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jetbrains",
+            "artifact": "annotations-java5",
+            "version": "RELEASE",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 5
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "CodeArts.Java/CodeArts.Topic",
+          "CodeArts.Java/CodeArts.DataStructure",
+          "CodeArts.Java/CodeArts.Arithmetic"
+        ],
+        "target_module": "CodeArts.Java/CodeArts.Arithmetic",
+        "module_root": "CodeArts.Java/CodeArts.Arithmetic",
+        "packages": [
+          "Sort",
+          "Search"
+        ]
+      },
+      "paths": {
+        "source_root": "CodeArts.Java/CodeArts.Arithmetic/src/main/java",
+        "test_root": "CodeArts.Java/CodeArts.Arithmetic/src/test/java",
+        "cut_path": "CodeArts.Java/CodeArts.Arithmetic/src/main/java/Sort/Insert.java",
+        "generated_test_path": "CodeArts.Java/CodeArts.Arithmetic/src/test/java/Sort/Insert_ArrowTest.java",
+        "generated_test_fqn": "Sort.Insert_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "Sort.Insert",
+        "simple_name": "Insert",
+        "package": "Sort",
+        "kind": "class",
+        "source_sha256": "a6228186d5500b46fb2af9617a29592fe2265c0068d375915f5851dfcca97d7b"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "CodeArts.Arithmetic",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "CodeArts.Arithmetic",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "CodeArts.Java",
+      "passing_in_all_runs": [
+        "Search.BinaryTest#test",
+        "Search.SequentialTest#test",
+        "Sort.BubblingTest#test",
+        "Sort.HeapTest#test",
+        "Sort.InsertTest#test",
+        "Sort.MergingTest#test",
+        "Sort.QuickTest#test",
+        "Sort.SelectTest#test",
+        "Sort.ShellTest#test"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 6.8,
+        "module_test": [
+          1.5,
+          1.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021829-dxsr/base",
+      "compiled_snapshot": "work/20261118-021829-dxsr/snapshot-0ef36d51",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "CodeArts.Java",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "CodeArts.Arithmetic",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "Sort.Insert",
+      "simple_name": "Insert",
+      "package": "Sort",
+      "kind": "class",
+      "cut_path": "CodeArts.Java/CodeArts.Arithmetic/src/main/java/Sort/Insert.java",
+      "source_sha256": "a6228186d5500b46fb2af9617a29592fe2265c0068d375915f5851dfcca97d7b",
+      "generated_test_path": "CodeArts.Java/CodeArts.Arithmetic/src/test/java/Sort/Insert_ArrowTest.java",
+      "generated_test_fqn": "Sort.Insert_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.1,
+      "plan": 9.2,
+      "compile": 6.8,
+      "baseline": [
+        1.5,
+        1.5
+      ],
+      "total": 19
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,387 @@
+{
+  "run_id": "20261118-022005-55fz",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-022005-55fz",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 119.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 119.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "JsonPath",
+        "url": "https://github.com/json-path/JsonPath",
+        "git_commit": "220f3299ac4e557e329306b6fcdf289fb87569ba",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "7.4.2",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "build.gradle",
+        "reactor_module": ":json-path-assert",
+        "build_root_source": "detected:reactor",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.jayway.jsonpath",
+            "artifact": "json-path",
+            "version": "2.10.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest",
+            "version": "2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "2.0.11",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "net.minidev",
+            "artifact": "json-smart",
+            "version": "2.5.0",
+            "scope": "test"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.15.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter",
+            "version": "5.10.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.25.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest",
+            "version": "2.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.glassfish",
+            "artifact": "jakarta.json",
+            "version": "2.0.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.eclipse",
+            "artifact": "yasson",
+            "version": "2.0.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "2.0.9",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.10.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.16.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.codehaus.jettison",
+            "artifact": "jettison",
+            "version": "1.5.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.json",
+            "artifact": "json",
+            "version": "20231013",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.tapestry",
+            "artifact": "tapestry-json",
+            "version": "5.8.3",
+            "scope": "test"
+          },
+          {
+            "group": "jakarta.json",
+            "artifact": "jakarta.json-api",
+            "version": "2.0.2",
+            "scope": "test"
+          },
+          {
+            "group": "jakarta.json.bind",
+            "artifact": "jakarta.json.bind-api",
+            "version": "2.0.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 29
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.10.1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest:2.2",
+          "org.assertj:assertj-core:3.25.1"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-engine (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "json-path",
+          "json-path-assert",
+          "json-path-web-test"
+        ],
+        "target_module": "json-path-assert",
+        "module_root": "json-path-assert",
+        "packages": [
+          "com.jayway.jsonpath.matchers",
+          "com.jayway.jsonassert",
+          "com.jayway.jsonassert.impl",
+          "com.jayway.jsonassert.impl.matcher"
+        ]
+      },
+      "paths": {
+        "source_root": "json-path-assert/src/main/java",
+        "test_root": "json-path-assert/src/test/java",
+        "cut_path": "json-path-assert/src/main/java/com/jayway/jsonpath/matchers/WithJsonPath.java",
+        "generated_test_path": "json-path-assert/src/test/java/com/jayway/jsonpath/matchers/WithJsonPath_ArrowTest.java",
+        "generated_test_fqn": "com.jayway.jsonpath.matchers.WithJsonPath_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.jayway.jsonpath.matchers.WithJsonPath",
+        "simple_name": "WithJsonPath",
+        "package": "com.jayway.jsonpath.matchers",
+        "kind": "class",
+        "source_sha256": "7ef9fd0d3b5174853abbf17b5d5966919764823091fc0eb89efc686e23599957"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/work/20261118-022005-55fz/block1-b1acfd54/arrow-info.gradle",
+          ":json-path-assert:testClasses",
+          ":json-path-assert:arrowClasspath"
+        ],
+        "module_test": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/work/20261118-022005-55fz/block1-b1acfd54/arrow-info.gradle",
+          ":json-path-assert:test",
+          "--continue"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.jayway.jsonassert.JsonAssertTest#a_document_can_be_expected_not_to_contain_a_path",
+        "com.jayway.jsonassert.JsonAssertTest#a_path_can_be_asserted_equal_to",
+        "com.jayway.jsonassert.JsonAssertTest#a_path_can_be_asserted_with_matcher",
+        "com.jayway.jsonassert.JsonAssertTest#a_value_can_asserted_to_be_null",
+        "com.jayway.jsonassert.JsonAssertTest#an_empty_collection",
+        "com.jayway.jsonassert.JsonAssertTest#assert_gears",
+        "com.jayway.jsonassert.JsonAssertTest#assert_that_invalid_path_is_thrown",
+        "com.jayway.jsonassert.JsonAssertTest#ends_with_evalueates",
+        "com.jayway.jsonassert.JsonAssertTest#failed_error_message",
+        "com.jayway.jsonassert.JsonAssertTest#has_path",
+        "com.jayway.jsonassert.JsonAssertTest#invalid_path",
+        "com.jayway.jsonassert.JsonAssertTest#links_document",
+        "com.jayway.jsonassert.JsonAssertTest#list_content_can_be_asserted_with_matcher",
+        "com.jayway.jsonassert.JsonAssertTest#list_content_can_be_asserted_with_nested_matcher",
+        "com.jayway.jsonassert.JsonAssertTest#map_content_can_be_asserted_with_matcher",
+        "com.jayway.jsonassert.JsonAssertTest#path_including_wildcard_path_followed_by_another_path_concatenates_results_to_list",
+        "com.jayway.jsonassert.JsonAssertTest#testAssertEqualsInteger",
+        "com.jayway.jsonassert.JsonAssertTest#testAssertEqualsIntegerInvalidExpected",
+        "com.jayway.jsonassert.JsonAssertTest#testAssertEqualsIntegerInvalidField",
+        "com.jayway.jsonassert.JsonAssertTest#testNotDefined",
+        "com.jayway.jsonpath.matchers.HasNoJsonPathTest#shouldBeDescriptive",
+        "com.jayway.jsonpath.matchers.HasNoJsonPathTest#shouldMatchMissingJsonPath",
+        "com.jayway.jsonpath.matchers.HasNoJsonPathTest#shouldNotMatchExistingJsonPath",
+        "com.jayway.jsonpath.matchers.HasNoJsonPathTest#shouldNotMatchExplicitNull",
+        "com.jayway.jsonpath.matchers.IsJsonFileTest#shouldBeDescriptive",
+        "com.jayway.jsonpath.matchers.IsJsonFileTest#shouldDescribeMismatchOfInvalidJson",
+        "com.jayway.jsonpath.matchers.IsJsonFileTest#shouldDescribeMismatchOfValidJson",
+        "com.jayway.jsonpath.matchers.IsJsonFileTest#shouldMatchJsonFileEvaluatedToTrue",
+        "com.jayway.jsonpath.matchers.IsJsonFileTest#shouldNotMatchInvalidJsonFile",
+        "com.jayway.jsonpath.matchers.IsJsonFileTest#shouldNotMatchJsonFileEvaluatedToFalse",
+        "com.jayway.jsonpath.matchers.IsJsonStringTest#shouldBeDescriptive",
+        "com.jayway.jsonpath.matchers.IsJsonStringTest#shouldDescribeMismatchOfInvalidJson",
+        "com.jayway.jsonpath.matchers.IsJsonStringTest#shouldDescribeMismatchOfValidJson",
+        "com.jayway.jsonpath.matchers.IsJsonStringTest#shouldMatchJsonStringEvaluatedToTrue",
+        "com.jayway.jsonpath.matchers.IsJsonStringTest#shouldNotMatchInvalidJsonString",
+        "com.jayway.jsonpath.matchers.IsJsonStringTest#shouldNotMatchJsonStringEvaluatedToFalse",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldBeDescriptive",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldDescribeMismatchOfInvalidJson",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldDescribeMismatchOfValidJson",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchJsonFileEvaluatedToTrue",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchJsonObjectEvaluatedToTrue",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchJsonStringEvaluatedToTrue",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchOnEmptyJsonArray",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchOnEmptyJsonObject",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchOnJsonArray",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchOnJsonObject",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldMatchValidJson",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldNotMatchInvalidJson",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldNotMatchJsonFileEvaluatedToFalse",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldNotMatchJsonObjectEvaluatedToFalse",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldNotMatchJsonStringEvaluatedToFalse",
+        "com.jayway.jsonpath.matchers.IsJsonTest#shouldNotMatchNonExistingJsonFile",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathOnFile",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathOnParsedJsonObject",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathOnReadContext",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToBooleanValue",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToDoubleValue",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToEmptyJsonArray",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToEmptyJsonObject",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToIntegerValue",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToJsonArray",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToJsonObject",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToNullValue",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldMatchJsonPathToStringValue",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldNotMatchInvalidJsonWithPath",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldNotMatchInvalidJsonWithPathAndValue",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldNotMatchJsonPathOnNonExistingFile",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#shouldNotMatchNonExistingJsonPath",
+        "com.jayway.jsonpath.matchers.JsonPathMatchersTest#willMatchIndefiniteJsonPathsEvaluatedToEmptyLists",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldBeDescriptive",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldDescribeMismatchOfEvaluation",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldDescribeMismatchOfPathNotFound",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldFailOnInvalidJsonPath",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldMatchExistingCompiledJsonPath",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldMatchExistingStringJsonPath",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldMatchJsonPathEvaluatedToCollectionValue",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldMatchJsonPathEvaluatedToDoubleValue",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldMatchJsonPathEvaluatedToIntegerValue",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldMatchJsonPathEvaluatedToStringValue",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldNotMatchNonExistingJsonPath",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldNotMatchNonExistingStringJsonPath",
+        "com.jayway.jsonpath.matchers.WithJsonPathTest#shouldNotMatchOnInvalidJson",
+        "com.jayway.jsonpath.matchers.WithoutJsonPathTest#shouldBeDescriptive",
+        "com.jayway.jsonpath.matchers.WithoutJsonPathTest#shouldMatchNonExistingJsonPath",
+        "com.jayway.jsonpath.matchers.WithoutJsonPathTest#shouldNotMatchExistingJsonPath"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 29.9,
+        "module_test": [
+          4.7,
+          4.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022005-55fz/base",
+      "compiled_snapshot": "work/20261118-022005-55fz/snapshot-b1acfd54",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "gradlew",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [],
+      "gradle_project": ":json-path-assert",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/work/20261118-022005-55fz/block1-b1acfd54/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "com.jayway.jsonpath.matchers.WithJsonPath",
+      "simple_name": "WithJsonPath",
+      "package": "com.jayway.jsonpath.matchers",
+      "kind": "class",
+      "cut_path": "json-path-assert/src/main/java/com/jayway/jsonpath/matchers/WithJsonPath.java",
+      "source_sha256": "7ef9fd0d3b5174853abbf17b5d5966919764823091fc0eb89efc686e23599957",
+      "generated_test_path": "json-path-assert/src/test/java/com/jayway/jsonpath/matchers/WithJsonPath_ArrowTest.java",
+      "generated_test_fqn": "com.jayway.jsonpath.matchers.WithJsonPath_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.2,
+      "plan": 80.5,
+      "compile": 29.9,
+      "baseline": [
+        4.7,
+        4.6
+      ],
+      "total": 119.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

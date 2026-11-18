@@ -1,0 +1,202 @@
+{
+  "run_id": "20261118-020838-22it",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-020838-22it",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 23.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 23.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "playing_with_projections",
+        "url": "https://github.com/michelgrootjans/playing_with_projections",
+        "git_commit": "0c63d43914634fae01f78ecc14d5fae5dd69d49d",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "2.4",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": "java",
+        "build_mode": "standalone",
+        "build_file": "java/build.gradle",
+        "reactor_module": ":",
+        "build_root_source": "detected:standalone",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.fasterxml.jackson.datatype",
+            "artifact": "jackson-datatype-jsr310",
+            "version": "2.8.5",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 6
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "java",
+        "module_root": "java",
+        "packages": [
+          "be.playing.with.projections.model.projections",
+          "be.playing.with.projections",
+          "be.playing.with.projections.model",
+          "be.playing.with.projections.infra"
+        ]
+      },
+      "paths": {
+        "source_root": "java/src/main/java",
+        "test_root": "java/src/test/java",
+        "cut_path": "java/src/main/java/be/playing/with/projections/model/projections/CountEventsProjection.java",
+        "generated_test_path": "java/src/test/java/be/playing/with/projections/model/projections/CountEventsProjection_ArrowTest.java",
+        "generated_test_fqn": "be.playing.with.projections.model.projections.CountEventsProjection_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "be.playing.with.projections.model.projections.CountEventsProjection",
+        "simple_name": "CountEventsProjection",
+        "package": "be.playing.with.projections.model.projections",
+        "kind": "class",
+        "source_sha256": "eeb4039a7637653275386f181b58fec2935910263669e64c167386a13291e3d3"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "java/gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/work/20261118-020838-22it/block1-38a0963a/arrow-info.gradle",
+          ":testClasses",
+          ":arrowClasspath"
+        ],
+        "module_test": [
+          "java/gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/work/20261118-020838-22it/block1-38a0963a/arrow-info.gradle",
+          ":test",
+          "--continue"
+        ]
+      },
+      "working_dir": "java",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 14.8,
+        "module_test": [
+          3.3,
+          3.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-020838-22it/base",
+      "compiled_snapshot": "work/20261118-020838-22it/snapshot-38a0963a",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "java/gradlew",
+      "executable_in_repo": true,
+      "build_root": "java",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": ":",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/work/20261118-020838-22it/block1-38a0963a/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "be.playing.with.projections.model.projections.CountEventsProjection",
+      "simple_name": "CountEventsProjection",
+      "package": "be.playing.with.projections.model.projections",
+      "kind": "class",
+      "cut_path": "java/src/main/java/be/playing/with/projections/model/projections/CountEventsProjection.java",
+      "source_sha256": "eeb4039a7637653275386f181b58fec2935910263669e64c167386a13291e3d3",
+      "generated_test_path": "java/src/test/java/be/playing/with/projections/model/projections/CountEventsProjection_ArrowTest.java",
+      "generated_test_fqn": "be.playing.with.projections.model.projections.CountEventsProjection_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+    ],
+    "timings": {
+      "checkout": 38,
+      "locate": 0.1,
+      "plan": 2.3,
+      "compile": 14.8,
+      "baseline": [
+        3.3,
+        3.2
+      ],
+      "total": 23.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+  ]
+}

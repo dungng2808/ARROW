@@ -1,0 +1,361 @@
+{
+  "run_id": "20261118-005657-pt5z",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-005657-pt5z",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 12.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 12.2
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "tracingplane-java",
+        "url": "https://github.com/tracingplane/tracingplane-java",
+        "git_commit": "fc9374009de29418b7ad60b64608f55ac3a495ea",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "atomlayer/core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "brown.tracingplane",
+            "artifact": "baggagecontext-api",
+            "version": "1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.10",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "19.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 5
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "baggagecontext",
+          "atomlayer",
+          "baggageprotocol",
+          "bdl",
+          "baggagecontext/api",
+          "baggagecontext/staticapi",
+          "baggagecontext/transitlayer",
+          "atomlayer/core",
+          "atomlayer/baggagecontext-impl",
+          "baggageprotocol/core",
+          "baggageprotocol/baggagecontext-impl",
+          "bdl/compiler",
+          "bdl/core",
+          "bdl/baggagecontext-impl"
+        ],
+        "target_module": "atomlayer/core",
+        "module_root": "atomlayer/core",
+        "packages": [
+          "brown.tracingplane.atomlayer"
+        ]
+      },
+      "paths": {
+        "source_root": "atomlayer/core/src/main/java",
+        "test_root": "atomlayer/core/src/test/java",
+        "cut_path": "atomlayer/core/src/main/java/brown/tracingplane/atomlayer/ByteBuffers.java",
+        "generated_test_path": "atomlayer/core/src/test/java/brown/tracingplane/atomlayer/ByteBuffers_ArrowTest.java",
+        "generated_test_fqn": "brown.tracingplane.atomlayer.ByteBuffers_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "brown.tracingplane.atomlayer.ByteBuffers",
+        "simple_name": "ByteBuffers",
+        "package": "brown.tracingplane.atomlayer",
+        "kind": "class",
+        "source_sha256": "01fe817dbaa139ae30e695d68f2130b5ef59aa01033ada429f62291fcb6f5b22"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "atomlayer/core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "atomlayer/core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "brown.tracingplane.atomlayer.TestByteBuffers#testCopyCorrect",
+        "brown.tracingplane.atomlayer.TestByteBuffers#testCopyInsufficientSpace",
+        "brown.tracingplane.atomlayer.TestByteBuffers#testCopyNulls",
+        "brown.tracingplane.atomlayer.TestByteBuffers#testCopyToAdvancesPositionOnlyInDest",
+        "brown.tracingplane.atomlayer.TestByteBuffers#testCopyWithPrefix",
+        "brown.tracingplane.atomlayer.TestMerge#testByteBufferListMergeDuplicates",
+        "brown.tracingplane.atomlayer.TestMerge#testByteBufferListMergeDuplicatesTricky",
+        "brown.tracingplane.atomlayer.TestMerge#testByteBufferListMergeUnion",
+        "brown.tracingplane.atomlayer.TestMerge#testByteBufferListMergeVariableLength",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testEmptyIterator",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testMergeDuplicates",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testMergeDuplicatesAndDifferentEndPoints",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testMergeIterator",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testMergeIterator2",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testMultipleEmptyIterators",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testMultipleEmptyIteratorsPlusOne",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testNoIterators",
+        "brown.tracingplane.atomlayer.TestMergeIterator#testOneIterator",
+        "brown.tracingplane.atomlayer.TestMergeTwoIterator#testEmptyIteratorPlusOne",
+        "brown.tracingplane.atomlayer.TestMergeTwoIterator#testMergeDuplicates",
+        "brown.tracingplane.atomlayer.TestMergeTwoIterator#testMergeIterator",
+        "brown.tracingplane.atomlayer.TestMergeTwoIterator#testMergeIterator2",
+        "brown.tracingplane.atomlayer.TestMergeTwoIterator#testMultipleEmptyIterators",
+        "brown.tracingplane.atomlayer.TestOverflowMarker#testMergeOverflowAtoms",
+        "brown.tracingplane.atomlayer.TestOverflowMarker#testSerializedOverflowMarker",
+        "brown.tracingplane.atomlayer.TestOverflowMarker#testTrimByteBuffer",
+        "brown.tracingplane.atomlayer.TestProtobufVarint#testVarintCorrect",
+        "brown.tracingplane.atomlayer.TestProtobufVarint#testVarintSize",
+        "brown.tracingplane.atomlayer.TestSerialization#testSerializeNulls",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeSigned32",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeSigned32_full",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeSigned64_full",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeUnsigned32",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeUnsigned32_full",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeUnsigned64",
+        "brown.tracingplane.atomlayer.TestSerializedSize#testSerializedSizeUnsigned64_full",
+        "brown.tracingplane.atomlayer.TestUnsignedByteBuffer#testJavaComparatorExists",
+        "brown.tracingplane.atomlayer.TestUnsignedByteBuffer#testUnsafeComparator",
+        "brown.tracingplane.atomlayer.TestUnsignedByteBuffer#testUnsafeComparatorExists",
+        "brown.tracingplane.atomlayer.TestUnsignedByteBuffer#testUnsafeComparatorWithLong",
+        "brown.tracingplane.atomlayer.TestUnsignedByteBuffer#testUnsafeComparatorWithLongAndRemaining",
+        "brown.tracingplane.atomlayer.TestXSignedVarint32#testEstimatedSize",
+        "brown.tracingplane.atomlayer.TestXSignedVarint32#testReverseSignedVarint32Comparison",
+        "brown.tracingplane.atomlayer.TestXSignedVarint32#testSignedVarint32Comparison",
+        "brown.tracingplane.atomlayer.TestXSignedVarint32#testXSignedVarInt32EncodeDecode",
+        "brown.tracingplane.atomlayer.TestXSignedVarint32#testXSignedVarint32Simple",
+        "brown.tracingplane.atomlayer.TestXSignedVarint32#testXSignedVarint32Simple2",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testEstimatedSize",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testReverseSignedVarint64",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testReverseSignedVarint64Comparison",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testSignedVarint64Comparison",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testXSignedVarInt64EncodeDecode",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testXSignedVarint64Simple",
+        "brown.tracingplane.atomlayer.TestXSignedVarint64#testXSignedVarint64Simple2",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testBigLexVarInt32",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testEstimatedSize",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testLexVarInt32",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testLexVarInt32_2",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testLexVarInt32_3",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testLexVarInt32_4",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testLexVarPrefixSize",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testReverseUnsignedVarint32Comparison",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testUnsignedVarint32Comparison",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint32#testWriteReadLexVarUInt32",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testEstimatedSize",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testLexVarPrefixSize",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testReadUint64",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testReverseUnsignedVarint64",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testReverseUnsignedVarint64Comparison",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testUnsignedVarint64Comparison",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testWriteLexVarUInt64",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testWriteLexVarUInt64_2",
+        "brown.tracingplane.atomlayer.TestXUnsignedVarint64#testWriteReadLexVarUInt64"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2,
+        "module_test": [
+          4.5,
+          4.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005657-pt5z/base",
+      "compiled_snapshot": "work/20261118-005657-pt5z/snapshot-f99b1404",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "atomlayer/core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "brown.tracingplane.atomlayer.ByteBuffers",
+      "simple_name": "ByteBuffers",
+      "package": "brown.tracingplane.atomlayer",
+      "kind": "class",
+      "cut_path": "atomlayer/core/src/main/java/brown/tracingplane/atomlayer/ByteBuffers.java",
+      "source_sha256": "01fe817dbaa139ae30e695d68f2130b5ef59aa01033ada429f62291fcb6f5b22",
+      "generated_test_path": "atomlayer/core/src/test/java/brown/tracingplane/atomlayer/ByteBuffers_ArrowTest.java",
+      "generated_test_fqn": "brown.tracingplane.atomlayer.ByteBuffers_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.9,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 2,
+      "baseline": [
+        4.5,
+        4.5
+      ],
+      "total": 12.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

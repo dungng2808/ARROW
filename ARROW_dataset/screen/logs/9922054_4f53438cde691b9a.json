@@ -1,0 +1,374 @@
+{
+  "run_id": "20261118-005639-2z9i",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-005639-2z9i",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 15
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 15
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "gwtmockito",
+        "url": "https://github.com/google/gwtmockito",
+        "git_commit": "017325e59cec7fad1f06ef96347bc2a2fa6a988a",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "gwtmockito",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.gwt",
+            "artifact": "gwt-dev",
+            "version": "2.8.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.gwt",
+            "artifact": "gwt-user",
+            "version": "2.8.0",
+            "scope": "compile"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.10.19",
+            "scope": "compile"
+          },
+          {
+            "group": "org.javassist",
+            "artifact": "javassist",
+            "version": "3.20.0-GA",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-api-mockito",
+            "version": "1.6.6",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 64
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19",
+          "org.powermock:powermock-api-mockito:1.6.6",
+          "org.powermock:powermock-api-mockito-common:1.6.6",
+          "org.powermock:powermock-api-support:1.6.6",
+          "org.powermock:powermock-core:1.6.6",
+          "org.powermock:powermock-reflect:1.6.6"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "gwtmockito",
+          "gwtmockito-sample"
+        ],
+        "target_module": "gwtmockito",
+        "module_root": "gwtmockito",
+        "packages": [
+          "com.google.gwtmockito",
+          "com.google.gwtmockito.fakes",
+          "com.google.gwtmockito.impl"
+        ]
+      },
+      "paths": {
+        "source_root": "gwtmockito/src/main/java",
+        "test_root": "gwtmockito/src/test/java",
+        "cut_path": "gwtmockito/src/main/java/com/google/gwtmockito/GwtMockito.java",
+        "generated_test_path": "gwtmockito/src/test/java/com/google/gwtmockito/GwtMockito_ArrowTest.java",
+        "generated_test_fqn": "com.google.gwtmockito.GwtMockito_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.google.gwtmockito.GwtMockito",
+        "simple_name": "GwtMockito",
+        "package": "com.google.gwtmockito",
+        "kind": "class",
+        "source_sha256": "9e1bf34998f308088c1056ac0399ed72d554ee4f9c45a2a14bfb0ba1c71dc680"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "gwtmockito",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "gwtmockito",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.google.gwtmockito.GwtMockInheritanceTest#shouldInitInheritedGwtMocks",
+        "com.google.gwtmockito.GwtMockitoRunnerlessTest#canUseProvidersForTypes",
+        "com.google.gwtmockito.GwtMockitoRunnerlessTest#shouldCreateFakeUiBinders",
+        "com.google.gwtmockito.GwtMockitoRunnerlessTest#shouldHandleStaticallyInitializedFakes",
+        "com.google.gwtmockito.GwtMockitoRunnerlessTest#shouldRestoreGwtCreateAfterTearDown",
+        "com.google.gwtmockito.GwtMockitoRunnerlessTest#shouldReturnMocksFromGwtCreate",
+        "com.google.gwtmockito.GwtMockitoSuiteTest$MyOtherTest#testShouldHaveResetContextClassLoader",
+        "com.google.gwtmockito.GwtMockitoSuiteTest$MyTest#testTautology",
+        "com.google.gwtmockito.GwtMockitoTautologyTest#testTautology",
+        "com.google.gwtmockito.GwtMockitoTest#assertThatShouldWork",
+        "com.google.gwtmockito.GwtMockitoTest#canUseProvidersForDifferentTypes",
+        "com.google.gwtmockito.GwtMockitoTest#canUseProvidersForTypes",
+        "com.google.gwtmockito.GwtMockitoTest#getFakeShouldFailForUnregisteredFakes",
+        "com.google.gwtmockito.GwtMockitoTest#getFakeShouldReturnDefaultFakes",
+        "com.google.gwtmockito.GwtMockitoTest#getFakeShouldReturnRegisteredFakes",
+        "com.google.gwtmockito.GwtMockitoTest#shouldAllowArgumentMatchers",
+        "com.google.gwtmockito.GwtMockitoTest#shouldAllowCreatingLayoutPanels",
+        "com.google.gwtmockito.GwtMockitoTest#shouldAllowOnlyJavascriptCastsThatAreValidJavaCasts",
+        "com.google.gwtmockito.GwtMockitoTest#shouldAlwaysUseMostSpecificProvider",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToAddListBoxItems",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToConfigureTextBoxes",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToCreateAnchors",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToCreateCellTables",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToCreateDataGrids",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToCreateImages",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToCreateValueListBox",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToFormatDatesWithAmPm",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToInstantiateCellLists",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToInstantiateDatePicker",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToInstantiateLabels",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToInstantiateRadioAndCheckBoxes",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToSetHtml",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToSetTextInGrids",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToUseHistory",
+        "com.google.gwtmockito.GwtMockitoTest#shouldBeAbleToUseSimplePager",
+        "com.google.gwtmockito.GwtMockitoTest#shouldCallNativeMethodsWithoutFailures",
+        "com.google.gwtmockito.GwtMockitoTest#shouldCreateFakeCssResources",
+        "com.google.gwtmockito.GwtMockitoTest#shouldCreateFakeMessages",
+        "com.google.gwtmockito.GwtMockitoTest#shouldCreateFakeUiBinders",
+        "com.google.gwtmockito.GwtMockitoTest#shouldFailForAmbiguousProviders",
+        "com.google.gwtmockito.GwtMockitoTest#shouldInitMockitoMocks",
+        "com.google.gwtmockito.GwtMockitoTest#shouldMockClientBundles",
+        "com.google.gwtmockito.GwtMockitoTest#shouldMockGwtElements",
+        "com.google.gwtmockito.GwtMockitoTest#shouldMockPackagePrivateClasses",
+        "com.google.gwtmockito.GwtMockitoTest#shouldMockResultsOfStaticDomCreateMethods",
+        "com.google.gwtmockito.GwtMockitoTest#shouldMockUiBinders",
+        "com.google.gwtmockito.GwtMockitoTest#shouldNotAllowMultipleGwtMocksForSameType",
+        "com.google.gwtmockito.GwtMockitoTest#shouldNotAllowProvidersForGwtMockedTypes",
+        "com.google.gwtmockito.GwtMockitoTest#shouldNotBreakWhenCallingEnsureDebugId",
+        "com.google.gwtmockito.GwtMockitoTest#shouldNotBreakWhenCallingHistoryNewItem",
+        "com.google.gwtmockito.GwtMockitoTest#shouldNotBreakWhenCallingIsBidiEnabled",
+        "com.google.gwtmockito.GwtMockitoTest#shouldNotBreakWhenInjectingCssResources",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnDefaultValuesForPrimitiveWrappersFromNativeMethods",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnDummyStringsFromURL",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnEmptyStringsFromNativeMethods",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnFirstValueForEnumsFromNativeMethods",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnMocksFromGwtCreate",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnMocksFromNativeMethods",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnRealElementTagNames",
+        "com.google.gwtmockito.GwtMockitoTest#shouldReturnTextAsType",
+        "com.google.gwtmockito.GwtMockitoTest#shouldUseFakeMessagesInUiBinder",
+        "com.google.gwtmockito.GwtMockitoTest#testCanCreateUiBindersWithParameterizedTypes",
+        "com.google.gwtmockito.GwtMockitoTest#testShouldAllowLayoutPanelSubclasses",
+        "com.google.gwtmockito.GwtMockitoTest#typeProvidersShouldWorkForSubtypes",
+        "com.google.gwtmockito.GwtMockitoTestRunnerTest#shouldLoadClassFromStandardClassLoaderEvenWhenRequestedByChildClassLoader",
+        "com.google.gwtmockito.GwtMockitoWidgetBaseClassesTest#testPanels",
+        "com.google.gwtmockito.GwtMockitoWidgetBaseClassesTest#testUiObjects",
+        "com.google.gwtmockito.OveriddenRunnerTest#shouldAllowCustomStubClasses",
+        "com.google.gwtmockito.WithClassesToStubTest#shouldStubClassSpecifiedInAnnotation",
+        "com.google.gwtmockito.WithPackagesToLoadViaStandardClassLoaderTest#shouldNotReloadBlacklistedClasses",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcTest#gwtMockShouldTakePriorityOverFakes",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcTest#shouldAllowStubbedRpcFailure",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcTest#shouldAllowStubbedRpcFailureWithoutArgs",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcTest#shouldAllowStubbedRpcSuccess",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcTest#shouldAllowStubbedRpcSuccessWithoutArgs",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcWithoutGwtMockTest#shouldNeverCallBackIfNoFake",
+        "com.google.gwtmockito.rpc.GwtMockitoRpcWithoutGwtMockTest#shouldUseFakeIfProvided"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 6.7,
+        "module_test": [
+          4,
+          3.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005639-2z9i/base",
+      "compiled_snapshot": "work/20261118-005639-2z9i/snapshot-ce3bf455",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "gwtmockito",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.google.gwtmockito.GwtMockito",
+      "simple_name": "GwtMockito",
+      "package": "com.google.gwtmockito",
+      "kind": "class",
+      "cut_path": "gwtmockito/src/main/java/com/google/gwtmockito/GwtMockito.java",
+      "source_sha256": "9e1bf34998f308088c1056ac0399ed72d554ee4f9c45a2a14bfb0ba1c71dc680",
+      "generated_test_path": "gwtmockito/src/test/java/com/google/gwtmockito/GwtMockito_ArrowTest.java",
+      "generated_test_fqn": "com.google.gwtmockito.GwtMockito_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 6.7,
+      "baseline": [
+        4,
+        3.2
+      ],
+      "total": 15
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

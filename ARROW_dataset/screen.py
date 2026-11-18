@@ -29,17 +29,19 @@ screen vài trăm repo thì phần này lên tới hàng chục GB.
 
 Chạy tiếp được: bị ngắt giữa chừng thì chạy lại đúng lệnh cũ, script bỏ qua
 các lớp đã có kết quả.
+
+Chạy lại một số lớp: --retry-errors (mọi lớp ERROR) hoặc --rerun <file>
+(các task_id liệt kê trong file). Kết quả mới ghi thêm dòng; dòng mới nhất
+của mỗi lớp là kết quả dùng.
 """
 import argparse
 import json
 import os
-import queue
 import shutil
 import signal
 import subprocess
 import threading
 import time
-from concurrent.futures import ThreadPoolExecutor
 from datetime import datetime, timezone
 
 # ---------------------------------------------------------------------------
@@ -58,6 +60,10 @@ TIMEOUT_PER_CLASS = 60 * 60  # giây
 # Mã lỗi nghĩa là repo không còn (bị xóa, chuyển sang riêng tư, mất commit).
 # Chạy lại cũng không khá hơn, nên tính là EXCLUDED thay vì ERROR.
 REPO_GONE_CODES = {"B1_COMMIT_MISSING", "B1_AUTH_REQUIRED"}
+
+# Các tiến trình arrow đang chạy, để Ctrl+C dừng được cả chúng (xem main()).
+PROCS = set()
+PROCS_LOCK = threading.Lock()
 
 
 # ---------------------------------------------------------------------------
@@ -93,16 +99,16 @@ def read_done(results_path, retry_errors):
 
     Nếu có --retry-errors thì lớp ERROR không tính là xong, nên được chạy lại.
     """
-    done = set()
+    # Một lớp chạy lại sẽ có nhiều dòng; chỉ dòng mới nhất (cuối file) được tính.
+    latest = {}
     if os.path.exists(results_path):
         with open(results_path, encoding="utf-8") as f:
             for line in f:
                 if line.strip():
                     r = json.loads(line)
-                    if retry_errors and r["status"] == "ERROR":
-                        continue
-                    done.add(r["task_id"])
-    return done
+                    latest[r["task_id"]] = r["status"]
+    return {tid for tid, status in latest.items()
+            if not (retry_errors and status == "ERROR")}
 
 
 # ---------------------------------------------------------------------------
@@ -160,6 +166,8 @@ def run_inspect(arrow, cand, home, log_dir):
     # để khi hết giờ có thể dừng cả nhóm, không để Maven chạy mồ côi.
     proc = subprocess.Popen(cmd, stdout=subprocess.PIPE, stderr=subprocess.PIPE,
                             stdin=subprocess.DEVNULL, text=True, start_new_session=True)
+    with PROCS_LOCK:
+        PROCS.add(proc)
     try:
         out, err = proc.communicate(timeout=TIMEOUT_PER_CLASS)
         code = proc.returncode
@@ -167,6 +175,9 @@ def run_inspect(arrow, cand, home, log_dir):
         os.killpg(proc.pid, signal.SIGKILL)
         out, err = proc.communicate()
         code = None  # None = script tự dừng vì quá giờ
+    finally:
+        with PROCS_LOCK:
+            PROCS.discard(proc)
     seconds = round(time.time() - start, 1)
 
     with open(os.path.join(log_dir, cand["task_id"] + ".json"), "w", encoding="utf-8") as f:
@@ -312,6 +323,8 @@ def main():
     ap.add_argument("--out", required=True, help="thư mục ghi kết quả")
     ap.add_argument("--workers", type=int, default=6, help="số lớp chạy cùng lúc (mặc định 6)")
     ap.add_argument("--retry-errors", action="store_true", help="chạy lại các lớp ERROR")
+    ap.add_argument("--rerun", help="file danh sách task_id (mỗi dòng một mã) cần chạy lại, "
+                                    "kể cả khi đã có kết quả")
     ap.add_argument("--limit", type=int, help="chỉ chạy N lớp đầu (để thử)")
     ap.add_argument("--arrow", default="arrow", help="đường dẫn lệnh arrow")
     args = ap.parse_args()
@@ -327,32 +340,64 @@ def main():
     # Lấy danh sách lớp, bỏ các lớp đã xong.
     candidates = read_candidates(args.inputs)
     done = read_done(results_path, args.retry_errors)
+    if args.rerun:
+        # Các lớp trong file --rerun được chạy lại dù đã có kết quả. Kết quả
+        # mới được ghi thêm một dòng; khi đọc, dòng mới nhất của mỗi lớp thắng.
+        with open(args.rerun, encoding="utf-8") as f:
+            done -= {line.strip() for line in f if line.strip()}
     todo = [c for c in candidates if c["task_id"] not in done]
     if args.limit:
         todo = todo[:args.limit]
     print(f"{version}")
     print(f"Tổng {len(candidates)} lớp · đã xong {len(done)} · lần này chạy {len(todo)} · {args.workers} worker")
 
-    # Mỗi worker một ARROW_HOME. Hàng đợi `homes` đảm bảo hai lớp chạy cùng
-    # lúc không bao giờ dùng chung một ARROW_HOME.
-    homes = queue.Queue()
-    for i in range(1, args.workers + 1):
-        home = os.path.abspath(os.path.join(args.out, "homes", f"w{i}"))
+    # Số worker đổi được khi đang chạy: ghi số mới vào <out>/workers.txt,
+    # script đọc lại file này mỗi 2 giây.
+    #   Tăng: script mở thêm lớp mới ngay.
+    #   Giảm: các lớp đang chạy vẫn chạy cho xong, chỉ không mở thêm lớp mới.
+    workers_file = os.path.join(args.out, "workers.txt")
+    with open(workers_file, "w", encoding="utf-8") as f:
+        f.write(f"{args.workers}\n")
+
+    def target_workers():
+        try:
+            with open(workers_file, encoding="utf-8") as f:
+                return max(1, min(int(f.read().strip()), 32))
+        except (OSError, ValueError):
+            return args.workers  # file hỏng hoặc bị xóa: giữ số ban đầu
+
+    # Mỗi lớp đang chạy mượn một ARROW_HOME riêng, xong thì trả lại. Hai lớp
+    # chạy cùng lúc không bao giờ dùng chung một ARROW_HOME. Khi tăng worker,
+    # script tạo thêm ARROW_HOME mới (w7, w8, ...).
+    free_homes = []
+    made = {"n": 0}
+    home_lock = threading.Lock()
+
+    def borrow_home():
+        with home_lock:
+            if free_homes:
+                return free_homes.pop()
+            made["n"] += 1
+            n = made["n"]
+        home = os.path.abspath(os.path.join(args.out, "homes", f"w{n}"))
         prepare_home(args.arrow, home)
-        homes.put(home)
+        return home
+
+    def return_home(home):
+        with home_lock:
+            free_homes.append(home)
 
     write_lock = threading.Lock()
     counter = {"n": 0}
 
-    def job(cand):
-        home = homes.get()  # mượn một ARROW_HOME
+    def job(cand, home):
         try:
             r = screen_one(args.arrow, cand, home, log_dir)
         except Exception as e:  # lỗi của chính script: ghi lại, không dừng cả lô
             r = dict(cand, status="ERROR", reason="SCRIPT_EXCEPTION", detail=repr(e))
         finally:
-            clean_home(home)  # xóa repo vừa clone trước khi cho lớp khác dùng
-            homes.put(home)   # trả lại
+            clean_home(home)    # xóa repo vừa clone trước khi cho lớp khác dùng
+            return_home(home)   # trả lại
         r["arrow_version"] = version
         # Ghi ngay từng dòng, để bị ngắt thì không mất kết quả đã có.
         with write_lock:
@@ -362,8 +407,35 @@ def main():
             print(f"[{counter['n']}/{len(todo)}] {r['status']:8s} {r.get('reason') or '':28s} "
                   f"{r.get('seconds', 0):>6}s  {cand['dataset']}  {cand['class_fqn']}", flush=True)
 
-    with ThreadPoolExecutor(max_workers=args.workers) as pool:
-        list(pool.map(job, todo))
+    # Vòng điều phối: mỗi 2 giây, nếu số lớp đang chạy ít hơn số worker
+    # mong muốn thì mở thêm lớp mới, cho tới khi hết danh sách.
+    pending = list(todo)
+    running = []
+    shown = None
+    try:
+        while pending or running:
+            running = [t for t in running if t.is_alive()]
+            target = target_workers()
+            if target != shown:
+                print(f"--- {target} worker", flush=True)
+                shown = target
+            while pending and len(running) < target:
+                cand = pending.pop(0)
+                t = threading.Thread(target=job, args=(cand, borrow_home()), daemon=True)
+                t.start()
+                running.append(t)
+            time.sleep(2)
+    except KeyboardInterrupt:
+        # Ctrl+C: dừng luôn các arrow/Maven đang chạy, không để chạy mồ côi.
+        # Các lớp đang dở chưa có kết quả, lần chạy sau sẽ chạy lại.
+        print("\nĐang dừng các lớp đang chạy...", flush=True)
+        with PROCS_LOCK:
+            for p in list(PROCS):
+                try:
+                    os.killpg(p.pid, signal.SIGKILL)
+                except ProcessLookupError:
+                    pass
+        raise SystemExit("Đã dừng. Chạy lại đúng lệnh cũ để làm tiếp.")
 
     # Tóm tắt (tính trên dòng mới nhất của mỗi lớp, vì lớp chạy lại có nhiều dòng).
     latest = {}

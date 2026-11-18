@@ -1,0 +1,13 @@
+<settings>
+  <!-- Tải Maven Central qua bản sao của Google (17/11/2026): Maven Central trả
+       429 Too Many Requests khi screen dataset ARROW. Chỉ thay kho "central";
+       kho riêng mà dự án tự khai báo vẫn dùng như cũ. Xóa file này để bỏ. -->
+  <mirrors>
+    <mirror>
+      <id>google-maven-central</id>
+      <name>Google mirror of Maven Central</name>
+      <url>https://maven-central.storage-download.googleapis.com/maven2/</url>
+      <mirrorOf>central</mirrorOf>
+    </mirror>
+  </mirrors>
+</settings>

@@ -1,0 +1,321 @@
+{
+  "run_id": "20261118-022246-6snv",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-022246-6snv",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 64.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 64.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Achilles",
+        "url": "https://github.com/doanduyhai/Achilles",
+        "git_commit": "5748042c58ad2b698fd324151aec188a5cfa204e",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "achilles-common",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/info/archinnov/**/*.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 17,
+        "jdk_choice_reason": "fallback:8,11,17"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "info.archinnov",
+            "artifact": "achilles-model",
+            "version": "6.0.5-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "18.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "1.7.0",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.2.3",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-core",
+            "version": "1.2.3",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.10",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.9.5",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 30
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.10",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.9.5"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:1.7.0"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "achilles-model",
+          "achilles-common",
+          "achilles-core",
+          "achilles-embedded",
+          "achilles-junit",
+          "achilles-schema-generator",
+          "integration-test-2_1",
+          "integration-test-2_2",
+          "integration-test-3_0",
+          "integration-test-3_2",
+          "integration-test-3_6",
+          "integration-test-3_7",
+          "integration-test-3_8",
+          "integration-test-3_10"
+        ],
+        "target_module": "achilles-common",
+        "module_root": "achilles-common",
+        "packages": [
+          "info.archinnov.achilles.script",
+          "com.datastax.driver.core",
+          "info.archinnov.achilles.internals.futures",
+          "info.archinnov.achilles.internals.statement"
+        ]
+      },
+      "paths": {
+        "source_root": "achilles-common/src/main/java",
+        "test_root": "achilles-common/src/test/java",
+        "cut_path": "achilles-common/src/main/java/info/archinnov/achilles/script/ScriptExecutor.java",
+        "generated_test_path": "achilles-common/src/test/java/info/archinnov/achilles/script/ScriptExecutor_ArrowTest.java",
+        "generated_test_fqn": "info.archinnov.achilles.script.ScriptExecutor_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "info.archinnov.achilles.script.ScriptExecutor",
+        "simple_name": "ScriptExecutor",
+        "package": "info.archinnov.achilles.script",
+        "kind": "class",
+        "source_sha256": "44a49de384827b56b60f5a22164e0215045982ae7789827eaef887e23ade5792"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "achilles-common",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "achilles-common",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "info.archinnov.achilles.script.ScriptExecutorTest#info.archinnov.achilles.script.ScriptExecutorTest"
+      ],
+      "durations_seconds": {
+        "copy": 0.3,
+        "compile": 46,
+        "module_test": [
+          12.4,
+          2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022246-6snv/base",
+      "compiled_snapshot": "work/20261118-022246-6snv/snapshot-08cb94b8",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "achilles-common",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "info.archinnov.achilles.script.ScriptExecutor",
+      "simple_name": "ScriptExecutor",
+      "package": "info.archinnov.achilles.script",
+      "kind": "class",
+      "cut_path": "achilles-common/src/main/java/info/archinnov/achilles/script/ScriptExecutor.java",
+      "source_sha256": "44a49de384827b56b60f5a22164e0215045982ae7789827eaef887e23ade5792",
+      "generated_test_path": "achilles-common/src/test/java/info/archinnov/achilles/script/ScriptExecutor_ArrowTest.java",
+      "generated_test_fqn": "info.archinnov.achilles.script.ScriptExecutor_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 13.5,
+      "locate": 0.5,
+      "plan": 3.7,
+      "compile": 46,
+      "baseline": [
+        12.4,
+        2
+      ],
+      "total": 64.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,390 @@
+{
+  "run_id": "20261118-022639-i981",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-022639-i981",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 54.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 54.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Weasis",
+        "url": "https://github.com/nroduit/Weasis",
+        "git_commit": "024e86048a4add8ed4e986193b51f091df3d23da",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "weasis-core/weasis-core-api",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.apache.felix",
+            "artifact": "org.apache.felix.prefs",
+            "version": "1.1.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.felix",
+            "artifact": "org.apache.felix.gogo.command",
+            "version": "1.1.2",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.felix",
+            "artifact": "org.apache.felix.gogo.shell",
+            "version": "1.1.4",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.felix",
+            "artifact": "org.apache.felix.gogo.runtime",
+            "version": "1.1.4",
+            "scope": "provided"
+          },
+          {
+            "group": "org.weasis.core",
+            "artifact": "weasis-core-img",
+            "version": "4.5.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.30",
+            "scope": "provided"
+          },
+          {
+            "group": "org.osgi",
+            "artifact": "osgi.core",
+            "version": "7.0.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.osgi",
+            "artifact": "osgi.cmpn",
+            "version": "7.0.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.osgi",
+            "artifact": "osgi.annotation",
+            "version": "7.0.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.felix",
+            "artifact": "org.apache.felix.scr.annotations",
+            "version": "1.12.0",
+            "scope": "provided"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.18.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 16
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.10.19"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.18.1"
+        ],
+        "evidence": "dependency junit:junit (provided)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "weasis-parent",
+          "weasis-opencv",
+          "weasis-core",
+          "weasis-imageio",
+          "weasis-base",
+          "weasis-dicom",
+          "weasis-acquire",
+          "weasis-launcher",
+          "weasis-opencv/weasis-opencv-core-windows-x86",
+          "weasis-opencv/weasis-opencv-core-windows-x86-64",
+          "weasis-opencv/weasis-opencv-core-linux-x86",
+          "weasis-opencv/weasis-opencv-core-linux-x86-64",
+          "weasis-opencv/weasis-opencv-core-macosx-x86-64",
+          "weasis-core/weasis-core-parent",
+          "weasis-core/weasis-core-api",
+          "weasis-core/weasis-core-ui",
+          "weasis-base/weasis-base-parent",
+          "weasis-base/weasis-base-ui-mr",
+          "weasis-base/weasis-base-explorer",
+          "weasis-base/weasis-base-viewer2d",
+          "weasis-dicom/weasis-dicom-parent",
+          "weasis-dicom/weasis-dicom-codec",
+          "weasis-dicom/weasis-dicom-explorer",
+          "weasis-dicom/weasis-dicom-viewer2d",
+          "weasis-dicom/weasis-dicom-sr",
+          "weasis-dicom/weasis-dicom-wave",
+          "weasis-dicom/weasis-dicom-au",
+          "weasis-dicom/weasis-dicom-send",
+          "weasis-dicom/weasis-dicom-qr",
+          "weasis-dicom/weasis-dicom-rt",
+          "weasis-acquire/weasis-acquire-explorer",
+          "weasis-acquire/weasis-acquire-editor"
+        ],
+        "target_module": "weasis-core/weasis-core-api",
+        "module_root": "weasis-core/weasis-core-api",
+        "packages": [
+          "org.weasis.core.api.service",
+          "org.weasis.core.api",
+          "org.weasis.core.api.command",
+          "org.weasis.core.api.explorer",
+          "org.weasis.core.api.explorer.model",
+          "org.weasis.core.api.gui",
+          "org.weasis.core.api.gui.model",
+          "org.weasis.core.api.gui.task",
+          "org.weasis.core.api.gui.util",
+          "org.weasis.core.api.image",
+          "org.weasis.core.api.image.cv",
+          "org.weasis.core.api.image.measure",
+          "org.weasis.core.api.image.op",
+          "org.weasis.core.api.image.util",
+          "org.weasis.core.api.internal",
+          "org.weasis.core.api.internal.cv",
+          "org.weasis.core.api.internal.mime",
+          "org.weasis.core.api.media",
+          "org.weasis.core.api.media.data",
+          "org.weasis.core.api.util"
+        ]
+      },
+      "paths": {
+        "source_root": "weasis-core/weasis-core-api/src/main/java",
+        "test_root": "weasis-core/weasis-core-api/src/test/java",
+        "cut_path": "weasis-core/weasis-core-api/src/main/java/org/weasis/core/api/service/WProperties.java",
+        "generated_test_path": "weasis-core/weasis-core-api/src/test/java/org/weasis/core/api/service/WProperties_ArrowTest.java",
+        "generated_test_fqn": "org.weasis.core.api.service.WProperties_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.weasis.core.api.service.WProperties",
+        "simple_name": "WProperties",
+        "package": "org.weasis.core.api.service",
+        "kind": "class",
+        "source_sha256": "c81d0b40a22d2dc65e1feff395cc7d9026e79970e7c5b72516b6f11c30eb623d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "weasis-core/weasis-core-api",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "weasis-core/weasis-core-api",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.weasis.core.api.media.data.TagWTest#test_constructors",
+        "org.weasis.core.api.media.data.TagWTest#test_equals",
+        "org.weasis.core.api.media.data.TagWTest#test_getFormattedText",
+        "org.weasis.core.api.media.data.TagWTest#test_getFormattedText_with_pattern",
+        "org.weasis.core.api.media.data.TagWTest#test_getValueFromIndex",
+        "org.weasis.core.api.media.data.TagWTest#test_getValueMultiplicity_with_object",
+        "org.weasis.core.api.media.data.TagWTest#test_hashCode",
+        "org.weasis.core.api.media.data.TagWTest#test_isStringFamilyType",
+        "org.weasis.core.api.media.data.TagWTest#test_isTypeCompliant",
+        "org.weasis.core.api.service.WPropertiesTest#testColor2Hexadecimal",
+        "org.weasis.core.api.service.WPropertiesTest#testHexadecimal2Color",
+        "org.weasis.core.api.service.WPropertiesTest#testPutBooleanProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testPutByteArrayProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testPutColorProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testPutDoubleProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testPutFloatProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testPutIntProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testPutLongProperty",
+        "org.weasis.core.api.service.WPropertiesTest#testSetPropertyString"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 33.6,
+        "module_test": [
+          15.7,
+          3.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022639-i981/base",
+      "compiled_snapshot": "work/20261118-022639-i981/snapshot-c08eb7bf",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "weasis-core/weasis-core-api",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.weasis.core.api.service.WProperties",
+      "simple_name": "WProperties",
+      "package": "org.weasis.core.api.service",
+      "kind": "class",
+      "cut_path": "weasis-core/weasis-core-api/src/main/java/org/weasis/core/api/service/WProperties.java",
+      "source_sha256": "c81d0b40a22d2dc65e1feff395cc7d9026e79970e7c5b72516b6f11c30eb623d",
+      "generated_test_path": "weasis-core/weasis-core-api/src/test/java/org/weasis/core/api/service/WProperties_ArrowTest.java",
+      "generated_test_fqn": "org.weasis.core.api.service.WProperties_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.7,
+      "locate": 0.7,
+      "plan": 1.4,
+      "compile": 33.6,
+      "baseline": [
+        15.7,
+        3.7
+      ],
+      "total": 54.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

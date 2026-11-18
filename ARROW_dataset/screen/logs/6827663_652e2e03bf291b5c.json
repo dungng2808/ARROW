@@ -1,0 +1,267 @@
+{
+  "run_id": "20261118-010250-93ij",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-010250-93ij",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 7.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 7.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "moskito-demo",
+        "url": "https://github.com/anotheria/moskito-demo",
+        "git_commit": "28824e69bfe29f5b7600b8fb3ceec2a46641b99d",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "performance",
+        "build_mode": "reactor",
+        "build_file": "performance/pom.xml",
+        "reactor_module": "fibonacci/calculator",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/*Test.java",
+          "**/*Suite.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "findbugs",
+            "version": "3.0.1",
+            "scope": "provided"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.5",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 15
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.5",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "performance/fibonacci",
+          "performance/fibonacci/calculator"
+        ],
+        "target_module": "performance/fibonacci/calculator",
+        "module_root": "performance/fibonacci/calculator",
+        "packages": [
+          "org.moskito.demo.fibonacci.calculator"
+        ]
+      },
+      "paths": {
+        "source_root": "performance/fibonacci/calculator/src/main/java",
+        "test_root": "performance/fibonacci/calculator/src/test/java",
+        "cut_path": "performance/fibonacci/calculator/src/main/java/org/moskito/demo/fibonacci/calculator/FibonacciCalculatorImpl.java",
+        "generated_test_path": "performance/fibonacci/calculator/src/test/java/org/moskito/demo/fibonacci/calculator/FibonacciCalculatorImpl_ArrowTest.java",
+        "generated_test_fqn": "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImpl_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImpl",
+        "simple_name": "FibonacciCalculatorImpl",
+        "package": "org.moskito.demo.fibonacci.calculator",
+        "kind": "class",
+        "source_sha256": "a55ef050c7d7d675e0f76dc1457cd8b85244901b96a0caa85561f164674ea721"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "fibonacci/calculator",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "fibonacci/calculator",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "performance",
+      "passing_in_all_runs": [
+        "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImplTest#test42",
+        "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImplTest#testFirst",
+        "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImplTest#testRecursion2",
+        "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImplTest#testSecond",
+        "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImplTest#testThird"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.4,
+        "module_test": [
+          2.3,
+          2.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010250-93ij/base",
+      "compiled_snapshot": "work/20261118-010250-93ij/snapshot-b9d77462",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "performance",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "fibonacci/calculator",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImpl",
+      "simple_name": "FibonacciCalculatorImpl",
+      "package": "org.moskito.demo.fibonacci.calculator",
+      "kind": "class",
+      "cut_path": "performance/fibonacci/calculator/src/main/java/org/moskito/demo/fibonacci/calculator/FibonacciCalculatorImpl.java",
+      "source_sha256": "a55ef050c7d7d675e0f76dc1457cd8b85244901b96a0caa85561f164674ea721",
+      "generated_test_path": "performance/fibonacci/calculator/src/test/java/org/moskito/demo/fibonacci/calculator/FibonacciCalculatorImpl_ArrowTest.java",
+      "generated_test_fqn": "org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImpl_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 5,
+      "locate": 0.1,
+      "plan": 1.4,
+      "compile": 1.4,
+      "baseline": [
+        2.3,
+        2.2
+      ],
+      "total": 7.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

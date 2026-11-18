@@ -1,0 +1,11 @@
+[>] Tải https://github.com/senacor/rxjava-katas
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 21
+[>] Build root common-wiki (standalone)
+[>] Biên dịch với JDK 8
+[>] Baseline lần 1/2
+[>] Baseline lần 2/2

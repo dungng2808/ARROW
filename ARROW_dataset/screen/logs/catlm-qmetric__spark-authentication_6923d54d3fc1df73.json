@@ -1,0 +1,8 @@
+{
+  "error": {
+    "code": "B1_AUTH_REQUIRED",
+    "message": "Repo không tồn tại hoặc cần đăng nhập: remote: Repository not found.\nfatal: repository 'https://github.com/qmetric/spark-authentication/' not found",
+    "hint": "Đăng nhập GitHub bằng \"gh auth login\" hoặc Git Credential Manager.",
+    "log": null
+  }
+}

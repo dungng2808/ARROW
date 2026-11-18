@@ -1,0 +1,392 @@
+{
+  "run_id": "20261118-010948-j7j1",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w8/runs/20261118-010948-j7j1",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 11.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 11.2
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "pf4j",
+        "url": "https://github.com/pf4j/pf4j",
+        "git_commit": "f66859f71c0e9c043a14ca32f26b459de54317aa",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "pf4j",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "8",
+        "declared_source": "maven.compiler.release",
+        "major": 8,
+        "jdk_major": 11,
+        "jdk_choice_reason": "fallback:8,11"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.zafarkhaja",
+            "artifact": "java-semver",
+            "version": "0.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.ow2.asm",
+            "artifact": "asm",
+            "version": "7.1",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-log4j12",
+            "version": "1.7.25",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest",
+            "version": "2.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-core",
+            "version": "2.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-engine",
+            "version": "5.4.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.24.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 17
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.4.0",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.24.0"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest:2.1",
+          "org.hamcrest:hamcrest-core:2.1"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-engine (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "pf4j",
+          "demo",
+          "maven-archetypes/quickstart",
+          "demo/app",
+          "demo/api",
+          "demo/plugins",
+          "demo/plugins/plugin1",
+          "demo/plugins/plugin2"
+        ],
+        "target_module": "pf4j",
+        "module_root": "pf4j",
+        "packages": [
+          "org.pf4j",
+          "org.pf4j.asm",
+          "org.pf4j.processor",
+          "org.pf4j.util"
+        ]
+      },
+      "paths": {
+        "source_root": "pf4j/src/main/java",
+        "test_root": "pf4j/src/test/java",
+        "cut_path": "pf4j/src/main/java/org/pf4j/DefaultPluginStatusProvider.java",
+        "generated_test_path": "pf4j/src/test/java/org/pf4j/DefaultPluginStatusProvider_ArrowTest.java",
+        "generated_test_fqn": "org.pf4j.DefaultPluginStatusProvider_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.pf4j.DefaultPluginStatusProvider",
+        "simple_name": "DefaultPluginStatusProvider",
+        "package": "org.pf4j",
+        "kind": "class",
+        "source_sha256": "e55f29c651c49052d353dc2c674b5560172f0eb6d499bb86b5b6f3e7331c1744"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pf4j",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pf4j",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.pf4j.AbstractExtensionFinderTest#testFindClassNames",
+        "org.pf4j.AbstractExtensionFinderTest#testFindFailType",
+        "org.pf4j.AbstractExtensionFinderTest#testFindFromClasspath",
+        "org.pf4j.AbstractExtensionFinderTest#testFindFromPlugin",
+        "org.pf4j.AbstractPluginManagerTest#getExtensionsByType",
+        "org.pf4j.CompoundPluginDescriptorFinderTest#add",
+        "org.pf4j.CompoundPluginDescriptorFinderTest#find",
+        "org.pf4j.CompoundPluginDescriptorFinderTest#findInJar",
+        "org.pf4j.CompoundPluginDescriptorFinderTest#testNotFound",
+        "org.pf4j.CompoundPluginDescriptorFinderTest#testSpaceCharacterInFileName",
+        "org.pf4j.DefaultExtensionFactoryTest#testCreate",
+        "org.pf4j.DefaultExtensionFactoryTest#testCreateFailConstructor",
+        "org.pf4j.DefaultPluginFactoryTest#testCreate",
+        "org.pf4j.DefaultPluginFactoryTest#testCreateFail",
+        "org.pf4j.DefaultPluginFactoryTest#testCreateFailConstructor",
+        "org.pf4j.DefaultPluginFactoryTest#testCreateFailNotFound",
+        "org.pf4j.DefaultPluginManagerTest#isPluginValid",
+        "org.pf4j.DefaultPluginManagerTest#isPluginValidAllowExact",
+        "org.pf4j.DefaultPluginManagerTest#testDefaultExactVersionAllowed",
+        "org.pf4j.DefaultPluginManagerTest#testPluginDisabledNoStart",
+        "org.pf4j.DefaultPluginManagerTest#validateFailsOnId",
+        "org.pf4j.DefaultPluginManagerTest#validateFailsOnVersion",
+        "org.pf4j.DefaultPluginManagerTest#validateNoPluginClass",
+        "org.pf4j.DefaultPluginManagerTest#validateOK",
+        "org.pf4j.DefaultPluginRepositoryTest#testDeletePluginPath",
+        "org.pf4j.DefaultPluginStatusProviderTest#testDisablePlugin",
+        "org.pf4j.DefaultPluginStatusProviderTest#testDisablePluginWithEnableEmpty",
+        "org.pf4j.DefaultPluginStatusProviderTest#testDisablePluginWithoutDisabledFile",
+        "org.pf4j.DefaultPluginStatusProviderTest#testEnablePlugin",
+        "org.pf4j.DefaultPluginStatusProviderTest#testEnablePluginWithEnableEmpty",
+        "org.pf4j.DefaultPluginStatusProviderTest#testIsPluginDisabled",
+        "org.pf4j.DefaultPluginStatusProviderTest#testIsPluginDisabledWithEnableEmpty",
+        "org.pf4j.DefaultVersionManagerTest#checkVersionConstraint",
+        "org.pf4j.DefaultVersionManagerTest#compareVersions",
+        "org.pf4j.DefaultVersionManagerTest#invalidVersion",
+        "org.pf4j.DefaultVersionManagerTest#nullOrEmptyVersion",
+        "org.pf4j.DependencyResolverTest#cyclicDependencies",
+        "org.pf4j.DependencyResolverTest#goodDependencyVersion",
+        "org.pf4j.DependencyResolverTest#notFoundDependencies",
+        "org.pf4j.DependencyResolverTest#sortedPlugins",
+        "org.pf4j.DependencyResolverTest#wrongDependencyVersion",
+        "org.pf4j.DevelopmentPluginRepositoryTest#testGetPluginArchivesInDevelopmentMode",
+        "org.pf4j.ExtensionAnnotationProcessorTest#testGetSupportedAnnotationTypes",
+        "org.pf4j.JarPluginManagerTest#deletePlugin",
+        "org.pf4j.JarPluginManagerTest#getExtensions",
+        "org.pf4j.JarPluginManagerTest#unloadPlugin",
+        "org.pf4j.JarPluginRepositoryTest#testDeletePluginPath",
+        "org.pf4j.LegacyExtensionStorageTest#testRead",
+        "org.pf4j.LoadPluginsTest#deletePlugin",
+        "org.pf4j.LoadPluginsTest#getRoot",
+        "org.pf4j.LoadPluginsTest#load",
+        "org.pf4j.LoadPluginsTest#loadNonExisting",
+        "org.pf4j.LoadPluginsTest#loadPluginWithSameIdDifferentPathFails",
+        "org.pf4j.LoadPluginsTest#loadPluginWithSameIdDifferentVersionsFails",
+        "org.pf4j.LoadPluginsTest#loadTwiceFails",
+        "org.pf4j.LoadPluginsTest#loadUnloadLoad",
+        "org.pf4j.LoadPluginsTest#notAPlugin",
+        "org.pf4j.LoadPluginsTest#upgrade",
+        "org.pf4j.ManifestPluginDescriptorFinderTest#testFind",
+        "org.pf4j.ManifestPluginDescriptorFinderTest#testFindNotFound",
+        "org.pf4j.PluginDependencyTest#testPluginDependecy",
+        "org.pf4j.PropertiesPluginDescriptorFinderTest#testFind",
+        "org.pf4j.PropertiesPluginDescriptorFinderTest#testNotFound",
+        "org.pf4j.SingletonExtensionFactoryTest#create",
+        "org.pf4j.SingletonExtensionFactoryTest#createNewEachTime",
+        "org.pf4j.processor.ServiceProviderExtensionStorageTest#ensureReadingExtensionsProducesCorrectListOfExtensions",
+        "org.pf4j.processor.ServiceProviderExtensionStorageTest#ensureServiceProviderExtensionStorageReadWorks",
+        "org.pf4j.util.DirectedGraphTest#inDegree",
+        "org.pf4j.util.DirectedGraphTest#outDegree",
+        "org.pf4j.util.DirectedGraphTest#reverseTopologicalSort",
+        "org.pf4j.util.DirectedGraphTest#topologicalSort",
+        "org.pf4j.util.FileUtilsTest#expandIfZip"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "org.pf4j.DefaultPluginRepositoryTest#testGetPluginArchives"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.1,
+        "module_test": [
+          2.9,
+          2.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010948-j7j1/base",
+      "compiled_snapshot": "work/20261118-010948-j7j1/snapshot-06393f73",
+      "source_tree_hash": null,
+      "jdk_major": 11,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-11/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "pf4j",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.pf4j.DefaultPluginStatusProvider",
+      "simple_name": "DefaultPluginStatusProvider",
+      "package": "org.pf4j",
+      "kind": "class",
+      "cut_path": "pf4j/src/main/java/org/pf4j/DefaultPluginStatusProvider.java",
+      "source_sha256": "e55f29c651c49052d353dc2c674b5560172f0eb6d499bb86b5b6f3e7331c1744",
+      "generated_test_path": "pf4j/src/test/java/org/pf4j/DefaultPluginStatusProvider_ArrowTest.java",
+      "generated_test_fqn": "org.pf4j.DefaultPluginStatusProvider_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 4.1,
+      "baseline": [
+        2.9,
+        2.9
+      ],
+      "total": 11.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

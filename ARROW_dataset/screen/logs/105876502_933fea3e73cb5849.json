@@ -1,0 +1,294 @@
+{
+  "run_id": "20261118-024553-4n21",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-024553-4n21",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 15.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 15.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "ec4j",
+        "url": "https://github.com/ec4j/ec4j",
+        "git_commit": "1301c8e198a1d21ffffd76a21ce221a02c6dfeb7",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.5.0",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven.compiler.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "core",
+          "services"
+        ],
+        "target_module": "core",
+        "module_root": "core",
+        "packages": [
+          "org.ec4j.core.model",
+          "org.ec4j.core",
+          "org.ec4j.core.cli",
+          "org.ec4j.core.parser"
+        ]
+      },
+      "paths": {
+        "source_root": "core/src/main/java",
+        "test_root": "core/src/test/java",
+        "cut_path": "core/src/main/java/org/ec4j/core/model/PropertyType.java",
+        "generated_test_path": "core/src/test/java/org/ec4j/core/model/PropertyType_ArrowTest.java",
+        "generated_test_fqn": "org.ec4j.core.model.PropertyType_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.ec4j.core.model.PropertyType",
+        "simple_name": "PropertyType",
+        "package": "org.ec4j.core.model",
+        "kind": "class",
+        "source_sha256": "373f04727d813aceb494fc75f81938709a665bb0baa01c259c48a4b2aa28c8c0"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.ec4j.core.EditorConfigFileTreeTest#backslashNameOnUnix",
+        "org.ec4j.core.EditorConfigFileTreeTest#parent_directory",
+        "org.ec4j.core.EditorConfigFileTreeTest#path_separator_backslash_in_cmd_line",
+        "org.ec4j.core.EditorConfigFileTreeTest#windows_separator",
+        "org.ec4j.core.EditorConfigGlobTest#braces_escaped_backslash2",
+        "org.ec4j.core.EditorConfigGlobTest#braces_word_choice1",
+        "org.ec4j.core.EditorConfigGlobTest#brackets_close_outside",
+        "org.ec4j.core.EditorConfigGlobTest#star_after_slash",
+        "org.ec4j.core.EditorConfigGlobTest#star_star_over_separator7",
+        "org.ec4j.core.EditorConfigGlobTest#utf_8_char",
+        "org.ec4j.core.EditorConfigParserTest#comments_after_property",
+        "org.ec4j.core.EditorConfigParserTest#max_section_name_ignore",
+        "org.ec4j.core.EditorConfigParserTest#max_section_name_ok",
+        "org.ec4j.core.EditorConfigParserTest#repeat_sections",
+        "org.ec4j.core.EditorConfigParserTest#spaces_in_section_name",
+        "org.ec4j.core.EditorConfigPropertiesTest#indent_size_default",
+        "org.ec4j.core.EditorConfigTest#load",
+        "org.ec4j.core.ResourcesTest#ofClassPath",
+        "org.ec4j.core.ResourcesTest#ofPath",
+        "org.ec4j.core.model.GlobTest#braces_alpha_range1",
+        "org.ec4j.core.model.PropertyTest#invalid",
+        "org.ec4j.core.model.PropertyTest#valid",
+        "org.ec4j.core.model.PropertyTypeTest#charset",
+        "org.ec4j.core.model.PropertyTypeTest#eol",
+        "org.ec4j.core.model.PropertyTypeTest#indentSize",
+        "org.ec4j.core.model.PropertyTypeTest#indentStyle",
+        "org.ec4j.core.model.PropertyTypeTest#insertFinalNl",
+        "org.ec4j.core.model.PropertyTypeTest#root",
+        "org.ec4j.core.model.PropertyTypeTest#tabWidth",
+        "org.ec4j.core.model.PropertyTypeTest#trimTrailingWs",
+        "org.ec4j.core.model.VersionTest#compareTo",
+        "org.ec4j.core.model.VersionTest#of",
+        "org.ec4j.core.model.VersionTest#ofQ",
+        "org.ec4j.core.parser.LocationAwareModelHandlerTest#locations"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.6,
+        "module_test": [
+          2.3,
+          2.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024553-4n21/base",
+      "compiled_snapshot": "work/20261118-024553-4n21/snapshot-0d45f5fd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.ec4j.core.model.PropertyType",
+      "simple_name": "PropertyType",
+      "package": "org.ec4j.core.model",
+      "kind": "class",
+      "cut_path": "core/src/main/java/org/ec4j/core/model/PropertyType.java",
+      "source_sha256": "373f04727d813aceb494fc75f81938709a665bb0baa01c259c48a4b2aa28c8c0",
+      "generated_test_path": "core/src/test/java/org/ec4j/core/model/PropertyType_ArrowTest.java",
+      "generated_test_fqn": "org.ec4j.core.model.PropertyType_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 9.1,
+      "compile": 1.6,
+      "baseline": [
+        2.3,
+        2.2
+      ],
+      "total": 15.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

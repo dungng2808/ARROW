@@ -1,0 +1,16 @@
+[>] Tải https://github.com/thorntail/thorntail
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 21
+[>] Build root core/container (standalone)
+[>] Wrapper lỗi, dùng Maven của máy
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module core/container: [ERROR] Failed to execute goal on project container: Could not resolve dependencies for project org.wildfly.swarm:container:jar:2018.1.0-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module core/container: [ERROR] Failed to execute goal on project container: Could not resolve dependencies for project org.wildfly.swarm:container:jar:2018.1.0-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

@@ -1,0 +1,337 @@
+{
+  "run_id": "20261118-005857-hwfo",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-005857-hwfo",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 10.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 10.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Simple-YAML",
+        "url": "https://github.com/Carleslc/Simple-YAML",
+        "git_commit": "c550d3a096c152afc9d7f2613e3a46c382726d5f",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "Simple-Yaml",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "me.carleslc",
+            "artifact": "Simple-Configuration",
+            "version": "1.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.yaml",
+            "artifact": "snakeyaml",
+            "version": "1.26",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.cactoos",
+            "artifact": "cactoos",
+            "version": "0.46",
+            "scope": "test"
+          },
+          {
+            "group": "org.llorllale",
+            "artifact": "cactoos-matchers",
+            "version": "0.18",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter",
+            "version": "5.7.0-M1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 13
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.7.0-M1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-core:1.3"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "Simple-Configuration",
+          "Simple-Yaml"
+        ],
+        "target_module": "Simple-Yaml",
+        "module_root": "Simple-Yaml",
+        "packages": [
+          "org.simpleyaml.configuration.file",
+          "org.simpleyaml.configuration.comments"
+        ]
+      },
+      "paths": {
+        "source_root": "Simple-Yaml/src/main/java",
+        "test_root": "Simple-Yaml/src/test/java",
+        "cut_path": "Simple-Yaml/src/main/java/org/simpleyaml/configuration/file/YamlConfigurationOptions.java",
+        "generated_test_path": "Simple-Yaml/src/test/java/org/simpleyaml/configuration/file/YamlConfigurationOptions_ArrowTest.java",
+        "generated_test_fqn": "org.simpleyaml.configuration.file.YamlConfigurationOptions_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.simpleyaml.configuration.file.YamlConfigurationOptions",
+        "simple_name": "YamlConfigurationOptions",
+        "package": "org.simpleyaml.configuration.file",
+        "kind": "class",
+        "source_sha256": "23795871ec5d7cd1c4adff83ae9dc5c30c833f6dbf13734d080643909696f8b9"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "Simple-Yaml",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "Simple-Yaml",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.simpleyaml.configuration.comments.CommentDumperTest#dump",
+        "org.simpleyaml.configuration.comments.CommentDumperTest#getNode",
+        "org.simpleyaml.configuration.comments.CommentMapperTest#getComment",
+        "org.simpleyaml.configuration.comments.CommentMapperTest#getNode",
+        "org.simpleyaml.configuration.comments.CommentMapperTest#setComment",
+        "org.simpleyaml.configuration.comments.CommentParserTest#parse",
+        "org.simpleyaml.configuration.comments.CommentReaderTest#isBlank",
+        "org.simpleyaml.configuration.comments.CommentReaderTest#isComment",
+        "org.simpleyaml.configuration.comments.CommentReaderTest#nextLine",
+        "org.simpleyaml.configuration.comments.CommentReaderTest#track",
+        "org.simpleyaml.configuration.comments.KeyTreeTest#add",
+        "org.simpleyaml.configuration.comments.KeyTreeTest#entries",
+        "org.simpleyaml.configuration.comments.KeyTreeTest#findParent",
+        "org.simpleyaml.configuration.comments.KeyTreeTest#get",
+        "org.simpleyaml.configuration.comments.KeyTreeTest#keys",
+        "org.simpleyaml.configuration.comments.KeyTreeTest#testToString",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#charset",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#configuration",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#copyDefaults",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#copyHeader",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#header",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#indent",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#isUnicode",
+        "org.simpleyaml.configuration.file.YamlConfigurationOptionsTest#pathSeparator",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#buildHeader",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#convertMapsToSections",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#loadConfiguration",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#loadFromString",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#options",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#parseHeader",
+        "org.simpleyaml.configuration.file.YamlConfigurationTest#saveToString",
+        "org.simpleyaml.configuration.file.YamlFileTest#copyTo",
+        "org.simpleyaml.configuration.file.YamlFileTest#createNewFile",
+        "org.simpleyaml.configuration.file.YamlFileTest#createOrLoad",
+        "org.simpleyaml.configuration.file.YamlFileTest#createOrLoadWithComments",
+        "org.simpleyaml.configuration.file.YamlFileTest#deleteFile",
+        "org.simpleyaml.configuration.file.YamlFileTest#exists",
+        "org.simpleyaml.configuration.file.YamlFileTest#fileToString",
+        "org.simpleyaml.configuration.file.YamlFileTest#getComment",
+        "org.simpleyaml.configuration.file.YamlFileTest#getConfigurationFile",
+        "org.simpleyaml.configuration.file.YamlFileTest#getFilePath",
+        "org.simpleyaml.configuration.file.YamlFileTest#getSize",
+        "org.simpleyaml.configuration.file.YamlFileTest#load",
+        "org.simpleyaml.configuration.file.YamlFileTest#loadWithComments",
+        "org.simpleyaml.configuration.file.YamlFileTest#save",
+        "org.simpleyaml.configuration.file.YamlFileTest#saveToString",
+        "org.simpleyaml.configuration.file.YamlFileTest#saveToStringWithComments",
+        "org.simpleyaml.configuration.file.YamlFileTest#saveToStringWithComments2",
+        "org.simpleyaml.configuration.file.YamlFileTest#saveToStringWithComments3",
+        "org.simpleyaml.configuration.file.YamlFileTest#saveWithComments",
+        "org.simpleyaml.configuration.file.YamlFileTest#setComment",
+        "org.simpleyaml.configuration.file.YamlFileTest#setConfigurationFile"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4,
+        "module_test": [
+          2.7,
+          2.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005857-hwfo/base",
+      "compiled_snapshot": "work/20261118-005857-hwfo/snapshot-cbd99840",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "Simple-Yaml",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.simpleyaml.configuration.file.YamlConfigurationOptions",
+      "simple_name": "YamlConfigurationOptions",
+      "package": "org.simpleyaml.configuration.file",
+      "kind": "class",
+      "cut_path": "Simple-Yaml/src/main/java/org/simpleyaml/configuration/file/YamlConfigurationOptions.java",
+      "source_sha256": "23795871ec5d7cd1c4adff83ae9dc5c30c833f6dbf13734d080643909696f8b9",
+      "generated_test_path": "Simple-Yaml/src/test/java/org/simpleyaml/configuration/file/YamlConfigurationOptions_ArrowTest.java",
+      "generated_test_fqn": "org.simpleyaml.configuration.file.YamlConfigurationOptions_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 4,
+      "baseline": [
+        2.7,
+        2.4
+      ],
+      "total": 10.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

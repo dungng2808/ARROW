@@ -1,0 +1,8 @@
+[>] Tải https://github.com/opensanca/service-validator
+[>] Liệt kê class
+[>] Build root demos/spring-5-hibernate-validator-demo (standalone)
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[X] B1_DEPENDENCY_RESOLUTION: Không tải được dependency hay plugin: A problem occurred configuring root project 'spring-5-demo'. Could not resolve all dependencies for configuration ':classpath'. Could not resolve com.github.jengelman.gradle.plugins:shadow:2.0.1.
+[X] B1_DEPENDENCY_RESOLUTION · Không tải được dependency hay plugin: A problem occurred configuring root project 'spring-5-demo'. Could not resolve all dependencies for configuration ':classpath'. Could not resolve com.github.jengelman.gradle.plugins:shadow:2.0.1.
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

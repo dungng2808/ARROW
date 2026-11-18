@@ -1,0 +1,435 @@
+{
+  "run_id": "20261118-005705-7jx5",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-005705-7jx5",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 250.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 250.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "joinfaces",
+        "url": "https://github.com/joinfaces/joinfaces",
+        "git_commit": "352cfde5475f310ff113056930705f4a5d41fb2e",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "7.3.3",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "build.gradle",
+        "reactor_module": ":joinfaces-autoconfigure",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/*Test.class"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-autoconfigure",
+            "version": "",
+            "scope": "compile"
+          },
+          {
+            "group": "io.github.classgraph",
+            "artifact": "classgraph",
+            "version": "",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.spotbugs",
+            "artifact": "spotbugs-annotations",
+            "version": "4.4.1",
+            "scope": "provided"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "",
+            "scope": "test"
+          },
+          {
+            "group": "org.joinfaces",
+            "artifact": "joinfaces-test",
+            "version": "unspecified",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.tomcat.embed",
+            "artifact": "tomcat-embed-jasper",
+            "version": "",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-api",
+            "version": "",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.spotbugs",
+            "artifact": "spotbugs-annotations",
+            "version": "4.4.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-engine",
+            "version": "",
+            "scope": "test"
+          },
+          {
+            "group": "org.ocpsoft.logging",
+            "artifact": "logging-adapter-slf4j",
+            "version": "",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 161
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.8.2",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-junit-jupiter:4.0.0",
+          "org.mockito:mockito-core:4.0.0"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.21.0",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "joinfaces-autoconfigure",
+          "joinfaces-security-taglib",
+          "joinfaces-starters",
+          "joinfaces-starters/adminfaces-spring-boot-starter",
+          "joinfaces-starters/angularfaces-spring-boot-starter",
+          "joinfaces-starters/bootsfaces-spring-boot-starter",
+          "joinfaces-starters/butterfaces-spring-boot-starter",
+          "joinfaces-starters/icefaces-spring-boot-starter",
+          "joinfaces-starters/jetty-spring-boot-starter",
+          "joinfaces-starters/jsf-spring-boot-starter",
+          "joinfaces-starters/mojarra-spring-boot-starter",
+          "joinfaces-starters/myfaces-next-spring-boot-starter",
+          "joinfaces-starters/myfaces-spring-boot-starter",
+          "joinfaces-starters/omnifaces1-spring-boot-starter",
+          "joinfaces-starters/omnifaces3-spring-boot-starter",
+          "joinfaces-starters/primefaces-spring-boot-starter",
+          "joinfaces-starters/rewrite-spring-boot-starter",
+          "joinfaces-starters/richfaces-ayg-spring-boot-starter",
+          "joinfaces-starters/richfaces-spring-boot-starter",
+          "joinfaces-starters/security-spring-boot-starter",
+          "joinfaces-starters/tobago-spring-boot-starter",
+          "joinfaces-starters/tomcat-spring-boot-starter",
+          "joinfaces-starters/undertow-spring-boot-starter",
+          "joinfaces-starters/weld-spring-boot-starter",
+          "joinfaces-test",
+          "joinfaces-tools",
+          "joinfaces-tools/joinfaces-gradle-plugin",
+          "joinfaces-tools/joinfaces-maven-plugin",
+          "joinfaces-tools/joinfaces-scan-tools",
+          "test-projects",
+          "test-projects/jetty-mojarra",
+          "test-projects/jetty-myfaces",
+          "test-projects/jetty-myfaces-next",
+          "test-projects/tomcat-mojarra",
+          "test-projects/tomcat-myfaces",
+          "test-projects/tomcat-myfaces-next",
+          "test-projects/undertow-mojarra",
+          "test-projects/undertow-myfaces",
+          "test-projects/undertow-myfaces-next"
+        ],
+        "target_module": "joinfaces-autoconfigure",
+        "module_root": "joinfaces-autoconfigure",
+        "packages": [
+          "org.joinfaces.autoconfigure.weld",
+          "org.joinfaces.autoconfigure",
+          "org.joinfaces.autoconfigure.adminfaces",
+          "org.joinfaces.autoconfigure.angularfaces",
+          "org.joinfaces.autoconfigure.bootsfaces",
+          "org.joinfaces.autoconfigure.butterfaces",
+          "org.joinfaces.autoconfigure.icefaces",
+          "org.joinfaces.autoconfigure.javaxfaces",
+          "org.joinfaces.autoconfigure.jetty",
+          "org.joinfaces.autoconfigure.jpa",
+          "org.joinfaces.autoconfigure.mojarra",
+          "org.joinfaces.autoconfigure.myfaces",
+          "org.joinfaces.autoconfigure.omnifaces",
+          "org.joinfaces.autoconfigure.primefaces",
+          "org.joinfaces.autoconfigure.rewrite",
+          "org.joinfaces.autoconfigure.richfaces",
+          "org.joinfaces.autoconfigure.scopemapping",
+          "org.joinfaces.autoconfigure.servlet",
+          "org.joinfaces.autoconfigure.servlet.initializer",
+          "org.joinfaces.autoconfigure.servlet.initparams",
+          "org.joinfaces.autoconfigure.session",
+          "org.joinfaces.autoconfigure.tobago",
+          "org.joinfaces.autoconfigure.tomcat",
+          "org.joinfaces.autoconfigure.undertow",
+          "org.joinfaces.autoconfigure.viewscope"
+        ]
+      },
+      "paths": {
+        "source_root": "joinfaces-autoconfigure/src/main/java",
+        "test_root": "joinfaces-autoconfigure/src/test/java",
+        "cut_path": "joinfaces-autoconfigure/src/main/java/org/joinfaces/autoconfigure/weld/WeldSpringBootAutoConfiguration.java",
+        "generated_test_path": "joinfaces-autoconfigure/src/test/java/org/joinfaces/autoconfigure/weld/WeldSpringBootAutoConfiguration_ArrowTest.java",
+        "generated_test_fqn": "org.joinfaces.autoconfigure.weld.WeldSpringBootAutoConfiguration_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.joinfaces.autoconfigure.weld.WeldSpringBootAutoConfiguration",
+        "simple_name": "WeldSpringBootAutoConfiguration",
+        "package": "org.joinfaces.autoconfigure.weld",
+        "kind": "class",
+        "source_sha256": "89a407db8234747c4d36fd55c7c428fe27e4f95f78f74362d283434de564d103"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/work/20261118-005705-7jx5/block1-8f207bf4/arrow-info.gradle",
+          ":joinfaces-autoconfigure:testClasses",
+          ":joinfaces-autoconfigure:arrowClasspath"
+        ],
+        "module_test": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/work/20261118-005705-7jx5/block1-8f207bf4/arrow-info.gradle",
+          ":joinfaces-autoconfigure:test",
+          "--continue"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#getClasses_empty",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#getClasses_notFound",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#getClasses_notLoadable",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#getClasses_one",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#readAnnotationClassMap",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#readAnnotationClassSet",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#readClassMap",
+        "org.joinfaces.autoconfigure.ClasspathScanUtilTest#readClassSet",
+        "org.joinfaces.autoconfigure.JoinfacesApplicationAnalyzerTest#testJsfManagedBeans",
+        "org.joinfaces.autoconfigure.JoinfacesAutoConfigurationTest#requestContextFilter",
+        "org.joinfaces.autoconfigure.adminfaces.AdminfacesAutoConfigurationTest#testConfigurationProvider",
+        "org.joinfaces.autoconfigure.angularfaces.AngularfacesAutoConfigurationTest#testTagDecoratorAdded",
+        "org.joinfaces.autoconfigure.angularfaces.AngularfacesAutoConfigurationTest#testTagDecoratorAlreadyPresent",
+        "org.joinfaces.autoconfigure.butterfaces.BootsfacesPropertiesCustomizerTest#testProcessEl",
+        "org.joinfaces.autoconfigure.butterfaces.BootsfacesPropertiesCustomizerTest#testProcessFalse",
+        "org.joinfaces.autoconfigure.butterfaces.BootsfacesPropertiesCustomizerTest#testProcessNull",
+        "org.joinfaces.autoconfigure.butterfaces.BootsfacesPropertiesCustomizerTest#testProcessTrue",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#get",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#getConversationId",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#registerDestructionCallback",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#remove",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#resolveContextualObject",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#testGetScopeMap_noFacesContext",
+        "org.joinfaces.autoconfigure.icefaces.WindowScopeTest#testGetScopeMap_noScopeMap",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testCustomMapping",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testDefaultMapping",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testDisableFacesservletToXhtmlCustomMapping",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testDisableFacesservletToXhtmlDefaultMapping_false",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testDisableFacesservletToXhtmlDefaultMapping_true",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testServletContextAttributes_added",
+        "org.joinfaces.autoconfigure.javaxfaces.FacesServletAutoConfigurationTest#testServletContextAttributes_notAdded",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testApplicationMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testFlowMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testHeaderMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testHeaderValuesMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testInitParameterMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testIsAutowiredField",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testRequestCookieMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testRequestMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testRequestParameterMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testRequestParameterValuesMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testSessionMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAnnotationPostProcessorTest#testViewMap",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAutoConfigurationTest#testExternalContext",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAutoConfigurationTest#testFacesContext",
+        "org.joinfaces.autoconfigure.javaxfaces.JsfBeansAutoConfigurationTest#testViewMap",
+        "org.joinfaces.autoconfigure.javaxfaces.MessageSourceBridgeTest#testGet",
+        "org.joinfaces.autoconfigure.javaxfaces.ProjectStageAutoConfigurationTest#testDevelopmentWhenDebug",
+        "org.joinfaces.autoconfigure.javaxfaces.ProjectStageAutoConfigurationTest#testExplicitMappingTakesPrecedence",
+        "org.joinfaces.autoconfigure.javaxfaces.ProjectStageAutoConfigurationTest#testProductionIsDefault",
+        "org.joinfaces.autoconfigure.jpa.JpaWebAutoConfigurationTest#testDisabledByMissingEntityManagerClass",
+        "org.joinfaces.autoconfigure.jpa.JpaWebAutoConfigurationTest#testDisabledByProperty",
+        "org.joinfaces.autoconfigure.jpa.JpaWebAutoConfigurationTest#testInterceptorReplacedByFilter",
+        "org.joinfaces.autoconfigure.myfaces.JoinFacesAnnotationProviderTest#getAnnotatedClasses_notSet",
+        "org.joinfaces.autoconfigure.myfaces.JoinFacesAnnotationProviderTest#getAnnotatedClasses_set",
+        "org.joinfaces.autoconfigure.omnifaces.Omnifaces2AutoConfigurationTest#testOmnifaces2AutoConfiguration",
+        "org.joinfaces.autoconfigure.primefaces.FileUploadFilterTest#testAddedWhenCommons",
+        "org.joinfaces.autoconfigure.primefaces.FileUploadFilterTest#testNotAdded",
+        "org.joinfaces.autoconfigure.primefaces.PrimefacesFileUploadServletContextInitializerTest#testOnStartup",
+        "org.joinfaces.autoconfigure.primefaces.PrimefacesFileUploadServletContextInitializerTest#testOnStartup2",
+        "org.joinfaces.autoconfigure.rewrite.RewriteAutoConfigurationTest#testConfigurationProvider",
+        "org.joinfaces.autoconfigure.rewrite.SpringBootAnnotationConfigProviderTest#getConfiguration_classpathScanningDisabled",
+        "org.joinfaces.autoconfigure.rewrite.SpringBootAnnotationConfigProviderTest#getConfiguration_classpathScanningEnabled",
+        "org.joinfaces.autoconfigure.rewrite.SpringBootAnnotationConfigProviderTest#getConfiguration_noBasePackage",
+        "org.joinfaces.autoconfigure.rewrite.SpringBootServiceEnricherTest#produce_returnsMutableCollection",
+        "org.joinfaces.autoconfigure.scopemapping.CustomScopeAnnotationConfigurerTest#testDeduceScopeName_nulls",
+        "org.joinfaces.autoconfigure.scopemapping.CustomScopeAnnotationConfigurerTest#test_customOrder",
+        "org.joinfaces.autoconfigure.scopemapping.CustomScopeAnnotationConfigurerTest#test_defaultOrder",
+        "org.joinfaces.autoconfigure.servlet.initializer.ServletContainerInitializerRegistrationBeanTest#getClasses_empty",
+        "org.joinfaces.autoconfigure.servlet.initializer.ServletContainerInitializerRegistrationBeanTest#getClasses_null",
+        "org.joinfaces.autoconfigure.servlet.initializer.ServletContainerInitializerRegistrationBeanTest#testMojarra",
+        "org.joinfaces.autoconfigure.servlet.initializer.ServletContainerInitializerRegistrationBeanTest#testMyfaces",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerConversionTest#convertToString_Boolean",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerConversionTest#convertToString_Class",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerConversionTest#convertToString_Duration",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerConversionTest#convertToString_Duration_Invalid",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerConversionTest#convertToString_Enum",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerConversionTest#convertToString_String",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testBoolean",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testClassList",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testDataSize",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testDuration",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testDurationNegativeMinutes",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testDurationSec",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testEmptyList",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testEnum",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testInt",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testNestedConfigurationProperty",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testNull",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testSingletonList",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testString",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testStringList",
+        "org.joinfaces.autoconfigure.servlet.initparams.InitParameterServletContextConfigurerTest#testSuperString",
+        "org.joinfaces.autoconfigure.session.SpringSessionFixAutoConfigurationTest#noSessionRepository",
+        "org.joinfaces.autoconfigure.session.SpringSessionFixAutoConfigurationTest#withSessionRepository",
+        "org.joinfaces.autoconfigure.session.SpringSessionFixFilterTest#testRequestWrapper",
+        "org.joinfaces.autoconfigure.session.SpringSessionFixFilterTest#testSessionWrapper",
+        "org.joinfaces.autoconfigure.undertow.CompositeResourceManagerTest#testClose",
+        "org.joinfaces.autoconfigure.undertow.CompositeResourceManagerTest#testGetResource_empty",
+        "org.joinfaces.autoconfigure.undertow.CompositeResourceManagerTest#testIsResourceChangeListenerSupported",
+        "org.joinfaces.autoconfigure.undertow.CompositeResourceManagerTest#testRegisterResourceChangeListener",
+        "org.joinfaces.autoconfigure.undertow.CompositeResourceManagerTest#testRemoveResourceChangeListener",
+        "org.joinfaces.autoconfigure.viewscope.DestructionCallbackWrapperTest#onSessionDestroy",
+        "org.joinfaces.autoconfigure.viewscope.DestructionCallbackWrapperTest#testRunCalledOnlyOnce",
+        "org.joinfaces.autoconfigure.viewscope.SessionListenerTest#testCleanup",
+        "org.joinfaces.autoconfigure.viewscope.SessionListenerTest#testDestroy",
+        "org.joinfaces.autoconfigure.viewscope.SessionListenerTest#testRegisterUnregister",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeErrorsTest#testNoFacesContext_get",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeErrorsTest#testNoFacesContext_getConversationId",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeErrorsTest#testNoFacesContext_remove",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeErrorsTest#testNoViewRoot_get",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeErrorsTest#testNoViewRoot_remove",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeTest#isListenerForSource",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeTest#processEvent",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeTest#testConversationId",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeTest#testGet",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeTest#testRegisterDestructionCallback",
+        "org.joinfaces.autoconfigure.viewscope.ViewScopeTest#testResolveContextualObject",
+        "org.joinfaces.autoconfigure.weld.WeldSpringBootAutoConfigurationTest#testWeldServletContainerInitializer"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 38.9,
+        "module_test": [
+          24,
+          11
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-005705-7jx5/base",
+      "compiled_snapshot": "work/20261118-005705-7jx5/snapshot-8f207bf4",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "gradlew",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [],
+      "gradle_project": ":joinfaces-autoconfigure",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/work/20261118-005705-7jx5/block1-8f207bf4/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "org.joinfaces.autoconfigure.weld.WeldSpringBootAutoConfiguration",
+      "simple_name": "WeldSpringBootAutoConfiguration",
+      "package": "org.joinfaces.autoconfigure.weld",
+      "kind": "class",
+      "cut_path": "joinfaces-autoconfigure/src/main/java/org/joinfaces/autoconfigure/weld/WeldSpringBootAutoConfiguration.java",
+      "source_sha256": "89a407db8234747c4d36fd55c7c428fe27e4f95f78f74362d283434de564d103",
+      "generated_test_path": "joinfaces-autoconfigure/src/test/java/org/joinfaces/autoconfigure/weld/WeldSpringBootAutoConfiguration_ArrowTest.java",
+      "generated_test_fqn": "org.joinfaces.autoconfigure.weld.WeldSpringBootAutoConfiguration_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 4.3,
+      "locate": 0.2,
+      "plan": 176.4,
+      "compile": 38.9,
+      "baseline": [
+        24,
+        11
+      ],
+      "total": 250.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,358 @@
+{
+  "run_id": "20261118-002919-h8ua",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-002919-h8ua",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 58.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 58.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "glacieruploader",
+        "url": "https://github.com/MoriTanosuke/glacieruploader",
+        "git_commit": "4a39fec4aa9864f908c726189b160c858a1dcd3e",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.3.9",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "glacieruploader-command",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "de.kopis.glacier",
+            "artifact": "glacieruploader-printers",
+            "version": "0.1.2-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "de.kopis.glacier",
+            "artifact": "glacieruploader-parsers",
+            "version": "0.1.2-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.amazonaws",
+            "artifact": "aws-java-sdk",
+            "version": "1.11.490",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.jopt-simple",
+            "artifact": "jopt-simple",
+            "version": "4.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-log4j12",
+            "version": "1.7.22",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.5",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.easymock",
+            "artifact": "easymock",
+            "version": "3.4",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 200
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.easymock:easymock:3.4"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "glacieruploader-printers",
+          "glacieruploader-parsers",
+          "glacieruploader-impl",
+          "glacieruploader-command"
+        ],
+        "target_module": "glacieruploader-command",
+        "module_root": "glacieruploader-command",
+        "packages": [
+          "de.kopis.glacier.commands"
+        ]
+      },
+      "paths": {
+        "source_root": "glacieruploader-command/src/main/java",
+        "test_root": "glacieruploader-command/src/test/java",
+        "cut_path": "glacieruploader-command/src/main/java/de/kopis/glacier/commands/CreateVaultCommand.java",
+        "generated_test_path": "glacieruploader-command/src/test/java/de/kopis/glacier/commands/CreateVaultCommand_ArrowTest.java",
+        "generated_test_fqn": "de.kopis.glacier.commands.CreateVaultCommand_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "de.kopis.glacier.commands.CreateVaultCommand",
+        "simple_name": "CreateVaultCommand",
+        "package": "de.kopis.glacier.commands",
+        "kind": "class",
+        "source_sha256": "7666c20f5382fdaed9a6b246bd8d4851b6dbc9af20d77dfadb76a6c80d37702a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "glacieruploader-command",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "glacieruploader-command",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "de.kopis.glacier.commands.AbortMultipartArchiveUploadCommandTest#exec",
+        "de.kopis.glacier.commands.CommandFactoryTest#canAddCommands",
+        "de.kopis.glacier.commands.CommandFactoryTest#returnsDefaultCommandIfNoMatchFound",
+        "de.kopis.glacier.commands.CreateVaultCommandTest#exec",
+        "de.kopis.glacier.commands.DeleteArchiveCommandTest#exec",
+        "de.kopis.glacier.commands.DeleteVaultCommandTest#exec",
+        "de.kopis.glacier.commands.DownloadArchiveCommandTest#exec",
+        "de.kopis.glacier.commands.HelpCommandTest#exec",
+        "de.kopis.glacier.commands.HelpCommandTest#execWithBrokenOutput",
+        "de.kopis.glacier.commands.HelpCommandTest#execWithoutOption",
+        "de.kopis.glacier.commands.ListJobsCommandTest#exec",
+        "de.kopis.glacier.commands.ListJobsCommandTest#execWithBlankVault",
+        "de.kopis.glacier.commands.ListVaultCommandTest#exec",
+        "de.kopis.glacier.commands.ReceiveArchivesListCommandTest#exec",
+        "de.kopis.glacier.commands.ReceiveArchivesListCommandTest#execWithBlankVault",
+        "de.kopis.glacier.commands.RequestArchivesListCommandTest#exec",
+        "de.kopis.glacier.commands.RequestArchivesListCommandTest#execWithBlankVault",
+        "de.kopis.glacier.commands.RequestArchivesListCommandTest#testVaultOverrideBySystemEnvironment",
+        "de.kopis.glacier.commands.TreeHashArchiveCommandTest#canCalculateTreeHashForFile",
+        "de.kopis.glacier.commands.TreeHashArchiveCommandTest#canNotCalculateTreeHashForMissingFile",
+        "de.kopis.glacier.commands.UploadArchiveCommandTest#canUploadFile",
+        "de.kopis.glacier.commands.UploadArchiveCommandTest#canValidateOptions",
+        "de.kopis.glacier.commands.UploadMultipartArchiveCommandTest#testExec",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#acceptsShortcutForVaultOption",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#canParseEndpointUrlToRegion",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionCalculateHash",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionCreateVault",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionDeleteArchive",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionDeleteVault",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionDownload",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionListInventory",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionListInventoryWithJobId",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasActionOptionUpload",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasDefaultPartsizeCustom",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasDefaultPartsizeDefault",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasOptionalCredentialsOptionWithFile",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasRequiredEndpointOptionWithUrl",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#hasRequiredVaultOptionWithName",
+        "de.kopis.glacier.parsers.GlacierUploaderOptionParserTest#parsesFilesWithWhitespaceSuccessfully",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#gigabyteLargeSizeAsBigDecimal",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#gigabyteLargeSizeFailed",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#megabyteLargeSizeFailed",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#sanitizeBytes",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#sanitizeGigabytes",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#sanitizeKilTerabytes",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#sanitizeKilobytes",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#sanitizeMegabytes",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#sanitizeMissingSizeIndicator",
+        "de.kopis.glacier.printers.HumanReadableSizeTest#terabyteLargeSizeFailed",
+        "de.kopis.glacier.printers.JobPrinterTest#printJob",
+        "de.kopis.glacier.printers.VaultInventoryPrinterTest#test68GbLargeInventorySizeInteger",
+        "de.kopis.glacier.printers.VaultInventoryPrinterTest#testPrintInventoryListing",
+        "de.kopis.glacier.printers.VaultPrinterTest#testPrintVaultOutput",
+        "de.kopis.glacier.printers.VaultPrinterTest#testPrintVaultResult"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 50,
+        "module_test": [
+          3.9,
+          3.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-002919-h8ua/base",
+      "compiled_snapshot": "work/20261118-002919-h8ua/snapshot-600486ba",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "glacieruploader-command",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "de.kopis.glacier.commands.CreateVaultCommand",
+      "simple_name": "CreateVaultCommand",
+      "package": "de.kopis.glacier.commands",
+      "kind": "class",
+      "cut_path": "glacieruploader-command/src/main/java/de/kopis/glacier/commands/CreateVaultCommand.java",
+      "source_sha256": "7666c20f5382fdaed9a6b246bd8d4851b6dbc9af20d77dfadb76a6c80d37702a",
+      "generated_test_path": "glacieruploader-command/src/test/java/de/kopis/glacier/commands/CreateVaultCommand_ArrowTest.java",
+      "generated_test_fqn": "de.kopis.glacier.commands.CreateVaultCommand_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 50,
+      "baseline": [
+        3.9,
+        3.8
+      ],
+      "total": 58.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,264 @@
+{
+  "run_id": "20261118-010304-f6xv",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-010304-f6xv",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 5.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 5.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "JavaPA",
+        "url": "https://github.com/V1toss/JavaPA",
+        "git_commit": "a020020d4f6511fb45e472185c205b32dd03da24",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "part_1/lesson_5",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "part_1",
+          "part_1/lesson_1",
+          "part_1/lesson_2",
+          "part_1/lesson_3",
+          "part_1/lesson_4",
+          "part_1/lesson_5"
+        ],
+        "target_module": "part_1/lesson_5",
+        "module_root": "part_1/lesson_5",
+        "packages": [
+          "vkaretko.Task_5_1",
+          "vkaretko.Task_5_2"
+        ]
+      },
+      "paths": {
+        "source_root": "part_1/lesson_5/src/main/java",
+        "test_root": "part_1/lesson_5/src/test/java",
+        "cut_path": "part_1/lesson_5/src/main/java/vkaretko/Task_5_1/BubbleSort.java",
+        "generated_test_path": "part_1/lesson_5/src/test/java/vkaretko/Task_5_1/BubbleSort_ArrowTest.java",
+        "generated_test_fqn": "vkaretko.Task_5_1.BubbleSort_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "vkaretko.Task_5_1.BubbleSort",
+        "simple_name": "BubbleSort",
+        "package": "vkaretko.Task_5_1",
+        "kind": "class",
+        "source_sha256": "d07693d2cfebe62df6f455dee713207ff79a9ab3f335f8ddf95c4e5aba89a504"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "part_1/lesson_5",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "part_1/lesson_5",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "vkaretko.Task_5_1.BubbleSortTest#whenSortUnsortedArrayOfTenIntegersThenResultSortedArrayOfTenIntegers",
+        "vkaretko.Task_5_2.RotateArrayTest#whenRotateTwoDimensionalArrayWithThreeRowsAndColumnsThenResultRotatedArray"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.4,
+        "module_test": [
+          1.6,
+          1.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010304-f6xv/base",
+      "compiled_snapshot": "work/20261118-010304-f6xv/snapshot-b72c9423",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "part_1/lesson_5",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "vkaretko.Task_5_1.BubbleSort",
+      "simple_name": "BubbleSort",
+      "package": "vkaretko.Task_5_1",
+      "kind": "class",
+      "cut_path": "part_1/lesson_5/src/main/java/vkaretko/Task_5_1/BubbleSort.java",
+      "source_sha256": "d07693d2cfebe62df6f455dee713207ff79a9ab3f335f8ddf95c4e5aba89a504",
+      "generated_test_path": "part_1/lesson_5/src/test/java/vkaretko/Task_5_1/BubbleSort_ArrowTest.java",
+      "generated_test_fqn": "vkaretko.Task_5_1.BubbleSort_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 3.5,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 1.4,
+      "baseline": [
+        1.6,
+        1.8
+      ],
+      "total": 5.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

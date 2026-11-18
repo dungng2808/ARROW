@@ -1,0 +1,1029 @@
+{
+  "run_id": "20261118-010529-ohyb",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-010529-ohyb",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 863.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 863.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Gemma",
+        "url": "https://github.com/PavlidisLab/Gemma",
+        "git_commit": "06ff7665f2a0130a4568e3859ee57223486d4a52",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "gemma-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": [
+          "**/*Abstract*",
+          "**/*IntegrationTest.java",
+          "**/*Tests.java"
+        ]
+      },
+      "java": {
+        "declared": "8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.retry",
+            "artifact": "spring-retry",
+            "version": "1.0.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "com.sun.mail",
+            "artifact": "javax.mail",
+            "version": "1.6.2",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.apache.velocity",
+            "artifact": "velocity",
+            "version": "1.7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.lucene",
+            "artifact": "lucene-core",
+            "version": "3.6.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.lucene",
+            "artifact": "lucene-analyzers",
+            "version": "3.6.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.jena",
+            "artifact": "jena-core",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.jena",
+            "artifact": "jena-arq",
+            "version": "2.9.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.jena",
+            "artifact": "jena-larq",
+            "version": "1.0.0-incubating",
+            "scope": "compile"
+          },
+          {
+            "group": "ubc.chibi.compass-fork",
+            "artifact": "compass-fork",
+            "version": "1.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-csv",
+            "version": "1.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-math3",
+            "version": "3.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-net",
+            "artifact": "commons-net",
+            "version": "3.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.xml.bind",
+            "artifact": "jaxb-api",
+            "version": "2.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "obo",
+            "artifact": "org.geneontology",
+            "version": "1.002",
+            "scope": "compile"
+          },
+          {
+            "group": "org.aspectj",
+            "artifact": "aspectjweaver",
+            "version": "1.9.9.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.googlecode.javaewah",
+            "artifact": "JavaEWAH",
+            "version": "0.7.9",
+            "scope": "compile"
+          },
+          {
+            "group": "jboss",
+            "artifact": "jboss-ejb3x",
+            "version": "4.2.2.GA",
+            "scope": "compile"
+          },
+          {
+            "group": "baseCode",
+            "artifact": "baseCode",
+            "version": "1.1.5",
+            "scope": "compile"
+          },
+          {
+            "group": "pavlab",
+            "artifact": "gemma-gsec",
+            "version": "0.0.10",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-core",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-beans",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-expression",
+            "version": "3.2.18.RELEASE",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-context",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-context-support",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-aspects",
+            "version": "3.2.18.RELEASE",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-aop",
+            "version": "3.2.18.RELEASE",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-tx",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.security",
+            "artifact": "spring-security-core",
+            "version": "3.2.10.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.security",
+            "artifact": "spring-security-acl",
+            "version": "3.2.10.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-jdbc",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-orm",
+            "version": "3.2.18.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.hibernate",
+            "artifact": "hibernate-core",
+            "version": "4.2.21.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.dom4j",
+            "artifact": "dom4j",
+            "version": "2.1.3",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.hibernate",
+            "artifact": "hibernate-ehcache",
+            "version": "4.2.21.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "mysql",
+            "artifact": "mysql-connector-java",
+            "version": "8.0.30",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-dbcp2",
+            "version": "2.9.0",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.ehcache",
+            "artifact": "ehcache-core",
+            "version": "2.4.3",
+            "scope": "compile"
+          },
+          {
+            "group": "colt",
+            "artifact": "colt",
+            "version": "1.2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.xbean",
+            "artifact": "xbean-spring",
+            "version": "4.22",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "31.1-jre",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.resource",
+            "artifact": "javax.resource-api",
+            "version": "1.7.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.ant",
+            "artifact": "ant",
+            "version": "1.10.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jfree",
+            "artifact": "jfreechart",
+            "version": "1.5.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.12.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-text",
+            "version": "1.10.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-logging",
+            "artifact": "commons-logging",
+            "version": "1.2",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-logging",
+            "artifact": "commons-logging-api",
+            "version": "1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-beanutils",
+            "artifact": "commons-beanutils",
+            "version": "1.9.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-collections4",
+            "version": "4.4",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-collections",
+            "artifact": "commons-collections",
+            "version": "3.2.2",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-configuration2",
+            "version": "2.8.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.11.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-core",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.14.1",
+            "scope": "compile"
+          },
+          {
+            "group": "xml-apis",
+            "artifact": "xml-apis",
+            "version": "1.4.01",
+            "scope": "compile"
+          },
+          {
+            "group": "xerces",
+            "artifact": "xercesImpl",
+            "version": "2.10.0",
+            "scope": "compile"
+          },
+          {
+            "group": "xalan",
+            "artifact": "xalan",
+            "version": "2.7.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-core",
+            "version": "2.17.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-slf4j-impl",
+            "version": "2.17.2",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.apache.logging.log4j",
+            "artifact": "log4j-1.2-api",
+            "version": "2.17.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.36",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.7.36",
+            "scope": "compile"
+          },
+          {
+            "group": "org.projectlombok",
+            "artifact": "lombok",
+            "version": "1.18.24",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework",
+            "artifact": "spring-test",
+            "version": "3.2.18.RELEASE",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.2",
+            "scope": "test"
+          },
+          {
+            "group": "io.takari.junit",
+            "artifact": "takari-cpsuite",
+            "version": "1.2.7",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "4.8.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-inline",
+            "version": "4.8.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.23.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 147
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.2",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:4.8.1",
+          "org.mockito:mockito-inline:4.8.1"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.23.1"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "gemma-core",
+          "gemma-cli",
+          "gemma-web"
+        ],
+        "target_module": "gemma-core",
+        "module_root": "gemma-core",
+        "packages": [
+          "ubic.gemma.core.loader.expression.geo",
+          "ubic.gemma.core.loader.expression",
+          "ubic.gemma.core.loader.expression.geo.fetcher",
+          "ubic.gemma.core.loader.expression.geo.model",
+          "ubic.gemma.core.loader.expression.geo.service",
+          "ubic.gemma.core.loader.expression.geo.util",
+          "ubic.gemma.core.analysis.expression",
+          "ubic.gemma.core.analysis.expression.coexpression",
+          "ubic.gemma.core.analysis.expression.coexpression.links",
+          "ubic.gemma.core.analysis.expression.diff",
+          "ubic.gemma.core.analysis.preprocess",
+          "ubic.gemma.core.analysis.preprocess.batcheffects",
+          "ubic.gemma.core.analysis.preprocess.filter",
+          "ubic.gemma.core.analysis.preprocess.normalize",
+          "ubic.gemma.core.analysis.preprocess.svd",
+          "ubic.gemma.core.analysis.report",
+          "ubic.gemma.core.analysis.sequence",
+          "ubic.gemma.core.analysis.service",
+          "ubic.gemma.core.analysis.util",
+          "ubic.gemma.core.annotation.reference",
+          "ubic.gemma.core.apps",
+          "ubic.gemma.core.association.phenotype",
+          "ubic.gemma.core.association.phenotype.fileUpload.literatureEvidence",
+          "ubic.gemma.core.datastructure.matrix",
+          "ubic.gemma.core.expression.experiment",
+          "ubic.gemma.core.expression.experiment.service",
+          "ubic.gemma.core.externalDb",
+          "ubic.gemma.core.genome.gene",
+          "ubic.gemma.core.genome.gene.service",
+          "ubic.gemma.core.image"
+        ]
+      },
+      "paths": {
+        "source_root": "gemma-core/src/main/java",
+        "test_root": "gemma-core/src/test/java",
+        "cut_path": "gemma-core/src/main/java/ubic/gemma/core/loader/expression/geo/QuantitationTypeParameterGuesser.java",
+        "generated_test_path": "gemma-core/src/test/java/ubic/gemma/core/loader/expression/geo/QuantitationTypeParameterGuesser_ArrowTest.java",
+        "generated_test_fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser",
+        "simple_name": "QuantitationTypeParameterGuesser",
+        "package": "ubic.gemma.core.loader.expression.geo",
+        "kind": "class",
+        "source_sha256": "a564cbe0605751e0931ec617f0221c20531cbb03da8fb09343ad40876fb55555"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "gemma-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "gemma-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "ubic.gemma.core.analysis.expression.coexpression.links.SpearmanMetricsTest#testCorrel",
+        "ubic.gemma.core.analysis.expression.coexpression.links.SpearmanMetricsTest#testCorrelB",
+        "ubic.gemma.core.analysis.expression.coexpression.links.SpearmanMetricsTest#testCorrelC",
+        "ubic.gemma.core.analysis.expression.coexpression.links.SpearmanMetricsTest#testCorrelFromRanks",
+        "ubic.gemma.core.analysis.expression.coexpression.links.SpearmanMetricsTest#testCorrelWithMissing",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testEigenvalues",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testGetS",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testGetU",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testMatrixReconstruct",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testMatrixReconstructB",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testUMatrixAsExpressionData",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testUMatrixAsExpressionDataUnnormalized",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testVarianceFractions",
+        "ubic.gemma.core.analysis.preprocess.ExpressionDataSVDTest#testWinnow",
+        "ubic.gemma.core.analysis.preprocess.QuantileNormalizerTest#testNormalize",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AffyScanDateExtractorTest#testExtractInputStreamGCOS",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AffyScanDateExtractorTest#testExtractInputStreamV3",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AffyScanDateExtractorTest#testExtractInputStreamV4",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AffyScanDateExtractorTest#testExtractInputStreamVx",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AgilentScanDateExtractorTest#testExtractAgilent",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AgilentScanDateExtractorTest#testExtractAgilent2",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.AgilentScanDateExtractorTest#testExtractGPR",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.BatchInfoPopulationServiceTest#testDatesToBatchA",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.BatchInfoPopulationServiceTest#testDatesToBatchB",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.BatchInfoPopulationServiceTest#testDatesToBatchC",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.BatchInfoPopulationServiceTest#testDatesToBatchD",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.ComBatTest#test1",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.ComBatTest#test2WithMissingValues",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.ComBatTest#test3",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.ComBatTest#test3NoCovariate",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.ComBatTest#test4",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.ComBatTest#test5NonParametric",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testExtractGenePix",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testExtractGenePixB",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testExtractGeneSpring",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testExtractGpr",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testExtractImagene",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testExtractLongDate",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testParseStandardDate",
+        "ubic.gemma.core.analysis.preprocess.batcheffects.GenericScanFileDateExtractorTest#testParseStandardDateWithGap",
+        "ubic.gemma.core.analysis.sequence.BlatAssociationScorerTest#testScoreResults",
+        "ubic.gemma.core.analysis.sequence.RepeatScanTest#testFraction",
+        "ubic.gemma.core.analysis.sequence.SequenceBinUtilsTest#testBinFromRangeA",
+        "ubic.gemma.core.analysis.sequence.SequenceBinUtilsTest#testBinFromRangeB",
+        "ubic.gemma.core.analysis.sequence.SequenceBinUtilsTest#testBinFromRangeC",
+        "ubic.gemma.core.analysis.sequence.SequenceBinUtilsTest#testBinFromRangeD",
+        "ubic.gemma.core.analysis.sequence.SequenceManipulationTest#testStripPolyA",
+        "ubic.gemma.core.analysis.sequence.SequenceManipulationTest#testStripPolyAtooShort",
+        "ubic.gemma.core.analysis.sequence.SequenceManipulationTest#testStripPolyT",
+        "ubic.gemma.core.datastructure.matrix.DetectFactorBaselineTest#testIsBaselineA",
+        "ubic.gemma.core.datastructure.matrix.DetectFactorBaselineTest#testIsBaselineB",
+        "ubic.gemma.core.datastructure.matrix.DetectFactorBaselineTest#testIsNotBaselineA",
+        "ubic.gemma.core.datastructure.matrix.MatrixConversionTest#testColumnMapping",
+        "ubic.gemma.core.job.TaskUtilsTest#testGenerateTaskId",
+        "ubic.gemma.core.loader.entrez.EutilFetchTest#testFetch",
+        "ubic.gemma.core.loader.entrez.pubmed.ESearchXMLParserTest#testParse",
+        "ubic.gemma.core.loader.entrez.pubmed.ExpressionExperimentBibRefFinderTest#testLocatePrimaryReferenceInvalidGSE",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedSearchTest#testSearchAndRetrieveByHTTP",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedSearchTest#testSearchAndRetrieveByHTTPInChunks",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedSearchTest#testSearchAndRetrieveIdByHTTPBookshelf",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedSearchTest#testSearchAndRetrieveIdsByHTTP",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLFetcherTest#testRetrieveByHTTP",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLFetcherTest#testRetrieveByHTTP2",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLFetcherTest#testRetrieveByHTTPNotFound",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParseBookArticle",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParseMulti",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParseMultipartAbstract",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParseRetracted",
+        "ubic.gemma.core.loader.expression.AffyPowerToolsProbesetSummarizeTest#testCELnameregex",
+        "ubic.gemma.core.loader.expression.AffyPowerToolsProbesetSummarizeTest#testLoadMPSNames",
+        "ubic.gemma.core.loader.expression.arrayDesign.AffyChipTypeExtractorTest#testExtractInputStreamGCOS",
+        "ubic.gemma.core.loader.expression.arrayDesign.AffyChipTypeExtractorTest#testExtractInputStreamV3",
+        "ubic.gemma.core.loader.expression.arrayDesign.AffyChipTypeExtractorTest#testExtractInputStreamV4",
+        "ubic.gemma.core.loader.expression.arrayDesign.AffyChipTypeExtractorTest#testExtractInputStreamVx",
+        "ubic.gemma.core.loader.expression.arrayDesign.AffyProbeReaderTest#testReadInputStream",
+        "ubic.gemma.core.loader.expression.arrayDesign.AffyProbeReaderTest#testReadInputStreamNew",
+        "ubic.gemma.core.loader.expression.arrayDesign.CompositeSequenceParserTest#testParseInputStream",
+        "ubic.gemma.core.loader.expression.arrayDesign.IlluminaProbeReaderTest#testReadInputStream",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGDSGrouping",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE13",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE267",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE3193",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE469",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE493",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE611",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE88",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSE91",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testFindGSECorrespondence",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testGDS186",
+        "ubic.gemma.core.loader.expression.geo.DatasetCombinerTest#testGSE465",
+        "ubic.gemma.core.loader.expression.geo.GeoBrowserTest#testGetGeoRecordGSE93825",
+        "ubic.gemma.core.loader.expression.geo.GeoBrowserTest#testGetGeoRecords",
+        "ubic.gemma.core.loader.expression.geo.GeoBrowserTest#testGetGeoRecordsB",
+        "ubic.gemma.core.loader.expression.geo.GeoBrowserTest#testGetGeoRecordsBySearchTerm",
+        "ubic.gemma.core.loader.expression.geo.GeoCharacteristicParseTest#testParseGEOSampleCharacteristic",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseBigA",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseBigBPlatformOnly",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseDataset",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseGSE29014",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseGenePix",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseGse432",
+        "ubic.gemma.core.loader.expression.geo.GeoFamilyParserTest#testParseSAGE",
+        "ubic.gemma.core.loader.expression.geo.GeoPlatformTest#testExonArrayInfo",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testAbsCall",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testBadRatio",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testGuessQuantitationTypeParameters",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testMas5",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testMas6",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testPercent",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testPixels",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testPrimitiveType",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testPrimitiveTypeDoubleWrong",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testPrimitiveTypeInteger",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testPrimitiveTypeIntegerWrong",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testRatio",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testTortureQuantitationTypes",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testareaCall",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testbackground",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testbackgroundB",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testbkdst",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testgcrma",
+        "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesserTest#testrma",
+        "ubic.gemma.core.loader.expression.geo.service.GeoBrowserServiceParseTest#testMINiMLParse",
+        "ubic.gemma.core.loader.expression.geo.service.GeoBrowserServiceParseTest#testParse",
+        "ubic.gemma.core.loader.expression.geo.service.GeoBrowserServiceParseTest#testParse2",
+        "ubic.gemma.core.loader.expression.geo.service.GeoBrowserServiceParseTest#testParse3",
+        "ubic.gemma.core.loader.expression.geo.service.GeoBrowserServiceParseTest#testSampleMINiMLParse",
+        "ubic.gemma.core.loader.genome.BlatResultParserTest#testParseInputStreamNoheader",
+        "ubic.gemma.core.loader.genome.BlatResultParserTest#testParseInputStreamWheader",
+        "ubic.gemma.core.loader.genome.FastaParserTest#testParseDoubleHeader",
+        "ubic.gemma.core.loader.genome.FastaParserTest#testParseInputStream",
+        "ubic.gemma.core.loader.genome.FastaParserTest#testParseInputStreamAffyTarget",
+        "ubic.gemma.core.loader.genome.FastaParserTest#testParseMasked",
+        "ubic.gemma.core.loader.genome.FastaParserTest#testParseNIA",
+        "ubic.gemma.core.loader.genome.FastaParserTest#testParsecodelink",
+        "ubic.gemma.core.loader.genome.ProbeSequenceParserTest#testParseInputStream",
+        "ubic.gemma.core.loader.genome.SimpleFastaCmdTest#testGetMultiple",
+        "ubic.gemma.core.loader.genome.SimpleFastaCmdTest#testGetMultipleAcc",
+        "ubic.gemma.core.loader.genome.SimpleFastaCmdTest#testGetMultipleAccSomeNotFound",
+        "ubic.gemma.core.loader.genome.SimpleFastaCmdTest#testGetSingle",
+        "ubic.gemma.core.loader.genome.SimpleFastaCmdTest#testGetSingleAcc",
+        "ubic.gemma.core.loader.genome.SimpleFastaCmdTest#testGetSingleAccNotFound",
+        "ubic.gemma.core.loader.genome.gene.SwissProtParserTest#testParse",
+        "ubic.gemma.core.loader.genome.gene.ncbi.NCBIGeneHistoryParserTest#testParseA",
+        "ubic.gemma.core.loader.genome.gene.ncbi.NCBIGeneHistoryParserTest#testParseB",
+        "ubic.gemma.core.loader.genome.gene.ncbi.NCBIGeneParserTest#testParseGene2Accession",
+        "ubic.gemma.core.loader.genome.gene.ncbi.NCBIGeneParserTest#testParseGeneInfo",
+        "ubic.gemma.core.loader.genome.taxon.TaxonParserTest#testParseInputStream",
+        "ubic.gemma.core.loader.util.HttpFetcherTest#testFetch",
+        "ubic.gemma.core.ontology.CharacteristicSortTest#testSortCharacteristics",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testAllParents",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testAllParents2",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testAsRegularGoId",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetAllChildren",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetAspect",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetChildren",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetChildrenPartOf",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetParents",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetParentsPartOf",
+        "ubic.gemma.core.ontology.providers.GeneOntologyServiceTest#testGetTermForId",
+        "ubic.gemma.core.search.LuceneTest#luceneRamIndexTest",
+        "ubic.gemma.core.search.LuceneTest#testEnglishAnalyzer",
+        "ubic.gemma.core.search.SearchResultTest#testResultObject",
+        "ubic.gemma.core.search.SearchResultTest#testResultObjectWithNullId",
+        "ubic.gemma.core.search.SearchResultTest#testSetResultObject",
+        "ubic.gemma.core.search.SearchResultTest#testSetResultObjectWithDifferentId",
+        "ubic.gemma.core.search.SearchResultTest#testSetResultObjectWithNullId",
+        "ubic.gemma.core.search.SearchServiceTest#searchExpressionExperiment_whenQueryHasMultipleClauses_thenParseAccordingly",
+        "ubic.gemma.core.search.SearchServiceTest#test_whenTaxonIsNameIsUsedInQuery_thenAddTaxonToSearchSettings",
+        "ubic.gemma.core.search.SearchServiceVoConversionTest#testConvertArrayDesign",
+        "ubic.gemma.core.search.SearchServiceVoConversionTest#testConvertExpressionExperiment",
+        "ubic.gemma.core.search.SearchServiceVoConversionTest#testConvertGeneSet",
+        "ubic.gemma.core.search.SearchServiceVoConversionTest#testConvertPhenotypeAssociation",
+        "ubic.gemma.core.search.SearchServiceVoConversionTest#testUnsupportedResultTypeRaisesIllegalArgumentException",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#luceneQueryParser_whenTermIsQuoted_thenPreserveQuoting",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test_multipleQuotedTerms",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test_multipleQuotedTermsWithOr",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test_quotedTerm",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test_whenQueryIsEmpty_thenReturnNothing",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test_whenQueryOnlyContainsAWildCard_thenReturnNothing",
+        "ubic.gemma.core.search.source.CompassSearchSourceTest#test_whenQueryOnlyContainsNonWordCharacters_thenReturnNothing",
+        "ubic.gemma.core.search.source.DatabaseSearchSourceTest#test_quotedTerms",
+        "ubic.gemma.core.search.source.DatabaseSearchSourceTest#test_whenQueryContainsAsterisk_thenSubstituteForPercent",
+        "ubic.gemma.core.search.source.DatabaseSearchSourceTest#test_whenQueryContainsLikePatterns_thenEscape",
+        "ubic.gemma.core.search.source.DatabaseSearchSourceTest#test_whenQueryContainsQuote_thenStripThem",
+        "ubic.gemma.core.security.audit.PointcutsTest#testCrud",
+        "ubic.gemma.core.security.audit.PointcutsTest#testCrudDelete",
+        "ubic.gemma.core.security.audit.PointcutsTest#testCrudRead",
+        "ubic.gemma.core.security.audit.PointcutsTest#testCrudSave",
+        "ubic.gemma.core.security.audit.PointcutsTest#testRetryableMethod",
+        "ubic.gemma.core.security.audit.PointcutsTest#testTransactionalService",
+        "ubic.gemma.core.security.authentication.UserServiceImplTest#testHandleGetUser",
+        "ubic.gemma.core.security.authentication.UserServiceImplTest#testHandleRemoveUser",
+        "ubic.gemma.core.security.authentication.UserServiceImplTest#testHandleSaveUser",
+        "ubic.gemma.core.util.StopWatchUtilsTest#testMeasuredRegion",
+        "ubic.gemma.core.util.StopWatchUtilsTest#testMeasuredRegionWhhenStopWatchIsAlreadyStarted",
+        "ubic.gemma.core.util.StopWatchUtilsTest#testMeasuredRegionWhhenStopWatchIsStopped",
+        "ubic.gemma.core.util.StopWatchUtilsTest#testMeasuredRegionWithInnerRegion",
+        "ubic.gemma.core.util.StopWatchUtilsTest#testRepeatedMeasuredRegion",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiFetcherTest#testAttributesToRetrieveFromBioMart",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiFetcherTest#testGetBioMartTaxonName",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiFetcherTest#testGetEnsemblNcibidata",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiObjectGeneratorTest#testGenerate",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiParserTest#testGetBioMartFieldsPerRow",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiParserTest#testParseOneValidLineHuman",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiParserTest#testParseOneValidLineNonHuman",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiParserTest#testParseValidFileHuman",
+        "ubic.gemma.core.util.biomart.BioMartEnsemblNcbiParserTest#testParseValidFileMouse",
+        "ubic.gemma.core.util.progress.ProgressAppenderTest#testLoggingInProgressUpdateCallbackDoesNotResultInLoggingRecursion",
+        "ubic.gemma.core.util.progress.ProgressAppenderTest#testProgressLogging",
+        "ubic.gemma.core.util.progress.ProgressDataTest#testProgressData",
+        "ubic.gemma.core.util.progress.ProgressDataTest#testSetDescription",
+        "ubic.gemma.core.util.progress.ProgressDataTest#testSetDone",
+        "ubic.gemma.core.util.progress.ProgressDataTest#testSetPercent",
+        "ubic.gemma.model.analysis.expression.coexpression.CoexpressionNodeDegreeValueObjectTest#testa",
+        "ubic.gemma.model.analysis.expression.coexpression.GeneCoexpressionTestedInTest#test",
+        "ubic.gemma.model.analysis.expression.coexpression.GeneCoexpressionTestedInTest#testBulkAdd",
+        "ubic.gemma.model.analysis.expression.coexpression.GeneCoexpressionTestedInTest#testSpeedA",
+        "ubic.gemma.model.analysis.expression.coexpression.GeneCoexpressionTestedInTest#testSpeedB",
+        "ubic.gemma.model.analysis.expression.coexpression.SupportDetailsTest#test",
+        "ubic.gemma.model.analysis.expression.coexpression.SupportDetailsTest#testSerializeEWAHCompressedBitmap",
+        "ubic.gemma.model.common.auditAndSecurity.eventType.AuditEventTypeTest#test",
+        "ubic.gemma.model.common.search.SearchSettingsTest#testSetQueryWhenQueryContainsBlankThenTrimAccordingly",
+        "ubic.gemma.model.common.search.SearchSettingsTest#testSetQueryWhenQueryIsATermUri",
+        "ubic.gemma.model.common.search.SearchSettingsTest#testSetQueryWhenQueryIsATermUriWithTrailingBlanks",
+        "ubic.gemma.model.common.search.SearchSettingsTest#testSetQueryWhenQueryIsNull",
+        "ubic.gemma.model.common.search.SearchSettingsTest#testSetTermUriWhenUriIsBlank",
+        "ubic.gemma.model.common.search.SearchSettingsTest#testSetTermUriWhenUriIsNull",
+        "ubic.gemma.model.genome.BlatResultTest#testScore",
+        "ubic.gemma.model.genome.BlatResultTest#testScorewr",
+        "ubic.gemma.model.genome.GeneTest#testEqualsA",
+        "ubic.gemma.model.genome.GeneTest#testEqualsB",
+        "ubic.gemma.model.genome.GeneTest#testEqualsC",
+        "ubic.gemma.model.genome.GeneTest#testEqualsD",
+        "ubic.gemma.model.genome.GeneTest#testEqualsE",
+        "ubic.gemma.model.genome.TaxonValueObjectTest#testDefaultNoArgConstructor",
+        "ubic.gemma.model.genome.biosequence.BioSequenceTest#testEqualsID",
+        "ubic.gemma.model.genome.biosequence.BioSequenceTest#testEqualsName",
+        "ubic.gemma.model.genome.biosequence.BioSequenceTest#testEqualsSeq",
+        "ubic.gemma.model.genome.biosequence.BioSequenceTest#testEqualsTaxon",
+        "ubic.gemma.model.genome.biosequence.BioSequenceTest#testNotEqualsID",
+        "ubic.gemma.model.genome.gene.GeneServiceImplTest#testFindAll",
+        "ubic.gemma.model.genome.gene.GeneServiceImplTest#testFindByAccessionNoSource",
+        "ubic.gemma.model.genome.gene.GeneServiceImplTest#testFindByNcbiId",
+        "ubic.gemma.model.genome.gene.GeneServiceImplTest#testFindByOfficialName",
+        "ubic.gemma.model.genome.gene.GeneServiceImplTest#testFindByOfficialSymbol",
+        "ubic.gemma.model.genome.gene.GeneServiceImplTest#testFindByOfficialSymbolInexact",
+        "ubic.gemma.model.genome.gene.GeneValueObjectTest#testGeneValueObjectWithoutTaxon",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testCompareToCategory",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testCompareToNull",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testCompareToOrdering",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testCompareToTaxon",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testCompareToValue",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testCompareToValueUri",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsA",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsB",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsC",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsD",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsE",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsF",
+        "ubic.gemma.model.genome.gene.phenotype.valueObject.CharacteristicValueObjectTest#testEqualsG",
+        "ubic.gemma.persistence.service.TableMaintenanceUtilTest#test",
+        "ubic.gemma.persistence.service.TableMaintenanceUtilTest#testUpdateWhenTableIsFresh",
+        "ubic.gemma.persistence.service.expression.arrayDesign.ArrayDesignServiceTest#testGetObjectFilter",
+        "ubic.gemma.persistence.service.expression.arrayDesign.ArrayDesignServiceTest#testTaxonPropertyResolutionInGetObjectFilter",
+        "ubic.gemma.persistence.util.EntityUtilsTest#testGetIdMap",
+        "ubic.gemma.persistence.util.EntityUtilsTest#testGetNestedPropertyMap",
+        "ubic.gemma.persistence.util.EntityUtilsTest#testGetProperty",
+        "ubic.gemma.persistence.util.EntityUtilsTest#testGetPropertyMap",
+        "ubic.gemma.persistence.util.ListUtilsTest#testIndexOfCaseInsensitiveStringElements",
+        "ubic.gemma.persistence.util.ListUtilsTest#testIndexOfElements",
+        "ubic.gemma.persistence.util.ObjectFilterQueryUtilsTest#testComplexClause",
+        "ubic.gemma.persistence.util.ObjectFilterQueryUtilsTest#testFormParamName",
+        "ubic.gemma.persistence.util.ObjectFilterQueryUtilsTest#testFormRestrictionAndGroupByAndOrderByClauses",
+        "ubic.gemma.persistence.util.ObjectFilterQueryUtilsTest#testRestrictionClauseWithCollection",
+        "ubic.gemma.persistence.util.ObjectFilterQueryUtilsTest#testRestrictionClauseWithNullObjectAlias",
+        "ubic.gemma.persistence.util.ObjectFilterQueryUtilsTest#testRestrictionClauseWithNullRequiredValue",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testGeqWithNullRequiredValue",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testInvalidCollectionTypeConversion",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testLike",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testLikeWithInvalidPropertyType",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testLikeWithInvalidRequiredValue",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseBoolean",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseCollection",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseCollectionOfDateTimes",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseCollectionOfDates",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseDate",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseDateTime",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseDateTimeWithoutZuluSuffix",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseDouble",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseInteger",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseInvalidCollection",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseMixtureOfDateAndDateTime",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseString",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testParseUnsupportedType",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testPrimitiveTypeToWrapperConversion",
+        "ubic.gemma.persistence.util.ObjectFilterTest#testWrapperToPrimitiveConversion"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "ubic.gemma.core.loader.entrez.pubmed.ExpressionExperimentBibRefFinderTest#testLocatePrimaryReference",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLFetcherTest#testRetrieveByHTTPBookshelf",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParse",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParseBook",
+        "ubic.gemma.core.loader.entrez.pubmed.PubMedXMLParserTest#testParseMesh",
+        "ubic.gemma.core.loader.expression.arrayExpress.SDRFFetcherTest#testFetch",
+        "ubic.gemma.core.loader.expression.geo.GeoBrowserTest#testGetRecentGeoRecords",
+        "ubic.gemma.core.loader.expression.geo.fetcher.RawDataFetcherTest#testFetch",
+        "ubic.gemma.core.loader.expression.geo.fetcher.RawDataFetcherTest#testFetchNothingThere"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 63.1,
+        "module_test": [
+          399.3,
+          397.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010529-ohyb/base",
+      "compiled_snapshot": "work/20261118-010529-ohyb/snapshot-641c0321",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "gemma-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser",
+      "simple_name": "QuantitationTypeParameterGuesser",
+      "package": "ubic.gemma.core.loader.expression.geo",
+      "kind": "class",
+      "cut_path": "gemma-core/src/main/java/ubic/gemma/core/loader/expression/geo/QuantitationTypeParameterGuesser.java",
+      "source_sha256": "a564cbe0605751e0931ec617f0221c20531cbb03da8fb09343ad40876fb55555",
+      "generated_test_path": "gemma-core/src/test/java/ubic/gemma/core/loader/expression/geo/QuantitationTypeParameterGuesser_ArrowTest.java",
+      "generated_test_fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 9 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 8.8,
+      "locate": 1.3,
+      "plan": 4.3,
+      "compile": 63.1,
+      "baseline": [
+        399.3,
+        397.2
+      ],
+      "total": 863.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 9 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

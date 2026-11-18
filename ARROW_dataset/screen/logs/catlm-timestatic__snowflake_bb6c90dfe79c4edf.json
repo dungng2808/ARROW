@@ -1,0 +1,40 @@
+{
+  "run_id": "20261118-043253-eq2g",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-043253-eq2g",
+  "outcome": {
+    "outcome": "INFRA",
+    "code": "B1_BASELINE_TIMEOUT",
+    "message": "Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).",
+    "hint": "Tăng verification.step_timeout_seconds.",
+    "first_error": null,
+    "log": "block1/logs/baseline-1.log",
+    "seconds": 902.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "INFRA",
+      "code": "B1_BASELINE_TIMEOUT",
+      "message": "Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).",
+      "hint": "Tăng verification.step_timeout_seconds.",
+      "first_error": null,
+      "log": "block1/logs/baseline-1.log",
+      "seconds": 902.7
+    },
+    "metadata": null,
+    "baseline": null,
+    "workspace": null,
+    "cut": null,
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 0,
+      "compile": 0,
+      "baseline": [],
+      "total": 902.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

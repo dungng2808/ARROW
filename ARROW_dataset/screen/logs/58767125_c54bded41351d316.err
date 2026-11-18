@@ -1,0 +1,8 @@
+[>] Tải https://github.com/eobermuhlner/big-math
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[X] B1_DEPENDENCY_RESOLUTION: Không tải được dependency hay plugin: A problem occurred configuring root project 'build-caee3747'. Could not resolve all artifacts for configuration ':classpath'. Could not resolve org.jetbrains.dokka:dokka-gradle-plugin:0.9.15.
+[X] B1_DEPENDENCY_RESOLUTION · Không tải được dependency hay plugin: A problem occurred configuring root project 'build-caee3747'. Could not resolve all artifacts for configuration ':classpath'. Could not resolve org.jetbrains.dokka:dokka-gradle-plugin:0.9.15.
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

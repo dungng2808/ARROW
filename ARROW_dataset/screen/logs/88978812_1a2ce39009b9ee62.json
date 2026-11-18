@@ -1,0 +1,285 @@
+{
+  "run_id": "20261118-024059-887e",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-024059-887e",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 32.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 32.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Java-9-Programming-By-Example",
+        "url": "https://github.com/PacktPublishing/Java-9-Programming-By-Example",
+        "git_commit": "9610f1413e7384f97361121ebf89c6b50027a169",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "Chapter03/genericsort",
+        "build_mode": "reactor",
+        "build_file": "Chapter03/genericsort/pom.xml",
+        "reactor_module": "quick",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "packt.java9.by.example",
+            "artifact": "SortInterface",
+            "version": "1.0.0-SNAPSHOT",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "packt.java9.by.example",
+            "artifact": "SortSupportClasses",
+            "version": "1.0.0-SNAPSHOT",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 4
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "Chapter03/genericsort/SortSupportClasses",
+          "Chapter03/genericsort/SortInterface",
+          "Chapter03/genericsort/bubble",
+          "Chapter03/genericsort/quick",
+          "Chapter03/genericsort/Main"
+        ],
+        "target_module": "Chapter03/genericsort/quick",
+        "module_root": "Chapter03/genericsort/quick",
+        "packages": [
+          "packt.java9.by.example.ch03.quick",
+          "packt.java9.by.example.ch03.qsort"
+        ]
+      },
+      "paths": {
+        "source_root": "Chapter03/genericsort/quick/src/main/java",
+        "test_root": "Chapter03/genericsort/quick/src/test/java",
+        "cut_path": "Chapter03/genericsort/quick/src/main/java/packt/java9/by/example/ch03/quick/QuickSort.java",
+        "generated_test_path": "Chapter03/genericsort/quick/src/test/java/packt/java9/by/example/ch03/quick/QuickSort_ArrowTest.java",
+        "generated_test_fqn": "packt.java9.by.example.ch03.quick.QuickSort_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "packt.java9.by.example.ch03.quick.QuickSort",
+        "simple_name": "QuickSort",
+        "package": "packt.java9.by.example.ch03.quick",
+        "kind": "class",
+        "source_sha256": "2b020d1d29bc249230638fefdcad3e97cf71d82e5a145c33809bdb7eb87479f0"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "quick",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "quick",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "Chapter03/genericsort",
+      "passing_in_all_runs": [
+        "packt.java9.by.example.ch03.qsort.PartitionerTest#partitionsIntArray",
+        "packt.java9.by.example.ch03.quick.QuickSortTest#canSortAlreadySorted",
+        "packt.java9.by.example.ch03.quick.QuickSortTest#canSortOne",
+        "packt.java9.by.example.ch03.quick.QuickSortTest#canSortStrings",
+        "packt.java9.by.example.ch03.quick.SimpleSpeedTest#measureTimeWithForkJoinQsort",
+        "packt.java9.by.example.ch03.quick.SimpleSpeedTest#measureTimeWithNonRecursiveQsort",
+        "packt.java9.by.example.ch03.quick.SimpleSpeedTest#measureTimeWithRecursiveQsort"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.6,
+        "module_test": [
+          14.5,
+          15.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024059-887e/base",
+      "compiled_snapshot": "work/20261118-024059-887e/snapshot-e90d3a1d",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "Chapter03/genericsort",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "quick",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "packt.java9.by.example.ch03.quick.QuickSort",
+      "simple_name": "QuickSort",
+      "package": "packt.java9.by.example.ch03.quick",
+      "kind": "class",
+      "cut_path": "Chapter03/genericsort/quick/src/main/java/packt/java9/by/example/ch03/quick/QuickSort.java",
+      "source_sha256": "2b020d1d29bc249230638fefdcad3e97cf71d82e5a145c33809bdb7eb87479f0",
+      "generated_test_path": "Chapter03/genericsort/quick/src/test/java/packt/java9/by/example/ch03/quick/QuickSort_ArrowTest.java",
+      "generated_test_fqn": "packt.java9.by.example.ch03.quick.QuickSort_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "1 file .java không đọc được (ví dụ Chapter10/advanced-java-part-15-java8/agents/src/main/java/com/javacodegeeks/advanced/agent/SimpleClassTransformer.java: Parse error. Found  \"AbstractProcessor\" <IDENTIFIER>, expected \"}\")."
+    ],
+    "timings": {
+      "checkout": 12.9,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 1.6,
+      "baseline": [
+        14.5,
+        15.1
+      ],
+      "total": 32.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "1 file .java không đọc được (ví dụ Chapter10/advanced-java-part-15-java8/agents/src/main/java/com/javacodegeeks/advanced/agent/SimpleClassTransformer.java: Parse error. Found  \"AbstractProcessor\" <IDENTIFIER>, expected \"}\")."
+  ]
+}

@@ -1,0 +1,299 @@
+{
+  "run_id": "20261118-025724-53cw",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-025724-53cw",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 30.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 30.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "java-apache-httpclient",
+        "url": "https://github.com/opentracing-contrib/java-apache-httpclient",
+        "git_commit": "0a4c92e5b53428759f7da21ed83370414c65e2c4",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.5.0",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "opentracing-apache-httpclient",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven.compiler.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-api",
+            "version": "0.33.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-util",
+            "version": "0.33.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.3",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "io.opentracing",
+            "artifact": "opentracing-mock",
+            "version": "0.33.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 11
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "opentracing-apache-httpclient"
+        ],
+        "target_module": "opentracing-apache-httpclient",
+        "module_root": "opentracing-apache-httpclient",
+        "packages": [
+          "io.opentracing.contrib.apache.http.client"
+        ]
+      },
+      "paths": {
+        "source_root": "opentracing-apache-httpclient/src/main/java",
+        "test_root": "opentracing-apache-httpclient/src/test/java",
+        "cut_path": "opentracing-apache-httpclient/src/main/java/io/opentracing/contrib/apache/http/client/TracingHttpClientBuilder.java",
+        "generated_test_path": "opentracing-apache-httpclient/src/test/java/io/opentracing/contrib/apache/http/client/TracingHttpClientBuilder_ArrowTest.java",
+        "generated_test_fqn": "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilder_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilder",
+        "simple_name": "TracingHttpClientBuilder",
+        "package": "io.opentracing.contrib.apache.http.client",
+        "kind": "class",
+        "source_sha256": "92d6834e35f254327ba7f68625d6b1e9ba1557ed5dd82ad7de80e62390da9402"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "opentracing-apache-httpclient",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.1.2:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "opentracing-apache-httpclient",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testActiveParentSpan",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testBasicHttpRequest",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testDefaultRetryStrategy",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testDisablePropagation",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testDisableRedirectHandling",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testManualParentSpan",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testMultipleSimultaneousRequests",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testPropagationAfterRedirect",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testRedirect",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testRequestConfigDisabledRedirects",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testStandardTags",
+        "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilderTest#testUnknownHostException"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.1,
+        "module_test": [
+          12.7,
+          12.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-025724-53cw/base",
+      "compiled_snapshot": "work/20261118-025724-53cw/snapshot-d5e53ee4",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "opentracing-apache-httpclient",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-Dorg.slf4j.simpleLogger.log.org.apache.maven.cli.transfer.Slf4jMavenTransferListener=warn",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilder",
+      "simple_name": "TracingHttpClientBuilder",
+      "package": "io.opentracing.contrib.apache.http.client",
+      "kind": "class",
+      "cut_path": "opentracing-apache-httpclient/src/main/java/io/opentracing/contrib/apache/http/client/TracingHttpClientBuilder.java",
+      "source_sha256": "92d6834e35f254327ba7f68625d6b1e9ba1557ed5dd82ad7de80e62390da9402",
+      "generated_test_path": "opentracing-apache-httpclient/src/test/java/io/opentracing/contrib/apache/http/client/TracingHttpClientBuilder_ArrowTest.java",
+      "generated_test_fqn": "io.opentracing.contrib.apache.http.client.TracingHttpClientBuilder_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.3,
+      "compile": 4.1,
+      "baseline": [
+        12.7,
+        12.6
+      ],
+      "total": 30.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

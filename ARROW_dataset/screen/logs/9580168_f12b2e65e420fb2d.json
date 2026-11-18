@@ -1,0 +1,268 @@
+{
+  "run_id": "20261118-011102-5e85",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-011102-5e85",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "qulice",
+        "url": "https://github.com/teamed/qulice",
+        "git_commit": "007ef3d8d4e47c7e4beefa05fa5f33efb321a914",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "qulice-maven-plugin/src/it/multi-module",
+        "build_mode": "reactor",
+        "build_file": "qulice-maven-plugin/src/it/multi-module/pom.xml",
+        "reactor_module": "mod-alpha",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": null,
+        "declared_source": null,
+        "major": null,
+        "jdk_major": 17,
+        "jdk_choice_reason": "default"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.8.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.8.2",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "qulice-maven-plugin/src/it/multi-module/mod-tk",
+          "qulice-maven-plugin/src/it/multi-module/mod-alpha"
+        ],
+        "target_module": "qulice-maven-plugin/src/it/multi-module/mod-alpha",
+        "module_root": "qulice-maven-plugin/src/it/multi-module/mod-alpha",
+        "packages": [
+          "com.qulice.plugin.alpha"
+        ]
+      },
+      "paths": {
+        "source_root": "qulice-maven-plugin/src/it/multi-module/mod-alpha/src/main/java",
+        "test_root": "qulice-maven-plugin/src/it/multi-module/mod-alpha/src/test/java",
+        "cut_path": "qulice-maven-plugin/src/it/multi-module/mod-alpha/src/main/java/com/qulice/plugin/alpha/Main.java",
+        "generated_test_path": "qulice-maven-plugin/src/it/multi-module/mod-alpha/src/test/java/com/qulice/plugin/alpha/Main_ArrowTest.java",
+        "generated_test_fqn": "com.qulice.plugin.alpha.Main_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.qulice.plugin.alpha.Main",
+        "simple_name": "Main",
+        "package": "com.qulice.plugin.alpha",
+        "kind": "class",
+        "source_sha256": "3d8d65cb87ba9a1e55e5a5490d5400f2d8650c24856cd53e967ca04e39c14f97"
+      },
+      "missing_reasons": {
+        "java": "file build không khai báo mức Java"
+      }
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "mod-alpha",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "mod-alpha",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "qulice-maven-plugin/src/it/multi-module",
+      "passing_in_all_runs": [
+        "com.qulice.plugin.alpha.MainTest#testSquare"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 1.2,
+        "module_test": [
+          1.3,
+          1.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011102-5e85/base",
+      "compiled_snapshot": "work/20261118-011102-5e85/snapshot-adcaaa65",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "qulice-maven-plugin/src/it/multi-module",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "mod-alpha",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.qulice.plugin.alpha.Main",
+      "simple_name": "Main",
+      "package": "com.qulice.plugin.alpha",
+      "kind": "class",
+      "cut_path": "qulice-maven-plugin/src/it/multi-module/mod-alpha/src/main/java/com/qulice/plugin/alpha/Main.java",
+      "source_sha256": "3d8d65cb87ba9a1e55e5a5490d5400f2d8650c24856cd53e967ca04e39c14f97",
+      "generated_test_path": "qulice-maven-plugin/src/it/multi-module/mod-alpha/src/test/java/com/qulice/plugin/alpha/Main_ArrowTest.java",
+      "generated_test_fqn": "com.qulice.plugin.alpha.Main_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.2,
+      "plan": 1.1,
+      "compile": 1.2,
+      "baseline": [
+        1.3,
+        1.3
+      ],
+      "total": 5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

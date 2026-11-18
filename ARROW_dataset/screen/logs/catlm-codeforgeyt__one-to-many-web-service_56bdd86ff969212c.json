@@ -1,0 +1,295 @@
+{
+  "run_id": "20261118-002144-zcap",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-002144-zcap",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 33.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 33.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "one-to-many-web-service",
+        "url": "https://github.com/codeforgeyt/one-to-many-web-service",
+        "git_commit": "026591a277ec62825eec1990036d96b0d8508fc9",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "standalone",
+        "build_file": "pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-data-jpa",
+            "version": "2.3.5.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-web",
+            "version": "2.3.5.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "de.codecentric",
+            "artifact": "spring-boot-admin-starter-client",
+            "version": "2.3.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.springfox",
+            "artifact": "springfox-boot-starter",
+            "version": "3.0.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.h2database",
+            "artifact": "h2",
+            "version": "1.4.200",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.projectlombok",
+            "artifact": "lombok",
+            "version": "1.18.16",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.3.5.RELEASE",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 116
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.6.3",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:3.3.3",
+          "org.mockito:mockito-junit-jupiter:3.3.3"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.16.1",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": ".",
+        "module_root": ".",
+        "packages": [
+          "com.codeforgeyt.onetomanywebservice",
+          "com.codeforgeyt.onetomanywebservice.config",
+          "com.codeforgeyt.onetomanywebservice.controller",
+          "com.codeforgeyt.onetomanywebservice.model",
+          "com.codeforgeyt.onetomanywebservice.model.dto",
+          "com.codeforgeyt.onetomanywebservice.model.exception",
+          "com.codeforgeyt.onetomanywebservice.repository",
+          "com.codeforgeyt.onetomanywebservice.service"
+        ]
+      },
+      "paths": {
+        "source_root": "src/main/java",
+        "test_root": "src/test/java",
+        "cut_path": "src/main/java/com/codeforgeyt/onetomanywebservice/OneToManyWebServiceApplication.java",
+        "generated_test_path": "src/test/java/com/codeforgeyt/onetomanywebservice/OneToManyWebServiceApplication_ArrowTest.java",
+        "generated_test_fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication",
+        "simple_name": "OneToManyWebServiceApplication",
+        "package": "com.codeforgeyt.onetomanywebservice",
+        "kind": "class",
+        "source_sha256": "e64cecf3ba0861af7de3a6dfd17d76c9c9ab9f4479b40c913f203da64660e91d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplicationTests#contextLoads"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 17.2,
+        "module_test": [
+          7.2,
+          6.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-002144-zcap/base",
+      "compiled_snapshot": "work/20261118-002144-zcap/snapshot-cdb4ee2a",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication",
+      "simple_name": "OneToManyWebServiceApplication",
+      "package": "com.codeforgeyt.onetomanywebservice",
+      "kind": "class",
+      "cut_path": "src/main/java/com/codeforgeyt/onetomanywebservice/OneToManyWebServiceApplication.java",
+      "source_sha256": "e64cecf3ba0861af7de3a6dfd17d76c9c9ab9f4479b40c913f203da64660e91d",
+      "generated_test_path": "src/test/java/com/codeforgeyt/onetomanywebservice/OneToManyWebServiceApplication_ArrowTest.java",
+      "generated_test_fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 2.8,
+      "compile": 17.2,
+      "baseline": [
+        7.2,
+        6.5
+      ],
+      "total": 33.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

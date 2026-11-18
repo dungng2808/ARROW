@@ -1,0 +1,401 @@
+{
+  "run_id": "20261118-003643-pkio",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-003643-pkio",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 10.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 10.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "OCA_1Z0-808",
+        "url": "https://github.com/Cuica20/OCA_1Z0-808",
+        "git_commit": "ce930de224045105d4bd9ab5c4dfa7dd6c49a280",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "java8-workshop-master",
+        "build_mode": "standalone",
+        "build_file": "java8-workshop-master/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "16.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.netflix.rxjava",
+            "artifact": "rxjava-core",
+            "version": "0.18.1",
+            "scope": "compile"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.0.13",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jul-to-slf4j",
+            "version": "1.7.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "log4j-over-slf4j",
+            "version": "1.7.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "jcl-over-slf4j",
+            "version": "1.7.5",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-logging",
+            "artifact": "commons-logging",
+            "version": "1.1.3",
+            "scope": "provided"
+          },
+          {
+            "group": "javax.jms",
+            "artifact": "javax.jms-api",
+            "version": "2.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jsoup",
+            "artifact": "jsoup",
+            "version": "1.7.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-web",
+            "version": "3.2.4.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.9.5",
+            "scope": "compile"
+          },
+          {
+            "group": "com.jayway.awaitility",
+            "artifact": "awaitility",
+            "version": "1.6.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.easytesting",
+            "artifact": "fest-assert-core",
+            "version": "2.0M9",
+            "scope": "test"
+          },
+          {
+            "group": "pl.pragmatists",
+            "artifact": "JUnitParams",
+            "version": "1.0.3",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 29
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.9.5"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "java8-workshop-master",
+        "module_root": "java8-workshop-master",
+        "packages": [
+          "com.nurkiewicz.java8.holidays",
+          "com.nurkiewicz.java8",
+          "com.nurkiewicz.java8.agent",
+          "com.nurkiewicz.java8.atomic",
+          "com.nurkiewicz.java8.defmethods",
+          "com.nurkiewicz.java8.interfaces",
+          "com.nurkiewicz.java8.people",
+          "com.nurkiewicz.java8.stackoverflow",
+          "com.nurkiewicz.java8.util",
+          "com.nurkiewicz.rxjava",
+          "com.nurkiewicz.rxjava.util"
+        ]
+      },
+      "paths": {
+        "source_root": "java8-workshop-master/src/main/java",
+        "test_root": "java8-workshop-master/src/test/java",
+        "cut_path": "java8-workshop-master/src/main/java/com/nurkiewicz/java8/holidays/PolishHolidays.java",
+        "generated_test_path": "java8-workshop-master/src/test/java/com/nurkiewicz/java8/holidays/PolishHolidays_ArrowTest.java",
+        "generated_test_fqn": "com.nurkiewicz.java8.holidays.PolishHolidays_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.nurkiewicz.java8.holidays.PolishHolidays",
+        "simple_name": "PolishHolidays",
+        "package": "com.nurkiewicz.java8.holidays",
+        "kind": "class",
+        "source_sha256": "e3f54f537fd4c0869442497f5d6461a24e3319d2e2a630ee069c90c6e294fd73"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "java8-workshop-master",
+      "passing_in_all_runs": [
+        "com.nurkiewicz.java8.J01_HelloWorldTest#hello",
+        "com.nurkiewicz.java8.J02_InterfacesTest#[0] ReverseEncrypter, byte[] (testAllMethods)",
+        "com.nurkiewicz.java8.J02_InterfacesTest#[1] RotEncrypter, byte[] (testAllMethods)",
+        "com.nurkiewicz.java8.J02_InterfacesTest#[2] XorEncrypter, byte[] (testAllMethods)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[0] 1994, --04-03 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[10] 2004, --04-11 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[11] 2005, --03-27 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[12] 2006, --04-16 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[13] 2007, --04-08 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[14] 2008, --03-23 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[15] 2009, --04-12 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[16] 2010, --04-04 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[17] 2011, --04-24 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[18] 2012, --04-08 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[19] 2013, --03-31 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[1] 1995, --04-16 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[20] 2014, --04-20 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[21] 2015, --04-05 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[22] 2016, --03-27 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[23] 2017, --04-16 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[24] 2018, --04-01 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[25] 2019, --04-21 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[26] 2020, --04-12 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[27] 2021, --04-04 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[28] 2022, --04-17 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[29] 2023, --04-09 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[2] 1996, --04-07 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[30] 2024, --03-31 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[31] 2025, --04-20 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[32] 2026, --04-05 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[33] 2027, --03-28 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[34] 2028, --04-16 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[35] 2029, --04-01 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[36] 2030, --04-21 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[37] 2031, --04-13 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[38] 2032, --03-28 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[39] 2033, --04-17 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[3] 1997, --03-30 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[40] 2034, --04-09 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[4] 1998, --04-12 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[5] 1999, --04-04 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[6] 2000, --04-23 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[7] 2001, --04-15 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[8] 2002, --03-31 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.EasterTest#[9] 2003, --04-20 (shouldCalculateEasterSunday)",
+        "com.nurkiewicz.java8.holidays.HolidaysFactoryTest#shouldReturnAmericanHolidays",
+        "com.nurkiewicz.java8.holidays.HolidaysFactoryTest#shouldReturnPolishHolidays",
+        "com.nurkiewicz.java8.holidays.PolishHolidaysTest#shouldFindNextHoliday",
+        "com.nurkiewicz.java8.holidays.PolishHolidaysTest#shouldFindNextWorkingDay",
+        "com.nurkiewicz.java8.holidays.PolishHolidaysTest#shouldIdentifyFixedPolishHolidays",
+        "com.nurkiewicz.java8.holidays.PolishHolidaysTest#shouldIdentifyMovingHolidays",
+        "com.nurkiewicz.java8.holidays.PolishHolidaysTest#shouldIdentifyWeekends"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.9,
+        "module_test": [
+          2.2,
+          2.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-003643-pkio/base",
+      "compiled_snapshot": "work/20261118-003643-pkio/snapshot-46e61204",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "java8-workshop-master",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.nurkiewicz.java8.holidays.PolishHolidays",
+      "simple_name": "PolishHolidays",
+      "package": "com.nurkiewicz.java8.holidays",
+      "kind": "class",
+      "cut_path": "java8-workshop-master/src/main/java/com/nurkiewicz/java8/holidays/PolishHolidays.java",
+      "source_sha256": "e3f54f537fd4c0869442497f5d6461a24e3319d2e2a630ee069c90c6e294fd73",
+      "generated_test_path": "java8-workshop-master/src/test/java/com/nurkiewicz/java8/holidays/PolishHolidays_ArrowTest.java",
+      "generated_test_fqn": "com.nurkiewicz.java8.holidays.PolishHolidays_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 4.9,
+      "baseline": [
+        2.2,
+        2.3
+      ],
+      "total": 10.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

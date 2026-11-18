@@ -1,0 +1,442 @@
+{
+  "run_id": "20261118-023030-7h4e",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-023030-7h4e",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 65.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 65.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "plugin-installation-manager-tool",
+        "url": "https://github.com/jenkinsci/plugin-installation-manager-tool",
+        "git_commit": "0015bcdc82fad50a7bdbdea3f7f9967fe11700ad",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "plugin-management-library",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.jenkins-ci",
+            "artifact": "version-number",
+            "version": "1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.9",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-validator",
+            "artifact": "commons-validator",
+            "version": "1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.9",
+            "scope": "compile"
+          },
+          {
+            "group": "org.json",
+            "artifact": "json",
+            "version": "20180813",
+            "scope": "compile"
+          },
+          {
+            "group": "org.yaml",
+            "artifact": "snakeyaml",
+            "version": "1.26",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "com.github.stefanbirkner",
+            "artifact": "system-lambda",
+            "version": "1.0.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.16.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-module-junit4",
+            "version": "2.0.7",
+            "scope": "test"
+          },
+          {
+            "group": "org.powermock",
+            "artifact": "powermock-api-mockito2",
+            "version": "2.0.7",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 29
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13",
+        "vintage": false,
+        "mocking": [
+          "org.powermock:powermock-module-junit4:2.0.7",
+          "org.powermock:powermock-module-junit4-common:2.0.7",
+          "org.powermock:powermock-reflect:2.0.7",
+          "org.powermock:powermock-core:2.0.7",
+          "org.powermock:powermock-api-mockito2:2.0.7",
+          "org.powermock:powermock-api-support:2.0.7",
+          "org.mockito:mockito-core:2.28.2"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.16.1"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "plugin-management-library",
+          "plugin-management-cli"
+        ],
+        "target_module": "plugin-management-library",
+        "module_root": "plugin-management-library",
+        "packages": [
+          "io.jenkins.tools.pluginmanager.impl",
+          "io.jenkins.tools.pluginmanager.config",
+          "io.jenkins.tools.pluginmanager.util"
+        ]
+      },
+      "paths": {
+        "source_root": "plugin-management-library/src/main/java",
+        "test_root": "plugin-management-library/src/test/java",
+        "cut_path": "plugin-management-library/src/main/java/io/jenkins/tools/pluginmanager/impl/PluginManager.java",
+        "generated_test_path": "plugin-management-library/src/test/java/io/jenkins/tools/pluginmanager/impl/PluginManager_ArrowTest.java",
+        "generated_test_fqn": "io.jenkins.tools.pluginmanager.impl.PluginManager_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "io.jenkins.tools.pluginmanager.impl.PluginManager",
+        "simple_name": "PluginManager",
+        "package": "io.jenkins.tools.pluginmanager.impl",
+        "kind": "class",
+        "source_sha256": "b14366727311c7ff7932d30c70e9d49ae96a9e941af182d2ba7a6973a75b3e94"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "plugin-management-library",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "plugin-management-library",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#cacheReturnsJsonStoredByAnotherCacheManagerInstance",
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#cacheReturnsJsonThatWasPutIntoCacheForSpecifiedKey",
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#cacheReturnsLatestJsonThatWasPutIntoCacheForSpecifiedKey",
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#cacheReturnsNullWhenJsonWasPutIntoCacheMoreThanAnHourAgo",
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#cacheReturnsNullWhenNoJsonWasPutIntoCache",
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#infoAboutAnExpiredCacheEntryIsWrittenToSystemOut",
+        "io.jenkins.tools.pluginmanager.impl.CacheManagerTest#messageThatCacheFolderIsCreatedIsWrittenToSystemOutWhenItDidNotExist",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerIntegrationTest#findPluginsAndDependenciesTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerIntegrationTest#showAvailableUpdates_shouldNotFailOnUIThemes",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#bundledPluginsTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#checkVersionCompatibilityFailTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#checkVersionCompatibilityNullTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#checkVersionCompatibilityPassTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#checkVersionSpecificUpdateCenterBadRequestTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#checkVersionSpecificUpdateCenterTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#deprecatedGetJsonThrowsExceptionForMalformedURL",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#downloadPluginAlreadyInstalledTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#downloadPluginSuccessfulFirstAttempt",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#downloadPluginsSuccessfulTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#downloadPluginsUnsuccessfulTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#downloadToFileTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#findEffectivePluginsTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#findPluginsToDownloadTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getAttributeFromManifestExceptionTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getDownloadPluginUrlTestComplexUpdateCenterUrl",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getJenkinsVersionFromWarTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getJsonThrowsExceptionWhenUrlDoesNotExists",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getLatestPluginTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getLatestPluginVersionExceptionTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getPluginDependencyJsonArrayTest1",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getPluginDependencyJsonArrayTest2",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getPluginDownloadUrlTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getPluginVersionTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getSecurityWarningsTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#getSecurityWarningsWhenNoWarningsTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#installedPluginsTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#listPluginsNoOutputTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#listPluginsOutputTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#outputPluginReplacementInfoTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromJsonLatestAll",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromJsonLatestSpecifiedTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromJsonTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromManifestDownload",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromManifestExceptionTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromManifestLatestAll",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromManifestLatestSpecified",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDependenciesFromManifestNoDownload",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDirectDependenciesExperimental",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDirectDependenciesLatest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDirectDependenciesManifestTest1",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDirectDependenciesManifestTest2",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveDirectDependenciesManifestTest3",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#resolveRecursiveDependenciesTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#showAvailableUpdates",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#showAvailableUpdatesNoOutputTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#startNoDirectoryTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#startTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerTest#warningExistsTest",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#betaVersionNotOfferedToGAUsers",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#currentPluginIsExperimentalButGAVersionIsNewer",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#incrementalIsnotUpgradedToGA",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#nonExistentPlugin",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#pluginHasCustomUrl",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#pluginIsFromExperimentalUpdateCenter",
+        "io.jenkins.tools.pluginmanager.impl.PluginManagerUpdatesTest#simpleUpdate",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#badFormatYamlGroupIdNoVersion",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#badFormatYamlGroupIdNoVersion2",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#badFormatYamlNoArtifactIdTest",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#fileExistsTest",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#parsePluginTxtFileTest",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#parsePluginYamlFileTest",
+        "io.jenkins.tools.pluginmanager.util.PluginListParserTest#parsePluginsFromCliOptionTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlMultiSegmentLeadingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlMultiSegmentOneBlankTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlMultiSegmentTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlMultiSegmentTrailingAndLeadingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlMultiSegmentTrailingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlNoDomainNameTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlObjectsMultiSegmentTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlObjectsTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlTestBlankUrl",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlTestNoUrl",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlWithBlankPathTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlWithNoPathTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlWithNullPathTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlWithPathLeadingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlWithPathTrailingAndLeadingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#appendPathOntoUrlWithUrlTrailingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#dirnameObjectTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#dirnameTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#dirnameTestNoPath",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#dirnameTestNoPathPlusPort",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#dirnameTestNoSlashes",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#insertPathPreservingFilenameLongTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#insertPathPreservingFilenameNoSlashes",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#insertPathPreservingFilenameObjectTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#insertPathPreservingFilenameTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removePathTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removePathTestNoPath",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removePathTestWithPort",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removeWrapperTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removeWrapperWithInternalNewLinesTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removeWrapperWithNoWrapperTest",
+        "io.jenkins.tools.pluginmanager.util.PluginManagerUtilsTest#removeWrapperWithTrailingNewLineTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#addPathTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#addPathWithBlankSectionTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#buildTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#constructorDomainInPathTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#constructorTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#constructorWithTrailingSlashTest",
+        "io.jenkins.tools.pluginmanager.util.URIStringBuilderTest#dontAddPathTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 35,
+        "module_test": [
+          12.1,
+          11.6
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023030-7h4e/base",
+      "compiled_snapshot": "work/20261118-023030-7h4e/snapshot-516ed07c",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "plugin-management-library",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "io.jenkins.tools.pluginmanager.impl.PluginManager",
+      "simple_name": "PluginManager",
+      "package": "io.jenkins.tools.pluginmanager.impl",
+      "kind": "class",
+      "cut_path": "plugin-management-library/src/main/java/io/jenkins/tools/pluginmanager/impl/PluginManager.java",
+      "source_sha256": "b14366727311c7ff7932d30c70e9d49ae96a9e941af182d2ba7a6973a75b3e94",
+      "generated_test_path": "plugin-management-library/src/test/java/io/jenkins/tools/pluginmanager/impl/PluginManager_ArrowTest.java",
+      "generated_test_fqn": "io.jenkins.tools.pluginmanager.impl.PluginManager_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 5.9,
+      "locate": 0.1,
+      "plan": 6.9,
+      "compile": 35,
+      "baseline": [
+        12.1,
+        11.6
+      ],
+      "total": 65.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,339 @@
+{
+  "run_id": "20261118-021552-wlqe",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-021552-wlqe",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 194
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 194
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "cassandra-migration",
+        "url": "https://github.com/patka/cassandra-migration",
+        "git_commit": "6704e22d834746c4d037916c256fa25fc08ac5b1",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "cassandra-migration",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.datastax.cassandra",
+            "artifact": "cassandra-driver-core",
+            "version": "3.0.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.21",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "18.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-log4j12",
+            "version": "1.7.21",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.cassandraunit",
+            "artifact": "cassandra-unit",
+            "version": "3.0.0.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 55
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "cassandra-migration",
+          "cassandra-migration-spring-boot-starter"
+        ],
+        "target_module": "cassandra-migration",
+        "module_root": "cassandra-migration",
+        "packages": [
+          "org.cognitor.cassandra.migration.keyspace",
+          "org.cognitor.cassandra.migration",
+          "org.cognitor.cassandra.migration.collector",
+          "org.cognitor.cassandra.migration.scanner",
+          "org.cognitor.cassandra.migration.util"
+        ]
+      },
+      "paths": {
+        "source_root": "cassandra-migration/src/main/java",
+        "test_root": "cassandra-migration/src/test/java",
+        "cut_path": "cassandra-migration/src/main/java/org/cognitor/cassandra/migration/keyspace/Keyspace.java",
+        "generated_test_path": "cassandra-migration/src/test/java/org/cognitor/cassandra/migration/keyspace/Keyspace_ArrowTest.java",
+        "generated_test_fqn": "org.cognitor.cassandra.migration.keyspace.Keyspace_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.cognitor.cassandra.migration.keyspace.Keyspace",
+        "simple_name": "Keyspace",
+        "package": "org.cognitor.cassandra.migration.keyspace",
+        "kind": "class",
+        "source_sha256": "df0805f2bcb32e8e5afbd6ad3e30fdc04596ea5f9da8098cdae87829ba4d54f3"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "cassandra-migration",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "cassandra-migration",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldIgnoreComments",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldReturnCorrectVersionNumberWhenPathWithLeadingSlashGiven",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldReturnOneScriptWhenRequestForAllScriptsSinceVersionTwoGiven",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldReturnTwoAsLatestVersionWhenTwoScriptsInResourcesGiven",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldReturnTwoScriptsWhenRequestForAllScriptsSinceVersionOneGiven",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldReturnZeroAsVersionWhenEmptyDirectoryGiven",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldThrowExceptionWhenCqlScriptWithoutVersionGiven",
+        "org.cognitor.cassandra.migration.MigrationRepositoryTest#shouldThrowExceptionWhenWrongScriptPathGiven",
+        "org.cognitor.cassandra.migration.collector.FailOnDuplicatesCollectorTest#shouldReturnAllScriptsWhenNoDuplicateScriptFileGiven",
+        "org.cognitor.cassandra.migration.collector.FailOnDuplicatesCollectorTest#shouldReturnEmptyCollectionWhenNoScriptFileGiven",
+        "org.cognitor.cassandra.migration.collector.FailOnDuplicatesCollectorTest#shouldThrowExceptionWhenDuplicateScriptFileVersionsGiven",
+        "org.cognitor.cassandra.migration.collector.IgnoreDuplicatesCollectorTest#shouldReturnAllScriptsWhenNoDuplicateScriptFileGiven",
+        "org.cognitor.cassandra.migration.collector.IgnoreDuplicatesCollectorTest#shouldReturnEmptyCollectionWhenNoScriptFileGiven",
+        "org.cognitor.cassandra.migration.collector.IgnoreDuplicatesCollectorTest#shouldReturnFirstScriptWhenDuplicateScriptFileVersionsGiven",
+        "org.cognitor.cassandra.migration.keyspace.KeyspaceTest#shouldCreateCqlStatementWhenNameAndStrategyGiven",
+        "org.cognitor.cassandra.migration.keyspace.KeyspaceTest#shouldCreateCqlStatementWithSimpleStrategyWhenNoStrategyGiven",
+        "org.cognitor.cassandra.migration.keyspace.KeyspaceTest#shouldCreateCqlWithoutDurableWritesWhenDurableWritesTurnedOffGiven",
+        "org.cognitor.cassandra.migration.keyspace.NetworkStrategyTest#shouldReturnCqlStringWhenOneDatacenterGiven",
+        "org.cognitor.cassandra.migration.keyspace.NetworkStrategyTest#shouldReturnCqlStringWhenTwoDatacenterGiven",
+        "org.cognitor.cassandra.migration.keyspace.NetworkStrategyTest#shouldThrowExceptionWhenNoDatacenterGiven",
+        "org.cognitor.cassandra.migration.keyspace.NetworkStrategyTest#shouldThrowExceptionWhenReplicatonFactorLessThenOneGiven",
+        "org.cognitor.cassandra.migration.keyspace.SimpleStrategyTest#shouldReturnCqlStringWhenValidReplicationFactorGiven",
+        "org.cognitor.cassandra.migration.keyspace.SimpleStrategyTest#shouldReturnCqlStringWithOneReplicationWhenNoReplicationFactorGiven",
+        "org.cognitor.cassandra.migration.keyspace.SimpleStrategyTest#shouldThrowExceptionWhenReplicationFactorSmallerThanOneGiven",
+        "org.cognitor.cassandra.migration.resolver.JarLocationScannerTest#shouldReturnTwoResourcesWhenJarFileWithOneScriptGiven",
+        "org.cognitor.cassandra.migration.resolver.JarLocationScannerTest#shouldThrowExceptionWhenNonExistingPathGiven",
+        "org.cognitor.cassandra.migration.resolver.ScannerFactoryTest#shouldIgnoreCaseWhenJarSchemeGiven",
+        "org.cognitor.cassandra.migration.resolver.ScannerFactoryTest#shouldReturnFileSystemLocationScannerWhenNonJarSchemeGiven",
+        "org.cognitor.cassandra.migration.resolver.ScannerFactoryTest#shouldReturnJarLocationScannerWhenJarSchemeGiven",
+        "org.cognitor.cassandra.migration.resolver.ScannerFactoryTest#shouldThrowExceptionWhenEmptySchemeGiven",
+        "org.cognitor.cassandra.migration.resolver.ScannerFactoryTest#shouldThrowExceptionWhenNoSchemeGiven",
+        "org.cognitor.cassandra.migration.util.EnsureTest#shouldReturnObjectWhenNotNullObjectGiven",
+        "org.cognitor.cassandra.migration.util.EnsureTest#shouldThrowExceptionWhenNullObjectGiven",
+        "org.cognitor.cassandra.migration.util.EnsureTest#shouldThrowExceptionWhenNullStringGiven"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "org.cognitor.cassandra.it.migration.DatabaseTest#shouldApplyMigrationToDatabaseWhenMigrationsAndEmptyDatabaseGiven",
+        "org.cognitor.cassandra.it.migration.DatabaseTest#shouldCreateKeyspaceWhenDatabaseWithoutKeyspaceAndKeyspaceDefinitionGiven",
+        "org.cognitor.cassandra.it.migration.DatabaseTest#shouldCreateKeyspaceWhenDatabaseWithoutKeyspaceAndNetworkKeyspaceDefinitionGiven",
+        "org.cognitor.cassandra.it.migration.DatabaseTest#shouldNotApplyAnyMigrationWhenDatabaseAndScriptsAreAtSameVersion",
+        "org.cognitor.cassandra.it.migration.DatabaseTest#shouldReturnSchemaVersionOfZeroInAnEmptyDatabase",
+        "org.cognitor.cassandra.it.migration.DatabaseTest#shouldThrowExceptionAndLogFailedMigrationWhenWrongMigrationScriptGiven"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 63.9,
+        "module_test": [
+          65.6,
+          63.4
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021552-wlqe/base",
+      "compiled_snapshot": "work/20261118-021552-wlqe/snapshot-dad8f470",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "cassandra-migration",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.cognitor.cassandra.migration.keyspace.Keyspace",
+      "simple_name": "Keyspace",
+      "package": "org.cognitor.cassandra.migration.keyspace",
+      "kind": "class",
+      "cut_path": "cassandra-migration/src/main/java/org/cognitor/cassandra/migration/keyspace/Keyspace.java",
+      "source_sha256": "df0805f2bcb32e8e5afbd6ad3e30fdc04596ea5f9da8098cdae87829ba4d54f3",
+      "generated_test_path": "cassandra-migration/src/test/java/org/cognitor/cassandra/migration/keyspace/Keyspace_ArrowTest.java",
+      "generated_test_fqn": "org.cognitor.cassandra.migration.keyspace.Keyspace_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.8,
+      "locate": 0.1,
+      "plan": 1,
+      "compile": 63.9,
+      "baseline": [
+        65.6,
+        63.4
+      ],
+      "total": 194
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

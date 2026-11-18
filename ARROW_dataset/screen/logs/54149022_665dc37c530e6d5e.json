@@ -1,0 +1,395 @@
+{
+  "run_id": "20261118-014917-35vu",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-014917-35vu",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 113.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 113.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "eplmp",
+        "url": "https://github.com/polarsys/eplmp",
+        "git_commit": "38d6a55c0ffdca632da831ac83ab6d8ccddbca65",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "eplmp-server/eplmp-server-rest",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.polarsys.eplmp",
+            "artifact": "eplmp-core",
+            "version": "2.5-SNAPSHOT",
+            "scope": "provided"
+          },
+          {
+            "group": "javax",
+            "artifact": "javaee-api",
+            "version": "7.0",
+            "scope": "provided"
+          },
+          {
+            "group": "javax.activation",
+            "artifact": "activation",
+            "version": "1.1",
+            "scope": "provided"
+          },
+          {
+            "group": "io.swagger",
+            "artifact": "swagger-annotations",
+            "version": "1.5.20",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.dozer",
+            "artifact": "dozer",
+            "version": "5.4.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-jdk14",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "java3d",
+            "artifact": "vecmath",
+            "version": "1.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.poi",
+            "artifact": "poi",
+            "version": "3.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.poi",
+            "artifact": "poi-ooxml",
+            "version": "3.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.bitbucket.b_c",
+            "artifact": "jose4j",
+            "version": "0.5.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.nimbusds",
+            "artifact": "oauth2-oidc-sdk",
+            "version": "5.38",
+            "scope": "compile"
+          },
+          {
+            "group": "com.squareup.okhttp",
+            "artifact": "okhttp",
+            "version": "2.4.0",
+            "scope": "compile"
+          },
+          {
+            "group": "io.swagger",
+            "artifact": "swagger-jersey2-jaxrs",
+            "version": "1.5.20",
+            "scope": "runtime"
+          },
+          {
+            "group": "com.brsanthu",
+            "artifact": "migbase64",
+            "version": "2.2",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.glassfish.jersey.media",
+            "artifact": "jersey-media-json-jackson",
+            "version": "2.22.1",
+            "scope": "runtime"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.glassfish",
+            "artifact": "javax.json",
+            "version": "1.0.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.9.5",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 70
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.9.5"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "eplmp-i18n",
+          "eplmp-core",
+          "eplmp-server",
+          "eplmp-server/eplmp-server-ext",
+          "eplmp-server/eplmp-server-office-doc",
+          "eplmp-server/eplmp-server-ejb",
+          "eplmp-server/eplmp-server-rest",
+          "eplmp-server/eplmp-server-ear"
+        ],
+        "target_module": "eplmp-server/eplmp-server-rest",
+        "module_root": "eplmp-server/eplmp-server-rest",
+        "packages": [
+          "org.polarsys.eplmp.server.rest",
+          "org.polarsys.eplmp.server.rest.collections",
+          "org.polarsys.eplmp.server.rest.converters",
+          "org.polarsys.eplmp.server.rest.dto",
+          "org.polarsys.eplmp.server.rest.dto.baseline",
+          "org.polarsys.eplmp.server.rest.dto.change",
+          "org.polarsys.eplmp.server.rest.dto.product",
+          "org.polarsys.eplmp.server.rest.exceptions",
+          "org.polarsys.eplmp.server.rest.exceptions.mapper",
+          "org.polarsys.eplmp.server.rest.file",
+          "org.polarsys.eplmp.server.rest.file.util",
+          "org.polarsys.eplmp.server.rest.interceptors",
+          "org.polarsys.eplmp.server.rest.locale",
+          "org.polarsys.eplmp.server.rest.util",
+          "org.polarsys.eplmp.server.rest.writers",
+          "org.polarsys.eplmp.server.auth",
+          "org.polarsys.eplmp.server.auth.jwt",
+          "org.polarsys.eplmp.server.auth.modules",
+          "org.polarsys.eplmp.server.export",
+          "org.polarsys.eplmp.server.helpers",
+          "org.polarsys.eplmp.server.ws",
+          "org.polarsys.eplmp.server.ws.chat",
+          "org.polarsys.eplmp.server.ws.collaborative",
+          "org.polarsys.eplmp.server.ws.status",
+          "org.polarsys.eplmp.server.ws.webrtc"
+        ]
+      },
+      "paths": {
+        "source_root": "eplmp-server/eplmp-server-rest/src/main/java",
+        "test_root": "eplmp-server/eplmp-server-rest/src/test/java",
+        "cut_path": "eplmp-server/eplmp-server-rest/src/main/java/org/polarsys/eplmp/server/rest/LOVResource.java",
+        "generated_test_path": "eplmp-server/eplmp-server-rest/src/test/java/org/polarsys/eplmp/server/rest/LOVResource_ArrowTest.java",
+        "generated_test_fqn": "org.polarsys.eplmp.server.rest.LOVResource_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.polarsys.eplmp.server.rest.LOVResource",
+        "simple_name": "LOVResource",
+        "package": "org.polarsys.eplmp.server.rest",
+        "kind": "class",
+        "source_sha256": "a192841149002d8948188832e00f74298394987f6b79225945daa4bbd20acb7d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "eplmp-server/eplmp-server-rest",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "eplmp-server/eplmp-server-rest",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 101.3,
+        "module_test": [
+          8.2,
+          3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-014917-35vu/base",
+      "compiled_snapshot": "work/20261118-014917-35vu/snapshot-689e6fd3",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "eplmp-server/eplmp-server-rest",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.polarsys.eplmp.server.rest.LOVResource",
+      "simple_name": "LOVResource",
+      "package": "org.polarsys.eplmp.server.rest",
+      "kind": "class",
+      "cut_path": "eplmp-server/eplmp-server-rest/src/main/java/org/polarsys/eplmp/server/rest/LOVResource.java",
+      "source_sha256": "a192841149002d8948188832e00f74298394987f6b79225945daa4bbd20acb7d",
+      "generated_test_path": "eplmp-server/eplmp-server-rest/src/test/java/org/polarsys/eplmp/server/rest/LOVResource_ArrowTest.java",
+      "generated_test_fqn": "org.polarsys.eplmp.server.rest.LOVResource_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+    ],
+    "timings": {
+      "checkout": 2.2,
+      "locate": 0.5,
+      "plan": 1.2,
+      "compile": 101.3,
+      "baseline": [
+        8.2,
+        3
+      ],
+      "total": 113.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+  ]
+}

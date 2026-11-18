@@ -1,0 +1,405 @@
+{
+  "run_id": "20261118-021851-h7wu",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-021851-h7wu",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 109.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 109.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "substitution-schedule-parser",
+        "url": "https://github.com/vertretungsplanme/substitution-schedule-parser",
+        "git_commit": "29892f6ba42958e007d006c67cbd08fec7261411",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "7.4",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "build.gradle",
+        "reactor_module": ":parser",
+        "build_root_source": "detected:reactor",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "17",
+        "declared_source": "sourceCompatibility",
+        "major": 17,
+        "jdk_major": 17,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "joda-time",
+            "artifact": "joda-time",
+            "version": "2.8.1",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.xml.bind",
+            "artifact": "jaxb-api",
+            "version": "2.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jsoup",
+            "artifact": "jsoup",
+            "version": "1.9.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "fluent-hc",
+            "version": "4.5.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpmime",
+            "version": "4.5.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.json",
+            "artifact": "json",
+            "version": "20090211",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jetbrains",
+            "artifact": "annotations",
+            "version": "13.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.5",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.mifmif",
+            "artifact": "generex",
+            "version": "1.0.2",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.biweekly",
+            "artifact": "biweekly",
+            "version": "0.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.googlecode.juniversalchardet",
+            "artifact": "juniversalchardet",
+            "version": "1.0.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.bouncycastle",
+            "artifact": "bcprov-jdk15on",
+            "version": "1.56",
+            "scope": "compile"
+          },
+          {
+            "group": "io.jsonwebtoken",
+            "artifact": "jjwt",
+            "version": "0.7.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.lookfirst",
+            "artifact": "sardine",
+            "version": "5.8",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.tomakehurst",
+            "artifact": "wiremock-jre8",
+            "version": "2.24.0",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.jimfs",
+            "artifact": "jimfs",
+            "version": "1.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 60
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "parser",
+          "sample"
+        ],
+        "target_module": "parser",
+        "module_root": "parser",
+        "packages": [
+          "me.vertretungsplan.parser",
+          "me.vertretungsplan",
+          "com.paour.comparator",
+          "me.vertretungsplan.additionalinfo",
+          "me.vertretungsplan.additionalinfo.amgrottweil",
+          "me.vertretungsplan.additionalinfo.blsschleswig.lsschleswig",
+          "me.vertretungsplan.additionalinfo.bmrtrier",
+          "me.vertretungsplan.additionalinfo.eichendorffgymkoblenz",
+          "me.vertretungsplan.additionalinfo.esbkgelsenkirchen",
+          "me.vertretungsplan.additionalinfo.evsschwalmstadt",
+          "me.vertretungsplan.additionalinfo.gymholthausenhattingen",
+          "me.vertretungsplan.additionalinfo.kantschulefalkensee",
+          "me.vertretungsplan.additionalinfo.karlsruheparzivalzentrum",
+          "me.vertretungsplan.additionalinfo.lsschleswig",
+          "me.vertretungsplan.exception",
+          "me.vertretungsplan.networking",
+          "me.vertretungsplan.objects",
+          "me.vertretungsplan.objects.authentication",
+          "me.vertretungsplan.objects.credential",
+          "me.vertretungsplan.objects.diff",
+          "me.vertretungsplan.utils",
+          "name.fraser.neil.plaintext"
+        ]
+      },
+      "paths": {
+        "source_root": "parser/src/main/java",
+        "test_root": "parser/src/test/java",
+        "cut_path": "parser/src/main/java/me/vertretungsplan/parser/ColorProvider.java",
+        "generated_test_path": "parser/src/test/java/me/vertretungsplan/parser/ColorProvider_ArrowTest.java",
+        "generated_test_fqn": "me.vertretungsplan.parser.ColorProvider_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "me.vertretungsplan.parser.ColorProvider",
+        "simple_name": "ColorProvider",
+        "package": "me.vertretungsplan.parser",
+        "kind": "class",
+        "source_sha256": "4a10215ad27d4dfaced9f33aa850a660ad0a88c1aaa866cb8806d73e62a3f4df"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/work/20261118-021851-h7wu/block1-b17d4512/arrow-info.gradle",
+          ":parser:testClasses",
+          ":parser:arrowClasspath"
+        ],
+        "module_test": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/work/20261118-021851-h7wu/block1-b17d4512/arrow-info.gradle",
+          ":parser:test",
+          "--continue"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "me.vertretungsplan.additionalinfo.WinterShParserTest#testNoInfo",
+        "me.vertretungsplan.additionalinfo.amgrottweil.AmgRottweilMessagesParserTest#test",
+        "me.vertretungsplan.objects.SubstitutionMergingTest#differentClassTest",
+        "me.vertretungsplan.objects.SubstitutionMergingTest#differentPreviousTeacherTest",
+        "me.vertretungsplan.objects.SubstitutionMergingTest#differentTeacherTest",
+        "me.vertretungsplan.objects.diff.DiffTest#testDiffSame",
+        "me.vertretungsplan.parser.BaseParserTest#testHandleClassRanges",
+        "me.vertretungsplan.parser.BaseParserTest#testLoadLocalFiles",
+        "me.vertretungsplan.parser.CSVDemoTest#demoTest",
+        "me.vertretungsplan.parser.ColorProviderTest#testCustomColor",
+        "me.vertretungsplan.parser.ColorProviderTest#testCustomDefaultColor",
+        "me.vertretungsplan.parser.ColorProviderTest#testCustomName",
+        "me.vertretungsplan.parser.ColorProviderTest#testPreconfigured",
+        "me.vertretungsplan.parser.ColumnTypeDetectorTest#testClass",
+        "me.vertretungsplan.parser.DaVinciDemoTest#singleTest5",
+        "me.vertretungsplan.parser.DaVinciDemoTest#singleTest6",
+        "me.vertretungsplan.parser.DaVinciDemoTest#testClasses",
+        "me.vertretungsplan.parser.DaVinciDemoTest#testDayIndex",
+        "me.vertretungsplan.parser.DaVinciDemoTest#testMonth",
+        "me.vertretungsplan.parser.DaVinciDemoTest#testSingle",
+        "me.vertretungsplan.parser.ESchoolDemoTest#demoTest",
+        "me.vertretungsplan.parser.IndiwareDemoTest#demoTestHTML",
+        "me.vertretungsplan.parser.IndiwareDemoTest#demoTestXML",
+        "me.vertretungsplan.parser.IndiwareDemoTest#testEquals",
+        "me.vertretungsplan.parser.IndiwareDemoTest#testHTMLEmbeddedContentSelector",
+        "me.vertretungsplan.parser.IndiwareDemoTest#testHTMLSplit",
+        "me.vertretungsplan.parser.IndiwareDemoTest#testXMLSplit",
+        "me.vertretungsplan.parser.IndiwareMobileDemoTest#demoTest",
+        "me.vertretungsplan.parser.IndiwareTest#testBracesPattern",
+        "me.vertretungsplan.parser.IndiwareTest#testCancelPattern1",
+        "me.vertretungsplan.parser.IndiwareTest#testCancelPattern2",
+        "me.vertretungsplan.parser.IndiwareTest#testCancelPatternShift1",
+        "me.vertretungsplan.parser.IndiwareTest#testCancelPatternShift2",
+        "me.vertretungsplan.parser.IndiwareTest#testClassAndCourse",
+        "me.vertretungsplan.parser.IndiwareTest#testClassTeacherLesson",
+        "me.vertretungsplan.parser.IndiwareTest#testCoursePattern",
+        "me.vertretungsplan.parser.IndiwareTest#testDelayPattern",
+        "me.vertretungsplan.parser.IndiwareTest#testDelayPatternShift",
+        "me.vertretungsplan.parser.IndiwareTest#testNewPattern",
+        "me.vertretungsplan.parser.IndiwareTest#testSelfPattern",
+        "me.vertretungsplan.parser.IndiwareTest#testSelfPatternWithDesc",
+        "me.vertretungsplan.parser.IndiwareTest#testSplitTeacher",
+        "me.vertretungsplan.parser.IndiwareTest#testSubstitutionPattern",
+        "me.vertretungsplan.parser.IndiwareTest#testSubstitutionPatternWithDesc",
+        "me.vertretungsplan.parser.IndiwareTest#testSubstitutionPatternWithDescWithoutComma",
+        "me.vertretungsplan.parser.IndiwareTest#testTakeOverPattern",
+        "me.vertretungsplan.parser.IphisDemoTest#demoTest",
+        "me.vertretungsplan.parser.LoginHandlerTest#testBasicAuth",
+        "me.vertretungsplan.parser.LoginHandlerTest#testBasicAuthFail",
+        "me.vertretungsplan.parser.LoginHandlerTest#testBasicAuthFailUrl",
+        "me.vertretungsplan.parser.LoginHandlerTest#testFixedAuth",
+        "me.vertretungsplan.parser.LoginHandlerTest#testFixedAuthFail",
+        "me.vertretungsplan.parser.LoginHandlerTest#testPostAuth",
+        "me.vertretungsplan.parser.LoginHandlerTest#testPostAuthFail",
+        "me.vertretungsplan.parser.LoginHandlerTest#testPostAuthFailCheckText",
+        "me.vertretungsplan.parser.LoginHandlerTest#testPostAuthFailCheckUrl",
+        "me.vertretungsplan.parser.LoginHandlerTest#testPostAuthFormData",
+        "me.vertretungsplan.parser.ParserUtilsTest#testGetClassesArray",
+        "me.vertretungsplan.parser.ParserUtilsTest#testGetClassesRegex",
+        "me.vertretungsplan.parser.ParserUtilsTest#testNewYear",
+        "me.vertretungsplan.parser.SVPlanDemoTest#demoTest1",
+        "me.vertretungsplan.parser.SVPlanDemoTest#demoTest2",
+        "me.vertretungsplan.parser.SVPlanDemoTest#demoTest3",
+        "me.vertretungsplan.parser.SVPlanDemoTest#demoTest4",
+        "me.vertretungsplan.parser.SVPlanDemoTest#demoTest5",
+        "me.vertretungsplan.parser.SVPlanTest#testGetClassesSingle",
+        "me.vertretungsplan.parser.SVPlanTest#testGetClassesYear",
+        "me.vertretungsplan.parser.SVPlanTest#testGetClassesYearRange",
+        "me.vertretungsplan.parser.SchoolJoomlaDemoTest#demoTest",
+        "me.vertretungsplan.parser.UntisCommonParserTest#testHandleClasses",
+        "me.vertretungsplan.parser.UntisCommonParserTest#testHandleRoomBoth",
+        "me.vertretungsplan.parser.UntisCommonParserTest#testHandleRoomBothSpan",
+        "me.vertretungsplan.parser.UntisCommonParserTest#testHandleRoomSingle",
+        "me.vertretungsplan.parser.UntisCommonParserTest#testHandleRoomSinglePrevious",
+        "me.vertretungsplan.parser.UntisInfoDemoTest#demoTest",
+        "me.vertretungsplan.parser.UntisInfoParserTest#testGetClasses",
+        "me.vertretungsplan.parser.UntisInfoParserTest#testGetClassesRegex",
+        "me.vertretungsplan.parser.UntisInfoParserTest#testGetClassesRegexRemove",
+        "me.vertretungsplan.parser.UntisInfoParserTest#testGetScheduleUrl",
+        "me.vertretungsplan.parser.UntisLastChangeTest#testFindLastChange[mon_head table in comment]",
+        "me.vertretungsplan.parser.UntisLastChangeTest#testFindLastChange[mon_head table]",
+        "me.vertretungsplan.parser.UntisMonitorParserDemoTest#demoTest",
+        "me.vertretungsplan.parser.UntisMonitorParserTest#testFindSubDocsMultiple",
+        "me.vertretungsplan.parser.UntisMonitorParserTest#testFindSubDocsSingle",
+        "me.vertretungsplan.utils.SubstitutionTextUtilsTest#testSubstitutionDiffText",
+        "me.vertretungsplan.utils.SubstitutionTextUtilsTest#testSubstitutionText",
+        "me.vertretungsplan.utils.SubstitutionTextUtilsTest2#testGetTeachers1",
+        "me.vertretungsplan.utils.SubstitutionTextUtilsTest2#testGetTeachers2",
+        "me.vertretungsplan.utils.SubstitutionTextUtilsTest2#testGetTeachers3"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 37.8,
+        "module_test": [
+          8,
+          8.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021851-h7wu/base",
+      "compiled_snapshot": "work/20261118-021851-h7wu/snapshot-b17d4512",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "gradlew",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [],
+      "gradle_project": ":parser",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/work/20261118-021851-h7wu/block1-b17d4512/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "me.vertretungsplan.parser.ColorProvider",
+      "simple_name": "ColorProvider",
+      "package": "me.vertretungsplan.parser",
+      "kind": "class",
+      "cut_path": "parser/src/main/java/me/vertretungsplan/parser/ColorProvider.java",
+      "source_sha256": "4a10215ad27d4dfaced9f33aa850a660ad0a88c1aaa866cb8806d73e62a3f4df",
+      "generated_test_path": "parser/src/test/java/me/vertretungsplan/parser/ColorProvider_ArrowTest.java",
+      "generated_test_fqn": "me.vertretungsplan.parser.ColorProvider_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.2,
+      "plan": 55.3,
+      "compile": 37.8,
+      "baseline": [
+        8,
+        8.3
+      ],
+      "total": 109.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

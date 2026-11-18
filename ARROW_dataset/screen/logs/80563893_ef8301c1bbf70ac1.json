@@ -1,0 +1,339 @@
+{
+  "run_id": "20261118-004827-dwlh",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-004827-dwlh",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 164.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 164.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "jetty-load-generator",
+        "url": "https://github.com/jetty-project/jetty-load-generator",
+        "git_commit": "12a9b74c64c0aaae0795cd81c92aa1662d322432",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "jetty-load-generator-starter",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "8",
+        "declared_source": "maven-compiler-plugin.release",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.mortbay.jetty.loadgenerator",
+            "artifact": "jetty-load-generator-client",
+            "version": "1.0.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.mortbay.jetty.loadgenerator",
+            "artifact": "jetty-load-generator-listeners",
+            "version": "1.0.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.8.11.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.codehaus.groovy",
+            "artifact": "groovy",
+            "version": "2.5.0-beta-1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.beust",
+            "artifact": "jcommander",
+            "version": "1.48",
+            "scope": "compile"
+          },
+          {
+            "group": "org.eclipse.jetty",
+            "artifact": "jetty-client",
+            "version": "9.4.18.v20190429",
+            "scope": "compile"
+          },
+          {
+            "group": "org.eclipse.jetty",
+            "artifact": "jetty-xml",
+            "version": "9.4.18.v20190429",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 25
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "jetty-load-generator-client",
+          "jetty-load-generator-collector",
+          "jetty-load-generator-listeners",
+          "jetty-load-generator-store",
+          "jetty-load-generator-starter"
+        ],
+        "target_module": "jetty-load-generator-starter",
+        "module_root": "jetty-load-generator-starter",
+        "packages": [
+          "org.mortbay.jetty.load.generator.starter"
+        ]
+      },
+      "paths": {
+        "source_root": "jetty-load-generator-starter/src/main/java",
+        "test_root": "jetty-load-generator-starter/src/test/java",
+        "cut_path": "jetty-load-generator-starter/src/main/java/org/mortbay/jetty/load/generator/starter/LoadGeneratorStarter.java",
+        "generated_test_path": "jetty-load-generator-starter/src/test/java/org/mortbay/jetty/load/generator/starter/LoadGeneratorStarter_ArrowTest.java",
+        "generated_test_fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter",
+        "simple_name": "LoadGeneratorStarter",
+        "package": "org.mortbay.jetty.load.generator.starter",
+        "kind": "class",
+        "source_sha256": "3b5896a79e0de89909c3ce837d336d060271071d5756ecb333d84e038ef56280"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "jetty-load-generator-starter",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "jetty-load-generator-starter",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.mortbay.jetty.load.generator.FailFastTest#should_fail_fast_on_server_stop",
+        "org.mortbay.jetty.load.generator.HTTP1WebsiteLoadGeneratorTest#testHTTP1",
+        "org.mortbay.jetty.load.generator.HTTP2LoadGeneratorTest#testPush",
+        "org.mortbay.jetty.load.generator.HTTP2WebsiteLoadGeneratorTest#testHTTP2WithPush",
+        "org.mortbay.jetty.load.generator.HTTP2WebsiteLoadGeneratorTest#testHTTP2WithoutPush",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testDefaultConfiguration[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testDefaultConfiguration[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testInterrupt[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testInterrupt[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testJMX[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testJMX[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testMultipleThreads[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testMultipleThreads[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testRateIsRespected[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testRateIsRespected[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testRateRampUp[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testRateRampUp[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testResourceGroup[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testResourceGroup[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testResourceTree[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testResourceTree[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testRunFor[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testRunFor[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testTwoRuns[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testTwoRuns[H2C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testWarmupDoesNotNotifyResourceListeners[H1C]",
+        "org.mortbay.jetty.load.generator.LoadGeneratorTest#testWarmupDoesNotNotifyResourceListeners[H2C]",
+        "org.mortbay.jetty.load.generator.ResourceBuildTest#simple_build",
+        "org.mortbay.jetty.load.generator.ResourceBuildTest#simple_two_resources",
+        "org.mortbay.jetty.load.generator.ResourceBuildTest#website_profile",
+        "org.mortbay.jetty.load.generator.ResourceBuildTest#website_profile_with_groovy",
+        "org.mortbay.jetty.load.generator.ResourceBuildTest#website_profile_with_xml",
+        "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarterTest#calculate_descendant_number",
+        "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarterTest#failFast",
+        "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarterTest#fromGroovyToJSON",
+        "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarterTest#simpleTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 5.1,
+        "module_test": [
+          79.1,
+          78.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004827-dwlh/base",
+      "compiled_snapshot": "work/20261118-004827-dwlh/snapshot-d8c526bd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "jetty-load-generator-starter",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter",
+      "simple_name": "LoadGeneratorStarter",
+      "package": "org.mortbay.jetty.load.generator.starter",
+      "kind": "class",
+      "cut_path": "jetty-load-generator-starter/src/main/java/org/mortbay/jetty/load/generator/starter/LoadGeneratorStarter.java",
+      "source_sha256": "3b5896a79e0de89909c3ce837d336d060271071d5756ecb333d84e038ef56280",
+      "generated_test_path": "jetty-load-generator-starter/src/test/java/org/mortbay/jetty/load/generator/starter/LoadGeneratorStarter_ArrowTest.java",
+      "generated_test_fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.2,
+      "compile": 5.1,
+      "baseline": [
+        79.1,
+        78.7
+      ],
+      "total": 164.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

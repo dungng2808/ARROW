@@ -1,0 +1,283 @@
+{
+  "run_id": "20261118-011551-21gj",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-011551-21gj",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 68.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 68.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "openjavacard-tools",
+        "url": "https://github.com/OpenJavaCard/openjavacard-tools",
+        "git_commit": "22ce3c00e33570aad655721fbcd44c53070cc4f5",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "gradle",
+        "version": "4.5",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "build.gradle",
+        "reactor_module": ":globalplatform",
+        "build_root_source": "detected:reactor",
+        "test_includes": [],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "sourceCompatibility",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.openjavacard.tools",
+            "artifact": "common",
+            "version": "0.1-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.openjavacard.tools",
+            "artifact": "cap-file",
+            "version": "0.1-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "org.bouncycastle",
+            "artifact": "bcprov-jdk15on",
+            "version": "1.59",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 7
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "cap-file",
+          "cap-model",
+          "cap-testing",
+          "common",
+          "globalplatform",
+          "jackson",
+          "packaging",
+          "testbench",
+          "tool"
+        ],
+        "target_module": "globalplatform",
+        "module_root": "globalplatform",
+        "packages": [
+          "org.openjavacard.gp.scp",
+          "org.openjavacard.gp.client",
+          "org.openjavacard.gp.crypto",
+          "org.openjavacard.gp.keys",
+          "org.openjavacard.gp.protocol"
+        ]
+      },
+      "paths": {
+        "source_root": "globalplatform/src/main/java",
+        "test_root": "globalplatform/src/test/java",
+        "cut_path": "globalplatform/src/main/java/org/openjavacard/gp/scp/SCPProtocolPolicy.java",
+        "generated_test_path": "globalplatform/src/test/java/org/openjavacard/gp/scp/SCPProtocolPolicy_ArrowTest.java",
+        "generated_test_fqn": "org.openjavacard.gp.scp.SCPProtocolPolicy_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.openjavacard.gp.scp.SCPProtocolPolicy",
+        "simple_name": "SCPProtocolPolicy",
+        "package": "org.openjavacard.gp.scp",
+        "kind": "class",
+        "source_sha256": "23f85b36cbb8832bc0d9682cd1adb5ab1ea02343dc49ddf42f1c534fb55a7fe2"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/work/20261118-011551-21gj/block1-2e116128/arrow-info.gradle",
+          ":globalplatform:testClasses",
+          ":globalplatform:arrowClasspath"
+        ],
+        "module_test": [
+          "gradlew",
+          "--no-daemon",
+          "--console=plain",
+          "-Dorg.gradle.configuration-cache=false",
+          "-Dorg.gradle.unsafe.configuration-cache=false",
+          "--init-script",
+          "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/work/20261118-011551-21gj/block1-2e116128/arrow-info.gradle",
+          ":globalplatform:test",
+          "--continue"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.openjavacard.gp.keys.GPKeySetTest#testDiversifyEMV_00000000000000000000",
+        "org.openjavacard.gp.keys.GPKeySetTest#testDiversifyEMV_0102030405060708090A",
+        "org.openjavacard.gp.protocol.GPCardDataTest#testParse",
+        "org.openjavacard.gp.protocol.GPCardDataTest#testParseLong",
+        "org.openjavacard.gp.protocol.GPCardDataTest#testParseShort",
+        "org.openjavacard.gp.protocol.GPKeyInfoTemplateTest#testParse",
+        "org.openjavacard.gp.protocol.GPKeyInfoTemplateTest#testParseLong",
+        "org.openjavacard.gp.protocol.GPKeyInfoTemplateTest#testParseShort",
+        "org.openjavacard.gp.protocol.GPKeyInfoTest#testParse",
+        "org.openjavacard.gp.protocol.GPKeyInfoTest#testParseLong",
+        "org.openjavacard.gp.protocol.GPKeyInfoTest#testParseShort",
+        "org.openjavacard.gp.protocol.GPLifeCycleTest#testParse",
+        "org.openjavacard.gp.protocol.GPLifeCycleTest#testParseLong",
+        "org.openjavacard.gp.protocol.GPLifeCycleTest#testParseShort",
+        "org.openjavacard.gp.protocol.GPPrivilegeTest#testPrivilegeEncode",
+        "org.openjavacard.gp.scp.SCP02DerivationTest#testDeriveSCP02_0000",
+        "org.openjavacard.gp.scp.SCP02DerivationTest#testDeriveSCP02_0001",
+        "org.openjavacard.gp.scp.SCP02DerivationTest#testDeriveSCP02_007F",
+        "org.openjavacard.gp.scp.SCP02DerivationTest#testDeriveSCP02_FFFF",
+        "org.openjavacard.gp.scp.SCP02WrapperTest#testReference",
+        "org.openjavacard.gp.scp.SCP02WrapperTest#testSCP02_15WrapCENC",
+        "org.openjavacard.gp.scp.SCP02WrapperTest#testSCP02_15WrapCMAC",
+        "org.openjavacard.gp.scp.SCP03DerivationTest#testDeriveSCP03_000010",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testPermissiveAccept",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP01Accept",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP01RejectSCP02_15",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP01RejectSCP02_55",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP02Accept",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP02RejectSCP01_05",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP02RejectSCP01_15",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP03Accept",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP03RejectSCP01_05",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP03RejectSCP01_15",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP03RejectSCP02_15",
+        "org.openjavacard.gp.scp.SCPProtocolPolicyTest#testSCP03RejectSCP02_55",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testCENCAccept",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testCENCRejectSCP00_00",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testCMACAccept",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testCMACRejectSCP00_00",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testNONEAccept",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCAccept",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP00_00",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP01_05",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP01_15",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP02_15",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP02_55",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP03_10",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRENCRejectSCP03_30",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACAccept",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACRejectSCP00_00",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACRejectSCP01_05",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACRejectSCP01_15",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACRejectSCP02_15",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACRejectSCP02_55",
+        "org.openjavacard.gp.scp.SCPSecurityPolicyTest#testRMACRejectSCP03_10"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.4,
+        "module_test": [
+          2.7,
+          2.7
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011551-21gj/base",
+      "compiled_snapshot": "work/20261118-011551-21gj/snapshot-2e116128",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "gradle",
+      "executable": "gradlew",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [],
+      "gradle_project": ":globalplatform",
+      "common_flags": [
+        "--no-daemon",
+        "--console=plain",
+        "-Dorg.gradle.configuration-cache=false",
+        "-Dorg.gradle.unsafe.configuration-cache=false"
+      ],
+      "init_scripts": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/work/20261118-011551-21gj/block1-2e116128/arrow-info.gradle"
+      ]
+    },
+    "cut": {
+      "fqn": "org.openjavacard.gp.scp.SCPProtocolPolicy",
+      "simple_name": "SCPProtocolPolicy",
+      "package": "org.openjavacard.gp.scp",
+      "kind": "class",
+      "cut_path": "globalplatform/src/main/java/org/openjavacard/gp/scp/SCPProtocolPolicy.java",
+      "source_sha256": "23f85b36cbb8832bc0d9682cd1adb5ab1ea02343dc49ddf42f1c534fb55a7fe2",
+      "generated_test_path": "globalplatform/src/test/java/org/openjavacard/gp/scp/SCPProtocolPolicy_ArrowTest.java",
+      "generated_test_fqn": "org.openjavacard.gp.scp.SCPProtocolPolicy_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.2,
+      "plan": 59,
+      "compile": 4.4,
+      "baseline": [
+        2.7,
+        2.7
+      ],
+      "total": 68.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,697 @@
+{
+  "run_id": "20261118-020853-61e9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-020853-61e9",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 129.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 129.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Alpine",
+        "url": "https://github.com/stevespringett/Alpine",
+        "git_commit": "856d1ded45753afa77954588742736b5a7a4cc53",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "alpine",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.9",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-collections4",
+            "version": "4.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jersey.core",
+            "artifact": "jersey-client",
+            "version": "2.29.1",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "4.0.1",
+            "scope": "provided"
+          },
+          {
+            "group": "org.glassfish.jersey.containers",
+            "artifact": "jersey-container-servlet",
+            "version": "2.29.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jersey.media",
+            "artifact": "jersey-media-json-jackson",
+            "version": "2.29.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jersey.media",
+            "artifact": "jersey-media-multipart",
+            "version": "2.29.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jersey.ext",
+            "artifact": "jersey-bean-validation",
+            "version": "2.29.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jersey.inject",
+            "artifact": "jersey-hk2",
+            "version": "2.29.1",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.xml.bind",
+            "artifact": "jaxb-api",
+            "version": "2.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.sun.xml.bind",
+            "artifact": "jaxb-core",
+            "version": "2.3.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.sun.xml.bind",
+            "artifact": "jaxb-impl",
+            "version": "2.3.2",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.json",
+            "artifact": "javax.json-api",
+            "version": "1.1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish",
+            "artifact": "javax.json",
+            "version": "1.1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.servlet.jsp",
+            "artifact": "jsp-api",
+            "version": "2.2",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.apache.taglibs",
+            "artifact": "taglibs-standard-impl",
+            "version": "1.2.5",
+            "scope": "compile"
+          },
+          {
+            "group": "io.swagger",
+            "artifact": "swagger-jersey2-jaxrs",
+            "version": "1.6.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.datanucleus",
+            "artifact": "javax.jdo",
+            "version": "3.2.0-m13",
+            "scope": "compile"
+          },
+          {
+            "group": "org.datanucleus",
+            "artifact": "datanucleus-api-jdo",
+            "version": "5.2.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.datanucleus",
+            "artifact": "datanucleus-core",
+            "version": "5.2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.datanucleus",
+            "artifact": "datanucleus-rdbms",
+            "version": "5.2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.zaxxer",
+            "artifact": "HikariCP",
+            "version": "3.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.javassist",
+            "artifact": "javassist",
+            "version": "3.26.0-GA",
+            "scope": "compile"
+          },
+          {
+            "group": "com.h2database",
+            "artifact": "h2",
+            "version": "1.4.200",
+            "scope": "compile"
+          },
+          {
+            "group": "io.jsonwebtoken",
+            "artifact": "jjwt",
+            "version": "0.9.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.mindrot",
+            "artifact": "jbcrypt",
+            "version": "0.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.10.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.10.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.jaxrs",
+            "artifact": "jackson-jaxrs-base",
+            "version": "2.10.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.jaxrs",
+            "artifact": "jackson-jaxrs-json-provider",
+            "version": "2.10.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.30",
+            "scope": "compile"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.2.3",
+            "scope": "compile"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-core",
+            "version": "1.2.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.owasp",
+            "artifact": "security-logging-common",
+            "version": "1.1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.owasp",
+            "artifact": "security-logging-logback",
+            "version": "1.1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.owasp.encoder",
+            "artifact": "encoder",
+            "version": "1.2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.owasp.encoder",
+            "artifact": "encoder-jsp",
+            "version": "1.2.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.sun.mail",
+            "artifact": "javax.mail",
+            "version": "1.6.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.ben-manes.caffeine",
+            "artifact": "caffeine",
+            "version": "2.8.1",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13",
+            "scope": "test"
+          },
+          {
+            "group": "org.glassfish.jersey.test-framework.providers",
+            "artifact": "jersey-test-framework-provider-grizzly2",
+            "version": "2.29.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "3.3.3",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.stefanbirkner",
+            "artifact": "system-rules",
+            "version": "1.19.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.assertj",
+            "artifact": "assertj-core",
+            "version": "3.15.0",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.tomakehurst",
+            "artifact": "wiremock-jre8-standalone",
+            "version": "2.26.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 101
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:3.3.3"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.15.0"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "alpine"
+        ],
+        "target_module": "alpine",
+        "module_root": "alpine",
+        "packages": [
+          "alpine.auth",
+          "alpine",
+          "alpine.cache",
+          "alpine.crypto",
+          "alpine.event",
+          "alpine.event.framework",
+          "alpine.filters",
+          "alpine.json",
+          "alpine.logging",
+          "alpine.mail",
+          "alpine.model",
+          "alpine.notification",
+          "alpine.persistence",
+          "alpine.resources",
+          "alpine.servlets",
+          "alpine.tasks",
+          "alpine.upgrade",
+          "alpine.util",
+          "alpine.validation"
+        ]
+      },
+      "paths": {
+        "source_root": "alpine/src/main/java",
+        "test_root": "alpine/src/test/java",
+        "cut_path": "alpine/src/main/java/alpine/auth/OidcAuthenticationService.java",
+        "generated_test_path": "alpine/src/test/java/alpine/auth/OidcAuthenticationService_ArrowTest.java",
+        "generated_test_fqn": "alpine.auth.OidcAuthenticationService_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "alpine.auth.OidcAuthenticationService",
+        "simple_name": "OidcAuthenticationService",
+        "package": "alpine.auth",
+        "kind": "class",
+        "source_sha256": "5b464f149270aed64ea5c1f2e6221a1fcdd83d735d1c5ceb42e454683b09be8b"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "alpine",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "alpine",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "alpine.auth.AlpineAuthenticationExceptionTest#causeTypeTest",
+        "alpine.auth.AlpineAuthenticationExceptionTest#constructorATest",
+        "alpine.auth.AlpineAuthenticationExceptionTest#constructorBTest",
+        "alpine.auth.ApiKeyGeneratorTest#defaultGenerateTest",
+        "alpine.auth.ApiKeyGeneratorTest#generateTest",
+        "alpine.auth.JsonWebTokenTest#createTokenPermissionsTest",
+        "alpine.auth.JsonWebTokenTest#createTokenTest",
+        "alpine.auth.OidcConfigurationResolverTest#resolveShouldReturnCachedValueWhenAvailable",
+        "alpine.auth.OidcConfigurationResolverTest#resolveShouldReturnConfigurationAndStoreItInCache",
+        "alpine.auth.OidcConfigurationResolverTest#resolveShouldReturnNullWhenAuthorityIsNull",
+        "alpine.auth.OidcConfigurationResolverTest#resolveShouldReturnNullWhenServerRespondsWithInvalidJson",
+        "alpine.auth.OidcConfigurationResolverTest#resolveShouldReturnNullWhenServerRespondsWithNon200StatusCode",
+        "alpine.auth.OidcUserInfoTest#testJsonDeserialization",
+        "alpine.cache.CacheManagerTest#putGetMaintTest",
+        "alpine.cache.CacheManagerTest#removeTest",
+        "alpine.crypto.DataEncryptionTest#encryptAndDecryptAsBytes1Test",
+        "alpine.crypto.DataEncryptionTest#encryptAndDecryptAsBytes2Test",
+        "alpine.crypto.DataEncryptionTest#encryptAndDecryptAsString1Test",
+        "alpine.crypto.DataEncryptionTest#encryptAndDecryptAsString2Test",
+        "alpine.crypto.KeyManagerTest#keyPairTest",
+        "alpine.crypto.KeyManagerTest#secretKeyTest",
+        "alpine.crypto.RelaxedSSLSocketFactoryTest#basicTest",
+        "alpine.crypto.RelaxedX509TrustManagerTest#basicTest",
+        "alpine.model.AboutTest#getterTest",
+        "alpine.model.ApiKeyTest#idTest",
+        "alpine.model.ApiKeyTest#keyTest",
+        "alpine.model.ApiKeyTest#teamsTest",
+        "alpine.model.ConfigPropertyTest#descriptionTest",
+        "alpine.model.ConfigPropertyTest#groupNameTest",
+        "alpine.model.ConfigPropertyTest#idTest",
+        "alpine.model.ConfigPropertyTest#propertyNameTest",
+        "alpine.model.ConfigPropertyTest#propertyTypeTest",
+        "alpine.model.ConfigPropertyTest#propertyValueTest",
+        "alpine.model.EventServiceLogTest#completedTest",
+        "alpine.model.EventServiceLogTest#idTest",
+        "alpine.model.EventServiceLogTest#startedTest",
+        "alpine.model.EventServiceLogTest#subscriberClassTest",
+        "alpine.model.IConfigPropertyTest#testEnums",
+        "alpine.model.InstalledUpgradesTest#endTimeTest",
+        "alpine.model.InstalledUpgradesTest#idTest",
+        "alpine.model.InstalledUpgradesTest#startedTest",
+        "alpine.model.InstalledUpgradesTest#upgradeClassTest",
+        "alpine.model.LdapUserTest#dnTest",
+        "alpine.model.LdapUserTest#emailTest",
+        "alpine.model.LdapUserTest#idTest",
+        "alpine.model.LdapUserTest#permissionsTest",
+        "alpine.model.LdapUserTest#teamsTest",
+        "alpine.model.LdapUserTest#usernameTest",
+        "alpine.model.ManagedUserTest#emailTest",
+        "alpine.model.ManagedUserTest#forcePasswordChangeTest",
+        "alpine.model.ManagedUserTest#fullnameTest",
+        "alpine.model.ManagedUserTest#idTest",
+        "alpine.model.ManagedUserTest#lastPasswordChangeTest",
+        "alpine.model.ManagedUserTest#nonExpiryPasswordTest",
+        "alpine.model.ManagedUserTest#passwordTest",
+        "alpine.model.ManagedUserTest#permissionsTest",
+        "alpine.model.ManagedUserTest#suspendedTest",
+        "alpine.model.ManagedUserTest#teamsTest",
+        "alpine.model.ManagedUserTest#usernameTest",
+        "alpine.model.MappedLdapGroupTest#dnTest",
+        "alpine.model.MappedLdapGroupTest#idTest",
+        "alpine.model.MappedLdapGroupTest#teamTest",
+        "alpine.model.MappedLdapGroupTest#uuidTest",
+        "alpine.model.MappedOidcGroupTest#testJsonDeserialization",
+        "alpine.model.MappedOidcGroupTest#testJsonSerialization",
+        "alpine.model.OidcGroupTest#testJsonDeserialization",
+        "alpine.model.OidcGroupTest#testJsonSerialization",
+        "alpine.model.OidcUserTest#testJsonDeserialization",
+        "alpine.model.OidcUserTest#testJsonSerialization",
+        "alpine.model.PermissionTest#descriptionTest",
+        "alpine.model.PermissionTest#idTest",
+        "alpine.model.PermissionTest#ldapUsersTest",
+        "alpine.model.PermissionTest#managedUserTest",
+        "alpine.model.PermissionTest#nameTest",
+        "alpine.model.PermissionTest#teamsTest",
+        "alpine.model.SchemaVersionTest#idTest",
+        "alpine.model.SchemaVersionTest#versionTest",
+        "alpine.model.TeamTest#idTest",
+        "alpine.model.TeamTest#ldapUsersTest",
+        "alpine.model.TeamTest#managedUsersTest",
+        "alpine.model.TeamTest#mappedLdapGroupsTest",
+        "alpine.model.TeamTest#nameTest",
+        "alpine.model.TeamTest#permissionsTest",
+        "alpine.model.TeamTest#teamsTest",
+        "alpine.model.TeamTest#uuidTest",
+        "alpine.util.BooleanUtilTest#isNotNullTest",
+        "alpine.util.BooleanUtilTest#isNullTest",
+        "alpine.util.BooleanUtilTest#valueOfTest",
+        "alpine.util.ByteFormatTest#format2Test",
+        "alpine.util.ByteFormatTest#formatTest",
+        "alpine.util.ByteUtilTest#toBytesTest",
+        "alpine.util.GravatarUtilTest#generateHashTest",
+        "alpine.util.GravatarUtilTest#getGravatarUrlFromPrincipalSizeTest",
+        "alpine.util.GravatarUtilTest#getGravatarUrlFromPrincipalTest",
+        "alpine.util.GravatarUtilTest#getGravatarUrlSizeTest",
+        "alpine.util.GravatarUtilTest#getGravatarUrlTest",
+        "alpine.util.HttpUtilTest#getRequestAttributeTest",
+        "alpine.util.HttpUtilTest#getSessionAttributeTest",
+        "alpine.util.JavaVersionTest#testDebianOpenJDK8Versioning",
+        "alpine.util.JavaVersionTest#testDefaultConstructor",
+        "alpine.util.JavaVersionTest#testOracleJava8Versioning",
+        "alpine.util.PageableTest#pageableTest",
+        "alpine.util.PathUtilTest#resolveTest",
+        "alpine.util.ThreadUtilTest#determineNumberOfWorkerThreadsTest",
+        "alpine.util.UrlUtilTest#normalizationStringTest",
+        "alpine.util.UrlUtilTest#normalizationURLTest",
+        "alpine.util.UuidUtilTest#insertHyphensTest",
+        "alpine.util.UuidUtilTest#isValidUuidTest",
+        "alpine.util.UuidUtilTest#stripHyphensTest",
+        "alpine.util.VersionComparatorTest#equalsTest",
+        "alpine.util.VersionComparatorTest#getterTest",
+        "alpine.util.VersionComparatorTest#isNewerThanTest",
+        "alpine.util.VersionComparatorTest#isOlderThanTest",
+        "alpine.validation.LdapStringSanitizerTest#sanitizeTest",
+        "alpine.validation.ValidationExceptionTest#exceptionTest",
+        "alpine.validation.ValidationTaskTest#constructorATest",
+        "alpine.validation.ValidationTaskTest#constructorBTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldAssignSubjectIdAndEmailWhenUserAlreadyExistsAndAuthenticatesForFirstTime",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldProvisionAndReturnNewUserWhenUserDoesNotExistAndProvisioningIsEnabled",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldReturnUserWhenAlreadyExists",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldSynchronizeTeamsWhenUserAlreadyExistsAndTeamSynchronizationIsEnabled",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldThrowExceptionWhenRequestingUserCausesAnUnexpectedHttpError",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldThrowExceptionWhenRequestingUserInfoWithInvalidToken",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldThrowExceptionWhenUserAlreadyExistsAndSubjectIdentifierHasChanged",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldThrowExceptionWhenUserDoesNotExistAndProvisioningIsDisabled",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldThrowExceptionWhenUserInfoDoesNotContainConfiguredUsernameClaim",
+        "alpine.auth.OidcAuthenticationServiceTest#authenticateShouldThrowExceptionWhenUserInfoResponseProcessingFailed",
+        "alpine.auth.OidcAuthenticationServiceTest#isSpecifiedShouldReturnFalseWhenAccessTokenIsNull",
+        "alpine.auth.OidcAuthenticationServiceTest#isSpecifiedShouldReturnFalseWhenOidcConfigurationIsNull",
+        "alpine.auth.OidcAuthenticationServiceTest#isSpecifiedShouldReturnFalseWhenOidcIsDisabled",
+        "alpine.auth.OidcAuthenticationServiceTest#isSpecifiedShouldReturnTrueWhenOidcIsEnabledAndOidcConfigurationIsNotNullAndAccessTokenIsNotNull",
+        "alpine.auth.OidcAuthenticationServiceTest#synchronizeTeamsShouldAddNewTeamMemberships",
+        "alpine.auth.OidcAuthenticationServiceTest#synchronizeTeamsShouldRemoveMembershipsOfUnmappedTeams",
+        "alpine.auth.OidcAuthenticationServiceTest#synchronizeTeamsShouldRemoveOutdatedTeamMemberships",
+        "alpine.auth.OidcAuthenticationServiceTest#synchronizeTeamsShouldReturnUserWhenNoTeamsClaimWasConfigured",
+        "alpine.auth.OidcAuthenticationServiceTest#synchronizeTeamsShouldReturnUserWhenTeamsClaimDoesNotExist",
+        "alpine.auth.OidcAuthenticationServiceTest#synchronizeTeamsShouldReturnUserWhenTeamsClaimIsNotAList"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 69.9,
+        "module_test": [
+          29.5,
+          28.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-020853-61e9/base",
+      "compiled_snapshot": "work/20261118-020853-61e9/snapshot-54c5b3dd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "alpine",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "alpine.auth.OidcAuthenticationService",
+      "simple_name": "OidcAuthenticationService",
+      "package": "alpine.auth",
+      "kind": "class",
+      "cut_path": "alpine/src/main/java/alpine/auth/OidcAuthenticationService.java",
+      "source_sha256": "5b464f149270aed64ea5c1f2e6221a1fcdd83d735d1c5ceb42e454683b09be8b",
+      "generated_test_path": "alpine/src/test/java/alpine/auth/OidcAuthenticationService_ArrowTest.java",
+      "generated_test_fqn": "alpine.auth.OidcAuthenticationService_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 20 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 69.9,
+      "baseline": [
+        29.5,
+        28.9
+      ],
+      "total": 129.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 20 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

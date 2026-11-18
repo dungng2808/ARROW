@@ -1,0 +1,321 @@
+{
+  "run_id": "20261118-030013-30vs",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w6/runs/20261118-030013-30vs",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 27
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 27
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "raml-java-tools",
+        "url": "https://github.com/mulesoft-labs/raml-java-tools",
+        "git_commit": "20a89e70f0d0c99bf04a9ccefbc7bef37ccb44ef",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "raml-to-pojo",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven.compiler.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.raml",
+            "artifact": "raml-parser-2",
+            "version": "1.0.11",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "18.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-all",
+            "version": "1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.raml",
+            "artifact": "test-utils",
+            "version": "1.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.squareup",
+            "artifact": "javapoet",
+            "version": "1.7.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.8.47",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 38
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.8.47"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-all:1.3"
+        ],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "raml-parser-query",
+          "raml-simple-emitter",
+          "raml-builder",
+          "test-utils",
+          "raml-parser-tools",
+          "pojo-to-raml",
+          "raml-to-pojo"
+        ],
+        "target_module": "raml-to-pojo",
+        "module_root": "raml-to-pojo",
+        "packages": [
+          "org.raml.ramltopojo",
+          "org.raml.ramltopojo.enumeration",
+          "org.raml.ramltopojo.object"
+        ]
+      },
+      "paths": {
+        "source_root": "raml-to-pojo/src/main/java",
+        "test_root": "raml-to-pojo/src/test/java",
+        "cut_path": "raml-to-pojo/src/main/java/org/raml/ramltopojo/TypeFetchers.java",
+        "generated_test_path": "raml-to-pojo/src/test/java/org/raml/ramltopojo/TypeFetchers_ArrowTest.java",
+        "generated_test_fqn": "org.raml.ramltopojo.TypeFetchers_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.raml.ramltopojo.TypeFetchers",
+        "simple_name": "TypeFetchers",
+        "package": "org.raml.ramltopojo",
+        "kind": "class",
+        "source_sha256": "a5a642e9424e9fd046118ea445b82028a1beea06e8ed825c715224b3f59a14c6"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "raml-to-pojo",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "raml-to-pojo",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.raml.ramltopojo.CreationResultTest#createType",
+        "org.raml.ramltopojo.NamesTest#buildMethod",
+        "org.raml.ramltopojo.NamesTest#buildTypeName",
+        "org.raml.ramltopojo.NamesTest#buildVariableName",
+        "org.raml.ramltopojo.NamesTest#buildVariableReservedWord",
+        "org.raml.ramltopojo.NamesTest#buildVariableWithUnderscore",
+        "org.raml.ramltopojo.ResultingPojosTest#createAllTypes",
+        "org.raml.ramltopojo.ResultingPojosTest#createFoundTypes",
+        "org.raml.ramltopojo.TypeFetchersTest#failFromLibraries",
+        "org.raml.ramltopojo.TypeFetchersTest#fromAnywhere",
+        "org.raml.ramltopojo.TypeFetchersTest#fromLibraries",
+        "org.raml.ramltopojo.TypeFetchersTest#fromTypes",
+        "org.raml.ramltopojo.TypeFetchersTest#fromTypesFail",
+        "org.raml.ramltopojo.TypeFindersTest#everyWhere",
+        "org.raml.ramltopojo.TypeFindersTest#inLibraries",
+        "org.raml.ramltopojo.TypeFindersTest#inTypes",
+        "org.raml.ramltopojo.enumeration.EnumerationTypeHandlerTest#create",
+        "org.raml.ramltopojo.object.ObjectTypeHandlerTest#multipleInheritance",
+        "org.raml.ramltopojo.object.ObjectTypeHandlerTest#simpleInheritance",
+        "org.raml.ramltopojo.object.ObjectTypeHandlerTest#simplest",
+        "org.raml.ramltopojo.object.ObjectTypeHandlerTest#simplestContainingSimpleArray",
+        "org.raml.ramltopojo.object.ObjectTypeHandlerTest#usingComposedTypes"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 21.4,
+        "module_test": [
+          2.2,
+          2.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-030013-30vs/base",
+      "compiled_snapshot": "work/20261118-030013-30vs/snapshot-5179fc67",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "raml-to-pojo",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.raml.ramltopojo.TypeFetchers",
+      "simple_name": "TypeFetchers",
+      "package": "org.raml.ramltopojo",
+      "kind": "class",
+      "cut_path": "raml-to-pojo/src/main/java/org/raml/ramltopojo/TypeFetchers.java",
+      "source_sha256": "a5a642e9424e9fd046118ea445b82028a1beea06e8ed825c715224b3f59a14c6",
+      "generated_test_path": "raml-to-pojo/src/test/java/org/raml/ramltopojo/TypeFetchers_ArrowTest.java",
+      "generated_test_fqn": "org.raml.ramltopojo.TypeFetchers_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 1.3,
+      "compile": 21.4,
+      "baseline": [
+        2.2,
+        2.1
+      ],
+      "total": 27
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

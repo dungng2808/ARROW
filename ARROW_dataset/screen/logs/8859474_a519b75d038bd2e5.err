@@ -1,0 +1,7 @@
+[>] Tải https://github.com/skylot/jadx
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 17
+[X] B1_DEPENDENCY_RESOLUTION: Không tải được dependency hay plugin: A problem occurred evaluating root project 'jadx'. A problem occurred configuring project ':jadx-gui'. Could not resolve all files for configuration ':jadx-gui:classpath'.
+[X] B1_DEPENDENCY_RESOLUTION · Không tải được dependency hay plugin: A problem occurred evaluating root project 'jadx'. A problem occurred configuring project ':jadx-gui'. Could not resolve all files for configuration ':jadx-gui:classpath'.
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

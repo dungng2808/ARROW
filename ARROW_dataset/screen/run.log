@@ -1,0 +1,591 @@
+arrow 0.1.0 (commit 49f706a7265d, build 2026-11-17)
+Tổng 467 lớp · đã xong 0 · lần này chạy 467 · 6 worker
+--- 6 worker
+[1/467] PASS                                    10.3s  catlm  generators.ContextExecGenerator
+[2/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     36.9s  catlm  net.guides.springboot.todomanagement.TodoManagementSpringBoot2Application
+[3/467] PASS                                    37.1s  catlm  com.example.demo.DemoApplication
+[4/467] PASS                                    37.2s  catlm  com.ramostear.springboot.uploadfile.SpringbootUploadfileApplication
+[5/467] PASS                                    37.4s  catlm  es.softtek.jwtDemo.JwtDemoApplication
+[6/467] PASS                                    26.3s  catlm  com.javatechie.rabbitmq.demo.SpringbootRabbitmqExampleApplication
+[7/467] PASS                                    15.9s  catlm  me.tuine.minio.MinioApplication
+[8/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     19.1s  catlm  utils.NullUtils
+[9/467] PASS                                    65.9s  catlm  com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor
+[10/467] PASS                                    29.7s  catlm  com.javatechie.jwt.api.SpringSecurityJwtExampleApplication
+[11/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     31.6s  catlm  com.afei.shardingsphere.multitenancy.model.Config
+[12/467] PASS                                    18.3s  catlm  com.civism.rocket.delay.CivismRocketApplication
+[13/467] PASS                                    15.6s  catlm  ph.samson.logback.luhn.LuhnMaskingConverter
+[14/467] PASS                                    35.8s  catlm  com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication
+--- 8 worker
+[15/467] PASS                                    17.2s  catlm  com.javatechie.spring.mockito.api.SpringBootMockitoApplication
+[16/467] PASS                                    16.7s  catlm  com.toptal.BirthdayFilterProcessor
+[17/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     21.9s  catlm  com.lyqiang.money.come.MoneyApplication
+[18/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     22.5s  catlm  com.javatechie.crud.example.SpringBootCrudExample2Application
+[19/467] PASS                                    30.0s  catlm  com.javatechie.reactive.SpringReactiveMongoCrudApplication
+[20/467] PASS                                     9.8s  catlm  com.github.ssedano.hash.JumpConsistentHash
+[21/467] PASS                                    26.1s  catlm  com.javatechie.spring.soap.api.SpringBootSopaWsApplication
+[22/467] PASS                                    20.8s  catlm  com.minio.MinioDemoApplication
+[23/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING      9.1s  catlm  mnist.MnistReader
+[24/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     16.5s  catlm  com.sample.postgress.PostgressApplication
+[25/467] PASS                                    38.0s  catlm  com.javatechie.s3.FileStorageServiceApplication
+[26/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     12.9s  catlm  com.example.project.Hello
+[27/467] PASS                                     7.1s  catlm  com.mycompany.app.App
+[28/467] PASS                                    25.3s  catlm  com.javatechie.webflux.SpringbootWebfluxDemoApplication
+[29/467] PASS                                    23.8s  catlm  com.whitepaek.demosigninwithapple.Application
+[30/467] PASS                                     9.5s  catlm  uk.me.mjt.log4jjson.SimpleJsonLayout
+[31/467] EXCLUDED B1_AUTH_REQUIRED                1.5s  catlm  com.abc.Transaction
+[32/467] PASS                                    30.3s  catlm  com.monitor4all.cn.springcloud_gateway.SpringcloudGatewayApplication
+[33/467] PASS                                    12.6s  catlm  com.github.jitpack.App
+[34/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     49.3s  catlm  com.importsource.springcloud.SpringCloudContractConsumerApplication
+[35/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     69.7s  catlm  steps.ui.FindFlightsUISteps
+[36/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     24.5s  catlm  com.taetaetae.request_logging.config.ControllerLoggingApplication
+[37/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     11.7s  catlm  com.github.anhdat.PrometheusApiClient
+[38/467] PASS                                    29.8s  catlm  com.javatechie.executor.api.SpringbootMultithreadingExampleApplication
+[39/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     38.0s  catlm  com.pushnotification.fcm.FcmApplication
+[40/467] PASS                                    19.4s  catlm  com.example.quartz.SampleQuartzApplication
+[41/467] PASS                                    11.1s  catlm  io.javabrains.utils.MathUtils
+[42/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     24.3s  catlm  br.com.treinaweb.springbootapi.DemoApplication
+[43/467] PASS                                    20.3s  catlm  me.aboullaite.SpringBootJwtApplication
+[44/467] PASS                                    24.4s  catlm  com.gazgeek.helloworld.controller.HomeController
+[45/467] PASS                                    13.0s  catlm  com.stripe.interview.Main
+[46/467] PASS                                    15.7s  catlm  example.complex.Order
+[47/467] EXCLUDED B1_AUTH_REQUIRED                1.8s  catlm  com.qmetric.spark.authentication.BasicAuthenticationFilter
+[48/467] PASS                                    20.8s  catlm  org.javaboy.generate_code.GenerateCodeApplication
+[49/467] PASS                                    32.3s  catlm  com.javatechie.api.ValidationExampleApplication
+[50/467] PASS                                     9.9s  catlm  com.mkyong.App
+[51/467] EXCLUDED B1_AUTH_REQUIRED                1.4s  catlm  io.voucherify.generator.VoucherCodes
+[52/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     18.0s  catlm  com.macky.springbootshardingjdbc.SpringBootShardingJdbcApplication
+[53/467] PASS                                    14.5s  catlm  com.example.ConditionalValidationApplication
+[54/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     18.8s  catlm  com.baofeidyz.wtwu.WtwuApplication
+--- 6 worker
+[55/467] PASS                                    17.2s  catlm  com.javatechie.redis.SpringDataRedisExampleApplication
+[56/467] PASS                                    10.8s  classes2test  com.ykushch.prjalgo2.task1.WordBreak
+[57/467] PASS                                    22.6s  classes2test  com.oracle.bedrock.util.ProxyHelper
+[58/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     19.1s  classes2test  com.rinoto.migramongo.dao.MongoLockService
+[59/467] PASS                                    15.9s  classes2test  org.metafacture.biblio.iso2709.Record
+[60/467] EXCLUDED B1_CUT_MISSING                  2.6s  classes2test  io.github.factoryfx.factory.datastorage.oracle.OracledbDataStorageHistory
+[61/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     97.9s  catlm  guru.springframework.SpringBootCassandraApplication
+[62/467] PASS                                    40.1s  classes2test  org.openscience.cdk.isomorphism.matchers.QueryAtomContainerCreator
+[63/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     89.8s  catlm  com.companyname.springbootcrudrest.SpringBootCrudRestApplication
+[64/467] PASS                                    14.5s  classes2test  de.voidnode.trading4j.examples.NMovingAveragesExpertAdvisor
+[65/467] PASS                                    26.1s  classes2test  ninja.template.TemplateEngineFreemarker
+[66/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    165.7s  catlm  com.javatechie.crud.SpringbootCrudK8sExampleApplication
+[67/467] PASS                                    39.7s  classes2test  org.fuin.esc.spi.DataWrapper
+[68/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     16.6s  classes2test  com.mindscapehq.raygun4java.core.RaygunClient
+[69/467] PASS                                    62.7s  classes2test  io.fabric8.maven.core.handler.ProbeHandler
+[70/467] PASS                                    87.0s  classes2test  org.rf.ide.core.execution.agent.event.Events
+[71/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     67.6s  classes2test  org.apache.servicecomb.bizkeeper.event.CircutBreakerEventNotifier
+[72/467] PASS                                    25.0s  classes2test  pl.zankowski.iextrading4j.client.sse.request.marketdata.TopsSseRequestBuilder
+[73/467] PASS                                    15.1s  classes2test  com.amazonaws.services.lambda.runtime.events.transformers.dynamodb.DynamodbStreamRecordTransformer
+[74/467] PASS                                    25.3s  classes2test  org.everit.json.schema.StringSchema
+[75/467] PASS                                    22.7s  classes2test  com.weibo.api.motan.transport.ProviderMessageRouter
+[76/467] PASS                                    21.1s  classes2test  hello.domain.Hello
+[77/467] PASS                                    61.2s  classes2test  de.kopis.glacier.commands.CreateVaultCommand
+[78/467] PASS                                    13.4s  classes2test  com.github.phenomics.ontolib.ontology.scoredist.ScoreSamplingOptions
+[79/467] PASS                                   104.6s  classes2test  joptsimple.internal.AbbreviationMap
+[80/467] PASS                                   477.1s  classes2test  com.cloudera.labs.envelope.validate.MandatoryPathValidation
+[81/467] PASS                                    58.1s  classes2test  de.learnlib.alex.modelchecking.entities.LtsCheckingResult
+[82/467] PASS                                    26.9s  classes2test  edu.wpi.rail.jrosbridge.messages.std.Int32
+[83/467] PASS                                    19.4s  classes2test  ca.derekcormier.recipe.generator.filter.JavaParamFilter
+[84/467] PASS                                    22.2s  classes2test  com.graphhopper.jsprit.core.algorithm.recreate.ShipmentInsertionCalculator
+[85/467] PASS                                    19.3s  classes2test  com.nordea.oss.copybook.converters.IntegerToInteger
+[86/467] PASS                                   507.7s  classes2test  io.engineblock.cli.EBCLIOptions
+[87/467] PASS                                   175.3s  classes2test  uk.gov.gchq.gaffer.graph.GraphConfig
+[88/467] EXCLUDED B1_BASELINE_BUILD_FAILED       50.6s  classes2test  org.dmfs.httpessentials.executors.authorizing.authorization.AuthDigestAuthorization
+[89/467] PASS                                    16.4s  classes2test  org.jtransfo.ReadOnlyDomainAutomaticSetTypeConverter
+[90/467] PASS                                    82.9s  classes2test  org.egov.pg.service.TransactionService
+[91/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     14.6s  classes2test  com.codenotfound.ws.client.TicketAgentClient
+[92/467] PASS                                    12.8s  classes2test  com.nurkiewicz.java8.holidays.PolishHolidays
+[93/467] ERROR    B1_BASELINE_TIMEOUT           909.6s  catlm  com.timestatic.snowflake.SnowFlakeWorker
+[94/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    153.1s  classes2test  org.polarsys.eplmp.server.rest.LOVResource
+[95/467] PASS                                    16.8s  classes2test  io.cucumber.cucumberexpressions.CucumberExpression
+[96/467] PASS                                    60.7s  classes2test  io.github.jhipster.service.filter.Filter
+[97/467] PASS                                   173.1s  classes2test  com.consol.citrus.channel.selector.XpathPayloadMessageSelector
+[98/467] ERROR    B1_BASELINE_TIMEOUT           905.2s  classes2test  org.com.onetopic.nio.ByteBufferExample
+[99/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     52.9s  classes2test  com.shekhargulati.ninetynine_problems._02_arithmetic.P38
+[100/467] PASS                                    17.1s  classes2test  com.oracle.wls.exporter.domain.ExporterConfig
+[101/467] PASS                                    28.6s  classes2test  uk.gov.gchq.koryphe.serialisation.json.SimpleClassSerializer
+[102/467] PASS                                    19.8s  classes2test  il.org.hasadna.siri_client.gtfs.analysis.GtfsDataManipulations
+[103/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    182.5s  classes2test  org.uberfire.ext.wires.core.grids.client.widget.grid.renderers.grids.impl.BaseGridRenderer
+[104/467] PASS                                     7.7s  classes2test  com.somethingsimilar.opposite_of_a_bloom_filter.ByteArrayFilter
+[105/467] PASS                                   410.7s  classes2test  org.apache.jackrabbit.oak.plugins.migration.NodeStateCopier
+[106/467] PASS                                    15.7s  classes2test  com.facebook.nailgun.NGSessionPool
+[107/467] PASS                                    13.9s  classes2test  enkan.component.ComponentRelationship
+[108/467] EXCLUDED B1_DEPENDENCY_RESOLUTION       28.0s  classes2test  org.ops4j.pax.web.service.jetty.internal.JettyServerWrapper
+[109/467] PASS                                    15.9s  classes2test  org.microbule.config.core.CompositeConfig
+[110/467] PASS                                    12.8s  classes2test  wtf.java9.graphics_bounds.GraphicsBounds
+[111/467] PASS                                    15.5s  classes2test  cz.cvut.kbss.jopa.model.MultilingualString
+[112/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    387.5s  classes2test  org.apache.qpid.server.queue.RejectPolicyHandler
+[113/467] PASS                                    12.6s  classes2test  com.orange.ngsi2.model.Subscription
+[114/467] PASS                                    10.7s  classes2test  io.trane.future.NoFuture
+[115/467] PASS                                    21.0s  classes2test  com.javiermoreno.bankof.model.domain.CuentaCorriente
+[116/467] PASS                                    13.4s  classes2test  br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorio
+[117/467] PASS                                    16.3s  classes2test  org.jeasy.rules.support.composite.UnitRuleGroup
+[118/467] PASS                                    26.1s  classes2test  org.zalando.stups.oauth2.spring.server.TokenInfoResourceServerTokenServices
+[119/467] PASS                                    36.4s  classes2test  org.apache.qpid.proton.codec.StringType
+[120/467] PASS                                    38.2s  classes2test  org.csstudio.apputil.formula.array.ArrayDivisionFunction
+[121/467] ERROR    B1_BASELINE_TIMEOUT           945.8s  classes2test  cz.metacentrum.perun.core.impl.modules.attributes.urn_perun_resource_attribute_def_def_accountExpirationTime
+[122/467] PASS                                    17.2s  classes2test  com.btc.redg.runtime.defaultvalues.pluggable.buildermatchers.Conditions
+[123/467] PASS                                    79.4s  classes2test  com.codenotfound.kafka.serializer.AvroDeserializer
+[124/467] PASS                                   235.8s  classes2test  org.sunbird.learner.util.UserFlagUtil
+[125/467] PASS                                    10.7s  classes2test  org.fissore.jrecordbind.converters.StringConverter
+[126/467] PASS                                    80.1s  classes2test  de.rub.nds.tlsattacker.core.protocol.message.UnknownHandshakeMessage
+[127/467] PASS                                    53.6s  classes2test  javax.faces.component.UIInput
+[128/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     10.5s  classes2test  net.petrikainulainen.spring.trenches.scheduling.job.AuthenticationUtil
+[129/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     20.4s  classes2test  org.sonar.skyscanner.java.MyJavaRulesDefinition
+[130/467] PASS                                    46.8s  classes2test  com.github.dozedoff.similarImage.thread.pipeline.ImageQueryPipeline
+[131/467] PASS                                    46.8s  classes2test  edu.umn.biomedicus.common.tuples.WordPos
+[132/467] PASS                                    74.3s  classes2test  net.krotscheck.kangaroo.authz.common.database.util.SortUtil
+[133/467] PASS                                    73.1s  classes2test  com.gazbert.bxbot.core.config.exchange.ExchangeApiConfigBuilder
+[134/467] PASS                                    29.9s  classes2test  io.virtdata.libbasics.shared.unary_string.FieldExtractor
+[135/467] PASS                                    44.8s  classes2test  com.mobi.rdf.orm.conversion.impl.DoubleValueConverter
+[136/467] EXCLUDED B1_BASELINE_BUILD_FAILED      178.6s  classes2test  org.hamcrest.core.Is
+[137/467] PASS                                    78.0s  classes2test  dk.alexandra.fresco.framework.builder.numeric.field.MersennePrimeModulus
+[138/467] PASS                                   299.6s  classes2test  org.netcrusher.core.filter.LoggingFilter
+[139/467] PASS                                    57.4s  classes2test  com.hartwig.hmftools.common.amber.TumorContaminationModel
+[140/467] PASS                                    22.7s  classes2test  com.xuan.mix.bt.diverter.Diverter
+[141/467] PASS                                    20.4s  classes2test  br.edu.utfpr.cm.minerador.services.util.VersionUtil
+[142/467] PASS                                    18.1s  classes2test  example.Utils
+[143/467] PASS                                    28.6s  classes2test  org.eclipse.ditto.model.things.MutablePermissions
+[144/467] PASS                                     9.0s  classes2test  com.iluwatar.singleton.App
+[145/467] PASS                                    79.9s  classes2test  org.datum.application.service.impl.DatabaseOLAPService
+[146/467] PASS                                   166.2s  classes2test  org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter
+[147/467] PASS                                     9.1s  classes2test  com.ufoscout.properlty.Properlty
+[148/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING      8.5s  classes2test  uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategy
+[149/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     38.9s  classes2test  it.geosolutions.geostore.services.rest.GeoStoreClient
+[150/467] PASS                                    23.7s  classes2test  app.metatron.discovery.prep.parser.preparation.rule.expr.Pair
+[151/467] PASS                                   166.4s  classes2test  org.sonatype.nexus.common.app.VersionComparator
+[152/467] PASS                                    58.7s  classes2test  org.appenders.log4j2.elasticsearch.failover.FailedItemInfo
+[153/467] PASS                                   103.3s  classes2test  org.yes.cart.utils.DateUtils
+[154/467] EXCLUDED B1_DEPENDENCY_RESOLUTION       95.3s  classes2test  org.apache.james.protocols.pop3.POP3StartTlsResponse
+[155/467] PASS                                   105.3s  classes2test  org.swblocks.decisiontree.ChangeableDecisionTree
+[156/467] PASS                                     8.5s  classes2test  gr.ekt.bte.record.XPathRecord
+[157/467] EXCLUDED B1_BASELINE_BUILD_FAILED       85.1s  classes2test  com.example.demo.service.MyServiceImpl
+[158/467] EXCLUDED B1_BASELINE_BUILD_FAILED       67.4s  classes2test  io.opencensus.contrib.zpages.ZPageHttpHandler
+[159/467] PASS                                    11.2s  classes2test  org.trie4j.util.CharsCharSequence
+[160/467] PASS                                   291.3s  classes2test  com.vaadin.flow.internal.nodefeature.PollConfigurationMap
+[161/467] PASS                                   111.9s  classes2test  org.xcolab.commons.html.HtmlUtil
+[162/467] PASS                                    12.6s  classes2test  de.fraunhofer.iosb.ilt.frostserver.util.StringHelper
+[163/467] PASS                                    43.0s  classes2test  com.vladsch.flexmark.experimental.util.sequence.managed.BaseSequenceManager
+[164/467] PASS                                    30.4s  classes2test  com.sap.olingo.jpa.metadata.core.edm.mapper.impl.IntermediateCollectionProperty
+[165/467] PASS                                    17.9s  classes2test  foundation.stack.datamill.configuration.Wiring
+[166/467] PASS                                    23.3s  classes2test  io.syndesis.connector.sql.stored.JSONBeanUtil
+[167/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     10.9s  classes2test  org.calrissian.mango.criteria.support.NodeUtils
+[168/467] PASS                                    17.1s  classes2test  com.google.gwtmockito.GwtMockito
+[169/467] PASS                                    10.8s  classes2test  com.github.nbaars.pwnedpasswords4j.client.PwnedPasswordClient
+[170/467] PASS                                    17.7s  classes2test  com.intuit.wasabi.authenticationobjects.LoginCredentials
+[171/467] PASS                                    15.0s  classes2test  brown.tracingplane.atomlayer.ByteBuffers
+[172/467] PASS                                    11.0s  classes2test  com.homeadvisor.robusto.ApiCommand
+[173/467] PASS                                    21.5s  classes2test  org.apache.jsieve.utils.ArgumentParser
+[174/467] PASS                                   191.1s  classes2test  org.apache.phoenix.pig.util.SqlQueryToColumnInfoFunction
+[175/467] PASS                                    11.1s  classes2test  org.acelera.brasil.Contador
+[176/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     62.2s  classes2test  org.robovm.llvm.Target
+[177/467] PASS                                     8.6s  classes2test  com.airhacks.interceptor.monitoring.control.InvocationMonitoring
+[178/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     15.2s  classes2test  com.alibaba.xblade.exec.plugin.jvm.Base64Util
+[179/467] PASS                                    17.5s  classes2test  org.zapodot.junit.jms.impl.EmbeddedJmsRuleImpl
+[180/467] PASS                                     9.3s  classes2test  lrn.plan.FetchTableRowItem
+[181/467] PASS                                    12.4s  classes2test  org.simpleyaml.configuration.file.YamlConfigurationOptions
+[182/467] PASS                                    18.6s  classes2test  org.beangle.commons.collection.Order
+[183/467] PASS                                    12.4s  classes2test  com.spotify.metrics.core.MetricId
+[184/467] PASS                                    46.9s  classes2test  io.datakernel.datastream.processor.StreamBuffer
+[185/467] PASS                                    27.4s  classes2test  software.amazon.swage.metrics.jmx.MXBeanPoller
+[186/467] ERROR    B1_BASELINE_TIMEOUT          1021.8s  classes2test  org.carapaceproxy.cluster.impl.ZooKeeperGroupMembershipHandler
+[187/467] PASS                                    26.1s  classes2test  de.tudarmstadt.ukp.wikipedia.api.MetaData
+[188/467] PASS                                    57.3s  classes2test  org.zalando.logbook.netty.Sequence
+[189/467] PASS                                    14.7s  classes2test  jetbrains.jetpad.base.edt.RunningEdtManager
+[190/467] PASS                                   255.7s  classes2test  org.joinfaces.autoconfigure.weld.WeldSpringBootAutoConfiguration
+[191/467] PASS                                    11.4s  classes2test  com.openkappa.splitmap.Slice
+[192/467] PASS                                    16.8s  classes2test  com.automationrockstars.bmo.event.processor.SelectiveActionBuilder
+[193/467] PASS                                    12.6s  classes2test  net.gfu.seminar.maven.App
+[194/467] ERROR    B1_BASELINE_TIMEOUT           906.7s  classes2test  com.haibo.yan.algorithm.dp.WildcardMatching
+[195/467] PASS                                   295.0s  classes2test  org.apache.activemq.artemis.core.config.impl.ConfigurationImpl
+[196/467] PASS                                    19.3s  classes2test  org.hisp.dhis.commons.collection.CachingMap
+[197/467] PASS                                    44.1s  classes2test  org.onlab.util.Identifier
+[198/467] PASS                                    11.4s  classes2test  com.ctrip.soa.caravan.common.value.corrector.PatternCorrector
+[199/467] PASS                                    30.7s  classes2test  org.service.criticality.architectures.service.ArchitectureManagement
+[200/467] PASS                                    23.3s  classes2test  com.github.thorbenkuck.netcom2.network.server.NativeClientList
+[201/467] PASS                                    35.2s  classes2test  org.apache.nemo.common.ir.IRDAG
+[202/467] PASS                                    13.2s  classes2test  org.moskito.demo.fibonacci.calculator.FibonacciCalculatorImpl
+[203/467] PASS                                    10.2s  classes2test  vkaretko.Task_5_1.BubbleSort
+[204/467] EXCLUDED B1_CUT_AMBIGUOUS                2.4s  classes2test  HaikuReview
+[205/467] PASS                                    13.6s  classes2test  biz.netcentric.aem.applysystemenvinstallhook.VariablesMerger
+[206/467] EXCLUDED B1_DEPENDENCY_RESOLUTION      209.1s  classes2test  nl.nn.adapterframework.align.OverridesMap
+[207/467] PASS                                    13.0s  classes2test  com.github.hburgmeier.jerseyoauth2.protocol.impl.extractor.HeaderExtractor
+[208/467] PASS                                    59.2s  classes2test  com.igormaznitsa.mvngolang.utils.SysUtils
+[209/467] PASS                                    49.8s  classes2test  de.monticore.generating.templateengine.ObjectFactory
+[210/467] PASS                                   127.2s  classes2test  com.google.cloud.tools.minikube.util.MinikubeDockerEnvParser
+[211/467] PASS                                    72.8s  classes2test  org.btrplace.scheduler.choco.constraint.CBan
+[212/467] PASS                                    24.1s  classes2test  de.jcup.basheditor.SimpleWordCodeCompletion
+[213/467] PASS                                    11.3s  classes2test  edu.jhuapl.dorset.routing.RegexRouter
+[214/467] PASS                                    22.8s  classes2test  io.katharsis.queryspec.SortSpec
+[215/467] PASS                                    29.1s  classes2test  org.molgenis.security.core.runas.SystemSecurityToken
+[216/467] PASS                                   313.0s  classes2test  com.eviware.soapui.model.propertyexpansion.resolvers.providers.CurrentRunStepIndexProvider
+[217/467] PASS                                    44.9s  classes2test  org.abhijitsarkar.spring.beer.repository.BaseCouchbaseRepository
+[218/467] PASS                                    23.9s  classes2test  org.vx68k.bitbucket.webapp.UserInfo
+[219/467] PASS                                    23.6s  classes2test  com.j256.simplemagic.types.BigEndianString16Type
+[220/467] PASS                                   198.7s  classes2test  com.redis.utils.MythTime
+[221/467] PASS                                    60.4s  classes2test  org.dominokit.domino.service.discovery.VertxServiceDiscovery
+[222/467] PASS                                     9.9s  classes2test  io.github.leberkleber.ljcm.parser.impl.BooleanParser
+[223/467] EXCLUDED B1_BASELINE_BUILD_FAILED       26.6s  classes2test  org.apache.tapestry5.internal.transform.MixinAfterWorker
+[224/467] PASS                                    25.1s  classes2test  com.macasaet.fernet.Key
+[225/467] PASS                                    40.5s  classes2test  net.automatalib.util.automata.Automata
+[226/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    144.5s  classes2test  io.fabric8.kubernetes.client.dsl.internal.batch.v1.JobOperationsImpl
+[227/467] PASS                                    45.1s  classes2test  ealvatag.tag.id3.framebody.FrameBodyTMOO
+[228/467] PASS                                   389.9s  classes2test  schemacrawler.tools.offline.OfflineCatalogLoader
+[229/467] PASS                                    18.0s  classes2test  com.trivago.logging.CucableLogger
+[230/467] PASS                                    37.9s  classes2test  org.apache.crunch.types.writable.Writables
+[231/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     37.9s  classes2test  com.amazonaws.xray.metrics.EMFMetricFormatter
+[232/467] PASS                                     9.8s  classes2test  nl.futureedge.sonar.plugin.packageanalyzer.analyzer.Analyzer
+[233/467] PASS                                    11.3s  classes2test  cx.corp.lacuna.core.domain.NativeProcessImpl
+[234/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     20.8s  classes2test  com.mastfrog.acteur.headers.StrictTransportSecurityHeader
+[235/467] PASS                                    14.3s  classes2test  at.redeye.FrameWork.utilities.StringUtils
+[236/467] PASS                                     9.5s  classes2test  LZ78
+[237/467] PASS                                    13.5s  classes2test  org.pf4j.DefaultPluginStatusProvider
+[238/467] PASS                                   116.3s  classes2test  com.senacor.codecamp.reactive.services.integration.CounterBackendImpl
+[239/467] PASS                                   135.8s  classes2test  org.neo4j.helpers.json.document.impl.DocumentRelationBuilderByKey
+[240/467] PASS                                     8.0s  classes2test  Fibonacci
+[241/467] EXCLUDED B1_BASELINE_BUILD_FAILED       57.2s  classes2test  ch.obermuhlner.math.big.BigRational
+[242/467] PASS                                    20.8s  classes2test  com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner
+[243/467] PASS                                     7.4s  classes2test  com.qulice.plugin.alpha.Main
+[244/467] PASS                                    32.5s  classes2test  org.agoncal.fascicle.jpa.integrating.spring.AddressEndpoint
+[245/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    115.8s  classes2test  org.threadly.db.aurora.AuroraClusterMonitor
+[246/467] PASS                                    32.6s  classes2test  org.jeasy.batch.core.listener.CompositeJobListener
+[247/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING      9.9s  classes2test  InsertionAndDeletionBST
+[248/467] PASS                                    26.5s  classes2test  step.functions.handler.FunctionMessageHandler
+[249/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     71.0s  classes2test  io.kubernetes.client.extended.kubectl.KubectlDrain
+[250/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     17.2s  classes2test  com.pipeclamp.avro.AvroConstraintUtil
+[251/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     14.9s  classes2test  net.rgielen.fxweaver.core.FxWeaver
+[252/467] PASS                                    22.1s  classes2test  me.snowdrop.stream.binder.artemis.provisioning.ArtemisBrokerManager
+[253/467] PASS                                    67.0s  classes2test  edu.emory.mathcs.nlp.component.tokenizer.dictionary.Abbreviation
+[254/467] PASS                                    28.6s  classes2test  com.google.mu.util.stream.BiIteration
+[255/467] PASS                                    15.0s  classes2test  de.vsfexperts.latex.template.LatexContext
+[256/467] PASS                                     8.8s  classes2test  org.se.lab.Registry
+[257/467] PASS                                    15.4s  classes2test  com.coverity.security.pie.policy.csp.CspPolicy
+[258/467] PASS                                     9.0s  classes2test  rs.exproit.util.RandomizedBag
+[259/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     69.2s  classes2test  be.playing.with.projections.model.projections.CountEventsProjection
+[260/467] PASS                                    14.9s  classes2test  com.textocat.textokit.commons.consumer.DefaultSourceURI2OutputFilePathFunction
+[261/467] PASS                                    12.8s  classes2test  io.stardog.stardao.jackson.JsonHelper
+[262/467] PASS                                    52.6s  classes2test  com.helger.phase4.profile.peppol.PeppolPMode
+[263/467] PASS                                    58.2s  classes2test  net.sourceforge.pmd.lang.ast.SourceCodePositioner
+[264/467] PASS                                    36.4s  classes2test  com.box.l10n.mojito.okapi.filters.FilterOptions
+[265/467] PASS                                     7.5s  classes2test  net.fortytwo.stream.caching.Solution
+[266/467] PASS                                    27.5s  classes2test  com.sexycode.codepractice.exam.primefactors.PrimeFactors
+[267/467] PASS                                    52.9s  classes2test  org.graylog.plugins.metrics.statsd.providers.StatsdReporterProvider
+[268/467] PASS                                     7.5s  classes2test  com.hello.LeaderBoard
+[269/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     17.2s  classes2test  io.github.mike10004.extensibleffdriver.ExtensibleFirefoxDriver
+[270/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     77.0s  classes2test  alpine.auth.OidcAuthenticationService
+[271/467] PASS                                    13.9s  classes2test  org.javamoney.calc.common.PresentValue
+[272/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     13.4s  classes2test  bio.singa.mathematics.vectors.Vectors
+[273/467] PASS                                   633.1s  classes2test  software.amazon.awssdk.http.nio.netty.internal.http2.HttpOrHttp2ChannelPool
+[274/467] PASS                                    24.7s  classes2test  com.alibaba.dubbo.common.URL
+[275/467] PASS                                    71.7s  classes2test  org.openjavacard.gp.scp.SCPProtocolPolicy
+[276/467] PASS                                    19.4s  classes2test  com.google.uzaygezen.core.CompactHilbertCurve
+[277/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    377.2s  classes2test  top.maplefix.controller.MongoDbController
+[278/467] PASS                                    19.8s  classes2test  edu.kit.pse.osip.core.model.base.MixTank
+[279/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     84.6s  classes2test  tech.wetech.cms.dao.AttachmentDao
+[280/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     13.5s  classes2test  edu.uci.ics.jung.visualization.spatial.SpatialQuadTree
+[281/467] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    159.2s  classes2test  slackapp_backend.service.GoogleTranslateApi
+[282/467] ERROR    B1_DEPENDENCY_RESOLUTION      160.4s  classes2test  deepboof.impl.forward.standard.ClippedPadding2D_F64
+[283/467] PASS                                   875.4s  classes2test  ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser
+[284/467] PASS                                    10.2s  classes2test  io.novaordis.playground.java.network.traffic.Configuration
+[285/467] ERROR    B1_DEPENDENCY_RESOLUTION      268.9s  classes2test  com.nike.backstopper.handler.jersey1.Jersey1ApiExceptionHandler
+[286/467] ERROR    B1_DEPENDENCY_RESOLUTION      326.7s  classes2test  org.asqatasun.webapp.controller.ContractController
+--- 2 worker
+[287/467] ERROR    B1_DEPENDENCY_RESOLUTION      312.0s  classes2test  com.leelovejava.service.MetaDatabaseService
+
+Đang dừng các lớp đang chạy...
+Đã dừng. Chạy lại đúng lệnh cũ để làm tiếp.
+=== 2026-11-18 01:44:11 chạy tiếp với bản sao Google + rerun 68 lớp ===
+arrow 0.1.0 (commit 49f706a7265d, build 2026-11-17)
+Tổng 467 lớp · đã xong 219 · lần này chạy 248 · 6 worker
+--- 6 worker
+[1/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     27.0s  catlm  utils.NullUtils
+[2/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     84.4s  catlm  com.afei.shardingsphere.multitenancy.model.Config
+[3/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     86.3s  catlm  net.guides.springboot.todomanagement.TodoManagementSpringBoot2Application
+[4/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     87.7s  catlm  com.lyqiang.money.come.MoneyApplication
+[5/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     62.9s  catlm  com.sample.postgress.PostgressApplication
+[6/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     93.5s  catlm  com.javatechie.crud.example.SpringBootCrudExample2Application
+[7/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     32.5s  catlm  mnist.MnistReader
+[8/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     28.8s  catlm  com.example.project.Hello
+[9/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    121.2s  catlm  steps.ui.FindFlightsUISteps
+[10/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     14.5s  catlm  com.github.anhdat.PrometheusApiClient
+[11/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     47.1s  catlm  com.taetaetae.request_logging.config.ControllerLoggingApplication
+[12/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     80.8s  catlm  com.pushnotification.fcm.FcmApplication
+[13/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     57.7s  catlm  br.com.treinaweb.springbootapi.DemoApplication
+[14/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    108.0s  catlm  com.importsource.springcloud.SpringCloudContractConsumerApplication
+[15/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     28.2s  catlm  com.macky.springbootshardingjdbc.SpringBootShardingJdbcApplication
+[16/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     43.6s  catlm  com.baofeidyz.wtwu.WtwuApplication
+[17/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     63.6s  catlm  guru.springframework.SpringBootCassandraApplication
+[18/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     63.3s  classes2test  com.mindscapehq.raygun4java.core.RaygunClient
+[19/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     87.5s  catlm  com.companyname.springbootcrudrest.SpringBootCrudRestApplication
+[20/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     89.5s  classes2test  com.rinoto.migramongo.dao.MongoLockService
+[21/248] EXCLUDED B1_BASELINE_BUILD_FAILED       12.1s  classes2test  org.dmfs.httpessentials.executors.authorizing.authorization.AuthDigestAuthorization
+[22/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    225.0s  catlm  com.javatechie.crud.SpringbootCrudK8sExampleApplication
+[23/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     53.5s  classes2test  com.codenotfound.ws.client.TicketAgentClient
+[24/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    117.2s  classes2test  org.polarsys.eplmp.server.rest.LOVResource
+[25/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    167.6s  classes2test  org.apache.servicecomb.bizkeeper.event.CircutBreakerEventNotifier
+[26/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     15.7s  classes2test  com.shekhargulati.ninetynine_problems._02_arithmetic.P38
+[27/248] EXCLUDED B1_DEPENDENCY_RESOLUTION       59.8s  classes2test  org.ops4j.pax.web.service.jetty.internal.JettyServerWrapper
+[28/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    208.3s  classes2test  org.uberfire.ext.wires.core.grids.client.widget.grid.renderers.grids.impl.BaseGridRenderer
+[29/248] EXCLUDED B1_BASELINE_BUILD_FAILED       19.0s  classes2test  org.hamcrest.core.Is
+[30/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     17.3s  classes2test  net.petrikainulainen.spring.trenches.scheduling.job.AuthenticationUtil
+[31/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     83.2s  classes2test  org.sonar.skyscanner.java.MyJavaRulesDefinition
+[32/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    441.7s  classes2test  org.apache.qpid.server.queue.RejectPolicyHandler
+[33/248] ERROR    B1_BASELINE_TIMEOUT           929.4s  catlm  com.timestatic.snowflake.SnowFlakeWorker
+[34/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING      8.7s  classes2test  uk.co.webamoeba.mockito.collections.inject.DefaultMockStrategy
+[35/248] EXCLUDED B1_DEPENDENCY_RESOLUTION       78.7s  classes2test  org.apache.james.protocols.pop3.POP3StartTlsResponse
+[36/248] ERROR    B1_BASELINE_TIMEOUT           904.5s  classes2test  org.com.onetopic.nio.ByteBufferExample
+[37/248] EXCLUDED B1_BASELINE_BUILD_FAILED       30.6s  classes2test  io.opencensus.contrib.zpages.ZPageHttpHandler
+[38/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     12.4s  classes2test  org.calrissian.mango.criteria.support.NodeUtils
+[39/248] ERROR    B1_DEPENDENCY_RESOLUTION      137.1s  classes2test  com.example.demo.service.MyServiceImpl
+[40/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     49.6s  classes2test  org.robovm.llvm.Target
+[41/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     19.4s  classes2test  com.alibaba.xblade.exec.plugin.jvm.Base64Util
+[42/248] ERROR    B1_BASELINE_TIMEOUT          1025.5s  classes2test  cz.metacentrum.perun.core.impl.modules.attributes.urn_perun_resource_attribute_def_def_accountExpirationTime
+[43/248] EXCLUDED B1_DEPENDENCY_RESOLUTION       95.9s  classes2test  nl.nn.adapterframework.align.OverridesMap
+[44/248] EXCLUDED B1_BASELINE_BUILD_FAILED       32.3s  classes2test  org.apache.tapestry5.internal.transform.MixinAfterWorker
+[45/248] EXCLUDED B1_DEPENDENCY_RESOLUTION      107.5s  classes2test  io.fabric8.kubernetes.client.dsl.internal.batch.v1.JobOperationsImpl
+[46/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    513.3s  classes2test  it.geosolutions.geostore.services.rest.GeoStoreClient
+[47/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     55.0s  classes2test  com.amazonaws.xray.metrics.EMFMetricFormatter
+[48/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     56.8s  classes2test  com.mastfrog.acteur.headers.StrictTransportSecurityHeader
+[49/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     45.6s  classes2test  org.threadly.db.aurora.AuroraClusterMonitor
+[50/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     12.9s  classes2test  InsertionAndDeletionBST
+[51/248] ERROR    B1_DEPENDENCY_RESOLUTION       79.3s  classes2test  ch.obermuhlner.math.big.BigRational
+[52/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     32.1s  classes2test  com.pipeclamp.avro.AvroConstraintUtil
+[53/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     23.2s  classes2test  net.rgielen.fxweaver.core.FxWeaver
+[54/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     62.4s  classes2test  be.playing.with.projections.model.projections.CountEventsProjection
+[55/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    143.6s  classes2test  io.kubernetes.client.extended.kubectl.KubectlDrain
+[56/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     18.2s  classes2test  io.github.mike10004.extensibleffdriver.ExtensibleFirefoxDriver
+[57/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     24.3s  classes2test  bio.singa.mathematics.vectors.Vectors
+[58/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    131.9s  classes2test  alpine.auth.OidcAuthenticationService
+[59/248] ERROR    B1_BASELINE_TIMEOUT          1090.2s  classes2test  org.carapaceproxy.cluster.impl.ZooKeeperGroupMembershipHandler
+[60/248] ERROR    B1_BASELINE_TIMEOUT           905.7s  classes2test  com.haibo.yan.algorithm.dp.WildcardMatching
+[61/248] PASS                                    47.2s  classes2test  deepboof.impl.forward.standard.ClippedPadding2D_F64
+[62/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     21.0s  classes2test  edu.uci.ics.jung.visualization.spatial.SpatialQuadTree
+[63/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     89.3s  classes2test  tech.wetech.cms.dao.AttachmentDao
+[64/248] PASS                                    28.1s  classes2test  site.ycsb.Status
+[65/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    229.6s  classes2test  slackapp_backend.service.GoogleTranslateApi
+[66/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    380.0s  classes2test  top.maplefix.controller.MongoDbController
+[67/248] PASS                                   134.9s  classes2test  org.pac4j.async.core.authorization.checker.DefaultAsyncAuthorizationChecker
+[68/248] PASS                                    60.9s  classes2test  com.mastering.spring.springboot.controller.TodoController
+[69/248] PASS                                    13.5s  classes2test  com.gxk.jvm.Args
+[70/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    121.1s  classes2test  com.leelovejava.service.MetaDatabaseService
+[71/248] PASS                                    70.8s  classes2test  org.aksw.rdfunit.services.PrefixNSService
+[72/248] PASS                                    18.0s  classes2test  org.asn1s.api.util.NRxUtils
+[73/248] PASS                                    51.4s  classes2test  lv.ctco.cukes.ldap.facade.EntityFacade
+[74/248] PASS                                    24.0s  classes2test  com.sap.espm.model.ProductCategory
+[75/248] PASS                                    45.0s  classes2test  com.github.ricksbrown.cowsay.ant.CowsayTask
+[76/248] PASS                                    27.2s  classes2test  org.zalando.nakadiproducer.transmission.MockNakadiPublishingClient
+[77/248] PASS                                    68.3s  classes2test  org.alfasoftware.morf.upgrade.ChangeIndex
+[78/248] PASS                                    52.3s  classes2test  com.tbp.av.controller.HelloController
+[79/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    462.4s  classes2test  com.nike.backstopper.handler.jersey1.Jersey1ApiExceptionHandler
+[80/248] PASS                                   198.8s  classes2test  br.com.caelum.vraptor.console.myproducts.Order
+[81/248] PASS                                    21.3s  classes2test  Sort.Insert
+[82/248] PASS                                   196.6s  classes2test  org.cognitor.cassandra.migration.keyspace.Keyspace
+[83/248] PASS                                    88.1s  classes2test  nl.inl.blacklab.contentstore.ContentStoreDirZip
+[84/248] PASS                                   446.6s  classes2test  org.asqatasun.webapp.controller.ContractController
+[85/248] PASS                                     8.9s  classes2test  com.bmw.hmm.ViterbiAlgorithm
+[86/248] PASS                                   110.4s  classes2test  com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion
+[87/248] PASS                                   251.1s  classes2test  ch.cyberduck.core.local.RevealServiceFactory
+[88/248] PASS                                    56.8s  classes2test  com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint
+[89/248] PASS                                    66.8s  classes2test  org.eontechnology.and.peer.core.middleware.rules.VersionValidationRule
+[90/248] PASS                                    58.5s  classes2test  io.parsingdata.metal.data.DataExpressionSource
+[91/248] PASS                                   111.8s  classes2test  me.vertretungsplan.parser.ColorProvider
+[92/248] PASS                                    36.3s  classes2test  es.usc.citius.hipster.extensions.graph.HashTableHipsterDirectedGraph
+[93/248] PASS                                    21.7s  classes2test  com.artemis.EntityEdit
+[94/248] PASS                                    40.8s  classes2test  org.jline.reader.impl.DefaultParser
+[95/248] PASS                                   122.7s  classes2test  com.jayway.jsonpath.matchers.WithJsonPath
+[96/248] PASS                                   125.8s  classes2test  com.googlecode.cqengine.query.simple.Has
+[97/248] PASS                                    85.7s  classes2test  com.smoketurner.dropwizard.zipkin.HttpZipkinFactory
+[98/248] PASS                                    36.1s  classes2test  com.igormaznitsa.mindmap.ide.commons.UrlFile
+[99/248] PASS                                   161.7s  classes2test  com.nextdoor.bender.ipc.datadog.DatadogTransportSerializer
+[100/248] PASS                                    14.9s  classes2test  de.bytefish.jtinycsvparser.typeconverter.LocalDateConverter
+[101/248] PASS                                   201.5s  classes2test  com.wavefront.agent.queueing.SQSQueueFactoryImpl
+[102/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     79.4s  classes2test  info.archinnov.achilles.script.ScriptExecutor
+[103/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     92.9s  classes2test  mulan.classifier.neural.BPMLL
+[104/248] PASS                                    59.3s  classes2test  org.commonjava.atlas.maven.graph.rel.RelationshipComparator
+[105/248] PASS                                   106.2s  classes2test  io.github.mike10004.vhs.harbridge.Hars
+[106/248] PASS                                   173.6s  classes2test  com.pinterest.soundwave.bean.EsInstance
+[107/248] PASS                                    75.3s  classes2test  org.createnet.raptor.events.Emitter
+[108/248] ERROR    B1_DEPENDENCY_RESOLUTION      187.0s  classes2test  jadx.gui.utils.search.StringRef
+[109/248] PASS                                    20.2s  classes2test  com.googlecode.jslint4java.formatter.JSLintXmlFormatter
+[110/248] PASS                                    58.6s  classes2test  org.weasis.core.api.service.WProperties
+[111/248] EXCLUDED B1_DEPENDENCY_RESOLUTION       64.1s  classes2test  org.zalando.problem.spring.webflux.advice.ProblemExceptionHandler
+[112/248] PASS                                    44.5s  classes2test  internal.com.spotify.annoy.ANNIndex
+[113/248] PASS                                    17.4s  classes2test  querqy.rewrite.commonrules.SimpleCommonRulesParser
+[114/248] PASS                                   211.0s  classes2test  com.amazonaws.services.neptune.util.S3ObjectInfo
+[115/248] PASS                                    20.6s  classes2test  io.opentracing.contrib.agent.OpenTracingHelper
+[116/248] PASS                                    58.0s  classes2test  fathom.realm.ldap.LdapRealm
+[117/248] PASS                                   513.2s  classes2test  io.jenkins.plugins.casc.impl.configurators.PrimitiveConfigurator
+[118/248] ERROR    B1_DEPENDENCY_RESOLUTION      150.9s  classes2test  org.robovm.samples.contractr.core.TaskModel
+[119/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     14.7s  classes2test  com.shekhargulati.java8_tutorial.ch06.MapExample
+[120/248] PASS                                    91.1s  classes2test  com.englishtown.vertx.guice.BootstrapBinder
+[121/248] PASS                                    65.7s  classes2test  org.xhtmlrenderer.fop.nbsp.NonBreakPointsLoaderImpl
+[122/248] PASS                                    21.6s  classes2test  com.power.common.util.OkHttp3Util
+[123/248] PASS                                    17.9s  classes2test  com.salesforce.pixelcaptcha.utils.RandomPointFactory
+[124/248] PASS                                    72.4s  classes2test  io.jenkins.tools.pluginmanager.impl.PluginManager
+[125/248] PASS                                    45.2s  classes2test  com.github.kagkarlsson.scheduler.task.schedule.CompositeParser
+[126/248] PASS                                    17.6s  classes2test  com.egzosn.pay.baidu.api.BaiduPayService
+[127/248] PASS                                    13.1s  classes2test  com.github.fhuss.kafka.streams.cep.core.nfa.DeweyVersion
+[128/248] PASS                                     7.7s  classes2test  book.twju.chapter_1.Timeline
+[129/248] PASS                                   194.4s  classes2test  com.bazaarvoice.emodb.event.db.astyanax.AstyanaxEventReaderDAO
+[130/248] PASS                                    86.1s  classes2test  org.mitre.mpf.nms.streaming.ChildStreamingJobManager
+[131/248] PASS                                    62.5s  classes2test  de.crowdcode.kissmda.maven.plugin.KissMdaMojo
+[132/248] PASS                                    17.8s  classes2test  com.paritytrading.parity.util.Instruments
+[133/248] PASS                                    30.0s  classes2test  de.charite.compbio.jannovar.reference.TranscriptProjectionDecorator
+[134/248] PASS                                    12.6s  classes2test  com.ongres.scram.common.util.CryptoUtil
+[135/248] PASS                                   287.5s  classes2test  org.evosuite.utils.NumberFormatter
+[136/248] PASS                                    66.8s  classes2test  com.impetus.blkch.util.Utilities
+[137/248] ERROR    B1_BASELINE_TIMEOUT           921.0s  classes2test  retroscope.rql.environment.ScanningEnvironment
+[138/248] PASS                                   165.5s  classes2test  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[139/248] PASS                                    37.9s  classes2test  il.ac.technion.nlp.nli.core.NliDescriptionsUtils
+[140/248] EXCLUDED B1_DEPENDENCY_RESOLUTION      240.9s  classes2test  org.dspace.eperson.EPerson
+[141/248] PASS                                    36.2s  classes2test  com.aliyun.odps.data.TableInfo
+[142/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    133.1s  classes2test  gralog.algorithm.StronglyConnectedComponents
+[143/248] PASS                                     8.1s  classes2test  org.myLazyClock.calendarApi.CalendarFactory
+[144/248] PASS                                    38.1s  classes2test  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[145/248] PASS                                   367.0s  classes2test  org.geowebcache.service.wms.WMSGetCapabilities
+[146/248] PASS                                    19.4s  classes2test  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[147/248] PASS                                    46.2s  classes2test  packt.java9.by.example.ch03.quick.QuickSort
+[148/248] PASS                                    12.1s  classes2test  com.tqmall.search.commons.nlp.TraditionToSimple
+[149/248] PASS                                   135.5s  classes2test  ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates.ApplicationResolver
+[150/248] ERROR    B1_DEPENDENCY_RESOLUTION      145.5s  classes2test  com.addhen.serializer.Serializer
+[151/248] PASS                                     8.5s  classes2test  chapter1.finaltask.SubString
+[152/248] PASS                                    10.7s  classes2test  com.github.davidmoten.grumpy.core.Position
+[153/248] PASS                                   188.6s  classes2test  com.github.robozonky.strategy.natural.conditions.RangeCondition
+[154/248] PASS                                    40.6s  classes2test  io.jaegertracing.analytics.ServiceHeight
+[155/248] PASS                                    31.5s  classes2test  net.kylindb.coder.RowKeyCoder
+[156/248] PASS                                     8.6s  classes2test  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[157/248] PASS                                    30.7s  classes2test  morfologik.stemming.DictionaryLookup
+[158/248] PASS                                   134.9s  classes2test  io.pivotal.loansource.LoansourceApplication
+[159/248] ERROR    B1_BASELINE_TIMEOUT           956.9s  classes2test  com.icodici.universa.node2.Main
+[160/248] PASS                                    17.9s  classes2test  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[161/248] PASS                                    44.7s  classes2test  info.ozkan.vipera.business.notification.NotificationGenerator
+[162/248] EXCLUDED B1_DEPENDENCY_RESOLUTION      135.5s  classes2test  org.wildfly.swarm.container.runtime.deployments.DefaultDeploymentCreator
+[163/248] PASS                                    40.1s  classes2test  com.alibaba.dubbo.rpc.cluster.router.condition.ConditionRouter
+[164/248] PASS                                   195.6s  classes2test  com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper
+[165/248] PASS                                    13.3s  classes2test  org.configfacade.ConfigFactory
+[166/248] PASS                                     8.2s  classes2test  com.miguelfonseca.completely.text.match.EqualityAutomaton
+[167/248] PASS                                    17.4s  classes2test  org.ec4j.core.model.PropertyType
+[168/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     26.3s  classes2test  org.spideruci.analysis.config.definer.ConfigFieldsDefiner
+[169/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    100.7s  classes2test  mobi.liason.loaders.Path
+[170/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     55.0s  classes2test  opennlp.tools.tokenize.StemmerTokenizer
+[171/248] PASS                                    39.8s  classes2test  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[172/248] PASS                                    36.2s  classes2test  br.ufc.insightlab.graphast.model.Node
+[173/248] PASS                                    66.1s  classes2test  org.apache.rocketmq.flink.common.selector.SimpleTopicSelector
+[174/248] PASS                                    24.1s  classes2test  org.kie.soup.commons.util.ListSplitter
+[175/248] PASS                                   236.9s  classes2test  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[176/248] PASS                                    36.1s  classes2test  org.dcm4che3.tool.findscu.FindSCU
+[177/248] PASS                                    80.6s  classes2test  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[178/248] PASS                                    42.9s  classes2test  org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic
+[179/248] PASS                                    47.3s  classes2test  de.julielab.jeseme.embeddings.Embedding
+[180/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     23.3s  classes2test  com.visionarts.powerjambda.utils.EnvironmentVariableUtils
+[181/248] PASS                                    57.0s  classes2test  com.ikasoa.core.netty.server.NettyServerConfiguration
+[182/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     56.0s  classes2test  com.mycompany.sos.web.OrderController
+[183/248] PASS                                    28.5s  classes2test  com.github.loyada.jdollarx.InBrowserFinder
+[184/248] PASS                                   124.4s  classes2test  org.jskat.control.iss.MessageParser
+[185/248] PASS                                    31.6s  classes2test  com.devskiller.jpa2ddl.FileResolver
+[186/248] PASS                                   175.5s  classes2test  com.palantir.crypto2.keys.serialization.KeyMaterials
+[187/248] PASS                                   258.4s  classes2test  org.performance.Calculator
+[188/248] PASS                                    33.9s  classes2test  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[189/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    110.2s  classes2test  com.huaweicloud.servicecomb.discovery.client.ServiceCombClient
+[190/248] PASS                                    49.5s  classes2test  org.eclipse.kapua.gateway.client.Topic
+[191/248] PASS                                    98.9s  classes2test  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[192/248] EXCLUDED B1_BUILD_TOOL_MISSING           9.6s  classes2test  com.thinkbiganalytics.policy.standardization.StripNonNumeric
+[193/248] PASS                                   109.9s  classes2test  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[194/248] PASS                                    46.6s  classes2test  it.geosolutions.jaiext.BufferedImageAdapter
+[195/248] PASS                                   109.0s  classes2test  cc.creativecomputing.math.CCVector4
+[196/248] PASS                                   229.8s  classes2test  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[197/248] PASS                                    67.2s  classes2test  javaeetutorial.standalone.ejb.StandaloneBean
+[198/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    255.8s  classes2test  com.itextpdf.kernel.pdf.PdfXrefTable
+[199/248] PASS                                   156.9s  classes2test  org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator
+[200/248] PASS                                    16.4s  classes2test  stroom.proxy.repo.StroomZipNameSet
+[201/248] PASS                                    19.5s  classes2test  com.mitchellbosecke.pebble.utils.PathUtils
+[202/248] PASS                                    37.8s  classes2test  com.cloudogu.cb.spring.Registry
+[203/248] PASS                                    68.0s  classes2test  com.github.autoconf.impl.RemoteConfig
+[204/248] PASS                                  1525.9s  classes2test  eu.neoteric.starter.request.FiltersParser
+[205/248] PASS                                    80.9s  classes2test  org.wildfly.extras.sunstone.api.CloudProperties
+[206/248] PASS                                    45.6s  classes2test  org.ebayopensource.fido.uaf.crypto.SHA
+[207/248] PASS                                    32.7s  classes2test  io.opentracing.contrib.apache.http.client.TracingHttpClientBuilder
+[208/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING    130.8s  classes2test  com.monkeybean.algorithm.category.DataUtil
+[209/248] PASS                                   163.8s  classes2test  com.github.database.rider.core.api.dataset.ScriptableTable
+[210/248] PASS                                    29.2s  classes2test  org.raml.ramltopojo.TypeFetchers
+[211/248] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     58.1s  classes2test  com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServer
+[212/248] PASS                                   333.3s  classes2test  org.openmrs.module.emrapi.encounter.DiagnosisMapper
+[213/248] PASS                                   255.9s  classes2test  com.aegisql.conveyor.delay.DelayedExpireable
+[214/248] PASS                                    36.4s  gitbug-java  org.jsoup.parser.HtmlTreeBuilder
+[215/248] PASS                                    30.7s  gitbug-java  crawlercommons.robots.SimpleRobotRulesParser
+[216/248] PASS                                    19.8s  gitbug-java  net.e175.klaus.solarpositioning.SPA
+[217/248] PASS                                    23.5s  gitbug-java  org.davidmoten.text.utils.WordWrap
+[218/248] ERROR    B1_DEPENDENCY_RESOLUTION      114.3s  gitbug-java  software.amazon.nio.spi.s3.S3FileSystem
+[219/248] ERROR    B1_DEPENDENCY_RESOLUTION      178.6s  gitbug-java  org.traccar.protocol.Gt06ProtocolDecoder
+[220/248] PASS                                    38.1s  gitbug-java  it.mulders.mcs.search.printer.TabularOutputPrinter
+[221/248] PASS                                   102.4s  gitbug-java  org.springframework.retry.backoff.FixedBackOffPolicy
+[222/248] PASS                                    20.9s  gitbug-java  org.byteskript.skript.compiler.DebugSkriptCompiler
+[223/248] PASS                                    77.1s  gitbug-java  com.thealgorithms.maths.FindMin
+[224/248] PASS                                    64.3s  gitbug-java  com.force.i18n.grammar.impl.GrammaticalTermMapImpl
+[225/248] ERROR    B1_DEPENDENCY_RESOLUTION      160.3s  gitbug-java  org.wso2.lsp4intellij.utils.FileUtils
+[226/248] PASS                                    46.4s  gitbug-java  com.lmax.simpledsl.internal.DslParamsParser
+[227/248] PASS                                    47.5s  gitbug-java  com.amazonaws.secretsmanager.sql.AWSSecretsManagerPostgreSQLDriver
+[228/248] PASS                                    12.9s  gitbug-java  org.semver4j.RangesList
+[229/248] PASS                                    19.3s  gitbug-java  com.whatsapp.api.domain.templates.QuickReplyButton
+[230/248] PASS                                    22.5s  gitbug-java  net.masterthought.cucumber.generators.FeatureReportPage
+[231/248] PASS                                     9.5s  gitbug-java  co.nstant.in.cbor.decoder.SpecialDecoder
+[232/248] ERROR    B1_DEPENDENCY_RESOLUTION      186.7s  gitbug-java  com.gradle.Utils
+[233/248] PASS                                     8.6s  gitbug-java  de.slub.urn.RQF_RFC8141
+[234/248] PASS                                    17.8s  gitbug-java  leetcode.medium.OnlineStockSpan
+[235/248] PASS                                   100.8s  gitbug-java  com.jitterted.mobreg.domain.Ensemble
+[236/248] PASS                                    17.3s  gitbug-java  ch.jalu.configme.configurationdata.PropertyListBuilder
+[237/248] PASS                                    82.5s  gitbug-java  com.github.davidmoten.oas3.puml.Converter
+[238/248] PASS                                   234.3s  gitbug-java  net.snowflake.client.config.SFClientConfigParser
+[239/248] PASS                                   156.7s  gitbug-java  com.fishercoder.solutions._235
+[240/248] PASS                                    31.9s  gitbug-java  com.ezylang.evalex.parser.Tokenizer
+[241/248] PASS                                    12.3s  gitbug-java  me.gosimple.nbvcxz.matching.DictionaryMatcher
+[242/248] PASS                                    35.7s  gitbug-java  org.fusesource.jansi.AnsiRenderer
+[243/248] ERROR    B1_BASELINE_TIMEOUT          1033.2s  classes2test  com.thinkaurelius.titan.diskstorage.cassandra.CassandraTransaction
+[244/248] PASS                                    77.2s  gitbug-java  net.revelc.code.formatter.css.CssFormatter
+[245/248] PASS                                    29.5s  gitbug-java  io.github.vmzakharov.ecdataframe.dsl.value.StringValue
+[246/248] ERROR    B1_DEPENDENCY_RESOLUTION      230.2s  gitbug-java  org.stellar.sdk.KeyPair
+[247/248] ERROR    B1_DEPENDENCY_RESOLUTION      196.8s  gitbug-java  org.doble.commands.CommandNew
+[248/248] ERROR    B1_BASELINE_TIMEOUT          2773.9s  classes2test  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+Kết quả: ERROR 20, EXCLUDED 81, PASS 366
+=== 2026-11-18 03:42:17 lượt 3: chạy lại lớp bị chặn tải + quá giờ 1 lần, init script Gradle mới ===
+arrow 0.1.0 (commit 49f706a7265d, build 2026-11-17)
+Tổng 467 lớp · đã xong 452 · lần này chạy 15 · 3 worker
+--- 3 worker
+[1/15] EXCLUDED B1_BASELINE_BUILD_FAILED        9.5s  classes2test  com.example.demo.service.MyServiceImpl
+[2/15] EXCLUDED B1_BASELINE_BUILD_FAILED       30.7s  classes2test  ch.obermuhlner.math.big.BigRational
+[3/15] EXCLUDED B1_PAIRED_TEST_NOT_PASSING     43.1s  classes2test  org.robovm.samples.contractr.core.TaskModel
+[4/15] ERROR    B1_DEPENDENCY_RESOLUTION      191.1s  classes2test  jadx.gui.utils.search.StringRef
+[5/15] PASS                                    27.7s  classes2test  com.addhen.serializer.Serializer
+[6/15] ERROR    B1_BASELINE_TIMEOUT           906.6s  classes2test  retroscope.rql.environment.ScanningEnvironment
+[7/15] ERROR    B1_BASELINE_TIMEOUT           910.2s  classes2test  com.icodici.universa.node2.Main
+[8/15] ERROR    B1_BASELINE_TIMEOUT           913.7s  classes2test  com.thinkaurelius.titan.diskstorage.cassandra.CassandraTransaction
+[9/15] PASS                                    78.5s  gitbug-java  software.amazon.nio.spi.s3.S3FileSystem
+[10/15] PASS                                   250.2s  gitbug-java  org.traccar.protocol.Gt06ProtocolDecoder
+[11/15] EXCLUDED B1_BASELINE_BUILD_FAILED       76.9s  gitbug-java  org.wso2.lsp4intellij.utils.FileUtils
+[12/15] PASS                                    50.3s  gitbug-java  org.stellar.sdk.KeyPair
+[13/15] PASS                                    21.0s  gitbug-java  org.doble.commands.CommandNew
+[14/15] ERROR    B1_DEPENDENCY_RESOLUTION      155.8s  gitbug-java  com.gradle.Utils
+[15/15] PASS                                  2113.9s  classes2test  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+Kết quả: ERROR 10, EXCLUDED 85, PASS 372
+=== 2026-11-18 04:32:53 lượt 4: --retry-errors mọi lớp ERROR, init script Gradle có beforeSettings ===
+arrow 0.1.0 (commit 49f706a7265d, build 2026-11-17)
+Tổng 467 lớp · đã xong 457 · lần này chạy 10 · 3 worker
+--- 3 worker
+[1/10] ERROR    B1_BASELINE_TIMEOUT           905.1s  classes2test  org.com.onetopic.nio.ByteBufferExample
+[2/10] ERROR    B1_BASELINE_TIMEOUT           905.1s  catlm  com.timestatic.snowflake.SnowFlakeWorker
+[3/10] ERROR    B1_BASELINE_TIMEOUT           919.2s  classes2test  cz.metacentrum.perun.core.impl.modules.attributes.urn_perun_resource_attribute_def_def_accountExpirationTime
+[4/10] ERROR    B1_BASELINE_TIMEOUT           906.8s  classes2test  com.haibo.yan.algorithm.dp.WildcardMatching
+[5/10] ERROR    B1_BASELINE_TIMEOUT           910.0s  classes2test  org.carapaceproxy.cluster.impl.ZooKeeperGroupMembershipHandler
+[6/10] ERROR    B1_BASELINE_TIMEOUT           906.4s  classes2test  retroscope.rql.environment.ScanningEnvironment
+[7/10] ERROR    B1_DEPENDENCY_RESOLUTION      165.0s  classes2test  jadx.gui.utils.search.StringRef
+[8/10] PASS                                    89.2s  gitbug-java  com.gradle.Utils
+[9/10] ERROR    B1_BASELINE_TIMEOUT           910.5s  classes2test  com.icodici.universa.node2.Main
+[10/10] ERROR    B1_BASELINE_TIMEOUT           914.0s  classes2test  com.thinkaurelius.titan.diskstorage.cassandra.CassandraTransaction
+Kết quả: ERROR 9, EXCLUDED 85, PASS 373
+=== 2026-11-18 05:19:13 lượt 5: chạy lại 2 lớp bị loại oan vì đổi JCenter (init script giữ JCenter) ===
+arrow 0.1.0 (commit 49f706a7265d, build 2026-11-17)
+Tổng 467 lớp · đã xong 465 · lần này chạy 2 · 2 worker
+--- 2 worker
+[1/2] ERROR    B1_DEPENDENCY_RESOLUTION       80.2s  classes2test  ch.obermuhlner.math.big.BigRational
+[2/2] ERROR    B1_DEPENDENCY_RESOLUTION      142.5s  classes2test  com.example.demo.service.MyServiceImpl
+Kết quả: ERROR 11, EXCLUDED 83, PASS 373

@@ -1,0 +1,522 @@
+{
+  "run_id": "20261118-004929-utqa",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-004929-utqa",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 17.7
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 17.7
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "DouglasJuniorTCC",
+        "url": "https://github.com/douglasjunior/DouglasJuniorTCC",
+        "git_commit": "92586201e7b7b1bba4017f1d2153e61027b58a1f",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "JGitMinerWeb",
+        "build_mode": "standalone",
+        "build_file": "JGitMinerWeb/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.eclipse.persistence",
+            "artifact": "eclipselink",
+            "version": "2.6.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.eclipse.persistence",
+            "artifact": "org.eclipse.persistence.jpa.modelgen.processor",
+            "version": "2.6.0",
+            "scope": "provided"
+          },
+          {
+            "group": "javax",
+            "artifact": "javaee-web-api",
+            "version": "7.0",
+            "scope": "provided"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "3.1.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.glassfish",
+            "artifact": "javax.faces",
+            "version": "2.2.10",
+            "scope": "provided"
+          },
+          {
+            "group": "com.sun.faces",
+            "artifact": "jsf-api",
+            "version": "2.2.10",
+            "scope": "compile"
+          },
+          {
+            "group": "com.sun.faces",
+            "artifact": "jsf-impl",
+            "version": "2.2.10",
+            "scope": "compile"
+          },
+          {
+            "group": "org.primefaces",
+            "artifact": "primefaces",
+            "version": "4.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.postgresql",
+            "artifact": "postgresql",
+            "version": "9.2-1004-jdbc41",
+            "scope": "compile"
+          },
+          {
+            "group": "mysql",
+            "artifact": "mysql-connector-java",
+            "version": "5.1.34",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.jung",
+            "artifact": "jung-algorithms",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.jung",
+            "artifact": "jung-visualization",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.jung",
+            "artifact": "jung-graph-impl",
+            "version": "2.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "gov.nist.math",
+            "artifact": "jama",
+            "version": "1.0.3",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sf.opencsv",
+            "artifact": "opencsv",
+            "version": "2.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.eclipse.mylyn.github",
+            "artifact": "org.eclipse.egit.github.core",
+            "version": "2.1.5",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "18.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.lucene",
+            "artifact": "lucene-core",
+            "version": "4.10.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.lucene",
+            "artifact": "lucene-analyzers-common",
+            "version": "4.10.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-math3",
+            "version": "3.4.1",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-fileupload",
+            "artifact": "commons-fileupload",
+            "version": "1.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.3.2",
+            "scope": "compile"
+          },
+          {
+            "group": "joda-time",
+            "artifact": "joda-time",
+            "version": "2.7",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 40
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "JGitMinerWeb",
+        "module_root": "JGitMinerWeb",
+        "packages": [
+          "br.edu.utfpr.cm.minerador.services.util",
+          "br.edu.utfpr.cm.minerador.services",
+          "br.edu.utfpr.cm.JGitMinerWeb.converter",
+          "br.edu.utfpr.cm.JGitMinerWeb.dao",
+          "br.edu.utfpr.cm.JGitMinerWeb.managedBean",
+          "br.edu.utfpr.cm.JGitMinerWeb.model",
+          "br.edu.utfpr.cm.JGitMinerWeb.model.matrix",
+          "br.edu.utfpr.cm.JGitMinerWeb.model.metric",
+          "br.edu.utfpr.cm.JGitMinerWeb.model.miner",
+          "br.edu.utfpr.cm.JGitMinerWeb.services",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.matrix",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.nodes",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.centrality",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.discussion",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.ego",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.global",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.local",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.metric.structuralholes",
+          "br.edu.utfpr.cm.JGitMinerWeb.services.miner",
+          "br.edu.utfpr.cm.JGitMinerWeb.util",
+          "br.edu.utfpr.cm.JGitMinerWeb.util.matrix",
+          "br.edu.utfpr.cm.minerador.model.issue",
+          "br.edu.utfpr.cm.minerador.model.svn",
+          "br.edu.utfpr.cm.minerador.services.matrix",
+          "br.edu.utfpr.cm.minerador.services.matrix.model",
+          "br.edu.utfpr.cm.minerador.services.metric"
+        ]
+      },
+      "paths": {
+        "source_root": "JGitMinerWeb/src/main/java",
+        "test_root": "JGitMinerWeb/src/test/java",
+        "cut_path": "JGitMinerWeb/src/main/java/br/edu/utfpr/cm/minerador/services/util/VersionUtil.java",
+        "generated_test_path": "JGitMinerWeb/src/test/java/br/edu/utfpr/cm/minerador/services/util/VersionUtil_ArrowTest.java",
+        "generated_test_fqn": "br.edu.utfpr.cm.minerador.services.util.VersionUtil_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "br.edu.utfpr.cm.minerador.services.util.VersionUtil",
+        "simple_name": "VersionUtil",
+        "package": "br.edu.utfpr.cm.minerador.services.util",
+        "kind": "class",
+        "source_sha256": "085ee08c542b3777459e1d03fd6bbe67fee119314235dd05bf7892a7a3be0dd5"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "JGitMinerWeb",
+      "passing_in_all_runs": [
+        "br.edu.utfpr.cm.JGitMinerWeb.dao.AuxCodeChurnTest#testEquals",
+        "br.edu.utfpr.cm.JGitMinerWeb.dao.AuxCodeChurnTest#testGetAdditionsNormalized",
+        "br.edu.utfpr.cm.JGitMinerWeb.dao.AuxCodeChurnTest#testGetDeletionsNormalized",
+        "br.edu.utfpr.cm.JGitMinerWeb.dao.AuxCodeChurnTest#testHashCode",
+        "br.edu.utfpr.cm.JGitMinerWeb.dao.AuxCodeChurnTest#testNotEquals",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxFileFilePullTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxFileFilePullTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxFileFileTest#testAddIssueId",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxFileFileTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxFileFileTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserFileFileUserDirectionalTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserFileFileUserDirectionalTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserFileFileUserIssueDirectionalTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserFileFileUserIssueDirectionalTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserUserDirectionalTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserUserDirectionalTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserUserTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserUserTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.matrix.auxiliary.AuxUserUserTest#testToString",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary.AuxFileFileIssueMetricsTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary.AuxFileFileIssueMetricsTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary.AuxFileFileIssueMetricsTest#testToString",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary.AuxFileFileMetricsTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary.AuxFileFileMetricsTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.auxiliary.AuxFileFileMetricsTest#testToString",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit.CommitGraphBuilderTest#testBuildGraphAddingRoot",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit.CommitGraphBuilderTest#testBuildGraphWithoutAddingRoot",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit.FragilityCalculatorTest#testCalculeBuildingGraphAddingRoot",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit.FragilityCalculatorTest#testCalculeBuildingGraphWithoutAddingRoot",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit.RigidityCalculatorTest#testCalculeOneFile",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.commit.RigidityCalculatorTest#testCalculePairFile",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.ego.EgoMeasureTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.ego.EgoMeasureTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.ego.EgoMeasureTest#testToString",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.ego.EgoNetworkExtractorTest#testEgoNetworkExtractedEdges",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.ego.EgoNetworkExtractorTest#testEgoNetworkExtractedVertices",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.global.GlobalMeasureTest#testDensity",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.global.GlobalMeasureTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.global.GlobalMeasureTest#testPairs",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.global.GlobalMeasureTest#testToString",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.local.LocalMeasureTest#testEqualsFalse",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.local.LocalMeasureTest#testEqualsTrue",
+        "br.edu.utfpr.cm.JGitMinerWeb.services.metric.local.LocalMeasureTest#testToString",
+        "br.edu.utfpr.cm.JGitMinerWeb.util.ListUtilsTest#testOrdering",
+        "br.edu.utfpr.cm.JGitMinerWeb.util.MathUtilsTest#testCalculateWeightedGeometricAverage",
+        "br.edu.utfpr.cm.JGitMinerWeb.util.PairUtilsTest#testPairCommenters",
+        "br.edu.utfpr.cm.JGitMinerWeb.util.PathUtilsTest#testIsSameFullPath",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.CommenterTest#testEquals",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.CommenterTest#testNotEquals1",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testConfidenceFile1",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testConfidenceFile2",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testConviction",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testConviction2",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testFile2HasGreaterConfidenceFalse",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testLift",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testSupportFile1",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testSupportFile2",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testSupportFilePair",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testToString",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairAprioriTest#testToStringInverted",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairOcurrencesGroupTest#testGroupFilePairs",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairOcurrencesGroupTest#testGroupFilePairsMoreThanTwoOccurrences",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairOcurrencesGroupTest#testGroupFilePairsMoreThanTwoOccurrencesInVersion",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairOutputTest#testToStringAB",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairOutputTest#testToStringBA",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairOutputTest#testToStringHeader",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testConstructorAprioriBasedAB",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testConstructorAprioriBasedBA",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testEquals",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testNotEquals",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testOrderAprioriBasedAB",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testOrderAprioriBasedBA",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testToString",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testToStringAprioriBasedAB",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePairTest#testToStringAprioriBasedBA",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePathTest#testEquals",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePathTest#testGetCommitId",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePathTest#testGetFileId",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePathTest#testGetFilePath",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePathTest#testNotEquals1",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilePathTest#testNotEquals2",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilterFilePairByReleaseOcurrenceTest#testFitsFalse",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilterFilePairByReleaseOcurrenceTest#testFitsRangeFalse",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilterFilePairByReleaseOcurrenceTest#testFitsRangeTrue",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.FilterFilePairByReleaseOcurrenceTest#testFitsTrue",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.GroupFilePairReleaseOcurrenceByQuantityTest#testEquals",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.GroupFilePairReleaseOcurrenceByQuantityTest#testFitsEqualOcurrence",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.GroupFilePairReleaseOcurrenceByQuantityTest#testFitsMinMaxOcurrence",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.GroupFilePairReleaseOcurrenceByQuantityTest#testFitsMinOcurrence",
+        "br.edu.utfpr.cm.minerador.services.matrix.model.GroupFilePairReleaseOcurrenceByQuantityTest#testHashCode",
+        "br.edu.utfpr.cm.minerador.services.metric.model.CommitTest#testEquals",
+        "br.edu.utfpr.cm.minerador.services.metric.model.CommitTest#testHashCode",
+        "br.edu.utfpr.cm.minerador.services.metric.model.CommitTest#testNotEquals",
+        "br.edu.utfpr.cm.minerador.services.metric.model.CommitTest#testToString",
+        "br.edu.utfpr.cm.minerador.services.metric.model.FileIssueMetricsTest#testEqualsFalse",
+        "br.edu.utfpr.cm.minerador.services.metric.model.FileIssueMetricsTest#testEqualsTrue",
+        "br.edu.utfpr.cm.minerador.services.metric.model.FileIssueMetricsTest#testHashCode",
+        "br.edu.utfpr.cm.minerador.services.metric.model.FileIssueMetricsTest#testToString",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsAll",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsAllWithMinOccurrencesInVersion",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsEqual",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsEqualWithMinOccurrencesInVersion",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsInBegin",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsInBeginWithMinOccurrencesInVersion",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsInEnd",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsInEndWithMinOccurrencesInVersion",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsNone",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsNoneWithMinOccurrencesInVersion",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsOne",
+        "br.edu.utfpr.cm.minerador.services.util.VersionUtilTest#testGetMaxVersionSequenceMaxIsOneWithMinOccurrencesInVersion"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 10,
+        "module_test": [
+          3.1,
+          3.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004929-utqa/base",
+      "compiled_snapshot": "work/20261118-004929-utqa/snapshot-3b892810",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "JGitMinerWeb",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "br.edu.utfpr.cm.minerador.services.util.VersionUtil",
+      "simple_name": "VersionUtil",
+      "package": "br.edu.utfpr.cm.minerador.services.util",
+      "kind": "class",
+      "cut_path": "JGitMinerWeb/src/main/java/br/edu/utfpr/cm/minerador/services/util/VersionUtil.java",
+      "source_sha256": "085ee08c542b3777459e1d03fd6bbe67fee119314235dd05bf7892a7a3be0dd5",
+      "generated_test_path": "JGitMinerWeb/src/test/java/br/edu/utfpr/cm/minerador/services/util/VersionUtil_ArrowTest.java",
+      "generated_test_fqn": "br.edu.utfpr.cm.minerador.services.util.VersionUtil_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.4,
+      "plan": 1.3,
+      "compile": 10,
+      "baseline": [
+        3.1,
+        3.2
+      ],
+      "total": 17.7
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

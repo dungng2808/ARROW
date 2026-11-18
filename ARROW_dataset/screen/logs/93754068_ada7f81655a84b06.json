@@ -1,0 +1,384 @@
+{
+  "run_id": "20261118-030011-g0sv",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-030011-g0sv",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 55
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 55
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "vind",
+        "url": "https://github.com/RBMHTechnology/vind",
+        "git_commit": "04f07c60a4e4ab4ed729a9a582b2b3a8e62eb815",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "backend/elasticsearch",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.rbmhtechnology.vind",
+            "artifact": "vind-api",
+            "version": "3.0.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.7.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.elasticsearch.client",
+            "artifact": "elasticsearch-rest-high-level-client",
+            "version": "7.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.elasticsearch.plugin",
+            "artifact": "percolator-client",
+            "version": "7.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpcore",
+            "version": "4.4.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpcore-nio",
+            "version": "4.4.12",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.testcontainers",
+            "artifact": "elasticsearch",
+            "version": "1.13.0",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.hamcrest",
+            "artifact": "hamcrest-library",
+            "version": "1.3",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "1.10.19",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.7",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 78
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:1.10.19"
+        ],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "annotations",
+          "api",
+          "backend",
+          "server",
+          "monitoring",
+          "utils",
+          "test",
+          "demo",
+          "backend/solr",
+          "backend/solr-ext",
+          "backend/elasticsearch",
+          "server/embedded-solr-server",
+          "server/remote-solr-server",
+          "server/elastic-server",
+          "monitoring/monitoring-api",
+          "monitoring/monitoring-utils",
+          "monitoring/monitoring-writers",
+          "monitoring/monitoring-analysis",
+          "utils/mam-utils",
+          "demo/demo-step1",
+          "demo/demo-step2",
+          "demo/demo-step3",
+          "demo/demo-step4",
+          "demo/demo-step5",
+          "demo/demo-dynamic",
+          "backend/solr-ext/collection-managment-tool",
+          "backend/solr-ext/suggestion-handler",
+          "monitoring/monitoring-writers/log-writer",
+          "monitoring/monitoring-writers/elastic-writer",
+          "monitoring/monitoring-analysis/analysis-report"
+        ],
+        "target_module": "backend/elasticsearch",
+        "module_root": "backend/elasticsearch",
+        "packages": [
+          "com.rbmhtechnology.vind.elasticsearch.backend",
+          "com.rbmhtechnology.vind.elasticsearch.backend.client",
+          "com.rbmhtechnology.vind.elasticsearch.backend.util"
+        ]
+      },
+      "paths": {
+        "source_root": "backend/elasticsearch/src/main/java",
+        "test_root": "backend/elasticsearch/src/test/java",
+        "cut_path": "backend/elasticsearch/src/main/java/com/rbmhtechnology/vind/elasticsearch/backend/ElasticSearchServer.java",
+        "generated_test_path": "backend/elasticsearch/src/test/java/com/rbmhtechnology/vind/elasticsearch/backend/ElasticSearchServer_ArrowTest.java",
+        "generated_test_fqn": "com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServer_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServer",
+        "simple_name": "ElasticSearchServer",
+        "package": "com.rbmhtechnology.vind.elasticsearch.backend",
+        "kind": "class",
+        "source_sha256": "82f2b755631d7dd13348756731f852dd12861d9bcf631fd4a440b17256180cdc"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "backend/elasticsearch",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "backend/elasticsearch",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.rbmhtechnology.vind.annotations.AnnotationUtilTest#testCreateDocument1",
+        "com.rbmhtechnology.vind.annotations.AnnotationUtilTest#testCreatePojo1",
+        "com.rbmhtechnology.vind.annotations.AnnotationUtilTest#testPojo2RoundTrip",
+        "com.rbmhtechnology.vind.annotations.AnnotationsTest#testAnnotations",
+        "com.rbmhtechnology.vind.annotations.util.FunctionTest#concatFunctionTest",
+        "com.rbmhtechnology.vind.annotations.util.FunctionTest#getterFunctionTest",
+        "com.rbmhtechnology.vind.api.FilterTest#testAndFilters",
+        "com.rbmhtechnology.vind.api.FilterTest#testFilterSerializer",
+        "com.rbmhtechnology.vind.configure.SearchConfigurationTest#testConfiguration",
+        "com.rbmhtechnology.vind.configure.SearchConfigurationTest#testEnvironmentVars",
+        "com.rbmhtechnology.vind.configure.SearchConfigurationTest#testEnvironmentVarsOverwrite",
+        "com.rbmhtechnology.vind.configure.SearchConfigurationTest#testSystemVarConfiguration",
+        "com.rbmhtechnology.vind.elasticsearch.backend.util.PainlessScriptTest#testGetPredicateString",
+        "com.rbmhtechnology.vind.model.DateFieldDescriptorTest#dateAfterTest",
+        "com.rbmhtechnology.vind.model.DateFieldDescriptorTest#dateBeforeTest",
+        "com.rbmhtechnology.vind.model.DateFieldDescriptorTest#dateBetweenTest",
+        "com.rbmhtechnology.vind.model.DocumentFactoryTest#addValueTest",
+        "com.rbmhtechnology.vind.model.DocumentFactoryTest#getValueTest",
+        "com.rbmhtechnology.vind.model.DocumentFactoryTest#removeValueTest",
+        "com.rbmhtechnology.vind.model.DocumentFactoryTest#setValuesTest",
+        "com.rbmhtechnology.vind.model.NumericFieldDescriptorTest#numberBetweenTest",
+        "com.rbmhtechnology.vind.model.NumericFieldDescriptorTest#numberGreaterThanTest",
+        "com.rbmhtechnology.vind.model.NumericFieldDescriptorTest#numberLesserThanTest",
+        "com.rbmhtechnology.vind.model.TextFieldDescriptorTest#textEqualsTest",
+        "com.rbmhtechnology.vind.model.TextFieldDescriptorTest#textPrefixTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServerTest#com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServerTest",
+        "com.rbmhtechnology.vind.elasticsearch.backend.ElasticVindClientTest#com.rbmhtechnology.vind.elasticsearch.backend.ElasticVindClientTest"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 44.7,
+        "module_test": [
+          4.5,
+          4.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-030011-g0sv/base",
+      "compiled_snapshot": "work/20261118-030011-g0sv/snapshot-bfad9ff8",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "backend/elasticsearch",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServer",
+      "simple_name": "ElasticSearchServer",
+      "package": "com.rbmhtechnology.vind.elasticsearch.backend",
+      "kind": "class",
+      "cut_path": "backend/elasticsearch/src/main/java/com/rbmhtechnology/vind/elasticsearch/backend/ElasticSearchServer.java",
+      "source_sha256": "82f2b755631d7dd13348756731f852dd12861d9bcf631fd4a440b17256180cdc",
+      "generated_test_path": "backend/elasticsearch/src/test/java/com/rbmhtechnology/vind/elasticsearch/backend/ElasticSearchServer_ArrowTest.java",
+      "generated_test_fqn": "com.rbmhtechnology.vind.elasticsearch.backend.ElasticSearchServer_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 2.1,
+      "locate": 0.3,
+      "plan": 1.3,
+      "compile": 44.7,
+      "baseline": [
+        4.5,
+        4.5
+      ],
+      "total": 55
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,319 @@
+{
+  "run_id": "20261118-025758-7j3m",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-025758-7j3m",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 24.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 24.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "BeanLaboratory",
+        "url": "https://github.com/MonkeyDBean/BeanLaboratory",
+        "git_commit": "324ba2cc66540e87ebf80a3857233339e9687a5f",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "DataAlgorithm",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba",
+            "artifact": "fastjson",
+            "version": "1.2.56",
+            "scope": "compile"
+          },
+          {
+            "group": "joda-time",
+            "artifact": "joda-time",
+            "version": "2.10.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.8.5",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 7
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "BootLabo",
+          "BootFlux",
+          "LoadTest",
+          "DataAlgorithm",
+          "BallJump",
+          "BootSocket",
+          "BootJpa",
+          "MvcTest",
+          "BootSchedule",
+          "BootQuartz",
+          "HelloGrpc",
+          "BootSecurity",
+          "DingTalkTest",
+          "LdapTest",
+          "CrawlerTest",
+          "BootDynamicDataSource",
+          "RedisLabo",
+          "LBSimulate"
+        ],
+        "target_module": "DataAlgorithm",
+        "module_root": "DataAlgorithm",
+        "packages": [
+          "com.monkeybean.algorithm.category",
+          "com.monkeybean.algorithm",
+          "com.monkeybean.algorithm.category.tree",
+          "com.monkeybean.algorithm.concurrent",
+          "com.monkeybean.algorithm.other",
+          "com.monkeybean.algorithm.pattern.behavior.observer",
+          "com.monkeybean.algorithm.pattern.behavior.template",
+          "com.monkeybean.algorithm.pattern.create.abstractfactory",
+          "com.monkeybean.algorithm.pattern.create.factory",
+          "com.monkeybean.algorithm.pattern.create.singleton",
+          "com.monkeybean.algorithm.pattern.mvc.filter",
+          "com.monkeybean.algorithm.pattern.structural.proxy",
+          "com.monkeybean.algorithm.valid"
+        ]
+      },
+      "paths": {
+        "source_root": "DataAlgorithm/src/main/java",
+        "test_root": "DataAlgorithm/src/test/java",
+        "cut_path": "DataAlgorithm/src/main/java/com/monkeybean/algorithm/category/DataUtil.java",
+        "generated_test_path": "DataAlgorithm/src/test/java/com/monkeybean/algorithm/category/DataUtil_ArrowTest.java",
+        "generated_test_fqn": "com.monkeybean.algorithm.category.DataUtil_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.monkeybean.algorithm.category.DataUtil",
+        "simple_name": "DataUtil",
+        "package": "com.monkeybean.algorithm.category",
+        "kind": "class",
+        "source_sha256": "7786c1bd649b9735711bf2ba75157580281b3633d239d4a9a2a17dc44dea7098"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "DataAlgorithm",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "DataAlgorithm",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.7,
+        "module_test": [
+          2,
+          2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-025758-7j3m/base",
+      "compiled_snapshot": "work/20261118-025758-7j3m/snapshot-8ff0fd4d",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "DataAlgorithm",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.monkeybean.algorithm.category.DataUtil",
+      "simple_name": "DataUtil",
+      "package": "com.monkeybean.algorithm.category",
+      "kind": "class",
+      "cut_path": "DataAlgorithm/src/main/java/com/monkeybean/algorithm/category/DataUtil.java",
+      "source_sha256": "7786c1bd649b9735711bf2ba75157580281b3633d239d4a9a2a17dc44dea7098",
+      "generated_test_path": "DataAlgorithm/src/test/java/com/monkeybean/algorithm/category/DataUtil_ArrowTest.java",
+      "generated_test_fqn": "com.monkeybean.algorithm.category.DataUtil_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+    ],
+    "timings": {
+      "checkout": 104.9,
+      "locate": 0.3,
+      "plan": 16.1,
+      "compile": 4.7,
+      "baseline": [
+        2,
+        2
+      ],
+      "total": 24.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+  ]
+}

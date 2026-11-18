@@ -1,0 +1,366 @@
+{
+  "run_id": "20261118-022739-wrnb",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-022739-wrnb",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 39.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 39.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "Indra",
+        "url": "https://github.com/Lambda-3/Indra",
+        "git_commit": "13cd5d0d22920ed257a5314d1b5ef23580490d07",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "indra-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.lambda3.indra",
+            "artifact": "indra-essentials",
+            "version": "2.2.0-rc2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.12",
+            "scope": "compile"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "23.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.lucene",
+            "artifact": "lucene-queryparser",
+            "version": "7.1.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.testng",
+            "artifact": "testng",
+            "version": "6.10",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 24
+      },
+      "test_framework": {
+        "name": "testng",
+        "version": "6.10",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency org.testng:testng (test); imports 0 org.junit.jupiter, 0 org.junit, 11 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "indra-essentials",
+          "indra-core",
+          "indra-web",
+          "indra-service",
+          "indra-mongo"
+        ],
+        "target_module": "indra-core",
+        "module_root": "indra-core",
+        "packages": [
+          "internal.com.spotify.annoy",
+          "org.apache.commons.math3.linear",
+          "org.lambda3.indra.core",
+          "org.lambda3.indra.core.annoy",
+          "org.lambda3.indra.core.codecs",
+          "org.lambda3.indra.core.lucene",
+          "org.lambda3.indra.core.translation",
+          "org.lambda3.indra.core.utils",
+          "org.lambda3.indra.core.vs"
+        ]
+      },
+      "paths": {
+        "source_root": "indra-core/src/main/java",
+        "test_root": "indra-core/src/test/java",
+        "cut_path": "indra-core/src/main/java/internal/com/spotify/annoy/ANNIndex.java",
+        "generated_test_path": "indra-core/src/test/java/internal/com/spotify/annoy/ANNIndex_ArrowTest.java",
+        "generated_test_fqn": "internal.com.spotify.annoy.ANNIndex_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "internal.com.spotify.annoy.ANNIndex",
+        "simple_name": "ANNIndex",
+        "package": "internal.com.spotify.annoy",
+        "kind": "class",
+        "source_sha256": "5ad924461d605ae11fdf1a8de1fae85b024370510f3305c63210841a49883cc2"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "indra-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "indra-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "internal.com.spotify.annoy.ANNIndexTest#testAngular",
+        "internal.com.spotify.annoy.ANNIndexTest#testAngularBlocks",
+        "internal.com.spotify.annoy.ANNIndexTest#testEuclidean",
+        "internal.com.spotify.annoy.ANNIndexTest#testEuclideanMultipleBlocks",
+        "internal.com.spotify.annoy.ANNIndexTest#testGetNearesWithWrongDim",
+        "internal.com.spotify.annoy.ANNIndexTest#testLoadFileWithWrongDimension",
+        "org.lambda3.indra.MetadataIOTest#corpusMetadataTest",
+        "org.lambda3.indra.MetadataIOTest#createCorpusMetadataTest",
+        "org.lambda3.indra.MetadataIOTest#modelMetadataTest",
+        "org.lambda3.indra.core.SuperFactoryTest#testCreatingScoreFunction",
+        "org.lambda3.indra.core.test.AbstractVectorSpaceTest#getComposedTranslatedPairsTest",
+        "org.lambda3.indra.core.test.AbstractVectorSpaceTest#getComposedTranslatedVectorsTest",
+        "org.lambda3.indra.core.test.AbstractVectorSpaceTest#getComposedVectorPairsTest",
+        "org.lambda3.indra.core.test.AbstractVectorSpaceTest#getComposedVectorTest",
+        "org.lambda3.indra.core.test.AbstractVectorSpaceTest#getSimpleVectorPairsTest",
+        "org.lambda3.indra.core.test.AbstractVectorSpaceTest#getTranslatedPairsTest",
+        "org.lambda3.indra.core.test.BinaryCodecsTest#denseSerializationTest",
+        "org.lambda3.indra.core.test.BinaryCodecsTest#sparseSerializationTest",
+        "org.lambda3.indra.core.test.IndraAnalyzerEnglishTest#analyzeMultiplesRequestsTest",
+        "org.lambda3.indra.core.test.IndraAnalyzerEnglishTest#expressionAnalyzeTest",
+        "org.lambda3.indra.core.test.IndraAnalyzerEnglishTest#nonStemmedAnalyzeTest",
+        "org.lambda3.indra.core.test.IndraAnalyzerEnglishTest#nullStringTest",
+        "org.lambda3.indra.core.test.IndraAnalyzerEnglishTest#stemmedAnalyzeTest",
+        "org.lambda3.indra.core.test.IndraDriverTest#equivalent",
+        "org.lambda3.indra.core.test.IndraDriverTest#esaLuceneTest",
+        "org.lambda3.indra.core.test.IndraDriverTest#getComposedTranslatedVectors",
+        "org.lambda3.indra.core.test.IndraDriverTest#getRelatedness",
+        "org.lambda3.indra.core.test.IndraDriverTest#getTranslatedVectors",
+        "org.lambda3.indra.core.test.IndraDriverTest#getZeroRelatedness",
+        "org.lambda3.indra.core.test.IndraDriverTest#gloveAnnoyTest",
+        "org.lambda3.indra.core.test.IndraDriverTest#lsaAnnoyTest",
+        "org.lambda3.indra.core.test.IndraDriverTest#nonExistingModel",
+        "org.lambda3.indra.core.test.IndraDriverTest#nonExistingTerms",
+        "org.lambda3.indra.core.test.IndraDriverTest#oneToManyRelatednessEN",
+        "org.lambda3.indra.core.test.IndraDriverTest#oneToManyRelatednessPTMT",
+        "org.lambda3.indra.core.test.IndraDriverTest#w2vAnnoyTest",
+        "org.lambda3.indra.core.test.IndraTranslatorTest#getRelevantTranslationsEqualsTest",
+        "org.lambda3.indra.core.test.IndraTranslatorTest#getRelevantTranslationsTest",
+        "org.lambda3.indra.core.test.RelatednessTest#relatednessSimpleTest",
+        "org.lambda3.indra.core.test.UtilsTest#addVectorsTest",
+        "org.lambda3.indra.core.threshold.ThreasholdTest#autoTest",
+        "org.lambda3.indra.core.threshold.ThreasholdTest#max01Test",
+        "org.lambda3.indra.core.threshold.ThreasholdTest#max05Test",
+        "org.lambda3.indra.core.threshold.ThreasholdTest#sameInstances",
+        "org.lambda3.indra.pp.MultiWordsTransformerTest#emptyStringTest",
+        "org.lambda3.indra.pp.MultiWordsTransformerTest#foundTokensTest",
+        "org.lambda3.indra.pp.MultiWordsTransformerTest#multiWordFinanceCorpus",
+        "org.lambda3.indra.pp.MultiWordsTransformerTest#nonExistingTokensTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#firstTransformerTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#keepAlphaNumTokensTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#keepNumbersTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#lowercaseAndAccentsTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#removeFloatNumbersTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#removeNumbersTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#secondTransformerTest",
+        "org.lambda3.indra.pp.StandardPreProcessorEnglishTest#stopWordsTest",
+        "org.lambda3.indra.pp.StandardPreProcessorPersianTest#keepAlphaNumTokensTest",
+        "org.lambda3.indra.pp.StandardPreProcessorPersianTest#removeFloatNumbersTest",
+        "org.lambda3.indra.pp.StandardPreProcessorPersianTest#stopWordsTest",
+        "org.lambda3.indra.request.RequestTest#clientError1Test",
+        "org.lambda3.indra.request.RequestTest#clientError2Test",
+        "org.lambda3.indra.request.RequestTest#clientError3Test",
+        "org.lambda3.indra.request.RequestTest#clientError4Test",
+        "org.lambda3.indra.request.RequestTest#clientError5Test",
+        "org.lambda3.indra.request.RequestTest#clientError6Test",
+        "org.lambda3.indra.request.RequestTest#clientError7Test",
+        "org.lambda3.indra.request.RequestTest#clientRequestWitouhtErrorTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 24.6,
+        "module_test": [
+          9,
+          5.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-022739-wrnb/base",
+      "compiled_snapshot": "work/20261118-022739-wrnb/snapshot-0982bd0d",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "indra-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "internal.com.spotify.annoy.ANNIndex",
+      "simple_name": "ANNIndex",
+      "package": "internal.com.spotify.annoy",
+      "kind": "class",
+      "cut_path": "indra-core/src/main/java/internal/com/spotify/annoy/ANNIndex.java",
+      "source_sha256": "5ad924461d605ae11fdf1a8de1fae85b024370510f3305c63210841a49883cc2",
+      "generated_test_path": "indra-core/src/test/java/internal/com/spotify/annoy/ANNIndex_ArrowTest.java",
+      "generated_test_fqn": "internal.com.spotify.annoy.ANNIndex_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 3.6,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 24.6,
+      "baseline": [
+        9,
+        5.1
+      ],
+      "total": 39.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

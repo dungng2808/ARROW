@@ -1,0 +1,355 @@
+{
+  "run_id": "20261118-004322-arxv",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-004322-arxv",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 10.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 10.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "fiware-ngsi2-api",
+        "url": "https://github.com/Orange-OpenSource/fiware-ngsi2-api",
+        "git_commit": "271b55aec89edb93404e2ad64f9be66df322297b",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "ngsi2-client",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.fasterxml.jackson.datatype",
+            "artifact": "jackson-datatype-jdk8",
+            "version": "2.6.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-annotations",
+            "version": "2.6.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.fasterxml.jackson.datatype",
+            "artifact": "jackson-datatype-jsr310",
+            "version": "2.6.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-web",
+            "version": "4.1.6.RELEASE",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "org.springframework",
+            "artifact": "spring-test",
+            "version": "4.1.6.RELEASE",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "2.0.42-beta",
+            "scope": "test"
+          },
+          {
+            "group": "com.jayway.jsonpath",
+            "artifact": "json-path",
+            "version": "2.0.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 24
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.0.42-beta"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "ngsi2-client",
+          "ngsi2-server"
+        ],
+        "target_module": "ngsi2-client",
+        "module_root": "ngsi2-client",
+        "packages": [
+          "com.orange.ngsi2.model",
+          "com.orange.ngsi2.client",
+          "com.orange.ngsi2.exception"
+        ]
+      },
+      "paths": {
+        "source_root": "ngsi2-client/src/main/java",
+        "test_root": "ngsi2-client/src/test/java",
+        "cut_path": "ngsi2-client/src/main/java/com/orange/ngsi2/model/Subscription.java",
+        "generated_test_path": "ngsi2-client/src/test/java/com/orange/ngsi2/model/Subscription_ArrowTest.java",
+        "generated_test_fqn": "com.orange.ngsi2.model.Subscription_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.orange.ngsi2.model.Subscription",
+        "simple_name": "Subscription",
+        "package": "com.orange.ngsi2.model",
+        "kind": "class",
+        "source_sha256": "7be90d3bf8243279b3e22f28e16ed2111a779746ce59c5bd0c4335474e079382"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "ngsi2-client",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "ngsi2-client",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testAddEntity_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testAddRegistration_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testAddSubscription_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testAddSubscription_returnEmpty",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testDeleteAttibute_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testDeleteEntity_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testDeleteRegistration_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testDeleteSubscription_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetAttributeValueAsString_Number",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetAttributeValue_Array",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetAttributeValue_Object",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetAttribute_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetEntities_AllParams",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetEntities_Defaults",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetEntities_Paginated",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetEntityType_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetEntityTypes_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetEntity_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetRegistration_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetRegistrations_Defaults",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetSubscription_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetSubscriptions_Defaults",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetSubscriptions_Paginated",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetV2_ClientError",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetV2_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetV2_ServerError",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testGetV2_SyntaxError",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testReplaceEntity_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testUpdateAttribute_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testUpdateEntity_Append",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testUpdateEntity_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testUpdateRegistration_OK",
+        "com.orange.ngsi2.client.Ngsi2ClientTest#testUpdateSubscription_OK",
+        "com.orange.ngsi2.exception.ConflictingEntitiesExceptionTest#checkProperties",
+        "com.orange.ngsi2.exception.IncompatibleParameterExceptionTest#checkProperties",
+        "com.orange.ngsi2.exception.InvalidatedSyntaxExceptionTest#checkProperties",
+        "com.orange.ngsi2.exception.NotAcceptableExceptionTest#checkProperties",
+        "com.orange.ngsi2.exception.UnsupportedOperationExceptionTest#checkProperties",
+        "com.orange.ngsi2.model.AttributeTest#serializationAttributeWithMetadataTest",
+        "com.orange.ngsi2.model.AttributeTest#serializationAttributeWithNullMetadataTest",
+        "com.orange.ngsi2.model.EntityTest#deserializationEntityTest",
+        "com.orange.ngsi2.model.EntityTest#serializationEntityTest",
+        "com.orange.ngsi2.model.EntityTypeTest#deserializationEntityTypeTest",
+        "com.orange.ngsi2.model.EntityTypeTest#serializationEntityTypeTest",
+        "com.orange.ngsi2.model.ErrorTest#checkSerialization",
+        "com.orange.ngsi2.model.ErrorTest#checkSerializationComplete",
+        "com.orange.ngsi2.model.ErrorTest#checkToString",
+        "com.orange.ngsi2.model.RegistrationTest#deserializationEntityTypeTest",
+        "com.orange.ngsi2.model.RegistrationTest#serializationRegistrationTest",
+        "com.orange.ngsi2.model.SubscriptionTest#deserializationSubscriptionTest",
+        "com.orange.ngsi2.model.SubscriptionTest#serializationSubscriptionTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 5.5,
+        "module_test": [
+          2,
+          1.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004322-arxv/base",
+      "compiled_snapshot": "work/20261118-004322-arxv/snapshot-2fa1ebcd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "ngsi2-client",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.orange.ngsi2.model.Subscription",
+      "simple_name": "Subscription",
+      "package": "com.orange.ngsi2.model",
+      "kind": "class",
+      "cut_path": "ngsi2-client/src/main/java/com/orange/ngsi2/model/Subscription.java",
+      "source_sha256": "7be90d3bf8243279b3e22f28e16ed2111a779746ce59c5bd0c4335474e079382",
+      "generated_test_path": "ngsi2-client/src/test/java/com/orange/ngsi2/model/Subscription_ArrowTest.java",
+      "generated_test_fqn": "com.orange.ngsi2.model.Subscription_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 5.5,
+      "baseline": [
+        2,
+        1.8
+      ],
+      "total": 10.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

@@ -1,0 +1,302 @@
+{
+  "run_id": "20261118-004242-4jy8",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w8/runs/20261118-004242-4jy8",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 12.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 12.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "nailgun",
+        "url": "https://github.com/facebook/nailgun",
+        "git_commit": "275645564be745ec5c81a8c8529abb6a90cb74ac",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "nailgun-server",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "net.java.dev.jna",
+            "artifact": "jna",
+            "version": "4.5.2",
+            "scope": "compile"
+          },
+          {
+            "group": "net.java.dev.jna",
+            "artifact": "jna-platform",
+            "version": "4.5.2",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-api",
+            "version": "5.2.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-junit-jupiter",
+            "version": "2.19.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 11
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.2.0",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-junit-jupiter:2.19.1",
+          "org.mockito:mockito-core:2.19.1"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-api (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "nailgun-server",
+          "nailgun-examples"
+        ],
+        "target_module": "nailgun-server",
+        "module_root": "nailgun-server",
+        "packages": [
+          "com.facebook.nailgun",
+          "com.facebook.nailgun.builtins"
+        ]
+      },
+      "paths": {
+        "source_root": "nailgun-server/src/main/java",
+        "test_root": "nailgun-server/src/test/java",
+        "cut_path": "nailgun-server/src/main/java/com/facebook/nailgun/NGSessionPool.java",
+        "generated_test_path": "nailgun-server/src/test/java/com/facebook/nailgun/NGSessionPool_ArrowTest.java",
+        "generated_test_fqn": "com.facebook.nailgun.NGSessionPool_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.facebook.nailgun.NGSessionPool",
+        "simple_name": "NGSessionPool",
+        "package": "com.facebook.nailgun",
+        "kind": "class",
+        "source_sha256": "c6f40683f117ac51d64491347db6c1e841c0b83c9bd76a31fe75361764280b8f"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "nailgun-server",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "nailgun-server",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.facebook.nailgun.NGCommunicatorTest#canReadCommand",
+        "com.facebook.nailgun.NGCommunicatorTest#canRun",
+        "com.facebook.nailgun.NGCommunicatorTest#canWriteData",
+        "com.facebook.nailgun.NGSessionPoolTest#createNewSessions",
+        "com.facebook.nailgun.NGSessionPoolTest#emptySessionPoolAlwaysCreateNewSession",
+        "com.facebook.nailgun.NGSessionPoolTest#reuseSessionPool",
+        "com.facebook.nailgun.NGSessionPoolTest#shutdownTerminatesSession",
+        "com.facebook.nailgun.NGSessionPoolTest#takeOneSession",
+        "com.facebook.nailgun.NGSessionTest#canRun",
+        "com.facebook.nailgun.NGSessionTest#closeSocketOnFailure",
+        "com.facebook.nailgun.NGSessionTest#closeSocketOnSuccess",
+        "com.facebook.nailgun.NGSessionTest#returnsToPoolOnFailure",
+        "com.facebook.nailgun.NGSessionTest#returnsToPoolOnSuccess",
+        "com.facebook.nailgun.NGSessionTest#userSuppliedExitCode",
+        "com.facebook.nailgun.NGSessionTest#zeroExitCodeOnSuccess"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.facebook.nailgun.NGServerTest#canProcessNail",
+        "com.facebook.nailgun.NGServerTest#serverCanBeStartedAndStopped"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 4.4,
+        "module_test": [
+          3.9,
+          3.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004242-4jy8/base",
+      "compiled_snapshot": "work/20261118-004242-4jy8/snapshot-507a69fb",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "nailgun-server",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.facebook.nailgun.NGSessionPool",
+      "simple_name": "NGSessionPool",
+      "package": "com.facebook.nailgun",
+      "kind": "class",
+      "cut_path": "nailgun-server/src/main/java/com/facebook/nailgun/NGSessionPool.java",
+      "source_sha256": "c6f40683f117ac51d64491347db6c1e841c0b83c9bd76a31fe75361764280b8f",
+      "generated_test_path": "nailgun-server/src/test/java/com/facebook/nailgun/NGSessionPool_ArrowTest.java",
+      "generated_test_fqn": "com.facebook.nailgun.NGSessionPool_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 2.4,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 4.4,
+      "baseline": [
+        3.9,
+        3.2
+      ],
+      "total": 12.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

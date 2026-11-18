@@ -1,0 +1,11 @@
+[>] Tải https://github.com/zalando/problem-spring-web
+[>] Liệt kê class
+[>] Build root problem-spring-webflux (standalone)
+[>] Wrapper lỗi, dùng Maven của máy
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module problem-spring-webflux: [ERROR] Failed to execute goal on project problem-spring-webflux: Could not resolve dependencies for project org.zalando:problem-spring-webflux:jar:0.28.0-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module problem-spring-webflux: [ERROR] Failed to execute goal on project problem-spring-webflux: Could not resolve dependencies for project org.zalando:problem-spring-webflux:jar:0.28.0-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

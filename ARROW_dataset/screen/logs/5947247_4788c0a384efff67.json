@@ -1,0 +1,406 @@
+{
+  "run_id": "20261118-025301-wnu6",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-025301-wnu6",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 41.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 41.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "jai-ext",
+        "url": "https://github.com/geosolutions-it/jai-ext",
+        "git_commit": "15986aa39ffa5617200337745481e8576092f3ac",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "jt-utilities",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/*Test.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "it.geosolutions.jaiext.iterators",
+            "artifact": "jt-iterators",
+            "version": "1.1-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.media",
+            "artifact": "jai_core",
+            "version": "1.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.media",
+            "artifact": "jai_codec",
+            "version": "1.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.media",
+            "artifact": "jai_imageio",
+            "version": "1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.locationtech.jts",
+            "artifact": "jts-core",
+            "version": "1.17.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "commons-lang",
+            "artifact": "commons-lang",
+            "version": "2.4",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "27.0-jre",
+            "scope": "test"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.1",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 17
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "jt-squareroot",
+          "jt-concurrent-tile-cache",
+          "jt-scale",
+          "jt-affine",
+          "jt-utilities",
+          "jt-warp",
+          "jt-iterators",
+          "jt-mosaic",
+          "jt-translate",
+          "jt-lookup",
+          "jt-stats",
+          "jt-zonal",
+          "jt-crop",
+          "jt-rescale",
+          "jt-nullop",
+          "jt-bandmerge",
+          "jt-bandselect",
+          "jt-border",
+          "jt-algebra",
+          "jt-buffer",
+          "jt-binarize",
+          "jt-bandcombine",
+          "jt-convolve",
+          "jt-classifier",
+          "jt-piecewise",
+          "jt-artifact",
+          "jt-format",
+          "jt-colorconvert",
+          "jt-errordiffusion",
+          "jt-orderdither",
+          "jt-colorindexer",
+          "jt-imagefunction",
+          "jt-rlookup",
+          "jt-vectorbin",
+          "jt-threshold",
+          "jt-clamp",
+          "jt-scale2",
+          "jt-shadedrelief",
+          "jt-jiffle",
+          "jt-classbreaks",
+          "jt-jiffle/jt-jiffle-language",
+          "jt-jiffle/jt-jiffle-demo",
+          "jt-jiffle/jt-jiffle-docs",
+          "jt-jiffle/jt-jiffle-op"
+        ],
+        "target_module": "jt-utilities",
+        "module_root": "jt-utilities",
+        "packages": [
+          "it.geosolutions.jaiext",
+          "it.geosolutions.jaiext.interpolators",
+          "it.geosolutions.jaiext.jts",
+          "it.geosolutions.jaiext.numeric",
+          "it.geosolutions.jaiext.range",
+          "it.geosolutions.jaiext.swing",
+          "it.geosolutions.jaiext.utilities",
+          "it.geosolutions.jaiext.utilities.shape",
+          "it.geosolutions.rendered.viewer"
+        ]
+      },
+      "paths": {
+        "source_root": "jt-utilities/src/main/java",
+        "test_root": "jt-utilities/src/test/java",
+        "cut_path": "jt-utilities/src/main/java/it/geosolutions/jaiext/BufferedImageAdapter.java",
+        "generated_test_path": "jt-utilities/src/test/java/it/geosolutions/jaiext/BufferedImageAdapter_ArrowTest.java",
+        "generated_test_fqn": "it.geosolutions.jaiext.BufferedImageAdapter_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "it.geosolutions.jaiext.BufferedImageAdapter",
+        "simple_name": "BufferedImageAdapter",
+        "package": "it.geosolutions.jaiext",
+        "kind": "class",
+        "source_sha256": "e25ef2cd22dbf4a0a36c66cb3125dfbf6d1ac9eaea542b8902ca8c2745429e92"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "jt-utilities",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "jt-utilities",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "it.geosolutions.jaiext.BufferedImageAdapterTest#testBufferedImage",
+        "it.geosolutions.jaiext.BufferedImageAdapterTest#testGetData",
+        "it.geosolutions.jaiext.BufferedImageAdapterTest#testSubimage",
+        "it.geosolutions.jaiext.JAIEXTInitializationTest#testJAIEXTReInit",
+        "it.geosolutions.jaiext.JAIEXTTest#testInterpolation",
+        "it.geosolutions.jaiext.JAIEXTTest#testJAIEXT",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorBicubicNewROIAccessor",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorBicubicNewROIBounds",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorBilinearNew",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorBilinearNewROIAccessor",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorBilinearNewROIBounds",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorNearestNew",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorNearestNewROIAccessor",
+        "it.geosolutions.jaiext.interpolators.InterpTest#testInterpolatorNearestNewROIBounds",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterByte",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterByteNoCache",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterInt",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterIntNoCache",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterNoArrayCalculation",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterShort",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testRandomIterShortNoCache",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testSpeed",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testSpeedNoArray",
+        "it.geosolutions.jaiext.iterators.RandomIterTest#testSpeedNoCached",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#emptySequenceInt",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#emptySequenceXY",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testClone",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testExpandEnvelope",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetCoordinate",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetCoordinateCopy",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetCoordinate_int_Coordinate",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetDimension",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetOrdinate",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetX",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testGetY",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testSetOrdinate",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testSetX",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testSetXY",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testSetY",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testSize",
+        "it.geosolutions.jaiext.jts.CoordinateSequence2DTest#testToCoordinateArray",
+        "it.geosolutions.jaiext.range.RangeTest#testConvert",
+        "it.geosolutions.jaiext.range.RangeTest#testConvertDoubleNaN",
+        "it.geosolutions.jaiext.range.RangeTest#testConvertFloatNaN",
+        "it.geosolutions.jaiext.range.RangeTest#testIntersectionOutsideIntRangeByte",
+        "it.geosolutions.jaiext.range.RangeTest#testIntersectionOutsideIntRangeShort",
+        "it.geosolutions.jaiext.range.RangeTest#testIntersectionValidRange",
+        "it.geosolutions.jaiext.range.RangeTest#testRange",
+        "it.geosolutions.jaiext.range.RangeTest#testRangeTimeByte1or2Points",
+        "it.geosolutions.jaiext.utilities.ImageLayout2Test#nilHash",
+        "it.geosolutions.jaiext.utilities.ImageLayout2Test#sameHash",
+        "it.geosolutions.jaiext.utilities.ImageLayout2Test#testEquals",
+        "it.geosolutions.jaiext.utilities.ImageLayout2Test#testNotEquals"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 10.5,
+        "module_test": [
+          12.9,
+          3.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-025301-wnu6/base",
+      "compiled_snapshot": "work/20261118-025301-wnu6/snapshot-bf49876d",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "jt-utilities",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "it.geosolutions.jaiext.BufferedImageAdapter",
+      "simple_name": "BufferedImageAdapter",
+      "package": "it.geosolutions.jaiext",
+      "kind": "class",
+      "cut_path": "jt-utilities/src/main/java/it/geosolutions/jaiext/BufferedImageAdapter.java",
+      "source_sha256": "e25ef2cd22dbf4a0a36c66cb3125dfbf6d1ac9eaea542b8902ca8c2745429e92",
+      "generated_test_path": "jt-utilities/src/test/java/it/geosolutions/jaiext/BufferedImageAdapter_ArrowTest.java",
+      "generated_test_fqn": "it.geosolutions.jaiext.BufferedImageAdapter_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 3.3,
+      "locate": 1.1,
+      "plan": 14.5,
+      "compile": 10.5,
+      "baseline": [
+        12.9,
+        3.5
+      ],
+      "total": 41.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

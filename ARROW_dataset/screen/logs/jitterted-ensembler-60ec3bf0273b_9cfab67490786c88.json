@@ -1,0 +1,529 @@
+{
+  "run_id": "20261118-030558-417s",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-030558-417s",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 98.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 98.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "ensembler",
+        "url": "https://github.com/jitterted/ensembler",
+        "git_commit": "60ec3bf0273b63c210e1b7b6802c4f5f3c33710d",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.8.1",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "standalone",
+        "build_file": "pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "17",
+        "declared_source": "maven.compiler.source",
+        "major": 17,
+        "jdk_major": 17,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-actuator",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-thymeleaf",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-validation",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-web",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-websocket",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-configuration-processor",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-devtools",
+            "version": "2.7.4",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-security",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.security",
+            "artifact": "spring-security-test",
+            "version": "5.7.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-oauth2-client",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.thymeleaf.extras",
+            "artifact": "thymeleaf-extras-springsecurity5",
+            "version": "3.0.4.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "com.spotify",
+            "artifact": "github-client",
+            "version": "0.1.51",
+            "scope": "compile"
+          },
+          {
+            "group": "com.sendgrid",
+            "artifact": "sendgrid-java",
+            "version": "4.9.3",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-data-jdbc",
+            "version": "2.7.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.postgresql",
+            "artifact": "postgresql",
+            "version": "42.3.7",
+            "scope": "runtime"
+          },
+          {
+            "group": "org.flywaydb",
+            "artifact": "flyway-core",
+            "version": "8.5.13",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jetbrains",
+            "artifact": "annotations",
+            "version": "24.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "net.sourceforge.htmlunit",
+            "artifact": "htmlunit",
+            "version": "2.70.0",
+            "scope": "compile"
+          },
+          {
+            "group": "de.huxhorn.sulky",
+            "artifact": "de.huxhorn.sulky.ulid",
+            "version": "8.3.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.7.4",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "junit-jupiter",
+            "version": "1.18.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.testcontainers",
+            "artifact": "postgresql",
+            "version": "1.18.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.tngtech.archunit",
+            "artifact": "archunit-junit5",
+            "version": "1.0.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 167
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.8.2",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:4.5.1",
+          "org.mockito:mockito-junit-jupiter:4.5.1"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.22.0",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test); imports 48 org.junit.jupiter, 0 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": ".",
+        "module_root": ".",
+        "packages": [
+          "com.jitterted.mobreg.domain",
+          "com.jitterted.mobreg",
+          "com.jitterted.mobreg.adapter",
+          "com.jitterted.mobreg.adapter.in.web",
+          "com.jitterted.mobreg.adapter.in.web.admin",
+          "com.jitterted.mobreg.adapter.in.web.member",
+          "com.jitterted.mobreg.adapter.out.email",
+          "com.jitterted.mobreg.adapter.out.jdbc",
+          "com.jitterted.mobreg.adapter.out.membership",
+          "com.jitterted.mobreg.adapter.out.mobtimer",
+          "com.jitterted.mobreg.adapter.out.notification.pushover",
+          "com.jitterted.mobreg.adapter.out.zoom",
+          "com.jitterted.mobreg.application",
+          "com.jitterted.mobreg.application.port"
+        ]
+      },
+      "paths": {
+        "source_root": "src/main/java",
+        "test_root": "src/test/java",
+        "cut_path": "src/main/java/com/jitterted/mobreg/domain/Ensemble.java",
+        "generated_test_path": "src/test/java/com/jitterted/mobreg/domain/Ensemble_ArrowTest.java",
+        "generated_test_fqn": "com.jitterted.mobreg.domain.Ensemble_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.jitterted.mobreg.domain.Ensemble",
+        "simple_name": "Ensemble",
+        "package": "com.jitterted.mobreg.domain",
+        "kind": "class",
+        "source_sha256": "3ef98e048126046cd801406359aa4b9503fc38a0ab959f43d73a7881e6406131"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.jitterted.mobreg.adapter.DateTimeFormattingTest#browserFormattedDateAndTimeAreConvertedToZonedDateTime",
+        "com.jitterted.mobreg.adapter.DateTimeFormattingTest#dateTimeDuringDaylightSavingsConvertedToUtcCorrectly",
+        "com.jitterted.mobreg.adapter.DateTimeFormattingTest#dateTimeDuringStandardTimeConvertedToUtcCorrectly",
+        "com.jitterted.mobreg.adapter.DateTimeFormattingTest#givenDateTimeInUtcFormattedAsIso8601WithSuffixOfZ",
+        "com.jitterted.mobreg.adapter.in.web.GitHubAuthorityMapperTest#usernameFoundInMemberRepositoryGetsRolesFromMember",
+        "com.jitterted.mobreg.adapter.in.web.GitHubAuthorityMapperTest#usernameNotInMemberRepositoryHasOnlyUserRole",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminDashboardControllerTest#cancelEnsembleThenEnsembleIsCanceled",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminDashboardControllerTest#changeExistingEnsembleResultsInChangesSaved",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminDashboardControllerTest#completeEnsembleCompletesTheEnsembleWithRecordingLinkAndRedirects",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminDashboardControllerTest#givenOneEnsembleResultsInEnsembleInViewModel",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminDashboardControllerTest#manuallyRegisterExistingMemberForEnsemble",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminDashboardControllerTest#scheduleNewEnsembleResultsInEnsembleCreatedInRepository",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminEndpointConfigurationTest#getOfEnsembleDetailEndpointReturns200Ok",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminEndpointConfigurationTest#postToCancelEndpointRedirects",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminEndpointConfigurationTest#postToChangeEnsembleEndpointRedirects",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminEndpointConfigurationTest#postToCompleteEndpointRedirects",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminEndpointConfigurationTest#postToRegisterParticipantEndpointRedirects",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminEndpointConfigurationTest#postToScheduleEnsembleEndpointRedirects",
+        "com.jitterted.mobreg.adapter.in.web.admin.AdminMembershipEndpointTest#getOfMemberAdminPageIsStatus200Ok",
+        "com.jitterted.mobreg.adapter.in.web.admin.DashboardEnsembleViewTest#detailViewOfExistingEnsembleByItsIdIsReturned",
+        "com.jitterted.mobreg.adapter.in.web.admin.DashboardEnsembleViewTest#detailViewOfExistingEnsembleWithOneParticipantReturnsEnsembleWithParticipantView",
+        "com.jitterted.mobreg.adapter.in.web.admin.DashboardEnsembleViewTest#detailViewOfNonExistentEnsembleReturns404NotFound",
+        "com.jitterted.mobreg.adapter.in.web.admin.EnsembleDetailViewTest#ensembleIdIsTranslatedFromDomainIntoView",
+        "com.jitterted.mobreg.adapter.in.web.admin.EnsembleDetailViewTest#viewContainsDetailsForAcceptedAndDeclinedMembersInEnsemble",
+        "com.jitterted.mobreg.adapter.in.web.admin.MemberManagementControllerTest#addMemberShouldAddMemberFromFormContent",
+        "com.jitterted.mobreg.adapter.in.web.admin.MemberManagementControllerTest#membersViewReturnsViewsOfAllMembers",
+        "com.jitterted.mobreg.adapter.in.web.admin.ScheduleEnsembleFormTest#ensembleDateTimeConvertedToFormBasedDateAndTimeFields",
+        "com.jitterted.mobreg.adapter.in.web.admin.ScheduleEnsembleFormTest#formConvertsDateTimeBasedOnGivenTimezone",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#ensembleWithAcceptedMembersGetsInfoOnAndShowsWhoAccepted",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#ensembleWithNoOneAcceptedShowsNoAcceptedMembers",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#ensembleWithRecordingThenViewIncludesStringOfLink",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#memberAcceptedIsTrueWhenMemberEnsembleParticipant",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#memberStatusUnknownWhenEnsembleIsEmpty",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#noRecordingEnsembleThenViewIncludesEmptyLink",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#viewContainsGoogleCalendarLink",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#viewIndicatesCanAcceptIfEnsembleIsNotFull",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#viewIndicatesNotAbleToAcceptIfEnsembleIsFullAndCurrentlyUnknown",
+        "com.jitterted.mobreg.adapter.in.web.member.EnsembleSummaryViewTest#withAnotherAcceptedMemberThenMemberAcceptedIsFalse",
+        "com.jitterted.mobreg.adapter.in.web.member.InviteProcessControllerTest#inviteeAlreadyMemberRedirectedToMemberHome",
+        "com.jitterted.mobreg.adapter.in.web.member.InviteProcessControllerTest#nonExistentInviteReturnsInvalidInvitePage",
+        "com.jitterted.mobreg.adapter.in.web.member.InviteProcessControllerTest#validTokenAndAuthnPrincipalCreatesNewMemberAndMarks",
+        "com.jitterted.mobreg.adapter.in.web.member.MemberControllerTest#ensembleFormContainsMemberIdForOAuth2User",
+        "com.jitterted.mobreg.adapter.in.web.member.MemberControllerTest#memberDeclinesWillBeDeclinedForEnsemble",
+        "com.jitterted.mobreg.adapter.in.web.member.MemberControllerTest#memberRegistersForEnsembleWillBeRegisteredForThatEnsemble",
+        "com.jitterted.mobreg.adapter.in.web.member.MemberProfileControllerTest#changeProfileInfoOnFormUpdatesMemberProfileAndRedirectsToProfileView",
+        "com.jitterted.mobreg.adapter.in.web.member.MemberProfileControllerTest#profilePrepareFormFullyPopulatesForm",
+        "com.jitterted.mobreg.adapter.out.email.EmailToSendEnsembleScheduledNotifierTest#memberWithEmailWhenEnsembleScheduledThenCustomEmailSentToMember",
+        "com.jitterted.mobreg.adapter.out.email.EmailToSendEnsembleScheduledNotifierTest#membersInDifferentTimeZonesGetCustomizedEnsembleScheduledEmail",
+        "com.jitterted.mobreg.adapter.out.email.EmailToSendMemberAcceptedNotifierTest#memberWithEmailAcceptsThenEmailSentToMemberWithEnsembleDetails",
+        "com.jitterted.mobreg.adapter.out.email.EmailToSendMemberAcceptedNotifierTest#memberWithoutEmailRegistersThenNoEmailIsSent",
+        "com.jitterted.mobreg.adapter.out.email.EmailToSendMembersWhenEnsembleCompletedTest#emailContentIsFormattedCorrectly",
+        "com.jitterted.mobreg.adapter.out.email.EmailToSendMembersWhenEnsembleCompletedTest#emailsOnlySentToAcceptedMembers",
+        "com.jitterted.mobreg.adapter.out.jdbc.EnsembleDboMappingTest#databaseEntityToDomainIsMappedCorrectly",
+        "com.jitterted.mobreg.adapter.out.jdbc.EnsembleDboMappingTest#domainToDatabaseEntityIsMappedCorrectly",
+        "com.jitterted.mobreg.adapter.out.jdbc.MemberDboTranslationTest#domainMemberWithEmailTranslatedToDataEntityWithEmail",
+        "com.jitterted.mobreg.adapter.out.jdbc.MemberDboTranslationTest#entityWithEmailTranslatedToDomainMemberWithEmail",
+        "com.jitterted.mobreg.adapter.out.jdbc.MemberDboTranslationTest#entityWithRolesTranslatedToMemberWithRoles",
+        "com.jitterted.mobreg.adapter.out.jdbc.MemberDboTranslationTest#memberWithRolesTranslatedToEntityWithRoles",
+        "com.jitterted.mobreg.adapter.out.mobtimer.MobParticipantsDtoCreationTest#convertsEnsembleToMobParticipantsDto",
+        "com.jitterted.mobreg.application.EnsembleServiceCancelTest#attemptingToCancelEnsembleWithNoMeetingIdDoesNotCallConferenceScheduler",
+        "com.jitterted.mobreg.application.EnsembleServiceCancelTest#canceledEnsembleDeletesVideoConferenceMeeting",
+        "com.jitterted.mobreg.application.EnsembleServiceCancelTest#canceledEnsembleIsSavedInRepositoryAsCanceled",
+        "com.jitterted.mobreg.application.EnsembleServiceCompletedTest#completedEnsembleIsCompletedWithLinkAndSavedInRepository",
+        "com.jitterted.mobreg.application.EnsembleServiceCompletedTest#completedEnsembleNotifiesAcceptedMembers",
+        "com.jitterted.mobreg.application.EnsembleServiceEditExistingTest#changesToNameAndDateTimeForExistingEnsembleAreSaved",
+        "com.jitterted.mobreg.application.EnsembleServiceEditExistingTest#changingZoomLinkToBeBlankThenFetchesNewLinkViaSchedulerApi",
+        "com.jitterted.mobreg.application.EnsembleServiceEditExistingTest#changingZoomLinkWithValidLinkThenStoresNewLinkDoesNotFetchFromScheduler",
+        "com.jitterted.mobreg.application.EnsembleServiceEnsembleScheduledNotificationTest#ensembleScheduledWithFailureToAutoCreateZoomLinkThenNotificationIsStillSent",
+        "com.jitterted.mobreg.application.EnsembleServiceEnsembleScheduledNotificationTest#whenEnsembleScheduledEnsembleOpenNotificationIsSent",
+        "com.jitterted.mobreg.application.EnsembleServiceEnsembleScheduledNotificationTest#whenEnsembleScheduledWithZoomLinkEnsembleOpenNotificationIsSent",
+        "com.jitterted.mobreg.application.EnsembleServiceFindTest#allEnsemblesOrderedByDateTimeDescendingIsInCorrectOrder",
+        "com.jitterted.mobreg.application.EnsembleServiceFindTest#whenRepositoryHasEnsembleFindByItsIdReturnsItInAnOptional",
+        "com.jitterted.mobreg.application.EnsembleServiceFindTest#whenRepositoryIsEmptyFindReturnsEmptyOptional",
+        "com.jitterted.mobreg.application.EnsembleServiceMemberRegistrationNotificationTest#memberRegistersForEnsembleThenReceivesEmailWithEnsembleDetailInfo",
+        "com.jitterted.mobreg.application.EnsembleServiceScheduleTest#apiFailedToReturnValidConferenceDetailsThenConferenceDetailsIsDefaultUnscheduled",
+        "com.jitterted.mobreg.application.EnsembleServiceScheduleTest#ensembleScheduledThenZoomLinkFetchedFromApiHasConferenceDetails",
+        "com.jitterted.mobreg.application.EnsembleServiceScheduleTest#ensembleScheduledWithManuallyEnteredZoomLinkThenHasZoomLink",
+        "com.jitterted.mobreg.application.EnsembleServiceScheduleTest#singleScheduledEnsembleIsReturnedForAllEnsembles",
+        "com.jitterted.mobreg.application.GoogleCalendarLinkCreatorTest#googleCalendarLinkGeneratedFromEnsembleWithZoomLinkInDetails",
+        "com.jitterted.mobreg.application.MemberProfileChangeTest#changesToMemberProfileAreSaved",
+        "com.jitterted.mobreg.application.MemberServiceLookupByUsernameTest#findingGithubUsernameWithUppercaseLettersFoundInAllLowercaseDatabase",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#canChangeDateTimeAfterCompleted",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#canChangeNameAfterCompleted",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#canChangeNameForExistingEnsemble",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#canChangeStartDateTime",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#canChangeToExistingDateTime",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#canChangeToExistingName",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#changeDateTimeToNullNotAllowed",
+        "com.jitterted.mobreg.domain.EnsembleEditTest#changeNameToNullNotAllowed",
+        "com.jitterted.mobreg.domain.EnsembleMemberRsvpTest#acceptedMemberWhenDeclinesIsRsvpDeclined",
+        "com.jitterted.mobreg.domain.EnsembleMemberRsvpTest#declinedMemberWhenAcceptsAndSpaceAvailableIsRsvpAccepted",
+        "com.jitterted.mobreg.domain.EnsembleMemberRsvpTest#memberWhoDeclinesIsRsvpDeclined",
+        "com.jitterted.mobreg.domain.EnsembleMemberRsvpTest#registeredMemberIsRsvpAccepted",
+        "com.jitterted.mobreg.domain.EnsembleMemberRsvpTest#unregisteredMemberIsRsvpUnknown",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#acceptedMemberAndCanceledThenStatusIsCanceled",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#acceptedMemberAndCompletedEnsembleThenStatusCompleted",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#acceptedMemberAndFutureEnsembleThenStatusAccepted",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#acceptedMemberAndInProgressEnsembleThenStatusInGracePeriod",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#acceptedMemberAndLaterThanGracePeriodAndNotCompletedThenStatusIsHidden",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#acceptedMemberAndPastUncompletedEnsembleThenStatusPendingCompleted",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#declinedMemberAndFutureEnsembleAndHasSpaceThenStatusDeclined",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#declinedMemberAndFutureEnsembleIsFullThenStatusDeclinedFull",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#declinedMemberEnsembleInFutureWhenCanceledThenStatusIsHidden",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#unknownMemberAndFutureEnsembleAndHasSpaceThenStatusUnknown",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#unknownMemberAndFutureEnsembleAndIsFullThenStatusFull",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#unknownMemberAndPastEnsembleThenStatusHidden",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#unknownMemberEnsembleInFutureWhenCanceledThenStatusIsHidden",
+        "com.jitterted.mobreg.domain.EnsembleMemberStatusTest#unknownOrDeclinedWhenEnsembleStartedStatusIsHidden",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptMemberByIdWithEnsembleRemembersTheMember",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptedMemberIsFoundAsRegisteredByMemberId",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptedMemberWhenJoinAsSpectatorRemovesFromAccepted",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptingMultipleMembersResultsInThatManyRegisteredMembers(int)[1]",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptingMultipleMembersResultsInThatManyRegisteredMembers(int)[2]",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptingMultipleMembersResultsInThatManyRegisteredMembers(int)[3]",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#acceptingMultipleMembersResultsInThatManyRegisteredMembers(int)[4]",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#attemptingToRegisterMoreThanFiveMembersThrowsException(int)[1]",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#attemptingToRegisterMoreThanFiveMembersThrowsException(int)[2]",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#declinedMemberWhenJoinAsSpectatorRemovesFromDeclined",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#joinAsSpectatorEnsembleRemembersTheMember",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#newEnsembleHasZeroParticipants",
+        "com.jitterted.mobreg.domain.EnsembleMembersTest#nonExistentMemberIsNotFoundAsRegisteredByMemberId",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#cancelCompletedEnsembleThenThrowsException",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#canceledEnsembleWhenAcceptMemberThrowsException",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#completeIsIdempotent",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#completedEnsembleWhenRegisterMemberThrowsException",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#completingCanceledEnsembleThrowsException",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#newEnsembleIsNotCanceled",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#newEnsembleIsNotCompleted",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#whenCancelingScheduledEnsembleThenEnsembleIsCanceled",
+        "com.jitterted.mobreg.domain.EnsembleStateTest#whenCompletingEnsembleThenEnsembleIsCompleted",
+        "com.jitterted.mobreg.domain.MemberServiceCloneTest#clonedObjectNotSameInstanceAsOriginal",
+        "com.jitterted.mobreg.domain.MemberServiceCloneTest#memberFromMementoIsContentEqualToOriginal",
+        "com.jitterted.mobreg.domain.MemberServiceCloneTest#memberReturnsMementoRepresentingInternalState"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 82.6,
+        "module_test": [
+          4.2,
+          4.1
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-030558-417s/base",
+      "compiled_snapshot": "work/20261118-030558-417s/snapshot-cdb4ee2a",
+      "source_tree_hash": null,
+      "jdk_major": 17,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-17/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.jitterted.mobreg.domain.Ensemble",
+      "simple_name": "Ensemble",
+      "package": "com.jitterted.mobreg.domain",
+      "kind": "class",
+      "cut_path": "src/main/java/com/jitterted/mobreg/domain/Ensemble.java",
+      "source_sha256": "3ef98e048126046cd801406359aa4b9503fc38a0ab959f43d73a7881e6406131",
+      "generated_test_path": "src/test/java/com/jitterted/mobreg/domain/Ensemble_ArrowTest.java",
+      "generated_test_fqn": "com.jitterted.mobreg.domain.Ensemble_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 7.6,
+      "compile": 82.6,
+      "baseline": [
+        4.2,
+        4.1
+      ],
+      "total": 98.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

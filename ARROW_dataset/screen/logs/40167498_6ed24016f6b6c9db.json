@@ -1,0 +1,389 @@
+{
+  "run_id": "20261118-011040-p3y6",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-011040-p3y6",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 17.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 17.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "yuzhouwan",
+        "url": "https://github.com/asdf2014/yuzhouwan",
+        "git_commit": "00f445324dfaf491c507c83877a7be7b4a4c52d5",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.yuzhouwan",
+            "artifact": "yuzhouwan-common",
+            "version": "1.1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.kafka",
+            "artifact": "kafka_2.11",
+            "version": "0.9.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.avro",
+            "artifact": "avro",
+            "version": "1.8.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.lmax",
+            "artifact": "disruptor",
+            "version": "3.3.6",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-api",
+            "version": "5.3.2",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 67
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.3.2",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-api (test); imports 2 org.junit.jupiter, 0 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "yuzhouwan-checkstyle",
+          "yuzhouwan-common",
+          "yuzhouwan-hacker",
+          "yuzhouwan-ai",
+          "yuzhouwan-bigdata",
+          "yuzhouwan-site",
+          "yuzhouwan-ai/yuzhouwan-ai-tensorflow",
+          "yuzhouwan-ai/yuzhouwan-ai-pytorch",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-hadoop",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-spark",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-storm",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-hbase",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-elastic",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-druid",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-flume",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-zookeeper",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-redis",
+          "yuzhouwan-site/yuzhouwan-site-api",
+          "yuzhouwan-site/yuzhouwan-site-service",
+          "yuzhouwan-site/yuzhouwan-site-web"
+        ],
+        "target_module": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+        "module_root": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+        "packages": [
+          "com.yuzhouwan.bigdata.kafka.util",
+          "com.yuzhouwan.bigdata.kafka.util.clear",
+          "com.yuzhouwan.bigdata.kafka.util.pc"
+        ]
+      },
+      "paths": {
+        "source_root": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/main/java",
+        "test_root": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/test/java",
+        "cut_path": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/main/java/com/yuzhouwan/bigdata/kafka/util/KafkaPartitioner.java",
+        "generated_test_path": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/test/java/com/yuzhouwan/bigdata/kafka/util/KafkaPartitioner_ArrowTest.java",
+        "generated_test_fqn": "com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner",
+        "simple_name": "KafkaPartitioner",
+        "package": "com.yuzhouwan.bigdata.kafka.util",
+        "kind": "class",
+        "source_sha256": "f9927aa4fcf4e60cf1ef9f843e465a5d2c6fcf59246a30c847cbd0d33b81dc26"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.yuzhouwan.bigdata.kafka.util.KafkaConnPoolUtilsTest#indexTest",
+        "com.yuzhouwan.bigdata.kafka.util.KafkaPartitionerTest#testSendMessage",
+        "com.yuzhouwan.common.util.BeanUtilsTest#getAllFieldsTest",
+        "com.yuzhouwan.common.util.BeanUtilsTest#testColumn2Row",
+        "com.yuzhouwan.common.util.BeanUtilsTest#testRemoveIgnores",
+        "com.yuzhouwan.common.util.BeanUtilsTest#testSwapper",
+        "com.yuzhouwan.common.util.BeanUtilsTest#treeSetTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#collectionReferenceTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#convertTypeTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#duplicate",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#exchangeKeysTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#forTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#getDuplicate",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#getNthNumberTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#joinTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#mapPutIfAbsentTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#removeAllByStrWithSeparator",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#removeCollTest",
+        "com.yuzhouwan.common.util.CollectionUtilsTest#singletonListTest",
+        "com.yuzhouwan.common.util.DecimalUtilsTest#BooleanTest",
+        "com.yuzhouwan.common.util.DecimalUtilsTest#byteBuffer2byteArrayTest",
+        "com.yuzhouwan.common.util.DecimalUtilsTest#charTest",
+        "com.yuzhouwan.common.util.DecimalUtilsTest#convertInto16",
+        "com.yuzhouwan.common.util.DecimalUtilsTest#double2BigIntTest",
+        "com.yuzhouwan.common.util.DecimalUtilsTest#savePointTest",
+        "com.yuzhouwan.common.util.DirUtilsTest#testClassPath",
+        "com.yuzhouwan.common.util.DirUtilsTest#testDirScan",
+        "com.yuzhouwan.common.util.DirUtilsTest#testDirScanAbsolute",
+        "com.yuzhouwan.common.util.DirUtilsTest#testJarPath",
+        "com.yuzhouwan.common.util.DirUtilsTest#testLibPath",
+        "com.yuzhouwan.common.util.DirUtilsTest#testPropertiesPath",
+        "com.yuzhouwan.common.util.ExceptionUtilsTest#errorInfo",
+        "com.yuzhouwan.common.util.ExceptionUtilsTest#errorPrint",
+        "com.yuzhouwan.common.util.IpUtilsTest#checkIP2IntTest",
+        "com.yuzhouwan.common.util.IpUtilsTest#checkIPRangeTest",
+        "com.yuzhouwan.common.util.IpUtilsTest#checkValidTest",
+        "com.yuzhouwan.common.util.IpUtilsTest#checkValidTest2",
+        "com.yuzhouwan.common.util.IpUtilsTest#checkValidTestV6",
+        "com.yuzhouwan.common.util.IpUtilsTest#extractDomainTest",
+        "com.yuzhouwan.common.util.IpUtilsTest#getTailFromURLTest",
+        "com.yuzhouwan.common.util.IpUtilsTest#removeTail32Test",
+        "com.yuzhouwan.common.util.IpUtilsTest#testLongAndIp",
+        "com.yuzhouwan.common.util.JarUtilsTest#locationTest",
+        "com.yuzhouwan.common.util.Md5UtilsTest#testMd5",
+        "com.yuzhouwan.common.util.PropUtilsTest#getPropTest",
+        "com.yuzhouwan.common.util.PropUtilsTest#getPropWithDefaultValueTest",
+        "com.yuzhouwan.common.util.RandomUtilsTest#getGaussianTest",
+        "com.yuzhouwan.common.util.RandomUtilsTest#permTest",
+        "com.yuzhouwan.common.util.RandomUtilsTest#testNativeUUID",
+        "com.yuzhouwan.common.util.RandomUtilsTest#testUUID",
+        "com.yuzhouwan.common.util.StrUtilsTest#compressionTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#cutMiddle",
+        "com.yuzhouwan.common.util.StrUtilsTest#cutStart",
+        "com.yuzhouwan.common.util.StrUtilsTest#cutTail",
+        "com.yuzhouwan.common.util.StrUtilsTest#drop",
+        "com.yuzhouwan.common.util.StrUtilsTest#fillTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#hexTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#holderTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#isNumberTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#mainValueTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#map2JsonTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#splitMultiTest",
+        "com.yuzhouwan.common.util.StrUtilsTest#sqlData",
+        "com.yuzhouwan.common.util.TimeUtilsTest#beginMonthTester",
+        "com.yuzhouwan.common.util.TimeUtilsTest#endMonthTester",
+        "com.yuzhouwan.common.util.TimeUtilsTest#lastMonthTodayInBeginTest",
+        "com.yuzhouwan.common.util.TimeUtilsTest#nanoTime",
+        "com.yuzhouwan.common.util.TimeUtilsTest#nowStrTest",
+        "com.yuzhouwan.common.util.TimeUtilsTest#nowTester",
+        "com.yuzhouwan.common.util.TimeUtilsTest#pastWeekStartTest",
+        "com.yuzhouwan.common.util.TimeUtilsTest#test",
+        "com.yuzhouwan.common.util.TimeUtilsTest#test2",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testBigDecimal",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testMoreThanTwoHour",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testNow",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testPatWeekStart",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testTime",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testYesterdayBegin",
+        "com.yuzhouwan.common.util.TimeUtilsTest#testYesterdayEnd",
+        "com.yuzhouwan.common.util.TimeUtilsTest#timeZone"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.yuzhouwan.common.util.DynamicPropUtilsTest#"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 9.8,
+        "module_test": [
+          3.3,
+          2.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011040-p3y6/base",
+      "compiled_snapshot": "work/20261118-011040-p3y6/snapshot-6543dc0c",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner",
+      "simple_name": "KafkaPartitioner",
+      "package": "com.yuzhouwan.bigdata.kafka.util",
+      "kind": "class",
+      "cut_path": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/main/java/com/yuzhouwan/bigdata/kafka/util/KafkaPartitioner.java",
+      "source_sha256": "f9927aa4fcf4e60cf1ef9f843e465a5d2c6fcf59246a30c847cbd0d33b81dc26",
+      "generated_test_path": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/test/java/com/yuzhouwan/bigdata/kafka/util/KafkaPartitioner_ArrowTest.java",
+      "generated_test_fqn": "com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 2.4,
+      "locate": 0.3,
+      "plan": 1.3,
+      "compile": 9.8,
+      "baseline": [
+        3.3,
+        2.9
+      ],
+      "total": 17.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

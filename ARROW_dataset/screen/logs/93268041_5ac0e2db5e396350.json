@@ -1,0 +1,370 @@
+{
+  "run_id": "20261118-010715-ao49",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w8/runs/20261118-010715-ao49",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 22.5
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 22.5
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "fernet-java8",
+        "url": "https://github.com/l0s/fernet-java8",
+        "git_commit": "19af7d93047facac3e9d4b6851c978e31f8ee8ea",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.6.3",
+        "wrapper": true,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "fernet-java8",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.2",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-core",
+            "version": "4.7.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.glassfish.jersey.containers",
+            "artifact": "jersey-container-servlet-core",
+            "version": "2.37",
+            "scope": "test"
+          },
+          {
+            "group": "com.google.protobuf",
+            "artifact": "protobuf-java",
+            "version": "3.21.5",
+            "scope": "test"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "4.0.1",
+            "scope": "test"
+          },
+          {
+            "group": "com.fasterxml.jackson.core",
+            "artifact": "jackson-databind",
+            "version": "2.13.4",
+            "scope": "test"
+          },
+          {
+            "group": "redis.clients",
+            "artifact": "jedis",
+            "version": "4.2.3",
+            "scope": "test"
+          },
+          {
+            "group": "com.github.kstyrc",
+            "artifact": "embedded-redis",
+            "version": "0.6",
+            "scope": "test"
+          },
+          {
+            "group": "nl.jqno.equalsverifier",
+            "artifact": "equalsverifier",
+            "version": "3.10.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.mutabilitydetector",
+            "artifact": "MutabilityDetector",
+            "version": "0.10.6",
+            "scope": "test"
+          },
+          {
+            "group": "ch.qos.logback",
+            "artifact": "logback-classic",
+            "version": "1.3.0",
+            "scope": "test"
+          },
+          {
+            "group": "javax.ws.rs",
+            "artifact": "jsr311-api",
+            "version": "1.1.1",
+            "scope": "test"
+          },
+          {
+            "group": "javax.inject",
+            "artifact": "javax.inject",
+            "version": "1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 35
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.2",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:4.7.0"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "fernet-java8",
+          "fernet-aws-secrets-manager-rotator",
+          "fernet-jersey-auth"
+        ],
+        "target_module": "fernet-java8",
+        "module_root": "fernet-java8",
+        "packages": [
+          "com.macasaet.fernet"
+        ]
+      },
+      "paths": {
+        "source_root": "fernet-java8/src/main/java",
+        "test_root": "fernet-java8/src/test/java",
+        "cut_path": "fernet-java8/src/main/java/com/macasaet/fernet/Key.java",
+        "generated_test_path": "fernet-java8/src/test/java/com/macasaet/fernet/Key_ArrowTest.java",
+        "generated_test_fqn": "com.macasaet.fernet.Key_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.macasaet.fernet.Key",
+        "simple_name": "Key",
+        "package": "com.macasaet.fernet",
+        "kind": "class",
+        "source_sha256": "5e5d506e1bf0aefaf64bae90079c7922ae494462b592930b96511bda37c9fe9f"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "fernet-java8",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvnw",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "fernet-java8",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.macasaet.fernet.EndToEndTest#testInvalidKey",
+        "com.macasaet.fernet.EndToEndTest#testValidKey",
+        "com.macasaet.fernet.FernetTest#expiredTtl",
+        "com.macasaet.fernet.FernetTest#farFutureTimestamp",
+        "com.macasaet.fernet.FernetTest#generate",
+        "com.macasaet.fernet.FernetTest#incorrectInitializationVector",
+        "com.macasaet.fernet.FernetTest#incorrectMac",
+        "com.macasaet.fernet.FernetTest#invalidBase64",
+        "com.macasaet.fernet.FernetTest#payloadPaddingError",
+        "com.macasaet.fernet.FernetTest#payloadSizeNotMultipleOfBlockSize",
+        "com.macasaet.fernet.FernetTest#tooShort",
+        "com.macasaet.fernet.FernetTest#verify",
+        "com.macasaet.fernet.KeyTest#testConstructorMakesSafeCopies",
+        "com.macasaet.fernet.KeyTest#testConstructorValidatesEncryptionKey",
+        "com.macasaet.fernet.KeyTest#testConstructorValidatesSigningKey",
+        "com.macasaet.fernet.KeyTest#testFromString",
+        "com.macasaet.fernet.KeyTest#testGenerateKey",
+        "com.macasaet.fernet.KeyTest#testGetEncryptionKeySpec",
+        "com.macasaet.fernet.KeyTest#testGetHmac",
+        "com.macasaet.fernet.KeyTest#testGetSigningKeySpec",
+        "com.macasaet.fernet.KeyTest#testSerialise",
+        "com.macasaet.fernet.KeyTest#verifyEqualityContract",
+        "com.macasaet.fernet.KeyTest#verifyImmutable",
+        "com.macasaet.fernet.StringObjectValidatorTest#testValidateAndDecryptCollectionOfQextendsKeyToken",
+        "com.macasaet.fernet.StringObjectValidatorTest#testValidateAndDecryptKeyToken",
+        "com.macasaet.fernet.StringValidatorTest#verifyPlainTextCleared",
+        "com.macasaet.fernet.TokenTest#testDecryptKey",
+        "com.macasaet.fernet.TokenTest#testFromString",
+        "com.macasaet.fernet.TokenTest#testGenerate",
+        "com.macasaet.fernet.TokenTest#testGenerateEmptyToken",
+        "com.macasaet.fernet.TokenTest#testSerialise",
+        "com.macasaet.fernet.TokenTest#verifyExceptionThrownWhenKeyNoLongerInRotation",
+        "com.macasaet.fernet.TokenTest#verifyImmutable",
+        "com.macasaet.fernet.TokenTest#verifyKeyInRotationCanDecryptToken",
+        "com.macasaet.fernet.TokenTest#verifyTextTokenGenerationWithDefaultEntropySource",
+        "com.macasaet.fernet.TokenTest#verifyTokenGenerationWithDefaultEntropySource",
+        "com.macasaet.fernet.ValidatorTest#verifyPlainTextClearedOnValidationFailure",
+        "com.macasaet.fernet.ValidatorTest#verifyPlainTextRetained"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 9,
+        "module_test": [
+          2.6,
+          3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010715-ao49/base",
+      "compiled_snapshot": "work/20261118-010715-ao49/snapshot-d9eb2525",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "mvnw",
+      "executable_in_repo": true,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "fernet-java8",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.macasaet.fernet.Key",
+      "simple_name": "Key",
+      "package": "com.macasaet.fernet",
+      "kind": "class",
+      "cut_path": "fernet-java8/src/main/java/com/macasaet/fernet/Key.java",
+      "source_sha256": "5e5d506e1bf0aefaf64bae90079c7922ae494462b592930b96511bda37c9fe9f",
+      "generated_test_path": "fernet-java8/src/test/java/com/macasaet/fernet/Key_ArrowTest.java",
+      "generated_test_fqn": "com.macasaet.fernet.Key_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.8,
+      "locate": 0.2,
+      "plan": 7.9,
+      "compile": 9,
+      "baseline": [
+        2.6,
+        3
+      ],
+      "total": 22.5
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

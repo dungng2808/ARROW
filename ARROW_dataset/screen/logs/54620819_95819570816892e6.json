@@ -1,0 +1,404 @@
+{
+  "run_id": "20261118-010248-o4tk",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w5/runs/20261118-010248-o4tk",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 26.1
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 26.1
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "mvn-golang",
+        "url": "https://github.com/raydac/mvn-golang",
+        "git_commit": "022098a00b58022fd7c1ff130ac125c4dfe874e0",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "mvn-golang-wrapper",
+        "build_mode": "standalone",
+        "build_file": "mvn-golang-wrapper/pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "joda-time",
+            "artifact": "joda-time",
+            "version": "2.10.8",
+            "scope": "compile"
+          },
+          {
+            "group": "com.igormaznitsa",
+            "artifact": "meta-annotations",
+            "version": "1.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "com.igormaznitsa",
+            "artifact": "meta-utils",
+            "version": "1.1.3",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.8.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven.plugin-tools",
+            "artifact": "maven-plugin-annotations",
+            "version": "3.5",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-plugin-api",
+            "version": "3.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-core",
+            "version": "3.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.apache.maven.shared",
+            "artifact": "maven-artifact-transfer",
+            "version": "0.11.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.zeroturnaround",
+            "artifact": "zt-exec",
+            "version": "1.12",
+            "scope": "compile"
+          },
+          {
+            "group": "org.zeroturnaround",
+            "artifact": "zt-zip",
+            "version": "1.14",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-compress",
+            "version": "1.20",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-codec",
+            "artifact": "commons-codec",
+            "version": "1.15",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.11",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.httpcomponents",
+            "artifact": "httpclient",
+            "version": "4.5.13",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-nop",
+            "version": "1.7.25",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-compat",
+            "version": "3.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.maven.plugin-testing",
+            "artifact": "maven-plugin-testing-harness",
+            "version": "2.1",
+            "scope": "test"
+          },
+          {
+            "group": "org.apache.maven.shared",
+            "artifact": "maven-verifier",
+            "version": "1.7.2",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 51
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.13.1",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": "mvn-golang-wrapper",
+        "module_root": "mvn-golang-wrapper",
+        "packages": [
+          "com.igormaznitsa.mvngolang.utils",
+          "com.igormaznitsa.mvngolang",
+          "com.igormaznitsa.mvngolang.cvs"
+        ]
+      },
+      "paths": {
+        "source_root": "mvn-golang-wrapper/src/main/java",
+        "test_root": "mvn-golang-wrapper/src/test/java",
+        "cut_path": "mvn-golang-wrapper/src/main/java/com/igormaznitsa/mvngolang/utils/SysUtils.java",
+        "generated_test_path": "mvn-golang-wrapper/src/test/java/com/igormaznitsa/mvngolang/utils/SysUtils_ArrowTest.java",
+        "generated_test_fqn": "com.igormaznitsa.mvngolang.utils.SysUtils_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.igormaznitsa.mvngolang.utils.SysUtils",
+        "simple_name": "SysUtils",
+        "package": "com.igormaznitsa.mvngolang.utils",
+        "kind": "class",
+        "source_sha256": "f291a9fc05d73b97b0838d74fc529466251c5827be55e38ae18805b16dac209a"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "mvn-golang-wrapper",
+      "passing_in_all_runs": [
+        "com.igormaznitsa.mvngolang.GolangBuildMojoTest#testPackageTest_Multiple",
+        "com.igormaznitsa.mvngolang.GolangBuildMojoTest#testPackageTest_Single",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangBuildMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangCleanMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangCustomMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangFixMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangFmtMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangGenerateMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangGetMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangInstallMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangJfrogCliMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangModMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangMvnInstallMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangRunMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangTestMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangToolMojoConfiguration",
+        "com.igormaznitsa.mvngolang.GolangMojoCfgTest#testGolangVetMojoConfiguration",
+        "com.igormaznitsa.mvngolang.utils.GoModTest#testComplex1",
+        "com.igormaznitsa.mvngolang.utils.GoModTest#testComplex2",
+        "com.igormaznitsa.mvngolang.utils.GoModTest#testComplex3",
+        "com.igormaznitsa.mvngolang.utils.GoModTest#testComplex4",
+        "com.igormaznitsa.mvngolang.utils.GoModTest#testComplex5",
+        "com.igormaznitsa.mvngolang.utils.GoModTest#testModule",
+        "com.igormaznitsa.mvngolang.utils.MavenUtilsTest#testArtifactWithVersion",
+        "com.igormaznitsa.mvngolang.utils.MavenUtilsTest#testArtifactWithVersionRange_AllFieldsSet",
+        "com.igormaznitsa.mvngolang.utils.MavenUtilsTest#testArtifactWithVersionRange_RangeDiapasone",
+        "com.igormaznitsa.mvngolang.utils.MavenUtilsTest#testArtifactWithVersionRange_TwoVersions",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testEmptyText",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testInclude",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testOnlyCommentLine",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testOnlyPackageName",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testRemoveComment_CheckQuotes_False",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testRemoveComment_CheckQuotes_True",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testRemoveQuotes",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testTwoPackages",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testWrongFormat_DoubleQuotes",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testWrongFormat_NoKey",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testWrongFormat_OnlyKey",
+        "com.igormaznitsa.mvngolang.utils.PackageListTest#testWrongFormat_WrongKey",
+        "com.igormaznitsa.mvngolang.utils.StringComparatorABCTest#testSorting",
+        "com.igormaznitsa.mvngolang.utils.SysUtilsTest#testDecodeGoSdkArchType"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 8.6,
+        "module_test": [
+          8,
+          8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010248-o4tk/base",
+      "compiled_snapshot": "work/20261118-010248-o4tk/snapshot-7f7f2d2b",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "mvn-golang-wrapper",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.igormaznitsa.mvngolang.utils.SysUtils",
+      "simple_name": "SysUtils",
+      "package": "com.igormaznitsa.mvngolang.utils",
+      "kind": "class",
+      "cut_path": "mvn-golang-wrapper/src/main/java/com/igormaznitsa/mvngolang/utils/SysUtils.java",
+      "source_sha256": "f291a9fc05d73b97b0838d74fc529466251c5827be55e38ae18805b16dac209a",
+      "generated_test_path": "mvn-golang-wrapper/src/test/java/com/igormaznitsa/mvngolang/utils/SysUtils_ArrowTest.java",
+      "generated_test_fqn": "com.igormaznitsa.mvngolang.utils.SysUtils_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 32.2,
+      "locate": 0.2,
+      "plan": 1.4,
+      "compile": 8.6,
+      "baseline": [
+        8,
+        8
+      ],
+      "total": 26.1
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

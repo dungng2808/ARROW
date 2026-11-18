@@ -1,0 +1,40 @@
+{
+  "run_id": "20261118-015202-oa13",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-015202-oa13",
+  "outcome": {
+    "outcome": "BLOCKED",
+    "code": "B1_DEPENDENCY_RESOLUTION",
+    "message": "Thiếu artifact khi biên dịch module pax-web-jetty: [ERROR] Failed to execute goal on project pax-web-jetty: Could not resolve dependencies for project org.ops4j.pax.web:pax-web-jetty:bundle:7.4.4-SNAPSHOT",
+    "hint": "Chạy \"mvn -q dependency:resolve\" để xem lỗi; kiểm tra settings.xml và proxy.",
+    "first_error": "[ERROR] Failed to execute goal on project pax-web-jetty: Could not resolve dependencies for project org.ops4j.pax.web:pax-web-jetty:bundle:7.4.4-SNAPSHOT",
+    "log": "block1/logs/compile-jdk8.log",
+    "seconds": 56.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "BLOCKED",
+      "code": "B1_DEPENDENCY_RESOLUTION",
+      "message": "Thiếu artifact khi biên dịch module pax-web-jetty: [ERROR] Failed to execute goal on project pax-web-jetty: Could not resolve dependencies for project org.ops4j.pax.web:pax-web-jetty:bundle:7.4.4-SNAPSHOT",
+      "hint": "Chạy \"mvn -q dependency:resolve\" để xem lỗi; kiểm tra settings.xml và proxy.",
+      "first_error": "[ERROR] Failed to execute goal on project pax-web-jetty: Could not resolve dependencies for project org.ops4j.pax.web:pax-web-jetty:bundle:7.4.4-SNAPSHOT",
+      "log": "block1/logs/compile-jdk8.log",
+      "seconds": 56.2
+    },
+    "metadata": null,
+    "baseline": null,
+    "workspace": null,
+    "cut": null,
+    "warnings": [],
+    "timings": {
+      "checkout": 2.4,
+      "locate": 0.4,
+      "plan": 0,
+      "compile": 0,
+      "baseline": [],
+      "total": 56.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

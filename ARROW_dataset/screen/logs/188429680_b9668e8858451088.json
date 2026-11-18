@@ -1,0 +1,342 @@
+{
+  "run_id": "20261118-023814-9cso",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-023814-9cso",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 26.4
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 26.4
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "TechnionNLI",
+        "url": "https://github.com/givoli/TechnionNLI",
+        "git_commit": "5452672f1df7e00870bdf355cf3e851668049127",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.ofergivoli.ojavalib",
+            "artifact": "ojavalib",
+            "version": "1.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-collections4",
+            "version": "4.0",
+            "scope": "compile"
+          },
+          {
+            "group": "com.intellij",
+            "artifact": "annotations",
+            "version": "9.0.4",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "23.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-csv",
+            "version": "1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "edu.stanford.nlp",
+            "artifact": "stanford-corenlp",
+            "version": "3.6.0",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.4",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.5",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 30
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "core",
+          "dataset/app-code",
+          "parser",
+          "lib/ojavalib",
+          "parser/modified-fig",
+          "parser/nli-parser"
+        ],
+        "target_module": "core",
+        "module_root": "core",
+        "packages": [
+          "il.ac.technion.nlp.nli.core",
+          "il.ac.technion.nlp.nli.core.dataset",
+          "il.ac.technion.nlp.nli.core.dataset.construction",
+          "il.ac.technion.nlp.nli.core.dataset.construction.hit_random_generation",
+          "il.ac.technion.nlp.nli.core.dataset.construction.mturk",
+          "il.ac.technion.nlp.nli.core.dataset.visualization",
+          "il.ac.technion.nlp.nli.core.dataset.visualization.html",
+          "il.ac.technion.nlp.nli.core.general",
+          "il.ac.technion.nlp.nli.core.method_call",
+          "il.ac.technion.nlp.nli.core.reflection",
+          "il.ac.technion.nlp.nli.core.state",
+          "il.ac.technion.nlp.nli.core.state.entities",
+          "il.ac.technion.nlp.nli.core.state.knowledgebase"
+        ]
+      },
+      "paths": {
+        "source_root": "core/src/main/java",
+        "test_root": "core/src/test/java",
+        "cut_path": "core/src/main/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils.java",
+        "generated_test_path": "core/src/test/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils_ArrowTest.java",
+        "generated_test_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils",
+        "simple_name": "NliDescriptionsUtils",
+        "package": "il.ac.technion.nlp.nli.core",
+        "kind": "class",
+        "source_sha256": "acc91c54b1ab807a62733be3a9cb3b5ec8e9a61154c37569d6b5362cd4359839"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.ofergivoli.ojavalib.data_structures.tree.TreePathTest#testPathCorrectness",
+        "com.ofergivoli.ojavalib.io.csv.CsvContentTest#createFromValuePairsTest",
+        "com.ofergivoli.ojavalib.io.csv.FlexibleCsvReaderTest#testForExceptionInCaseNoZeroParameterConstructor",
+        "com.ofergivoli.ojavalib.io.csv.FlexibleCsvReaderTest#testForExceptionInCaseOfInvalidFieldType",
+        "com.ofergivoli.ojavalib.io.csv.FlexibleCsvReaderTest#testWitClassContainingNonPrimitiveFields",
+        "com.ofergivoli.ojavalib.io.csv.FlexibleCsvReaderTest#testWitClassContainingPrimitiveFields",
+        "com.ofergivoli.ojavalib.reflection.ReflectionUtilsTest#getAllFieldsOfClassTest",
+        "il.ac.technion.nlp.nli.core.NliDescriptionsUtilsTest#testGenerateDescriptionsForField",
+        "il.ac.technion.nlp.nli.core.NliDescriptionsUtilsTest#testGenerateDescriptionsForMethod",
+        "il.ac.technion.nlp.nli.core.dataset.DatasetTest#removeTailingDot",
+        "il.ac.technion.nlp.nli.core.dataset.ExampleSplitTest#createRandomSplitsForKFoldCrossValidationTest",
+        "il.ac.technion.nlp.nli.core.dataset.ExampleSplitTest#createRandomTrainDevSplitsForKFoldCrossValidationStratifiedOnExampleCategoryTest",
+        "il.ac.technion.nlp.nli.core.dataset.ExampleTest#isMultiSentenceInstructionTest",
+        "il.ac.technion.nlp.nli.core.dataset.construction.HitTest#testContainsArgQueryableByComparisonOperation",
+        "il.ac.technion.nlp.nli.core.dataset.construction.HitTest#testContainsArgQueryableBySuperlativeOperation",
+        "il.ac.technion.nlp.nli.core.dataset.construction.HitTest#testIsQueryableByPrimitiveRelationsWithSingleNonPrimitiveEntity",
+        "il.ac.technion.nlp.nli.core.dataset.construction.HitTest#testIsQueryableByPrimitiveRelationsWithTwoPrimitiveEntities",
+        "il.ac.technion.nlp.nli.core.dataset.construction.hit_random_generation.HitRandomGeneratorTest#testSamplingOverUniformAndGeometricLikeDistribution",
+        "il.ac.technion.nlp.nli.core.reflection.EntityGraphReflectionTest#testEntityGraphEquals",
+        "il.ac.technion.nlp.nli.core.state.StateTest#testMethodCallInvocation"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 18.1,
+        "module_test": [
+          3.3,
+          3.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023814-9cso/base",
+      "compiled_snapshot": "work/20261118-023814-9cso/snapshot-0d45f5fd",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils",
+      "simple_name": "NliDescriptionsUtils",
+      "package": "il.ac.technion.nlp.nli.core",
+      "kind": "class",
+      "cut_path": "core/src/main/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils.java",
+      "source_sha256": "acc91c54b1ab807a62733be3a9cb3b5ec8e9a61154c37569d6b5362cd4359839",
+      "generated_test_path": "core/src/test/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils_ArrowTest.java",
+      "generated_test_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 9.9,
+      "locate": 0.4,
+      "plan": 1.6,
+      "compile": 18.1,
+      "baseline": [
+        3.3,
+        3.3
+      ],
+      "total": 26.4
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

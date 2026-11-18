@@ -1,0 +1,294 @@
+{
+  "run_id": "20261118-004925-ike6",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-004925-ike6",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 20.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 20.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "xutils",
+        "url": "https://github.com/xuan698400/xutils",
+        "git_commit": "8bac64f1ec5ddb737e7f4249e00af9fc05421d69",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "mix",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 2
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (compile)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "mix"
+        ],
+        "target_module": "mix",
+        "module_root": "mix",
+        "packages": [
+          "com.xuan.mix.bt.diverter",
+          "com.xuan.mix.bt.status",
+          "com.xuan.mix.bt.status.impl",
+          "com.xuan.mix.bt.tabooed",
+          "com.xuan.mix.bt.tracker",
+          "com.xuan.mix.cache",
+          "com.xuan.mix.cache.provider",
+          "com.xuan.mix.concurrent.forkjoin.listtask",
+          "com.xuan.mix.concurrent.forkjoin.listtask.callback",
+          "com.xuan.mix.concurrent.forkjoin.listtask.config",
+          "com.xuan.mix.concurrent.forkjoin.listtask.core",
+          "com.xuan.mix.concurrent.forkjoin.listtask.executor",
+          "com.xuan.mix.concurrent.schedule",
+          "com.xuan.mix.concurrent.threadpool",
+          "com.xuan.mix.domain",
+          "com.xuan.mix.domain.enums",
+          "com.xuan.mix.domain.exception",
+          "com.xuan.mix.domain.result",
+          "com.xuan.mix.http",
+          "com.xuan.mix.http.impl",
+          "com.xuan.mix.http.listener",
+          "com.xuan.mix.io",
+          "com.xuan.mix.jdbc",
+          "com.xuan.mix.jdbc.helper",
+          "com.xuan.mix.utils"
+        ]
+      },
+      "paths": {
+        "source_root": "mix/src/main/java",
+        "test_root": "mix/src/test/java",
+        "cut_path": "mix/src/main/java/com/xuan/mix/bt/diverter/Diverter.java",
+        "generated_test_path": "mix/src/test/java/com/xuan/mix/bt/diverter/Diverter_ArrowTest.java",
+        "generated_test_fqn": "com.xuan.mix.bt.diverter.Diverter_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.xuan.mix.bt.diverter.Diverter",
+        "simple_name": "Diverter",
+        "package": "com.xuan.mix.bt.diverter",
+        "kind": "class",
+        "source_sha256": "dac4c482bf99496450ecaf6b50910b09a923a64b27158884cfe81acb3d5f4194"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "mix",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "mix",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.xuan.mix.bt.StatusTest#testStatus",
+        "com.xuan.mix.bt.diverter.DiverterTest#test",
+        "com.xuan.mix.bt.tabooed.TabooedTest#testGetTabooedWords",
+        "com.xuan.mix.cache.CacheTest#testAdd",
+        "com.xuan.mix.concurrent.ForkJoinTest#testListTask",
+        "com.xuan.mix.concurrent.ScheduleTest#testSubmit",
+        "com.xuan.mix.http.HttpTest#testGet",
+        "com.xuan.mix.http.HttpTest#testGetDowload",
+        "com.xuan.mix.utils.Map2BeanUtilsTest#testBean2Map",
+        "com.xuan.mix.utils.Map2BeanUtilsTest#testBean2Map2",
+        "com.xuan.mix.utils.Map2BeanUtilsTest#testMap2Bean",
+        "com.xuan.mix.utils.MathUtilsTest#testAdd",
+        "com.xuan.mix.utils.UUIDUtilsTest#testUuid",
+        "com.xuan.mix.utils.ValidatorsTest#testIsBlank"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 2,
+        "module_test": [
+          8.6,
+          8.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004925-ike6/base",
+      "compiled_snapshot": "work/20261118-004925-ike6/snapshot-2f907a6d",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "mix",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.xuan.mix.bt.diverter.Diverter",
+      "simple_name": "Diverter",
+      "package": "com.xuan.mix.bt.diverter",
+      "kind": "class",
+      "cut_path": "mix/src/main/java/com/xuan/mix/bt/diverter/Diverter.java",
+      "source_sha256": "dac4c482bf99496450ecaf6b50910b09a923a64b27158884cfe81acb3d5f4194",
+      "generated_test_path": "mix/src/test/java/com/xuan/mix/bt/diverter/Diverter_ArrowTest.java",
+      "generated_test_fqn": "com.xuan.mix.bt.diverter.Diverter_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 1.2,
+      "compile": 2,
+      "baseline": [
+        8.6,
+        8.5
+      ],
+      "total": 20.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

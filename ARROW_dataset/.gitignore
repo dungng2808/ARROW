@@ -1,0 +1,4 @@
+# Thư mục làm việc của các worker screen (ARROW_HOME tạm, ~200 MB)
+screen/homes/
+screen/workers.txt
+__pycache__/

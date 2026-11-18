@@ -1,0 +1,15 @@
+[>] Tải https://github.com/apache/james-project
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[>] Build root protocols/pop3 (standalone)
+[>] Biên dịch với JDK 8
+[>] Biên dịch với JDK 11
+[>] Biên dịch với JDK 17
+[>] Biên dịch với JDK 21
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module protocols/pop3: [ERROR] Failed to execute goal on project protocols-pop3: Could not resolve dependencies for project org.apache.james.protocols:protocols-pop3:jar:3.5.0-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module protocols/pop3: [ERROR] Failed to execute goal on project protocols-pop3: Could not resolve dependencies for project org.apache.james.protocols:protocols-pop3:jar:3.5.0-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

@@ -1,0 +1,327 @@
+{
+  "run_id": "20261118-021909-7xuy",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-021909-7xuy",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 54.3
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 54.3
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "nacos-spring-boot-project",
+        "url": "https://github.com/nacos-group/nacos-spring-boot-project",
+        "git_commit": "256a35cbd9ccda76339cd1378762bf50287e2457",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "nacos-config-spring-boot-actuator",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "3.1.0",
+            "scope": "provided"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-web",
+            "version": "2.0.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.boot",
+            "artifact": "nacos-spring-boot-base",
+            "version": "0.2.7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-actuator",
+            "version": "2.0.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-autoconfigure",
+            "version": "2.0.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-configuration-processor",
+            "version": "2.0.3.RELEASE",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.boot",
+            "artifact": "nacos-config-spring-boot-autoconfigure",
+            "version": "0.2.7",
+            "scope": "compile"
+          },
+          {
+            "group": "com.alibaba.nacos",
+            "artifact": "nacos-spring-context",
+            "version": "1.0.0",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.0.3.RELEASE",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 84
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:2.15.0"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.9.1",
+          "org.hamcrest:hamcrest-library:1.3"
+        ],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "nacos-spring-boot-parent",
+          "nacos-spring-boot-base",
+          "nacos-config-spring-boot-autoconfigure",
+          "nacos-config-spring-boot-starter",
+          "nacos-config-spring-boot-actuator",
+          "nacos-discovery-spring-boot-autoconfigure",
+          "nacos-discovery-spring-boot-starter",
+          "nacos-discovery-spring-boot-actuator",
+          "nacos-spring-boot-samples",
+          "nacos-spring-boot-samples/nacos-config-sample",
+          "nacos-spring-boot-samples/nacos-discovery-sample"
+        ],
+        "target_module": "nacos-config-spring-boot-actuator",
+        "module_root": "nacos-config-spring-boot-actuator",
+        "packages": [
+          "com.alibaba.boot.nacos.actuate.endpoint",
+          "com.alibaba.boot.nacos.actuate.autoconfigure",
+          "com.alibaba.boot.nacos.actuate.health"
+        ]
+      },
+      "paths": {
+        "source_root": "nacos-config-spring-boot-actuator/src/main/java",
+        "test_root": "nacos-config-spring-boot-actuator/src/test/java",
+        "cut_path": "nacos-config-spring-boot-actuator/src/main/java/com/alibaba/boot/nacos/actuate/endpoint/NacosConfigEndpoint.java",
+        "generated_test_path": "nacos-config-spring-boot-actuator/src/test/java/com/alibaba/boot/nacos/actuate/endpoint/NacosConfigEndpoint_ArrowTest.java",
+        "generated_test_fqn": "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint",
+        "simple_name": "NacosConfigEndpoint",
+        "package": "com.alibaba.boot.nacos.actuate.endpoint",
+        "kind": "class",
+        "source_sha256": "77ed016b5fa96cc309e8caf5445ac12b1c73eeaaf614a144df0718b77cc7ae3c"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "nacos-config-spring-boot-actuator",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "nacos-config-spring-boot-actuator",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpointTest#testInvoke",
+        "com.alibaba.boot.nacos.autoconfigure.NacosConfigAutoConfigurationTest#testNacosConfig",
+        "com.alibaba.boot.nacos.autoconfigure.NacosConfigAutoConfigurationTest#testNacosConfigGlobalBean",
+        "com.alibaba.boot.nacos.autoconfigure.NacosConfigAutoConfigurationTest#testNacosDiscoveryGlobalBean",
+        "com.alibaba.boot.nacos.autoconfigure.NacosConfigAutoConfigurationTest#testNacosGlobalProperties"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 36.2,
+        "module_test": [
+          5.6,
+          6.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021909-7xuy/base",
+      "compiled_snapshot": "work/20261118-021909-7xuy/snapshot-5e20248e",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "nacos-config-spring-boot-actuator",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint",
+      "simple_name": "NacosConfigEndpoint",
+      "package": "com.alibaba.boot.nacos.actuate.endpoint",
+      "kind": "class",
+      "cut_path": "nacos-config-spring-boot-actuator/src/main/java/com/alibaba/boot/nacos/actuate/endpoint/NacosConfigEndpoint.java",
+      "source_sha256": "77ed016b5fa96cc309e8caf5445ac12b1c73eeaaf614a144df0718b77cc7ae3c",
+      "generated_test_path": "nacos-config-spring-boot-actuator/src/test/java/com/alibaba/boot/nacos/actuate/endpoint/NacosConfigEndpoint_ArrowTest.java",
+      "generated_test_fqn": "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.2,
+      "plan": 6,
+      "compile": 36.2,
+      "baseline": [
+        5.6,
+        6.5
+      ],
+      "total": 54.3
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

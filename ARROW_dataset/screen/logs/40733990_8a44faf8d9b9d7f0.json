@@ -1,0 +1,387 @@
+{
+  "run_id": "20261118-021506-n50b",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-021506-n50b",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 42.6
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 42.6
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "cowsay",
+        "url": "https://github.com/ricksbrown/cowsay",
+        "git_commit": "06f5247a3b9e46acb2f4e2a1c96cfc851d22b4af",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "cowsay",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-lang3",
+            "version": "3.3.2",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-cli",
+            "artifact": "commons-cli",
+            "version": "1.4",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven",
+            "artifact": "maven-plugin-api",
+            "version": "3.6.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.ant",
+            "artifact": "ant",
+            "version": "1.10.6",
+            "scope": "provided"
+          },
+          {
+            "group": "com.github.ricksbrown",
+            "artifact": "cowjar",
+            "version": "1.1.1-SNAPSHOT",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.12",
+            "scope": "test"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.6",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 20
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.12",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "cowjar",
+          "cowjar-off",
+          "cowjar-extra",
+          "cowjar-js",
+          "cowsay"
+        ],
+        "target_module": "cowsay",
+        "module_root": "cowsay",
+        "packages": [
+          "com.github.ricksbrown.cowsay.ant",
+          "com.github.ricksbrown.cowsay",
+          "com.github.ricksbrown.cowsay.maven",
+          "com.github.ricksbrown.cowsay.plugin"
+        ]
+      },
+      "paths": {
+        "source_root": "cowsay/src/main/java",
+        "test_root": "cowsay/src/test/java",
+        "cut_path": "cowsay/src/main/java/com/github/ricksbrown/cowsay/ant/CowsayTask.java",
+        "generated_test_path": "cowsay/src/test/java/com/github/ricksbrown/cowsay/ant/CowsayTask_ArrowTest.java",
+        "generated_test_fqn": "com.github.ricksbrown.cowsay.ant.CowsayTask_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.github.ricksbrown.cowsay.ant.CowsayTask",
+        "simple_name": "CowsayTask",
+        "package": "com.github.ricksbrown.cowsay.ant",
+        "kind": "class",
+        "source_sha256": "13b87786274a9e25aedc44b9b28889472ea701e09359c7e4e390e79bd495f231"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "cowsay",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "cowsay",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.github.ricksbrown.cowsay.CowFaceTest#testGetByMode",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testGetByModeWithNull",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testIsKnownMode",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testIsKnownModeWithUnknown",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetEyes",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetEyesWithEmpty",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetEyesWithNull",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetEyesWithSingle",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetEyesWithTooManyChars",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetTongue",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetTongueWithEmpty",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetTongueWithNull",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetTongueWithSingle",
+        "com.github.ricksbrown.cowsay.CowFaceTest#testSetTongueWithTooManyChars",
+        "com.github.ricksbrown.cowsay.CowFormatterTest#testFormatCowInvalid",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testDefaultWithoutOffensiveCows",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testList",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testLoadCoreCowfile",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testLoadCoreCowfileTrumpedByCowpath",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testLoadWithEmoptyPath",
+        "com.github.ricksbrown.cowsay.CowsayCliTest#testParseCmdArgs",
+        "com.github.ricksbrown.cowsay.CowsayCliTest#testParseCmdArgsMissingArg",
+        "com.github.ricksbrown.cowsay.CowsayTest#testAllCowfiles",
+        "com.github.ricksbrown.cowsay.CowsayTest#testCowthinkArg",
+        "com.github.ricksbrown.cowsay.CowsayTest#testListCows",
+        "com.github.ricksbrown.cowsay.CowsayTest#testMain",
+        "com.github.ricksbrown.cowsay.CowsayTest#testPipedSay",
+        "com.github.ricksbrown.cowsay.CowsayTest#testPipedSayManyWords",
+        "com.github.ricksbrown.cowsay.CowsayTest#testPipedSayTrumpedByArgs",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSay",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayEyes",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayEyesBackslash",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayEyesDollars",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayHtml",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayLongLine",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayManyWords",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayManyWordsOneArg",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayModes",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayModesPiped",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayMultiLineInput",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayMultiLineLongInput",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayNowrap",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayTongue",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayTongueEyes",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayWhitespaceNormalized",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayWithNamedFile",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayWithNamedFileNotFound",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayWrap2",
+        "com.github.ricksbrown.cowsay.CowsayTest#testSayWrapZero",
+        "com.github.ricksbrown.cowsay.CowsayTest#testThink",
+        "com.github.ricksbrown.cowsay.CowsayTest#testThinkLongLine",
+        "com.github.ricksbrown.cowsay.I18nTest#testGetMessage",
+        "com.github.ricksbrown.cowsay.I18nTest#testGetMessageDefault",
+        "com.github.ricksbrown.cowsay.I18nTest#testSetLanguage",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testAntAddText",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testAntTaskStdOut",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testExecute",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSayHtml",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSetCowfile",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSetMode",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSetProperty",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSetThink",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSetTongue",
+        "com.github.ricksbrown.cowsay.ant.CowsayTaskTest#testSetWrap",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testExecuteNullMessage",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetAlt",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetCowfile",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetEyes",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetHtml",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetLang",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetMessage",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetMode",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetModeUnknown",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetThink",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetTongue",
+        "com.github.ricksbrown.cowsay.plugin.CowExecutorTest#testSetWrap"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "com.github.ricksbrown.cowsay.CowloaderTest#testListWithCowpath",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testListWithDirectoryOnClasspath",
+        "com.github.ricksbrown.cowsay.CowloaderTest#testWithOffensiveCows",
+        "com.github.ricksbrown.cowsay.CowsayTest#testExtraCowfiles",
+        "com.github.ricksbrown.cowsay.CowsayTest#testJsCowfiles",
+        "com.github.ricksbrown.cowsay.CowsayTest#testOffensiveCowfiles"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 19.7,
+        "module_test": [
+          18.3,
+          3.2
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-021506-n50b/base",
+      "compiled_snapshot": "work/20261118-021506-n50b/snapshot-05b720a1",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "cowsay",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.github.ricksbrown.cowsay.ant.CowsayTask",
+      "simple_name": "CowsayTask",
+      "package": "com.github.ricksbrown.cowsay.ant",
+      "kind": "class",
+      "cut_path": "cowsay/src/main/java/com/github/ricksbrown/cowsay/ant/CowsayTask.java",
+      "source_sha256": "13b87786274a9e25aedc44b9b28889472ea701e09359c7e4e390e79bd495f231",
+      "generated_test_path": "cowsay/src/test/java/com/github/ricksbrown/cowsay/ant/CowsayTask_ArrowTest.java",
+      "generated_test_fqn": "com.github.ricksbrown.cowsay.ant.CowsayTask_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.5,
+      "locate": 0.1,
+      "plan": 1.4,
+      "compile": 19.7,
+      "baseline": [
+        18.3,
+        3.2
+      ],
+      "total": 42.6
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

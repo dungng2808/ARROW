@@ -1,0 +1,391 @@
+{
+  "run_id": "20261118-004336-zr1q",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w4/runs/20261118-004336-zr1q",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 11.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 11.2
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "saep",
+        "url": "https://github.com/kyriosdata/saep",
+        "git_commit": "442d67066031edbb81d5a8c74029a5f7ebbb6a19",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": "sandbox",
+        "build_mode": "reactor",
+        "build_file": "sandbox/pom.xml",
+        "reactor_module": "dominio",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.github.kyriosdata.parser",
+            "artifact": "parser",
+            "version": "1.0.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-api",
+            "version": "5.0.0-M2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-engine",
+            "version": "5.0.0-M2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.maven.plugins",
+            "artifact": "maven-surefire-plugin",
+            "version": "2.19.1",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.gson",
+            "artifact": "gson",
+            "version": "2.7",
+            "scope": "compile"
+          }
+        ],
+        "test": [],
+        "resolved_count": 52
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.0.0-M2",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-api (compile); imports 19 org.junit.jupiter, 0 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "sandbox/dominio"
+        ],
+        "target_module": "sandbox/dominio",
+        "module_root": "sandbox/dominio",
+        "packages": [
+          "br.ufg.inf.es.saep.sandbox.dominio.regra",
+          "br.ufg.inf.es.saep.sandbox.dominio",
+          "br.ufg.inf.es.saep.sandbox.dominio.avaliacao",
+          "br.ufg.inf.es.saep.sandbox.dominio.excecoes",
+          "br.ufg.inf.es.saep.sandbox.dominio.infraestrutura"
+        ]
+      },
+      "paths": {
+        "source_root": "sandbox/dominio/src/main/java",
+        "test_root": "sandbox/dominio/src/test/java",
+        "cut_path": "sandbox/dominio/src/main/java/br/ufg/inf/es/saep/sandbox/dominio/regra/RegraSomatorio.java",
+        "generated_test_path": "sandbox/dominio/src/test/java/br/ufg/inf/es/saep/sandbox/dominio/regra/RegraSomatorio_ArrowTest.java",
+        "generated_test_fqn": "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorio_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorio",
+        "simple_name": "RegraSomatorio",
+        "package": "br.ufg.inf.es.saep.sandbox.dominio.regra",
+        "kind": "class",
+        "source_sha256": "4e3a363d00e1c6a7c6dea2d928f93db0f5d0ae73db01d164c79a8a46976cebfc"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "dominio",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "dominio",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": "sandbox",
+      "passing_in_all_runs": [
+        "br.ufg.inf.es.saep.sandbox.dominio.AtributoTest#atributoRecuperadoConformeDefinido",
+        "br.ufg.inf.es.saep.sandbox.dominio.AtributoTest#atributosDistintos",
+        "br.ufg.inf.es.saep.sandbox.dominio.AtributoTest#atributosIguaisHashCodeIguais",
+        "br.ufg.inf.es.saep.sandbox.dominio.AtributoTest#situacoesExcepcionais",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#aulaPresencialNaGraduacao",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#grupoDevePossuirCodigo",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#grupoDevePossuirPeloMenosUmAtributo",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#grupoDevePossuirPeloMenosUmTipo",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#nomeDoTipoNaoPodeSerNull",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#testesParaCasosDeIgualdade",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#tipoDevePossuirAtributos",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#tipoDevePossuirIdentificadorNaoNull",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#tipoDevePossuirIdentificadorNaoVazio",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#tipoDevePossuirPeloMenosUmAtributo",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#tipoIdentificadoPorCodigo",
+        "br.ufg.inf.es.saep.sandbox.dominio.ClasseTest#umGrupo",
+        "br.ufg.inf.es.saep.sandbox.dominio.ConfiguracaoTest#desigualdade",
+        "br.ufg.inf.es.saep.sandbox.dominio.ConfiguracaoTest#regraValidaNaoGeraExcecao",
+        "br.ufg.inf.es.saep.sandbox.dominio.ConfiguracaoTest#regrasVaziaGeraExcecao",
+        "br.ufg.inf.es.saep.sandbox.dominio.ConfiguracaoTest#resolucoesIguaisSeIdsIguais",
+        "br.ufg.inf.es.saep.sandbox.dominio.ConfiguracaoTest#situacoesExcepcionais",
+        "br.ufg.inf.es.saep.sandbox.dominio.EntidadeTest#construcaoSemArgumentoIdAutomatico",
+        "br.ufg.inf.es.saep.sandbox.dominio.ExperimentaExceptionsTest#geraExcecoesApenasParaCobertura",
+        "br.ufg.inf.es.saep.sandbox.dominio.ObservacaoTest#destinoPodeSerNull",
+        "br.ufg.inf.es.saep.sandbox.dominio.ObservacaoTest#justificativaNullGeraExcecao",
+        "br.ufg.inf.es.saep.sandbox.dominio.ObservacaoTest#montaRecuperaCorretamenteUmaNota",
+        "br.ufg.inf.es.saep.sandbox.dominio.ObservacaoTest#origemSignificaInsercao",
+        "br.ufg.inf.es.saep.sandbox.dominio.ObservacaoTest#tentativaDeCriarNotaComAvaliaveisDeTiposDistintos",
+        "br.ufg.inf.es.saep.sandbox.dominio.OrdenacaoItensTest#cadItemInseridoUmaUnicaVez",
+        "br.ufg.inf.es.saep.sandbox.dominio.OrdenacaoItensTest#duasRegrasOrdenacaoUnica",
+        "br.ufg.inf.es.saep.sandbox.dominio.OrdenacaoItensTest#semItensOrdenacaoTrivial",
+        "br.ufg.inf.es.saep.sandbox.dominio.OrdenacaoItensTest#umItemDependenteDeAtributoOrdenacaoTrivial",
+        "br.ufg.inf.es.saep.sandbox.dominio.OrdenacaoItensTest#umItemOrdenacaoTrivial",
+        "br.ufg.inf.es.saep.sandbox.dominio.ParecerTest#construtorGeraId",
+        "br.ufg.inf.es.saep.sandbox.dominio.ParecerTest#parecerRecuperadoConformeCriado",
+        "br.ufg.inf.es.saep.sandbox.dominio.ParecerTest#pareceresDistintos",
+        "br.ufg.inf.es.saep.sandbox.dominio.ParecerTest#pareceresIguais",
+        "br.ufg.inf.es.saep.sandbox.dominio.ParecerTest#situacoesExcepcionaisDeConstrucao",
+        "br.ufg.inf.es.saep.sandbox.dominio.PontuacaoTest#avaliavelRetornaNullParaAtributoInvalido",
+        "br.ufg.inf.es.saep.sandbox.dominio.PontuacaoTest#avaliavelRetornaValorDoAtributo",
+        "br.ufg.inf.es.saep.sandbox.dominio.PontuacaoTest#montaRecuperaPontuacao",
+        "br.ufg.inf.es.saep.sandbox.dominio.PontuacaoTest#nomeNullGeraExcecao",
+        "br.ufg.inf.es.saep.sandbox.dominio.PontuacaoTest#valorNullGeraExcecao",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#criaRecupera",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#qualquerRelatoPossuiPeloMenosUmaValor",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatoDistintoDeNull",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatoDistintoDeOutroTipoDeObjeto",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatoIgualASi",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatosDistintosPorQuantidadeDeValores",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatosDistintosPorTipo",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatosDistintosPorValores",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#relatosIguaisHashCodeIguais",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatoTest#situacoesExcepcionaisDeConstrucao",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatorioTest#hashCodeContrato",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatorioTest#igualdade",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatorioTest#recuperaCorretamente",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatorioTest#relatosPorTipo",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatorioTest#semRelatosBuscaPorTipoRetornaZero",
+        "br.ufg.inf.es.saep.sandbox.dominio.RelatorioTest#situacoesExcepcionais",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umValorLogicoFalso",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umValorLogicoObtidoDeTipoIncompativel2ResultaFalse",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umValorLogicoObtidoDeTipoIncompativelResultaFalse",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umValorLogicoVerdadeiro",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umValorReal",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umValorString",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umaData",
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umaSequenciaDeCaracteres",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraCondicionalTest#agradarCobertura",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraCondicionalTest#entaoObrigatoriamenteDeveSerFornecido",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraCondicionalTest#expressaoCondicional",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraExpressaoTest#agradarCobertura",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraExpressaoTest#parserObrigatorioParaPreparacao",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraExpressaoTest#regraDefinidaPorConstante",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraExpressaoTest#regraDependeDeVariavelNaoFornecidaAssumeZero",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraExpressaoTest#semRegistroZeroPontos",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraExpressaoTest#somatorioSemVariavelGeraExcecao",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraPontosPorRelatoTest#agradaCobertura",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraPontosPorRelatoTest#nenhumRelatoTotalDePontosZeroOuMinimo",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraPontosPorRelatoTest#tipoRelatoNaoPodeSerNull",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraPontosPorRelatoTest#tipoRelatoNaoPodeSerVazio",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorioTest#nenhumAvaliavelDaClasseSomatorioZero",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorioTest#nenhumAvaliavelSomatorioZero",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorioTest#situacoesExcepcionaisDeConstrucao",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorioTest#umAvaliavelComExpressaoConstante",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraTest#ajustaLimitesCorretamente",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraTest#apenasParaAgradarCobertura",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraTest#igualdadeEntreRegras",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraTest#preparacaoApenasParaCobertura",
+        "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraTest#situacoesExcepcionaisDeConstrucao",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressaoComElementoInvalido",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressaoNullInvalida",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressaoTodaComBrancos",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressaoVaziaInvalida",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#sentencasInvalidas",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.SerializacaoTest#serializarPontuacao",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.SerializacaoTest#serializarValor"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "br.ufg.inf.es.saep.sandbox.dominio.ValorTest#umaDataInvalida",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressaoSemParenteses",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressoesConstantes",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressoesLogicas",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressoesLogicasComplexas",
+        "br.ufg.inf.es.saep.sandbox.infraestrutura.RecursiveDescetParserTest#expressoesVariaveis"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 3.9,
+        "module_test": [
+          3.3,
+          2.9
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-004336-zr1q/base",
+      "compiled_snapshot": "work/20261118-004336-zr1q/snapshot-40207bff",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": "sandbox",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "dominio",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorio",
+      "simple_name": "RegraSomatorio",
+      "package": "br.ufg.inf.es.saep.sandbox.dominio.regra",
+      "kind": "class",
+      "cut_path": "sandbox/dominio/src/main/java/br/ufg/inf/es/saep/sandbox/dominio/regra/RegraSomatorio.java",
+      "source_sha256": "4e3a363d00e1c6a7c6dea2d928f93db0f5d0ae73db01d164c79a8a46976cebfc",
+      "generated_test_path": "sandbox/dominio/src/test/java/br/ufg/inf/es/saep/sandbox/dominio/regra/RegraSomatorio_ArrowTest.java",
+      "generated_test_fqn": "br.ufg.inf.es.saep.sandbox.dominio.regra.RegraSomatorio_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 1.4,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 3.9,
+      "baseline": [
+        3.3,
+        2.9
+      ],
+      "total": 11.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

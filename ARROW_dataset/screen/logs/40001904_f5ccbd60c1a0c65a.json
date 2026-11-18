@@ -1,0 +1,453 @@
+{
+  "run_id": "20261118-010000-55tq",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-010000-55tq",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 21.2
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 21.2
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "dkpro-jwpl",
+        "url": "https://github.com/dkpro/dkpro-jwpl",
+        "git_commit": "1d4416327706436d737d7b9b8250bbc13e573197",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "de.tudarmstadt.ukp.wikipedia.api",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.hibernate",
+            "artifact": "hibernate-core",
+            "version": "5.2.17.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.jgrapht",
+            "artifact": "jgrapht-jdk1.5",
+            "version": "0.7.3",
+            "scope": "compile"
+          },
+          {
+            "group": "de.fau.cs.osr.utils",
+            "artifact": "utils",
+            "version": "3.0.8",
+            "scope": "compile"
+          },
+          {
+            "group": "de.fau.cs.osr.ptk",
+            "artifact": "ptk-common",
+            "version": "3.0.8",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-logging",
+            "artifact": "commons-logging",
+            "version": "1.1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.sweble.wikitext",
+            "artifact": "swc-parser-lazy",
+            "version": "3.1.7",
+            "scope": "compile"
+          },
+          {
+            "group": "org.sweble.wikitext",
+            "artifact": "swc-engine",
+            "version": "3.1.7",
+            "scope": "compile"
+          },
+          {
+            "group": "com.neovisionaries",
+            "artifact": "nv-i18n",
+            "version": "1.23",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.21",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-log4j12",
+            "version": "1.7.21",
+            "scope": "test"
+          },
+          {
+            "group": "log4j",
+            "artifact": "log4j",
+            "version": "1.2.16",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.11",
+            "scope": "test"
+          },
+          {
+            "group": "org.hsqldb",
+            "artifact": "hsqldb",
+            "version": "2.4.0",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 29
+      },
+      "test_framework": {
+        "name": "junit4",
+        "version": "4.11",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency junit:junit (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "de.tudarmstadt.ukp.wikipedia.api",
+          "de.tudarmstadt.ukp.wikipedia.datamachine",
+          "de.tudarmstadt.ukp.wikipedia.timemachine",
+          "de.tudarmstadt.ukp.wikipedia.wikimachine",
+          "de.tudarmstadt.ukp.wikipedia.revisionmachine",
+          "de.tudarmstadt.ukp.wikipedia.mwdumper",
+          "de.tudarmstadt.ukp.wikipedia.util",
+          "de.tudarmstadt.ukp.wikipedia.parser",
+          "de.tudarmstadt.ukp.wikipedia.tutorial"
+        ],
+        "target_module": "de.tudarmstadt.ukp.wikipedia.api",
+        "module_root": "de.tudarmstadt.ukp.wikipedia.api",
+        "packages": [
+          "de.tudarmstadt.ukp.wikipedia.api",
+          "de.tudarmstadt.ukp.wikipedia.api.exception",
+          "de.tudarmstadt.ukp.wikipedia.api.hibernate",
+          "de.tudarmstadt.ukp.wikipedia.api.sweble",
+          "de.tudarmstadt.ukp.wikipedia.api.util",
+          "de.tudarmstadt.ukp.wikipedia.util",
+          "de.tudarmstadt.ukp.wikipedia.util.distance"
+        ]
+      },
+      "paths": {
+        "source_root": "de.tudarmstadt.ukp.wikipedia.api/src/main/java",
+        "test_root": "de.tudarmstadt.ukp.wikipedia.api/src/test/java",
+        "cut_path": "de.tudarmstadt.ukp.wikipedia.api/src/main/java/de/tudarmstadt/ukp/wikipedia/api/MetaData.java",
+        "generated_test_path": "de.tudarmstadt.ukp.wikipedia.api/src/test/java/de/tudarmstadt/ukp/wikipedia/api/MetaData_ArrowTest.java",
+        "generated_test_fqn": "de.tudarmstadt.ukp.wikipedia.api.MetaData_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "de.tudarmstadt.ukp.wikipedia.api.MetaData",
+        "simple_name": "MetaData",
+        "package": "de.tudarmstadt.ukp.wikipedia.api",
+        "kind": "class",
+        "source_sha256": "c52722427deacd4632e24de3da55816a7833cecbb2e37722b924f3d98de5e9aa"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "de.tudarmstadt.ukp.wikipedia.api",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "de.tudarmstadt.ukp.wikipedia.api",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryDescendantsIteratorTest#test_categoryIteratorTest",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryDescendantsIteratorTest#test_categoryIteratorTestBufferSize",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryGraphTest#testDepth",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryGraphTest#testGetPathLength",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryGraphTest#testHyponymCountMap",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryIteratorTest#test_categoryIteratorTest",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryIteratorTest#test_categoryIteratorTestBufferSize",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryChildren",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryDescendants",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryPageId",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryPages",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryParents",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategorySiblings",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryTitleComparatorEquality",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCategoryTitleComparatorNewOrder",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByName",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByNameEmpty",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByNameNull",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByNameRandom",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByObjectID",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByObjectIDInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByPageID",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testCreateCategoryByPageIDInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testGetCategoryInfo",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testNumberOfCategoryChildren",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testNumberOfCategoryPages",
+        "de.tudarmstadt.ukp.wikipedia.api.CategoryTest#testNumberOfCategoryParents",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetDisambiguationCategory",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetLanguage",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetMainCategory",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetNumberOfCategories",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetNumberOfDisambiguationPages",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetNumberOfPages",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetNumberOfRedirectPages",
+        "de.tudarmstadt.ukp.wikipedia.api.MetaDataTest#testGetVersion",
+        "de.tudarmstadt.ukp.wikipedia.api.PageIteratorTest#test_pageIteratorTest",
+        "de.tudarmstadt.ukp.wikipedia.api.PageIteratorTest#test_pageIteratorTestBufferSize",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCategoryTitleComparatorNewOrder",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByName",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByNameEmpty",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByNameExactDiscussion",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByNameNull",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByObjectID",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByObjectIDInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByPageID",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testCreatePageByPageIDInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetCategories",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetInlinkIDs",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetInlinks",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetNumberOfCategories",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetNumberOfInlinks",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetNumberOfInlinksZero",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetNumberOfOutlinks",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetNumberOfOutlinksZero",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetOutlinkIDs",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetOutlinks",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetPageInfo",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetRedirects",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetText",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testGetTitleExact",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testIsDisambiguation",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testIsDiscussion",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testIsRedirect",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testIsRedirectValid",
+        "de.tudarmstadt.ukp.wikipedia.api.PageTest#testPageTitleComparatorEquality",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleIteratorTest#test_titleIteratorTest",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest1",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest2",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest3",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest4",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest5",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest6",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest7",
+        "de.tudarmstadt.ukp.wikipedia.api.TitleTest#titleTest8",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testExistsPageByID",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testExistsPageByIDInvalid1",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testExistsPageByIDInvalid2",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testExistsPageByTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testExistsPageByTitleInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testExistsPageByTitleNullOrEmpty",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetCategoryInvalid1",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetCategoryInvalid2",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetLanguage",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageByExactTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageByExactTitleEmpty",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageByExactTitleNull",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageByID",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageByTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageByTitleVariations",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageHibernateId",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageHibernateIdInvalid1",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageHibernateIdInvalid2",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageIds",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageIdsByTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageIdsByTitleInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageIdsCaseInsensitive",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPageIdsCaseInsensitiveInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPagesByPageQuery",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetPagesByTitle",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetTitleByID",
+        "de.tudarmstadt.ukp.wikipedia.api.WikipediaTest#testGetTitleByIDInvalid",
+        "de.tudarmstadt.ukp.wikipedia.api.util.GraphSerializationTest#testGraphSerialization"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [
+        "de.tudarmstadt.ukp.wikipedia.api.WikiConfigTest#testGetWikiConf"
+      ],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 8.7,
+        "module_test": [
+          5.2,
+          5.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-010000-55tq/base",
+      "compiled_snapshot": "work/20261118-010000-55tq/snapshot-fe242966",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "de.tudarmstadt.ukp.wikipedia.api",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "de.tudarmstadt.ukp.wikipedia.api.MetaData",
+      "simple_name": "MetaData",
+      "package": "de.tudarmstadt.ukp.wikipedia.api",
+      "kind": "class",
+      "cut_path": "de.tudarmstadt.ukp.wikipedia.api/src/main/java/de/tudarmstadt/ukp/wikipedia/api/MetaData.java",
+      "source_sha256": "c52722427deacd4632e24de3da55816a7833cecbb2e37722b924f3d98de5e9aa",
+      "generated_test_path": "de.tudarmstadt.ukp.wikipedia.api/src/test/java/de/tudarmstadt/ukp/wikipedia/api/MetaData_ArrowTest.java",
+      "generated_test_fqn": "de.tudarmstadt.ukp.wikipedia.api.MetaData_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [
+      "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    ],
+    "timings": {
+      "checkout": 3.6,
+      "locate": 0.5,
+      "plan": 2,
+      "compile": 8.7,
+      "baseline": [
+        5.2,
+        5.3
+      ],
+      "total": 21.2
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

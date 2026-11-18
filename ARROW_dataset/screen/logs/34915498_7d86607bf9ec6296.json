@@ -1,0 +1,300 @@
+{
+  "run_id": "20261118-011319-cn0c",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-011319-cn0c",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 13
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 13
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "pie",
+        "url": "https://github.com/coverity/pie",
+        "git_commit": "2a0c53a68804519aa44f35d4f3c3ad37ba50631c",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "pie-csp",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.7",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 7,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "com.coverity.security.pie",
+            "artifact": "pie-core",
+            "version": "1.0-SNAPSHOT",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.servlet",
+            "artifact": "javax.servlet-api",
+            "version": "3.0.1",
+            "scope": "provided"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.testng",
+            "artifact": "testng",
+            "version": "6.8.8",
+            "scope": "test"
+          },
+          {
+            "group": "org.easymock",
+            "artifact": "easymock",
+            "version": "3.1",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 13
+      },
+      "test_framework": {
+        "name": "testng",
+        "version": "6.8.8",
+        "vintage": false,
+        "mocking": [
+          "org.easymock:easymock:3.1"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency org.testng:testng (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "pie-core",
+          "pie-sm",
+          "pie-csp",
+          "pie-maven-plugin"
+        ],
+        "target_module": "pie-csp",
+        "module_root": "pie-csp",
+        "packages": [
+          "com.coverity.security.pie.policy.csp",
+          "com.coverity.security.pie.policy.csp.fact"
+        ]
+      },
+      "paths": {
+        "source_root": "pie-csp/src/main/java",
+        "test_root": "pie-csp/src/test/java",
+        "cut_path": "pie-csp/src/main/java/com/coverity/security/pie/policy/csp/CspPolicy.java",
+        "generated_test_path": "pie-csp/src/test/java/com/coverity/security/pie/policy/csp/CspPolicy_ArrowTest.java",
+        "generated_test_fqn": "com.coverity.security.pie.policy.csp.CspPolicy_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.coverity.security.pie.policy.csp.CspPolicy",
+        "simple_name": "CspPolicy",
+        "package": "com.coverity.security.pie.policy.csp",
+        "kind": "class",
+        "source_sha256": "89236b739b65dd24c5d89ec124677c885e5f8b7301a271883348ba4d9d413eb7"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pie-csp",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "pie-csp",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.coverity.security.pie.core.PolicyTest#testEmptyPolicy",
+        "com.coverity.security.pie.core.PolicyTest#testParseFile",
+        "com.coverity.security.pie.policy.csp.CspPolicyTest#testApplyDefault",
+        "com.coverity.security.pie.policy.csp.CspPolicyTest#testCollapse",
+        "com.coverity.security.pie.policy.csp.CspPolicyTest#testDontCollapseToRoot",
+        "com.coverity.security.pie.policy.csp.CspPolicyTest#testGetPolicyForUri",
+        "com.coverity.security.pie.policy.csp.CspPolicyTest#testRootUri",
+        "com.coverity.security.pie.util.collapser.FilePathCollapserTest#testCollapseToRoot",
+        "com.coverity.security.pie.util.collapser.FilePathCollapserTest#testFilePathCollapser",
+        "com.coverity.security.pie.util.collapser.FilePathCollapserTest#testRemoveDuplicates",
+        "com.coverity.security.pie.util.collapser.FilePathCollapserTest#testRemoveRedundantPaths",
+        "com.coverity.security.pie.util.collapser.HostnameCollapserTest#testBasicCollapse",
+        "com.coverity.security.pie.util.collapser.HostnameCollapserTest#testCollapseNoneHostname",
+        "com.coverity.security.pie.util.collapser.HostnameCollapserTest#testCollapseQuotedHostnames",
+        "com.coverity.security.pie.util.collapser.HostnameCollapserTest#testRespectSchemeAndPort",
+        "com.coverity.security.pie.util.collapser.PropertyCollapserTest#testCollapseToRoot",
+        "com.coverity.security.pie.util.collapser.PropertyCollapserTest#testPropertyPermissionCollapser",
+        "com.coverity.security.pie.util.collapser.UriCspDirectiveCollapserTest#testBasicCollapse",
+        "com.coverity.security.pie.util.collapser.UriCspDirectiveCollapserTest#testDoNotCollapseToRoot"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 6.6,
+        "module_test": [
+          2.4,
+          2.8
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-011319-cn0c/base",
+      "compiled_snapshot": "work/20261118-011319-cn0c/snapshot-5051b479",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "pie-csp",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.coverity.security.pie.policy.csp.CspPolicy",
+      "simple_name": "CspPolicy",
+      "package": "com.coverity.security.pie.policy.csp",
+      "kind": "class",
+      "cut_path": "pie-csp/src/main/java/com/coverity/security/pie/policy/csp/CspPolicy.java",
+      "source_sha256": "89236b739b65dd24c5d89ec124677c885e5f8b7301a271883348ba4d9d413eb7",
+      "generated_test_path": "pie-csp/src/test/java/com/coverity/security/pie/policy/csp/CspPolicy_ArrowTest.java",
+      "generated_test_fqn": "com.coverity.security.pie.policy.csp.CspPolicy_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.6,
+      "locate": 0.1,
+      "plan": 1.1,
+      "compile": 6.6,
+      "baseline": [
+        2.4,
+        2.8
+      ],
+      "total": 13
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

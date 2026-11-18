@@ -1,0 +1,346 @@
+{
+  "run_id": "20261118-023919-bamp",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w2/runs/20261118-023919-bamp",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 34.9
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 34.9
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "javaAnchorAdapters",
+        "url": "https://github.com/viadee/javaAnchorAdapters",
+        "git_commit": "1bed6d270f53a8770697680732d2a8c1736bcb8d",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "DefaultConfigsExtension",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "net.imagej",
+            "artifact": "ij",
+            "version": "1.52e",
+            "scope": "compile"
+          },
+          {
+            "group": "org.imgscalr",
+            "artifact": "imgscalr-lib",
+            "version": "4.2",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-csv",
+            "version": "1.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.apache.commons",
+            "artifact": "commons-math3",
+            "version": "3.2",
+            "scope": "compile"
+          },
+          {
+            "group": "com.github.haifengl",
+            "artifact": "smile-core",
+            "version": "1.5.1",
+            "scope": "compile"
+          },
+          {
+            "group": "sc.fiji",
+            "artifact": "CMP_BIA",
+            "version": "0.3-SNAPSHOT",
+            "scope": "system"
+          },
+          {
+            "group": "de.viadee.xai.anchor",
+            "artifact": "algorithm",
+            "version": "1.0.0",
+            "scope": "compile"
+          },
+          {
+            "group": "commons-io",
+            "artifact": "commons-io",
+            "version": "2.6",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.16",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.junit.jupiter",
+            "artifact": "junit-jupiter-engine",
+            "version": "5.2.0",
+            "scope": "test"
+          },
+          {
+            "group": "org.mockito",
+            "artifact": "mockito-all",
+            "version": "1.9.5",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 20
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.2.0",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-all:1.9.5"
+        ],
+        "assertion_libs": [],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter-engine (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "SparkExtension",
+          "FastMPJExtension",
+          "ModelImportExtension",
+          "DefaultConfigsExtension",
+          "DefaultMLMethods"
+        ],
+        "target_module": "DefaultConfigsExtension",
+        "module_root": "DefaultConfigsExtension",
+        "packages": [
+          "de.viadee.xai.anchor.adapter.tabular.builder",
+          "de.viadee.xai.anchor.adapter",
+          "de.viadee.xai.anchor.adapter.tabular",
+          "de.viadee.xai.anchor.adapter.image",
+          "de.viadee.xai.anchor.adapter.tabular.column",
+          "de.viadee.xai.anchor.adapter.tabular.discretizer",
+          "de.viadee.xai.anchor.adapter.tabular.dmn",
+          "de.viadee.xai.anchor.adapter.tabular.transformations",
+          "de.viadee.xai.anchor.adapter.tabular.util",
+          "de.viadee.xai.anchor.adapter.text"
+        ]
+      },
+      "paths": {
+        "source_root": "DefaultConfigsExtension/src/main/java",
+        "test_root": "DefaultConfigsExtension/src/test/java",
+        "cut_path": "DefaultConfigsExtension/src/main/java/de/viadee/xai/anchor/adapter/tabular/builder/AnchorTabularBuilderByName.java",
+        "generated_test_path": "DefaultConfigsExtension/src/test/java/de/viadee/xai/anchor/adapter/tabular/builder/AnchorTabularBuilderByName_ArrowTest.java",
+        "generated_test_fqn": "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName",
+        "simple_name": "AnchorTabularBuilderByName",
+        "package": "de.viadee.xai.anchor.adapter.tabular.builder",
+        "kind": "class",
+        "source_sha256": "087489b3c635a41bafaa1a5baa30452786c426c05e51e1bc33486ee320ab1453"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "DefaultConfigsExtension",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "DefaultConfigsExtension",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "de.viadee.xai.anchor.adapter.tabular.StringToDoubleTransformerTest#testApply",
+        "de.viadee.xai.anchor.adapter.tabular.StringToIntTransformerTest#testApply",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByIdTest#testAddTwoColumns",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByIdTest#testAddTwoColumnsAndTarget",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByIdTest#testAddsIgnoredColumnsAutomatically",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByIdTest#testFailsOnNoColumnsAdded",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByNameTest#testAddAllDifferentOrdering",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByNameTest#testAddDuplicateColumnName",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByNameTest#testAddInvalidColumnName",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByNameTest#testAddOneColumn",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByNameTest#testFailsOnNoColumnsAdded",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderSequentialTest#testAddOne",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderSequentialTest#testAllIgnoredFails",
+        "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderSequentialTest#testInsufficientAddColumns"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 22.8,
+        "module_test": [
+          5.7,
+          2.3
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-023919-bamp/base",
+      "compiled_snapshot": "work/20261118-023919-bamp/snapshot-74eea220",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "DefaultConfigsExtension",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName",
+      "simple_name": "AnchorTabularBuilderByName",
+      "package": "de.viadee.xai.anchor.adapter.tabular.builder",
+      "kind": "class",
+      "cut_path": "DefaultConfigsExtension/src/main/java/de/viadee/xai/anchor/adapter/tabular/builder/AnchorTabularBuilderByName.java",
+      "source_sha256": "087489b3c635a41bafaa1a5baa30452786c426c05e51e1bc33486ee320ab1453",
+      "generated_test_path": "DefaultConfigsExtension/src/test/java/de/viadee/xai/anchor/adapter/tabular/builder/AnchorTabularBuilderByName_ArrowTest.java",
+      "generated_test_fqn": "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.5,
+      "locate": 0.1,
+      "plan": 4.1,
+      "compile": 22.8,
+      "baseline": [
+        5.7,
+        2.3
+      ],
+      "total": 34.9
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

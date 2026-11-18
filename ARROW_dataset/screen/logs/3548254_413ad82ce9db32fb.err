@@ -1,0 +1,8 @@
+[>] Tải https://github.com/thinkaurelius/titan
+[>] Liệt kê class
+[>] Build root . (reactor)
+[>] Biên dịch với JDK 8
+[>] Baseline lần 1/2
+[X] B1_BASELINE_TIMEOUT: Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).
+[X] B1_BASELINE_TIMEOUT · Build hoặc chạy test của project quá thời gian cho phép (đã thử 3 lần).
+  → Cách sửa: Tăng verification.step_timeout_seconds.

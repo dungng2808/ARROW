@@ -42,11 +42,25 @@ Mỗi lớp ra `PASS`, `EXCLUDED` (loại) hoặc `ERROR` (lỗi phía mình, ch
 - Classes2Test: lấy lớp dự phòng thay vào.
 - CAT-LM và GitBug-Java: không có repo dự phòng, nên mất lớp đó.
 
-**4. Lưu danh sách cuối cùng và commit** trước khi gọi mô hình lần đầu:
+**4. Ra danh sách cuối cùng bằng `finalize.py`, rồi commit** trước khi gọi mô hình lần đầu:
 
 ```bash
-shasum -a 256 <các file danh sách cuối cùng> > SHA256SUMS.txt
-git add ARROW_dataset && git commit
+python3 finalize.py
+```
+
+- Lớp PASS thì giữ; lớp bị loại hoặc còn ERROR sau các lượt chạy lại thì bỏ.
+- Classes2Test (tập đánh giá và pilot): lớp bị bỏ được thay bằng lớp PASS kế tiếp trong tập dự phòng, theo đúng thứ tự file.
+- CAT-LM và GitBug-Java: không thay (baseline chạy cả module nên lớp cùng repo hỏng y như nhau).
+
+Kết quả ở `final/`: `classes2test_eval` 200, `classes2test_pilot` 50, `catlm_eval` 36, `gitbug_java_eval` 32 (mỗi cái một `.jsonl` làm manifest và một `.csv`), `excluded.csv` (lớp bị loại và lý do), `SHA256SUMS.txt`.
+
+## Môi trường
+
+Khi screen (17–18/11/2026), Maven Central và JCenter trả lỗi `429 Too Many Requests`, nên Maven và Gradle được cấu hình tải Maven Central qua bản sao của Google (nội dung giống hệt). Hai file cấu hình nằm ở `env/`; **mọi máy chạy screen hoặc thực nghiệm phải dùng chúng**:
+
+```bash
+cp env/settings.xml ~/.m2/settings.xml
+mkdir -p ~/.gradle/init.d && cp env/google-mirror.gradle ~/.gradle/init.d/
 ```
 
 ## Lưu ý

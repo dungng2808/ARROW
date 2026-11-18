@@ -1,0 +1,298 @@
+{
+  "run_id": "20261118-002212-8ejo",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w3/runs/20261118-002212-8ejo",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 27.8
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 27.8
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "spring-reactive-mongo-crud",
+        "url": "https://github.com/Java-Techie-jt/spring-reactive-mongo-crud",
+        "git_commit": "8072e8b38cf5d956011d44d64adcaaf7a0c66706",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "standalone",
+        "build_file": "pom.xml",
+        "reactor_module": null,
+        "build_root_source": "detected:standalone",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven.compiler.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-data-mongodb-reactive",
+            "version": "2.4.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-webflux",
+            "version": "2.4.5",
+            "scope": "compile"
+          },
+          {
+            "group": "org.projectlombok",
+            "artifact": "lombok",
+            "version": "1.18.20",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.springframework.boot",
+            "artifact": "spring-boot-starter-test",
+            "version": "2.4.5",
+            "scope": "test"
+          },
+          {
+            "group": "de.flapdoodle.embed",
+            "artifact": "de.flapdoodle.embed.mongo",
+            "version": "2.2.0",
+            "scope": "test"
+          },
+          {
+            "group": "io.projectreactor",
+            "artifact": "reactor-test",
+            "version": "3.4.5",
+            "scope": "test"
+          },
+          {
+            "group": "junit",
+            "artifact": "junit",
+            "version": "4.13.2",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 93
+      },
+      "test_framework": {
+        "name": "junit5",
+        "version": "5.7.1",
+        "vintage": false,
+        "mocking": [
+          "org.mockito:mockito-core:3.6.28",
+          "org.mockito:mockito-junit-jupiter:3.6.28"
+        ],
+        "assertion_libs": [
+          "org.assertj:assertj-core:3.18.1",
+          "org.hamcrest:hamcrest:2.2"
+        ],
+        "evidence": "dependency org.junit.jupiter:junit-jupiter (test); imports 1 org.junit.jupiter, 1 org.junit, 0 org.testng"
+      },
+      "project_structure": {
+        "multi_module": false,
+        "modules": [],
+        "target_module": ".",
+        "module_root": ".",
+        "packages": [
+          "com.javatechie.reactive",
+          "com.javatechie.reactive.controller",
+          "com.javatechie.reactive.dto",
+          "com.javatechie.reactive.entity",
+          "com.javatechie.reactive.repository",
+          "com.javatechie.reactive.service",
+          "com.javatechie.reactive.utils"
+        ]
+      },
+      "paths": {
+        "source_root": "src/main/java",
+        "test_root": "src/test/java",
+        "cut_path": "src/main/java/com/javatechie/reactive/SpringReactiveMongoCrudApplication.java",
+        "generated_test_path": "src/test/java/com/javatechie/reactive/SpringReactiveMongoCrudApplication_ArrowTest.java",
+        "generated_test_fqn": "com.javatechie.reactive.SpringReactiveMongoCrudApplication_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "com.javatechie.reactive.SpringReactiveMongoCrudApplication",
+        "simple_name": "SpringReactiveMongoCrudApplication",
+        "package": "com.javatechie.reactive",
+        "kind": "class",
+        "source_sha256": "01416920299be563ec0d04f204ff2e6f163b3ef8b78a8836edfe908409bc1825"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "com.javatechie.reactive.SpringReactiveMongoCrudApplicationTests#addProductTest",
+        "com.javatechie.reactive.SpringReactiveMongoCrudApplicationTests#deleteProductTest",
+        "com.javatechie.reactive.SpringReactiveMongoCrudApplicationTests#getProductTest",
+        "com.javatechie.reactive.SpringReactiveMongoCrudApplicationTests#getProductsTest",
+        "com.javatechie.reactive.SpringReactiveMongoCrudApplicationTests#updateProductTest"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 15.1,
+        "module_test": [
+          4.4,
+          5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-002212-8ejo/base",
+      "compiled_snapshot": "work/20261118-002212-8ejo/snapshot-cdb4ee2a",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "standalone",
+      "build_root_source": "detected:standalone",
+      "maven_module_selector": [],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "com.javatechie.reactive.SpringReactiveMongoCrudApplication",
+      "simple_name": "SpringReactiveMongoCrudApplication",
+      "package": "com.javatechie.reactive",
+      "kind": "class",
+      "cut_path": "src/main/java/com/javatechie/reactive/SpringReactiveMongoCrudApplication.java",
+      "source_sha256": "01416920299be563ec0d04f204ff2e6f163b3ef8b78a8836edfe908409bc1825",
+      "generated_test_path": "src/test/java/com/javatechie/reactive/SpringReactiveMongoCrudApplication_ArrowTest.java",
+      "generated_test_fqn": "com.javatechie.reactive.SpringReactiveMongoCrudApplication_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 1.3,
+      "locate": 0.1,
+      "plan": 3.3,
+      "compile": 15.1,
+      "baseline": [
+        4.4,
+        5
+      ],
+      "total": 27.8
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}

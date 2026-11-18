@@ -1,0 +1,415 @@
+{
+  "run_id": "20261118-024611-9ahj",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_dataset/screen/homes/w1/runs/20261118-024611-9ahj",
+  "outcome": {
+    "outcome": "OK",
+    "code": null,
+    "message": null,
+    "hint": null,
+    "first_error": null,
+    "log": null,
+    "seconds": 35
+  },
+  "analysis": {
+    "outcome": {
+      "outcome": "OK",
+      "code": null,
+      "message": null,
+      "hint": null,
+      "first_error": null,
+      "log": null,
+      "seconds": 35
+    },
+    "metadata": {
+      "source": {
+        "kind": "git",
+        "path_name": "milo",
+        "url": "https://github.com/eclipse/milo",
+        "git_commit": "5ed4edad57be181b3b0d08fb124e252cf2decc56",
+        "dirty": null
+      },
+      "build_tool": {
+        "kind": "maven",
+        "version": "3.9.16",
+        "wrapper": false,
+        "wrapper_fallback": false,
+        "build_root": ".",
+        "build_mode": "reactor",
+        "build_file": "pom.xml",
+        "reactor_module": "opc-ua-stack/stack-core",
+        "build_root_source": "detected:reactor",
+        "test_includes": [
+          "**/Test*.java",
+          "**/*Test.java",
+          "**/*Tests.java",
+          "**/*TestCase.java"
+        ],
+        "test_excludes": []
+      },
+      "java": {
+        "declared": "1.8",
+        "declared_source": "maven-compiler-plugin.source",
+        "major": 8,
+        "jdk_major": 8,
+        "jdk_choice_reason": "declared"
+      },
+      "dependencies": {
+        "direct": [
+          {
+            "group": "org.bouncycastle",
+            "artifact": "bcprov-jdk15on",
+            "version": "1.61",
+            "scope": "compile"
+          },
+          {
+            "group": "org.bouncycastle",
+            "artifact": "bcpkix-jdk15on",
+            "version": "1.61",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.guava",
+            "artifact": "guava",
+            "version": "26.0-jre",
+            "scope": "compile"
+          },
+          {
+            "group": "com.google.code.findbugs",
+            "artifact": "jsr305",
+            "version": "3.0.2",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-codec",
+            "version": "4.1.34.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "io.netty",
+            "artifact": "netty-handler",
+            "version": "4.1.34.Final",
+            "scope": "compile"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-api",
+            "version": "1.7.25",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.activation",
+            "artifact": "activation",
+            "version": "1.1.1",
+            "scope": "compile"
+          },
+          {
+            "group": "javax.xml.bind",
+            "artifact": "jaxb-api",
+            "version": "2.3.1",
+            "scope": "compile"
+          },
+          {
+            "group": "org.glassfish.jaxb",
+            "artifact": "jaxb-runtime",
+            "version": "2.3.1",
+            "scope": "compile"
+          }
+        ],
+        "test": [
+          {
+            "group": "org.testng",
+            "artifact": "testng",
+            "version": "6.9.10",
+            "scope": "test"
+          },
+          {
+            "group": "org.slf4j",
+            "artifact": "slf4j-simple",
+            "version": "1.7.25",
+            "scope": "test"
+          }
+        ],
+        "resolved_count": 23
+      },
+      "test_framework": {
+        "name": "testng",
+        "version": "6.9.10",
+        "vintage": false,
+        "mocking": [],
+        "assertion_libs": [],
+        "evidence": "dependency org.testng:testng (test)"
+      },
+      "project_structure": {
+        "multi_module": true,
+        "modules": [
+          "build-tools",
+          "milo-examples",
+          "opc-ua-stack",
+          "opc-ua-sdk",
+          "milo-examples/client-examples",
+          "milo-examples/server-examples",
+          "opc-ua-stack/bsd-parser",
+          "opc-ua-stack/stack-client",
+          "opc-ua-stack/stack-core",
+          "opc-ua-stack/stack-server",
+          "opc-ua-stack/stack-tests",
+          "opc-ua-sdk/sdk-client",
+          "opc-ua-sdk/sdk-core",
+          "opc-ua-sdk/sdk-server",
+          "opc-ua-sdk/sdk-tests",
+          "opc-ua-stack/bsd-parser/bsd-parser-core",
+          "opc-ua-stack/bsd-parser/bsd-parser-gson"
+        ],
+        "target_module": "opc-ua-stack/stack-core",
+        "module_root": "opc-ua-stack/stack-core",
+        "packages": [
+          "org.eclipse.milo.opcua.stack.core.types.builtin",
+          "org.eclipse.milo.opcua.stack.core",
+          "org.eclipse.milo.opcua.stack.core.types",
+          "org.eclipse.milo.opcua.stack.core.types.builtin.unsigned",
+          "org.eclipse.milo.opcua.stack.core.channel",
+          "org.eclipse.milo.opcua.stack.core.channel.headers",
+          "org.eclipse.milo.opcua.stack.core.channel.messages",
+          "org.eclipse.milo.opcua.stack.core.security",
+          "org.eclipse.milo.opcua.stack.core.serialization",
+          "org.eclipse.milo.opcua.stack.core.serialization.codecs",
+          "org.eclipse.milo.opcua.stack.core.transport",
+          "org.eclipse.milo.opcua.stack.core.types.enumerated",
+          "org.eclipse.milo.opcua.stack.core.types.structured",
+          "org.eclipse.milo.opcua.stack.core.util",
+          "org.eclipse.milo.opcua.stack.core.util.annotations"
+        ]
+      },
+      "paths": {
+        "source_root": "opc-ua-stack/stack-core/src/main/java",
+        "test_root": "opc-ua-stack/stack-core/src/test/java",
+        "cut_path": "opc-ua-stack/stack-core/src/main/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime.java",
+        "generated_test_path": "opc-ua-stack/stack-core/src/test/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime_ArrowTest.java",
+        "generated_test_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime_ArrowTest",
+        "name_index": 1,
+        "name_matches_test_includes": true
+      },
+      "cut": {
+        "fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime",
+        "simple_name": "DateTime",
+        "package": "org.eclipse.milo.opcua.stack.core.types.builtin",
+        "kind": "class",
+        "source_sha256": "e166cac438bf967d6f4d17a81ebbf6b406ad739c8cd75cb6a368582006f20b2d"
+      },
+      "missing_reasons": {}
+    },
+    "baseline": {
+      "runs": 2,
+      "commands": {
+        "compile": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "opc-ua-stack/stack-core",
+          "-am",
+          "-DskipTests",
+          "test-compile",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:list",
+          "-DincludeScope=test",
+          "-DoutputAbsoluteArtifactFilename=true",
+          "-DoutputFile=arrow-deps.txt",
+          "-DappendOutput=false",
+          "org.apache.maven.plugins:maven-dependency-plugin:3.8.1:build-classpath",
+          "-Dmdep.includeScope=test",
+          "-Dmdep.outputFile=arrow-cp.txt"
+        ],
+        "module_test": [
+          "mvn",
+          "-f",
+          "pom.xml",
+          "-B",
+          "-ntp",
+          "-Dstyle.color=never",
+          "-Dcheckstyle.skip=true",
+          "-Dspotless.check.skip=true",
+          "-Dspotless.apply.skip=true",
+          "-Dspotless.skip=true",
+          "-Dformatter.skip=true",
+          "-Dimpsort.skip=true",
+          "-Dlicense.skip=true",
+          "-Drat.skip=true",
+          "-Djacoco.skip=true",
+          "-Dpmd.skip=true",
+          "-Dcpd.skip=true",
+          "-Dspotbugs.skip=true",
+          "-Denforcer.skip=true",
+          "-Dmaven.javadoc.skip=true",
+          "-Dgpg.skip=true",
+          "-pl",
+          "opc-ua-stack/stack-core",
+          "-am",
+          "-DfailIfNoTests=false",
+          "-Dsurefire.failIfNoSpecifiedTests=false",
+          "-Dmaven.test.failure.ignore=true",
+          "test"
+        ]
+      },
+      "working_dir": ".",
+      "passing_in_all_runs": [
+        "org.eclipse.milo.opcua.stack.SequenceHeaderTest#testSerialization",
+        "org.eclipse.milo.opcua.stack.SymmetricSecurityHeaderTest#testSerialization",
+        "org.eclipse.milo.opcua.stack.core.AttributeIdTest#testFrom",
+        "org.eclipse.milo.opcua.stack.core.security.DefaultCertificateManagerTest#testNullPrivateKeyOrCertificateFails",
+        "org.eclipse.milo.opcua.stack.core.security.DefaultTrustListManagerTest#testPruneRejectedCertificateDir",
+        "org.eclipse.milo.opcua.stack.core.serialization.OpcUaBinaryStreamDecoderTest#testReadDiagnosticInfoStackOverflow",
+        "org.eclipse.milo.opcua.stack.core.serialization.OpcUaBinaryStreamDecoderTest#testReadVariantStackOverflow",
+        "org.eclipse.milo.opcua.stack.core.serialization.OpcUaBinaryStreamDecoderTest#testReadVariantStackOverflow2",
+        "org.eclipse.milo.opcua.stack.core.serialization.OpcUaXmlStreamDecoderTest#testReadVariantValue",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.BinaryDecoderTest#testDecodeNullArray",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.DataValueSerializationTest#testDataValueRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.DiagnosticInfoSerializationTest#testDiagnosticInfoRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.ExpandedNodeIdSerializationTest#testExpandedNodeIdRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.ExtensionObjectSerializationTest#testExtensionObjectRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.GuidSerializationTest#testGuidRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.LocalizedTextSerializationTest#testLocalizedText",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.NodeIdSerializationTest#testNodeIdRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.OpcUaBinaryStreamEncoderTest#testWriteBit",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.StringSerializationTest#testStringRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.VariantSerializationTest#testNullArrayEncodedWithNegativeArraySize",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.VariantSerializationTest#testPrimitiveArrayVariantRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.VariantSerializationTest#testVariantRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.VariantSerializationTest#testVariant_UaStructure",
+        "org.eclipse.milo.opcua.stack.core.serialization.binary.XmlElementSerializationTest#testXmlElementRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.types.BuiltinDataTypeDictionaryInitializerTest#testInitialize",
+        "org.eclipse.milo.opcua.stack.core.types.BuiltinDataTypeDictionaryTest#testGetBuiltinCodec",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.DateTimeTest#getJavaInstant",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.ExpandedNodeIdTest#testLocal",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.NodeIdTest#testParseLargerThanIntMax",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedNameTest#testToStringAndBack1",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.QualifiedNameTest#testToStringAndBack2",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.VariantTest#testVariantCanContainVariantArray",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.VariantTest#variantCannotContainDataValue",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.VariantTest#variantCannotContainDiagnosticInfo",
+        "org.eclipse.milo.opcua.stack.core.types.builtin.VariantTest#variantCannotContainVariant",
+        "org.eclipse.milo.opcua.stack.core.util.ArrayUtilTest#testFlatten",
+        "org.eclipse.milo.opcua.stack.core.util.ArrayUtilTest#testGetDimensions",
+        "org.eclipse.milo.opcua.stack.core.util.ArrayUtilTest#testGetType",
+        "org.eclipse.milo.opcua.stack.core.util.ArrayUtilTest#testRoundTrip",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateUtilTest#testGenerateCsr",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateUtilTest#testGenerateCsrPem",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateUtilTest#testGetSanDnsNames",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateUtilTest#testGetSanIpAddresses",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateUtilTest#testGetSanUri",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateUtilTest#testGetSubjectAltNameField",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_IntermediateIssuer",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_IssuerRevoked",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_LeafIntermediateSigned",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_LeafIntermediateSigned_Revoked",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_LeafSelfSigned",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_LeafSelfSigned_NotTrusted",
+        "org.eclipse.milo.opcua.stack.core.util.CertificateValidationUtilTest#testVerifyTrustChain_NoTrusted_NoIssuers",
+        "org.eclipse.milo.opcua.stack.core.util.EndpointUtilTest#testGetPath",
+        "org.eclipse.milo.opcua.stack.core.util.EndpointUtilTest#testGetPath_EmptyAndSlash",
+        "org.eclipse.milo.opcua.stack.core.util.EndpointUtilTest#testGetPath_Invalid",
+        "org.eclipse.milo.opcua.stack.core.util.EndpointUtilTest#testReplaceUrlHostname",
+        "org.eclipse.milo.opcua.stack.core.util.EndpointUtilTest#testReplaceUrlPort",
+        "org.eclipse.milo.opcua.stack.core.util.ExecutionQueueTest#testSubmitIsLinearWhenConcurrencyIs1",
+        "org.eclipse.milo.opcua.stack.core.util.ExecutionQueueTest#testWithConcurrency",
+        "org.eclipse.milo.opcua.stack.core.util.LazyTest#lazyOnlyComputesOnce",
+        "org.eclipse.milo.opcua.stack.core.util.LazyTest#lazyRetainsNonNullValue",
+        "org.eclipse.milo.opcua.stack.core.util.LazyTest#lazyRetainsNullValue"
+      ],
+      "flaky": [],
+      "failing_in_all_runs": [],
+      "durations_seconds": {
+        "copy": 0,
+        "compile": 16,
+        "module_test": [
+          10.2,
+          7.5
+        ]
+      }
+    },
+    "workspace": {
+      "base": "work/20261118-024611-9ahj/base",
+      "compiled_snapshot": "work/20261118-024611-9ahj/snapshot-4e0ca4c6",
+      "source_tree_hash": null,
+      "jdk_major": 8,
+      "jdk_home": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/Java-version/runtime/jdk-8/Contents/Home",
+      "build_tool": "maven",
+      "executable": "/opt/homebrew/bin/mvn",
+      "executable_in_repo": false,
+      "build_root": ".",
+      "build_mode": "reactor",
+      "build_root_source": "detected:reactor",
+      "maven_module_selector": [
+        "-pl",
+        "opc-ua-stack/stack-core",
+        "-am"
+      ],
+      "gradle_project": null,
+      "common_flags": [
+        "-B",
+        "-ntp",
+        "-Dstyle.color=never",
+        "-Dcheckstyle.skip=true",
+        "-Dspotless.check.skip=true",
+        "-Dspotless.apply.skip=true",
+        "-Dspotless.skip=true",
+        "-Dformatter.skip=true",
+        "-Dimpsort.skip=true",
+        "-Dlicense.skip=true",
+        "-Drat.skip=true",
+        "-Djacoco.skip=true",
+        "-Dpmd.skip=true",
+        "-Dcpd.skip=true",
+        "-Dspotbugs.skip=true",
+        "-Denforcer.skip=true",
+        "-Dmaven.javadoc.skip=true",
+        "-Dgpg.skip=true"
+      ],
+      "init_scripts": []
+    },
+    "cut": {
+      "fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime",
+      "simple_name": "DateTime",
+      "package": "org.eclipse.milo.opcua.stack.core.types.builtin",
+      "kind": "class",
+      "cut_path": "opc-ua-stack/stack-core/src/main/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime.java",
+      "source_sha256": "e166cac438bf967d6f4d17a81ebbf6b406ad739c8cd75cb6a368582006f20b2d",
+      "generated_test_path": "opc-ua-stack/stack-core/src/test/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime_ArrowTest.java",
+      "generated_test_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime_ArrowTest",
+      "name_index": 1
+    },
+    "warnings": [],
+    "timings": {
+      "checkout": 2.5,
+      "locate": 1.6,
+      "plan": 1.2,
+      "compile": 16,
+      "baseline": [
+        10.2,
+        7.5
+      ],
+      "total": 35
+    },
+    "shared_from": null
+  },
+  "suggestions": [],
+  "warnings": []
+}
