@@ -1,0 +1,5 @@
+ARROW · LatexContext (de.vsfexperts.latex.template)
+[OK] Khối 1  Maven 3.9.9 · build root latex-template · JDK 11 · JUnit 4 + Mockito · baseline 0 test ×2 · 107.7 s
+[OK] Khối 2  c0 · 1.7k token · 2.2 s · Candidate hợp lệ: 6 test, 10 assertion
+[>] Khối 3  c0: RUNTIME · maven-surefire-plugin | -
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

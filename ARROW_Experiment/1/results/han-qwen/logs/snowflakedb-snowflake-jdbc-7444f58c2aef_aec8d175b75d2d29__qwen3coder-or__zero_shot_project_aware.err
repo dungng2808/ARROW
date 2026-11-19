@@ -1,0 +1,5 @@
+ARROW · SFClientConfigParser (net.snowflake.client.config)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 445 test ×2 · 132.5 s
+[OK] Khối 2  c0 · 3.4k token · 3.3 s · Candidate hợp lệ: 4 test, 10 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · GwtMockito (com.google.gwtmockito)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 77 test (dùng lại, đo 20-11 00:53) · 11.9 s
+[OK] Khối 2  c0 · 7.5k token · 5.6 s · Candidate hợp lệ: 11 test, 21 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · Order (example.complex)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 17 · JUnit 5 · baseline 7 test (dùng lại, đo 20-11 01:34) · 9.3 s
+[OK] Khối 2  c0 · 4.1k token · 3.8 s · Candidate hợp lệ: 10 test, 14 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

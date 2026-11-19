@@ -1,0 +1,5 @@
+ARROW · Properlty (com.ufoscout.properlty)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 106 test (dùng lại, đo 20-11 00:41) · 11.9 s
+[X] Khối 2  c0 · 6.9k token · 7.8 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

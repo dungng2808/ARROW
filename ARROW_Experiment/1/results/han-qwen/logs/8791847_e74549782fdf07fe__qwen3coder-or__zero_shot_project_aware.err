@@ -1,0 +1,5 @@
+ARROW · Automata (net.automatalib.util.automata)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · TestNG · baseline 707 test (dùng lại, đo 20-11 01:10) · 65.2 s
+[OK] Khối 2  c0 · 7.7k token · 4.2 s · Candidate hợp lệ: 26 test, 0 assertion
+[>] Khối 3  c0: REGRESSION · existing tests fail | ModalConjunctionTest
+[X] Khối 3  Kết thúc: REGRESSION (không sửa)

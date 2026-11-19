@@ -1,0 +1,5 @@
+ARROW · FunctionMessageHandler (step.functions.handler)
+[OK] Khối 1  Maven 3.9.9 · build root step-functions · JDK 11 · JUnit 4 · baseline 4 test (dùng lại, đo 20-11 01:11) · 19.9 s
+[OK] Khối 2  c0 · 4.2k token · 6.2 s · Candidate hợp lệ: 12 test, 17 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

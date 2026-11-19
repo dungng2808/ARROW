@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-005527-nm7s",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-005527-nm7s",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "brown.tracingplane.atomlayer.ByteBuffers",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "brown.tracingplane.atomlayer.ByteBuffers_ArrowTest",
+      "test_path": "atomlayer/core/src/test/java/brown/tracingplane/atomlayer/ByteBuffers_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1914,
+        "out": 907
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 13.2,
+        "block2": 3.5,
+        "block3": 40.8,
+        "block4": null,
+        "total": 57.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1914,
+    "tokens_out": 907,
+    "cost_usd": null
+  },
+  "warnings": []
+}

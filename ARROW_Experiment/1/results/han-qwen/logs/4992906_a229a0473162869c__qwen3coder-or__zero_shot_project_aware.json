@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-013025-mqmd",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w3\\runs\\20261120-013025-mqmd",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.sourceforge.pmd.lang.ast.SourceCodePositioner",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "net.sourceforge.pmd.lang.ast.SourceCodePositioner_ArrowTest",
+      "test_path": "pmd-core/src/test/java/net/sourceforge/pmd/lang/ast/SourceCodePositioner_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2151,
+        "out": 1354
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 69.9,
+        "block2": 4,
+        "block3": 69,
+        "block4": null,
+        "total": 143
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2151,
+    "tokens_out": 1354,
+    "cost_usd": null
+  },
+  "warnings": []
+}

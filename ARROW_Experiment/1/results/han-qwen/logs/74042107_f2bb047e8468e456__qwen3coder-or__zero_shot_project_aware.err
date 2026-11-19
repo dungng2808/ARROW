@@ -1,0 +1,5 @@
+ARROW · MixTank (edu.kit.pse.osip.core.model.base)
+[OK] Khối 1  Maven 3.9.9 · build root src · JDK 8 · JUnit 4 + Mockito · baseline 80 test (dùng lại, đo 20-11 01:21) · 12.9 s
+[OK] Khối 2  c0 · 2.0k token · 3.9 s · Candidate hợp lệ: 3 test, 6 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

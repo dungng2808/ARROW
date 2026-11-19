@@ -1,0 +1,5 @@
+ARROW · LZ78 ((default package))
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 3 test (dùng lại, đo 20-11 01:08) · 10.7 s
+[OK] Khối 2  c0 · 4.1k token · 2.4 s · Candidate hợp lệ: 7 test, 18 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,5 @@
+ARROW · UserFlagUtil (org.sunbird.learner.util)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 580 test ×2 · 1188.6 s
+[OK] Khối 2  c0 · 2.4k token · 2.6 s · Candidate hợp lệ: 13 test, 31 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testGetFlagValue_StateValidatedTrue
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

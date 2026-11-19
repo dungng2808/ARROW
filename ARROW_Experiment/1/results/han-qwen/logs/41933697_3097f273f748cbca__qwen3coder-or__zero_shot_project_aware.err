@@ -1,0 +1,6 @@
+ARROW · ExchangeApiConfigBuilder (com.gazbert.bxbot.core.config.exchange)
+[OK] Khối 1  Maven 3.6.1 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 430 test (dùng lại, đo 20-11 00:37) · 53.4 s
+[!] gọi lại sau 20 s (lỗi mạng)
+[OK] Khối 2  c0 · 4.0k token · 3.3 s · Candidate hợp lệ: 6 test, 37 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

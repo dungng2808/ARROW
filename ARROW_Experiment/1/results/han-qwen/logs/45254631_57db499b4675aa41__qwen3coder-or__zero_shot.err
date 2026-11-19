@@ -1,0 +1,5 @@
+ARROW · EntityFacade (lv.ctco.cukes.ldap.facade)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 45 test ×2 · 85.4 s
+[OK] Khối 2  c0 · 8.0k token · 18.3 s · Candidate hợp lệ: 46 test, 36 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

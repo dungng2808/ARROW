@@ -1,0 +1,5 @@
+ARROW · SimpleRobotRulesParser (crawlercommons.robots)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 11 · JUnit 5 · baseline 382 test (dùng lại, đo 20-11 01:37) · 14.9 s
+[OK] Khối 2  c0 · 13.4k token · 5.8 s · Candidate hợp lệ: 23 test, 38 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

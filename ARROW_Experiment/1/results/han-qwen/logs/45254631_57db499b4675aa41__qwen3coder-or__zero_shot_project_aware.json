@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-012510-8ol6",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w4\\runs\\20261120-012510-8ol6",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "lv.ctco.cukes.ldap.facade.EntityFacade",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "lv.ctco.cukes.ldap.facade.EntityFacade_ArrowTest",
+      "test_path": "cukes-ldap/src/test/java/lv/ctco/cukes/ldap/facade/EntityFacade_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3063,
+        "out": 4315
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 13.9,
+        "block2": 10.4,
+        "block3": 12.5,
+        "block4": null,
+        "total": 36.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3063,
+    "tokens_out": 4315,
+    "cost_usd": null
+  },
+  "warnings": []
+}

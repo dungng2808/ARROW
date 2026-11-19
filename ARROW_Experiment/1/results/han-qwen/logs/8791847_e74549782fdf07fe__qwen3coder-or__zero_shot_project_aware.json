@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-011452-c0d7",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w3\\runs\\20261120-011452-c0d7",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.automatalib.util.automata.Automata",
+      "result": "REGRESSION",
+      "c0_state": "REGRESSION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "net.automatalib.util.automata.Automata_ArrowTest",
+      "test_path": "util/src/test/java/net/automatalib/util/automata/Automata_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6009,
+        "out": 1682
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 65.2,
+        "block2": 4.6,
+        "block3": 228.6,
+        "block4": null,
+        "total": 298.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 6009,
+    "tokens_out": 1682,
+    "cost_usd": null
+  },
+  "warnings": []
+}

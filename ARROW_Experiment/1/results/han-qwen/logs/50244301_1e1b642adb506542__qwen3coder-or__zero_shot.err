@@ -1,0 +1,5 @@
+ARROW · BaseSequenceManager (com.vladsch.flexmark.experimental.util.sequence.managed)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 121 test ×2 · 126.4 s
+[OK] Khối 2  c0 · 2.9k token · 2.9 s · Candidate hợp lệ: 6 test, 11 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testGetBaseSequenceWithCallTypes
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

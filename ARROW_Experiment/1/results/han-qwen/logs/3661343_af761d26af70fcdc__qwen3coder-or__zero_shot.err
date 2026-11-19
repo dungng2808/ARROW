@@ -1,0 +1,5 @@
+ARROW · HtmlUtil (org.xcolab.commons.html)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 11 · JUnit 4 · baseline 0 test ×2 · 185.1 s
+[OK] Khối 2  c0 · 3.4k token · 3.4 s · Candidate hợp lệ: 13 test, 13 assertion
+[>] Khối 3  c0: RUNTIME · maven-surefire-plugin | -
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

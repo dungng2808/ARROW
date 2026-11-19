@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-013200-ybx2",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-013200-ybx2",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication_ArrowTest",
+      "test_path": "src/test/java/com/codeforgeyt/onetomanywebservice/OneToManyWebServiceApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1449,
+        "out": 164
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.2,
+        "block2": 2,
+        "block3": 63.8,
+        "block4": null,
+        "total": 81.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1449,
+    "tokens_out": 164,
+    "cost_usd": null
+  },
+  "warnings": []
+}

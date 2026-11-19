@@ -1,0 +1,5 @@
+ARROW · ChangeableDecisionTree (org.swblocks.decisiontree)
+[OK] Khối 1  Gradle 3.2.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 151 test ×2 · 229.4 s
+[OK] Khối 2  c0 · 2.7k token · 2.7 s · Candidate hợp lệ: 4 test, 6 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

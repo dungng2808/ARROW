@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-005442-nji6",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w2\\runs\\20261120-005442-nji6",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.google.gwtmockito.GwtMockito",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.google.gwtmockito.GwtMockito_ArrowTest",
+      "test_path": "gwtmockito/src/test/java/com/google/gwtmockito/GwtMockito_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 4605,
+        "out": 1991
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.5,
+        "block2": 6.2,
+        "block3": 7.9,
+        "block4": null,
+        "total": 26.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 4605,
+    "tokens_out": 1991,
+    "cost_usd": null
+  },
+  "warnings": []
+}

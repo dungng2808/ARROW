@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-011740-zz9f",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-011740-zz9f",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.coverity.security.pie.policy.csp.CspPolicy",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.coverity.security.pie.policy.csp.CspPolicy_ArrowTest",
+      "test_path": "pie-csp/src/test/java/com/coverity/security/pie/policy/csp/CspPolicy_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1873,
+        "out": 1386
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 11.6,
+        "block2": 4.6,
+        "block3": 7.5,
+        "block4": null,
+        "total": 23.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1873,
+    "tokens_out": 1386,
+    "cost_usd": null
+  },
+  "warnings": []
+}

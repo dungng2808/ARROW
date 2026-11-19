@@ -1,0 +1,5 @@
+ARROW · FrameBodyTMOO (ealvatag.tag.id3.framebody)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1274 test (dùng lại, đo 20-11 01:10) · 32.6 s
+[OK] Khối 2  c0 · 3.5k token · 2.9 s · Candidate hợp lệ: 6 test, 6 assertion
+[>] Khối 3  c0: RUNTIME · IllegalStateException | NumberFixedLength.read
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

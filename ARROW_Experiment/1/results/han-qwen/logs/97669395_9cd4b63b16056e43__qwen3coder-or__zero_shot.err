@@ -1,0 +1,5 @@
+ARROW · JavaParamFilter (ca.derekcormier.recipe.generator.filter)
+[OK] Khối 1  Maven 3.9.9 · build root recipe-generator · JDK 8 · JUnit 4 + Mockito · baseline 163 test ×2 · 112.3 s
+[OK] Khối 2  c0 · 1.7k token · 2.0 s · Candidate hợp lệ: 2 test, 2 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

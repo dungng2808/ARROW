@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-002932-koov",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w4\\runs\\20261120-002932-koov",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.zalando.stups.oauth2.spring.server.TokenInfoResourceServerTokenServices",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.zalando.stups.oauth2.spring.server.TokenInfoResourceServerTokenServices_ArrowTest",
+      "test_path": "stups-spring-oauth2-server/src/test/java/org/zalando/stups/oauth2/spring/server/TokenInfoResourceServerTokenServices_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2925,
+        "out": 1331
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 14.2,
+        "block2": 4.5,
+        "block3": 10.2,
+        "block4": null,
+        "total": 29
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2925,
+    "tokens_out": 1331,
+    "cost_usd": null
+  },
+  "warnings": []
+}

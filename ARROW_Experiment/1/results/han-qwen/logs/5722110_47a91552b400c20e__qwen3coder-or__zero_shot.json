@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-002504-11rp",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-002504-11rp",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jtransfo.ReadOnlyDomainAutomaticSetTypeConverter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.jtransfo.ReadOnlyDomainAutomaticSetTypeConverter_ArrowTest",
+      "test_path": "core/src/test/java/org/jtransfo/ReadOnlyDomainAutomaticSetTypeConverter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1443,
+        "out": 313
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 72.7,
+        "block2": 2,
+        "block3": 6.6,
+        "block4": null,
+        "total": 81.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1443,
+    "tokens_out": 313,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

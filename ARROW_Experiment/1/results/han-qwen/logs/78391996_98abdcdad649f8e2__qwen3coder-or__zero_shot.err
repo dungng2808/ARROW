@@ -1,0 +1,5 @@
+ARROW · FrameBodyTMOO (ealvatag.tag.id3.framebody)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1274 test ×2 · 266.0 s
+[OK] Khối 2  c0 · 2.2k token · 3.7 s · Candidate hợp lệ: 6 test, 8 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | AbstractTagFrameBody.getObjectValue
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

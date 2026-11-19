@@ -1,0 +1,5 @@
+ARROW · QuickReplyButton (com.whatsapp.api.domain.templates)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 17 · JUnit 5 + Mockito · baseline 88 test (dùng lại, đo 20-11 01:42) · 13.9 s
+[OK] Khối 2  c0 · 1.7k token · 1.5 s · Candidate hợp lệ: 2 test, 3 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

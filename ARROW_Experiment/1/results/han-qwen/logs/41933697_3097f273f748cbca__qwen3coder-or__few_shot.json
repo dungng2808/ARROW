@@ -1,0 +1,52 @@
+{
+  "run_id": "20261120-003746-9hl5",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w2\\runs\\20261120-003746-9hl5",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.gazbert.bxbot.core.config.exchange.ExchangeApiConfigBuilder",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.gazbert.bxbot.core.config.exchange.ExchangeApiConfigBuilder_ArrowTest",
+      "test_path": "bxbot-core/src/test/java/com/gazbert/bxbot/core/config/exchange/ExchangeApiConfigBuilder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3437,
+        "out": 1263
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 51.2,
+        "block2": 4.8,
+        "block3": 37.3,
+        "block4": null,
+        "total": 93.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3437,
+    "tokens_out": 1263,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project.",
+    "bxbot-core có cả pom.xml và file Gradle; ARROW dùng Maven.",
+    "mvn test của project sẽ không tự chạy file này (mẫu tên test: **/Test*.java)."
+  ]
+}

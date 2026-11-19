@@ -1,0 +1,5 @@
+ARROW · ReadOnlyDomainAutomaticSetTypeConverter (org.jtransfo)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 281 test (dùng lại, đo 20-11 00:26) · 12.7 s
+[OK] Khối 2  c0 · 2.1k token · 2.0 s · Candidate hợp lệ: 4 test, 5 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

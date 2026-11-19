@@ -1,0 +1,5 @@
+ARROW · NativeClientList (com.github.thorbenkuck.netcom2.network.server)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 182 test ×2 · 90.7 s
+[OK] Khối 2  c0 · 3.1k token · 3.3 s · Candidate hợp lệ: 18 test, 25 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

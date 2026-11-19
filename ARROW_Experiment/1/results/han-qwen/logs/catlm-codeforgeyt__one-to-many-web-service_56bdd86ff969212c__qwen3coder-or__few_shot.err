@@ -1,0 +1,5 @@
+ARROW · OneToManyWebServiceApplication (com.codeforgeyt.onetomanywebservice)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 1 test (dùng lại, đo 20-11 01:31) · 15.0 s
+[OK] Khối 2  c0 · 2.7k token · 1.5 s · Candidate hợp lệ: 1 test, 0 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

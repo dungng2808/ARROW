@@ -1,0 +1,5 @@
+ARROW · JavaParamFilter (ca.derekcormier.recipe.generator.filter)
+[OK] Khối 1  Maven 3.9.9 · build root recipe-generator · JDK 8 · JUnit 4 + Mockito · baseline 163 test (dùng lại, đo 20-11 00:23) · 24.5 s
+[OK] Khối 2  c0 · 2.2k token · 15.7 s · Candidate hợp lệ: 4 test, 4 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

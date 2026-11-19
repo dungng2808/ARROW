@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-012158-npsh",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-012158-npsh",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.mastering.spring.springboot.controller.TodoController",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.mastering.spring.springboot.controller.TodoController_ArrowTest",
+      "test_path": "Chapter05/src/test/java/com/mastering/spring/springboot/controller/TodoController_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1391,
+        "out": 602
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 87.7,
+        "block2": 3.6,
+        "block3": 14.8,
+        "block4": null,
+        "total": 106.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1391,
+    "tokens_out": 602,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

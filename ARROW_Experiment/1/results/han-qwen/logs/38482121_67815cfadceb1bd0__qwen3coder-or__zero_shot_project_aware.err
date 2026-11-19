@@ -1,0 +1,5 @@
+ARROW · UserInfo (org.vx68k.bitbucket.webapp)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 5 · baseline 172 test (dùng lại, đo 20-11 01:06) · 19.7 s
+[OK] Khối 2  c0 · 3.0k token · 2.3 s · Candidate hợp lệ: 9 test, 17 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

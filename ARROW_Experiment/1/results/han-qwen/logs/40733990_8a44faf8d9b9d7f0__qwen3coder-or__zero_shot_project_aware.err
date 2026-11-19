@@ -1,0 +1,4 @@
+ARROW · CowsayTask (com.github.ricksbrown.cowsay.ant)
+[X] B1_DEPENDENCY_RESOLUTION: Thiếu artifact khi biên dịch module cowsay: [ERROR] Failed to execute goal on project cowsay: Could not resolve dependencies for project com.github.ricksbrown:cowsay:maven-plugin:1.1.1-SNAPSHOT
+[X] B1_DEPENDENCY_RESOLUTION · Thiếu artifact khi biên dịch module cowsay: [ERROR] Failed to execute goal on project cowsay: Could not resolve dependencies for project com.github.ricksbrown:cowsay:maven-plugin:1.1.1-SNAPSHOT
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

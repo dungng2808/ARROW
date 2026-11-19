@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-010043-vcal",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w4\\runs\\20261120-010043-vcal",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "vkaretko.Task_5_1.BubbleSort",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "vkaretko.Task_5_1.BubbleSort_ArrowTest",
+      "test_path": "part_1/lesson_5/src/test/java/vkaretko/Task_5_1/BubbleSort_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1537,
+        "out": 553
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 9.8,
+        "block2": 2.3,
+        "block3": 18.2,
+        "block4": null,
+        "total": 30.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1537,
+    "tokens_out": 553,
+    "cost_usd": null
+  },
+  "warnings": []
+}

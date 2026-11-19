@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-012955-xscf",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w4\\runs\\20261120-012955-xscf",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "nl.inl.blacklab.contentstore.ContentStoreDirZip",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "nl.inl.blacklab.contentstore.ContentStoreDirZip_ArrowTest",
+      "test_path": "core/src/test/java/nl/inl/blacklab/contentstore/ContentStoreDirZip_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2561,
+        "out": 956
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 38.9,
+        "block2": 4.2,
+        "block3": 16,
+        "block4": null,
+        "total": 59.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2561,
+    "tokens_out": 956,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 75 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

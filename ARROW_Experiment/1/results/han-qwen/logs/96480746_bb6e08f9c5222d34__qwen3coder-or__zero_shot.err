@@ -1,0 +1,5 @@
+ARROW · SimpleWordCodeCompletion (de.jcup.basheditor)
+[OK] Khối 1  Gradle 4.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 268 test ×2 · 89.8 s
+[OK] Khối 2  c0 · 3.1k token · 3.8 s · Candidate hợp lệ: 17 test, 30 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

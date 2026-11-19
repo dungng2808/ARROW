@@ -1,0 +1,5 @@
+ARROW · LtsCheckingResult (de.learnlib.alex.modelchecking.entities)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 397 test (dùng lại, đo 20-11 00:26) · 33.7 s
+[OK] Khối 2  c0 · 3.9k token · 16.3 s · Candidate hợp lệ: 5 test, 19 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

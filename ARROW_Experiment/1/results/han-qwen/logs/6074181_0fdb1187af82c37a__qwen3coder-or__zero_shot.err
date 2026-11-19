@@ -1,0 +1,5 @@
+ARROW · ContentStoreDirZip (nl.inl.blacklab.contentstore)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 228 test ×2 · 166.7 s
+[OK] Khối 2  c0 · 2.9k token · 2.8 s · Candidate hợp lệ: 6 test, 5 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

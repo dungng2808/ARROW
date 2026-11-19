@@ -1,0 +1,5 @@
+ARROW · MockNakadiPublishingClient (org.zalando.nakadiproducer.transmission)
+[OK] Khối 1  Maven 3.2.5 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 11 test (dùng lại, đo 20-11 01:26) · 20.1 s
+[OK] Khối 2  c0 · 3.1k token · 3.2 s · Candidate hợp lệ: 10 test, 18 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | MockNakadiPublishingClient.publish
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

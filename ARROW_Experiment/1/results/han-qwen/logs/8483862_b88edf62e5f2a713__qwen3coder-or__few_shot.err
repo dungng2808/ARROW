@@ -1,0 +1,5 @@
+ARROW · Record (org.metafacture.biblio.iso2709)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 312 test (dùng lại, đo 20-11 00:22) · 14.9 s
+[OK] Khối 2  c0 · 6.7k token · 54.3 s · Candidate hợp lệ: 7 test, 9 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · MXBeanPoller (software.amazon.swage.metrics.jmx)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 58 test ×2 · 73.6 s
+[OK] Khối 2  c0 · 3.4k token · 2.9 s · Candidate hợp lệ: 7 test, 11 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

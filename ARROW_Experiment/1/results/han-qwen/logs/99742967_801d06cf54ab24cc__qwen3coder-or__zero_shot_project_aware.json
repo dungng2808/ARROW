@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-005846-2og5",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w2\\runs\\20261120-005846-2og5",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "software.amazon.swage.metrics.jmx.MXBeanPoller",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "software.amazon.swage.metrics.jmx.MXBeanPoller_ArrowTest",
+      "test_path": "metrics-core/src/test/java/software/amazon/swage/metrics/jmx/MXBeanPoller_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2762,
+        "out": 854
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 16,
+        "block2": 3.8,
+        "block3": 8.4,
+        "block4": null,
+        "total": 28.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2762,
+    "tokens_out": 854,
+    "cost_usd": null
+  },
+  "warnings": []
+}

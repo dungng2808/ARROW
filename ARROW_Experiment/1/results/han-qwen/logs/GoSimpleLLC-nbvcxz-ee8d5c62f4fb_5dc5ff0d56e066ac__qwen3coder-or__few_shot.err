@@ -1,0 +1,5 @@
+ARROW · DictionaryMatcher (me.gosimple.nbvcxz.matching)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 30 test (dùng lại, đo 20-11 01:43) · 10.8 s
+[OK] Khối 2  c0 · 6.7k token · 3.7 s · Candidate hợp lệ: 10 test, 26 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-005619-dpfe",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w2\\runs\\20261120-005619-dpfe",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.airhacks.interceptor.monitoring.control.InvocationMonitoring",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.airhacks.interceptor.monitoring.control.InvocationMonitoring_ArrowTest",
+      "test_path": "perceptor/src/test/java/com/airhacks/interceptor/monitoring/control/InvocationMonitoring_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1672,
+        "out": 500
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.6,
+        "block2": 2.3,
+        "block3": 4.6,
+        "block4": null,
+        "total": 15.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1672,
+    "tokens_out": 500,
+    "cost_usd": null
+  },
+  "warnings": []
+}

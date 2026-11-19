@@ -1,0 +1,5 @@
+ARROW · SFClientConfigParser (net.snowflake.client.config)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 445 test ×2 · 128.6 s
+[OK] Khối 2  c0 · 4.2k token · 3.1 s · Candidate hợp lệ: 5 test, 5 assertion
+[>] Khối 3  c0: RUNTIME · InvalidPathException | SFClientConfigParser.loadSFClientConfig
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

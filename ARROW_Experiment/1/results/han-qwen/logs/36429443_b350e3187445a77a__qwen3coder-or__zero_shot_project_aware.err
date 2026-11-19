@@ -1,0 +1,5 @@
+ARROW · TokenInfoResourceServerTokenServices (org.zalando.stups.oauth2.spring.server)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 87 test (dùng lại, đo 20-11 00:27) · 14.2 s
+[OK] Khối 2  c0 · 4.3k token · 3.9 s · Candidate hợp lệ: 14 test, 14 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

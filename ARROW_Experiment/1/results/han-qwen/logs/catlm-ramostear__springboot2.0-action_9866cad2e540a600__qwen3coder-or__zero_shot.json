@@ -1,0 +1,51 @@
+{
+  "run_id": "20261120-012838-jqbu",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w2\\runs\\20261120-012838-jqbu",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.ramostear.springboot.uploadfile.SpringbootUploadfileApplication",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.ramostear.springboot.uploadfile.SpringbootUploadfileApplication_ArrowTest",
+      "test_path": "springboot-uploadfile/src/test/java/com/ramostear/springboot/uploadfile/SpringbootUploadfileApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1165,
+        "out": 147
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 92.4,
+        "block2": 1.8,
+        "block3": 6,
+        "block4": null,
+        "total": 100.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1165,
+    "tokens_out": 147,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "Wrapper springboot-uploadfile/mvnw.cmd không chạy được; dùng Maven của máy."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-011709-rpsb",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-011709-rpsb",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.coverity.security.pie.policy.csp.CspPolicy",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.coverity.security.pie.policy.csp.CspPolicy_ArrowTest",
+      "test_path": "pie-csp/src/test/java/com/coverity/security/pie/policy/csp/CspPolicy_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3000,
+        "out": 520
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 13.8,
+        "block2": 4.2,
+        "block3": 9,
+        "block4": null,
+        "total": 27.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3000,
+    "tokens_out": 520,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

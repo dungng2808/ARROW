@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-013429-px0r",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w2\\runs\\20261120-013429-px0r",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.javatechie.reactive.SpringReactiveMongoCrudApplication",
+      "result": "DISCOVERY",
+      "c0_state": "DISCOVERY",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.javatechie.reactive.SpringReactiveMongoCrudApplication_ArrowTest",
+      "test_path": "src/test/java/com/javatechie/reactive/SpringReactiveMongoCrudApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1435,
+        "out": 155
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.7,
+        "block2": 2.1,
+        "block3": 22.4,
+        "block4": null,
+        "total": 40.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1435,
+    "tokens_out": 155,
+    "cost_usd": null
+  },
+  "warnings": []
+}

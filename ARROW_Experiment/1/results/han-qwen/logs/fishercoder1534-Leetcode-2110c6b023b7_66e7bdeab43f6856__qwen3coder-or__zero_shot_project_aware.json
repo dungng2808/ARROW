@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-021205-s7ng",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w3\\runs\\20261120-021205-s7ng",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.fishercoder.solutions._235",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.fishercoder.solutions._235_ArrowTest",
+      "test_path": "src/test/java/com/fishercoder/solutions/_235_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1389,
+        "out": 988
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 565,
+        "block2": 3.7,
+        "block3": 125.7,
+        "block4": null,
+        "total": 694.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1389,
+    "tokens_out": 988,
+    "cost_usd": null
+  },
+  "warnings": []
+}

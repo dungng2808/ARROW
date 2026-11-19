@@ -1,0 +1,5 @@
+ARROW · TodoController (com.mastering.spring.springboot.controller)
+[OK] Khối 1  Maven 3.9.9 · build root Chapter05 · JDK 8 · JUnit 4 + Mockito · baseline 6 test (dùng lại, đo 20-11 01:23) · 10.9 s
+[OK] Khối 2  c0 · 3.4k token · 2.4 s · Candidate hợp lệ: 4 test, 10 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | TodoController.add
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

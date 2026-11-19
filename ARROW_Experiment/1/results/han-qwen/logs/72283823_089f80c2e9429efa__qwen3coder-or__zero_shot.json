@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-005923-hnxb",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w4\\runs\\20261120-005923-hnxb",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "vkaretko.Task_5_1.BubbleSort",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "vkaretko.Task_5_1.BubbleSort_ArrowTest",
+      "test_path": "part_1/lesson_5/src/test/java/vkaretko/Task_5_1/BubbleSort_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1315,
+        "out": 599
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 19.2,
+        "block2": 2.6,
+        "block3": 16.2,
+        "block4": null,
+        "total": 38.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1315,
+    "tokens_out": 599,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

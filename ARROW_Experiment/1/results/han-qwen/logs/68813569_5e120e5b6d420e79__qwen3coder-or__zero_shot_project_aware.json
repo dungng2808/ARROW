@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-003423-76j0",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-003423-76j0",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.netcrusher.core.filter.LoggingFilter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.netcrusher.core.filter.LoggingFilter_ArrowTest",
+      "test_path": "core/src/test/java/org/netcrusher/core/filter/LoggingFilter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1961,
+        "out": 755
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.1,
+        "block2": 3,
+        "block3": 11.6,
+        "block4": null,
+        "total": 29.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1961,
+    "tokens_out": 755,
+    "cost_usd": null
+  },
+  "warnings": []
+}

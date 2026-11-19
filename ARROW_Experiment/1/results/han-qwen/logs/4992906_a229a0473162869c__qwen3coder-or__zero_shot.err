@@ -1,0 +1,5 @@
+ARROW · SourceCodePositioner (net.sourceforge.pmd.lang.ast)
+[OK] Khối 1  Maven 3.8.5 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 6353 test ×2 · 343.6 s
+[OK] Khối 2  c0 · 2.8k token · 2.8 s · Candidate hợp lệ: 8 test, 55 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testLineEndings
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

@@ -1,0 +1,5 @@
+ARROW · _235 (com.fishercoder.solutions)
+[OK] Khối 1  Gradle 4.8.1 · build root . · JDK 8 · JUnit 4 · baseline 2701 test ×2 · 565.0 s
+[OK] Khối 2  c0 · 2.4k token · 3.3 s · Candidate hợp lệ: 6 test, 6 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | _235$Solution1.lowestCommonAncestor
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

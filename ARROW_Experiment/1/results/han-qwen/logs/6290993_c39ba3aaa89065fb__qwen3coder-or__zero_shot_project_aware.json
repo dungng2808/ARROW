@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-011350-0t0m",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-011350-0t0m",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.apache.crunch.types.writable.Writables",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.apache.crunch.types.writable.Writables_ArrowTest",
+      "test_path": "crunch-core/src/test/java/org/apache/crunch/types/writable/Writables_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 8742,
+        "out": 2997
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 37.6,
+        "block2": 9.7,
+        "block3": 39.1,
+        "block4": null,
+        "total": 86.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 8742,
+    "tokens_out": 2997,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 11 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

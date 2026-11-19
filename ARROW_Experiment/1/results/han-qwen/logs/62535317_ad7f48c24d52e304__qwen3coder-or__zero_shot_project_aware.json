@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-012739-h5z2",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w1\\runs\\20261120-012739-h5z2",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.sap.espm.model.ProductCategory",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.sap.espm.model.ProductCategory_ArrowTest",
+      "test_path": "espm-cloud-jpa/src/test/java/com/sap/espm/model/ProductCategory_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1710,
+        "out": 503
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 20.2,
+        "block2": 2.7,
+        "block3": 33.3,
+        "block4": null,
+        "total": 56.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1710,
+    "tokens_out": 503,
+    "cost_usd": null
+  },
+  "warnings": []
+}

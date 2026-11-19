@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-010459-d4za",
+  "run_dir": "C:\\arrow-homes\\han-qwen\\w3\\runs\\20261120-010459-d4za",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.automatalib.util.automata.Automata",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "net.automatalib.util.automata.Automata_ArrowTest",
+      "test_path": "util/src/test/java/net/automatalib/util/automata/Automata_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 5588,
+        "out": 1856
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 326,
+        "block2": 5.3,
+        "block3": 72.3,
+        "block4": null,
+        "total": 403.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 5588,
+    "tokens_out": 1856,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}
