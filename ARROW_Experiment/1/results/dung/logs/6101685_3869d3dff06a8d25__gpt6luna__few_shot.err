@@ -1,0 +1,5 @@
+ARROW · ProxyHelper (com.oracle.bedrock.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 80 test (dùng lại, đo 19/11 02:59) · 3.6 s
+[OK] Khối 2  c0 · 4,0k token · 5.7 s · Candidate hợp lệ: 3 test, 13 assertion
+[>] Khối 3  c0: RUNTIME · StackOverflowError | -
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

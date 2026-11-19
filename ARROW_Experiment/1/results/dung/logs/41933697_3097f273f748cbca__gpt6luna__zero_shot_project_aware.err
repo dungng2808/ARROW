@@ -1,0 +1,5 @@
+ARROW · ExchangeApiConfigBuilder (com.gazbert.bxbot.core.config.exchange)
+[OK] Khối 1  Maven 3.6.1 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 430 test (dùng lại, đo 19/11 03:30) · 7.7 s
+[OK] Khối 2  c0 · 3,3k token · 4.9 s · Candidate hợp lệ: 3 test, 19 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

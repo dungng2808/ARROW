@@ -1,0 +1,5 @@
+ARROW · CspPolicy (com.coverity.security.pie.policy.csp)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 19 test (dùng lại, đo 19/11 04:21) · 3.8 s
+[OK] Khối 2  c0 · 2,2k token · 3.5 s · Candidate hợp lệ: 4 test, 3 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

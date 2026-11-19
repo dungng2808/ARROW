@@ -1,0 +1,5 @@
+ARROW · CharsCharSequence (org.trie4j.util)
+[OK] Khối 1  Maven 3.9.16 · build root trie4j · JDK 8 · JUnit 4 · baseline 878 test ×2 · 8.6 s
+[OK] Khối 2  c0 · 2,1k token · 5.3 s · Candidate hợp lệ: 8 test, 14 assertion
+[>] Khối 3  c0: RUNTIME · ArrayIndexOutOfBoundsException | CharsCharSequence.subChars
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

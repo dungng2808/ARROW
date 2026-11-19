@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-035819-hdsn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-035819-hdsn",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "net.gfu.seminar.maven.App",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "net.gfu.seminar.maven.App_ArrowTest",
+      "test_path": "examples/antrun-example/src/test/java/net/gfu/seminar/maven/App_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2676,
+        "out": 286
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 2.8,
+        "block2": 3.2,
+        "block3": 4.3,
+        "block4": null,
+        "total": 10.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2676,
+    "tokens_out": 286,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

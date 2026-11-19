@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-034638-gc02",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-034638-gc02",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "de.fraunhofer.iosb.ilt.frostserver.util.StringHelper",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "de.fraunhofer.iosb.ilt.frostserver.util.StringHelper_ArrowTest",
+      "test_path": "FROST-Server.Util/src/test/java/de/fraunhofer/iosb/ilt/frostserver/util/StringHelper_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2563,
+        "out": 624
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.3,
+        "block2": 5,
+        "block3": 3.4,
+        "block4": null,
+        "total": 11.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2563,
+    "tokens_out": 624,
+    "cost_usd": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,5 @@
+ARROW · SpringReactiveMongoCrudApplication (com.javatechie.reactive)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 5 test ×2 · 54.5 s
+[OK] Khối 2  c0 · 1,2k token · 1.4 s · Candidate hợp lệ: 1 test, 0 assertion
+[>] Khối 3  c0: DISCOVERY · no tests executed | -
+[X] Khối 3  Kết thúc: DISCOVERY (không sửa)

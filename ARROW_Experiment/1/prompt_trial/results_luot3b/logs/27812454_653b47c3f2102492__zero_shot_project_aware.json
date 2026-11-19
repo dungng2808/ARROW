@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-022835-kkmo",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/results_luot3b/homes/zero_shot_project_aware/runs/20261119-022835-kkmo",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.bmw.hmm.ViterbiAlgorithm",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.bmw.hmm.ViterbiAlgorithm_ArrowTest",
+      "test_path": "hmm-lib/src/test/java/com/bmw/hmm/ViterbiAlgorithm_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 5045,
+        "out": 2184
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.3,
+        "block2": 18.3,
+        "block3": 4,
+        "block4": null,
+        "total": 30.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 5045,
+    "tokens_out": 2184,
+    "cost_usd": null
+  },
+  "warnings": []
+}

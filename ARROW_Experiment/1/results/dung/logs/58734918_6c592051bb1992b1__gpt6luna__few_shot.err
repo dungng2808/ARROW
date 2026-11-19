@@ -1,0 +1,5 @@
+ARROW · StatsdReporterProvider (org.graylog.plugins.metrics.statsd.providers)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 26 test (dùng lại, đo 19/11 04:25) · 3.9 s
+[OK] Khối 2  c0 · 3,2k token · 3.4 s · Candidate hợp lệ: 4 test, 4 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

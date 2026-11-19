@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-042330-k7q3",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-042330-k7q3",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.textocat.textokit.commons.consumer.DefaultSourceURI2OutputFilePathFunction",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.textocat.textokit.commons.consumer.DefaultSourceURI2OutputFilePathFunction_ArrowTest",
+      "test_path": "Textokit.Commons/src/test/java/com/textocat/textokit/commons/consumer/DefaultSourceURI2OutputFilePathFunction_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2762,
+        "out": 209
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.4,
+        "block2": 2.5,
+        "block3": 3,
+        "block4": null,
+        "total": 9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2762,
+    "tokens_out": 209,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

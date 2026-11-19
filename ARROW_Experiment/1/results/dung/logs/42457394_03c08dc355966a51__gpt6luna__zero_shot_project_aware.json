@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-035739-w8o3",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-035739-w8o3",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.zalando.logbook.netty.Sequence",
+      "result": "DISCOVERY",
+      "c0_state": "DISCOVERY",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.zalando.logbook.netty.Sequence_ArrowTest",
+      "test_path": "logbook-netty/src/test/java/org/zalando/logbook/netty/Sequence_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1914,
+        "out": 372
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 7.2,
+        "block2": 3.1,
+        "block3": 9.5,
+        "block4": null,
+        "total": 19.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1914,
+    "tokens_out": 372,
+    "cost_usd": null
+  },
+  "warnings": []
+}

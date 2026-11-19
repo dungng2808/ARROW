@@ -1,0 +1,5 @@
+ARROW · HttpOrHttp2ChannelPool (software.amazon.awssdk.http.nio.netty.internal.http2)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 720 test ×2 · 611.2 s
+[OK] Khối 2  c0 · 3,6k token · 5.6 s · Candidate hợp lệ: 4 test, 4 assertion
+[>] Khối 3  c0: COMPILE · already defined | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

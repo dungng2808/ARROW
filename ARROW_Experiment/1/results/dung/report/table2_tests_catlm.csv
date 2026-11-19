@@ -1,0 +1,19 @@
+Mô hình,Chỉ số,Số lớp ghép cặp,Cochran's Q (p),Cặp so sánh,b / c,Chênh lệch [CI 95%],p McNemar,p sau Holm,Họ
+gpt6luna,ESR,36,28.74 (<0.001),Zero-shot – Few-shot,0 / 1,-2.8 [-8.1; +2.6],1.000,1.000,chính
+gpt6luna,ESR,36,28.74 (<0.001),Zero-shot – Project-aware,1 / 18,-47.2 [-65.3; -29.2],<0.001,<0.001,chính
+gpt6luna,ESR,36,28.74 (<0.001),Few-shot – Project-aware,1 / 17,-44.4 [-62.4; -26.5],<0.001,<0.001,chính
+gpt6luna,CSR (bước 1),36,26.78 (<0.001),Zero-shot – Few-shot,0 / 1,-2.8 [-8.1; +2.6],1.000,1.000,phụ
+gpt6luna,CSR (bước 1),36,26.78 (<0.001),Zero-shot – Project-aware,1 / 17,-44.4 [-62.4; -26.5],<0.001,0.002,phụ
+gpt6luna,CSR (bước 1),36,26.78 (<0.001),Few-shot – Project-aware,1 / 16,-41.7 [-59.5; -23.8],<0.001,0.002,phụ
+gpt6luna,Bước 2,36,28.74 (<0.001),Zero-shot – Few-shot,0 / 1,-2.8 [-8.1; +2.6],1.000,1.000,phụ
+gpt6luna,Bước 2,36,28.74 (<0.001),Zero-shot – Project-aware,1 / 18,-47.2 [-65.3; -29.2],<0.001,0.001,phụ
+gpt6luna,Bước 2,36,28.74 (<0.001),Few-shot – Project-aware,1 / 17,-44.4 [-62.4; -26.5],<0.001,0.002,phụ
+gpt6luna,Bước 3,36,28.44 (<0.001),Zero-shot – Few-shot,1 / 1,+0.0 [-7.7; +7.7],1.000,1.000,phụ
+gpt6luna,Bước 3,36,28.44 (<0.001),Zero-shot – Project-aware,1 / 17,-44.4 [-62.4; -26.5],<0.001,0.002,phụ
+gpt6luna,Bước 3,36,28.44 (<0.001),Few-shot – Project-aware,0 / 16,-44.4 [-60.7; -28.2],<0.001,<0.001,phụ
+gpt6luna,Bước 4,36,25.37 (<0.001),Zero-shot – Few-shot,2 / 1,+2.8 [-6.6; +12.2],1.000,1.000,phụ
+gpt6luna,Bước 4,36,25.37 (<0.001),Zero-shot – Project-aware,1 / 16,-41.7 [-59.5; -23.8],<0.001,0.002,phụ
+gpt6luna,Bước 4,36,25.37 (<0.001),Few-shot – Project-aware,1 / 17,-44.4 [-62.4; -26.5],<0.001,0.002,phụ
+gpt6luna,VALID (bước 5),36,25.37 (<0.001),Zero-shot – Few-shot,2 / 1,+2.8 [-6.6; +12.2],1.000,1.000,phụ
+gpt6luna,VALID (bước 5),36,25.37 (<0.001),Zero-shot – Project-aware,1 / 16,-41.7 [-59.5; -23.8],<0.001,0.002,phụ
+gpt6luna,VALID (bước 5),36,25.37 (<0.001),Few-shot – Project-aware,1 / 17,-44.4 [-62.4; -26.5],<0.001,0.002,phụ

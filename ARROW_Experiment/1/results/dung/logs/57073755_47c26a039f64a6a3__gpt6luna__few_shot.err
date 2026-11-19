@@ -1,0 +1,5 @@
+ARROW · EBCLIOptions (io.engineblock.cli)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · TestNG · baseline 222 test (dùng lại, đo 19/11 03:09) · 7.3 s
+[OK] Khối 2  c0 · 9,1k token · 11.6 s · Candidate hợp lệ: 19 test, 61 assertion
+[>] Khối 3  c0: RUNTIME · IllegalArgumentException | EBCLIOptions.parseProgressSpec
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

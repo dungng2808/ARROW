@@ -1,0 +1,5 @@
+ARROW · GraphConfig (uk.gov.gchq.gaffer.graph)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 3252 test ×2 · 207.5 s
+[OK] Khối 2  c0 · 4,2k token · 8.4 s · Candidate hợp lệ: 15 test, 29 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

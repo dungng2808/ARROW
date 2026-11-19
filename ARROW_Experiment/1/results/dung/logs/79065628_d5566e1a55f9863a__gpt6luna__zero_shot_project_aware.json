@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-040903-n7hs",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-040903-n7hs",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.abhijitsarkar.spring.beer.repository.BaseCouchbaseRepository",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.abhijitsarkar.spring.beer.repository.BaseCouchbaseRepository_ArrowTest",
+      "test_path": "beer-demo/couchbase-lib/src/test/java/org/abhijitsarkar/spring/beer/repository/BaseCouchbaseRepository_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1826,
+        "out": 299
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 14.8,
+        "block2": 3.1,
+        "block3": 9.4,
+        "block4": null,
+        "total": 27.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1826,
+    "tokens_out": 299,
+    "cost_usd": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,5 @@
+ARROW · Utils (example)
+[OK] Khối 1  Maven 3.9.16 · build root xslt-example · JDK 8 · JUnit 4 · baseline 9 test (dùng lại, đo 19/11 03:37) · 3.4 s
+[OK] Khối 2  c0 · 2,8k token · 5.2 s · Candidate hợp lệ: 13 test, 13 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

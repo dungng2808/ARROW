@@ -1,0 +1,5 @@
+ARROW · MXBeanPoller (software.amazon.swage.metrics.jmx)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 58 test (dùng lại, đo 19/11 03:54) · 4.9 s
+[OK] Khối 2  c0 · 3,2k token · 3.5 s · Candidate hợp lệ: 3 test, 4 assertion
+[>] Khối 3  c0: COMPILE · unreported exception | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

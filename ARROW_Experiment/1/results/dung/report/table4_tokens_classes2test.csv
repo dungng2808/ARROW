@@ -1,0 +1,4 @@
+Mô hình,Cách viết prompt,Token prompt (TB / trung vị),Token đầu ra (TB / trung vị),"Thời gian gọi (trung vị, giây)",Prompt có thể vượt num_ctx (ước tính)
+gpt6luna,Zero-shot,2301 / 1772,593 / 505,4.8,-
+gpt6luna,Few-shot,3662 / 3132,557 / 470,4.7,-
+gpt6luna,Project-aware,2649 / 2148,618 / 508,4.8,-

@@ -1,0 +1,5 @@
+ARROW · LuhnMaskingConverter (ph.samson.logback.luhn)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 12 test (dùng lại, đo 19/11 04:38) · 3.2 s
+[OK] Khối 2  c0 · 5,0k token · 4.3 s · Candidate hợp lệ: 14 test, 14 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | maskValidCardNumber
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

@@ -1,0 +1,5 @@
+ARROW · WithJsonPath (com.jayway.jsonpath.matchers)
+[OK] Khối 1  Gradle 7.4.2 · build root . · JDK 8 · JUnit 5 · baseline 85 test ×2 · 36.4 s
+[OK] Khối 2  c0 · 3,3k token · 5.0 s · Candidate hợp lệ: 6 test, 6 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · ObjectFactory (de.monticore.generating.templateengine)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 102 test (dùng lại, đo 19/11 04:05) · 4.4 s
+[OK] Khối 2  c0 · 3,9k token · 4.6 s · Candidate hợp lệ: 7 test, 7 assertion
+[>] Khối 3  c0: RUNTIME · maven-surefire-plugin | -
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

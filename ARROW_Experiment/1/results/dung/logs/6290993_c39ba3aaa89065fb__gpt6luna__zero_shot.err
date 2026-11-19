@@ -1,0 +1,5 @@
+ARROW · Writables (org.apache.crunch.types.writable)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 329 test ×2 · 50.1 s
+[OK] Khối 2  c0 · 9,6k token · 8.9 s · Candidate hợp lệ: 16 test, 48 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

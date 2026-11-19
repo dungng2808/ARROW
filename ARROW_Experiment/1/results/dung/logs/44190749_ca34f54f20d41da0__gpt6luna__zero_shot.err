@@ -1,0 +1,5 @@
+ARROW · ContractController (org.asqatasun.webapp.controller)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 1222 test ×2 · 239.7 s
+[OK] Khối 2  c0 · 3,2k token · 5.4 s · Candidate hợp lệ: 3 test, 6 assertion
+[>] Khối 3  c0: RUNTIME · ForbiddenUserException | ContractController_ArrowTest.ownedContractDisplaysContractPage
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

@@ -1,0 +1,5 @@
+ARROW · Wiring (foundation.stack.datamill.configuration)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 111 test (dùng lại, đo 19/11 03:47) · 3.7 s
+[OK] Khối 2  c0 · 5,7k token · 10.5 s · Candidate hợp lệ: 12 test, 14 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

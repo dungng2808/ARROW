@@ -1,0 +1,5 @@
+ARROW · ByteArrayFilter (com.somethingsimilar.opposite_of_a_bloom_filter)
+[OK] Khối 1  Maven 3.9.16 · build root java · JDK 17 · JUnit 4 · baseline 4 test ×2 · 4.9 s
+[OK] Khối 2  c0 · 2,3k token · 4.5 s · Candidate hợp lệ: 9 test, 13 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

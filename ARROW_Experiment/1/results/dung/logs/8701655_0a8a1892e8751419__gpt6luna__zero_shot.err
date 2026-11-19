@@ -1,0 +1,5 @@
+ARROW · RunningEdtManager (jetbrains.jetpad.base.edt)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 102 test ×2 · 9.9 s
+[OK] Khối 2  c0 · 3,2k token · 8.6 s · Candidate hợp lệ: 13 test, 20 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-043247-9gu2",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w6/runs/20261119-043247-9gu2",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "nl.inl.blacklab.contentstore.ContentStoreDirZip",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "nl.inl.blacklab.contentstore.ContentStoreDirZip_ArrowTest",
+      "test_path": "core/src/test/java/nl/inl/blacklab/contentstore/ContentStoreDirZip_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2146,
+        "out": 445
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.7,
+        "block2": 4.5,
+        "block3": 4.2,
+        "block4": null,
+        "total": 21.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2146,
+    "tokens_out": 445,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

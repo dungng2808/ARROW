@@ -1,0 +1,6 @@
+ARROW · ConfigurationImpl (org.apache.activemq.artemis.core.config.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 1381 test ×2 · 306.2 s
+[!] org.apache.activemq.artemis.core.config.impl.ConfigurationImpl dài 118.872 ký tự, đã rút gọn (signatures_only).
+[OK] Khối 2  c0 · 12,8k token · 14.5 s · Candidate hợp lệ: 30 test, 55 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

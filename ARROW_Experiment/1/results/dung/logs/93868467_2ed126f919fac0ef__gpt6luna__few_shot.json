@@ -1,0 +1,51 @@
+{
+  "run_id": "20261119-040725-9mu0",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w2/runs/20261119-040725-9mu0",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.redis.utils.MythTime",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.redis.utils.MythTime_ArrowTest",
+      "test_path": "redis_core/src/test/java/com/redis/utils/MythTime_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2630,
+        "out": 198
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 108.2,
+        "block2": 3,
+        "block3": 55.4,
+        "block4": null,
+        "total": 166.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2630,
+    "tokens_out": 198,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project.",
+    "Có 77 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

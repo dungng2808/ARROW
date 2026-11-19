@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-022907-kbkg",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/results_luot3b/homes/zero_shot/runs/20261119-022907-kbkg",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.parsingdata.metal.data.DataExpressionSource",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "io.parsingdata.metal.data.DataExpressionSource_ArrowTest",
+      "test_path": "core/src/test/java/io/parsingdata/metal/data/DataExpressionSource_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2073,
+        "out": 978
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 21,
+        "block2": 7.8,
+        "block3": 5.2,
+        "block4": null,
+        "total": 34
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2073,
+    "tokens_out": 978,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

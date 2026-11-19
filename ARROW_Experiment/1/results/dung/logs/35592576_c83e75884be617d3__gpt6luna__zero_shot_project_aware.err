@@ -1,0 +1,5 @@
+ARROW · DataWrapper (org.fuin.esc.spi)
+[OK] Khối 1  Maven 3.6.3 · build root . · JDK 17 · JUnit 5 · baseline 140 test (dùng lại, đo 19/11 03:01) · 3.3 s
+[OK] Khối 2  c0 · 2,5k token · 3.9 s · Candidate hợp lệ: 5 test, 6 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,5 @@
+ARROW · DefaultPluginStatusProvider (org.pf4j)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 73 test (dùng lại, đo 19/11 04:17) · 5.3 s
+[OK] Khối 2  c0 · 4,3k token · 14.9 s · Candidate hợp lệ: 9 test, 17 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

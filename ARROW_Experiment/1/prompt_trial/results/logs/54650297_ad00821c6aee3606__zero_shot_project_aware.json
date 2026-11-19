@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-012421-mlan",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/results/homes/zero_shot_project_aware/runs/20261119-012421-mlan",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.parsingdata.metal.data.DataExpressionSource",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "io.parsingdata.metal.data.DataExpressionSource_ArrowTest",
+      "test_path": "core/src/test/java/io/parsingdata/metal/data/DataExpressionSource_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2181,
+        "out": 233
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.9,
+        "block2": 2.9,
+        "block3": 4.3,
+        "block4": null,
+        "total": 20.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2181,
+    "tokens_out": 233,
+    "cost_usd": null
+  },
+  "warnings": []
+}

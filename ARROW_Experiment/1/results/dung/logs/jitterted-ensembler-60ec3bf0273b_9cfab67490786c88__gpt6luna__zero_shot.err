@@ -1,0 +1,5 @@
+ARROW · Ensemble (com.jitterted.mobreg.domain)
+[OK] Khối 1  Maven 3.8.1 · build root . · JDK 17 · JUnit 5 + Mockito · baseline 133 test ×2 · 14.9 s
+[OK] Khối 2  c0 · 6,5k token · 23.4 s · Candidate hợp lệ: 41 test, 63 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

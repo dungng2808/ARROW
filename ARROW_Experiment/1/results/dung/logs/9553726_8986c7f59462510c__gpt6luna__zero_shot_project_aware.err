@@ -1,0 +1,5 @@
+ARROW · PresentValue (org.javamoney.calc.common)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 188 test (dùng lại, đo 19/11 04:25) · 4.7 s
+[OK] Khối 2  c0 · 2,6k token · 7.6 s · Candidate hợp lệ: 6 test, 6 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

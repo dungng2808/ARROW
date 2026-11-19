@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-042443-gx1o",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-042443-gx1o",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.hello.LeaderBoard",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.hello.LeaderBoard_ArrowTest",
+      "test_path": "HelloHackerRank/src/test/java/com/hello/LeaderBoard_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1650,
+        "out": 396
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.6,
+        "block2": 4.3,
+        "block3": 4.5,
+        "block4": null,
+        "total": 17.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1650,
+    "tokens_out": 396,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

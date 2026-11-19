@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-041859-cj7m",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-041859-cj7m",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.yuzhouwan.bigdata.kafka.util.KafkaPartitioner_ArrowTest",
+      "test_path": "yuzhouwan-bigdata/yuzhouwan-bigdata-kafka/src/test/java/com/yuzhouwan/bigdata/kafka/util/KafkaPartitioner_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1961,
+        "out": 246
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.8,
+        "block2": 2.6,
+        "block3": 4.5,
+        "block4": null,
+        "total": 11
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1961,
+    "tokens_out": 246,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,5 @@
+ARROW · StringConverter (org.fissore.jrecordbind.converters)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 17 test (dùng lại, đo 19/11 03:26) · 2.8 s
+[OK] Khối 2  c0 · 1,8k token · 2.4 s · Candidate hợp lệ: 4 test, 4 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,5 @@
+ARROW · Key (com.macasaet.fernet)
+[OK] Khối 1  Maven 3.6.3 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 38 test ×2 · 22.4 s
+[OK] Khối 2  c0 · 5,4k token · 9.1 s · Candidate hợp lệ: 17 test, 16 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | constructsFromComponentsAndSerialises
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

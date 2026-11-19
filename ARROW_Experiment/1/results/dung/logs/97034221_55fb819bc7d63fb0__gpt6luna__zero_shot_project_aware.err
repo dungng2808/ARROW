@@ -1,0 +1,5 @@
+ARROW · Properlty (com.ufoscout.properlty)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 106 test (dùng lại, đo 19/11 03:38) · 3.7 s
+[OK] Khối 2  c0 · 5,0k token · 11.2 s · Candidate hợp lệ: 28 test, 28 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

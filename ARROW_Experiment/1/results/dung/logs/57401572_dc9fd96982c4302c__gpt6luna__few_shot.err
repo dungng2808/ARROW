@@ -1,0 +1,5 @@
+ARROW · WeldSpringBootAutoConfiguration (org.joinfaces.autoconfigure.weld)
+[OK] Khối 1  Gradle 7.3.3 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 119 test ×2 · 38.1 s
+[OK] Khối 2  c0 · 2,9k token · 2.1 s · Candidate hợp lệ: 1 test, 2 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

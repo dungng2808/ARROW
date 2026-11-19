@@ -1,0 +1,5 @@
+ARROW · Automata (net.automatalib.util.automata)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 707 test ×2 · 31.6 s
+[OK] Khối 2  c0 · 6,4k token · 6.3 s · Candidate hợp lệ: 9 test, 8 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · PeppolPMode (com.helger.phase4.profile.peppol)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 47 test ×2 · 63.3 s
+[OK] Khối 2  c0 · 3,7k token · 9.1 s · Candidate hợp lệ: 9 test, 10 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

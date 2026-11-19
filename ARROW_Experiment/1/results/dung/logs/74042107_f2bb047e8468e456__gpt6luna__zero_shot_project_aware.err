@@ -1,0 +1,5 @@
+ARROW · MixTank (edu.kit.pse.osip.core.model.base)
+[OK] Khối 1  Maven 3.9.16 · build root src · JDK 8 · JUnit 4 + Mockito · baseline 80 test (dùng lại, đo 19/11 04:26) · 5.6 s
+[OK] Khối 2  c0 · 1,8k token · 2.1 s · Candidate hợp lệ: 3 test, 4 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-042355-dxw9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-042355-dxw9",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.fortytwo.stream.caching.Solution",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "net.fortytwo.stream.caching.Solution_ArrowTest",
+      "test_path": "stream42-core/src/test/java/net/fortytwo/stream/caching/Solution_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1926,
+        "out": 596
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.2,
+        "block2": 7,
+        "block3": 1.6,
+        "block4": null,
+        "total": 16.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1926,
+    "tokens_out": 596,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-033236-grwa",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-033236-grwa",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter_ArrowTest",
+      "test_path": "jetty-load-generator-starter/src/test/java/org/mortbay/jetty/load/generator/starter/LoadGeneratorStarter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2538,
+        "out": 246
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 171.1,
+        "block2": 3,
+        "block3": 83,
+        "block4": null,
+        "total": 257.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2538,
+    "tokens_out": 246,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-043839-4qpu",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w5/runs/20261119-043839-4qpu",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.codeforgeyt.onetomanywebservice.OneToManyWebServiceApplication_ArrowTest",
+      "test_path": "src/test/java/com/codeforgeyt/onetomanywebservice/OneToManyWebServiceApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1468,
+        "out": 117
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.1,
+        "block2": 2.7,
+        "block3": 13.7,
+        "block4": null,
+        "total": 20.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1468,
+    "tokens_out": 117,
+    "cost_usd": null
+  },
+  "warnings": []
+}

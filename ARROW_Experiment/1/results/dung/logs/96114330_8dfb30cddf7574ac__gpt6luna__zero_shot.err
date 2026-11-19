@@ -1,0 +1,5 @@
+ARROW · ChangeableDecisionTree (org.swblocks.decisiontree)
+[OK] Khối 1  Gradle 3.2.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 151 test ×2 · 86.8 s
+[OK] Khối 2  c0 · 2,2k token · 2.6 s · Candidate hợp lệ: 2 test, 2 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | ChangeableDecisionTree.instanceOf
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

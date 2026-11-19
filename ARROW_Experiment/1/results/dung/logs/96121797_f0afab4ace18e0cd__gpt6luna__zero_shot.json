@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-031648-7c1a",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-031648-7c1a",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.sunbird.learner.util.UserFlagUtil",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.sunbird.learner.util.UserFlagUtil_ArrowTest",
+      "test_path": "actors/sunbird-lms-mw/actors/common/src/test/java/org/sunbird/learner/util/UserFlagUtil_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1668,
+        "out": 414
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 272.6,
+        "block2": 4.3,
+        "block3": 59.8,
+        "block4": null,
+        "total": 336.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1668,
+    "tokens_out": 414,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

@@ -1,0 +1,11 @@
+# Bản Qwen3-Coder-30B cho thực nghiệm ARROW.
+# Tạo: ollama create qwen3-coder-arrow:30b-q8-ctx40k -f Modelfile.qwen3coder
+FROM qwen3-coder:30b-a3b-q8_0
+# Ngữ cảnh 40.960 token (bản gốc không đặt, Ollama dùng mặc định quá nhỏ cho prompt của ARROW)
+PARAMETER num_ctx 40960
+# Bỏ các tham số lấy mẫu mà bản gốc đặt sẵn (thiết kế: không đặt top-p); temperature 0 và seed do arrow gửi
+PARAMETER top_p 1
+PARAMETER top_k 0
+PARAMETER repeat_penalty 1
+# temperature 0 cả trong bản model (arrow cũng gửi 0)
+PARAMETER temperature 0

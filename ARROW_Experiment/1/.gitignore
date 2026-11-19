@@ -1,0 +1,6 @@
+# ARROW_HOME của từng worker: chứa runs/ của arrow (lớn), không đưa lên Git.
+results/*/homes/
+results/*/workers.txt
+__pycache__/
+prompt_trial/results*/homes/
+dist/

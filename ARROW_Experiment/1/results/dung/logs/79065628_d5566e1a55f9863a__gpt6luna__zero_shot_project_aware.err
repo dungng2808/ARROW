@@ -1,0 +1,5 @@
+ARROW · BaseCouchbaseRepository (org.abhijitsarkar.spring.beer.repository)
+[OK] Khối 1  Gradle 4.1 · build root beer-demo · JDK 8 · JUnit 4 + Mockito · baseline 33 test ×2 · 14.8 s
+[OK] Khối 2  c0 · 2,1k token · 3.0 s · Candidate hợp lệ: 4 test, 5 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

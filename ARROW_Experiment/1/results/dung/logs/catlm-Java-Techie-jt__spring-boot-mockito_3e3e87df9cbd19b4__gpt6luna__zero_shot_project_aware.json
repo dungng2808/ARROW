@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-043855-h9r3",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-043855-h9r3",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.javatechie.spring.mockito.api.SpringBootMockitoApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.javatechie.spring.mockito.api.SpringBootMockitoApplication_ArrowTest",
+      "test_path": "src/test/java/com/javatechie/spring/mockito/api/SpringBootMockitoApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1409,
+        "out": 54
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.2,
+        "block2": 1.8,
+        "block3": 9.5,
+        "block4": null,
+        "total": 15.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1409,
+    "tokens_out": 54,
+    "cost_usd": null
+  },
+  "warnings": []
+}

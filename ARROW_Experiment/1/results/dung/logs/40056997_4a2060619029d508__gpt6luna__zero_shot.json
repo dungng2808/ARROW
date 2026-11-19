@@ -1,0 +1,52 @@
+{
+  "run_id": "20261119-033717-kils",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-033717-kils",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "example.Utils",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "example.Utils_ArrowTest",
+      "test_path": "xslt-example/src/test/java/example/Utils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1907,
+        "out": 476
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 9,
+        "block2": 4.6,
+        "block3": 3.9,
+        "block4": null,
+        "total": 17.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1907,
+    "tokens_out": 476,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "1 file .java không đọc được (ví dụ iedriver/src/main/java/com/mycompany/app/App.java: MalformedInputException: Input length = 1).",
+    "1 file .java không đọc được (ví dụ iedriver/src/main/java/com/mycompany/app/App.java: MalformedInputException: Input length = 1)."
+  ]
+}

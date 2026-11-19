@@ -1,0 +1,5 @@
+ARROW · JsonHelper (io.stardog.stardao.jackson)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 15 test ×2 · 19.7 s
+[OK] Khối 2  c0 · 1,9k token · 3.0 s · Candidate hợp lệ: 4 test, 6 assertion
+[>] Khối 3  c0: RUNTIME · RuntimeException | JsonHelper.update
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

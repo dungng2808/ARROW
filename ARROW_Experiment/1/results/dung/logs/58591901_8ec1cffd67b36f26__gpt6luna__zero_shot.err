@@ -1,0 +1,5 @@
+ARROW · ClippedPadding2D_F64 (deepboof.impl.forward.standard)
+[OK] Khối 1  Gradle 7.6.4 · build root . · JDK 17 · JUnit 5 · baseline 188 test ×2 · 26.8 s
+[OK] Khối 2  c0 · 2,0k token · 6.6 s · Candidate hợp lệ: 3 test, 6 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

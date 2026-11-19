@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-031111-c4ww",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-031111-c4ww",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.apache.jackrabbit.oak.plugins.migration.NodeStateCopier",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.apache.jackrabbit.oak.plugins.migration.NodeStateCopier_ArrowTest",
+      "test_path": "oak-core/src/test/java/org/apache/jackrabbit/oak/plugins/migration/NodeStateCopier_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6310,
+        "out": 1351
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 422.7,
+        "block2": 10,
+        "block3": 10.9,
+        "block4": null,
+        "total": 443.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 6310,
+    "tokens_out": 1351,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

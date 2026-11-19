@@ -1,0 +1,5 @@
+ARROW · NodeStateCopier (org.apache.jackrabbit.oak.plugins.migration)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 6383 test ×2 · 422.7 s
+[OK] Khối 2  c0 · 7,7k token · 9.9 s · Candidate hợp lệ: 10 test, 29 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

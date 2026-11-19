@@ -1,0 +1,5 @@
+ARROW · VersionComparator (org.sonatype.nexus.common.app)
+[OK] Khối 1  Maven 3.6.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 190 test ×2 · 115.5 s
+[OK] Khối 2  c0 · 2,1k token · 3.0 s · Candidate hợp lệ: 8 test, 8 assertion
+[>] Khối 3  c0: RUNTIME · Exception | VersionComparator.version
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

@@ -1,0 +1,5 @@
+ARROW · Subscription (com.orange.ngsi2.model)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 51 test (dùng lại, đo 19/11 03:21) · 3.2 s
+[OK] Khối 2  c0 · 3,2k token · 3.6 s · Candidate hợp lệ: 3 test, 15 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

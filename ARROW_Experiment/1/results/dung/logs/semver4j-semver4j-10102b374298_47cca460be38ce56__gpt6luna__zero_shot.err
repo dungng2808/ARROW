@@ -1,0 +1,5 @@
+ARROW · RangesList (org.semver4j)
+[OK] Khối 1  Maven 3.8.6 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 609 test ×2 · 9.6 s
+[OK] Khối 2  c0 · 3,1k token · 7.2 s · Candidate hợp lệ: 13 test, 17 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

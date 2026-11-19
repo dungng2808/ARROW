@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-045040-s8us",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w5/runs/20261119-045040-s8us",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "leetcode.medium.OnlineStockSpan",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "leetcode.medium.OnlineStockSpan_ArrowTest",
+      "test_path": "src/test/java/leetcode/medium/OnlineStockSpan_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1374,
+        "out": 427
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.6,
+        "block2": 3.6,
+        "block3": 3,
+        "block4": null,
+        "total": 17.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1374,
+    "tokens_out": 427,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

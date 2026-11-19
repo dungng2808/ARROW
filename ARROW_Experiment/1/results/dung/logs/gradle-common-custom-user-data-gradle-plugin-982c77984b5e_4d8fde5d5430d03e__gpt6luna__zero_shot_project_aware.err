@@ -1,0 +1,5 @@
+ARROW · Utils (com.gradle)
+[OK] Khối 1  Gradle 8.2 · build root . · JDK 8 · JUnit 5 · baseline 18 test ×2 · 22.3 s
+[OK] Khối 2  c0 · 4,2k token · 7.2 s · Candidate hợp lệ: 20 test, 20 assertion
+[>] Khối 3  c0: ASSERTION · AssertionFailedError | execAndGetStdOutReturnsTrimmedOutputOnSuccess
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

@@ -1,0 +1,5 @@
+ARROW · GrammaticalTermMapImpl (com.force.i18n.grammar.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 506 test (dùng lại, đo 19/11 04:47) · 5.6 s
+[OK] Khối 2  c0 · 4,7k token · 6.6 s · Candidate hợp lệ: 6 test, 28 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | GrammaticalTermMapImpl.<init>
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

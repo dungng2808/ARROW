@@ -1,0 +1,5 @@
+ARROW · TransactionService (org.egov.pg.service)
+[OK] Khối 1  Maven 3.9.16 · build root core/egov-pg-service · JDK 8 · JUnit 4 + Mockito · baseline 23 test (dùng lại, đo 19/11 03:11) · 6.9 s
+[OK] Khối 2  c0 · 3,6k token · 6.8 s · Candidate hợp lệ: 3 test, 4 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,5 @@
+ARROW · KeyPair (org.stellar.sdk)
+[OK] Khối 1  Gradle 7.4.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 496 test ×2 · 32.2 s
+[OK] Khối 2  c0 · 6,3k token · 10.8 s · Candidate hợp lệ: 10 test, 27 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | xdrKeysRoundTrip
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

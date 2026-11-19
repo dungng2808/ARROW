@@ -1,0 +1,5 @@
+ARROW · ANNIndex (internal.com.spotify.annoy)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 67 test ×2 · 11.9 s
+[OK] Khối 2  c0 · 6,7k token · 8.5 s · Candidate hợp lệ: 8 test, 9 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | cosineMarginReturnsCosineSimilarity on cosineMarginReturnsCosineSimilarity(internal.com.spotify.annoy.ANNIndex_ArrowTest)
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

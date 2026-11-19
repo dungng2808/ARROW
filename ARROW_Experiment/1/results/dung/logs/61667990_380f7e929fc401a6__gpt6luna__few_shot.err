@@ -1,0 +1,5 @@
+ARROW · LoginCredentials (com.intuit.wasabi.authenticationobjects)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 10 test (dùng lại, đo 19/11 03:47) · 4.2 s
+[OK] Khối 2  c0 · 3,8k token · 6.0 s · Candidate hợp lệ: 8 test, 19 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

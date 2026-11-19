@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-033017-wc1k",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-033017-wc1k",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.virtdata.libbasics.shared.unary_string.FieldExtractor",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "io.virtdata.libbasics.shared.unary_string.FieldExtractor_ArrowTest",
+      "test_path": "virtdata-lib-basics/src/test/java/io/virtdata/libbasics/shared/unary_string/FieldExtractor_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1581,
+        "out": 130
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 24.5,
+        "block2": 2.6,
+        "block3": 5.3,
+        "block4": null,
+        "total": 32.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1581,
+    "tokens_out": 130,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

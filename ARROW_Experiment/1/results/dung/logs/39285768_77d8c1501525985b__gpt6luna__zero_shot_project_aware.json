@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-040552-fe3c",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-040552-fe3c",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "schemacrawler.tools.offline.OfflineCatalogLoader",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "schemacrawler.tools.offline.OfflineCatalogLoader_ArrowTest",
+      "test_path": "schemacrawler-offline/src/test/java/schemacrawler/tools/offline/OfflineCatalogLoader_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2628,
+        "out": 576
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 5.7,
+        "block2": 5.8,
+        "block3": 7.9,
+        "block4": null,
+        "total": 19.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2628,
+    "tokens_out": 576,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 57 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

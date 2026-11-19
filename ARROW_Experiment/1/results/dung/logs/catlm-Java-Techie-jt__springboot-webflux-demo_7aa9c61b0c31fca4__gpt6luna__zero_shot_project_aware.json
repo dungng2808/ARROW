@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-044043-ppti",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-044043-ppti",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.javatechie.webflux.SpringbootWebfluxDemoApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.javatechie.webflux.SpringbootWebfluxDemoApplication_ArrowTest",
+      "test_path": "src/test/java/com/javatechie/webflux/SpringbootWebfluxDemoApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1397,
+        "out": 74
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.6,
+        "block2": 2.5,
+        "block3": 9.4,
+        "block4": null,
+        "total": 15.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1397,
+    "tokens_out": 74,
+    "cost_usd": null
+  },
+  "warnings": []
+}

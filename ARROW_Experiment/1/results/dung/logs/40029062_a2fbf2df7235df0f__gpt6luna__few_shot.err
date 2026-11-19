@@ -1,0 +1,5 @@
+ARROW · VersionComparator (org.sonatype.nexus.common.app)
+[OK] Khối 1  Maven 3.6.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 190 test (dùng lại, đo 19/11 03:37) · 7.6 s
+[OK] Khối 2  c0 · 3,4k token · 2.5 s · Candidate hợp lệ: 5 test, 8 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | comparesNonVersionStringsLexicographically
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

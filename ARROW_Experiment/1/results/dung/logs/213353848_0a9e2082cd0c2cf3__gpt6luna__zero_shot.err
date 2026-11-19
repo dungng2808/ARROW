@@ -1,0 +1,5 @@
+ARROW · Args (com.gxk.jvm)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 107 test ×2 · 8.3 s
+[OK] Khối 2  c0 · 2,8k token · 6.6 s · Candidate hợp lệ: 6 test, 25 assertion
+[>] Khối 3  c0: RUNTIME · IllegalArgumentException | Args.parseMainClass
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-040633-h8yb",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-040633-h8yb",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "edu.jhuapl.dorset.routing.RegexRouter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "edu.jhuapl.dorset.routing.RegexRouter_ArrowTest",
+      "test_path": "core/src/test/java/edu/jhuapl/dorset/routing/RegexRouter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2987,
+        "out": 536
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.2,
+        "block2": 4.9,
+        "block3": 1.7,
+        "block4": null,
+        "total": 10.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2987,
+    "tokens_out": 536,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

@@ -1,0 +1,5 @@
+ARROW · DoubleValueConverter (com.mobi.rdf.orm.conversion.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 207 test ×2 · 73.2 s
+[OK] Khối 2  c0 · 1,9k token · 2.9 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | DoubleValueConverter.convertType
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

@@ -1,0 +1,5 @@
+ARROW · DslParamsParser (com.lmax.simpledsl.internal)
+[OK] Khối 1  Gradle 7.2 · build root . · JDK 8 · JUnit 5 · baseline 100 test ×2 · 15.6 s
+[OK] Khối 2  c0 · 4,3k token · 4.1 s · Candidate hợp lệ: 5 test, 5 assertion
+[>] Khối 3  c0: COMPILE · class is abstract | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

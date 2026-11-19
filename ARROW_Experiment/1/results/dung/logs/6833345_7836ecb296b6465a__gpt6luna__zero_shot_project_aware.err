@@ -1,0 +1,5 @@
+ARROW · NGSessionPool (com.facebook.nailgun)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 17 test (dùng lại, đo 19/11 03:19) · 3.6 s
+[OK] Khối 2  c0 · 3,1k token · 5.8 s · Candidate hợp lệ: 7 test, 13 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | NGSessionPool_ArrowTest.giveStoresSessionWhenCapacityIsAvailable
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

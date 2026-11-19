@@ -1,0 +1,5 @@
+ARROW · MetricId (com.spotify.metrics.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 18 test (dùng lại, đo 19/11 03:54) · 5.5 s
+[OK] Khối 2  c0 · 5,8k token · 11.1 s · Candidate hợp lệ: 23 test, 48 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-043312-ikn5",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w6/runs/20261119-043312-ikn5",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "nl.inl.blacklab.contentstore.ContentStoreDirZip",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "nl.inl.blacklab.contentstore.ContentStoreDirZip_ArrowTest",
+      "test_path": "core/src/test/java/nl/inl/blacklab/contentstore/ContentStoreDirZip_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3507,
+        "out": 420
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 6.3,
+        "block2": 4,
+        "block3": 3.7,
+        "block4": null,
+        "total": 14
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3507,
+    "tokens_out": 420,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

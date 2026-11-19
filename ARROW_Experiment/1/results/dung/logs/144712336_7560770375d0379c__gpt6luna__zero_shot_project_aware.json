@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-043558-fcsn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-043558-fcsn",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.alibaba.boot.nacos.actuate.endpoint.NacosConfigEndpoint_ArrowTest",
+      "test_path": "nacos-config-spring-boot-actuator/src/test/java/com/alibaba/boot/nacos/actuate/endpoint/NacosConfigEndpoint_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2769,
+        "out": 1082
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 6.7,
+        "block2": 8.1,
+        "block3": 3.6,
+        "block4": null,
+        "total": 18.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2769,
+    "tokens_out": 1082,
+    "cost_usd": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,5 @@
+ARROW · DatabaseOLAPService (org.datum.application.service.impl)
+[OK] Khối 1  Maven 3.9.16 · build root datum-platform · JDK 8 · JUnit 4 + Mockito · baseline 34 test ×2 · 41.9 s
+[OK] Khối 2  c0 · 2,7k token · 1.9 s · Candidate hợp lệ: 1 test, 1 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

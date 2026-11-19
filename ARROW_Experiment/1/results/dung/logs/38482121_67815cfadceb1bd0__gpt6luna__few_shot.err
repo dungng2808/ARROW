@@ -1,0 +1,5 @@
+ARROW · UserInfo (org.vx68k.bitbucket.webapp)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 172 test (dùng lại, đo 19/11 04:08) · 3.9 s
+[OK] Khối 2  c0 · 3,6k token · 2.4 s · Candidate hợp lệ: 3 test, 8 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

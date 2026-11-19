@@ -1,0 +1,5 @@
+ARROW · YamlConfigurationOptions (org.simpleyaml.configuration.file)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 52 test (dùng lại, đo 19/11 03:53) · 3.1 s
+[OK] Khối 2  c0 · 3,4k token · 3.2 s · Candidate hợp lệ: 6 test, 8 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

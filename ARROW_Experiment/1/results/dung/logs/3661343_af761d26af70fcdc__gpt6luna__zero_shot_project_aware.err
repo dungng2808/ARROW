@@ -1,0 +1,5 @@
+ARROW · HtmlUtil (org.xcolab.commons.html)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 · baseline 16 test (dùng lại, đo 19/11 03:43) · 4.6 s
+[OK] Khối 2  c0 · 3,8k token · 7.3 s · Candidate hợp lệ: 14 test, 14 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | cleanSomeKeepsSafeLinksAndImages
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

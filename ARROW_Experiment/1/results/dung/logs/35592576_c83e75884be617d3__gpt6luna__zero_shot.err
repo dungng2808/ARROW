@@ -1,0 +1,5 @@
+ARROW · DataWrapper (org.fuin.esc.spi)
+[OK] Khối 1  Maven 3.6.3 · build root . · JDK 17 · JUnit 5 · baseline 140 test ×2 · 59.7 s
+[OK] Khối 2  c0 · 2,0k token · 3.5 s · Candidate hợp lệ: 5 test, 6 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

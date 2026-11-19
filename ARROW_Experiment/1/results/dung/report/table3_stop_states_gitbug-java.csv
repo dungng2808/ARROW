@@ -1,0 +1,4 @@
+Mô hình,Cách viết prompt,VALID,COMPILE,UNKNOWN,DISCOVERY,RUNTIME,ASSERTION,REGRESSION,INVALID_OUTPUT,Không tính (hạ tầng/bị chặn),Có test cũ nghi chập chờn
+gpt6luna,Zero-shot,4,22,1,0,1,4,0,0,0,0
+gpt6luna,Few-shot,5,20,1,0,3,3,0,0,0,0
+gpt6luna,Project-aware,6,11,1,0,4,10,0,0,0,0

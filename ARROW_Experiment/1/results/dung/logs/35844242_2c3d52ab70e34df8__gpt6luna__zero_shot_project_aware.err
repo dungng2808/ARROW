@@ -1,0 +1,5 @@
+ARROW · DynamodbStreamRecordTransformer (com.amazonaws.services.lambda.runtime.events.transformers.dynamodb)
+[OK] Khối 1  Maven 3.9.16 · build root aws-lambda-java-events-sdk-transformer · JDK 8 · JUnit 5 · baseline 32 test (dùng lại, đo 19/11 03:02) · 4.4 s
+[OK] Khối 2  c0 · 2,1k token · 3.8 s · Candidate hợp lệ: 2 test, 11 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

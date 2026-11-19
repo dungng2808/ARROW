@@ -1,0 +1,5 @@
+ARROW · ArgumentParser (org.apache.jsieve.utils)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 450 test (dùng lại, đo 19/11 03:49) · 6.1 s
+[OK] Khối 2  c0 · 5,5k token · 10.3 s · Candidate hợp lệ: 18 test, 21 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

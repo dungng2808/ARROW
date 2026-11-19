@@ -1,0 +1,52 @@
+{
+  "run_id": "20261119-041549-vgy9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-041549-vgy9",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.senacor.codecamp.reactive.services.integration.CounterBackendImpl",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.senacor.codecamp.reactive.services.integration.CounterBackendImpl_ArrowTest",
+      "test_path": "common-wiki/src/test/java/com/senacor/codecamp/reactive/services/integration/CounterBackendImpl_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2612,
+        "out": 312
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.3,
+        "block2": 3.1,
+        "block3": 24.3,
+        "block4": null,
+        "total": 42.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2612,
+    "tokens_out": 312,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project.",
+    "Cách build detected:reactor (.) không dùng được: Không biên dịch được module common-wiki với JDK 17, 8, 11, 21; thử cách tiếp theo.",
+    "Có 6 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

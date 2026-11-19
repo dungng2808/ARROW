@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-043148-fkss",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-043148-fkss",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.zalando.nakadiproducer.transmission.MockNakadiPublishingClient",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.zalando.nakadiproducer.transmission.MockNakadiPublishingClient_ArrowTest",
+      "test_path": "nakadi-producer/src/test/java/org/zalando/nakadiproducer/transmission/MockNakadiPublishingClient_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1883,
+        "out": 393
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3,
+        "block2": 4.2,
+        "block3": 7.3,
+        "block4": null,
+        "total": 14.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1883,
+    "tokens_out": 393,
+    "cost_usd": null
+  },
+  "warnings": []
+}

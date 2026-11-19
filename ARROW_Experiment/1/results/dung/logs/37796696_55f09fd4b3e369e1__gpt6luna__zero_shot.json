@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-031327-c4ea",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w3/runs/20261119-031327-c4ea",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.cucumber.cucumberexpressions.CucumberExpression",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "io.cucumber.cucumberexpressions.CucumberExpression_ArrowTest",
+      "test_path": "cucumber-expressions/java/src/test/java/io/cucumber/cucumberexpressions/CucumberExpression_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2906,
+        "out": 627
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.9,
+        "block2": 5.3,
+        "block3": 2.4,
+        "block4": null,
+        "total": 20.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2906,
+    "tokens_out": 627,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

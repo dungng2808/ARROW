@@ -1,0 +1,51 @@
+{
+  "run_id": "20261119-040703-dqo9",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-040703-dqo9",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser_ArrowTest",
+      "test_path": "gemma-core/src/test/java/ubic/gemma/core/loader/expression/geo/QuantitationTypeParameterGuesser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 9778,
+        "out": 1793
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 843.3,
+        "block2": 14.7,
+        "block3": 13.3,
+        "block4": null,
+        "total": 871.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 9778,
+    "tokens_out": 1793,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "Có 9 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

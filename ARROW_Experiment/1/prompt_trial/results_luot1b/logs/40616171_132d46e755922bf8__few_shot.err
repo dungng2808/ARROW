@@ -1,0 +1,5 @@
+ARROW · CompositeParser (com.github.kagkarlsson.scheduler.task.schedule)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 177 test ×2 · 18.7 s
+[OK] Khối 2  c0 · 3,3k token · 4.5 s · Candidate hợp lệ: 6 test, 7 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

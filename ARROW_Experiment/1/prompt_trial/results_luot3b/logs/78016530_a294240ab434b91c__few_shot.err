@@ -1,0 +1,5 @@
+ARROW · ANNIndex (internal.com.spotify.annoy)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 67 test ×2 · 14.4 s
+[OK] Khối 2  c0 · 6,6k token · 8.5 s · Candidate hợp lệ: 7 test, 8 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | cosineMarginReturnsNormalizedDotProduct on cosineMarginReturnsNormalizedDotProduct(internal.com.spotify.annoy.ANNIndex_ArrowTest)
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

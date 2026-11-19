@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-031923-y855",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w4/runs/20261119-031923-y855",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.apache.jackrabbit.oak.plugins.migration.NodeStateCopier",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.apache.jackrabbit.oak.plugins.migration.NodeStateCopier_ArrowTest",
+      "test_path": "oak-core/src/test/java/org/apache/jackrabbit/oak/plugins/migration/NodeStateCopier_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6940,
+        "out": 1801
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.5,
+        "block2": 13.8,
+        "block3": 12.6,
+        "block4": null,
+        "total": 39
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 6940,
+    "tokens_out": 1801,
+    "cost_usd": null
+  },
+  "warnings": []
+}

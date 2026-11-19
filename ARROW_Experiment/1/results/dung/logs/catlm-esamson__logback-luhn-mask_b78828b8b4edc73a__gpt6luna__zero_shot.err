@@ -1,0 +1,5 @@
+ARROW · LuhnMaskingConverter (ph.samson.logback.luhn)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 12 test ×2 · 12.2 s
+[OK] Khối 2  c0 · 4,1k token · 11.3 s · Candidate hợp lệ: 17 test, 17 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

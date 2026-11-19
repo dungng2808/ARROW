@@ -1,0 +1,5 @@
+ARROW · LatexContext (de.vsfexperts.latex.template)
+[OK] Khối 1  Maven 3.9.16 · build root latex-template · JDK 8 · JUnit 4 + Mockito · baseline 9 test ×2 · 8.2 s
+[OK] Khối 2  c0 · 1,9k token · 7.5 s · Candidate hợp lệ: 8 test, 19 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

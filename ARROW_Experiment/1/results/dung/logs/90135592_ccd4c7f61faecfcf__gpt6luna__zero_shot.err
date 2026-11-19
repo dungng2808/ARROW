@@ -1,0 +1,5 @@
+ARROW · MockNakadiPublishingClient (org.zalando.nakadiproducer.transmission)
+[OK] Khối 1  Maven 3.2.5 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 11 test ×2 · 10.7 s
+[OK] Khối 2  c0 · 2,5k token · 10.6 s · Candidate hợp lệ: 10 test, 12 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

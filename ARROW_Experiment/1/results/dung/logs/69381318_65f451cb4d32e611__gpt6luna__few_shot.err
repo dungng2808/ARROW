@@ -1,0 +1,5 @@
+ARROW · AvroDeserializer (com.codenotfound.kafka.serializer)
+[OK] Khối 1  Maven 3.9.16 · build root spring-kafka-avro · JDK 8 · JUnit 4 + Mockito · baseline 3 test (dùng lại, đo 19/11 03:25) · 3.0 s
+[OK] Khối 2  c0 · 3,2k token · 3.5 s · Candidate hợp lệ: 3 test, 4 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

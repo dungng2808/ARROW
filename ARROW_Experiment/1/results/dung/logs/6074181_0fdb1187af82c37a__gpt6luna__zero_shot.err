@@ -1,0 +1,5 @@
+ARROW · ContentStoreDirZip (nl.inl.blacklab.contentstore)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 231 test ×2 · 12.7 s
+[OK] Khối 2  c0 · 2,6k token · 4.4 s · Candidate hợp lệ: 4 test, 5 assertion
+[>] Khối 3  c0: RUNTIME · RuntimeException | ContentStoreDirZip.decodeBlock
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

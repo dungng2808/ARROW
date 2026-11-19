@@ -1,0 +1,5 @@
+ARROW · SimpleWordCodeCompletion (de.jcup.basheditor)
+[OK] Khối 1  Gradle 4.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 268 test ×2 · 13.3 s
+[OK] Khối 2  c0 · 2,9k token · 7.3 s · Candidate hợp lệ: 10 test, 14 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | addAndCalculateIncludesAdditionalWordsAndFiltersByPrefix
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

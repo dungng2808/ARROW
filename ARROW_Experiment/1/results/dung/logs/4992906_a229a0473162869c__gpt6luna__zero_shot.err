@@ -1,0 +1,5 @@
+ARROW · SourceCodePositioner (net.sourceforge.pmd.lang.ast)
+[OK] Khối 1  Maven 3.8.5 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 6355 test ×2 · 62.7 s
+[OK] Khối 2  c0 · 2,1k token · 5.2 s · Candidate hợp lệ: 6 test, 15 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | columnFromOffsetIsOneBased
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

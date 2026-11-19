@@ -1,0 +1,5 @@
+ARROW · FixedBackOffPolicy (org.springframework.retry.backoff)
+[OK] Khối 1  Maven 3.9.4 · build root . · JDK 17 · JUnit 5 + Mockito · baseline 379 test ×2 · 84.3 s
+[OK] Khối 2  c0 · 2,5k token · 5.2 s · Candidate hợp lệ: 7 test, 11 assertion
+[>] Khối 3  c0: UNKNOWN · spring-javaformat-maven-plugin | -
+[X] Khối 3  Kết thúc: UNKNOWN (không sửa)

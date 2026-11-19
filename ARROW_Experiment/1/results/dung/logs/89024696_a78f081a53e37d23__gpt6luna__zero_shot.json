@@ -1,0 +1,51 @@
+{
+  "run_id": "20261119-033937-z9hy",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-033937-z9hy",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.appenders.log4j2.elasticsearch.failover.FailedItemInfo",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.appenders.log4j2.elasticsearch.failover.FailedItemInfo_ArrowTest",
+      "test_path": "log4j2-elasticsearch-core/src/test/java/org/appenders/log4j2/elasticsearch/failover/FailedItemInfo_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1372,
+        "out": 172
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 70,
+        "block2": 1.8,
+        "block3": 2.2,
+        "block4": null,
+        "total": 74.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1372,
+    "tokens_out": 172,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "Có 25 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,5 @@
+ARROW · FieldExtractor (io.virtdata.libbasics.shared.unary_string)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 · baseline 179 test (dùng lại, đo 19/11 03:30) · 5.8 s
+[OK] Khối 2  c0 · 2,2k token · 5.8 s · Candidate hợp lệ: 4 test, 4 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

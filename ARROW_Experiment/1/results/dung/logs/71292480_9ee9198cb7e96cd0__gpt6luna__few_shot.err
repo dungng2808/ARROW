@@ -1,0 +1,5 @@
+ARROW · SelectiveActionBuilder (com.automationrockstars.bmo.event.processor)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 37 test (dùng lại, đo 19/11 03:57) · 3.8 s
+[OK] Khối 2  c0 · 3,5k token · 2.7 s · Candidate hợp lệ: 5 test, 6 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

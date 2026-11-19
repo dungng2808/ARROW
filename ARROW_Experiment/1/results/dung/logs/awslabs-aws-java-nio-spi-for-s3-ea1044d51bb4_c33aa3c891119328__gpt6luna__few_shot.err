@@ -1,0 +1,5 @@
+ARROW · S3FileSystem (software.amazon.nio.spi.s3)
+[OK] Khối 1  Gradle 7.1 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 119 test ×2 · 38.2 s
+[OK] Khối 2  c0 · 7,7k token · 8.8 s · Candidate hợp lệ: 12 test, 28 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

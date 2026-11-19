@@ -1,0 +1,5 @@
+ARROW · ApiCommand (com.homeadvisor.robusto)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 4 test (dùng lại, đo 19/11 03:48) · 2.9 s
+[OK] Khối 2  c0 · 7,1k token · 2.7 s · Candidate hợp lệ: 4 test, 5 assertion
+[>] Khối 3  c0: RUNTIME · IllegalArgumentException | ApiCommand$Builder.build
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

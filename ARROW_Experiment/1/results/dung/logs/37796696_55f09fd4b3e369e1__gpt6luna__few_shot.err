@@ -1,0 +1,5 @@
+ARROW · CucumberExpression (io.cucumber.cucumberexpressions)
+[OK] Khối 1  Maven 3.9.16 · build root cucumber-expressions/java · JDK 8 · JUnit 5 · baseline 205 test (dùng lại, đo 19/11 03:13) · 4.1 s
+[OK] Khối 2  c0 · 4,7k token · 3.9 s · Candidate hợp lệ: 6 test, 10 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

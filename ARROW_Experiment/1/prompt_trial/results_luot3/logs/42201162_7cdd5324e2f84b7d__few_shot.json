@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-020954-s0me",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/results_luot3/homes/few_shot/runs/20261119-020954-s0me",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.evosuite.utils.NumberFormatter",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.evosuite.utils.NumberFormatter_ArrowTest",
+      "test_path": "client/src/test/java/org/evosuite/utils/NumberFormatter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 4050,
+        "out": 1038
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 248.3,
+        "block2": 9.8,
+        "block3": 127.8,
+        "block4": null,
+        "total": 385.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 4050,
+    "tokens_out": 1038,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-035122-som3",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-035122-som3",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.acelera.brasil.Contador",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.acelera.brasil.Contador_ArrowTest",
+      "test_path": "aula-3/src/test/java/org/acelera/brasil/Contador_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1487,
+        "out": 274
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 2.7,
+        "block2": 3.1,
+        "block3": 7.1,
+        "block4": null,
+        "total": 13
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1487,
+    "tokens_out": 274,
+    "cost_usd": null
+  },
+  "warnings": []
+}

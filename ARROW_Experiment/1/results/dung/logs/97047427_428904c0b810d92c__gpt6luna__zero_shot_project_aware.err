@@ -1,0 +1,5 @@
+ARROW · MinikubeDockerEnvParser (com.google.cloud.tools.minikube.util)
+[OK] Khối 1  Gradle 4.1 · build root minikube-gradle-plugin · JDK 8 · JUnit 4 + Mockito · baseline 14 test ×2 · 15.8 s
+[OK] Khối 2  c0 · 2,1k token · 5.0 s · Candidate hợp lệ: 5 test, 5 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

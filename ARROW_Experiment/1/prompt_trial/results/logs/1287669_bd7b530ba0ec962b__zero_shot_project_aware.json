@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-012444-2avn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/results/homes/zero_shot_project_aware/runs/20261119-012444-2avn",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.jayway.jsonpath.matchers.WithJsonPath",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.jayway.jsonpath.matchers.WithJsonPath_ArrowTest",
+      "test_path": "json-path-assert/src/test/java/com/jayway/jsonpath/matchers/WithJsonPath_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1819,
+        "out": 600
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 40.6,
+        "block2": 5.6,
+        "block3": 8,
+        "block4": null,
+        "total": 54.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1819,
+    "tokens_out": 600,
+    "cost_usd": null
+  },
+  "warnings": []
+}

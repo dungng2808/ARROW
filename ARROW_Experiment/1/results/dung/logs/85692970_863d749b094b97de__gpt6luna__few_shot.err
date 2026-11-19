@@ -1,0 +1,5 @@
+ARROW · NativeClientList (com.github.thorbenkuck.netcom2.network.server)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 182 test (dùng lại, đo 19/11 04:01) · 4.0 s
+[OK] Khối 2  c0 · 4,0k token · 4.9 s · Candidate hợp lệ: 7 test, 15 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | stringRepresentationIncludesState
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

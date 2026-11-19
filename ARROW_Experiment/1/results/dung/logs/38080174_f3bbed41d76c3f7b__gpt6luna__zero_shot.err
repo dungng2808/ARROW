@@ -1,0 +1,5 @@
+ARROW · StreamBuffer (io.datakernel.datastream.processor)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 451 test ×2 · 58.8 s
+[OK] Khối 2  c0 · 2,5k token · 2.9 s · Candidate hợp lệ: 6 test, 13 assertion
+[>] Khối 3  c0: RUNTIME · IllegalStateException | StreamBuffer_ArrowTest.newBufferIsEmptyAndExhausted
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

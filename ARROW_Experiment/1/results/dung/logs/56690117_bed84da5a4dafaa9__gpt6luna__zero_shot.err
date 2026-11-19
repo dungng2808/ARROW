@@ -1,0 +1,5 @@
+ARROW · UnknownHandshakeMessage (de.rub.nds.tlsattacker.core.protocol.message)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 1471 test ×2 · 87.9 s
+[OK] Khối 2  c0 · 2,1k token · 3.7 s · Candidate hợp lệ: 5 test, 10 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | setDataBytesStoresValueAndFormatsHex
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

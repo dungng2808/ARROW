@@ -1,0 +1,5 @@
+ARROW · ANNIndex (internal.com.spotify.annoy)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 67 test ×2 · 15.3 s
+[OK] Khối 2  c0 · 5,3k token · 8.5 s · Candidate hợp lệ: 7 test, 8 assertion
+[>] Khối 3  c0: RUNTIME · ArrayIndexOutOfBoundsException | ANNIndex_ArrowTest.putInt
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

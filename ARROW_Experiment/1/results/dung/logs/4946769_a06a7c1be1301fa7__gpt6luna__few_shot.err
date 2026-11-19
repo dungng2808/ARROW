@@ -1,0 +1,5 @@
+ARROW · CurrentRunStepIndexProvider (com.eviware.soapui.model.propertyexpansion.resolvers.providers)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 673 test (dùng lại, đo 19/11 03:59) · 37.2 s
+[OK] Khối 2  c0 · 3,1k token · 2.5 s · Candidate hợp lệ: 2 test, 2 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

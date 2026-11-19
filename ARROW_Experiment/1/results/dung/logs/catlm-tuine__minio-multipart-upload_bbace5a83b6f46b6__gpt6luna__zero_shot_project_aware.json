@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-043747-y2h7",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-043747-y2h7",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "me.tuine.minio.MinioApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "me.tuine.minio.MinioApplication_ArrowTest",
+      "test_path": "src/test/java/me/tuine/minio/MinioApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1396,
+        "out": 65
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.1,
+        "block2": 1.4,
+        "block3": 8.8,
+        "block4": null,
+        "total": 13.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1396,
+    "tokens_out": 65,
+    "cost_usd": null
+  },
+  "warnings": []
+}

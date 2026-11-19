@@ -1,0 +1,5 @@
+ARROW · CreateVaultCommand (de.kopis.glacier.commands)
+[OK] Khối 1  Maven 3.3.9 · build root . · JDK 8 · JUnit 4 · baseline 54 test (dùng lại, đo 19/11 03:05) · 3.6 s
+[OK] Khối 2  c0 · 3,5k token · 4.0 s · Candidate hợp lệ: 2 test, 2 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

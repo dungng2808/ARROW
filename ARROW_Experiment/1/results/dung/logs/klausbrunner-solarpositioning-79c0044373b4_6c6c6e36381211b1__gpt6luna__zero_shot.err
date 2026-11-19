@@ -1,0 +1,5 @@
+ARROW · SPA (net.e175.klaus.solarpositioning)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 · baseline 1140 test ×2 · 12.5 s
+[OK] Khối 2  c0 · 12,9k token · 13.2 s · Candidate hợp lệ: 7 test, 23 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

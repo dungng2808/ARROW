@@ -1,0 +1,5 @@
+ARROW · ChangeableDecisionTree (org.swblocks.decisiontree)
+[OK] Khối 1  Gradle 3.2.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 151 test ×2 · 16.7 s
+[OK] Khối 2  c0 · 3,7k token · 4.0 s · Candidate hợp lệ: 3 test, 5 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,5 @@
+ARROW · EBCLIOptions (io.engineblock.cli)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · TestNG · baseline 222 test ×2 · 472.0 s
+[OK] Khối 2  c0 · 8,1k token · 14.5 s · Candidate hợp lệ: 23 test, 71 assertion
+[>] Khối 3  c0: RUNTIME · InvalidParameterException | EBCLIOptions.parse
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

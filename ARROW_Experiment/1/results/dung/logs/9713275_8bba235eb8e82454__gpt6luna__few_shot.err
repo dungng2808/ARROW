@@ -1,0 +1,5 @@
+ARROW · ImageQueryPipeline (com.github.dozedoff.similarImage.thread.pipeline)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 317 test (dùng lại, đo 19/11 03:27) · 5.3 s
+[OK] Khối 2  c0 · 4,7k token · 11.8 s · Candidate hợp lệ: 5 test, 15 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

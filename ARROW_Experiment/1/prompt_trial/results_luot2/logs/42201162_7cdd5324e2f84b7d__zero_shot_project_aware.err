@@ -1,0 +1,5 @@
+ARROW · NumberFormatter (org.evosuite.utils)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1546 test ×2 · 244.5 s
+[OK] Khối 2  c0 · 4,3k token · 6.7 s · Candidate hợp lệ: 24 test, 36 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

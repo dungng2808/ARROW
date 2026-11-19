@@ -1,0 +1,5 @@
+ARROW · OfflineCatalogLoader (schemacrawler.tools.offline)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 492 test (dùng lại, đo 19/11 04:05) · 5.7 s
+[OK] Khối 2  c0 · 3,2k token · 5.7 s · Candidate hợp lệ: 9 test, 9 assertion
+[>] Khối 3  c0: RUNTIME · MockitoException | OfflineCatalogLoader_ArrowTest.settingSchemaRetrievalOptionsDoesNotChangeReturnedOptions
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

@@ -1,0 +1,5 @@
+ARROW · Slice (com.openkappa.splitmap)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · TestNG · baseline 24 test (dùng lại, đo 19/11 03:57) · 4.0 s
+[OK] Khối 2  c0 · 1,9k token · 3.1 s · Candidate hợp lệ: 6 test, 8 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

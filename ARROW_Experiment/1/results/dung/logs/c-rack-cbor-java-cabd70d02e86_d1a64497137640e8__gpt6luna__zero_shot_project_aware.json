@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-045056-nrkm",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w6/runs/20261119-045056-nrkm",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "co.nstant.in.cbor.decoder.SpecialDecoder",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "co.nstant.in.cbor.decoder.SpecialDecoder_ArrowTest",
+      "test_path": "src/test/java/co/nstant/in/cbor/decoder/SpecialDecoder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1676,
+        "out": 686
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.7,
+        "block2": 5.8,
+        "block3": 4.7,
+        "block4": null,
+        "total": 15.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1676,
+    "tokens_out": 686,
+    "cost_usd": null
+  },
+  "warnings": []
+}

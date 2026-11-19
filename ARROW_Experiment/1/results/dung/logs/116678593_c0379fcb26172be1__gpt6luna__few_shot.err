@@ -1,0 +1,5 @@
+ARROW · VariablesMerger (biz.netcentric.aem.applysystemenvinstallhook)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 19/11 04:04) · 3.4 s
+[OK] Khối 2  c0 · 3,9k token · 5.1 s · Candidate hợp lệ: 4 test, 9 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | VariablesMerger.applyEnvVars
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

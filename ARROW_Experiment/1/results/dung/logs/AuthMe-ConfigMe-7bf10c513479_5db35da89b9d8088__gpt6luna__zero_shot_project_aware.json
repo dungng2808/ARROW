@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-045239-tlq0",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w1/runs/20261119-045239-tlq0",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "ch.jalu.configme.configurationdata.PropertyListBuilder",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "ch.jalu.configme.configurationdata.PropertyListBuilder_ArrowTest",
+      "test_path": "src/test/java/ch/jalu/configme/configurationdata/PropertyListBuilder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2425,
+        "out": 731
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.3,
+        "block2": 5.7,
+        "block3": 2.8,
+        "block4": null,
+        "total": 11.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2425,
+    "tokens_out": 731,
+    "cost_usd": null
+  },
+  "warnings": []
+}

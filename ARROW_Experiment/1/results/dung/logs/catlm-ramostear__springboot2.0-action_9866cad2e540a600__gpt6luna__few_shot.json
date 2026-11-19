@@ -1,0 +1,51 @@
+{
+  "run_id": "20261119-043656-2ssw",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung/homes/w6/runs/20261119-043656-2ssw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.ramostear.springboot.uploadfile.SpringbootUploadfileApplication",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.ramostear.springboot.uploadfile.SpringbootUploadfileApplication_ArrowTest",
+      "test_path": "springboot-uploadfile/src/test/java/com/ramostear/springboot/uploadfile/SpringbootUploadfileApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2529,
+        "out": 77
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.9,
+        "block2": 1.4,
+        "block3": 1.5,
+        "block4": null,
+        "total": 6.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2529,
+    "tokens_out": 77,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project.",
+    "Wrapper springboot-uploadfile/mvnw không chạy được; dùng Maven của máy."
+  ]
+}

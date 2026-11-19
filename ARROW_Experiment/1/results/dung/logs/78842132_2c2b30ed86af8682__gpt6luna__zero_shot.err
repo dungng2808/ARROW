@@ -1,0 +1,5 @@
+ARROW · TransactionService (org.egov.pg.service)
+[OK] Khối 1  Maven 3.9.16 · build root core/egov-pg-service · JDK 8 · JUnit 4 + Mockito · baseline 23 test ×2 · 56.8 s
+[OK] Khối 2  c0 · 2,8k token · 3.4 s · Candidate hợp lệ: 2 test, 2 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

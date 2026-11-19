@@ -1,0 +1,5 @@
+ARROW · DeweyVersion (com.github.fhuss.kafka.streams.cep.core.nfa)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 29 test ×2 · 8.0 s
+[OK] Khối 2  c0 · 2,7k token · 6.0 s · Candidate hợp lệ: 10 test, 18 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | DeweyVersion.length
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)
