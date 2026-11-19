@@ -419,6 +419,8 @@ def main():
     ap.add_argument("--shard", default="1/1", help="phần việc của máy này, ví dụ 2/5 (mặc định 1/1 = tất cả)")
     ap.add_argument("--pilot", action="store_true", help="chạy trên lớp pilot (chạy khói), không phải tập đánh giá")
     ap.add_argument("--limit", type=int, help="chỉ chạy N lớp đầu (để thử)")
+    ap.add_argument("--only", help="chỉ chạy các lớp có task_id này (cách nhau dấu phẩy), "
+                                   "ví dụ chạy lại trên máy khác lớp bị lỗi hạ tầng ở máy gốc")
     ap.add_argument("--retry-infra", action="store_true", help="chạy lại các lần bị lỗi hạ tầng")
     ap.add_argument("--rerun", help="file danh sách bộ test cần chạy lại")
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")),
@@ -502,6 +504,12 @@ def main():
 
     # --- Lập danh sách việc: mỗi lớp → các (mô hình, cách viết prompt) còn phải chạy ---
     tasks = [t for t in read_tasks(MANIFESTS[group]) if in_shard(t["task_id"], k, n)]
+    if args.only:                                   # --only: giữ đúng các lớp được chỉ định
+        only = {x.strip() for x in args.only.split(",") if x.strip()}
+        unknown = only - {t["task_id"] for t in tasks}
+        if unknown:
+            raise SystemExit(f"--only có task_id không thuộc dataset/phần này: {sorted(unknown)}")
+        tasks = [t for t in tasks if t["task_id"] in only]
     if args.limit:
         tasks = tasks[:args.limit]                  # [:N] lấy N phần tử đầu
     latest = read_latest(runs_path)

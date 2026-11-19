@@ -12,7 +12,9 @@ Ghi ra thư mục --out:
     table1_rq1a.csv ... table6_jdk_framework.csv   từng bảng dạng CSV để đưa vào báo cáo
 
 Kiểm khi gộp:
-    - bộ test (lớp, mô hình, cách viết prompt) xuất hiện ở hơn một file → dừng, in danh sách trùng
+    - bộ test (lớp, mô hình, cách viết prompt) xuất hiện ở hơn một file:
+        nếu đúng một file có lần chạy xong (counted = 1), các file kia chỉ là lỗi hạ tầng → dùng lần chạy xong
+        (trường hợp chạy lại trên máy khác bằng --only); còn lại → dừng, in danh sách trùng
     - các file dùng bản tool khác nhau → cảnh báo
     - thiếu bộ test so với dataset → bảng ghi "CHƯA ĐỦ DỮ LIỆU"
 
@@ -343,6 +345,23 @@ def main():
     args = ap.parse_args()
 
     rows, dups = load(args.inputs)
+    if dups:
+        # Trùng do chạy lại lỗi hạ tầng trên máy khác: giữ lần chạy xong, bỏ các lần INFRA/bị chặn
+        by_key = {}
+        for r in rows:
+            by_key.setdefault((r["task_id"], r["model"], r["strategy"]), []).append(r)
+        keep, bad = [], []
+        for key, rs in by_key.items():
+            done = [r for r in rs if r["counted"] == 1]
+            if len(rs) == 1:
+                keep.append(rs[0])
+            elif len(done) == 1:
+                keep.append(done[0])
+                print(f"[i] {key}: dùng lần chạy xong ở {done[0]['_file']}, bỏ {len(rs) - 1} lần lỗi hạ tầng")
+            else:
+                bad.append((key, [r["_file"] for r in rs]))
+        if not bad:
+            rows, dups = keep, []
     if dups:                                        # có bộ test trùng giữa các file → không gộp bừa
         for key, f1, f2 in dups[:20]:
             print(f"[X] Trùng {key}: {f1} và {f2}")
