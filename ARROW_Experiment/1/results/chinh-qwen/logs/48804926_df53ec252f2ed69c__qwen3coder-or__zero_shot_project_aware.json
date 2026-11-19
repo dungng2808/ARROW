@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-003656-eks4",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w2\\runs\\20261120-003656-eks4",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "edu.jhuapl.dorset.routing.RegexRouter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "edu.jhuapl.dorset.routing.RegexRouter_ArrowTest",
+      "test_path": "core/src/test/java/edu/jhuapl/dorset/routing/RegexRouter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1927,
+        "out": 1757
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 5.4,
+        "block2": 6,
+        "block3": 2.8,
+        "block4": null,
+        "total": 14.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1927,
+    "tokens_out": 1757,
+    "cost_usd": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-234208-aigo",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w3\\runs\\20261119-234208-aigo",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.rf.ide.core.execution.agent.event.Events",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.rf.ide.core.execution.agent.event.Events_ArrowTest",
+      "test_path": "src/RobotFrameworkCore/org.robotframework.ide.core-functions/src/test/java/org/rf/ide/core/execution/agent/event/Events_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1951,
+        "out": 919
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 43.3,
+        "block2": 4.2,
+        "block3": 138.2,
+        "block4": null,
+        "total": 185.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1951,
+    "tokens_out": 919,
+    "cost_usd": null
+  },
+  "warnings": []
+}

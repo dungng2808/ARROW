@@ -1,0 +1,5 @@
+﻿arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-19)
+Máy chinh-qwen · phần 4/4 · 59 lớp · mô hình ['qwen3coder-or'] · còn 1 lần chạy (1 lớp) · 3 worker
+--- 3 worker
+[1/1] DONE  RUNTIME           742.9s  qwen3coder-or zero_shot                com.eviware.soapui.model.propertyexpansion.resolvers.providers.CurrentRunStepIndexProvider
+Kết quả: ASSERTION 9, COMPILE 103, DISCOVERY 2, INVALID_OUTPUT 2, REGRESSION 1, RUNTIME 15, VALID 45

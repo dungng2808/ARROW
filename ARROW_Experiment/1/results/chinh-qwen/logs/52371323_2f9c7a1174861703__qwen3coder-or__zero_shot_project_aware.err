@@ -1,0 +1,5 @@
+ARROW · MetricId (com.spotify.metrics.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 18 test (dùng lại, đo 20/11 00:12) · 10.9 s
+[OK] Khối 2  c0 · 6.5k token · 4.9 s · Candidate hợp lệ: 37 test, 59 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testCompareToNull
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

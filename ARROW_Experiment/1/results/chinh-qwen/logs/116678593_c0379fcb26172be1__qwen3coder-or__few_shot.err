@@ -1,0 +1,5 @@
+ARROW · VariablesMerger (biz.netcentric.aem.applysystemenvinstallhook)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 20/11 00:34) · 8.4 s
+[X] Khối 2  c0 · 4.8k token · 4.1 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

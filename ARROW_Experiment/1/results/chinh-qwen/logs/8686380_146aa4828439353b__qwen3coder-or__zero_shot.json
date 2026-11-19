@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-234217-k1cr",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w4\\runs\\20261119-234217-k1cr",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jeasy.rules.support.composite.UnitRuleGroup",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.jeasy.rules.support.composite.UnitRuleGroup_ArrowTest",
+      "test_path": "easy-rules-support/src/test/java/org/jeasy/rules/support/composite/UnitRuleGroup_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1723,
+        "out": 743
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 87.8,
+        "block2": 3.1,
+        "block3": 9.8,
+        "block4": null,
+        "total": 100.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1723,
+    "tokens_out": 743,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-011642-aw5r",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w4\\runs\\20261120-011642-aw5r",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "me.vertretungsplan.parser.ColorProvider",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "me.vertretungsplan.parser.ColorProvider_ArrowTest",
+      "test_path": "parser/src/test/java/me/vertretungsplan/parser/ColorProvider_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3235,
+        "out": 917
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 56.6,
+        "block2": 5.3,
+        "block3": 11.6,
+        "block4": null,
+        "total": 73.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3235,
+    "tokens_out": 917,
+    "cost_usd": null
+  },
+  "warnings": []
+}

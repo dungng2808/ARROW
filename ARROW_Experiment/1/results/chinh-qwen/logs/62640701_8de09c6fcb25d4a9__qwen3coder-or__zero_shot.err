@@ -1,0 +1,5 @@
+ARROW · ArchitectureManagement (org.service.criticality.architectures.service)
+[OK] Khối 1  Maven 3.9.16 · build root architectures · JDK 8 · JUnit 4 + Mockito · baseline 24 test ×2 · 139.1 s
+[OK] Khối 2  c0 · 3.0k token · 3.5 s · Candidate hợp lệ: 8 test, 25 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

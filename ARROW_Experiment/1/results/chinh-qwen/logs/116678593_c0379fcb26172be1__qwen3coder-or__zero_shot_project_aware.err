@@ -1,0 +1,6 @@
+ARROW · VariablesMerger (biz.netcentric.aem.applysystemenvinstallhook)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 20/11 00:34) · 7.1 s
+[!] gọi lại sau 20 s (timeout)
+[OK] Khối 2  c0 · 3.8k token · 5.2 s · Candidate hợp lệ: 11 test, 18 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

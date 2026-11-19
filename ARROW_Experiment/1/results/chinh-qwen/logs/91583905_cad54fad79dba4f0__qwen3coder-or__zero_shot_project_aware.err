@@ -1,0 +1,5 @@
+ARROW · ChangeIndex (org.alfasoftware.morf.upgrade)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 2553 test (dùng lại, đo 20/11 00:58) · 22.0 s
+[OK] Khối 2  c0 · 4.1k token · 3.6 s · Candidate hợp lệ: 13 test, 9 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-002533-3p42",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w4\\runs\\20261120-002533-3p42",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.ctrip.soa.caravan.common.value.corrector.PatternCorrector",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.ctrip.soa.caravan.common.value.corrector.PatternCorrector_ArrowTest",
+      "test_path": "caravan-common/src/test/java/com/ctrip/soa/caravan/common/value/corrector/PatternCorrector_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1277,
+        "out": 363
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 33.9,
+        "block2": 2.9,
+        "block3": 9,
+        "block4": null,
+        "total": 45.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1277,
+    "tokens_out": 363,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

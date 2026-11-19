@@ -1,0 +1,5 @@
+ARROW · SPA (net.e175.klaus.solarpositioning)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 · baseline 1140 test (dùng lại, đo 20/11 01:11) · 9.0 s
+[OK] Khối 2  c0 · 15.7k token · 7.1 s · Candidate hợp lệ: 12 test, 30 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

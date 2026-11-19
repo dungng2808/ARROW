@@ -1,0 +1,51 @@
+{
+  "run_id": "20261119-234109-b9oq",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w1\\runs\\20261119-234109-b9oq",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.orange.ngsi2.model.Subscription",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.orange.ngsi2.model.Subscription_ArrowTest",
+      "test_path": "ngsi2-client/src/test/java/com/orange/ngsi2/model/Subscription_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1500,
+        "out": 609
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 79.6,
+        "block2": 3,
+        "block3": 14.9,
+        "block4": null,
+        "total": 97.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1500,
+    "tokens_out": 609,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "Có 4 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

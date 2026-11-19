@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-235901-zrtm",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w4\\runs\\20261119-235901-zrtm",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.krotscheck.kangaroo.authz.common.database.util.SortUtil",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "net.krotscheck.kangaroo.authz.common.database.util.SortUtil_ArrowTest",
+      "test_path": "kangaroo-server-authz/src/test/java/net/krotscheck/kangaroo/authz/common/database/util/SortUtil_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1869,
+        "out": 192
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 20.8,
+        "block2": 4.6,
+        "block3": 30.8,
+        "block4": null,
+        "total": 56.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1869,
+    "tokens_out": 192,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 107 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

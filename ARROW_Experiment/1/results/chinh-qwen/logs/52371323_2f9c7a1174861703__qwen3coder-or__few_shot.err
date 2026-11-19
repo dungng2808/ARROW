@@ -1,0 +1,5 @@
+ARROW · MetricId (com.spotify.metrics.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 18 test (dùng lại, đo 20/11 00:12) · 10.8 s
+[OK] Khối 2  c0 · 7.0k token · 5.2 s · Candidate hợp lệ: 25 test, 51 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | MetricId.join
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

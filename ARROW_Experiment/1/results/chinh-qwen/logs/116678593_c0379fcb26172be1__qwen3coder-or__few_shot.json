@@ -1,0 +1,52 @@
+{
+  "run_id": "20261120-003446-sdiw",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w1\\runs\\20261120-003446-sdiw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "biz.netcentric.aem.applysystemenvinstallhook.VariablesMerger",
+      "result": "INVALID_OUTPUT",
+      "c0_state": null,
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "biz.netcentric.aem.applysystemenvinstallhook.VariablesMerger_ArrowTest",
+      "test_path": "apply-system-env-install-hook/src/test/java/biz/netcentric/aem/applysystemenvinstallhook/VariablesMerger_ArrowTest.java",
+      "final_code": null,
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3533,
+        "out": 1226
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.4,
+        "block2": 4.3,
+        "block3": null,
+        "block4": null,
+        "total": 12.7
+      },
+      "error": {
+        "code": "B2_INVALID_OUTPUT",
+        "message": "parse_error",
+        "hint": "Chạy lại, hoặc đổi model.",
+        "log": null
+      },
+      "warnings": [],
+      "apply": null
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3533,
+    "tokens_out": 1226,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

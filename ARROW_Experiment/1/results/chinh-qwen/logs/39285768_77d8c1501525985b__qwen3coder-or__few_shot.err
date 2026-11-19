@@ -1,0 +1,5 @@
+ARROW · OfflineCatalogLoader (schemacrawler.tools.offline)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 492 test (dùng lại, đo 20/11 00:34) · 22.3 s
+[OK] Khối 2  c0 · 4.3k token · 3.0 s · Candidate hợp lệ: 12 test, 11 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

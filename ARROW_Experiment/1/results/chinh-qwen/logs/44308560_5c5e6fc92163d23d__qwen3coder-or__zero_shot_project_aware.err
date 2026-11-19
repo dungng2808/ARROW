@@ -1,0 +1,5 @@
+ARROW · Events (org.rf.ide.core.execution.agent.event)
+[OK] Khối 1  Maven 3.9.16 · build root src/RobotFrameworkCore/org.robotframework.ide.core-functions · JDK 8 · JUnit 5 + Mockito · baseline 2880 test (dùng lại, đo 19/11 23:39) · 43.3 s
+[OK] Khối 2  c0 · 2.9k token · 3.9 s · Candidate hợp lệ: 13 test, 18 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

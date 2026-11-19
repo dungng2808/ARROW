@@ -1,0 +1,5 @@
+ARROW · StringType (org.apache.qpid.proton.codec)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 666 test (dùng lại, đo 19/11 23:46) · 14.6 s
+[OK] Khối 2  c0 · 4.7k token · 3.0 s · Candidate hợp lệ: 9 test, 10 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

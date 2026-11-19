@@ -1,0 +1,51 @@
+{
+  "run_id": "20261119-234811-qn9m",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w4\\runs\\20261119-234811-qn9m",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.krotscheck.kangaroo.authz.common.database.util.SortUtil",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "net.krotscheck.kangaroo.authz.common.database.util.SortUtil_ArrowTest",
+      "test_path": "kangaroo-server-authz/src/test/java/net/krotscheck/kangaroo/authz/common/database/util/SortUtil_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1428,
+        "out": 228
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 371.6,
+        "block2": 3.9,
+        "block3": 36.5,
+        "block4": null,
+        "total": 412.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1428,
+    "tokens_out": 228,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "Có 107 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-011330-2t94",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w2\\runs\\20261120-011330-2t94",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.davidmoten.text.utils.WordWrap",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.davidmoten.text.utils.WordWrap_ArrowTest",
+      "test_path": "src/test/java/org/davidmoten/text/utils/WordWrap_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 5708,
+        "out": 1210
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.9,
+        "block2": 4.2,
+        "block3": 14.7,
+        "block4": null,
+        "total": 29.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 5708,
+    "tokens_out": 1210,
+    "cost_usd": null
+  },
+  "warnings": []
+}

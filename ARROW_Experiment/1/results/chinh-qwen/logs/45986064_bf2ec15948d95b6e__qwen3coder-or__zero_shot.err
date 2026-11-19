@@ -1,0 +1,5 @@
+ARROW · DefaultSourceURI2OutputFilePathFunction (com.textocat.textokit.commons.consumer)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 20 test ×2 · 69.8 s
+[OK] Khối 2  c0 · 1.8k token · 3.7 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

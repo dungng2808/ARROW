@@ -1,0 +1,5 @@
+ARROW · DebugSkriptCompiler (org.byteskript.skript.compiler)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 · baseline 8 test (dùng lại, đo 20/11 01:13) · 15.7 s
+[OK] Khối 2  c0 · 2.5k token · 4.1 s · Candidate hợp lệ: 6 test, 10 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

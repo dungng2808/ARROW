@@ -1,0 +1,5 @@
+ARROW · FilterOptions (com.box.l10n.mojito.okapi.filters)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 81 test (dùng lại, đo 20/11 00:52) · 15.9 s
+[OK] Khối 2  c0 · 2.7k token · 2.6 s · Candidate hợp lệ: 10 test, 18 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

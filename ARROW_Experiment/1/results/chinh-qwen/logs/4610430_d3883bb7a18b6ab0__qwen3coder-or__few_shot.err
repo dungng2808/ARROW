@@ -1,0 +1,5 @@
+ARROW · TemplateEngineFreemarker (ninja.template)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 808 test (dùng lại, đo 19/11 23:36) · 15.3 s
+[OK] Khối 2  c0 · 6.9k token · 7.5 s · Candidate hợp lệ: 10 test, 13 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

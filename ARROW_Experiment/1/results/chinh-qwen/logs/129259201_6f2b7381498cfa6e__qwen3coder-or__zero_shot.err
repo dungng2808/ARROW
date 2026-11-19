@@ -1,0 +1,6 @@
+ARROW · UIInput (javax.faces.component)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 1000 test ×2 · 292.0 s
+[!] javax.faces.component.UIInput dài 58,807 ký tự, đã rút gọn (comments_removed).
+[OK] Khối 2  c0 · 8.4k token · 7.0 s · Candidate hợp lệ: 57 test, 80 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

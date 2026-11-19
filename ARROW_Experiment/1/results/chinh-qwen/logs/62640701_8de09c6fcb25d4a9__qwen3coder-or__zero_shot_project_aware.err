@@ -1,0 +1,5 @@
+ARROW · ArchitectureManagement (org.service.criticality.architectures.service)
+[OK] Khối 1  Maven 3.9.16 · build root architectures · JDK 8 · JUnit 4 + Mockito · baseline 24 test (dùng lại, đo 20/11 00:29) · 8.8 s
+[OK] Khối 2  c0 · 3.5k token · 4.4 s · Candidate hợp lệ: 8 test, 46 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

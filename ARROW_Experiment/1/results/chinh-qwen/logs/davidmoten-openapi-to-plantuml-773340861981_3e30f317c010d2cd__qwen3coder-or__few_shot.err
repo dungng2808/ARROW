@@ -1,0 +1,5 @@
+ARROW · Converter (com.github.davidmoten.oas3.puml)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 70 test (dùng lại, đo 20/11 01:17) · 7.4 s
+[OK] Khối 2  c0 · 5.9k token · 3.2 s · Candidate hợp lệ: 2 test, 6 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

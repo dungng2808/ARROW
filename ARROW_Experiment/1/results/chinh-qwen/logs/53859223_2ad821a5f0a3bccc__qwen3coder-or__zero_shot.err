@@ -1,0 +1,5 @@
+ARROW · IntegerToInteger (com.nordea.oss.copybook.converters)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 284 test ×2 · 122.5 s
+[OK] Khối 2  c0 · 2.6k token · 8.7 s · Candidate hợp lệ: 14 test, 16 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

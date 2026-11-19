@@ -1,0 +1,5 @@
+ARROW · UnitRuleGroup (org.jeasy.rules.support.composite)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 134 test ×2 · 87.8 s
+[OK] Khối 2  c0 · 2.5k token · 2.6 s · Candidate hợp lệ: 8 test, 15 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

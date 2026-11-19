@@ -1,0 +1,5 @@
+ARROW · StringType (org.apache.qpid.proton.codec)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 666 test ×2 · 133.4 s
+[OK] Khối 2  c0 · 2.9k token · 3.0 s · Candidate hợp lệ: 7 test, 8 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | StringType_ArrowTest.testGetCanonicalEncoding
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

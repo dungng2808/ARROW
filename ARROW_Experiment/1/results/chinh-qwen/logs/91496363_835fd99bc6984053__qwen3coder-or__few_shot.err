@@ -1,0 +1,5 @@
+ARROW · VertxServiceDiscovery (org.dominokit.domino.service.discovery)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 81 test (dùng lại, đo 20/11 00:40) · 7.8 s
+[OK] Khối 2  c0 · 4.7k token · 3.9 s · Candidate hợp lệ: 19 test, 19 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

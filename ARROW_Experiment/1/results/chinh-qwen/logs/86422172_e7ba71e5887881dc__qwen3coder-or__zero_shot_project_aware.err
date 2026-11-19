@@ -1,0 +1,5 @@
+ARROW · SqlQueryToColumnInfoFunction (org.apache.phoenix.pig.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1528 test (dùng lại, đo 20/11 00:15) · 68.4 s
+[OK] Khối 2  c0 · 3.1k token · 20.4 s · Candidate hợp lệ: 4 test, 7 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

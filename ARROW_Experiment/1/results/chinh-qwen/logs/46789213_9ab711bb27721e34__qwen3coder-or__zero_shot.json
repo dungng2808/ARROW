@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-235724-9nmg",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w3\\runs\\20261119-235724-9nmg",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "dk.alexandra.fresco.framework.builder.numeric.field.MersennePrimeModulus",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "dk.alexandra.fresco.framework.builder.numeric.field.MersennePrimeModulus_ArrowTest",
+      "test_path": "core/src/test/java/dk/alexandra/fresco/framework/builder/numeric/field/MersennePrimeModulus_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1594,
+        "out": 742
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 349.9,
+        "block2": 3.5,
+        "block3": 5,
+        "block4": null,
+        "total": 358.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1594,
+    "tokens_out": 742,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

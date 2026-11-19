@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-234724-bzh4",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w1\\runs\\20261119-234724-bzh4",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.apache.qpid.proton.codec.StringType",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.apache.qpid.proton.codec.StringType_ArrowTest",
+      "test_path": "proton-j/src/test/java/org/apache/qpid/proton/codec/StringType_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2873,
+        "out": 695
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.6,
+        "block2": 12.2,
+        "block3": 14.4,
+        "block4": null,
+        "total": 42.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2873,
+    "tokens_out": 695,
+    "cost_usd": null
+  },
+  "warnings": []
+}

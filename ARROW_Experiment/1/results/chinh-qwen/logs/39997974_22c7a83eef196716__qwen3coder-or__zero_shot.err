@@ -1,0 +1,5 @@
+ARROW · CounterBackendImpl (com.senacor.codecamp.reactive.services.integration)
+[OK] Khối 1  Maven 3.6.1 · build root common-wiki · JDK 8 · JUnit 4 + Mockito · baseline 43 test ×2 · 215.6 s
+[OK] Khối 2  c0 · 1.7k token · 1.9 s · Candidate hợp lệ: 5 test, 1 assertion
+[>] Khối 3  c0: RUNTIME · Exception | CounterBackendImpl_ArrowTest.testCountWordsNullParsedPage
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

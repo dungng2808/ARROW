@@ -1,0 +1,5 @@
+ARROW · ShipmentInsertionCalculator (com.graphhopper.jsprit.core.algorithm.recreate)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1075 test ×2 · 96.0 s
+[OK] Khối 2  c0 · 5.1k token · 15.5 s · Candidate hợp lệ: 3 test, 6 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

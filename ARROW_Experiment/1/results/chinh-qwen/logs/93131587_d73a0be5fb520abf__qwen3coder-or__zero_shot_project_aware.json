@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-234731-uusn",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w4\\runs\\20261119-234731-uusn",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.btc.redg.runtime.defaultvalues.pluggable.buildermatchers.Conditions",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.btc.redg.runtime.defaultvalues.pluggable.buildermatchers.Conditions_ArrowTest",
+      "test_path": "redg-runtime/src/test/java/com/btc/redg/runtime/defaultvalues/pluggable/buildermatchers/Conditions_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1723,
+        "out": 335
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.1,
+        "block2": 5.7,
+        "block3": 20.7,
+        "block4": null,
+        "total": 36.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1723,
+    "tokens_out": 335,
+    "cost_usd": null
+  },
+  "warnings": []
+}

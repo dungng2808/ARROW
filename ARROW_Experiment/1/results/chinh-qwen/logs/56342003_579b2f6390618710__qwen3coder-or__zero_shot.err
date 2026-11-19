@@ -1,0 +1,5 @@
+ARROW · SortUtil (net.krotscheck.kangaroo.authz.common.database.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 687 test ×2 · 371.6 s
+[OK] Khối 2  c0 · 1.7k token · 3.7 s · Candidate hợp lệ: 4 test, 8 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | testOrderAsc
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

@@ -1,0 +1,5 @@
+ARROW · ImageQueryPipeline (com.github.dozedoff.similarImage.thread.pipeline)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 317 test (dùng lại, đo 19/11 23:51) · 14.5 s
+[OK] Khối 2  c0 · 3.1k token · 9.0 s · Candidate hợp lệ: 4 test, 5 assertion
+[>] Khối 3  c0: RUNTIME · MockitoException | ImageQueryPipeline_ArrowTest.testApply
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

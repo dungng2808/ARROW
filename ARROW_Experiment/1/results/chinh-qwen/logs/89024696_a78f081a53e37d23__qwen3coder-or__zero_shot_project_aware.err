@@ -1,0 +1,5 @@
+ARROW · FailedItemInfo (org.appenders.log4j2.elasticsearch.failover)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 552 test (dùng lại, đo 20/11 00:05) · 12.7 s
+[OK] Khối 2  c0 · 2.1k token · 1.4 s · Candidate hợp lệ: 2 test, 2 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,5 @@
+ARROW · RevealServiceFactory (ch.cyberduck.core.local)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 709 test (dùng lại, đo 20/11 01:03) · 44.7 s
+[OK] Khối 2  c0 · 2.8k token · 1.5 s · Candidate hợp lệ: 2 test, 2 assertion
+[>] Khối 3  c0: RUNTIME · FactoryException | Factory.create
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

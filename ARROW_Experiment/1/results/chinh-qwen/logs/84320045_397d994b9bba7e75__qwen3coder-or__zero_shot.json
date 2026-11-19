@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-233847-d9q0",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w1\\runs\\20261119-233847-d9q0",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "wtf.java9.graphics_bounds.GraphicsBounds",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "wtf.java9.graphics_bounds.GraphicsBounds_ArrowTest",
+      "test_path": "graphics-bounds/src/test/java/wtf/java9/graphics_bounds/GraphicsBounds_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1197,
+        "out": 276
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 81.1,
+        "block2": 2.1,
+        "block3": 4.3,
+        "block4": null,
+        "total": 87.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1197,
+    "tokens_out": 276,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

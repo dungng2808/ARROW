@@ -1,0 +1,5 @@
+ARROW · UnitRuleGroup (org.jeasy.rules.support.composite)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 134 test (dùng lại, đo 19/11 23:43) · 10.9 s
+[OK] Khối 2  c0 · 3.1k token · 3.7 s · Candidate hợp lệ: 13 test, 15 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

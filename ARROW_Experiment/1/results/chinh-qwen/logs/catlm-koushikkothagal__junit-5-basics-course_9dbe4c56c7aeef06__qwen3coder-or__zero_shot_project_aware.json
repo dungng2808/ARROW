@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-010828-ng52",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w2\\runs\\20261120-010828-ng52",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "io.javabrains.utils.MathUtils",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "io.javabrains.utils.MathUtils_ArrowTest",
+      "test_path": "src/test/java/io/javabrains/utils/MathUtils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1364,
+        "out": 242
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 6.7,
+        "block2": 1.6,
+        "block3": 11.7,
+        "block4": null,
+        "total": 20
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1364,
+    "tokens_out": 242,
+    "cost_usd": null
+  },
+  "warnings": []
+}

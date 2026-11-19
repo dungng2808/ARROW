@@ -1,0 +1,5 @@
+ARROW · CurrentRunStepIndexProvider (com.eviware.soapui.model.propertyexpansion.resolvers.providers)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 673 test ×2 · 537.3 s
+[OK] Khối 2  c0 · 1.9k token · 1.8 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: RUNTIME · MissingMethodInvocationException | CurrentRunStepIndexProvider_ArrowTest.testGetValue_WithValidTestRunContextAndAbstractTestCaseRunner_ReturnsResultCount
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

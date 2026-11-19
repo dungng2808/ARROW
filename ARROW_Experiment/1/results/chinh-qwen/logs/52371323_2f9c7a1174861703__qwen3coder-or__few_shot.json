@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-001245-zxrk",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w2\\runs\\20261120-001245-zxrk",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.spotify.metrics.core.MetricId",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.spotify.metrics.core.MetricId_ArrowTest",
+      "test_path": "api/src/test/java/com/spotify/metrics/core/MetricId_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 5218,
+        "out": 1766
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.8,
+        "block2": 5.5,
+        "block3": 9.8,
+        "block4": null,
+        "total": 26
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 5218,
+    "tokens_out": 1766,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-011037-b3kx",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w1\\runs\\20261120-011037-b3kx",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.mkyong.App",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.mkyong.App_ArrowTest",
+      "test_path": "docker-java-app/src/test/java/com/mkyong/App_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1480,
+        "out": 716
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 5.9,
+        "block2": 2.8,
+        "block3": 3,
+        "block4": null,
+        "total": 11.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1480,
+    "tokens_out": 716,
+    "cost_usd": null
+  },
+  "warnings": []
+}

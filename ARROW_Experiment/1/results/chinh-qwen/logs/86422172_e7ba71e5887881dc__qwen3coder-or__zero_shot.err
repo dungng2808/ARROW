@@ -1,0 +1,5 @@
+ARROW · SqlQueryToColumnInfoFunction (org.apache.phoenix.pig.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1528 test ×2 · 589.7 s
+[OK] Khối 2  c0 · 2.6k token · 3.2 s · Candidate hợp lệ: 4 test, 6 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

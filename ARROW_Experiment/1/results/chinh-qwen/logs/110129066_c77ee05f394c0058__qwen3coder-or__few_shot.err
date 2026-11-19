@@ -1,0 +1,5 @@
+ARROW · ExporterConfig (com.oracle.wls.exporter.domain)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 329 test (dùng lại, đo 19/11 23:41) · 7.2 s
+[OK] Khối 2  c0 · 6.2k token · 3.4 s · Candidate hợp lệ: 17 test, 28 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

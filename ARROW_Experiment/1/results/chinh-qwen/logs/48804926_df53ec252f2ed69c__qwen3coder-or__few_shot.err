@@ -1,0 +1,5 @@
+ARROW · RegexRouter (edu.jhuapl.dorset.routing)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 36 test (dùng lại, đo 20/11 00:36) · 5.4 s
+[OK] Khối 2  c0 · 4.6k token · 3.5 s · Candidate hợp lệ: 6 test, 15 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-010303-tnww",
+  "run_dir": "D:\\arrow-homes\\chinh-qwen\\w1\\runs\\20261120-010303-tnww",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.alibaba.csp.sentinel.dashboard.datasource.entity.SentinelVersion_ArrowTest",
+      "test_path": "spring-boot-student-sentinel-dashboard/src/test/java/com/alibaba/csp/sentinel/dashboard/datasource/entity/SentinelVersion_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2573,
+        "out": 1528
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.1,
+        "block2": 3.9,
+        "block3": 34.5,
+        "block4": null,
+        "total": 53.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2573,
+    "tokens_out": 1528,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}
