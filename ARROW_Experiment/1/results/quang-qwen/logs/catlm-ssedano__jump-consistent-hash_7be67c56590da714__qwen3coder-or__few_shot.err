@@ -1,0 +1,5 @@
+ARROW · JumpConsistentHash (com.github.ssedano.hash)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 7 test (dùng lại, đo 20/11 00:50) · 4.8 s
+[OK] Khối 2  c0 · 4.0k token · 2.1 s · Candidate hợp lệ: 9 test, 10 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

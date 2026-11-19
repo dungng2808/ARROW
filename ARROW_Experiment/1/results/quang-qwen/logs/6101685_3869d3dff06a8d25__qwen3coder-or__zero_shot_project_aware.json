@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-000204-p84u",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-000204-p84u",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.oracle.bedrock.util.ProxyHelper",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.oracle.bedrock.util.ProxyHelper_ArrowTest",
+      "test_path": "bedrock-core/src/test/java/com/oracle/bedrock/util/ProxyHelper_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2291,
+        "out": 942
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 11.2,
+        "block2": 3.2,
+        "block3": 16.4,
+        "block4": null,
+        "total": 31
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2291,
+    "tokens_out": 942,
+    "cost_usd": null
+  },
+  "warnings": []
+}

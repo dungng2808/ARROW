@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-005612-b5h9",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-005612-b5h9",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.example.ConditionalValidationApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.example.ConditionalValidationApplication_ArrowTest",
+      "test_path": "src/test/java/com/example/ConditionalValidationApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1404,
+        "out": 124
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 6.2,
+        "block2": 1.2,
+        "block3": 14,
+        "block4": null,
+        "total": 21.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1404,
+    "tokens_out": 124,
+    "cost_usd": null
+  },
+  "warnings": []
+}

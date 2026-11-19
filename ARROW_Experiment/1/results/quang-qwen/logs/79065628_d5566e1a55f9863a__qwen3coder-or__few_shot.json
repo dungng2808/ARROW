@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-003048-ype4",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-003048-ype4",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.abhijitsarkar.spring.beer.repository.BaseCouchbaseRepository",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.abhijitsarkar.spring.beer.repository.BaseCouchbaseRepository_ArrowTest",
+      "test_path": "beer-demo/couchbase-lib/src/test/java/org/abhijitsarkar/spring/beer/repository/BaseCouchbaseRepository_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2841,
+        "out": 638
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 36.4,
+        "block2": 2.6,
+        "block3": 6,
+        "block4": null,
+        "total": 45.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2841,
+    "tokens_out": 638,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

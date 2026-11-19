@@ -1,0 +1,5 @@
+ARROW · ProxyHelper (com.oracle.bedrock.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 80 test (dùng lại, đo 20/11 00:01) · 22.6 s
+[OK] Khối 2  c0 · 4.2k token · 13.1 s · Candidate hợp lệ: 5 test, 12 assertion
+[>] Khối 3  c0: COMPILE · unreported exception | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

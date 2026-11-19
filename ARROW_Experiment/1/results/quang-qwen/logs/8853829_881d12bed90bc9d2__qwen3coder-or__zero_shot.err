@@ -1,0 +1,5 @@
+ARROW · Order (br.com.caelum.vraptor.console.myproducts)
+[OK] Khối 1  Maven 3.9.16 · build root src/acceptance/myproducts · JDK 8 · JUnit 4 + Mockito · baseline 1 test ×2 · 299.4 s
+[OK] Khối 2  c0 · 1.5k token · 4.0 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

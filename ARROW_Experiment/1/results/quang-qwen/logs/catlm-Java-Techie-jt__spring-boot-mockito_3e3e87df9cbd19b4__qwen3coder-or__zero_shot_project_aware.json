@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-005016-f9fw",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-005016-f9fw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.javatechie.spring.mockito.api.SpringBootMockitoApplication",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.javatechie.spring.mockito.api.SpringBootMockitoApplication_ArrowTest",
+      "test_path": "src/test/java/com/javatechie/spring/mockito/api/SpringBootMockitoApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1411,
+        "out": 131
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 7.1,
+        "block2": 2,
+        "block3": 11.8,
+        "block4": null,
+        "total": 20.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1411,
+    "tokens_out": 131,
+    "cost_usd": null
+  },
+  "warnings": []
+}

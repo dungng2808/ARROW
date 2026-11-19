@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-004724-bzzg",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-004724-bzzg",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "ph.samson.logback.luhn.LuhnMaskingConverter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "ph.samson.logback.luhn.LuhnMaskingConverter_ArrowTest",
+      "test_path": "src/test/java/ph/samson/logback/luhn/LuhnMaskingConverter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3026,
+        "out": 1780
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 53.9,
+        "block2": 4,
+        "block3": 2.9,
+        "block4": null,
+        "total": 60.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3026,
+    "tokens_out": 1780,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

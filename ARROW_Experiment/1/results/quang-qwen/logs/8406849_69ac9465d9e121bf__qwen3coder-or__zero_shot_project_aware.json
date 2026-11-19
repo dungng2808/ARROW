@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-003048-ie83",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261120-003048-ie83",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.btrplace.scheduler.choco.constraint.CBan",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.btrplace.scheduler.choco.constraint.CBan_ArrowTest",
+      "test_path": "choco/src/test/java/org/btrplace/scheduler/choco/constraint/CBan_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1997,
+        "out": 1654
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 14.1,
+        "block2": 4.5,
+        "block3": 14.2,
+        "block4": null,
+        "total": 32.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1997,
+    "tokens_out": 1654,
+    "cost_usd": null
+  },
+  "warnings": []
+}

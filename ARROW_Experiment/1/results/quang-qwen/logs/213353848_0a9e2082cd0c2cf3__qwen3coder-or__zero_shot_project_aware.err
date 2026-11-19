@@ -1,0 +1,5 @@
+ARROW · Args (com.gxk.jvm)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 107 test (dùng lại, đo 20/11 00:40) · 8.3 s
+[OK] Khối 2  c0 · 3.3k token · 2.8 s · Candidate hợp lệ: 15 test, 51 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

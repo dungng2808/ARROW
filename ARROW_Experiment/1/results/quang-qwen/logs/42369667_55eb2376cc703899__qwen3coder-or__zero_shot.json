@@ -1,0 +1,50 @@
+{
+  "run_id": "20261119-235918-boey",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261119-235918-boey",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.everit.json.schema.StringSchema",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.everit.json.schema.StringSchema_ArrowTest",
+      "test_path": "core/src/test/java/org/everit/json/schema/StringSchema_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2008,
+        "out": 912
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 156.1,
+        "block2": 3,
+        "block3": 14.3,
+        "block4": null,
+        "total": 173.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2008,
+    "tokens_out": 912,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

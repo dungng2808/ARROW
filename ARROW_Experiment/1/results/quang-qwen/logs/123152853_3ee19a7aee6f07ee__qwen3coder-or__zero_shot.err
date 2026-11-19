@@ -1,0 +1,5 @@
+ARROW · IRDAG (org.apache.nemo.common.ir)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 32 test ×2 · 175.8 s
+[OK] Khối 2  c0 · 15.8k token · 11.5 s · Candidate hợp lệ: 30 test, 63 assertion
+[>] Khối 3  c0: COMPILE · class is abstract | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

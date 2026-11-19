@@ -1,0 +1,5 @@
+ARROW · AnsiRenderer (org.fusesource.jansi)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 · baseline 98 test ×2 · 78.7 s
+[OK] Khối 2  c0 · 3.6k token · 2.6 s · Candidate hợp lệ: 18 test, 28 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-002643-oiv0",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-002643-oiv0",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.hburgmeier.jerseyoauth2.protocol.impl.extractor.HeaderExtractor",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.github.hburgmeier.jerseyoauth2.protocol.impl.extractor.HeaderExtractor_ArrowTest",
+      "test_path": "jersey-oauth2-protocol-impl/src/test/java/com/github/hburgmeier/jerseyoauth2/protocol/impl/extractor/HeaderExtractor_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2581,
+        "out": 354
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 6.9,
+        "block2": 1.9,
+        "block3": 7.7,
+        "block4": null,
+        "total": 16.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2581,
+    "tokens_out": 354,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

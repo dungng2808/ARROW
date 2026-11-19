@@ -1,0 +1,5 @@
+ARROW · Application (com.whitepaek.demosigninwithapple)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 1 test (dùng lại, đo 20/11 00:52) · 5.8 s
+[OK] Khối 2  c0 · 1.6k token · 1.8 s · Candidate hợp lệ: 1 test, 0 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

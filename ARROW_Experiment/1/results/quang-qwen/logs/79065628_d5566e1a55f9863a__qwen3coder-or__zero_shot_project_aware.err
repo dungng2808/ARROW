@@ -1,0 +1,5 @@
+ARROW · BaseCouchbaseRepository (org.abhijitsarkar.spring.beer.repository)
+[OK] Khối 1  Gradle 4.1 · build root beer-demo · JDK 8 · JUnit 4 + Mockito · baseline 33 test ×2 · 35.1 s
+[OK] Khối 2  c0 · 2.4k token · 3.2 s · Candidate hợp lệ: 5 test, 8 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

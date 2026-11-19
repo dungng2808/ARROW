@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-004547-blm0",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-004547-blm0",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.nifi.processor.jsonvalidator.processors.jsonprocessor.JsonFieldExtractorProcessor_ArrowTest",
+      "test_path": "nifi-json-processor-processors/src/test/java/com/nifi/processor/jsonvalidator/processors/jsonprocessor/JsonFieldExtractorProcessor_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2331,
+        "out": 992
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 9.3,
+        "block2": 3.3,
+        "block3": 6.5,
+        "block4": null,
+        "total": 19.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2331,
+    "tokens_out": 992,
+    "cost_usd": null
+  },
+  "warnings": []
+}

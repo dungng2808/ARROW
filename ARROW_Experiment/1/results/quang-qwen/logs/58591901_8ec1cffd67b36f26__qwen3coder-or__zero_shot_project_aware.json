@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-004244-2qtx",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-004244-2qtx",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "deepboof.impl.forward.standard.ClippedPadding2D_F64",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "deepboof.impl.forward.standard.ClippedPadding2D_F64_ArrowTest",
+      "test_path": "modules/main/src/test/java/deepboof/impl/forward/standard/ClippedPadding2D_F64_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1897,
+        "out": 1175
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 34.6,
+        "block2": 7.8,
+        "block3": 9.3,
+        "block4": null,
+        "total": 51.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1897,
+    "tokens_out": 1175,
+    "cost_usd": null
+  },
+  "warnings": []
+}

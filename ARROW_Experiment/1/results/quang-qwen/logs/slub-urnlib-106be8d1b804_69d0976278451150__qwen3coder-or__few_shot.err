@@ -1,0 +1,5 @@
+ARROW · RQF_RFC8141 (de.slub.urn)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 163 test (dùng lại, đo 20/11 00:59) · 6.5 s
+[OK] Khối 2  c0 · 5.2k token · 5.9 s · Candidate hợp lệ: 15 test, 20 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

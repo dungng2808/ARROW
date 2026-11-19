@@ -1,0 +1,5 @@
+ARROW · CBan (org.btrplace.scheduler.choco.constraint)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG + Mockito · baseline 589 test (dùng lại, đo 20/11 00:29) · 15.6 s
+[OK] Khối 2  c0 · 4.2k token · 3.9 s · Candidate hợp lệ: 6 test, 10 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

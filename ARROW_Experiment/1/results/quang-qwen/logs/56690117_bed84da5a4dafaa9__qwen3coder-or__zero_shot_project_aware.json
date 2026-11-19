@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-002400-4ihl",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-002400-4ihl",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "de.rub.nds.tlsattacker.core.protocol.message.UnknownHandshakeMessage",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "de.rub.nds.tlsattacker.core.protocol.message.UnknownHandshakeMessage_ArrowTest",
+      "test_path": "TLS-Core/src/test/java/de/rub/nds/tlsattacker/core/protocol/message/UnknownHandshakeMessage_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2162,
+        "out": 677
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 45.8,
+        "block2": 2.3,
+        "block3": 48.4,
+        "block4": null,
+        "total": 96.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2162,
+    "tokens_out": 677,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

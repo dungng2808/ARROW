@@ -1,0 +1,5 @@
+ARROW · Main (com.qulice.plugin.alpha)
+[OK] Khối 1  Maven 3.9.16 · build root qulice-maven-plugin/src/it/multi-module · JDK 17 · JUnit 4 · baseline 1 test (dùng lại, đo 20/11 00:37) · 5.5 s
+[OK] Khối 2  c0 · 3.0k token · 1.3 s · Candidate hợp lệ: 3 test, 3 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

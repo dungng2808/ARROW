@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-004702-5ezu",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-004702-5ezu",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.example.demo.DemoApplication",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.example.demo.DemoApplication_ArrowTest",
+      "test_path": "docker-multi-stage-build-demo/src/test/java/com/example/demo/DemoApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1335,
+        "out": 105
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 5.7,
+        "block2": 3.1,
+        "block3": 8.9,
+        "block4": null,
+        "total": 17.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1335,
+    "tokens_out": 105,
+    "cost_usd": null
+  },
+  "warnings": []
+}

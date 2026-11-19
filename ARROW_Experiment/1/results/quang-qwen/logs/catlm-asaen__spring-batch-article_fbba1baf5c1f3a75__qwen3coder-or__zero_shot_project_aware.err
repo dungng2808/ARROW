@@ -1,0 +1,5 @@
+ARROW · BirthdayFilterProcessor (com.toptal)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 5 test (dùng lại, đo 20/11 00:49) · 6.4 s
+[OK] Khối 2  c0 · 2.1k token · 1.8 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | BirthdayFilterProcessor.process
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

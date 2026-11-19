@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-001437-5wvk",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-001437-5wvk",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.mortbay.jetty.load.generator.starter.LoadGeneratorStarter_ArrowTest",
+      "test_path": "jetty-load-generator-starter/src/test/java/org/mortbay/jetty/load/generator/starter/LoadGeneratorStarter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2561,
+        "out": 783
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 239.8,
+        "block2": 2.9,
+        "block3": 5.2,
+        "block4": null,
+        "total": 247.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2561,
+    "tokens_out": 783,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

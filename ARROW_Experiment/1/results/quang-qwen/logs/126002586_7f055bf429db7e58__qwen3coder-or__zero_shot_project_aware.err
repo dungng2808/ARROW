@@ -1,0 +1,5 @@
+ARROW · SCPProtocolPolicy (org.openjavacard.gp.scp)
+[OK] Khối 1  Gradle 4.5 · build root . · JDK 8 · JUnit 4 · baseline 55 test ×2 · 27.5 s
+[OK] Khối 2  c0 · 4.0k token · 3.4 s · Candidate hợp lệ: 12 test, 62 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · TransactionService (org.egov.pg.service)
+[OK] Khối 1  Maven 3.9.16 · build root core/egov-pg-service · JDK 8 · JUnit 4 + Mockito · baseline 23 test (dùng lại, đo 20/11 00:09) · 46.2 s
+[OK] Khối 2  c0 · 6.1k token · 46.8 s · Candidate hợp lệ: 8 test, 40 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

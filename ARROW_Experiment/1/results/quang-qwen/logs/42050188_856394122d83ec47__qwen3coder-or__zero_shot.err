@@ -1,0 +1,4 @@
+ARROW · ObjectFactory (de.monticore.generating.templateengine)
+[X] B1_DEPENDENCY_RESOLUTION: Không tải được dependency hay plugin: [ERROR] Failed to execute goal on project monticore-runtime: Could not collect dependencies for project de.monticore:monticore-runtime:jar:4.5.3
+[X] B1_DEPENDENCY_RESOLUTION · Không tải được dependency hay plugin: [ERROR] Failed to execute goal on project monticore-runtime: Could not collect dependencies for project de.monticore:monticore-runtime:jar:4.5.3
+  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.

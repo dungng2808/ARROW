@@ -1,0 +1,5 @@
+ARROW · CompositeConfig (org.microbule.config.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 18 test (dùng lại, đo 20/11 00:12) · 13.8 s
+[OK] Khối 2  c0 · 3.6k token · 12.3 s · Candidate hợp lệ: 7 test, 7 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

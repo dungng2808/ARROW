@@ -1,0 +1,5 @@
+ARROW · NGSessionPool (com.facebook.nailgun)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 16 test (dùng lại, đo 20/11 00:11) · 8.2 s
+[OK] Khối 2  c0 · 4.6k token · 3.3 s · Candidate hợp lệ: 10 test, 20 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

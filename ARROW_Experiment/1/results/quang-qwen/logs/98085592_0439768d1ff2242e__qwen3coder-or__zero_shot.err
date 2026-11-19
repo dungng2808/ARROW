@@ -1,0 +1,5 @@
+ARROW · ScoreSamplingOptions (com.github.phenomics.ontolib.ontology.scoredist)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 79 test ×2 · 97.1 s
+[OK] Khối 2  c0 · 3.7k token · 3.3 s · Candidate hợp lệ: 11 test, 43 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,6 @@
+ARROW · JumpConsistentHash (com.github.ssedano.hash)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 7 test (dùng lại, đo 20/11 00:50) · 5.2 s
+[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
+[X] Khối 2  c0 · 18.6k token · 35.1 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

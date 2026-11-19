@@ -1,0 +1,5 @@
+ARROW · NGSessionPool (com.facebook.nailgun)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 16 test ×2 · 103.4 s
+[OK] Khối 2  c0 · 3.2k token · 4.1 s · Candidate hợp lệ: 10 test, 20 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-001325-m08t",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261120-001325-m08t",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.egov.pg.service.TransactionService",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.egov.pg.service.TransactionService_ArrowTest",
+      "test_path": "core/egov-pg-service/src/test/java/org/egov/pg/service/TransactionService_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2939,
+        "out": 1571
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 39.6,
+        "block2": 5.9,
+        "block3": 30.8,
+        "block4": null,
+        "total": 76.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2939,
+    "tokens_out": 1571,
+    "cost_usd": null
+  },
+  "warnings": []
+}

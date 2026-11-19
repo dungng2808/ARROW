@@ -1,0 +1,48 @@
+{
+  "run_id": "20261120-002529-j23q",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261120-002529-j23q",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.datakernel.datastream.processor.StreamBuffer",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "io.datakernel.datastream.processor.StreamBuffer_ArrowTest",
+      "test_path": "core-datastream/src/test/java/io/datakernel/datastream/processor/StreamBuffer_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2473,
+        "out": 810
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 29.8,
+        "block2": 24.2,
+        "block3": 27.7,
+        "block4": null,
+        "total": 81.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2473,
+    "tokens_out": 810,
+    "cost_usd": null
+  },
+  "warnings": []
+}

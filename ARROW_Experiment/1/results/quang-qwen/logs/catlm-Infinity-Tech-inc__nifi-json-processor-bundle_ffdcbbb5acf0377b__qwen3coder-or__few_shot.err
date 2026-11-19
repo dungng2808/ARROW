@@ -1,0 +1,5 @@
+ARROW · JsonFieldExtractorProcessor (com.nifi.processor.jsonvalidator.processors.jsonprocessor)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 20/11 00:45) · 8.8 s
+[OK] Khối 2  c0 · 4.5k token · 3.6 s · Candidate hợp lệ: 5 test, 15 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

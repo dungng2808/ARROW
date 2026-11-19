@@ -1,0 +1,5 @@
+ARROW · ConditionalValidationApplication (com.example)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 4 test (dùng lại, đo 20/11 00:55) · 6.2 s
+[OK] Khối 2  c0 · 1.5k token · 0.9 s · Candidate hợp lệ: 1 test, 0 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

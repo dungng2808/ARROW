@@ -1,0 +1,50 @@
+{
+  "run_id": "20261120-005246-t39z",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-005246-t39z",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.monitor4all.cn.springcloud_gateway.SpringcloudGatewayApplication",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.monitor4all.cn.springcloud_gateway.SpringcloudGatewayApplication_ArrowTest",
+      "test_path": "springcloud_gateway/src/test/java/com/monitor4all/cn/springcloud_gateway/SpringcloudGatewayApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1213,
+        "out": 196
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 100.4,
+        "block2": 2.5,
+        "block3": 16,
+        "block4": null,
+        "total": 119
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1213,
+    "tokens_out": 196,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

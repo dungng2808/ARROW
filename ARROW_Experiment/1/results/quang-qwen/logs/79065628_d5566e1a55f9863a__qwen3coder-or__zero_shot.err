@@ -1,0 +1,5 @@
+ARROW · BaseCouchbaseRepository (org.abhijitsarkar.spring.beer.repository)
+[OK] Khối 1  Gradle 4.1 · build root beer-demo · JDK 8 · JUnit 4 + Mockito · baseline 33 test ×2 · 85.2 s
+[OK] Khối 2  c0 · 2.0k token · 1.7 s · Candidate hợp lệ: 4 test, 4 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | BaseCouchbaseRepository_ArrowTest$1.asyncBucket
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

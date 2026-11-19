@@ -1,0 +1,5 @@
+ARROW · ArtemisBrokerManager (me.snowdrop.stream.binder.artemis.provisioning)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 29 test (dùng lại, đo 20/11 00:39) · 6.8 s
+[OK] Khối 2  c0 · 5.9k token · 4.4 s · Candidate hợp lệ: 7 test, 13 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

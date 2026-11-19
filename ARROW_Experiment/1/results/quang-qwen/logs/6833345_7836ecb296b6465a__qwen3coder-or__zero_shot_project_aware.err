@@ -1,0 +1,5 @@
+ARROW · NGSessionPool (com.facebook.nailgun)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 16 test (dùng lại, đo 20/11 00:11) · 7.6 s
+[OK] Khối 2  c0 · 3.5k token · 3.2 s · Candidate hợp lệ: 11 test, 27 assertion
+[>] Khối 3  c0: ASSERTION · AssertionFailedError | testGiveAfterShutdownDoesNothing
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)
