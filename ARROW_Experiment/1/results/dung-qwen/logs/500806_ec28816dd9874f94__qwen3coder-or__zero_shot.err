@@ -1,0 +1,5 @@
+ARROW · XpathPayloadMessageSelector (com.consol.citrus.channel.selector)
+[OK] Khối 1  Maven 3.5.2 · build root . · JDK 8 · TestNG + Mockito · baseline 1271 test ×2 · 162.6 s
+[OK] Khối 2  c0 · 3,3k token · 4.2 s · Candidate hợp lệ: 6 test, 7 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

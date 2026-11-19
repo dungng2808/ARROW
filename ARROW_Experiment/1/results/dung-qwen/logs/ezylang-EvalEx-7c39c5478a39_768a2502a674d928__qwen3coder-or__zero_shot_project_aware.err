@@ -1,0 +1,5 @@
+ARROW · Tokenizer (com.ezylang.evalex.parser)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 790 test (dùng lại, đo 19/11 23:17) · 3.7 s
+[OK] Khối 2  c0 · 9,1k token · 51.5 s · Candidate hợp lệ: 20 test, 57 assertion
+[>] Khối 3  c0: RUNTIME · ParseException | Tokenizer_ArrowTest.testParseSimpleExpression
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

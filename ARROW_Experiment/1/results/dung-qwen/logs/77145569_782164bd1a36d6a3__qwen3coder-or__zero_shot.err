@@ -1,0 +1,5 @@
+ARROW · IntermediateCollectionProperty (com.sap.olingo.jpa.metadata.core.edm.mapper.impl)
+[OK] Khối 1  Maven 3.9.16 · build root jpa · JDK 8 · JUnit 5 + Mockito · baseline 897 test ×2 · 18.5 s
+[OK] Khối 2  c0 · 5,4k token · 4.7 s · Candidate hợp lệ: 24 test, 19 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

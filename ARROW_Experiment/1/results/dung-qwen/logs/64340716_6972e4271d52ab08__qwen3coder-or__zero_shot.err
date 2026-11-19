@@ -1,0 +1,5 @@
+ARROW · SortSpec (io.katharsis.queryspec)
+[OK] Khối 1  Maven 3.9.16 · build root katharsis-core · JDK 8 · JUnit 4 + Mockito · baseline 499 test ×2 · 17.9 s
+[OK] Khối 2  c0 · 2,2k token · 2.6 s · Candidate hợp lệ: 10 test, 22 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

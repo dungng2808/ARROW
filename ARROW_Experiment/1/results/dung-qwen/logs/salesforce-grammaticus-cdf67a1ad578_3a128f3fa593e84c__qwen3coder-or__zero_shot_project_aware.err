@@ -1,0 +1,5 @@
+ARROW · GrammaticalTermMapImpl (com.force.i18n.grammar.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 506 test (dùng lại, đo 19/11 23:14) · 4.8 s
+[OK] Khối 2  c0 · 5,4k token · 26.9 s · Candidate hợp lệ: 17 test, 36 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

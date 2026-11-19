@@ -1,0 +1,5 @@
+ARROW · Configuration (io.novaordis.playground.java.network.traffic)
+[OK] Khối 1  Maven 3.9.16 · build root java/network/network-traffic-generator · JDK 8 · JUnit 4 · baseline 48 test (dùng lại, đo 19/11 23:09) · 3.9 s
+[OK] Khối 2  c0 · 6,0k token · 31.4 s · Candidate hợp lệ: 26 test, 67 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

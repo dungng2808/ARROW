@@ -1,0 +1,7 @@
+ARROW · EBCLIOptions (io.engineblock.cli)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · TestNG · baseline 222 test (dùng lại, đo 19/11 22:52) · 9.8 s
+[!] gọi lại sau 20 s (timeout)
+[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
+[X] Khối 2  c0 · 22,5k token · 92.5 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

@@ -1,0 +1,5 @@
+ARROW · RegraSomatorio (br.ufg.inf.es.saep.sandbox.dominio.regra)
+[OK] Khối 1  Maven 3.9.16 · build root sandbox · JDK 8 · JUnit 5 · baseline 102 test (dùng lại, đo 19/11 22:50) · 3.1 s
+[OK] Khối 2  c0 · 4,6k token · 5.1 s · Candidate hợp lệ: 10 test, 10 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

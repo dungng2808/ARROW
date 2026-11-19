@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-231858-jwza",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung-qwen/homes/w1/runs/20261119-231858-jwza",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.traccar.protocol.Gt06ProtocolDecoder",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.traccar.protocol.Gt06ProtocolDecoder_ArrowTest",
+      "test_path": "src/test/java/org/traccar/protocol/Gt06ProtocolDecoder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 10553,
+        "out": 1847
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 37.2,
+        "block2": 8,
+        "block3": 11.1,
+        "block4": null,
+        "total": 56.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 10553,
+    "tokens_out": 1847,
+    "cost_usd": null
+  },
+  "warnings": []
+}

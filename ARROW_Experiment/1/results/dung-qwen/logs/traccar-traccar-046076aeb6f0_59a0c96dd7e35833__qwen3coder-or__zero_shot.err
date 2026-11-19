@@ -1,0 +1,7 @@
+ARROW · Gt06ProtocolDecoder (org.traccar.protocol)
+[OK] Khối 1  Gradle 7.5.1 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 467 test ×2 · 46.7 s
+[!] org.traccar.protocol.Gt06ProtocolDecoder dài 58.066 ký tự, đã rút gọn (signatures_only).
+[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
+[X] Khối 2  c0 · 26,4k token · 30.5 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

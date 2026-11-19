@@ -1,0 +1,5 @@
+ARROW · GtfsDataManipulations (il.org.hasadna.siri_client.gtfs.analysis)
+[OK] Khối 1  Maven 3.9.16 · build root siri/gtfs_reader · JDK 8 · JUnit 4 + Mockito · baseline 56 test (dùng lại, đo 19/11 22:49) · 3.5 s
+[OK] Khối 2  c0 · 5,5k token · 5.5 s · Candidate hợp lệ: 7 test, 26 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

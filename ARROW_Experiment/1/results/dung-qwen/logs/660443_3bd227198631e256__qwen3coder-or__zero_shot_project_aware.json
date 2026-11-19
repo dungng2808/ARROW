@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-224510-2yhm",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung-qwen/homes/w2/runs/20261119-224510-2yhm",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.openscience.cdk.isomorphism.matchers.QueryAtomContainerCreator",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.openscience.cdk.isomorphism.matchers.QueryAtomContainerCreator_ArrowTest",
+      "test_path": "base/isomorphism/src/test/java/org/openscience/cdk/isomorphism/matchers/QueryAtomContainerCreator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3027,
+        "out": 900
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 11.6,
+        "block2": 3.3,
+        "block3": 2.2,
+        "block4": null,
+        "total": 17
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3027,
+    "tokens_out": 900,
+    "cost_usd": null
+  },
+  "warnings": []
+}

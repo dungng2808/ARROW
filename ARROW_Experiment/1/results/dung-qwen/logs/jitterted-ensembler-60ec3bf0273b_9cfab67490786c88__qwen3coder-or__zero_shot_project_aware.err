@@ -1,0 +1,6 @@
+ARROW · Ensemble (com.jitterted.mobreg.domain)
+[OK] Khối 1  Maven 3.8.1 · build root . · JDK 17 · JUnit 5 + Mockito · baseline 133 test (dùng lại, đo 19/11 23:16) · 3.5 s
+[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
+[X] Khối 2  c0 · 20,2k token · 214.8 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

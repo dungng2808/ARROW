@@ -1,0 +1,5 @@
+ARROW · EBCLIOptions (io.engineblock.cli)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · TestNG · baseline 222 test ×2 · 431.7 s
+[OK] Khối 2  c0 · 8,3k token · 7.2 s · Candidate hợp lệ: 41 test, 61 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

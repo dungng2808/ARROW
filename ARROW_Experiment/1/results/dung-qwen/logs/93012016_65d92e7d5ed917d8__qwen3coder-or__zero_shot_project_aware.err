@@ -1,0 +1,5 @@
+ARROW · AbbreviationMap (joptsimple.internal)
+[OK] Khối 1  Maven 3.9.16 · build root third_party/java/jopt-simple · JDK 8 · JUnit 4 · baseline 807 test (dùng lại, đo 19/11 22:46) · 5.7 s
+[OK] Khối 2  c0 · 4,5k token · 11.8 s · Candidate hợp lệ: 19 test, 32 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · URL (com.alibaba.dubbo.common)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 609 test ×2 · 20.9 s
+[OK] Khối 2  c0 · 13,1k token · 6.6 s · Candidate hợp lệ: 24 test, 70 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · CreateVaultCommand (de.kopis.glacier.commands)
+[OK] Khối 1  Maven 3.3.9 · build root . · JDK 8 · JUnit 4 · baseline 54 test ×2 · 12.9 s
+[OK] Khối 2  c0 · 2,5k token · 15.0 s · Candidate hợp lệ: 6 test, 3 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

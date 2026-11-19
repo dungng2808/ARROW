@@ -1,0 +1,5 @@
+ARROW · SortSpec (io.katharsis.queryspec)
+[OK] Khối 1  Maven 3.9.16 · build root katharsis-core · JDK 8 · JUnit 4 + Mockito · baseline 499 test (dùng lại, đo 19/11 23:00) · 4.4 s
+[OK] Khối 2  c0 · 3,6k token · 5.1 s · Candidate hợp lệ: 10 test, 22 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,5 @@
+ARROW · SpringbootRabbitmqExampleApplication (com.javatechie.rabbitmq.demo)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 1 test (dùng lại, đo 19/11 23:11) · 3.1 s
+[OK] Khối 2  c0 · 2,7k token · 1.8 s · Candidate hợp lệ: 1 test, 1 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-225753-z1so",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung-qwen/homes/w2/runs/20261119-225753-z1so",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.yes.cart.utils.DateUtils",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.yes.cart.utils.DateUtils_ArrowTest",
+      "test_path": "domain-api/src/test/java/org/yes/cart/utils/DateUtils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 7835,
+        "out": 5633
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.7,
+        "block2": 11.1,
+        "block3": 7.7,
+        "block4": null,
+        "total": 23.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 7835,
+    "tokens_out": 5633,
+    "cost_usd": null
+  },
+  "warnings": []
+}

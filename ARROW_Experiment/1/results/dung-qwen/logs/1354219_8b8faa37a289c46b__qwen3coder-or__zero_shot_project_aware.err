@@ -1,0 +1,5 @@
+ARROW · Order (org.beangle.commons.collection)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG + Mockito · baseline 57 test (dùng lại, đo 19/11 22:58) · 4.3 s
+[OK] Khối 2  c0 · 4,2k token · 3.6 s · Candidate hợp lệ: 28 test, 56 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testDefaultConstructor
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

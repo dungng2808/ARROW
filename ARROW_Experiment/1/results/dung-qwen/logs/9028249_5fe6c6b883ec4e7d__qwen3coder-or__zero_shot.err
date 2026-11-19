@@ -1,0 +1,5 @@
+ARROW · Diverter (com.xuan.mix.bt.diverter)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 14 test ×2 · 19.1 s
+[OK] Khối 2  c0 · 2,9k token · 5.0 s · Candidate hợp lệ: 13 test, 13 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testHitNum_NegativeBucket
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

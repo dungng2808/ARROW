@@ -1,0 +1,5 @@
+ARROW · ContractController (org.asqatasun.webapp.controller)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 1222 test (dùng lại, đo 19/11 23:09) · 18.2 s
+[OK] Khối 2  c0 · 5,0k token · 51.7 s · Candidate hợp lệ: 12 test, 17 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

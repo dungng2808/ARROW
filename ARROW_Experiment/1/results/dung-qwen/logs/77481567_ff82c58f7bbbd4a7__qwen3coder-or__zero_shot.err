@@ -1,0 +1,5 @@
+ARROW · NMovingAveragesExpertAdvisor (de.voidnode.trading4j.examples)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 362 test ×2 · 11.7 s
+[OK] Khối 2  c0 · 5,5k token · 7.0 s · Candidate hợp lệ: 15 test, 20 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

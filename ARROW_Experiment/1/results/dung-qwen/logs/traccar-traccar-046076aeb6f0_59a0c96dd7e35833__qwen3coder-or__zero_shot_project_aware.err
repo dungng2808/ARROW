@@ -1,0 +1,6 @@
+ARROW · Gt06ProtocolDecoder (org.traccar.protocol)
+[OK] Khối 1  Gradle 7.5.1 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 467 test ×2 · 37.2 s
+[!] org.traccar.protocol.Gt06ProtocolDecoder dài 58.066 ký tự, đã rút gọn (signatures_only).
+[OK] Khối 2  c0 · 12,4k token · 7.8 s · Candidate hợp lệ: 10 test, 48 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

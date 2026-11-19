@@ -1,0 +1,5 @@
+ARROW · SystemSecurityToken (org.molgenis.security.core.runas)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 33 test (dùng lại, đo 19/11 23:00) · 5.9 s
+[OK] Khối 2  c0 · 2,4k token · 9.8 s · Candidate hợp lệ: 6 test, 12 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

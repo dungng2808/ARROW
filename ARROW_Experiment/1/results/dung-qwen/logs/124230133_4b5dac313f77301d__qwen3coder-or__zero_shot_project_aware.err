@@ -1,0 +1,5 @@
+ARROW · PwnedPasswordClient (com.github.nbaars.pwnedpasswords4j.client)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 9 test (dùng lại, đo 19/11 22:55) · 3.2 s
+[OK] Khối 2  c0 · 3,3k token · 4.1 s · Candidate hợp lệ: 5 test, 21 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

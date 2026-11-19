@@ -1,0 +1,5 @@
+ARROW · CuentaCorriente (com.javiermoreno.bankof.model.domain)
+[OK] Khối 1  Maven 3.9.16 · build root bankofbackend · JDK 8 · JUnit 4 + Mockito · baseline 9 test ×2 · 13.3 s
+[OK] Khối 2  c0 · 2,2k token · 9.9 s · Candidate hợp lệ: 6 test, 13 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | testTransferirSaldoInsuficiente
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

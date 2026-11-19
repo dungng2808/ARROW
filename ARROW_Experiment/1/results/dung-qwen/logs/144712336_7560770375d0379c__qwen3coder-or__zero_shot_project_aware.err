@@ -1,0 +1,5 @@
+ARROW · NacosConfigEndpoint (com.alibaba.boot.nacos.actuate.endpoint)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 5 test (dùng lại, đo 19/11 23:11) · 4.9 s
+[OK] Khối 2  c0 · 4,8k token · 6.4 s · Candidate hợp lệ: 10 test, 23 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

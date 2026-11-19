@@ -1,0 +1,5 @@
+ARROW · SpringDataRedisExampleApplication (com.javatechie.redis)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 1 test ×2 · 11.4 s
+[OK] Khối 2  c0 · 1,9k token · 4.7 s · Candidate hợp lệ: 4 test, 4 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

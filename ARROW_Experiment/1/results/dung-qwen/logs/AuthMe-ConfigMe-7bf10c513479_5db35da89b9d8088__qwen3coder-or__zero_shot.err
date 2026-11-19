@@ -1,0 +1,5 @@
+ARROW · PropertyListBuilder (ch.jalu.configme.configurationdata)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 473 test ×2 · 10.0 s
+[OK] Khối 2  c0 · 3,2k token · 2.9 s · Candidate hợp lệ: 10 test, 10 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

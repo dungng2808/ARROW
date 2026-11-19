@@ -1,0 +1,5 @@
+ARROW · PolishHolidays (com.nurkiewicz.java8.holidays)
+[OK] Khối 1  Maven 3.9.16 · build root java8-workshop-master · JDK 8 · JUnit 4 + Mockito · baseline 52 test ×2 · 11.5 s
+[OK] Khối 2  c0 · 3,1k token · 10.1 s · Candidate hợp lệ: 9 test, 27 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | shouldReturnTrueForEasterMonday
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

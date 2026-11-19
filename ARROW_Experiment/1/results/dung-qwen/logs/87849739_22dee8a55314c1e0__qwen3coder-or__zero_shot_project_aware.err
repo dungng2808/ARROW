@@ -1,0 +1,5 @@
+ARROW · MutablePermissions (org.eclipse.ditto.model.things)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 934 test (dùng lại, đo 19/11 22:52) · 6.3 s
+[OK] Khối 2  c0 · 3,9k token · 3.9 s · Candidate hợp lệ: 20 test, 37 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

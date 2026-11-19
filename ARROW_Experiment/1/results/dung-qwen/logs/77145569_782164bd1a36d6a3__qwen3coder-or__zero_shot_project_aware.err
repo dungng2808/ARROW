@@ -1,0 +1,5 @@
+ARROW · IntermediateCollectionProperty (com.sap.olingo.jpa.metadata.core.edm.mapper.impl)
+[OK] Khối 1  Maven 3.9.16 · build root jpa · JDK 8 · JUnit 5 + Mockito · baseline 897 test (dùng lại, đo 19/11 22:54) · 3.9 s
+[OK] Khối 2  c0 · 7,7k token · 9.3 s · Candidate hợp lệ: 37 test, 35 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

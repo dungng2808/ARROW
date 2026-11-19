@@ -1,0 +1,5 @@
+ARROW · App (net.gfu.seminar.maven)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 · baseline 52 test ×2 · 6.0 s
+[OK] Khối 2  c0 · 1,7k token · 6.1 s · Candidate hợp lệ: 7 test, 6 assertion
+[>] Khối 3  c0: RUNTIME · Exception | App.readMessageFromFile
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

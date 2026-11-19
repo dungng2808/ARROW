@@ -1,0 +1,5 @@
+ARROW · QueryAtomContainerCreator (org.openscience.cdk.isomorphism.matchers)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 8801 test (dùng lại, đo 19/11 22:44) · 11.0 s
+[OK] Khối 2  c0 · 4,9k token · 2.9 s · Candidate hợp lệ: 9 test, 27 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

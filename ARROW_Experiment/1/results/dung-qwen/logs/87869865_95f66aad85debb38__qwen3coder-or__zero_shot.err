@@ -1,0 +1,5 @@
+ARROW · StringUtils (at.redeye.FrameWork.utilities)
+[OK] Khối 1  Maven 3.6.3 · build root . · JDK 11 · JUnit 4 · baseline 42 test ×2 · 5.2 s
+[OK] Khối 2  c0 · 5,5k token · 3.7 s · Candidate hợp lệ: 21 test, 64 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testSkipChar
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

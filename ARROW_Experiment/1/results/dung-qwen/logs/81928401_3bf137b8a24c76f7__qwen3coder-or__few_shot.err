@@ -1,0 +1,5 @@
+ARROW · JSONBeanUtil (io.syndesis.connector.sql.stored)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 19/11 22:54) · 5.9 s
+[OK] Khối 2  c0 · 3,4k token · 10.9 s · Candidate hợp lệ: 5 test, 14 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testMapToJSONBeanNullValues
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

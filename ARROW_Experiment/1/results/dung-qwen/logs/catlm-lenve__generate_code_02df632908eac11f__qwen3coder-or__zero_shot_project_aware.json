@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-231321-0jaq",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung-qwen/homes/w2/runs/20261119-231321-0jaq",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.javaboy.generate_code.GenerateCodeApplication",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.javaboy.generate_code.GenerateCodeApplication_ArrowTest",
+      "test_path": "src/test/java/org/javaboy/generate_code/GenerateCodeApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1389,
+        "out": 154
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3,
+        "block2": 2.4,
+        "block3": 1.5,
+        "block4": null,
+        "total": 7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1389,
+    "tokens_out": 154,
+    "cost_usd": null
+  },
+  "warnings": []
+}

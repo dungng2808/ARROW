@@ -1,0 +1,5 @@
+ARROW · PolishHolidays (com.nurkiewicz.java8.holidays)
+[OK] Khối 1  Maven 3.9.16 · build root java8-workshop-master · JDK 8 · JUnit 4 + Mockito · baseline 52 test (dùng lại, đo 19/11 22:46) · 3.2 s
+[OK] Khối 2  c0 · 3,5k token · 4.3 s · Candidate hợp lệ: 7 test, 26 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | shouldRecognizeCorpusChristi
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

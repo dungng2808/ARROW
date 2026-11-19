@@ -1,0 +1,5 @@
+ARROW · NRxUtils (org.asn1s.api.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 28 test (dùng lại, đo 19/11 23:09) · 3.3 s
+[OK] Khối 2  c0 · 5,1k token · 15.2 s · Candidate hợp lệ: 17 test, 52 assertion
+[>] Khối 3  c0: RUNTIME · IllegalArgumentException | NRxUtils.toCanonicalNR3
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

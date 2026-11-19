@@ -1,0 +1,5 @@
+ARROW · PrimeFactors (com.sexycode.codepractice.exam.primefactors)
+[OK] Khối 1  Maven 3.9.16 · build root CodePractice · JDK 17 · JUnit 4 · baseline 22 test ×2 · 26.0 s
+[OK] Khối 2  c0 · 2,1k token · 8.2 s · Candidate hợp lệ: 11 test, 37 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

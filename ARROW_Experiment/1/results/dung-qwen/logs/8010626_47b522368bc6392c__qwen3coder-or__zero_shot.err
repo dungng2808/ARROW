@@ -1,0 +1,5 @@
+ARROW · SystemSecurityToken (org.molgenis.security.core.runas)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 33 test ×2 · 14.9 s
+[OK] Khối 2  c0 · 1,9k token · 2.4 s · Candidate hợp lệ: 6 test, 8 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

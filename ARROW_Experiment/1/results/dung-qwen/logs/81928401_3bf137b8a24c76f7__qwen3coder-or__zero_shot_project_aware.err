@@ -1,0 +1,5 @@
+ARROW · JSONBeanUtil (io.syndesis.connector.sql.stored)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 19/11 22:54) · 3.1 s
+[OK] Khối 2  c0 · 2,5k token · 5.4 s · Candidate hợp lệ: 7 test, 20 assertion
+[>] Khối 3  c0: RUNTIME · Exception | JSONBeanUtil_ArrowTest.testParsePropertiesFromNullJSONBean
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

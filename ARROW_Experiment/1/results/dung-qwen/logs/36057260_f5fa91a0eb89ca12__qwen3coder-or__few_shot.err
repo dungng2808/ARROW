@@ -1,0 +1,8 @@
+ARROW · ConfigurationImpl (org.apache.activemq.artemis.core.config.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 1381 test (dùng lại, đo 19/11 23:00) · 11.2 s
+[!] org.apache.activemq.artemis.core.config.impl.ConfigurationImpl dài 118.872 ký tự, đã rút gọn (signatures_only).
+[!] gọi lại sau 20 s (câu trả lời không đọc được)
+[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
+[X] Khối 2  c0 · 28,5k token · 60.3 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

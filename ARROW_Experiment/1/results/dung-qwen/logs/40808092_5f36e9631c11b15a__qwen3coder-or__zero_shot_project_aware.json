@@ -1,0 +1,48 @@
+{
+  "run_id": "20261119-225304-0j3s",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/results/dung-qwen/homes/w2/runs/20261119-225304-0j3s",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.iluwatar.singleton.App",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.iluwatar.singleton.App_ArrowTest",
+      "test_path": "singleton/src/test/java/com/iluwatar/singleton/App_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1867,
+        "out": 383
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.1,
+        "block2": 2,
+        "block3": 6.4,
+        "block4": null,
+        "total": 12.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1867,
+    "tokens_out": 383,
+    "cost_usd": null
+  },
+  "warnings": []
+}

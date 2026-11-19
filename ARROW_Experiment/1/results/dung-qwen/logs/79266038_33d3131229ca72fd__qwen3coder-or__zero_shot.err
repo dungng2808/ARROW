@@ -1,0 +1,5 @@
+ARROW · NativeProcessImpl (cx.corp.lacuna.core.domain)
+[OK] Khối 1  Maven 3.9.16 · build root lacuna · JDK 8 · JUnit 4 · baseline 314 test ×2 · 8.1 s
+[OK] Khối 2  c0 · 2,5k token · 2.8 s · Candidate hợp lệ: 17 test, 21 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testDefaultConstructor
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

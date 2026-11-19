@@ -1,0 +1,5 @@
+ARROW · MultilingualString (cz.cvut.kbss.jopa.model)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 55 test ×2 · 10.5 s
+[OK] Khối 2  c0 · 3,7k token · 10.7 s · Candidate hợp lệ: 16 test, 33 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testRemove
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

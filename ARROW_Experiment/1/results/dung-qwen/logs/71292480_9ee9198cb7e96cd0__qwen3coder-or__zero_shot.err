@@ -1,0 +1,5 @@
+ARROW · SelectiveActionBuilder (com.automationrockstars.bmo.event.processor)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 37 test ×2 · 12.5 s
+[OK] Khối 2  c0 · 2,5k token · 13.7 s · Candidate hợp lệ: 14 test, 14 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

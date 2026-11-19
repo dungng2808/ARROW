@@ -1,0 +1,5 @@
+ARROW · ArrayDivisionFunction (org.csstudio.apputil.formula.array)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 45 test (dùng lại, đo 19/11 22:51) · 4.6 s
+[OK] Khối 2  c0 · 2,7k token · 3.0 s · Candidate hợp lệ: 6 test, 8 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

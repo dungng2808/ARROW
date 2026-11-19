@@ -1,0 +1,5 @@
+ARROW · PollConfigurationMap (com.vaadin.flow.internal.nodefeature)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 2923 test (dùng lại, đo 19/11 22:57) · 10.4 s
+[OK] Khối 2  c0 · 2,4k token · 3.8 s · Candidate hợp lệ: 4 test, 5 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | NodeMap.setChanged
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

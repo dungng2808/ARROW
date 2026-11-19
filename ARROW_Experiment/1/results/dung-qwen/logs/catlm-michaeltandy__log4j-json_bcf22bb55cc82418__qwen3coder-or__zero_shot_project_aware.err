@@ -1,0 +1,5 @@
+ARROW · SimpleJsonLayout (uk.me.mjt.log4jjson)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 · baseline 5 test (dùng lại, đo 19/11 23:12) · 2.7 s
+[OK] Khối 2  c0 · 5,2k token · 21.6 s · Candidate hợp lệ: 31 test, 66 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

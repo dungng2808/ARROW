@@ -1,0 +1,5 @@
+ARROW · Filter (io.github.jhipster.service.filter)
+[OK] Khối 1  Maven 3.6.3 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 391 test ×2 · 34.1 s
+[OK] Khối 2  c0 · 3,7k token · 3.6 s · Candidate hợp lệ: 15 test, 38 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

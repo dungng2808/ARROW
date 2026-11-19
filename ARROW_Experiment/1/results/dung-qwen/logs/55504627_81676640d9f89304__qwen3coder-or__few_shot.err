@@ -1,0 +1,5 @@
+ARROW · ProbeHandler (io.fabric8.maven.core.handler)
+[OK] Khối 1  Maven 3.5.2 · build root . · JDK 8 · JUnit 4 · baseline 181 test (dùng lại, đo 19/11 22:44) · 4.0 s
+[OK] Khối 2  c0 · 4,4k token · 3.6 s · Candidate hợp lệ: 12 test, 38 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

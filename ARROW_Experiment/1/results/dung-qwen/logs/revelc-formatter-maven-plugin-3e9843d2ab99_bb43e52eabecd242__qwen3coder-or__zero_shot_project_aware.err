@@ -1,0 +1,5 @@
+ARROW · CssFormatter (net.revelc.code.formatter.css)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 · baseline 29 test (dùng lại, đo 19/11 23:19) · 4.4 s
+[OK] Khối 2  c0 · 3,1k token · 23.2 s · Candidate hợp lệ: 6 test, 7 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

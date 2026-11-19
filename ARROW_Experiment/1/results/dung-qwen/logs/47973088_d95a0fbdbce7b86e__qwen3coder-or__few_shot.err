@@ -1,0 +1,5 @@
+ARROW · GraphConfig (uk.gov.gchq.gaffer.graph)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 3252 test (dùng lại, đo 19/11 22:49) · 19.2 s
+[OK] Khối 2  c0 · 6,1k token · 4.0 s · Candidate hợp lệ: 19 test, 25 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

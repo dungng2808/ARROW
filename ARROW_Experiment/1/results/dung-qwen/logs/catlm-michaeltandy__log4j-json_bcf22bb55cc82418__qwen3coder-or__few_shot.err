@@ -1,0 +1,5 @@
+ARROW · SimpleJsonLayout (uk.me.mjt.log4jjson)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 · baseline 5 test (dùng lại, đo 19/11 23:12) · 2.4 s
+[OK] Khối 2  c0 · 4,9k token · 30.2 s · Candidate hợp lệ: 17 test, 28 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)
