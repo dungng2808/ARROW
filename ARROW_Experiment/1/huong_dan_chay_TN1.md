@@ -15,7 +15,7 @@ Chạy Thực nghiệm 1 (RQ1a) với mô hình **Qwen3-Coder-30B qua OpenRouter
 3. **Không đổi cấu hình model** do `setup_tn1.py` đặt (model, nhà cung cấp, temperature, max_tokens).
 4. Chỉ chạy **đúng phần (`--shard`) và tên máy (`--machine`)** của người dùng trong bảng dưới.
 5. Không xóa `results/<tên máy>/` trước khi nộp xong.
-6. Không push lên `main`. Chỉ push nhánh `tn1/<tên máy>`.
+6. Khi nộp: **chỉ commit `results/<tên máy>/`**, push thẳng lên `main`. **Không bao giờ** dùng `--force`, không commit file nào khác.
 
 ## Phân công
 
@@ -176,13 +176,18 @@ python tn1_collect.py --machine <M>
 ```
 **Kết quả mong đợi:** dòng `<M>: <số> bộ test (...)`, với `<số>` đúng **"Số dòng kết quả mong đợi"** trong bảng phân công. Sai số → báo người dùng, không nộp.
 
-Nộp (cần quyền push; chưa đăng nhập GitHub thì nhờ người dùng):
+Nộp thẳng lên `main` (cần quyền push; chưa đăng nhập GitHub thì nhờ người dùng). Chạy trong `ARROW_Experiment/1`:
 ```powershell
-git checkout -b tn1/<M>
 git add results/<M>
-git commit -m "TN1 Qwen: <M> shard <S>"
-git push -u origin tn1/<M>
+git commit -m "TN1 Qwen: <M> shard <S>" -- results/<M>
+git show --name-only --format= HEAD          # kiểm: MỌI dòng phải bắt đầu bằng ARROW_Experiment/1/results/<M>/
+git pull --rebase --autostash origin main
+git push origin main
 ```
+- `-- results/<M>` ở lệnh commit: chỉ commit thư mục này, kể cả khi người dùng đang có file khác sửa dở.
+- `git show` có dòng **không** thuộc `ARROW_Experiment/1/results/<M>/` → dừng, hỏi người dùng (không push).
+- `git push` bị từ chối (`rejected`, `fetch first`) vì máy khác vừa push → chạy lại 2 lệnh cuối (`pull --rebase` rồi `push`), tối đa 3 lần.
+- `pull --rebase` báo **xung đột** (`CONFLICT`) → chạy `git rebase --abort`, dừng, báo người dùng. Không tự sửa xung đột, không `--force`.
 (`homes/` tự bị bỏ qua nhờ `.gitignore`. Trên Windows, sau khi push xong và Dung xác nhận đã nhận đủ, có thể xóa `C:\arrow-homes\<M>` cho đỡ đầy ổ.)
 
 **Báo cáo cho người dùng** (để gửi Dung), đúng mẫu:
@@ -191,7 +196,7 @@ TN1 Qwen · máy <M> · shard <S>
 - Số bộ test: <số> / <mong đợi>
 - Kết quả: <dòng "Kết quả: ..." cuối run.log>
 - Lỗi hạ tầng còn lại: <số>
-- Nhánh đã push: tn1/<M> (commit <mã>)
+- Đã push lên main: commit <mã> (git log -1 --format=%h)
 - Ghi chú: <worker đã dùng, sự cố nếu có>
 ```
 
