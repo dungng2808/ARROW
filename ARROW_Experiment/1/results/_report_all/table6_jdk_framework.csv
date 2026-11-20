@@ -1,0 +1,15 @@
+Dataset,Build tool,JDK,JUnit 4,JUnit 5 + vintage,JUnit 5 không vintage,TestNG
+classes2test,maven,8,131,5,17,6
+classes2test,maven,11,17,0,3,2
+classes2test,maven,17,8,0,2,0
+classes2test,gradle,8,6,0,1,0
+classes2test,gradle,17,1,0,1,0
+catlm,maven,8,14,1,15,0
+catlm,maven,11,0,1,2,0
+catlm,maven,17,2,0,1,0
+gitbug-java,maven,8,9,0,3,0
+gitbug-java,maven,11,1,0,6,0
+gitbug-java,maven,17,1,0,5,0
+gitbug-java,gradle,8,2,0,2,0
+gitbug-java,gradle,11,2,0,0,0
+gitbug-java,gradle,17,0,0,1,0

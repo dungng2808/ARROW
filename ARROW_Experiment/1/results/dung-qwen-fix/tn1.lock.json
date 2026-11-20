@@ -66,6 +66,73 @@
         "--workers",
         "1"
       ]
+    },
+    {
+      "started_at": "2026-11-20T03:58:02+00:00",
+      "tool_version": "arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-18)",
+      "tool_commit": "d0f2b5c4c7e3",
+      "machine": "dung-qwen-fix",
+      "os": "macOS-15.8.1-arm64-arm-64bit-Mach-O",
+      "cpu_count": 14,
+      "models": {
+        "qwen3coder-or": {
+          "model": {
+            "provider": "openrouter",
+            "model_id": "qwen/qwen3-coder-30b-a3b-instruct",
+            "expected_model_id_prefix": "qwen/qwen3-coder-30b-a3b-instruct",
+            "params": {
+              "temperature": 0,
+              "max_tokens": 16384,
+              "provider": {
+                "order": [
+                  "amazon-bedrock"
+                ],
+                "allow_fallbacks": false
+              }
+            }
+          },
+          "provider": {
+            "kind": "openai-compatible",
+            "base_url": "https://openrouter.ai/api/v1",
+            "secret_ref": "openrouter"
+          }
+        }
+      },
+      "strategies": [
+        "zero_shot",
+        "few_shot",
+        "zero_shot_project_aware"
+      ],
+      "group": "eval",
+      "shard": "2/4",
+      "workers_start": 1,
+      "manifest_sha256": {
+        "classes2test_eval.jsonl": "173719efedac39012bbc20acc265e0a8c5db4153fb2d0539dffcadcc526be5b2",
+        "catlm_eval.jsonl": "8af54cec3e4049685fca905c713849c227c4aea8f21a727935def02a07d880b1",
+        "gitbug_java_eval.jsonl": "062ca069f5c458aeeb72d9b7289ff0cff77547d0f836b67bd2e11d9a57636121"
+      },
+      "prompt_override_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompts/override",
+      "prompt_sha256": {
+        "generation/user/default.md": "4562e84ab9c4b4f1f9f5d80da777be3b86f056c1e26691da8ab1b4934c810c83",
+        "generation/user/project_aware.md": "f084f399a8e17c4800353803be9795edd856a2adea87a123d4942952072b6fc6",
+        "generation/system/few_shot.md": "2c0cb7f72bc8c562fdfa34f5a5e8498c33d048d93f16ad636e5a63f65ccf12fa",
+        "generation/system/zero_shot.md": "2bb1385b06c487393c68c131234ab74c1af8e5ddf759654daaa474f9a0dc1429",
+        "generation/system/zero_shot_project_aware.md": "b0b9313a0602ac744e5710a3f944c7d1d0da4a62d4c1e1f054c2b8e5f5067358"
+      },
+      "verification": {},
+      "argv": [
+        "tn1_run.py",
+        "--machine",
+        "dung-qwen-fix",
+        "--models",
+        "qwen3coder-or",
+        "--shard",
+        "2/4",
+        "--only",
+        "40733990_8a44faf8d9b9d7f0",
+        "--workers",
+        "1"
+      ]
     }
   ]
 }

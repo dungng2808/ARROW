@@ -1,0 +1,5 @@
+ARROW · CowsayTask (com.github.ricksbrown.cowsay.ant)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 82 test (dùng lại, đo 20/11 10:58) · 3.5 s
+[OK] Khối 2  c0 · 3,0k token · 3.0 s · Candidate hợp lệ: 13 test, 12 assertion
+[>] Khối 3  c0: COMPILE · unreported exception | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

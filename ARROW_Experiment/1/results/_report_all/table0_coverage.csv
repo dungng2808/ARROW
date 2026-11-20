@@ -1,0 +1,7 @@
+Dataset,Mô hình,Dự kiến,Đã có,Tính vào mẫu số,Lỗi hạ tầng/bị chặn,Còn thiếu
+classes2test,gpt6luna,600,600,600,0,0
+classes2test,qwen3coder-or,600,600,600,0,0
+catlm,gpt6luna,108,108,108,0,0
+catlm,qwen3coder-or,108,108,108,0,0
+gitbug-java,gpt6luna,96,96,96,0,0
+gitbug-java,qwen3coder-or,96,96,96,0,0
