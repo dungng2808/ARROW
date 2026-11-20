@@ -49,6 +49,7 @@
 arrow gen <class…> [--project <dir> | --repo <url> [--ref <ref>]] [--package <pkg>]
           [--model <tên>] [--rounds <N>] [--no-repair] [--no-metrics] [--no-pit] [--no-confirm-regression]
           [--yes] [--dry-run] [--jobs <n>] [--max-tokens <n>] [--resume <run>] [--json] [--plain]
+          [--c0 <file.java> [--c0-model <nhãn>] [--c0-state <TRẠNG THÁI>]]
 ```
 
 | Tuỳ chọn | Mặc định | Ý nghĩa |
@@ -59,7 +60,7 @@ arrow gen <class…> [--project <dir> | --repo <url> [--ref <ref>]] [--package <
 | `--ref <ref>` | nhánh mặc định | Nhánh, tag hoặc SHA. Chỉ đi với `--repo` |
 | `--package <pkg>` | — | Mọi class cụ thể trong package (P01 §3.3 bước 6) |
 | `--model <tên>` | `llm.default_model` | Khoá trong `llm.models` |
-| `--rounds <N>` | `repair.rounds` (5) | Số vòng sửa tối đa, 1–10 |
+| `--rounds <N>` | `repair.rounds` (5) | Số vòng sửa tối đa, 1–12 |
 | `--no-repair` | — | Chỉ sinh và xác minh c0 |
 | `--no-metrics` | — | Bỏ khối 4 |
 | `--no-pit` | — | Khối 4 không chạy PIT (bước đo lâu nhất); vẫn đo JaCoCo và tsDetect. Thêm 15/11/2026 |
@@ -70,6 +71,9 @@ arrow gen <class…> [--project <dir> | --repo <url> [--ref <ref>]] [--package <
 | `--jobs <n>` | `run.jobs` (1) | Số class chạy song song, 1–8 |
 | `--max-tokens <n>` | `run.max_tokens` | Ngân sách token của cả run (P03 §6) |
 | `--resume <run>` | — | Chạy tiếp một run bị ngắt (P07 §5) |
+| `--c0 <file.java>` | — | Dùng bộ test có sẵn trong file làm c0 thay vì gọi model sinh, rồi xác minh và sửa; chỉ với một class (P04 §6.8). Thêm 20/11/2026 |
+| `--c0-model <nhãn>` | — | Model đã viết bộ test của `--c0`; ghi `generation_model`, `same_model` (P04 §6.8) |
+| `--c0-state <TRẠNG THÁI>` | — | Trạng thái trước đây của bộ test `--c0`, chỉ để ghi lại (`c0_previous_state`) |
 
 **Kiểm tra tham số** trước khi chạy:
 - không có class và không có `--package` → lỗi;
