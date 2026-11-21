@@ -1,0 +1,48 @@
+{
+  "run_id": "20261121-223000-t8th",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot3/homes/w1/runs/20261121-223000-t8th",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.fhuss.kafka.streams.cep.core.nfa.DeweyVersion",
+      "result": "VALID",
+      "c0_state": "RUNTIME",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.fhuss.kafka.streams.cep.core.nfa.DeweyVersion_ArrowTest",
+      "test_path": "core/src/test/java/com/github/fhuss/kafka/streams/cep/core/nfa/DeweyVersion_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 10689,
+        "out": 1745
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 4.2,
+        "block2": 0.1,
+        "block3": 39,
+        "block4": null,
+        "total": 43.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 10689,
+    "tokens_out": 1745,
+    "cost_usd": null
+  },
+  "warnings": []
+}

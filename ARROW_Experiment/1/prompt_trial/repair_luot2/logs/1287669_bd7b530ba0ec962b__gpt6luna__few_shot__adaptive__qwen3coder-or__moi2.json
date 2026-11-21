@@ -1,0 +1,48 @@
+{
+  "run_id": "20261121-213759-hl2w",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot2/homes/w2/runs/20261121-213759-hl2w",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.jayway.jsonpath.matchers.WithJsonPath",
+      "result": "ASSERTION",
+      "c0_state": "COMPILE",
+      "rounds_run": 5,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.jayway.jsonpath.matchers.WithJsonPath_ArrowTest",
+      "test_path": "json-path-assert/src/test/java/com/jayway/jsonpath/matchers/WithJsonPath_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 18671,
+        "out": 3335
+      },
+      "cost_usd": null,
+      "llm_calls": 5,
+      "seconds": {
+        "block1": 52.3,
+        "block2": 0.1,
+        "block3": 35.8,
+        "block4": null,
+        "total": 88.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 5,
+    "tokens_in": 18671,
+    "tokens_out": 3335,
+    "cost_usd": null
+  },
+  "warnings": []
+}

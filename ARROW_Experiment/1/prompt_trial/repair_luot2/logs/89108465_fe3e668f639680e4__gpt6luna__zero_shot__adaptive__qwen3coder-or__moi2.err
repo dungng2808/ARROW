@@ -1,0 +1,10 @@
+ARROW · CryptoUtil (com.ongres.scram.common.util)
+[OK] Khối 1  Maven 3.6.1 · build root . · JDK 8 · JUnit 4 · baseline 86 test (dùng lại, đo 21/11 21:59) · 3.8 s
+[OK] Khối 2  c0 · c0 lấy từ file 89108465_fe3e668f639680e4__zero_shot.java: 11 test, 15 assertion
+[>] Khối 3  c0: RUNTIME · Exception | Preconditions.checkNotNull
+          vòng 1 · mức 1 → RUNTIME · lên mức 2
+          vòng 2 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 3 · mức 3 → mã trùng vòng 1 · lên mức 2
+          vòng 4 · mức 2 → RUNTIME · lên mức 3
+          vòng 5 · mức 3 → mã trùng vòng 4 · lên mức 2
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 5 vòng

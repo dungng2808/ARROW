@@ -1,0 +1,10 @@
+ARROW · ANNIndex (internal.com.spotify.annoy)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 67 test (dùng lại, đo 21/11 22:32) · 3.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 78016530_a294240ab434b91c__zero_shot_project_aware.java: 6 test, 8 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | loadsLeafIndexAndReturnsItsItemVectorAndNearestItem
+          vòng 1 · mức 1 → ASSERTION 5 pass · sửa tiếp từ bản này
+          vòng 2 · mức 1 → ASSERTION 5 pass · sửa tiếp từ bản này
+          vòng 3 · mức 1 → ASSERTION 5 pass · sửa tiếp từ bản này
+          vòng 4 · mức 1 → ASSERTION 5 pass · sửa tiếp từ bản này
+          vòng 5 · mức 1 → ASSERTION 5 pass · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 5 vòng

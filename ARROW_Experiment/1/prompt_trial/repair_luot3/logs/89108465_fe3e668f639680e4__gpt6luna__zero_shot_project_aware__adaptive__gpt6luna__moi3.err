@@ -1,0 +1,10 @@
+ARROW · CryptoUtil (com.ongres.scram.common.util)
+[OK] Khối 1  Maven 3.6.1 · build root . · JDK 8 · JUnit 4 · baseline 86 test (dùng lại, đo 21/11 22:34) · 2.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 89108465_fe3e668f639680e4__zero_shot_project_aware.java: 10 test, 9 assertion
+[>] Khối 3  c0: COMPILE · incompatible types | -
+          vòng 1 · mức 1 → ASSERTION 9 pass · tốt hơn · checkpoint
+          vòng 2 · mức 1 → ASSERTION 9 pass · lên mức 2
+          vòng 3 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 4 · mức 3 → mã trùng vòng 2 · lên mức 2
+          vòng 5 · mức 2 → mã trùng vòng 2 · lên mức 3
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 5 vòng

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261121-210110-8330",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot1/homes/w3/runs/20261121-210110-8330",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.parsingdata.metal.data.DataExpressionSource",
+      "result": "COMPILE",
+      "c0_state": "RUNTIME",
+      "rounds_run": 5,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "io.parsingdata.metal.data.DataExpressionSource_ArrowTest",
+      "test_path": "core/src/test/java/io/parsingdata/metal/data/DataExpressionSource_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 19568,
+        "out": 3114
+      },
+      "cost_usd": null,
+      "llm_calls": 5,
+      "seconds": {
+        "block1": 4.2,
+        "block2": 0.1,
+        "block3": 27.5,
+        "block4": null,
+        "total": 31.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 5,
+    "tokens_in": 19568,
+    "tokens_out": 3114,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

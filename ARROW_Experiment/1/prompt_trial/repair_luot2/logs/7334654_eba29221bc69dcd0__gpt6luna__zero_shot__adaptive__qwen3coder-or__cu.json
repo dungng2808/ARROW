@@ -1,0 +1,48 @@
+{
+  "run_id": "20261121-215608-xjro",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot2/homes/w2/runs/20261121-215608-xjro",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.mitchellbosecke.pebble.utils.PathUtils",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.mitchellbosecke.pebble.utils.PathUtils_ArrowTest",
+      "test_path": "pebble/src/test/java/com/mitchellbosecke/pebble/utils/PathUtils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 8266,
+        "out": 2714
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 3.9,
+        "block2": 0.1,
+        "block3": 31.4,
+        "block4": null,
+        "total": 35.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 8266,
+    "tokens_out": 2714,
+    "cost_usd": null
+  },
+  "warnings": []
+}

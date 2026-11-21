@@ -1,0 +1,48 @@
+{
+  "run_id": "20261121-211309-kh0d",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot1/homes/w3/runs/20261121-211309-kh0d",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "internal.com.spotify.annoy.ANNIndex",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 5,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "internal.com.spotify.annoy.ANNIndex_ArrowTest",
+      "test_path": "indra-core/src/test/java/internal/com/spotify/annoy/ANNIndex_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 34171,
+        "out": 4567
+      },
+      "cost_usd": null,
+      "llm_calls": 5,
+      "seconds": {
+        "block1": 4.4,
+        "block2": 0.2,
+        "block3": 35,
+        "block4": null,
+        "total": 39.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 5,
+    "tokens_in": 34171,
+    "tokens_out": 4567,
+    "cost_usd": null
+  },
+  "warnings": []
+}

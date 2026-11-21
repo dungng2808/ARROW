@@ -1,0 +1,48 @@
+{
+  "run_id": "20261121-205413-m7dt",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot1/homes/w2/runs/20261121-205413-m7dt",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.bmw.hmm.ViterbiAlgorithm",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "com.bmw.hmm.ViterbiAlgorithm_ArrowTest",
+      "test_path": "hmm-lib/src/test/java/com/bmw/hmm/ViterbiAlgorithm_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6886,
+        "out": 3367
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 2.8,
+        "block2": 0.1,
+        "block3": 17.6,
+        "block4": null,
+        "total": 20.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 6886,
+    "tokens_out": 3367,
+    "cost_usd": null
+  },
+  "warnings": []
+}

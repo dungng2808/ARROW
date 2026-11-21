@@ -1,0 +1,10 @@
+ARROW · PathUtils (com.mitchellbosecke.pebble.utils)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 660 test (dùng lại, đo 21/11 21:04) · 4.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 7334654_eba29221bc69dcd0__zero_shot_project_aware.java: 9 test, 9 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | PathUtils_ArrowTest.resolvesRelativePathWithNullAnchor
+          vòng 1 · mức 1 → mã trùng vòng 0 · lên mức 2
+          vòng 2 · mức 2 → mã trùng vòng 0 · lên mức 3
+          vòng 3 · mức 3 → mã trùng vòng 0 · lên mức 2
+          vòng 4 · mức 2 → mã trùng vòng 0 · lên mức 3
+          vòng 5 · mức 3 → mã trùng vòng 0 · lên mức 2
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 5 vòng

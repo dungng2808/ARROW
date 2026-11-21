@@ -1,0 +1,48 @@
+{
+  "run_id": "20261121-211527-39kn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot1/homes/w3/runs/20261121-211527-39kn",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.ongres.scram.common.util.CryptoUtil",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 5,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.ongres.scram.common.util.CryptoUtil_ArrowTest",
+      "test_path": "common/src/test/java/com/ongres/scram/common/util/CryptoUtil_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 24996,
+        "out": 6265
+      },
+      "cost_usd": null,
+      "llm_calls": 5,
+      "seconds": {
+        "block1": 2.5,
+        "block2": 0.1,
+        "block3": 31.2,
+        "block4": null,
+        "total": 33.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 5,
+    "tokens_in": 24996,
+    "tokens_out": 6265,
+    "cost_usd": null
+  },
+  "warnings": []
+}

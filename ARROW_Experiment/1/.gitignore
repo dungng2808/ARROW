@@ -4,3 +4,5 @@ results/*/workers.txt
 __pycache__/
 prompt_trial/results*/homes/
 dist/
+prompt_trial/repair_luot*/homes/
+prompt_trial/repair_luot*/workers.txt

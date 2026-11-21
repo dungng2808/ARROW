@@ -1,0 +1,10 @@
+ARROW · PathUtils (com.mitchellbosecke.pebble.utils)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 660 test (dùng lại, đo 21/11 21:03) · 4.2 s
+[OK] Khối 2  c0 · c0 lấy từ file 7334654_eba29221bc69dcd0__zero_shot.java: 10 test, 10 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → RUNTIME · tốt hơn · checkpoint
+          vòng 2 · mức 1 → mã trùng vòng 1 · lên mức 2
+          vòng 3 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 4 · mức 3 → mã trùng vòng 1 · lên mức 2
+          vòng 5 · mức 2 → mã trùng vòng 1 · lên mức 3
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 5 vòng

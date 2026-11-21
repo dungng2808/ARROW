@@ -1,0 +1,186 @@
+22 c0 · còn 168 chain · 4 worker
+22 c0 · còn 168 chain · 4 worker
+[1/168] DONE       VALID      vòng 1/1  105.9s cu  qwen3coder-or fixed_plus zero_shot_project_aware  WithJsonPath
+[2/168] DONE       VALID      vòng 2/2  113.2s cu  qwen3coder-or fixed_plus zero_shot                WithJsonPath
+[3/168] DONE       VALID      vòng 1/1  129.9s cu  gpt6luna      fixed_plus zero_shot_project_aware  WithJsonPath
+[4/168] DONE       VALID      vòng 2/2  138.9s cu  gpt6luna      fixed_plus zero_shot                WithJsonPath
+[5/168] DONE       VALID      vòng 1/1  107.6s cu  qwen3coder-or adaptive   zero_shot_project_aware  WithJsonPath
+[6/168] DONE       VALID      vòng 2/2  127.2s cu  qwen3coder-or adaptive   zero_shot                WithJsonPath
+[7/168] DONE       VALID      vòng 1/1  120.6s cu  gpt6luna      adaptive   zero_shot_project_aware  WithJsonPath
+[8/168] DONE       VALID      vòng 2/2  132.2s cu  gpt6luna      adaptive   zero_shot                WithJsonPath
+[9/168] DONE       VALID      vòng 1/1  122.2s moi qwen3coder-or fixed_plus zero_shot_project_aware  WithJsonPath
+[10/168] DONE       VALID      vòng 2/2  125.7s moi qwen3coder-or fixed_plus zero_shot                WithJsonPath
+[11/168] DONE       VALID      vòng 1/1  128.5s moi gpt6luna      fixed_plus zero_shot_project_aware  WithJsonPath
+[12/168] DONE       VALID      vòng 2/2  154.1s moi gpt6luna      fixed_plus zero_shot                WithJsonPath
+[13/168] DONE       VALID      vòng 1/1   90.8s moi qwen3coder-or adaptive   zero_shot_project_aware  WithJsonPath
+[14/168] DONE       VALID      vòng 2/2   93.9s moi qwen3coder-or adaptive   zero_shot                WithJsonPath
+[15/168] DONE       VALID      vòng 1/1   34.5s cu  gpt6luna      fixed_plus few_shot                 ViterbiAlgorithm
+[16/168] DONE       VALID      vòng 1/1   92.4s moi gpt6luna      adaptive   zero_shot_project_aware  WithJsonPath
+[17/168] DONE       VALID      vòng 1/1   29.1s cu  gpt6luna      adaptive   few_shot                 ViterbiAlgorithm
+[18/168] DONE       VALID      vòng 1/1   30.4s cu  qwen3coder-or fixed_plus few_shot                 ViterbiAlgorithm
+[19/168] DONE       VALID      vòng 2/2   72.5s moi gpt6luna      adaptive   zero_shot                WithJsonPath
+[20/168] DONE       VALID      vòng 1/1   31.1s cu  gpt6luna      fixed_plus zero_shot                ViterbiAlgorithm
+[21/168] DONE       VALID      vòng 1/1   22.4s cu  qwen3coder-or adaptive   few_shot                 ViterbiAlgorithm
+[22/168] DONE       VALID      vòng 1/1   25.2s moi gpt6luna      fixed_plus few_shot                 ViterbiAlgorithm
+[23/168] DONE       VALID      vòng 1/1   23.1s cu  gpt6luna      adaptive   zero_shot                ViterbiAlgorithm
+[24/168] DONE       VALID      vòng 1/1   31.9s cu  qwen3coder-or fixed_plus zero_shot                ViterbiAlgorithm
+[25/168] DONE       VALID      vòng 1/1   18.0s moi qwen3coder-or fixed_plus few_shot                 ViterbiAlgorithm
+[26/168] DONE       VALID      vòng 1/1   25.6s moi gpt6luna      adaptive   few_shot                 ViterbiAlgorithm
+[27/168] DONE       VALID      vòng 1/1   20.8s moi gpt6luna      fixed_plus zero_shot                ViterbiAlgorithm
+[28/168] DONE       VALID      vòng 1/1   16.9s moi qwen3coder-or adaptive   few_shot                 ViterbiAlgorithm
+[29/168] DONE       VALID      vòng 1/1   18.5s cu  qwen3coder-or adaptive   zero_shot                ViterbiAlgorithm
+[30/168] DONE       VALID      vòng 1/1   16.1s moi qwen3coder-or fixed_plus zero_shot                ViterbiAlgorithm
+[31/168] DONE       VALID      vòng 1/1   20.3s moi gpt6luna      adaptive   zero_shot                ViterbiAlgorithm
+[32/168] DONE       VALID      vòng 1/1   21.8s cu  qwen3coder-or fixed_plus zero_shot_project_aware  ViterbiAlgorithm
+[33/168] DONE       VALID      vòng 1/1   35.5s cu  gpt6luna      fixed_plus zero_shot_project_aware  ViterbiAlgorithm
+[34/168] DONE       VALID      vòng 1/1   16.4s moi qwen3coder-or adaptive   zero_shot                ViterbiAlgorithm
+[35/168] DONE       VALID      vòng 1/1   21.5s cu  qwen3coder-or adaptive   zero_shot_project_aware  ViterbiAlgorithm
+[36/168] DONE       VALID      vòng 1/1   17.7s moi qwen3coder-or fixed_plus zero_shot_project_aware  ViterbiAlgorithm
+[37/168] DONE       VALID      vòng 1/1   37.0s cu  gpt6luna      adaptive   zero_shot_project_aware  ViterbiAlgorithm
+[38/168] DONE       COMPILE    vòng None/5   40.8s cu  qwen3coder-or fixed_plus few_shot                 CompositeParser
+[39/168] DONE       VALID      vòng 1/1   18.5s moi qwen3coder-or adaptive   zero_shot_project_aware  ViterbiAlgorithm
+[40/168] DONE       COMPILE    vòng None/5   61.5s cu  gpt6luna      fixed_plus few_shot                 CompositeParser
+[41/168] DONE       VALID      vòng 1/1   29.5s moi gpt6luna      fixed_plus zero_shot_project_aware  ViterbiAlgorithm
+[42/168] DONE       COMPILE    vòng None/5   29.4s cu  qwen3coder-or adaptive   few_shot                 CompositeParser
+[43/168] DONE       VALID      vòng 1/1   29.9s moi gpt6luna      adaptive   zero_shot_project_aware  ViterbiAlgorithm
+[44/168] DONE       COMPILE    vòng None/5   49.4s cu  gpt6luna      adaptive   few_shot                 CompositeParser
+[45/168] DONE       COMPILE    vòng None/5   30.7s moi qwen3coder-or fixed_plus few_shot                 CompositeParser
+[46/168] DONE       COMPILE    vòng None/5   62.9s cu  gpt6luna      fixed_plus zero_shot                CompositeParser
+[47/168] DONE       COMPILE    vòng None/5   21.6s moi qwen3coder-or adaptive   few_shot                 CompositeParser
+[48/168] DONE       COMPILE    vòng None/5   41.6s cu  qwen3coder-or fixed_plus zero_shot                CompositeParser
+[49/168] DONE       VALID      vòng 4/4   56.4s moi gpt6luna      fixed_plus few_shot                 CompositeParser
+[50/168] DONE       COMPILE    vòng None/5   25.4s cu  qwen3coder-or adaptive   zero_shot                CompositeParser
+[51/168] DONE       COMPILE    vòng None/5   55.1s cu  gpt6luna      adaptive   zero_shot                CompositeParser
+[52/168] DONE       COMPILE    vòng None/5   64.1s cu  gpt6luna      fixed_plus few_shot                 DataExpressionSource
+[53/168] DONE       COMPILE    vòng None/5   31.8s moi qwen3coder-or fixed_plus zero_shot                CompositeParser
+[54/168] DONE       COMPILE    vòng None/5   47.8s moi gpt6luna      adaptive   few_shot                 CompositeParser
+[55/168] DONE       COMPILE    vòng None/5   20.5s moi qwen3coder-or adaptive   zero_shot                CompositeParser
+[56/168] DONE       VALID      vòng 4/4   56.1s moi gpt6luna      fixed_plus zero_shot                CompositeParser
+[57/168] DONE       RUNTIME    vòng None/5   48.4s cu  gpt6luna      adaptive   few_shot                 DataExpressionSource
+[58/168] DONE       COMPILE    vòng None/5   41.4s cu  qwen3coder-or fixed_plus few_shot                 DataExpressionSource
+[59/168] DONE       COMPILE    vòng None/5   41.9s moi gpt6luna      adaptive   zero_shot                CompositeParser
+[60/168] DONE       COMPILE    vòng None/5   52.9s cu  gpt6luna      fixed_plus zero_shot                DataExpressionSource
+[61/168] DONE       RUNTIME    vòng None/5   32.7s cu  qwen3coder-or adaptive   few_shot                 DataExpressionSource
+[62/168] DONE       COMPILE    vòng None/5   50.0s moi gpt6luna      fixed_plus few_shot                 DataExpressionSource
+[63/168] DONE       COMPILE    vòng None/5   41.3s cu  qwen3coder-or fixed_plus zero_shot                DataExpressionSource
+[64/168] DONE       COMPILE    vòng None/5   34.0s moi qwen3coder-or fixed_plus few_shot                 DataExpressionSource
+[65/168] DONE       VALID      vòng 3/3   45.1s cu  gpt6luna      adaptive   zero_shot                DataExpressionSource
+[66/168] DONE       RUNTIME    vòng None/5   45.5s moi gpt6luna      adaptive   few_shot                 DataExpressionSource
+[67/168] DONE       RUNTIME    vòng None/5   28.3s cu  qwen3coder-or adaptive   zero_shot                DataExpressionSource
+[68/168] DONE       RUNTIME    vòng None/5   28.8s moi qwen3coder-or adaptive   few_shot                 DataExpressionSource
+[69/168] DONE       RUNTIME    vòng None/5   48.7s moi gpt6luna      fixed_plus zero_shot                DataExpressionSource
+[70/168] DONE       COMPILE    vòng None/5   32.4s moi qwen3coder-or fixed_plus zero_shot                DataExpressionSource
+[71/168] DONE       COMPILE    vòng None/5   33.8s cu  qwen3coder-or fixed_plus zero_shot_project_aware  DataExpressionSource
+[72/168] DONE       COMPILE    vòng None/5   49.8s cu  gpt6luna      fixed_plus zero_shot_project_aware  DataExpressionSource
+[73/168] DONE       RUNTIME    vòng None/5   31.5s moi qwen3coder-or adaptive   zero_shot                DataExpressionSource
+[74/168] DONE       VALID      vòng 4/4   41.8s moi gpt6luna      adaptive   zero_shot                DataExpressionSource
+[75/168] DONE       RUNTIME    vòng None/5   29.9s cu  qwen3coder-or adaptive   zero_shot_project_aware  DataExpressionSource
+[76/168] DONE       COMPILE    vòng None/5   32.8s moi qwen3coder-or fixed_plus zero_shot_project_aware  DataExpressionSource
+[77/168] DONE       RUNTIME    vòng None/5   55.7s cu  gpt6luna      adaptive   zero_shot_project_aware  DataExpressionSource
+[78/168] DONE       RUNTIME    vòng None/5   45.4s cu  qwen3coder-or fixed_plus zero_shot                DeweyVersion
+[79/168] DONE       RUNTIME    vòng None/5   63.4s cu  gpt6luna      fixed_plus zero_shot                DeweyVersion
+[80/168] DONE       RUNTIME    vòng None/5   30.4s moi qwen3coder-or adaptive   zero_shot_project_aware  DataExpressionSource
+[81/168] DONE       VALID      vòng 2/2   21.3s cu  qwen3coder-or adaptive   zero_shot                DeweyVersion
+[82/168] DONE       COMPILE    vòng None/5   54.1s moi gpt6luna      fixed_plus zero_shot_project_aware  DataExpressionSource
+[83/168] DONE       RUNTIME    vòng None/5   35.2s moi qwen3coder-or fixed_plus zero_shot                DeweyVersion
+[84/168] DONE       VALID      vòng 4/4   53.0s cu  gpt6luna      fixed_plus zero_shot_project_aware  DeweyVersion
+[85/168] DONE       RUNTIME    vòng None/5   56.4s cu  gpt6luna      adaptive   zero_shot                DeweyVersion
+[86/168] DONE       RUNTIME    vòng None/5   26.5s moi qwen3coder-or adaptive   zero_shot                DeweyVersion
+[87/168] DONE       RUNTIME    vòng None/5   52.5s moi gpt6luna      adaptive   zero_shot_project_aware  DataExpressionSource
+[88/168] DONE       VALID      vòng 4/4   49.0s cu  gpt6luna      adaptive   zero_shot_project_aware  DeweyVersion
+[89/168] DONE       RUNTIME    vòng None/5   36.4s cu  qwen3coder-or fixed_plus zero_shot_project_aware  DeweyVersion
+[90/168] DONE       RUNTIME    vòng None/5   55.6s moi gpt6luna      fixed_plus zero_shot                DeweyVersion
+[91/168] DONE       VALID      vòng 1/1   40.8s cu  gpt6luna      fixed_plus few_shot                 PathUtils
+[92/168] DONE       RUNTIME    vòng None/5   28.4s cu  qwen3coder-or adaptive   zero_shot_project_aware  DeweyVersion
+[93/168] DONE       VALID      vòng 2/2   30.9s moi gpt6luna      adaptive   zero_shot                DeweyVersion
+[94/168] DONE       VALID      vòng 1/1   23.9s cu  gpt6luna      adaptive   few_shot                 PathUtils
+[95/168] DONE       RUNTIME    vòng None/5   57.7s moi gpt6luna      fixed_plus zero_shot_project_aware  DeweyVersion
+[96/168] DONE       COMPILE    vòng None/5   30.1s moi qwen3coder-or fixed_plus zero_shot_project_aware  DeweyVersion
+[97/168] DONE       VALID      vòng 1/1   27.4s moi gpt6luna      fixed_plus few_shot                 PathUtils
+[98/168] DONE       VALID      vòng 1/1   39.4s cu  qwen3coder-or fixed_plus few_shot                 PathUtils
+[99/168] DONE       RUNTIME    vòng None/5   22.4s moi qwen3coder-or adaptive   zero_shot_project_aware  DeweyVersion
+[100/168] DONE       VALID      vòng 1/1   25.2s moi gpt6luna      adaptive   few_shot                 PathUtils
+[101/168] DONE       VALID      vòng 1/1   23.1s cu  qwen3coder-or adaptive   few_shot                 PathUtils
+[102/168] DONE       VALID      vòng 4/4   47.8s moi gpt6luna      adaptive   zero_shot_project_aware  DeweyVersion
+[103/168] DONE       VALID      vòng 1/1   24.1s moi qwen3coder-or fixed_plus few_shot                 PathUtils
+[104/168] DONE       VALID      vòng 2/2   54.8s cu  gpt6luna      fixed_plus zero_shot                PathUtils
+[105/168] DONE       RUNTIME    vòng None/5   51.2s cu  qwen3coder-or fixed_plus zero_shot                PathUtils
+[106/168] DONE       VALID      vòng 1/1   24.3s moi qwen3coder-or adaptive   few_shot                 PathUtils
+[107/168] DONE       VALID      vòng 1/1   45.9s cu  gpt6luna      fixed_plus zero_shot_project_aware  PathUtils
+[108/168] DONE       RUNTIME    vòng None/5   25.8s cu  qwen3coder-or adaptive   zero_shot                PathUtils
+[109/168] DONE       VALID      vòng 2/2   37.9s cu  gpt6luna      adaptive   zero_shot                PathUtils
+[110/168] DONE       VALID      vòng 1/1   30.4s cu  gpt6luna      adaptive   zero_shot_project_aware  PathUtils
+[111/168] DONE       RUNTIME    vòng None/5   56.7s cu  qwen3coder-or fixed_plus zero_shot_project_aware  PathUtils
+[112/168] DONE       VALID      vòng 2/2   40.5s moi gpt6luna      fixed_plus zero_shot                PathUtils
+[113/168] DONE       VALID      vòng 1/1   31.2s moi gpt6luna      fixed_plus zero_shot_project_aware  PathUtils
+[114/168] DONE       RUNTIME    vòng None/5   52.5s moi qwen3coder-or fixed_plus zero_shot                PathUtils
+[115/168] DONE       RUNTIME    vòng None/5   21.4s cu  qwen3coder-or adaptive   zero_shot_project_aware  PathUtils
+[116/168] DONE       VALID      vòng 1/1   29.8s moi gpt6luna      adaptive   zero_shot_project_aware  PathUtils
+[117/168] DONE       RUNTIME    vòng None/5   24.0s moi qwen3coder-or adaptive   zero_shot                PathUtils
+[118/168] DONE       VALID      vòng 2/2   37.7s moi gpt6luna      adaptive   zero_shot                PathUtils
+[119/168] DONE       VALID      vòng 1/1   26.2s moi qwen3coder-or fixed_plus zero_shot_project_aware  PathUtils
+[120/168] DONE       VALID      vòng 1/1   26.0s moi qwen3coder-or adaptive   zero_shot_project_aware  PathUtils
+[121/168] DONE       VALID      vòng 1/1   40.2s cu  qwen3coder-or fixed_plus few_shot                 ANNIndex
+[122/168] DONE       VALID      vòng 2/2   52.9s cu  gpt6luna      fixed_plus few_shot                 ANNIndex
+[123/168] DONE       VALID      vòng 1/1   23.4s cu  qwen3coder-or adaptive   few_shot                 ANNIndex
+[124/168] DONE       VALID      vòng 4/4   84.7s cu  gpt6luna      fixed_plus zero_shot                ANNIndex
+[125/168] DONE       VALID      vòng 1/1   23.3s moi qwen3coder-or fixed_plus few_shot                 ANNIndex
+[126/168] DONE       ASSERTION  vòng None/5   61.1s cu  qwen3coder-or fixed_plus zero_shot                ANNIndex
+[127/168] DONE       ASSERTION  vòng None/5   52.5s cu  gpt6luna      adaptive   few_shot                 ANNIndex
+[128/168] DONE       VALID      vòng 1/1   22.4s moi qwen3coder-or adaptive   few_shot                 ANNIndex
+[129/168] DONE       COMPILE    vòng None/5   24.9s cu  qwen3coder-or adaptive   zero_shot                ANNIndex
+[130/168] DONE       VALID      vòng 1/1   28.4s moi gpt6luna      fixed_plus few_shot                 ANNIndex
+[131/168] DONE       VALID      vòng 4/4   62.2s cu  gpt6luna      adaptive   zero_shot                ANNIndex
+[132/168] DONE       VALID      vòng 2/2   45.2s cu  gpt6luna      fixed_plus zero_shot_project_aware  ANNIndex
+[133/168] DONE       VALID      vòng 1/1   29.0s moi gpt6luna      adaptive   few_shot                 ANNIndex
+[134/168] DONE       VALID      vòng 4/4   40.4s moi qwen3coder-or fixed_plus zero_shot                ANNIndex
+[135/168] DONE       COMPILE    vòng None/5   27.3s moi qwen3coder-or adaptive   zero_shot                ANNIndex
+[136/168] DONE       VALID      vòng 3/3   45.4s moi gpt6luna      fixed_plus zero_shot                ANNIndex
+[137/168] DONE       RUNTIME    vòng None/5   58.4s cu  qwen3coder-or fixed_plus zero_shot_project_aware  ANNIndex
+[138/168] DONE       ASSERTION  vòng None/5   64.8s cu  gpt6luna      adaptive   zero_shot_project_aware  ANNIndex
+[139/168] DONE       VALID      vòng 2/2   38.7s cu  gpt6luna      fixed_plus few_shot                 CryptoUtil
+[140/168] DONE       ASSERTION  vòng None/5   55.3s moi gpt6luna      adaptive   zero_shot                ANNIndex
+[141/168] DONE       ASSERTION  vòng None/5   34.8s cu  qwen3coder-or adaptive   zero_shot_project_aware  ANNIndex
+[142/168] DONE       VALID      vòng 2/2   34.5s cu  gpt6luna      adaptive   few_shot                 CryptoUtil
+[143/168] DONE       VALID      vòng 1/1   22.2s moi gpt6luna      fixed_plus few_shot                 CryptoUtil
+[144/168] DONE       ASSERTION  vòng None/5   74.2s moi gpt6luna      fixed_plus zero_shot_project_aware  ANNIndex
+[145/168] DONE       ASSERTION  vòng None/5   48.2s moi qwen3coder-or fixed_plus zero_shot_project_aware  ANNIndex
+[146/168] DONE       ASSERTION  vòng None/5   52.9s cu  qwen3coder-or fixed_plus few_shot                 CryptoUtil
+[147/168] DONE       VALID      vòng 1/1   22.7s moi gpt6luna      adaptive   few_shot                 CryptoUtil
+[148/168] DONE       VALID      vòng 1/1   16.8s cu  qwen3coder-or adaptive   few_shot                 CryptoUtil
+[149/168] DONE       VALID      vòng 1/1   27.1s cu  gpt6luna      fixed_plus zero_shot                CryptoUtil
+[150/168] DONE       ASSERTION  vòng None/5   40.7s moi qwen3coder-or adaptive   zero_shot_project_aware  ANNIndex
+[151/168] DONE       ASSERTION  vòng None/5   41.0s moi qwen3coder-or fixed_plus few_shot                 CryptoUtil
+[152/168] DONE       VALID      vòng 1/1   27.5s cu  gpt6luna      adaptive   zero_shot                CryptoUtil
+[153/168] DONE       VALID      vòng 5/5   75.4s moi gpt6luna      adaptive   zero_shot_project_aware  ANNIndex
+[154/168] DONE       VALID      vòng 3/3   35.1s cu  qwen3coder-or fixed_plus zero_shot                CryptoUtil
+[155/168] DONE       VALID      vòng 1/1   23.0s moi gpt6luna      fixed_plus zero_shot                CryptoUtil
+[156/168] DONE       ASSERTION  vòng None/5   25.9s moi qwen3coder-or adaptive   few_shot                 CryptoUtil
+[157/168] DONE       VALID      vòng 2/2   19.0s cu  qwen3coder-or adaptive   zero_shot                CryptoUtil
+[158/168] DONE       VALID      vòng 1/1   23.4s moi gpt6luna      adaptive   zero_shot                CryptoUtil
+[159/168] DONE       VALID      vòng 2/2   41.6s cu  gpt6luna      fixed_plus zero_shot_project_aware  CryptoUtil
+[160/168] DONE       VALID      vòng 3/3   43.2s cu  qwen3coder-or fixed_plus zero_shot_project_aware  CryptoUtil
+[161/168] DONE       RUNTIME    vòng None/5   40.3s moi qwen3coder-or fixed_plus zero_shot                CryptoUtil
+[162/168] DONE       VALID      vòng 2/2   35.5s cu  gpt6luna      adaptive   zero_shot_project_aware  CryptoUtil
+[163/168] DONE       RUNTIME    vòng None/5   34.6s moi qwen3coder-or adaptive   zero_shot                CryptoUtil
+[164/168] DONE       VALID      vòng 2/2   30.4s moi gpt6luna      fixed_plus zero_shot_project_aware  CryptoUtil
+[165/168] DONE       VALID      vòng 5/5   58.4s cu  qwen3coder-or adaptive   zero_shot_project_aware  CryptoUtil
+[166/168] DONE       ASSERTION  vòng None/5   40.4s moi qwen3coder-or fixed_plus zero_shot_project_aware  CryptoUtil
+[167/168] DONE       VALID      vòng 4/4   57.5s moi gpt6luna      adaptive   zero_shot_project_aware  CryptoUtil
+[168/168] DONE       ASSERTION  vòng None/5   34.6s moi qwen3coder-or adaptive   zero_shot_project_aware  CryptoUtil
+| Mô hình sửa | Cơ chế | Bản prompt | Chain | VALID | Tỷ lệ | Vòng thành công TB | Token vào TB mỗi vòng | Lỗi hạ tầng |
+|---|---|---|---|---|---|---|---|---|
+| gpt6luna | fixed_plus | cu | 22 | 16 | 73% | 1.81 | 3477 | 0 |
+| gpt6luna | fixed_plus | moi | 22 | 16 | 73% | 1.75 | 4149 | 0 |
+| gpt6luna | adaptive | cu | 22 | 15 | 68% | 1.87 | 4122 | 0 |
+| gpt6luna | adaptive | moi | 22 | 17 | 77% | 2.00 | 4647 | 0 |
+| qwen3coder-or | fixed_plus | cu | 22 | 10 | 45% | 1.60 | 3556 | 0 |
+| qwen3coder-or | fixed_plus | moi | 22 | 10 | 45% | 1.50 | 4257 | 0 |
+| qwen3coder-or | adaptive | cu | 22 | 12 | 55% | 1.67 | 3926 | 0 |
+| qwen3coder-or | adaptive | moi | 22 | 9 | 41% | 1.22 | 4593 | 0 |
+
+| Mô hình sửa | Cặp | Chỉ bản mới VALID | Chỉ bản cũ VALID | Cả hai | Cả hai không |
+|---|---|---|---|---|---|
+| gpt6luna | 44 | 5 | 3 | 28 | 8 |
+| qwen3coder-or | 44 | 3 | 6 | 16 | 19 |
+| (cả hai) | 88 | 8 | 9 | 44 | 27 |

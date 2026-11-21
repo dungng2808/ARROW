@@ -1,0 +1,53 @@
+{
+  "run_id": "20261121-210802-w9tx",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompt_trial/repair_luot1/homes/w3/runs/20261121-210802-w9tx",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "internal.com.spotify.annoy.ANNIndex",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "internal.com.spotify.annoy.ANNIndex_ArrowTest",
+      "test_path": "indra-core/src/test/java/internal/com/spotify/annoy/ANNIndex_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 11087,
+        "out": 2153
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 12.7,
+        "block2": 0.1,
+        "block3": 35.4,
+        "block4": null,
+        "total": 48.3
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 1"
+      ],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 11087,
+    "tokens_out": 2153,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "ANNIndex: 1 test method đã bị bỏ trong lúc sửa: cosineMarginReturnsCosineSimilarity"
+  ]
+}

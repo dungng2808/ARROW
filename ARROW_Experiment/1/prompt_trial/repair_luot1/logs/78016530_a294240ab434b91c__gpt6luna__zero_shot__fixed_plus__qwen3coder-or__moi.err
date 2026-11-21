@@ -1,0 +1,9 @@
+ARROW · ANNIndex (internal.com.spotify.annoy)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 67 test (dùng lại, đo 21/11 21:08) · 4.0 s
+[OK] Khối 2  c0 · c0 lấy từ file 78016530_a294240ab434b91c__zero_shot.java: 7 test, 10 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+          vòng 1 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 1 → ASSERTION 4 pass · sửa tiếp từ bản này
+          vòng 3 · mức 1 → ASSERTION 6 pass · sửa tiếp từ bản này
+          vòng 4 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 4 vòng

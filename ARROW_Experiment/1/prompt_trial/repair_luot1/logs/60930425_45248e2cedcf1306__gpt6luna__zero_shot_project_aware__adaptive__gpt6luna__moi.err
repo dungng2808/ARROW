@@ -1,0 +1,9 @@
+ARROW · DeweyVersion (com.github.fhuss.kafka.streams.cep.core.nfa)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 4 · baseline 29 test (dùng lại, đo 21/11 21:02) · 3.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 60930425_45248e2cedcf1306__zero_shot_project_aware.java: 9 test, 17 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | DeweyVersion.toString
+          vòng 1 · mức 1 → RUNTIME · tệ hơn · rollback, lên mức 2
+          vòng 2 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 3 · mức 3 → RUNTIME · giữ mức
+          vòng 4 · mức 3 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 4 vòng

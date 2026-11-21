@@ -1,0 +1,9 @@
+ARROW · WithJsonPath (com.jayway.jsonpath.matchers)
+[OK] Khối 1  Gradle 7.4.2 · build root . · JDK 8 · JUnit 5 · baseline 85 test ×2 · 45.4 s
+[OK] Khối 2  c0 · c0 lấy từ file 1287669_bd7b530ba0ec962b__few_shot.java: 7 test, 7 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → ASSERTION 5 pass · tốt hơn · checkpoint
+          vòng 2 · mức 1 → mã trùng vòng 1 · lên mức 2
+          vòng 3 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 4 · mức 3 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 4 vòng
