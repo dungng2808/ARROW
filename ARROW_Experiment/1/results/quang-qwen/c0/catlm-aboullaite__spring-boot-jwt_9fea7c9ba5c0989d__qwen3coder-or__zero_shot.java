@@ -21,8 +21,8 @@ public class SpringBootJwtApplication_ArrowTest {
 
     @Test
     public void testMainMethod() {
-        // This test verifies that the main method can be called without throwing exceptions
-        // We cannot test the actual SpringApplication.run behavior in isolation
+        // This test just verifies that the main method can be called
+        // without throwing an exception
         try {
             SpringBootJwtApplication.main(new String[]{});
         } catch (Exception e) {

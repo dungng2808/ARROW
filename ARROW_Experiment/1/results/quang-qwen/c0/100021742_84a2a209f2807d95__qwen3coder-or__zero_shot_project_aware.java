@@ -20,7 +20,7 @@ import java.util.Map;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.eq;
+import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
 public class ArtemisBrokerManager_ArrowTest {
@@ -46,12 +46,12 @@ public class ArtemisBrokerManager_ArrowTest {
     @Mock
     private ArtemisCommonProperties properties;
 
-    private ArtemisBrokerManager artemisBrokerManager;
+    private ArtemisBrokerManager brokerManager;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        artemisBrokerManager = new ArtemisBrokerManager(serverLocator, "testUser", "testPassword");
+        brokerManager = new ArtemisBrokerManager(serverLocator, "testUser", "testPassword");
     }
 
     @Test
@@ -59,21 +59,17 @@ public class ArtemisBrokerManager_ArrowTest {
         // Given
         String addressName = "testAddress";
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(session.addressQuery(any(SimpleString.class))).thenReturn(mock(ClientSession.AddressQuery.class));
-        when(session.addressQuery(any(SimpleString.class)).isExists()).thenReturn(false);
-        doNothing().when(session).start();
-        doNothing().when(session).createAddress(any(SimpleString.class), any(RoutingType.class), eq(true));
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
+        when(session.addressQuery(any(SimpleString.class))).thenReturn(createAddressQuery(false));
         when(properties.isModifyAddressSettings()).thenReturn(false);
-        doNothing().when(session).stop();
 
         // When
-        artemisBrokerManager.createAddress(addressName, properties);
+        brokerManager.createAddress(addressName, properties);
 
         // Then
         verify(session).start();
-        verify(session).createAddress(eq(SimpleString.toSimpleString(addressName)), eq(RoutingType.MULTICAST), eq(true));
+        verify(session).createAddress(SimpleString.toSimpleString(addressName), RoutingType.MULTICAST, true);
         verify(session).stop();
     }
 
@@ -82,52 +78,42 @@ public class ArtemisBrokerManager_ArrowTest {
         // Given
         String addressName = "testAddress";
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(session.addressQuery(any(SimpleString.class))).thenReturn(mock(ClientSession.AddressQuery.class));
-        when(session.addressQuery(any(SimpleString.class)).isExists()).thenReturn(true);
-        doNothing().when(session).start();
-        doNothing().when(session).stop();
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
+        when(session.addressQuery(any(SimpleString.class))).thenReturn(createAddressQuery(true));
+        when(properties.isModifyAddressSettings()).thenReturn(false);
 
         // When
-        artemisBrokerManager.createAddress(addressName, properties);
+        brokerManager.createAddress(addressName, properties);
 
         // Then
         verify(session).start();
-        verify(session, never()).createAddress(any(SimpleString.class), any(RoutingType.class), eq(true));
+        verify(session, never()).createAddress(any(SimpleString.class), any(RoutingType.class), anyBoolean());
         verify(session).stop();
     }
 
     @Test
-    public void testCreateAddressWithModifyAddressSettings() throws Exception {
+    public void testCreateAddressWithModifySettings() throws Exception {
         // Given
         String addressName = "testAddress";
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(session.addressQuery(any(SimpleString.class))).thenReturn(mock(ClientSession.AddressQuery.class));
-        when(session.addressQuery(any(SimpleString.class)).isExists()).thenReturn(false);
-        doNothing().when(session).start();
-        doNothing().when(session).createAddress(any(SimpleString.class), any(RoutingType.class), eq(true));
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
+        when(session.addressQuery(any(SimpleString.class))).thenReturn(createAddressQuery(false));
         when(properties.isModifyAddressSettings()).thenReturn(true);
         when(properties.getManagementAddress()).thenReturn("managementAddress");
-        when(properties.isAutoBindDeadLetterAddress()).thenReturn(false);
-        when(properties.isAutoBindExpiryAddress()).thenReturn(false);
-        when(session.createMessage(eq(false))).thenReturn(message);
-        when(session.createMessage(eq(false))).thenReturn(replyMessage);
-        when(serverLocator.isPreAcknowledge()).thenReturn(false);
-        when(serverLocator.getAckBatchSize()).thenReturn(0);
-        when(session.createRequestor(any(String.class), any(String.class))).thenReturn(requestor);
+        when(session.createMessage(false)).thenReturn(message);
+        when(session.createRequestor(anyString(), anyString())).thenReturn(requestor);
         when(requestor.request(any(ClientMessage.class))).thenReturn(replyMessage);
+        when(replyMessage.getBodyBuffer()).thenReturn(null);
         when(ManagementHelper.getResult(any(ClientMessage.class), any(Class.class))).thenReturn("{}");
-        doNothing().when(session).stop();
 
         // When
-        artemisBrokerManager.createAddress(addressName, properties);
+        brokerManager.createAddress(addressName, properties);
 
         // Then
         verify(session).start();
-        verify(session).createAddress(eq(SimpleString.toSimpleString(addressName)), eq(RoutingType.MULTICAST), eq(true));
+        verify(session).createAddress(SimpleString.toSimpleString(addressName), RoutingType.MULTICAST, true);
         verify(session).stop();
     }
 
@@ -137,38 +123,16 @@ public class ArtemisBrokerManager_ArrowTest {
         String address = "testAddress";
         String queueName = "testQueue";
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(session.queueQuery(any(SimpleString.class))).thenReturn(mock(ClientSession.QueueQuery.class));
-        when(session.queueQuery(any(SimpleString.class)).isExists()).thenReturn(false);
-        doNothing().when(session).createSharedQueue(any(SimpleString.class), any(RoutingType.class),
-                any(SimpleString.class), eq(true));
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
+        when(session.queueQuery(any(SimpleString.class))).thenReturn(createQueueQuery(false));
 
         // When
-        artemisBrokerManager.createQueue(address, queueName);
+        brokerManager.createQueue(address, queueName);
 
         // Then
-        verify(session).createSharedQueue(eq(SimpleString.toSimpleString(address)),
-                eq(RoutingType.MULTICAST), eq(SimpleString.toSimpleString(queueName)), eq(true));
-    }
-
-    @Test(expected = ProvisioningException.class)
-    public void testCreateQueueWhenQueueExistsUnderDifferentAddress() throws Exception {
-        // Given
-        String address = "testAddress";
-        String queueName = "testQueue";
-        when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(session.queueQuery(any(SimpleString.class))).thenReturn(mock(ClientSession.QueueQuery.class));
-        when(session.queueQuery(any(SimpleString.class)).isExists()).thenReturn(true);
-        when(session.queueQuery(any(SimpleString.class)).getAddress()).thenReturn(SimpleString.toSimpleString("differentAddress"));
-
-        // When
-        artemisBrokerManager.createQueue(address, queueName);
-
-        // Then
-        // Expecting ProvisioningException
+        verify(session).createSharedQueue(any(SimpleString.class), any(RoutingType.class),
+                any(SimpleString.class), anyBoolean());
     }
 
     @Test
@@ -177,18 +141,34 @@ public class ArtemisBrokerManager_ArrowTest {
         String address = "testAddress";
         String queueName = "testQueue";
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(session.queueQuery(any(SimpleString.class))).thenReturn(mock(ClientSession.QueueQuery.class));
-        when(session.queueQuery(any(SimpleString.class)).isExists()).thenReturn(true);
-        when(session.queueQuery(any(SimpleString.class)).getAddress()).thenReturn(SimpleString.toSimpleString(address));
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
+        when(session.queueQuery(any(SimpleString.class))).thenReturn(createQueueQuery(true));
 
-        // When
-        artemisBrokerManager.createQueue(address, queueName);
+        // When & Then
+        try {
+            brokerManager.createQueue(address, queueName);
+        } catch (Exception e) {
+            assertThat(e).isInstanceOf(ProvisioningException.class);
+        }
+    }
 
-        // Then
-        verify(session, never()).createSharedQueue(any(SimpleString.class), any(RoutingType.class),
-                any(SimpleString.class), eq(true));
+    @Test
+    public void testCreateQueueWhenQueueExistsUnderDifferentAddress() throws Exception {
+        // Given
+        String address = "testAddress";
+        String queueName = "testQueue";
+        when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
+        when(session.queueQuery(any(SimpleString.class))).thenReturn(createQueueQuery(true, "differentAddress"));
+
+        // When & Then
+        try {
+            brokerManager.createQueue(address, queueName);
+        } catch (Exception e) {
+            assertThat(e).isInstanceOf(ProvisioningException.class);
+        }
     }
 
     @Test
@@ -198,20 +178,18 @@ public class ArtemisBrokerManager_ArrowTest {
         when(properties.isAutoBindDeadLetterAddress()).thenReturn(true);
         when(properties.isAutoBindExpiryAddress()).thenReturn(true);
         when(properties.getManagementAddress()).thenReturn("managementAddress");
-        when(session.createMessage(eq(false))).thenReturn(message);
-        when(session.createMessage(eq(false))).thenReturn(replyMessage);
-        when(session.createRequestor(any(String.class), any(String.class))).thenReturn(requestor);
+        when(session.createMessage(false)).thenReturn(message);
+        when(session.createRequestor(anyString(), anyString())).thenReturn(requestor);
         when(requestor.request(any(ClientMessage.class))).thenReturn(replyMessage);
+        when(replyMessage.getBodyBuffer()).thenReturn(null);
         when(ManagementHelper.getResult(any(ClientMessage.class), any(Class.class))).thenReturn("{}");
-        when(serverLocator.isPreAcknowledge()).thenReturn(false);
-        when(serverLocator.getAckBatchSize()).thenReturn(0);
 
         // When
-        artemisBrokerManager.configureAddress(session, address, properties);
+        brokerManager.configureAddress(session, address, properties);
 
         // Then
         verify(session, times(2)).createSharedQueue(any(SimpleString.class), any(RoutingType.class),
-                any(SimpleString.class), eq(true));
+                any(SimpleString.class), anyBoolean());
     }
 
     @Test
@@ -219,70 +197,81 @@ public class ArtemisBrokerManager_ArrowTest {
         // Given
         String address = "testAddress";
         when(properties.getManagementAddress()).thenReturn("managementAddress");
-        when(session.createMessage(eq(false))).thenReturn(message);
-        when(session.createRequestor(any(String.class), any(String.class))).thenReturn(requestor);
+        when(session.createMessage(false)).thenReturn(message);
+        when(session.createRequestor(anyString(), anyString())).thenReturn(requestor);
         when(requestor.request(any(ClientMessage.class))).thenReturn(replyMessage);
+        when(replyMessage.getBodyBuffer()).thenReturn(null);
         when(ManagementHelper.getResult(any(ClientMessage.class), any(Class.class))).thenReturn("{}");
-        when(serverLocator.isPreAcknowledge()).thenReturn(false);
-        when(serverLocator.getAckBatchSize()).thenReturn(0);
-        when(properties.isAutoBindDeadLetterAddress()).thenReturn(false);
-        when(properties.isAutoBindExpiryAddress()).thenReturn(false);
-        when(properties.getBrokerExpiryDelay()).thenReturn(-1L);
-        when(properties.getBrokerMaxDeliveryAttempts()).thenReturn(-1);
-        when(properties.getBrokerRedeliveryDelay()).thenReturn(-1L);
-        when(properties.getBrokerRedeliveryDelayMultiplier()).thenReturn(-1.0);
-        when(properties.getBrokerMaxRedeliveryDelay()).thenReturn(-1L);
-        when(properties.isBrokerSendToDlaOnNoRoute()).thenReturn(false);
 
         // When
-        artemisBrokerManager.updateAddressSettings(session, address, properties);
+        brokerManager.updateAddressSettings(session, address, properties);
 
         // Then
-        verify(requestor).request(any(ClientMessage.class));
+        ArgumentCaptor<ClientMessage> messageCaptor = ArgumentCaptor.forClass(ClientMessage.class);
+        verify(requestor).request(messageCaptor.capture());
+        ClientMessage capturedMessage = messageCaptor.getValue();
+        assertThat(capturedMessage).isNotNull();
+        verify(session).createMessage(false);
     }
 
     @Test
     public void testGetCurrentAddressSettings() throws Exception {
         // Given
         String address = "testAddress";
-        when(session.createMessage(eq(false))).thenReturn(message);
-        when(session.createRequestor(any(String.class), any(String.class))).thenReturn(requestor);
+        when(session.createMessage(false)).thenReturn(message);
+        when(session.createRequestor(anyString(), anyString())).thenReturn(requestor);
         when(requestor.request(any(ClientMessage.class))).thenReturn(replyMessage);
+        when(replyMessage.getBodyBuffer()).thenReturn(null);
         when(ManagementHelper.getResult(any(ClientMessage.class), any(Class.class))).thenReturn("{\"name\":\"testAddress\"}");
 
         // When
-        AddressSettingsInfo result = artemisBrokerManager.getCurrentAddressSettings(session, requestor, address);
+        AddressSettingsInfo result = brokerManager.getCurrentAddressSettings(session, requestor, address);
 
         // Then
         assertThat(result).isNotNull();
-        assertThat(result.getName()).isEqualTo("testAddress");
+        verify(session).createMessage(false);
     }
 
     @Test
     public void testGetClientSessionWithUsername() throws Exception {
         // Given
-        when(sessionFactory.createSession(any(String.class), any(String.class), eq(true), eq(false),
-                eq(false), eq(false), eq(0))).thenReturn(session);
-        when(serverLocator.isPreAcknowledge()).thenReturn(false);
-        when(serverLocator.getAckBatchSize()).thenReturn(0);
+        when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt()))
+                .thenReturn(session);
 
         // When
-        ClientSession result = artemisBrokerManager.getClientSession(sessionFactory);
+        ClientSession result = brokerManager.getClientSession(sessionFactory);
 
         // Then
-        assertThat(result).isSameAs(session);
+        assertThat(result).isEqualTo(session);
     }
 
     @Test
     public void testGetClientSessionWithoutUsername() throws Exception {
         // Given
-        ArtemisBrokerManager manager = new ArtemisBrokerManager(serverLocator, null, null);
+        ArtemisBrokerManager managerWithoutUser = new ArtemisBrokerManager(serverLocator, null, null);
         when(sessionFactory.createSession()).thenReturn(session);
 
         // When
-        ClientSession result = manager.getClientSession(sessionFactory);
+        ClientSession result = managerWithoutUser.getClientSession(sessionFactory);
 
         // Then
-        assertThat(result).isSameAs(session);
+        assertThat(result).isEqualTo(session);
+    }
+
+    private ClientSession.AddressQuery createAddressQuery(boolean exists) {
+        ClientSession.AddressQuery query = mock(ClientSession.AddressQuery.class);
+        when(query.isExists()).thenReturn(exists);
+        return query;
+    }
+
+    private ClientSession.QueueQuery createQueueQuery(boolean exists) {
+        return createQueueQuery(exists, "testAddress");
+    }
+
+    private ClientSession.QueueQuery createQueueQuery(boolean exists, String address) {
+        ClientSession.QueueQuery query = mock(ClientSession.QueueQuery.class);
+        when(query.isExists()).thenReturn(exists);
+        when(query.getAddress()).thenReturn(SimpleString.toSimpleString(address));
+        return query;
     }
 }

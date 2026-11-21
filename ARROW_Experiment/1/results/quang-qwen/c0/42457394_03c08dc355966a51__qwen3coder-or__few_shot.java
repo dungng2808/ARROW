@@ -18,113 +18,104 @@ public class Sequence_ArrowTest {
     }
 
     @Test
-    public void testSetAndRunEagerly() {
+    public void testSetWhenIndexIsNext() {
         Sequence sequence = new Sequence(3);
-        
-        Runnable task1 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
-        
-        Runnable task2 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
+        Runnable task1 = () -> {};
+        Runnable task2 = () -> {};
         
         sequence.set(0, task1);
-        sequence.set(1, task2);
+        assertTrue(sequence.hasSecondTask());
+    }
+
+    @Test
+    public void testSetWhenIndexIsNotNext() {
+        Sequence sequence = new Sequence(3);
+        Runnable task1 = () -> {};
+        Runnable task2 = () -> {};
         
+        sequence.set(1, task2);
         assertFalse(sequence.hasSecondTask());
     }
 
     @Test
-    public void testHasSecondTask() {
+    public void testHasSecondTaskWhenNull() {
         Sequence sequence = new Sequence(3);
-        
         assertFalse(sequence.hasSecondTask());
-        
-        Runnable task = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
-        
+    }
+
+    @Test
+    public void testHasSecondTaskWhenNotNull() {
+        Sequence sequence = new Sequence(3);
+        Runnable task = () -> {};
         sequence.set(1, task);
         assertTrue(sequence.hasSecondTask());
     }
 
     @Test
-    public void testSetWithNextIndex() {
+    public void testRunEagerlyWithAllTasksSet() {
         Sequence sequence = new Sequence(3);
-        
-        Runnable task1 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
-        
-        sequence.set(0, task1);
-        
-        // Since index 0 is the next index, it should run eagerly
-        // But there's no way to verify this without side effects
-        // Just ensure no exception is thrown
-        assertNotNull(sequence);
-    }
-
-    @Test
-    public void testRunEagerlyWithAllTasks() {
-        Sequence sequence = new Sequence(3);
-        
-        Runnable task1 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
-        
-        Runnable task2 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
-        
-        Runnable task3 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
+        StringBuilder sb = new StringBuilder();
+        Runnable task1 = () -> sb.append("1");
+        Runnable task2 = () -> sb.append("2");
+        Runnable task3 = () -> sb.append("3");
         
         sequence.set(0, task1);
         sequence.set(1, task2);
         sequence.set(2, task3);
         
-        // Should not throw any exception
-        assertNotNull(sequence);
+        // This should trigger runEagerly since index 0 is next
+        // But since we're calling set on index 0, it will run immediately
+        // We need to manually call runEagerly to test it properly
+        
+        // Actually, let's test the behavior correctly:
+        // Set tasks in order, so they get executed
+        sequence.set(0, task1);
+        sequence.set(1, task2);
+        sequence.set(2, task3);
+        
+        // After setting all tasks, the sequence should be reset to 0
+        assertEquals(0, sequence.next);
     }
 
     @Test
-    public void testRunEagerlyWithMissingTask() {
+    public void testSetAndRunEagerly() {
         Sequence sequence = new Sequence(3);
-        
-        Runnable task1 = new Runnable() {
-            @Override
-            public void run() {
-                // Empty implementation
-            }
-        };
+        StringBuilder sb = new StringBuilder();
+        Runnable task1 = () -> sb.append("A");
+        Runnable task2 = () -> sb.append("B");
+        Runnable task3 = () -> sb.append("C");
         
         sequence.set(0, task1);
-        // Task at index 1 is null
+        assertEquals("A", sb.toString());
+        assertEquals(1, sequence.next);
         
-        // Should not throw any exception
-        assertNotNull(sequence);
+        sequence.set(1, task2);
+        assertEquals("AB", sb.toString());
+        assertEquals(2, sequence.next);
+        
+        sequence.set(2, task3);
+        assertEquals("ABC", sb.toString());
+        assertEquals(0, sequence.next);
+    }
+
+    @Test
+    public void testSetOutOfOrder() {
+        Sequence sequence = new Sequence(3);
+        StringBuilder sb = new StringBuilder();
+        Runnable task1 = () -> sb.append("1");
+        Runnable task2 = () -> sb.append("2");
+        Runnable task3 = () -> sb.append("3");
+        
+        sequence.set(2, task3);
+        assertEquals("", sb.toString());
+        assertEquals(0, sequence.next);
+        
+        sequence.set(1, task2);
+        assertEquals("", sb.toString());
+        assertEquals(0, sequence.next);
+        
+        sequence.set(0, task1);
+        assertEquals("123", sb.toString());
+        assertEquals(0, sequence.next);
     }
 }

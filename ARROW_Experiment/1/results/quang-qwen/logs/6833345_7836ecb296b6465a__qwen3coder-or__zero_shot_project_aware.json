@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-001205-hq2e",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-001205-hq2e",
+  "run_id": "20261122-000939-2plw",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-000939-2plw",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.facebook.nailgun.NGSessionPool",
-      "result": "ASSERTION",
-      "c0_state": "ASSERTION",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2458,
-        "out": 1088
+        "out": 1060
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 7.6,
-        "block2": 3.5,
-        "block3": 10.5,
+        "block1": 9,
+        "block2": 4.9,
+        "block3": 6.6,
         "block4": null,
-        "total": 21.6
+        "total": 20.9
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2458,
-    "tokens_out": 1088,
+    "tokens_out": 1060,
     "cost_usd": null
   },
   "warnings": []

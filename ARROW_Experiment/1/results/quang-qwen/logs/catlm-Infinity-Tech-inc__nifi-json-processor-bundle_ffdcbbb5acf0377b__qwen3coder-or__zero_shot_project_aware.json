@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-004547-blm0",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-004547-blm0",
+  "run_id": "20261122-005117-vg8m",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-005117-vg8m",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -24,11 +24,11 @@
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 9.3,
-        "block2": 3.3,
+        "block1": 9.7,
+        "block2": 19.2,
         "block3": 6.5,
         "block4": null,
-        "total": 19.2
+        "total": 35.5
       },
       "error": null,
       "warnings": [],

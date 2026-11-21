@@ -1,5 +1,5 @@
 ARROW · DatabaseOLAPService (org.datum.application.service.impl)
-[OK] Khối 1  Maven 3.9.16 · build root datum-platform · JDK 8 · JUnit 4 + Mockito · baseline 34 test (dùng lại, đo 20/11 00:17) · 8.3 s
-[OK] Khối 2  c0 · 4.5k token · 4.4 s · Candidate hợp lệ: 9 test, 6 assertion
-[>] Khối 3  c0: COMPILE · has private access | -
+[OK] Khối 1  Maven 3.9.16 · build root datum-platform · JDK 8 · JUnit 4 + Mockito · baseline 34 test (dùng lại, đo 22/11 00:14) · 8.9 s
+[OK] Khối 2  c0 · 4.1k token · 3.5 s · Candidate hợp lệ: 8 test, 5 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -118,8 +118,7 @@ public class AnsiRenderer_ArrowTest {
     public void testRenderWithNoTextAfterCode() {
         String input = "@|bold|@";
         String result = AnsiRenderer.render(input);
-        assertTrue(result.contains("\u001B[1m"));
-        assertTrue(result.contains("\u001B[0m"));
+        assertEquals("", result);
     }
 
     @Test
@@ -133,7 +132,22 @@ public class AnsiRenderer_ArrowTest {
     }
 
     @Test
-    public void testRenderToAppendable() throws IOException {
+    public void testRenderWithMultipleSections() {
+        String input = "Start @|bold Hello|@ middle @|red World|@ end";
+        String result = AnsiRenderer.render(input);
+        assertTrue(result.contains("Start "));
+        assertTrue(result.contains("\u001B[1m"));
+        assertTrue(result.contains("Hello"));
+        assertTrue(result.contains("\u001B[0m"));
+        assertTrue(result.contains(" middle "));
+        assertTrue(result.contains("\u001B[31m"));
+        assertTrue(result.contains("World"));
+        assertTrue(result.contains("\u001B[0m"));
+        assertTrue(result.contains(" end"));
+    }
+
+    @Test
+    public void testRenderAppendable() throws IOException {
         String input = "@|bold Hello|@";
         StringWriter writer = new StringWriter();
         AnsiRenderer.render(input, writer);
@@ -141,13 +155,6 @@ public class AnsiRenderer_ArrowTest {
         assertTrue(result.contains("\u001B[1m"));
         assertTrue(result.contains("Hello"));
         assertTrue(result.contains("\u001B[0m"));
-    }
-
-    @Test
-    public void testTestMethod() {
-        assertTrue(AnsiRenderer.test("@|bold Hello|@"));
-        assertFalse(AnsiRenderer.test("Hello World"));
-        assertFalse(AnsiRenderer.test(null));
     }
 
     @Test
@@ -163,11 +170,10 @@ public class AnsiRenderer_ArrowTest {
     }
 
     @Test
-    public void testRenderTextWithCodes() {
-        String result = AnsiRenderer.render("Hello", "bold", "red");
-        assertTrue(result.contains("\u001B[1;31m"));
-        assertTrue(result.contains("Hello"));
-        assertTrue(result.contains("\u001B[0m"));
+    public void testTestMethod() {
+        assertTrue(AnsiRenderer.test("@|bold Hello|@"));
+        assertFalse(AnsiRenderer.test("Hello World"));
+        assertFalse(AnsiRenderer.test(null));
     }
 
     @Test
@@ -189,7 +195,7 @@ public class AnsiRenderer_ArrowTest {
     @Test
     public void testCodeIsAttribute() {
         assertTrue(AnsiRenderer.Code.BOLD.isAttribute());
-        assertTrue(AnsiRenderer.Code.RESET.isAttribute());
+        assertTrue(AnsiRenderer.Code.UNDERLINE.isAttribute());
         assertFalse(AnsiRenderer.Code.RED.isAttribute());
     }
 
@@ -210,6 +216,6 @@ public class AnsiRenderer_ArrowTest {
     @Test
     public void testCodeGetAttribute() {
         assertEquals(Ansi.Attribute.INTENSITY_BOLD, AnsiRenderer.Code.BOLD.getAttribute());
-        assertEquals(Ansi.Attribute.RESET, AnsiRenderer.Code.RESET.getAttribute());
+        assertEquals(Ansi.Attribute.UNDERLINE, AnsiRenderer.Code.UNDERLINE.getAttribute());
     }
 }

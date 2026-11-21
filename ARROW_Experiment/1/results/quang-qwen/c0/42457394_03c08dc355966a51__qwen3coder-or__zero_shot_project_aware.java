@@ -33,6 +33,16 @@ public class Sequence_ArrowTest {
     }
 
     @Test
+    public void testHasSecondTask() {
+        Sequence sequence = new Sequence(3);
+        assertFalse(sequence.hasSecondTask());
+
+        TestRunnable task = new TestRunnable();
+        sequence.set(1, task);
+        assertTrue(sequence.hasSecondTask());
+    }
+
+    @Test
     public void testSetOutOfOrder() {
         Sequence sequence = new Sequence(3);
         TestRunnable task1 = new TestRunnable();
@@ -50,16 +60,7 @@ public class Sequence_ArrowTest {
     }
 
     @Test
-    public void testHasSecondTask() {
-        Sequence sequence = new Sequence(3);
-        assertFalse(sequence.hasSecondTask());
-
-        sequence.set(1, () -> {});
-        assertTrue(sequence.hasSecondTask());
-    }
-
-    @Test
-    public void testResetNextAfterRunningAllTasks() {
+    public void testResetNextAfterCompletion() {
         Sequence sequence = new Sequence(3);
         TestRunnable task1 = new TestRunnable();
         TestRunnable task2 = new TestRunnable();
@@ -73,8 +74,8 @@ public class Sequence_ArrowTest {
         assertTrue(task2.ran);
         assertTrue(task3.ran);
 
-        // After running all tasks, next should be reset to 0
-        // This is tested indirectly by ensuring subsequent calls behave correctly
+        // After completion, next should be reset to 0
+        // This is tested indirectly by ensuring subsequent calls work correctly
         TestRunnable task4 = new TestRunnable();
         sequence.set(0, task4);
         assertTrue(task4.ran);

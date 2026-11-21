@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000247-elkr",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-000247-elkr",
+  "run_id": "20261121-235928-g35f",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261121-235928-g35f",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2315,
-        "out": 926
+        "out": 895
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 11,
-        "block2": 10.7,
-        "block3": 8.2,
+        "block1": 14.1,
+        "block2": 3.1,
+        "block3": 8.1,
         "block4": null,
-        "total": 30.1
+        "total": 25.4
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2315,
-    "tokens_out": 926,
+    "tokens_out": 895,
     "cost_usd": null
   },
   "warnings": []

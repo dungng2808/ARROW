@@ -1,4 +1,5 @@
 ARROW · ObjectFactory (de.monticore.generating.templateengine)
-[X] B1_DEPENDENCY_RESOLUTION: Không tải được dependency hay plugin: [ERROR] Failed to execute goal on project monticore-runtime: Could not collect dependencies for project de.monticore:monticore-runtime:jar:4.5.3
-[X] B1_DEPENDENCY_RESOLUTION · Không tải được dependency hay plugin: [ERROR] Failed to execute goal on project monticore-runtime: Could not collect dependencies for project de.monticore:monticore-runtime:jar:4.5.3
-  → Cách sửa: Chạy "mvn -q dependency:resolve" để xem lỗi; kiểm tra settings.xml và proxy.
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 102 test (dùng lại, đo 22/11 00:28) · 12.5 s
+[OK] Khối 2  c0 · 4.2k token · 16.8 s · Candidate hợp lệ: 10 test, 23 assertion
+[>] Khối 3  c0: RUNTIME · maven-surefire-plugin | -
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

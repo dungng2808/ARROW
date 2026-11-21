@@ -1,5 +1,5 @@
 ARROW · ByteArrayFilter (com.somethingsimilar.opposite_of_a_bloom_filter)
-[OK] Khối 1  Maven 3.9.16 · build root java · JDK 17 · JUnit 4 · baseline 4 test (dùng lại, đo 20/11 00:08) · 6.4 s
-[OK] Khối 2  c0 · 3.9k token · 2.7 s · Candidate hợp lệ: 10 test, 16 assertion
-[>] Khối 3  c0: ASSERTION · AssertionError | testContainsAndAddSameArrayTwice
-[X] Khối 3  Kết thúc: ASSERTION (không sửa)
+[OK] Khối 1  Maven 3.9.16 · build root java · JDK 17 · JUnit 4 · baseline 4 test (dùng lại, đo 22/11 00:05) · 9.6 s
+[OK] Khối 2  c0 · 3.7k token · 2.5 s · Candidate hợp lệ: 10 test, 12 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

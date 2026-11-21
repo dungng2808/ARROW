@@ -1,5 +1,5 @@
 ARROW · JwtDemoApplication (es.softtek.jwtDemo)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1 test (dùng lại, đo 20/11 00:47) · 6.1 s
-[OK] Khối 2  c0 · 1.8k token · 2.0 s · Candidate hợp lệ: 2 test, 3 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1 test (dùng lại, đo 22/11 00:52) · 6.5 s
+[OK] Khối 2  c0 · 1.8k token · 1.7 s · Candidate hợp lệ: 2 test, 3 assertion
 [>] Khối 3  c0: ASSERTION · ComparisonFailure | testMain
 [X] Khối 3  Kết thúc: ASSERTION (không sửa)

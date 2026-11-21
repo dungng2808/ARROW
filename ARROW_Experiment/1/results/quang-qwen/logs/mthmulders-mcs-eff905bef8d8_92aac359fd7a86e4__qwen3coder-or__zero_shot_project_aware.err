@@ -1,5 +1,5 @@
 ARROW · TabularOutputPrinter (it.mulders.mcs.search.printer)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 5 + Mockito · baseline 82 test (dùng lại, đo 20/11 00:56) · 7.1 s
-[OK] Khối 2  c0 · 3.0k token · 3.1 s · Candidate hợp lệ: 6 test, 10 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 5 + Mockito · baseline 82 test (dùng lại, đo 22/11 01:03) · 8.9 s
+[OK] Khối 2  c0 · 3.0k token · 3.7 s · Candidate hợp lệ: 6 test, 8 assertion
 [>] Khối 3  c0: COMPILE · has private access | -
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

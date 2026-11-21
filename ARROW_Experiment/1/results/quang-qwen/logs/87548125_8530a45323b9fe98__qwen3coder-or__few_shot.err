@@ -1,5 +1,5 @@
 ARROW · Analyzer (nl.futureedge.sonar.plugin.packageanalyzer.analyzer)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 9 test (dùng lại, đo 20/11 00:35) · 9.7 s
-[OK] Khối 2  c0 · 3.9k token · 6.2 s · Candidate hợp lệ: 6 test, 23 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 9 test (dùng lại, đo 22/11 00:37) · 6.8 s
+[OK] Khối 2  c0 · 3.7k token · 35.8 s · Candidate hợp lệ: 5 test, 13 assertion
 [>] Khối 3  c0: COMPILE · package does not exist | -
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-001212-mlgf",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-001212-mlgf",
+  "run_id": "20261122-000946-sale",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261122-000946-sale",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1826,
-        "out": 812
+        "out": 821
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 7.7,
-        "block2": 3.4,
-        "block3": 5.3,
+        "block1": 14.5,
+        "block2": 4.2,
+        "block3": 5.5,
         "block4": null,
-        "total": 16.5
+        "total": 24.3
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1826,
-    "tokens_out": 812,
+    "tokens_out": 821,
     "cost_usd": null
   },
   "warnings": []

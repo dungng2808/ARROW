@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-010249-hd1h",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-010249-hd1h",
+  "run_id": "20261122-010746-8jj5",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-010746-8jj5",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "org.fusesource.jansi.AnsiRenderer",
-      "result": "ASSERTION",
-      "c0_state": "ASSERTION",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2903,
-        "out": 1048
+        "out": 1125
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 10.6,
-        "block2": 3,
-        "block3": 10.7,
+        "block1": 11.5,
+        "block2": 24.1,
+        "block3": 11,
         "block4": null,
-        "total": 24.4
+        "total": 46.6
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2903,
-    "tokens_out": 1048,
+    "tokens_out": 1125,
     "cost_usd": null
   },
   "warnings": []

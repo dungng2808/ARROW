@@ -2,14 +2,14 @@ package deepboof.impl.forward.standard;
 
 import deepboof.PaddingType;
 import deepboof.forward.ConfigPadding;
-import deepboof.impl.forward.standard.ClippedPadding2D_F64;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class ClippedPadding2D_F64_ArrowTest {
 
     @Test
-    public void testConstructorValidConfig() {
+    public void testConstructor_validConfig() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
@@ -17,7 +17,7 @@ public class ClippedPadding2D_F64_ArrowTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testConstructorInvalidConfig() {
+    public void testConstructor_invalidConfig() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CONSTANT;
         new ClippedPadding2D_F64(config);
@@ -32,75 +32,74 @@ public class ClippedPadding2D_F64_ArrowTest {
     }
 
     @Test
-    public void testGetClippingOffsetRow_ClippedBelow() {
+    public void testGetClippingOffsetRow_below() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
         
-        // Simulate ROW0 = 0, ROW1 = 10 for testing purposes
-        // We'll test with paddedRow < ROW0
-        int result = instance.getClippingOffsetRow(-1);
-        assertEquals(1, result); // ROW0 - paddedRow = 0 - (-1) = 1
+        // Set up some dummy values for ROW0 and ROW1
+        // Since we can't access private fields, we'll test behavior indirectly
+        // We know that if paddedRow < ROW0, it should return ROW0 - paddedRow
+        // But since we don't know ROW0, we'll just verify it returns a negative value when appropriate
+        
+        // This test assumes ROW0 is set to 0 for simplicity
+        int result = instance.getClippingOffsetRow(-1); // Should be 0 - (-1) = 1
+        assertEquals(1, result);
     }
 
     @Test
-    public void testGetClippingOffsetRow_ClippedAbove() {
+    public void testGetClippingOffsetRow_above() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
         
-        // Simulate ROW0 = 0, ROW1 = 10 for testing purposes
-        // We'll test with paddedRow > ROW1
-        int result = instance.getClippingOffsetRow(11);
-        assertEquals(-1, result); // ROW1 - paddedRow = 10 - 11 = -1
+        // This test assumes ROW1 is set to 10 for simplicity
+        int result = instance.getClippingOffsetRow(11); // Should be 10 - 11 = -1
+        assertEquals(-1, result);
     }
 
     @Test
-    public void testGetClippingOffsetRow_WithinBounds() {
+    public void testGetClippingOffsetRow_within() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
         
-        // Simulate ROW0 = 0, ROW1 = 10 for testing purposes
-        // We'll test with paddedRow between ROW0 and ROW1 inclusive
-        int result = instance.getClippingOffsetRow(5);
-        assertEquals(0, result); // Should return 0 when within bounds
+        // When within range, should return 0
+        int result = instance.getClippingOffsetRow(0); // Assuming 0 is within range
+        assertEquals(0, result);
     }
 
     @Test
-    public void testGetClippingOffsetCol_ClippedBelow() {
+    public void testGetClippingOffsetCol_below() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
         
-        // Simulate COL0 = 0, COL1 = 10 for testing purposes
-        // We'll test with paddedCol < COL0
-        int result = instance.getClippingOffsetCol(-1);
-        assertEquals(1, result); // COL0 - paddedCol = 0 - (-1) = 1
+        // This test assumes COL0 is set to 0 for simplicity
+        int result = instance.getClippingOffsetCol(-1); // Should be 0 - (-1) = 1
+        assertEquals(1, result);
     }
 
     @Test
-    public void testGetClippingOffsetCol_ClippedAbove() {
+    public void testGetClippingOffsetCol_above() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
         
-        // Simulate COL0 = 0, COL1 = 10 for testing purposes
-        // We'll test with paddedCol > COL1
-        int result = instance.getClippingOffsetCol(11);
-        assertEquals(-1, result); // COL1 - paddedCol = 10 - 11 = -1
+        // This test assumes COL1 is set to 10 for simplicity
+        int result = instance.getClippingOffsetCol(11); // Should be 10 - 11 = -1
+        assertEquals(-1, result);
     }
 
     @Test
-    public void testGetClippingOffsetCol_WithinBounds() {
+    public void testGetClippingOffsetCol_within() {
         ConfigPadding config = new ConfigPadding();
         config.type = PaddingType.CLIPPED;
         ClippedPadding2D_F64 instance = new ClippedPadding2D_F64(config);
         
-        // Simulate COL0 = 0, COL1 = 10 for testing purposes
-        // We'll test with paddedCol between COL0 and COL1 inclusive
-        int result = instance.getClippingOffsetCol(5);
-        assertEquals(0, result); // Should return 0 when within bounds
+        // When within range, should return 0
+        int result = instance.getClippingOffsetCol(0); // Assuming 0 is within range
+        assertEquals(0, result);
     }
 
     @Test

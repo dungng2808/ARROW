@@ -1,149 +1,160 @@
 package com.facebook.nailgun;
 
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.BeforeEach;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.mockito.Mockito.*;
+import org.mockito.Mockito;
 
 import java.util.concurrent.TimeUnit;
 import java.util.function.Supplier;
 
+import static org.junit.jupiter.api.Assertions.*;
+import static org.mockito.Mockito.*;
+
 public class NGSessionPool_ArrowTest {
 
-    private NGServer mockServer;
-    private NGSessionPool pool;
-    private Supplier<NGSession> mockInstanceCreator;
-
-    @BeforeEach
-    public void setUp() {
-        mockServer = mock(NGServer.class);
-        mockInstanceCreator = mock(Supplier.class);
-    }
-
     @Test
-    public void testConstructorWithMaxIdleZero() {
-        pool = new NGSessionPool(mockServer, 0, mockInstanceCreator);
-        assertEquals(0, pool.maxIdleSessions);
-    }
-
-    @Test
-    public void testConstructorWithNegativeMaxIdle() {
-        pool = new NGSessionPool(mockServer, -5, mockInstanceCreator);
-        assertEquals(0, pool.maxIdleSessions);
-    }
-
-    @Test
-    public void testConstructorWithPositiveMaxIdle() {
-        pool = new NGSessionPool(mockServer, 5, mockInstanceCreator);
+    public void testConstructorWithNullInstanceCreator() {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 5);
+        
+        assertNotNull(pool.idlePool);
+        assertNotNull(pool.workingPool);
         assertEquals(5, pool.maxIdleSessions);
+        assertSame(server, pool.server);
+        assertNotNull(pool.instanceCreator);
     }
 
     @Test
-    public void testTakeFromEmptyPoolCreatesNewSession() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
-        NGSession mockSession = mock(NGSession.class);
-        when(mockInstanceCreator.get()).thenReturn(mockSession);
+    public void testConstructorWithCustomInstanceCreator() {
+        NGServer server = Mockito.mock(NGServer.class);
+        Supplier<NGSession> creator = Mockito.mock(Supplier.class);
+        NGSessionPool pool = new NGSessionPool(server, 3, creator);
+        
+        assertSame(creator, pool.instanceCreator);
+    }
 
-        NGSession result = pool.take();
-
-        assertSame(mockSession, result);
-        assertTrue(pool.workingPool.contains(mockSession));
+    @Test
+    public void testTakeWhenPoolEmpty() throws Exception {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        
+        NGSession session = pool.take();
+        
+        assertNotNull(session);
+        assertTrue(pool.workingPool.contains(session));
+        assertEquals(0, pool.idlePool.size());
         assertEquals(1, pool.workingPool.size());
+    }
+
+    @Test
+    public void testTakeWhenPoolHasIdleSessions() throws Exception {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        
+        NGSession idleSession = Mockito.mock(NGSession.class);
+        pool.idlePool.add(idleSession);
+        
+        NGSession takenSession = pool.take();
+        
+        assertSame(idleSession, takenSession);
+        assertTrue(pool.workingPool.contains(takenSession));
         assertEquals(0, pool.idlePool.size());
+        assertEquals(1, pool.workingPool.size());
     }
 
     @Test
-    public void testTakeFromIdlePoolReturnsIdleSession() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
-        NGSession mockSession1 = mock(NGSession.class);
-        NGSession mockSession2 = mock(NGSession.class);
-        pool.idlePool.add(mockSession1);
-        pool.idlePool.add(mockSession2);
-
-        NGSession result1 = pool.take();
-        NGSession result2 = pool.take();
-
-        assertSame(mockSession1, result1);
-        assertSame(mockSession2, result2);
-        assertTrue(pool.workingPool.contains(mockSession1));
-        assertTrue(pool.workingPool.contains(mockSession2));
-        assertEquals(2, pool.workingPool.size());
-        assertEquals(0, pool.idlePool.size());
-    }
-
-    @Test
-    public void testGiveToPoolWhenBelowMaxIdle() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
-        NGSession mockSession = mock(NGSession.class);
-        pool.workingPool.add(mockSession);
-
-        pool.give(mockSession);
-
-        assertTrue(pool.idlePool.contains(mockSession));
-        assertFalse(pool.workingPool.contains(mockSession));
+    public void testGiveWhenPoolNotFull() throws Exception {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        
+        NGSession session = Mockito.mock(NGSession.class);
+        pool.workingPool.add(session);
+        
+        pool.give(session);
+        
+        assertFalse(pool.workingPool.contains(session));
+        assertTrue(pool.idlePool.contains(session));
         assertEquals(1, pool.idlePool.size());
-        assertEquals(0, pool.workingPool.size());
     }
 
     @Test
-    public void testGiveToPoolWhenAtMaxIdle() throws Exception {
-        pool = new NGSessionPool(mockServer, 1, mockInstanceCreator);
-        NGSession mockSession1 = mock(NGSession.class);
-        NGSession mockSession2 = mock(NGSession.class);
-        pool.idlePool.add(mockSession1);
-        pool.workingPool.add(mockSession2);
-
-        pool.give(mockSession2);
-
-        assertFalse(pool.idlePool.contains(mockSession2));
-        assertFalse(pool.workingPool.contains(mockSession2));
-        assertTrue(pool.idlePool.contains(mockSession1));
-        assertEquals(1, pool.idlePool.size());
-        assertEquals(0, pool.workingPool.size());
+    public void testGiveWhenPoolFull() throws Exception {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 1);
+        
+        NGSession session1 = Mockito.mock(NGSession.class);
+        NGSession session2 = Mockito.mock(NGSession.class);
+        
+        pool.idlePool.add(session1);
+        pool.workingPool.add(session2);
+        
+        pool.give(session2);
+        
+        assertFalse(pool.workingPool.contains(session2));
+        assertFalse(pool.idlePool.contains(session2));
+        verify(session2).shutdown();
     }
 
     @Test
-    public void testShutdownWithNoSessions() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
+    public void testShutdown() throws Exception {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        
+        NGSession session1 = Mockito.mock(NGSession.class);
+        NGSession session2 = Mockito.mock(NGSession.class);
+        
+        pool.workingPool.add(session1);
+        pool.idlePool.add(session2);
+        
         pool.shutdown();
-        // Should not throw any exception
+        
+        assertTrue(pool.done);
+        assertTrue(pool.workingPool.isEmpty());
+        assertTrue(pool.idlePool.isEmpty());
+        verify(session1).shutdown();
+        verify(session2).shutdown();
     }
 
     @Test
-    public void testShutdownWithWorkingAndIdleSessions() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
-        NGSession mockSession1 = mock(NGSession.class);
-        NGSession mockSession2 = mock(NGSession.class);
-        pool.workingPool.add(mockSession1);
-        pool.idlePool.add(mockSession2);
-
+    public void testTakeAfterShutdown() {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        
         pool.shutdown();
-
-        verify(mockSession1).shutdown();
-        verify(mockSession2).shutdown();
-    }
-
-    @Test
-    public void testTakeAfterShutdownThrowsException() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
-        pool.shutdown();
-
+        
         assertThrows(UnsupportedOperationException.class, () -> {
             pool.take();
         });
     }
 
     @Test
-    public void testGiveAfterShutdownDoesNothing() throws Exception {
-        pool = new NGSessionPool(mockServer, 2, mockInstanceCreator);
-        NGSession mockSession = mock(NGSession.class);
-        pool.workingPool.add(mockSession);
+    public void testGiveAfterShutdown() throws Exception {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        
+        NGSession session = Mockito.mock(NGSession.class);
+        pool.workingPool.add(session);
+        
         pool.shutdown();
+        
+        pool.give(session);
+        
+        // Should not throw exception and should not modify anything
+        assertTrue(pool.workingPool.isEmpty());
+    }
 
-        pool.give(mockSession);
+    @Test
+    public void testMaxIdleSessionsCannotBeNegative() {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, -5);
+        
+        assertEquals(0, pool.maxIdleSessions);
+    }
 
-        // Should not throw any exception and should not modify anything
-        assertFalse(pool.idlePool.contains(mockSession));
-        assertTrue(pool.workingPool.contains(mockSession));
+    @Test
+    public void testMaxIdleSessionsZero() {
+        NGServer server = Mockito.mock(NGServer.class);
+        NGSessionPool pool = new NGSessionPool(server, 0);
+        
+        assertEquals(0, pool.maxIdleSessions);
     }
 }

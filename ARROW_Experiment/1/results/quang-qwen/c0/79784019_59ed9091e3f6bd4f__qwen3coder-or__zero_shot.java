@@ -10,29 +10,21 @@ public class JsonHelper_ArrowTest {
 
     public static class TestClass {
         private String name;
-        private int value;
+        private int age;
 
         public TestClass() {}
 
-        public TestClass(String name, int value) {
+        public TestClass(String name, int age) {
             this.name = name;
-            this.value = value;
+            this.age = age;
         }
 
         public String getName() {
             return name;
         }
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public int getValue() {
-            return value;
-        }
-
-        public void setValue(int value) {
-            this.value = value;
+        public int getAge() {
+            return age;
         }
 
         @Override
@@ -40,61 +32,56 @@ public class JsonHelper_ArrowTest {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
             TestClass testClass = (TestClass) o;
-            return value == testClass.value && 
+            return age == testClass.age && 
                    (name != null ? name.equals(testClass.name) : testClass.name == null);
         }
 
         @Override
         public int hashCode() {
             int result = name != null ? name.hashCode() : 0;
-            result = 31 * result + value;
+            result = 31 * result + age;
             return result;
         }
     }
 
     @Test
     public void testObjWithValidJson() {
-        String json = "{'name': 'test', 'value': 42}";
+        String json = "{'name': 'John', 'age': 30}";
         TestClass result = JsonHelper.obj(json, TestClass.class);
-        assertNotNull(result);
-        assertEquals("test", result.getName());
-        assertEquals(42, result.getValue());
+        assertEquals("John", result.getName());
+        assertEquals(30, result.getAge());
     }
 
     @Test
-    public void testObjectWithValidJson() {
-        String json = "{'name': 'test', 'value': 42}";
+    public void testObjectAliasMethod() {
+        String json = "{'name': 'Jane', 'age': 25}";
         TestClass result = JsonHelper.object(json, TestClass.class);
-        assertNotNull(result);
-        assertEquals("test", result.getName());
-        assertEquals(42, result.getValue());
+        assertEquals("Jane", result.getName());
+        assertEquals(25, result.getAge());
     }
 
     @Test
     public void testUpdateWithValidJson() {
-        String json = "{'value': {'name': 'test', 'value': 42}}";
+        String json = "{'value': {'name': 'Bob', 'age': 35}}";
         Update<TestClass> result = JsonHelper.update(json, TestClass.class);
         assertNotNull(result);
-        TestClass updateValue = result.getValue();
-        assertNotNull(updateValue);
-        assertEquals("test", updateValue.getName());
-        assertEquals(42, updateValue.getValue());
+        TestClass value = result.getValue();
+        assertEquals("Bob", value.getName());
+        assertEquals(35, value.getAge());
     }
 
     @Test
-    public void testJsonWithObject() {
-        TestClass testObj = new TestClass("test", 42);
-        String result = JsonHelper.json(testObj);
-        assertNotNull(result);
-        assertTrue(result.contains("test"));
-        assertTrue(result.contains("42"));
+    public void testJsonSerialization() {
+        TestClass obj = new TestClass("Alice", 28);
+        String json = JsonHelper.json(obj);
+        assertNotNull(json);
+        assertTrue(json.contains("Alice"));
+        assertTrue(json.contains("28"));
     }
 
     @Test
-    public void testMapperIsInitialized() {
-        assertNotNull(JsonHelper.MAPPER);
+    public void testMapperConfiguration() {
         ObjectMapper mapper = JsonHelper.MAPPER;
-        assertTrue(mapper.getFactory().isEnabled(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES));
-        assertTrue(mapper.getFactory().isEnabled(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES));
+        assertNotNull(mapper);
     }
 }

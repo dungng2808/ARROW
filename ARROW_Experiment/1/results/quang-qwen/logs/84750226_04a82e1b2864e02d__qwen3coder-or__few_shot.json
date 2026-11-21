@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000453-ea5i",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-000453-ea5i",
+  "run_id": "20261122-000129-odvl",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-000129-odvl",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2698,
-        "out": 432
+        "out": 538
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 100.7,
-        "block2": 1.9,
-        "block3": 22.1,
+        "block1": 144.9,
+        "block2": 2.7,
+        "block3": 20.3,
         "block4": null,
-        "total": 124.8
+        "total": 168
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2698,
-    "tokens_out": 432,
+    "tokens_out": 538,
     "cost_usd": null
   },
   "warnings": [

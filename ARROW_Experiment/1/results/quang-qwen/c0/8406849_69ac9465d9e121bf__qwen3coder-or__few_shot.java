@@ -8,10 +8,9 @@ import org.btrplace.model.constraint.Ban;
 import org.btrplace.scheduler.choco.Parameters;
 import org.btrplace.scheduler.choco.ReconfigurationProblem;
 import org.btrplace.scheduler.choco.Slice;
+import org.chocosolver.solver.exception.ContradictionException;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
-import org.testng.annotations.BeforeMethod;
-import org.testng.annotations.Test;
 
 import java.util.*;
 
@@ -23,10 +22,10 @@ public class CBan_ArrowTest {
     private Ban ban;
 
     @Mock
-    private Parameters parameters;
+    private Parameters ps;
 
     @Mock
-    private ReconfigurationProblem reconfigurationProblem;
+    private ReconfigurationProblem rp;
 
     @Mock
     private Instance instance;
@@ -43,136 +42,141 @@ public class CBan_ArrowTest {
     @Mock
     private Slice slice;
 
-    @BeforeMethod
+    private CBan cBan;
+
     public void setUp() {
         MockitoAnnotations.initMocks(this);
+        cBan = new CBan(ban);
     }
 
-    @Test
+    @org.junit.Test
     public void testInjectContinuousConstraintInitiallySatisfied() {
-        // Setup
+        setUp();
         when(ban.isContinuous()).thenReturn(true);
-        Set<VM> vms = new HashSet<>();
-        vms.add(vm);
+        Set<VM> vms = Collections.singleton(vm);
         when(ban.getInvolvedVMs()).thenReturn(vms);
-        
-        Set<Node> nodes = new HashSet<>();
-        nodes.add(node);
+        Set<Node> nodes = Collections.singleton(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
-        
-        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
+        when(rp.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mapping);
         when(mapping.getVMLocation(vm)).thenReturn(node);
-        
-        // Execute
-        CBan cBan = new CBan(ban);
-        boolean result = cBan.inject(parameters, reconfigurationProblem);
-        
-        // Verify
-        verify(reconfigurationProblem.getLogger(), never()).error(anyString());
+        when(rp.getNode(node)).thenReturn(0);
+        when(rp.getLogger()).thenReturn(mock(org.slf4j.Logger.class));
+
+        boolean result = cBan.inject(ps, rp);
+
+        verify(rp.getLogger(), never()).error(anyString());
         assertTrue(result);
     }
 
-    @Test
+    @org.junit.Test
     public void testInjectContinuousConstraintInitiallyViolated() {
-        // Setup
+        setUp();
         when(ban.isContinuous()).thenReturn(true);
-        Set<VM> vms = new HashSet<>();
-        vms.add(vm);
+        Set<VM> vms = Collections.singleton(vm);
         when(ban.getInvolvedVMs()).thenReturn(vms);
-        
-        Set<Node> nodes = new HashSet<>();
-        nodes.add(node);
+        Set<Node> nodes = Collections.singleton(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
-        
-        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
+        when(rp.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mapping);
         when(mapping.getVMLocation(vm)).thenReturn(node);
-        
-        // Execute
-        CBan cBan = new CBan(ban);
-        boolean result = cBan.inject(parameters, reconfigurationProblem);
-        
-        // Verify
-        verify(reconfigurationProblem.getLogger(), times(1)).error(anyString());
+        when(rp.getNode(node)).thenReturn(0);
+        when(rp.getLogger()).thenReturn(mock(org.slf4j.Logger.class));
+
+        boolean result = cBan.inject(ps, rp);
+
+        verify(rp.getLogger()).error(anyString(), eq(ban));
         assertFalse(result);
     }
 
-    @Test
+    @org.junit.Test
     public void testInjectNonContinuousConstraint() {
-        // Setup
+        setUp();
         when(ban.isContinuous()).thenReturn(false);
-        Set<VM> vms = new HashSet<>();
-        vms.add(vm);
+        Set<VM> vms = Collections.singleton(vm);
         when(ban.getInvolvedVMs()).thenReturn(vms);
-        
-        Set<Node> nodes = new HashSet<>();
-        nodes.add(node);
+        Set<Node> nodes = Collections.singleton(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
-        
-        when(reconfigurationProblem.getNode(node)).thenReturn(1);
-        when(reconfigurationProblem.getVMAction(vm)).thenReturn(slice);
+        when(rp.getNode(node)).thenReturn(0);
+        when(rp.getVMAction(vm)).thenReturn(slice);
         when(slice.getHoster()).thenReturn(null);
-        
-        // Execute
-        CBan cBan = new CBan(ban);
-        boolean result = cBan.inject(parameters, reconfigurationProblem);
-        
-        // Verify
-        verify(reconfigurationProblem, never()).getLogger();
+
+        boolean result = cBan.inject(ps, rp);
+
         assertTrue(result);
     }
 
-    @Test
-    public void testGetMisPlacedVMsWithNoMisPlacement() {
-        // Setup
+    @org.junit.Test
+    public void testInjectWithContradictionException() {
+        setUp();
+        when(ban.isContinuous()).thenReturn(false);
+        Set<VM> vms = Collections.singleton(vm);
+        when(ban.getInvolvedVMs()).thenReturn(vms);
+        Set<Node> nodes = Collections.singleton(node);
+        when(ban.getInvolvedNodes()).thenReturn(nodes);
+        when(rp.getNode(node)).thenReturn(0);
+        when(rp.getVMAction(vm)).thenReturn(slice);
+        when(slice.getHoster()).thenReturn(mock(org.chocosolver.solver.variables.IntVar.class));
+        doThrow(new ContradictionException()).when(slice.getHoster()).removeValue(anyInt(), any());
+
+        boolean result = cBan.inject(ps, rp);
+
+        verify(rp.getLogger()).error(anyString(), any(ContradictionException.class));
+        assertFalse(result);
+    }
+
+    @org.junit.Test
+    public void testGetMisPlacedVMsWhenVMIsRunningOnBannedNode() {
+        setUp();
         when(ban.getInvolvedVMs()).thenReturn(Collections.singleton(vm));
         when(ban.getInvolvedNodes()).thenReturn(Collections.singleton(node));
-        
-        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
+        when(rp.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mapping);
         when(mapping.isRunning(vm)).thenReturn(true);
         when(mapping.getVMLocation(vm)).thenReturn(node);
-        
-        // Execute
-        CBan cBan = new CBan(ban);
+
         Set<VM> result = cBan.getMisPlacedVMs(instance);
-        
-        // Verify
-        assertTrue(result.isEmpty());
+
+        assertEquals(Collections.singleton(vm), result);
     }
 
-    @Test
-    public void testGetMisPlacedVMsWithMisPlacement() {
-        // Setup
+    @org.junit.Test
+    public void testGetMisPlacedVMsWhenVMIsNotRunning() {
+        setUp();
         when(ban.getInvolvedVMs()).thenReturn(Collections.singleton(vm));
         when(ban.getInvolvedNodes()).thenReturn(Collections.singleton(node));
-        
-        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
+        when(rp.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mapping);
-        when(mapping.isRunning(vm)).thenReturn(true);
-        when(mapping.getVMLocation(vm)).thenReturn(node);
-        
-        // Execute
-        CBan cBan = new CBan(ban);
+        when(mapping.isRunning(vm)).thenReturn(false);
+
         Set<VM> result = cBan.getMisPlacedVMs(instance);
-        
-        // Verify
-        assertEquals(result.size(), 1);
-        assertTrue(result.contains(vm));
+
+        assertEquals(Collections.emptySet(), result);
     }
 
-    @Test
+    @org.junit.Test
+    public void testGetMisPlacedVMsWhenVMIsNotOnBannedNode() {
+        setUp();
+        when(ban.getInvolvedVMs()).thenReturn(Collections.singleton(vm));
+        when(ban.getInvolvedNodes()).thenReturn(Collections.singleton(node));
+        when(rp.getSourceModel()).thenReturn(instance);
+        when(instance.getModel()).thenReturn(mapping);
+        when(mapping.isRunning(vm)).thenReturn(true);
+        when(mapping.getVMLocation(vm)).thenReturn(mock(Node.class));
+
+        Set<VM> result = cBan.getMisPlacedVMs(instance);
+
+        assertEquals(Collections.emptySet(), result);
+    }
+
+    @org.junit.Test
     public void testToString() {
-        // Setup
+        setUp();
         String banString = "Ban constraint";
         when(ban.toString()).thenReturn(banString);
-        
-        // Execute
-        CBan cBan = new CBan(ban);
+
         String result = cBan.toString();
-        
-        // Verify
-        assertEquals(result, banString);
+
+        assertEquals(banString, result);
     }
 }

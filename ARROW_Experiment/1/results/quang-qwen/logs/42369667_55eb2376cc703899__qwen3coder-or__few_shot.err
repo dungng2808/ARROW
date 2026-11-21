@@ -1,5 +1,5 @@
 ARROW · StringSchema (org.everit.json.schema)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 702 test (dùng lại, đo 20/11 00:01) · 11.2 s
-[OK] Khối 2  c0 · 4.0k token · 2.1 s · Candidate hợp lệ: 6 test, 20 assertion
-[>] Khối 3  c0: RUNTIME · IllegalArgumentException | StringSchema_ArrowTest.testBuilderWithAllFields
-[X] Khối 3  Kết thúc: RUNTIME (không sửa)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 702 test (dùng lại, đo 21/11 23:58) · 10.5 s
+[OK] Khối 2  c0 · 4.2k token · 3.5 s · Candidate hợp lệ: 7 test, 19 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testBuilderWithAllFields
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

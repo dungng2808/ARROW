@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-010023-kxn9",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-010023-kxn9",
+  "run_id": "20261122-010508-lrp5",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-010508-lrp5",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "de.slub.urn.RQF_RFC8141",
-      "result": "COMPILE",
-      "c0_state": "COMPILE",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2434,
-        "out": 3015
+        "out": 2277
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 5.5,
-        "block2": 6.6,
-        "block3": 3.1,
+        "block1": 6.1,
+        "block2": 7,
+        "block3": 9.2,
         "block4": null,
-        "total": 15.3
+        "total": 22.4
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2434,
-    "tokens_out": 3015,
+    "tokens_out": 2277,
     "cost_usd": null
   },
   "warnings": []

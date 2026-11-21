@@ -6,9 +6,17 @@ import org.junit.Test;
 public class Main_ArrowTest {
 
     @Test
-    public void testUseGuavaForSomeReason_NormalInput() {
-        String input = "Hello <world>";
-        String expected = "Hello &lt;world&gt;";
+    public void testUseGuavaForSomeReason_NormalString() {
+        String input = "Hello World";
+        String expected = "Hello World";
+        String actual = Main.useGuavaForSomeReason(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testUseGuavaForSomeReason_StringWithSpecialCharacters() {
+        String input = "<script>alert('xss')</script>";
+        String expected = "&lt;script&gt;alert(&#39;xss&#39;)&lt;/script&gt;";
         String actual = Main.useGuavaForSomeReason(input);
         assertEquals(expected, actual);
     }
@@ -25,22 +33,6 @@ public class Main_ArrowTest {
     public void testUseGuavaForSomeReason_NullInput() {
         String input = null;
         String actual = Main.useGuavaForSomeReason(input);
-        assertEquals(input, actual);
-    }
-
-    @Test
-    public void testUseGuavaForSomeReason_WithAmpersand() {
-        String input = "Price: $5 & up";
-        String expected = "Price: $5 &amp; up";
-        String actual = Main.useGuavaForSomeReason(input);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testUseGuavaForSomeReason_WithQuotes() {
-        String input = "He said \"Hello\"";
-        String expected = "He said &quot;Hello&quot;";
-        String actual = Main.useGuavaForSomeReason(input);
-        assertEquals(expected, actual);
+        assertEquals(null, actual);
     }
 }

@@ -1,5 +1,5 @@
 ARROW · TopsSseRequestBuilder (pl.zankowski.iextrading4j.client.sse.request.marketdata)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 21 · JUnit 4 + Mockito · baseline 0 test (dùng lại, đo 20/11 00:03) · 117.7 s
-[OK] Khối 2  c0 · 2.4k token · 2.0 s · Candidate hợp lệ: 4 test, 13 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 21 · JUnit 4 + Mockito · baseline 0 test (dùng lại, đo 22/11 00:01) · 161.6 s
+[OK] Khối 2  c0 · 2.6k token · 3.5 s · Candidate hợp lệ: 5 test, 25 assertion
 [>] Khối 3  c0: COMPILE · cannot find symbol | method
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

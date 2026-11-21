@@ -2,6 +2,7 @@ package edu.umn.biomedicus.common.tuples;
 
 import edu.umn.biomedicus.common.types.syntax.PartOfSpeech;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
 
 public class WordPos_ArrowTest {
@@ -18,135 +19,160 @@ public class WordPos_ArrowTest {
         PartOfSpeech tag = PartOfSpeech.NOUN;
         String word = "test";
         WordPos wordPos = new WordPos(word, tag);
-        
+
         assertEquals(word, wordPos.getWord());
         assertEquals(tag, wordPos.getTag());
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testParameterizedConstructorNullWord() {
-        new WordPos(null, PartOfSpeech.NOUN);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testParameterizedConstructorNullTag() {
-        new WordPos("test", null);
     }
 
     @Test
     public void testForward() {
         PartOfSpeech tag = PartOfSpeech.NOUN;
         String word = "hello";
-        WordPos original = new WordPos(word, tag);
-        WordPos forwarded = original.forward();
-        
+        WordPos wordPos = new WordPos(word, tag);
+        WordPos forwarded = wordPos.forward();
+
         assertEquals("ello", forwarded.getWord());
         assertEquals(tag, forwarded.getTag());
     }
 
     @Test
     public void testGetWord() {
+        PartOfSpeech tag = PartOfSpeech.NOUN;
         String word = "test";
-        WordPos wordPos = new WordPos(word, PartOfSpeech.NOUN);
+        WordPos wordPos = new WordPos(word, tag);
+
         assertEquals(word, wordPos.getWord());
     }
 
     @Test
     public void testSetWord() {
-        WordPos wordPos = new WordPos("old", PartOfSpeech.NOUN);
-        wordPos.setWord("new");
-        assertEquals("new", wordPos.getWord());
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String originalWord = "test";
+        String newWord = "new";
+        WordPos wordPos = new WordPos(originalWord, tag);
+
+        wordPos.setWord(newWord);
+        assertEquals(newWord, wordPos.getWord());
     }
 
     @Test
     public void testGetTag() {
-        PartOfSpeech tag = PartOfSpeech.VERB;
-        WordPos wordPos = new WordPos("test", tag);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, tag);
+
         assertEquals(tag, wordPos.getTag());
     }
 
     @Test
     public void testSetTag() {
-        WordPos wordPos = new WordPos("test", PartOfSpeech.NOUN);
-        wordPos.setTag(PartOfSpeech.VERB);
-        assertEquals(PartOfSpeech.VERB, wordPos.getTag());
+        PartOfSpeech originalTag = PartOfSpeech.NOUN;
+        PartOfSpeech newTag = PartOfSpeech.VERB;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, originalTag);
+
+        wordPos.setTag(newTag);
+        assertEquals(newTag, wordPos.getTag());
     }
 
     @Test
     public void testEqualsSameObject() {
-        WordPos wordPos = new WordPos("test", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, tag);
+
         assertTrue(wordPos.equals(wordPos));
     }
 
     @Test
     public void testEqualsNull() {
-        WordPos wordPos = new WordPos("test", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, tag);
+
         assertFalse(wordPos.equals(null));
     }
 
     @Test
     public void testEqualsDifferentClass() {
-        WordPos wordPos = new WordPos("test", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, tag);
+
         assertFalse(wordPos.equals("not a wordpos"));
     }
 
     @Test
     public void testEqualsSameValues() {
-        WordPos wordPos1 = new WordPos("test", PartOfSpeech.NOUN);
-        WordPos wordPos2 = new WordPos("test", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos1 = new WordPos(word, tag);
+        WordPos wordPos2 = new WordPos(word, tag);
+
         assertTrue(wordPos1.equals(wordPos2));
-        assertTrue(wordPos2.equals(wordPos1));
     }
 
     @Test
     public void testEqualsDifferentWords() {
-        WordPos wordPos1 = new WordPos("test", PartOfSpeech.NOUN);
-        WordPos wordPos2 = new WordPos("different", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        WordPos wordPos1 = new WordPos("test", tag);
+        WordPos wordPos2 = new WordPos("different", tag);
+
         assertFalse(wordPos1.equals(wordPos2));
     }
 
     @Test
     public void testEqualsDifferentTags() {
-        WordPos wordPos1 = new WordPos("test", PartOfSpeech.NOUN);
-        WordPos wordPos2 = new WordPos("test", PartOfSpeech.VERB);
+        String word = "test";
+        WordPos wordPos1 = new WordPos(word, PartOfSpeech.NOUN);
+        WordPos wordPos2 = new WordPos(word, PartOfSpeech.VERB);
+
         assertFalse(wordPos1.equals(wordPos2));
     }
 
     @Test
     public void testHashCode() {
-        WordPos wordPos1 = new WordPos("test", PartOfSpeech.NOUN);
-        WordPos wordPos2 = new WordPos("test", PartOfSpeech.NOUN);
-        assertEquals(wordPos1.hashCode(), wordPos2.hashCode());
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, tag);
+
+        int expected = word.hashCode() + 31 * tag.hashCode();
+        assertEquals(expected, wordPos.hashCode());
     }
 
     @Test
     public void testCompareTo() {
-        WordPos wordPos1 = new WordPos("apple", PartOfSpeech.NOUN);
-        WordPos wordPos2 = new WordPos("banana", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        WordPos wordPos1 = new WordPos("apple", tag);
+        WordPos wordPos2 = new WordPos("banana", tag);
+
         assertTrue(wordPos1.compareTo(wordPos2) < 0);
-        assertTrue(wordPos2.compareTo(wordPos1) > 0);
     }
 
     @Test
     public void testCompareToSameWord() {
         WordPos wordPos1 = new WordPos("test", PartOfSpeech.NOUN);
         WordPos wordPos2 = new WordPos("test", PartOfSpeech.VERB);
+
         assertTrue(wordPos1.compareTo(wordPos2) < 0);
-        assertTrue(wordPos2.compareTo(wordPos1) > 0);
     }
 
     @Test
     public void testCompareToEqual() {
-        WordPos wordPos1 = new WordPos("test", PartOfSpeech.NOUN);
-        WordPos wordPos2 = new WordPos("test", PartOfSpeech.NOUN);
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        WordPos wordPos1 = new WordPos("test", tag);
+        WordPos wordPos2 = new WordPos("test", tag);
+
         assertEquals(0, wordPos1.compareTo(wordPos2));
-        assertEquals(0, wordPos2.compareTo(wordPos1));
     }
 
     @Test
     public void testToString() {
-        WordPos wordPos = new WordPos("hello", PartOfSpeech.NOUN);
-        String expected = "WordPos{word='hello', tag=" + PartOfSpeech.NOUN.toString() + '}';
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "test";
+        WordPos wordPos = new WordPos(word, tag);
+
+        String expected = "WordPos{word='" + word + '\'' + ", tag=" + tag.toString() + '}';
         assertEquals(expected, wordPos.toString());
     }
 }

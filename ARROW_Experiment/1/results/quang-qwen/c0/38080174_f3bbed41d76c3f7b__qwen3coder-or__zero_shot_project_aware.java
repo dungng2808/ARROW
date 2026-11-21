@@ -30,7 +30,7 @@ public class StreamBuffer_ArrowTest {
     @Test
     public void testIsSaturated() {
         assertFalse(buffer.isSaturated());
-        // Fill up the buffer
+        // Fill up the buffer to max size
         for (int i = 0; i < 4; i++) {
             buffer.getInput().accept("item" + i);
         }
@@ -62,12 +62,37 @@ public class StreamBuffer_ArrowTest {
     }
 
     @Test
-    public void testInputAndOutput() {
+    public void testGetInput() {
         StreamConsumer<String> input = buffer.getInput();
-        StreamSupplier<String> output = buffer.getOutput();
-
         assertNotNull(input);
+        assertTrue(input instanceof StreamBuffer.Input);
+    }
+
+    @Test
+    public void testGetOutput() {
+        StreamSupplier<String> output = buffer.getOutput();
         assertNotNull(output);
+        assertTrue(output instanceof StreamBuffer.Output);
+    }
+
+    @Test
+    public void testSyncWhenSaturated() {
+        // Fill up the buffer to max size
+        for (int i = 0; i < 4; i++) {
+            buffer.getInput().accept("item" + i);
+        }
+        // Should be saturated now
+        assertTrue(buffer.isSaturated());
+    }
+
+    @Test
+    public void testSyncWhenNotSaturatedAndNotExhausted() {
+        // Add less than min size items
+        buffer.getInput().accept("item1");
+        buffer.getInput().accept("item2");
+        // Should not be saturated or exhausted
+        assertFalse(buffer.isSaturated());
+        assertFalse(buffer.isExhausted());
     }
 
     @Test
@@ -75,60 +100,51 @@ public class StreamBuffer_ArrowTest {
         // Add items to buffer
         buffer.getInput().accept("item1");
         buffer.getInput().accept("item2");
-
-        // Create a mock acceptor to capture output
-        final java.util.List<String> capturedItems = new java.util.ArrayList<>();
-        StreamDataAcceptor<String> mockAcceptor = capturedItems::add;
-
-        // Resume output to start flushing
-        output.resume(mockAcceptor);
-
-        // Verify items were flushed
-        assertEquals(2, capturedItems.size());
-        assertEquals("item1", capturedItems.get(0));
-        assertEquals("item2", capturedItems.get(1));
-    }
-
-    @Test
-    public void testSyncWhenSaturated() {
-        // Fill up the buffer to saturation
-        for (int i = 0; i < 4; i++) {
-            buffer.getInput().accept("item" + i);
-        }
-
-        // Verify that input is suspended
-        // This is hard to test directly, but we can verify behavior
-        assertTrue(buffer.isSaturated());
-    }
-
-    @Test
-    public void testSyncWhenNotSaturated() {
-        // Add less than max size items
-        buffer.getInput().accept("item1");
-        buffer.getInput().accept("item2");
-
-        // Should not be saturated, should resume input
-        assertFalse(buffer.isSaturated());
-    }
-
-    @Test
-    public void testOnEndOfStream() {
-        // Add items and end stream
-        buffer.getInput().accept("item1");
-        buffer.getInput().endOfStream();
-
-        // Verify that output gets the end of stream signal
-        // This requires checking internal state or using a mock
-        // For now, just ensure no exception occurs
-        assertTrue(true);
+        // Flush should send items
+        StreamDataAcceptor<String> acceptor = new StreamDataAcceptor<String>() {
+            int count = 0;
+            @Override
+            public void accept(String item) {
+                count++;
+                assertEquals("item" + count, item);
+            }
+        };
+        buffer.getOutput().resume(acceptor);
+        // Verify that items were flushed
+        assertEquals(2, buffer.size());
     }
 
     @Test
     public void testDoAdd() {
-        // Test internal add functionality
         buffer.getInput().accept("item1");
-        assertEquals(1, buffer.size());
+        buffer.getInput().accept("item2");
+        assertEquals(2, buffer.size());
     }
 
-    private StreamSupplier<String> output = buffer.getOutput();
+    @Test
+    public void testInputOnStarted() {
+        // Just verify that it doesn't throw
+        buffer.getInput().start();
+    }
+
+    @Test
+    public void testInputOnEndOfStream() {
+        // Just verify that it doesn't throw
+        buffer.getInput().endOfStream();
+    }
+
+    @Test
+    public void testOutputOnResumed() {
+        // Just verify that it doesn't throw
+        buffer.getOutput().resume(new StreamDataAcceptor<String>() {
+            @Override
+            public void accept(String item) {}
+        });
+    }
+
+    @Test
+    public void testOutputOnSuspended() {
+        // Just verify that it doesn't throw
+        buffer.getOutput().suspend();
+    }
 }

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000927-lxcg",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-000927-lxcg",
+  "run_id": "20261122-000659-sme9",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-000659-sme9",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2231,
-        "out": 967
+        "out": 1091
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 103.4,
-        "block2": 4.7,
-        "block3": 24,
+        "block1": 96.5,
+        "block2": 5.3,
+        "block3": 6.7,
         "block4": null,
-        "total": 133.1
+        "total": 109
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2231,
-    "tokens_out": 967,
+    "tokens_out": 1091,
     "cost_usd": null
   },
   "warnings": [

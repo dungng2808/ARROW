@@ -7,8 +7,13 @@ public class SpringBootMockitoApplication_ArrowTest {
 
     @Test
     public void testMainMethod() {
-        // Testing that the main method can be called without throwing exceptions
-        // This test verifies the basic functionality of the main method
+        // Since the main method just calls SpringApplication.run(), 
+        // we can't easily test its behavior without more complex integration testing.
+        // However, we can verify that the class can be instantiated and the main method doesn't throw
+        // an exception when called with null arguments (which would happen in a real scenario).
+        
+        // This test verifies that the main method exists and can be called
+        // without throwing an exception for basic execution
         try {
             SpringBootMockitoApplication.main(new String[]{});
             // If we reach here, the main method executed successfully

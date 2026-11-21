@@ -1,5 +1,5 @@
 ARROW · KeyPair (org.stellar.sdk)
-[OK] Khối 1  Gradle 7.4.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 496 test ×2 · 73.0 s
-[OK] Khối 2  c0 · 6.8k token · 4.3 s · Candidate hợp lệ: 23 test, 47 assertion
-[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[OK] Khối 1  Gradle 7.4.1 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 496 test ×2 · 76.7 s
+[OK] Khối 2  c0 · 7.0k token · 6.8 s · Candidate hợp lệ: 22 test, 48 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,5 +1,5 @@
 ARROW · Utils (com.gradle)
-[OK] Khối 1  Gradle 8.2 · build root . · JDK 8 · JUnit 5 · baseline 18 test ×2 · 34.4 s
-[OK] Khối 2  c0 · 6.4k token · 4.6 s · Candidate hợp lệ: 29 test, 38 assertion
+[OK] Khối 1  Gradle 8.2 · build root . · JDK 8 · JUnit 5 · baseline 18 test ×2 · 39.1 s
+[OK] Khối 2  c0 · 8.9k token · 10.4 s · Candidate hợp lệ: 51 test, 69 assertion
 [>] Khối 3  c0: COMPILE · cannot find symbol | class
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

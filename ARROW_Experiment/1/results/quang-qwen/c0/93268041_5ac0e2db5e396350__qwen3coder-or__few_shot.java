@@ -19,10 +19,8 @@ public class Key_ArrowTest {
 
     @Test
     public void testKeyByteArrayConstructor() {
-        byte[] signingKey = new byte[16];
-        byte[] encryptionKey = new byte[16];
-        Arrays.fill(signingKey, (byte) 1);
-        Arrays.fill(encryptionKey, (byte) 2);
+        byte[] signingKey = new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        byte[] encryptionKey = new byte[]{17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32};
         
         Key key = new Key(signingKey, encryptionKey);
         
@@ -31,54 +29,32 @@ public class Key_ArrowTest {
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testKeyByteArrayConstructorWithWrongSigningKeyLength() {
-        byte[] signingKey = new byte[15]; // Wrong length
-        byte[] encryptionKey = new byte[16];
+    public void testKeyByteArrayConstructorWithInvalidSigningKey() {
+        byte[] signingKey = new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15}; // 15 bytes
+        byte[] encryptionKey = new byte[]{17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32};
         
         new Key(signingKey, encryptionKey);
     }
 
     @Test(expected = IllegalArgumentException.class)
-    public void testKeyByteArrayConstructorWithWrongEncryptionKeyLength() {
-        byte[] signingKey = new byte[16];
-        byte[] encryptionKey = new byte[15]; // Wrong length
+    public void testKeyByteArrayConstructorWithInvalidEncryptionKey() {
+        byte[] signingKey = new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        byte[] encryptionKey = new byte[]{17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31}; // 15 bytes
         
         new Key(signingKey, encryptionKey);
     }
 
     @Test
-    public void testKeyByteArrayConstructorWithNullSigningKey() {
-        byte[] signingKey = null;
-        byte[] encryptionKey = new byte[16];
-        
-        try {
-            new Key(signingKey, encryptionKey);
-        } catch (IllegalArgumentException e) {
-            assertEquals("Signing key must be 128 bits", e.getMessage());
-        }
-    }
-
-    @Test
-    public void testKeyByteArrayConstructorWithNullEncryptionKey() {
-        byte[] signingKey = new byte[16];
-        byte[] encryptionKey = null;
-        
-        try {
-            new Key(signingKey, encryptionKey);
-        } catch (IllegalArgumentException e) {
-            assertEquals("Encryption key must be 128 bits", e.getMessage());
-        }
-    }
-
-    @Test
-    public void testKeyConcatenatedKeysConstructor() {
-        byte[] concatenatedKeys = new byte[32];
-        Arrays.fill(concatenatedKeys, (byte) 1);
+    public void testKeyByteArrayConstructorWithConcatenatedKeys() {
+        byte[] concatenatedKeys = new byte[]{
+            1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, // signing key
+            17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32 // encryption key
+        };
         
         Key key = new Key(concatenatedKeys);
         
-        byte[] expectedSigningKey = Arrays.copyOfRange(concatenatedKeys, 0, 16);
-        byte[] expectedEncryptionKey = Arrays.copyOfRange(concatenatedKeys, 16, 32);
+        byte[] expectedSigningKey = new byte[]{1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16};
+        byte[] expectedEncryptionKey = new byte[]{17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32};
         
         assertArrayEquals(expectedSigningKey, key.getSigningKey());
         assertArrayEquals(expectedEncryptionKey, key.getEncryptionKey());
@@ -86,24 +62,21 @@ public class Key_ArrowTest {
 
     @Test
     public void testKeyStringConstructor() {
-        // Using a valid base64 url encoded string
-        String keyString = "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyA=";
-        Key key = new Key(keyString);
+        String base64Key = "AQIDBAUGBwgJCgsMDQ4PEBESExQVFhcYGRobHB0eHyAhIiMkJSYnKCkqKywtLi8wMTIzNDU2Nzg5Ojs8PT4/QEFCQ0RFRkdISUpLTE1OT1BRUlNUVVZXWFlaW1xdXl9gYWJjZGVmZ2hpamtsbW5vcHFyc3R1dnd4eXp7fH1+f4CBgoOEhYaHiImKi4yNjo+QkZKTlJWWl5iZmpucnZ6foKGio6SlpqeoqaqrrK2ur7CxsrO0tba3uLm6u7y9vr/AwcLDxMXGx8jJysvMzc7P0NHS09TV1tfY2drb3N3e3+Dh4uPk5ebn6Onq6+zt7u/w8fLz9PX29/j5+vv8/f7/AA==";
         
-        // Verify that the key was created successfully
+        Key key = new Key(base64Key);
+        
         assertNotNull(key.getSigningKey());
         assertNotNull(key.getEncryptionKey());
     }
 
     @Test
     public void testGenerateKey() {
-        Key key = Key.generateKey();
+        Key key1 = Key.generateKey();
+        Key key2 = Key.generateKey();
         
-        assertNotNull(key);
-        assertNotNull(key.getSigningKey());
-        assertNotNull(key.getEncryptionKey());
-        assertEquals(16, key.getSigningKey().length);
-        assertEquals(16, key.getEncryptionKey().length);
+        assertNotEquals(key1.getSigningKey(), key2.getSigningKey());
+        assertNotEquals(key1.getEncryptionKey(), key2.getEncryptionKey());
     }
 
     @Test
@@ -111,11 +84,8 @@ public class Key_ArrowTest {
         SecureRandom random = new SecureRandom();
         Key key = Key.generateKey(random);
         
-        assertNotNull(key);
         assertNotNull(key.getSigningKey());
         assertNotNull(key.getEncryptionKey());
-        assertEquals(16, key.getSigningKey().length);
-        assertEquals(16, key.getEncryptionKey().length);
     }
 
     @Test
@@ -128,6 +98,20 @@ public class Key_ArrowTest {
         byte[] decrypted = key.decrypt(encrypted, iv);
         
         assertArrayEquals(payload, decrypted);
+    }
+
+    @Test
+    public void testSign() {
+        Key key = Key.generateKey();
+        byte version = 1;
+        Instant timestamp = Instant.now();
+        IvParameterSpec iv = new IvParameterSpec(new byte[16]);
+        byte[] cipherText = "test".getBytes();
+        
+        byte[] signature = key.sign(version, timestamp, iv, cipherText);
+        
+        assertNotNull(signature);
+        assertTrue(signature.length > 0);
     }
 
     @Test
@@ -145,11 +129,9 @@ public class Key_ArrowTest {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         
         key.writeTo(baos);
-        byte[] writtenBytes = baos.toByteArray();
         
+        byte[] writtenBytes = baos.toByteArray();
         assertEquals(32, writtenBytes.length);
-        assertArrayEquals(key.getSigningKey(), Arrays.copyOfRange(writtenBytes, 0, 16));
-        assertArrayEquals(key.getEncryptionKey(), Arrays.copyOfRange(writtenBytes, 16, 32));
     }
 
     @Test
@@ -173,24 +155,6 @@ public class Key_ArrowTest {
         assertNotEquals(key1, key2);
         // Key should equal itself
         assertEquals(key1, key1);
-        // Key should not equal null
-        assertNotEquals(key1, null);
-        // Key should not equal other type
-        assertNotEquals(key1, "not a key");
-    }
-
-    @Test
-    public void testSign() {
-        Key key = Key.generateKey();
-        byte version = 1;
-        Instant timestamp = Instant.now();
-        IvParameterSpec iv = new IvParameterSpec(new byte[16]);
-        byte[] cipherText = "test".getBytes();
-        
-        byte[] signature = key.sign(version, timestamp, iv, cipherText);
-        
-        assertNotNull(signature);
-        assertTrue(signature.length > 0);
     }
 
     @Test
@@ -227,45 +191,5 @@ public class Key_ArrowTest {
         
         assertNotNull(encryptionKey);
         assertEquals(16, encryptionKey.length);
-    }
-
-    @Test
-    public void testGetTokenPrefixBytes() {
-        Key key = Key.generateKey();
-        int prefixBytes = key.getTokenPrefixBytes();
-        
-        assertEquals(17, prefixBytes);
-    }
-
-    @Test
-    public void testGetSigningAlgorithm() {
-        Key key = Key.generateKey();
-        String signingAlgorithm = key.getSigningAlgorithm();
-        
-        assertEquals("HmacSHA256", signingAlgorithm);
-    }
-
-    @Test
-    public void testGetEncryptionAlgorithm() {
-        Key key = Key.generateKey();
-        String encryptionAlgorithm = key.getEncryptionAlgorithm();
-        
-        assertEquals("AES", encryptionAlgorithm);
-    }
-
-    @Test
-    public void testGetEncoder() {
-        Key key = Key.generateKey();
-        java.util.Base64.Encoder encoder = key.getEncoder();
-        
-        assertNotNull(encoder);
-    }
-
-    @Test
-    public void testGetCipherTransformation() {
-        Key key = Key.generateKey();
-        String cipherTransformation = key.getCipherTransformation();
-        
-        assertEquals("AES/CTR/NoPadding", cipherTransformation);
     }
 }

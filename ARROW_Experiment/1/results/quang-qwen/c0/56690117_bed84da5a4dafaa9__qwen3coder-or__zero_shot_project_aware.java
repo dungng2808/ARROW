@@ -6,74 +6,75 @@ import de.rub.nds.tlsattacker.core.config.Config;
 import de.rub.nds.tlsattacker.core.constants.HandshakeMessageType;
 import de.rub.nds.tlsattacker.core.protocol.handler.UnknownHandshakeHandler;
 import de.rub.nds.tlsattacker.core.state.TlsContext;
+import org.junit.Before;
 import org.junit.Test;
+
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.mock;
 
 public class UnknownHandshakeMessage_ArrowTest {
 
-    @Test
-    public void testDefaultConstructor() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        assertEquals(HandshakeMessageType.UNKNOWN, message.getMessageType());
+    private UnknownHandshakeMessage unknownHandshakeMessage;
+
+    @Before
+    public void setUp() {
+        unknownHandshakeMessage = new UnknownHandshakeMessage();
     }
 
     @Test
-    public void testConfigConstructor() {
-        Config config = new Config();
+    public void testConstructorNoArgs() {
+        assertEquals(HandshakeMessageType.UNKNOWN, unknownHandshakeMessage.getMessageType());
+    }
+
+    @Test
+    public void testConstructorWithConfig() {
+        Config config = mock(Config.class);
         UnknownHandshakeMessage message = new UnknownHandshakeMessage(config);
         assertEquals(HandshakeMessageType.UNKNOWN, message.getMessageType());
     }
 
     @Test
     public void testGetDataConfig() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        assertNull(message.getDataConfig());
+        assertNull(unknownHandshakeMessage.getDataConfig());
     }
 
     @Test
     public void testSetDataConfig() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
         byte[] testData = {1, 2, 3};
-        message.setDataConfig(testData);
-        assertArrayEquals(testData, message.getDataConfig());
+        unknownHandshakeMessage.setDataConfig(testData);
+        assertArrayEquals(testData, unknownHandshakeMessage.getDataConfig());
     }
 
     @Test
     public void testGetData() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        assertNull(message.getData());
+        assertNull(unknownHandshakeMessage.getData());
     }
 
     @Test
     public void testSetDataByteArray() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
         byte[] testData = {4, 5, 6};
-        ModifiableByteArray modifiableData = ModifiableVariableFactory.safelySetValue(null, testData);
-        message.setData(modifiableData);
-        assertEquals(modifiableData, message.getData());
+        unknownHandshakeMessage.setData(testData);
+        assertNotNull(unknownHandshakeMessage.getData());
+        assertArrayEquals(testData, unknownHandshakeMessage.getData().getValue());
     }
 
     @Test
-    public void testSetDataBytes() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        byte[] testData = {7, 8, 9};
-        message.setData(testData);
-        assertNotNull(message.getData());
-        assertArrayEquals(testData, message.getData().getValue());
+    public void testSetDataModifiableByteArray() {
+        ModifiableByteArray testModifiableByteArray = ModifiableVariableFactory.safelySetValue(null, new byte[]{7, 8, 9});
+        unknownHandshakeMessage.setData(testModifiableByteArray);
+        assertEquals(testModifiableByteArray, unknownHandshakeMessage.getData());
     }
 
     @Test
     public void testGetHandler() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        TlsContext context = new TlsContext();
-        assertNotNull(message.getHandler(context));
-        assertTrue(message.getHandler(context) instanceof UnknownHandshakeHandler);
+        TlsContext context = mock(TlsContext.class);
+        assertNotNull(unknownHandshakeMessage.getHandler(context));
+        assertTrue(unknownHandshakeMessage.getHandler(context) instanceof UnknownHandshakeHandler);
     }
 
     @Test
     public void testToString() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        String result = message.toString();
+        String result = unknownHandshakeMessage.toString();
         assertNotNull(result);
         assertTrue(result.contains("UnknownHandshakeMessage"));
         assertTrue(result.contains("Data: null"));
@@ -81,10 +82,9 @@ public class UnknownHandshakeMessage_ArrowTest {
 
     @Test
     public void testToStringWithData() {
-        UnknownHandshakeMessage message = new UnknownHandshakeMessage();
         byte[] testData = {10, 11, 12};
-        message.setData(testData);
-        String result = message.toString();
+        unknownHandshakeMessage.setData(testData);
+        String result = unknownHandshakeMessage.toString();
         assertNotNull(result);
         assertTrue(result.contains("UnknownHandshakeMessage"));
         assertTrue(result.contains("Data: "));

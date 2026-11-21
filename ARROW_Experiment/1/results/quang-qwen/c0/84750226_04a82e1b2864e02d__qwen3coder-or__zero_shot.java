@@ -16,47 +16,55 @@ public class TopsSseRequestBuilder_ArrowTest {
     @Test
     public void testBuild() {
         TopsSseRequestBuilder builder = new TopsSseRequestBuilder();
-        SseRequest<List<TOPS>> request = builder.build();
-        
-        assertNotNull(request);
-        assertEquals("/tops", request.getPath());
-        assertNotNull(request.getResponse());
-        assertEquals(new GenericType<List<TOPS>>() {}.getType(), request.getResponse().getGenericType());
-    }
-
-    @Test
-    public void testBuildWithSymbol() {
-        TopsSseRequestBuilder builder = new TopsSseRequestBuilder();
         builder.withSymbol("AAPL");
-        SseRequest<List<TOPS>> request = builder.build();
-        
-        assertNotNull(request);
-        assertEquals("/tops", request.getPath());
-        assertNotNull(request.getResponse());
-        assertEquals(new GenericType<List<TOPS>>() {}.getType(), request.getResponse().getGenericType());
-    }
-
-    @Test
-    public void testBuildWithNoSnapshot() {
-        TopsSseRequestBuilder builder = new TopsSseRequestBuilder();
         builder.withNoSnapshot(true);
+        
         SseRequest<List<TOPS>> request = builder.build();
         
         assertNotNull(request);
         assertEquals("/tops", request.getPath());
-        assertNotNull(request.getResponse());
-        assertEquals(new GenericType<List<TOPS>>() {}.getType(), request.getResponse().getGenericType());
+        assertEquals("AAPL", request.getQueryParams().get("symbols"));
+        assertEquals("true", request.getQueryParams().get("noSnapshot"));
     }
-
+    
     @Test
-    public void testBuildWithSymbolAndNoSnapshot() {
+    public void testBuildWithoutSnapshot() {
         TopsSseRequestBuilder builder = new TopsSseRequestBuilder();
-        builder.withSymbol("GOOGL").withNoSnapshot(true);
+        builder.withSymbol("GOOGL");
+        builder.withNoSnapshot(false);
+        
         SseRequest<List<TOPS>> request = builder.build();
         
         assertNotNull(request);
         assertEquals("/tops", request.getPath());
-        assertNotNull(request.getResponse());
-        assertEquals(new GenericType<List<TOPS>>() {}.getType(), request.getResponse().getGenericType());
+        assertEquals("GOOGL", request.getQueryParams().get("symbols"));
+        assertEquals("false", request.getQueryParams().get("noSnapshot"));
+    }
+    
+    @Test
+    public void testBuildWithNullSymbol() {
+        TopsSseRequestBuilder builder = new TopsSseRequestBuilder();
+        builder.withSymbol(null);
+        builder.withNoSnapshot(true);
+        
+        SseRequest<List<TOPS>> request = builder.build();
+        
+        assertNotNull(request);
+        assertEquals("/tops", request.getPath());
+        assertEquals(null, request.getQueryParams().get("symbols"));
+        assertEquals("true", request.getQueryParams().get("noSnapshot"));
+    }
+    
+    @Test
+    public void testGenericType() {
+        TopsSseRequestBuilder builder = new TopsSseRequestBuilder();
+        builder.withSymbol("MSFT");
+        builder.withNoSnapshot(false);
+        
+        SseRequest<List<TOPS>> request = builder.build();
+        
+        assertNotNull(request);
+        GenericType<List<TOPS>> genericType = request.getResponse();
+        assertNotNull(genericType);
     }
 }

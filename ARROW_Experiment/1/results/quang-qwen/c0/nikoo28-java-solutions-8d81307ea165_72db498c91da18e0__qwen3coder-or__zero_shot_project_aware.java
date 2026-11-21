@@ -62,4 +62,13 @@ public class OnlineStockSpan_ArrowTest {
         int[] result = span.calculateSpans(prices);
         assertArrayEquals(new int[]{1, 1, 1, 1, 1}, result);
     }
+
+    @Test
+    public void testNextAndCalculateSpansTogether() {
+        OnlineStockSpan span = new OnlineStockSpan();
+        assertEquals(1, span.next(100));
+        int[] prices = {80, 60, 70, 60, 75, 85};
+        int[] result = span.calculateSpans(prices);
+        assertArrayEquals(new int[]{1, 1, 2, 1, 4, 6}, result);
+    }
 }

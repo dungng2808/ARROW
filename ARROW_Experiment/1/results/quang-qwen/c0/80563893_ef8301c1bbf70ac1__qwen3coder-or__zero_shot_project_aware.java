@@ -15,75 +15,80 @@ public class LoadGeneratorStarter_ArrowTest {
 
     @Test
     public void testParseReturnsNullWhenHelpIsTrue() {
-        String[] args = {"-h"};
-        LoadGeneratorStarterArgs result = LoadGeneratorStarter.parse(args);
+        LoadGeneratorStarterArgs args = new LoadGeneratorStarterArgs();
+        args.setHelp(true);
+        
+        LoadGeneratorStarterArgs result = LoadGeneratorStarter.parse(new String[]{"-h"}, () -> args);
         assertNull(result);
     }
 
     @Test
-    public void testParseParsesArgumentsSuccessfully() {
-        String[] args = {"-t", "5", "-i", "100"};
-        LoadGeneratorStarterArgs result = LoadGeneratorStarter.parse(args);
+    public void testParseReturnsArgsWhenHelpIsFalse() {
+        LoadGeneratorStarterArgs args = new LoadGeneratorStarterArgs();
+        args.setHelp(false);
+        args.setThreads(10);
+        
+        LoadGeneratorStarterArgs result = LoadGeneratorStarter.parse(new String[]{"-t", "10"}, () -> args);
         assertNotNull(result);
-        assertEquals(5, result.getThreads());
-        assertEquals(100, result.getIterations());
+        assertEquals(10, result.getThreads());
     }
 
     @Test
-    public void testPrepareBuildsCorrectBuilder() {
+    public void testPrepareCreatesBuilderWithCorrectValues() {
         LoadGeneratorStarterArgs args = new LoadGeneratorStarterArgs();
-        args.setThreads(3);
+        args.setThreads(5);
         args.setWarmupIterations(10);
-        args.setIterations(50);
-        args.setRunningTime(2);
-        args.setRunningTimeUnit(TimeUnit.MINUTES);
+        args.setIterations(20);
+        args.setRunningTime(30L);
+        args.setRunningTimeUnit(TimeUnit.SECONDS);
         args.setUsersPerThread(2);
-        args.setChannelsPerUser(1);
-        args.setResourceRate(100);
-        args.setRateRampUpPeriod(5);
+        args.setChannelsPerUser(3);
+        args.setResourceRate(100L);
+        args.setRateRampUpPeriod(5L);
         args.setScheme("http");
         args.setHost("localhost");
         args.setPort(8080);
         args.setMaxRequestsQueued(1000);
-        args.setConnectBlocking(false);
-        args.setConnectTimeout(5000);
-        args.setIdleTimeout(30000);
-
+        args.setConnectBlocking(true);
+        args.setConnectTimeout(5000L);
+        args.setIdleTimeout(10000L);
+        
         LoadGenerator.Builder builder = LoadGeneratorStarter.prepare(args);
         assertNotNull(builder);
     }
 
     @Test
-    public void testRunWithBuilder() {
-        LoadGenerator.Builder builder = mock(LoadGenerator.Builder.class);
-        LoadGenerator loadGenerator = mock(LoadGenerator.class);
-        CompletableFuture<Void> future = mock(CompletableFuture.class);
-
-        when(builder.build()).thenReturn(loadGenerator);
-        when(loadGenerator.begin()).thenReturn(future);
-
-        LoadGeneratorStarter.run(builder);
-
-        verify(builder).build();
-        verify(loadGenerator).begin();
+    public void testRunWithBuilderCallsBuildAndBegin() {
+        LoadGenerator.Builder mockBuilder = mock(LoadGenerator.Builder.class);
+        LoadGenerator mockLoadGenerator = mock(LoadGenerator.class);
+        CompletableFuture<Void> mockFuture = mock(CompletableFuture.class);
+        
+        when(mockBuilder.build()).thenReturn(mockLoadGenerator);
+        when(mockLoadGenerator.begin()).thenReturn(mockFuture);
+        
+        LoadGeneratorStarter.run(mockBuilder);
+        
+        verify(mockBuilder).build();
+        verify(mockLoadGenerator).begin();
     }
 
     @Test
-    public void testRunWithLoadGenerator() {
-        LoadGenerator loadGenerator = mock(LoadGenerator.class);
-        CompletableFuture<Void> future = mock(CompletableFuture.class);
-
-        when(loadGenerator.begin()).thenReturn(future);
-
-        LoadGeneratorStarter.run(loadGenerator);
-
-        verify(loadGenerator).begin();
+    public void testRunWithLoadGeneratorLogsInfoAndCompletes() {
+        LoadGenerator mockLoadGenerator = mock(LoadGenerator.class);
+        CompletableFuture<Void> mockFuture = mock(CompletableFuture.class);
+        
+        when(mockLoadGenerator.begin()).thenReturn(mockFuture);
+        
+        LoadGeneratorStarter.run(mockLoadGenerator);
+        
+        verify(mockLoadGenerator).begin();
     }
 
     @Test
-    public void testNanosToMillis() {
+    public void testNanosToMillisConvertsCorrectly() {
         long nanos = 1000000000L; // 1 second in nanoseconds
         long expected = 1000L; // 1 second in milliseconds
+        
         long result = LoadGeneratorStarter.nanosToMillis(nanos);
         assertEquals(expected, result);
     }

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005028-hffk",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-005028-hffk",
+  "run_id": "20261122-005543-gla1",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-005543-gla1",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1156,
-        "out": 125
+        "out": 136
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 83.3,
-        "block2": 1.4,
-        "block3": 5,
+        "block1": 90.2,
+        "block2": 2.6,
+        "block3": 12.3,
         "block4": null,
-        "total": 89.7
+        "total": 105.2
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1156,
-    "tokens_out": 125,
+    "tokens_out": 136,
     "cost_usd": null
   },
   "warnings": [

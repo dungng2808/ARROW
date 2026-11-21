@@ -56,12 +56,12 @@ public class RQF_RFC8141_ArrowTest {
     public void testConstructorWithNonEmptyQueryParameters() {
         Map<String, String> resParams = new HashMap<>();
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
+        queryParams.put("qkey1", "qvalue1");
         String fragment = "";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
-        assertEquals("?=q=search", rqf.toString());
+        assertEquals("?=qkey1=qvalue1", rqf.toString());
         assertEquals(resParams, rqf.resolutionParameters());
         assertEquals(queryParams, rqf.queryParameters());
         assertEquals(fragment, rqf.fragment());
@@ -71,11 +71,11 @@ public class RQF_RFC8141_ArrowTest {
     public void testConstructorWithNonEmptyFragment() {
         Map<String, String> resParams = new HashMap<>();
         Map<String, String> queryParams = new HashMap<>();
-        String fragment = "section1";
+        String fragment = "frag";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
-        assertEquals("#section1", rqf.toString());
+        assertEquals("#frag", rqf.toString());
         assertEquals(resParams, rqf.resolutionParameters());
         assertEquals(queryParams, rqf.queryParameters());
         assertEquals(fragment, rqf.fragment());
@@ -84,14 +84,14 @@ public class RQF_RFC8141_ArrowTest {
     @Test
     public void testConstructorWithAllComponents() {
         Map<String, String> resParams = new HashMap<>();
-        resParams.put("key1", "value1");
+        resParams.put("rkey", "rvalue");
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
-        String fragment = "section1";
+        queryParams.put("qkey", "qvalue");
+        String fragment = "frag";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
-        assertEquals("?+key1=value1?=q=search#section1", rqf.toString());
+        assertEquals("?+rkey=rvalue?=qkey=qvalue#frag", rqf.toString());
         assertEquals(resParams, rqf.resolutionParameters());
         assertEquals(queryParams, rqf.queryParameters());
         assertEquals(fragment, rqf.fragment());
@@ -99,156 +99,57 @@ public class RQF_RFC8141_ArrowTest {
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorWithNullResolutionParameters() {
-        new RQF_RFC8141(null, new HashMap<>(), "");
+        new RQF_RFC8141(null, EMPTY_MAP, "");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorWithNullQueryParameters() {
-        new RQF_RFC8141(new HashMap<>(), null, "");
+        new RQF_RFC8141(EMPTY_MAP, null, "");
     }
 
     @Test(expected = IllegalArgumentException.class)
     public void testConstructorWithNullFragment() {
-        new RQF_RFC8141(new HashMap<>(), new HashMap<>(), null);
+        new RQF_RFC8141(EMPTY_MAP, EMPTY_MAP, null);
     }
 
     @Test
-    public void testEqualsWithSameInstance() {
-        Map<String, String> resParams = new HashMap<>();
-        resParams.put("key1", "value1");
-        Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
-        String fragment = "section1";
-
-        RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
-
-        assertTrue(rqf.equals(rqf));
-    }
-
-    @Test
-    public void testEqualsWithEqualInstances() {
+    public void testEqualsAndHashCode() {
         Map<String, String> resParams1 = new HashMap<>();
         resParams1.put("key1", "value1");
         Map<String, String> queryParams1 = new HashMap<>();
-        queryParams1.put("q", "search");
-        String fragment1 = "section1";
+        queryParams1.put("qkey1", "qvalue1");
+        String fragment1 = "frag1";
 
         Map<String, String> resParams2 = new HashMap<>();
         resParams2.put("key1", "value1");
         Map<String, String> queryParams2 = new HashMap<>();
-        queryParams2.put("q", "search");
-        String fragment2 = "section1";
+        queryParams2.put("qkey1", "qvalue1");
+        String fragment2 = "frag1";
 
         RQF_RFC8141 rqf1 = new RQF_RFC8141(resParams1, queryParams1, fragment1);
         RQF_RFC8141 rqf2 = new RQF_RFC8141(resParams2, queryParams2, fragment2);
 
         assertTrue(rqf1.equals(rqf2));
-        assertTrue(rqf2.equals(rqf1));
-    }
-
-    @Test
-    public void testEqualsWithDifferentResolutionParameters() {
-        Map<String, String> resParams1 = new HashMap<>();
-        resParams1.put("key1", "value1");
-        Map<String, String> queryParams1 = new HashMap<>();
-        String fragment1 = "";
-
-        Map<String, String> resParams2 = new HashMap<>();
-        resParams2.put("key2", "value2");
-        Map<String, String> queryParams2 = new HashMap<>();
-        String fragment2 = "";
-
-        RQF_RFC8141 rqf1 = new RQF_RFC8141(resParams1, queryParams1, fragment1);
-        RQF_RFC8141 rqf2 = new RQF_RFC8141(resParams2, queryParams2, fragment2);
-
-        assertFalse(rqf1.equals(rqf2));
-    }
-
-    @Test
-    public void testEqualsWithDifferentQueryParameters() {
-        Map<String, String> resParams1 = new HashMap<>();
-        String fragment1 = "";
-
-        Map<String, String> queryParams1 = new HashMap<>();
-        queryParams1.put("q", "search");
-
-        Map<String, String> resParams2 = new HashMap<>();
-        String fragment2 = "";
-
-        Map<String, String> queryParams2 = new HashMap<>();
-        queryParams2.put("q", "different");
-
-        RQF_RFC8141 rqf1 = new RQF_RFC8141(resParams1, queryParams1, fragment1);
-        RQF_RFC8141 rqf2 = new RQF_RFC8141(resParams2, queryParams2, fragment2);
-
-        assertFalse(rqf1.equals(rqf2));
-    }
-
-    @Test
-    public void testEqualsWithDifferentFragments() {
-        Map<String, String> resParams1 = new HashMap<>();
-        String fragment1 = "section1";
-
-        Map<String, String> queryParams1 = new HashMap<>();
-
-        Map<String, String> resParams2 = new HashMap<>();
-        String fragment2 = "section2";
-
-        Map<String, String> queryParams2 = new HashMap<>();
-
-        RQF_RFC8141 rqf1 = new RQF_RFC8141(resParams1, queryParams1, fragment1);
-        RQF_RFC8141 rqf2 = new RQF_RFC8141(resParams2, queryParams2, fragment2);
-
-        assertFalse(rqf1.equals(rqf2));
-    }
-
-    @Test
-    public void testEqualsWithNullObject() {
-        Map<String, String> resParams = new HashMap<>();
-        Map<String, String> queryParams = new HashMap<>();
-        String fragment = "";
-
-        RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
-
-        assertFalse(rqf.equals(null));
-    }
-
-    @Test
-    public void testEqualsWithDifferentClass() {
-        Map<String, String> resParams = new HashMap<>();
-        Map<String, String> queryParams = new HashMap<>();
-        String fragment = "";
-
-        RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
-
-        assertFalse(rqf.equals("not an RQF_RFC8141"));
-    }
-
-    @Test
-    public void testHashCode() {
-        Map<String, String> resParams = new HashMap<>();
-        resParams.put("key1", "value1");
-        Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
-        String fragment = "section1";
-
-        RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
-
-        assertEquals(rqf.toString().hashCode(), rqf.hashCode());
-    }
-
-    @Test
-    public void testHashCodeConsistency() {
-        Map<String, String> resParams = new HashMap<>();
-        resParams.put("key1", "value1");
-        Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
-        String fragment = "section1";
-
-        RQF_RFC8141 rqf1 = new RQF_RFC8141(resParams, queryParams, fragment);
-        RQF_RFC8141 rqf2 = new RQF_RFC8141(resParams, queryParams, fragment);
-
         assertEquals(rqf1.hashCode(), rqf2.hashCode());
+
+        // Different fragment
+        RQF_RFC8141 rqf3 = new RQF_RFC8141(resParams1, queryParams1, "diff");
+        assertFalse(rqf1.equals(rqf3));
+
+        // Different query params
+        Map<String, String> queryParams3 = new HashMap<>();
+        queryParams3.put("different", "params");
+        RQF_RFC8141 rqf4 = new RQF_RFC8141(resParams1, queryParams3, fragment1);
+        assertFalse(rqf1.equals(rqf4));
+
+        // Different resolution params
+        Map<String, String> resParams3 = new HashMap<>();
+        resParams3.put("different", "params");
+        RQF_RFC8141 rqf5 = new RQF_RFC8141(resParams3, queryParams1, fragment1);
+        assertFalse(rqf1.equals(rqf5));
+
+        // Not an instance of RQF_RFC8141
+        assertFalse(rqf1.equals("not an instance"));
     }
 
     @Test
@@ -261,90 +162,95 @@ public class RQF_RFC8141_ArrowTest {
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
-        // Order is not guaranteed, so we just check that both parameters are present
+        // Order is not guaranteed, but both keys should be present
         String result = rqf.toString();
         assertTrue(result.contains("?+key1=value1"));
         assertTrue(result.contains("&"));
-        assertTrue(result.contains("key2=value2"));
+        assertTrue(result.contains("?+key2=value2"));
+        assertTrue(result.startsWith("?+"));
     }
 
     @Test
     public void testToStringWithMultipleQueryParameters() {
         Map<String, String> resParams = new HashMap<>();
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
-        queryParams.put("lang", "de");
+        queryParams.put("qkey1", "qvalue1");
+        queryParams.put("qkey2", "qvalue2");
         String fragment = "";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
-        // Order is not guaranteed, so we just check that both parameters are present
+        // Order is not guaranteed, but both keys should be present
         String result = rqf.toString();
-        assertTrue(result.contains("?=q=search"));
+        assertTrue(result.contains("?=qkey1=qvalue1"));
         assertTrue(result.contains("&"));
-        assertTrue(result.contains("lang=de"));
+        assertTrue(result.contains("?=qkey2=qvalue2"));
+        assertTrue(result.startsWith("?="));
     }
 
     @Test
-    public void testToStringWithComplexStringRepresentation() {
+    public void testToStringWithSpecialCharactersInValues() {
         Map<String, String> resParams = new HashMap<>();
-        resParams.put("type", "book");
+        resParams.put("key", "value&with=and");
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("author", "Smith");
-        queryParams.put("title", "Java Programming");
-        String fragment = "chapter3";
+        String fragment = "frag#with#hash";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
-        String result = rqf.toString();
-        assertTrue(result.contains("?+type=book"));
-        assertTrue(result.contains("?=author=Smith"));
-        assertTrue(result.contains("&"));
-        assertTrue(result.contains("title=Java Programming"));
-        assertTrue(result.contains("#chapter3"));
+        assertEquals("?+key=value&with=and#frag#with#hash", rqf.toString());
+    }
+
+    @Test
+    public void testToStringWithEmptyStringValues() {
+        Map<String, String> resParams = new HashMap<>();
+        resParams.put("emptyKey", "");
+        Map<String, String> queryParams = new HashMap<>();
+        String fragment = "";
+
+        RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
+
+        assertEquals("?+emptyKey=", rqf.toString());
+    }
+
+    @Test
+    public void testToStringWithNullValuesInMaps() {
+        Map<String, String> resParams = new HashMap<>();
+        resParams.put("nullValue", null);
+        Map<String, String> queryParams = new HashMap<>();
+        String fragment = "";
+
+        RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
+
+        assertEquals("?+nullValue=null", rqf.toString());
     }
 
     @Test
     public void testResolutionParametersReturnsUnmodifiableMap() {
         Map<String, String> resParams = new HashMap<>();
-        resParams.put("key1", "value1");
+        resParams.put("key", "value");
         Map<String, String> queryParams = new HashMap<>();
         String fragment = "";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
         Map<String, String> returnedMap = rqf.resolutionParameters();
-        // Should not be able to modify the returned map
-        try {
-            returnedMap.put("newKey", "newValue");
-            // If we reach here, the map was modifiable, which is wrong
-            fail("Returned map should be unmodifiable");
-        } catch (UnsupportedOperationException e) {
-            // Expected behavior
-        }
+        assertNotEquals(resParams, returnedMap);
+        assertTrue(returnedMap.containsKey("key"));
+        assertTrue(returnedMap.containsValue("value"));
     }
 
     @Test
     public void testQueryParametersReturnsUnmodifiableMap() {
         Map<String, String> resParams = new HashMap<>();
         Map<String, String> queryParams = new HashMap<>();
-        queryParams.put("q", "search");
+        queryParams.put("qkey", "qvalue");
         String fragment = "";
 
         RQF_RFC8141 rqf = new RQF_RFC8141(resParams, queryParams, fragment);
 
         Map<String, String> returnedMap = rqf.queryParameters();
-        // Should not be able to modify the returned map
-        try {
-            returnedMap.put("newKey", "newValue");
-            // If we reach here, the map was modifiable, which is wrong
-            fail("Returned map should be unmodifiable");
-        } catch (UnsupportedOperationException e) {
-            // Expected behavior
-        }
-    }
-
-    private void fail(String message) {
-        throw new AssertionError(message);
+        assertNotEquals(queryParams, returnedMap);
+        assertTrue(returnedMap.containsKey("qkey"));
+        assertTrue(returnedMap.containsValue("qvalue"));
     }
 }

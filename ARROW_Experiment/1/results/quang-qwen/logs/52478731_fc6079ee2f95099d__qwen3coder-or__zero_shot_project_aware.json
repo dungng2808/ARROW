@@ -1,49 +1,47 @@
 {
-  "run_id": "20261120-005914-4o9i",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261120-005914-4o9i",
+  "run_id": "20261122-005942-5rpx",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261122-005942-5rpx",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser",
-      "result": "INVALID_OUTPUT",
-      "c0_state": null,
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
       "test_fqn": "ubic.gemma.core.loader.expression.geo.QuantitationTypeParameterGuesser_ArrowTest",
       "test_path": "gemma-core/src/test/java/ubic/gemma/core/loader/expression/geo/QuantitationTypeParameterGuesser_ArrowTest.java",
-      "final_code": null,
+      "final_code": "block3/final.java",
       "metrics": null,
       "metrics_skipped": "disabled",
       "tools": null,
       "tokens": {
         "in": 10316,
-        "out": 16384
+        "out": 11166
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 60.4,
-        "block2": 51.8,
-        "block3": null,
+        "block1": 66.3,
+        "block2": 74.8,
+        "block3": 54.1,
         "block4": null,
-        "total": 112.3
+        "total": 195.3
       },
-      "error": {
-        "code": "B2_INVALID_OUTPUT",
-        "message": "parse_error",
-        "hint": "Chạy lại, hoặc đổi model.",
-        "log": null
-      },
+      "error": null,
       "warnings": [],
-      "apply": null
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
     }
   ],
   "totals": {
     "llm_calls": 1,
     "tokens_in": 10316,
-    "tokens_out": 16384,
+    "tokens_out": 11166,
     "cost_usd": null
   },
   "warnings": [

@@ -1,5 +1,5 @@
 ARROW · CucableLogger (com.trivago.logging)
-[OK] Khối 1  Maven 3.9.16 · build root plugin-code · JDK 8 · JUnit 4 + Mockito · baseline 88 test ×2 · 64.6 s
-[OK] Khối 2  c0 · 2.7k token · 2.4 s · Candidate hợp lệ: 13 test, 13 assertion
+[OK] Khối 1  Maven 3.9.16 · build root plugin-code · JDK 8 · JUnit 4 + Mockito · baseline 88 test ×2 · 54.4 s
+[OK] Khối 2  c0 · 2.7k token · 3.5 s · Candidate hợp lệ: 13 test, 13 assertion
 [>] Khối 3  c0: COMPILE · cannot find symbol | method
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

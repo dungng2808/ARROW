@@ -1,5 +1,5 @@
 ARROW · SpringBootJwtApplication (me.aboullaite)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1 test ×2 · 112.5 s
-[OK] Khối 2  c0 · 1.4k token · 1.5 s · Candidate hợp lệ: 2 test, 4 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1 test ×2 · 125.0 s
+[OK] Khối 2  c0 · 1.4k token · 1.7 s · Candidate hợp lệ: 2 test, 4 assertion
 [>] Khối 3  c0: ASSERTION · AssertionError | testMainMethod
 [X] Khối 3  Kết thúc: ASSERTION (không sửa)

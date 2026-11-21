@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005338-bnkz",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-005338-bnkz",
+  "run_id": "20261122-005918-vjs7",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-005918-vjs7",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1146,
-        "out": 316
+        "out": 260
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 13.3,
+        "block1": 17.8,
         "block2": 1.9,
-        "block3": 5.4,
+        "block3": 9.6,
         "block4": null,
-        "total": 20.7
+        "total": 29.4
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1146,
-    "tokens_out": 316,
+    "tokens_out": 260,
     "cost_usd": null
   },
   "warnings": [

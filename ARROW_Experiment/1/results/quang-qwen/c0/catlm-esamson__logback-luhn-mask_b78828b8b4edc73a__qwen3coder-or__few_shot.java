@@ -41,17 +41,17 @@ public class LuhnMaskingConverter_ArrowTest {
 
     @Test
     public void testMaskValidLuhnNumberWithSpaces() {
-        assertEquals("card number is 1234 5678 9012 3456", LuhnMaskingConverter.mask("card number is 1234 5678 9012 3456"));
+        assertEquals("card number is MASKED", LuhnMaskingConverter.mask("card number is 1234 5678 9012 3456"));
     }
 
     @Test
     public void testMaskValidLuhnNumberWithHyphens() {
-        assertEquals("card number is 1234-5678-9012-3456", LuhnMaskingConverter.mask("card number is 1234-5678-9012-3456"));
+        assertEquals("card number is MASKED", LuhnMaskingConverter.mask("card number is 1234-5678-9012-3456"));
     }
 
     @Test
     public void testMaskValidLuhnNumberMixedSeparators() {
-        assertEquals("card number is 1234-5678 9012-3456", LuhnMaskingConverter.mask("card number is 1234-5678 9012-3456"));
+        assertEquals("card number is MASKED", LuhnMaskingConverter.mask("card number is 1234-5678 9012-3456"));
     }
 
     @Test
@@ -80,8 +80,8 @@ public class LuhnMaskingConverter_ArrowTest {
     }
 
     @Test
-    public void testHasEnoughDigitsMoreThanMin() {
-        assertEquals(true, LuhnMaskingConverter.hasEnoughDigits("12345678901234"));
+    public void testHasEnoughDigitsWithNonDigits() {
+        assertEquals(true, LuhnMaskingConverter.hasEnoughDigits("1234567890123abc"));
     }
 
     @Test
@@ -121,7 +121,7 @@ public class LuhnMaskingConverter_ArrowTest {
 
     @Test
     public void testMaskStringLong() {
-        assertEquals("**********MASKED", LuhnMaskingConverter.maskString("12345678901234567890", "3456"));
+        assertEquals("****************MASKED", LuhnMaskingConverter.maskString("12345678901234567890", "3456"));
     }
 
     @Test
@@ -131,7 +131,7 @@ public class LuhnMaskingConverter_ArrowTest {
 
     @Test
     public void testBuildMaskLong() {
-        assertEquals("**********MASKED", LuhnMaskingConverter.buildMask(12));
+        assertEquals("****************MASKED", LuhnMaskingConverter.buildMask(20));
     }
 
     @Test

@@ -16,19 +16,18 @@ import org.egov.tracer.model.CustomException;
 import org.egov.tracer.model.ServiceCallException;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.Mock;
-import org.mockito.junit.MockitoJUnitRunner;
+import org.mockito.*;
 
 import java.net.URI;
 import java.util.*;
 
 import static org.junit.Assert.*;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.*;
 
-@RunWith(MockitoJUnitRunner.class)
 public class TransactionService_ArrowTest {
+
+    @InjectMocks
+    private TransactionService transactionService;
 
     @Mock
     private TransactionValidator validator;
@@ -51,205 +50,235 @@ public class TransactionService_ArrowTest {
     @Mock
     private CollectionService collectionService;
 
-    private TransactionService transactionService;
-
     @Before
     public void setUp() {
-        transactionService = new TransactionService(validator, gatewayService, producer, transactionRepository,
-                collectionService, enrichmentService, appProperties);
+        MockitoAnnotations.initMocks(this);
     }
 
     @Test
-    public void testInitiateTransaction_NormalFlow() {
-        // Given
-        TransactionRequest transactionRequest = mock(TransactionRequest.class);
-        Transaction transaction = mock(Transaction.class);
-        RequestInfo requestInfo = mock(RequestInfo.class);
-        URI uri = URI.create("http://example.com");
+    public void testInitiateTransaction_WithSkipGateway() {
+        TransactionRequest transactionRequest = new TransactionRequest();
+        RequestInfo requestInfo = new RequestInfo();
+        transactionRequest.setRequestInfo(requestInfo);
+        Transaction transaction = new Transaction();
+        transaction.setTxnId("TXN123");
+        transactionRequest.setTransaction(transaction);
 
-        when(transactionRequest.getTransaction()).thenReturn(transaction);
-        when(transactionRequest.getRequestInfo()).thenReturn(requestInfo);
-        when(validator.skipGateway(any(Transaction.class))).thenReturn(false);
-        when(gatewayService.initiateTxn(any(Transaction.class))).thenReturn(uri);
-        when(appProperties.getSaveTxnTopic()).thenReturn("save-txn-topic");
-        when(appProperties.getSaveTxnDumpTopic()).thenReturn("save-txn-dump-topic");
+        when(validator.validateCreateTxn(transactionRequest)).thenReturn(true);
+        when(validator.skipGateway(transaction)).thenReturn(true);
+        doNothing().when(enrichmentService).enrichCreateTransaction(transactionRequest);
+        doNothing().when(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        doNothing().when(producer).push(anyString(), any(TransactionDumpRequest.class));
 
-        // When
         Transaction result = transactionService.initiateTransaction(transactionRequest);
 
-        // Then
+        assertNotNull(result);
+        assertEquals(Transaction.TxnStatusEnum.SUCCESS, result.getTxnStatus());
+        verify(validator).validateCreateTxn(transactionRequest);
+        verify(enrichmentService).enrichCreateTransaction(transactionRequest);
+        verify(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        verify(producer).push(anyString(), any(TransactionDumpRequest.class));
+    }
+
+    @Test
+    public void testInitiateTransaction_WithoutSkipGateway() {
+        TransactionRequest transactionRequest = new TransactionRequest();
+        RequestInfo requestInfo = new RequestInfo();
+        transactionRequest.setRequestInfo(requestInfo);
+        Transaction transaction = new Transaction();
+        transaction.setTxnId("TXN123");
+        transactionRequest.setTransaction(transaction);
+
+        when(validator.validateCreateTxn(transactionRequest)).thenReturn(true);
+        when(validator.skipGateway(transaction)).thenReturn(false);
+        when(gatewayService.initiateTxn(transaction)).thenReturn(URI.create("http://example.com"));
+        doNothing().when(enrichmentService).enrichCreateTransaction(transactionRequest);
+        doNothing().when(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        doNothing().when(producer).push(anyString(), any(TransactionDumpRequest.class));
+
+        Transaction result = transactionService.initiateTransaction(transactionRequest);
+
+        assertNotNull(result);
+        assertEquals("http://example.com", result.getRedirectUrl());
         verify(validator).validateCreateTxn(transactionRequest);
         verify(enrichmentService).enrichCreateTransaction(transactionRequest);
         verify(gatewayService).initiateTxn(transaction);
-        verify(transaction).setRedirectUrl(uri.toString());
-        verify(producer).push(eq("save-txn-topic"), any(org.egov.pg.models.TransactionRequest.class));
-        verify(producer).push(eq("save-txn-dump-topic"), any(TransactionDumpRequest.class));
-        assertEquals(transaction, result);
-    }
-
-    @Test
-    public void testInitiateTransaction_SkipGateway() {
-        // Given
-        TransactionRequest transactionRequest = mock(TransactionRequest.class);
-        Transaction transaction = mock(Transaction.class);
-        RequestInfo requestInfo = mock(RequestInfo.class);
-
-        when(transactionRequest.getTransaction()).thenReturn(transaction);
-        when(transactionRequest.getRequestInfo()).thenReturn(requestInfo);
-        when(validator.skipGateway(any(Transaction.class))).thenReturn(true);
-        when(appProperties.getSaveTxnTopic()).thenReturn("save-txn-topic");
-        when(appProperties.getSaveTxnDumpTopic()).thenReturn("save-txn-dump-topic");
-
-        // When
-        Transaction result = transactionService.initiateTransaction(transactionRequest);
-
-        // Then
-        verify(validator).validateCreateTxn(transactionRequest);
-        verify(enrichmentService).enrichCreateTransaction(transactionRequest);
-        verify(validator).skipGateway(transaction);
-        verify(transaction).setTxnStatus(Transaction.TxnStatusEnum.SUCCESS);
-        verify(producer).push(eq("save-txn-topic"), any(org.egov.pg.models.TransactionRequest.class));
-        verify(producer).push(eq("save-txn-dump-topic"), any(TransactionDumpRequest.class));
-        assertEquals(transaction, result);
+        verify(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        verify(producer).push(anyString(), any(TransactionDumpRequest.class));
     }
 
     @Test
     public void testGetTransactions_Success() {
-        // Given
-        TransactionCriteria transactionCriteria = mock(TransactionCriteria.class);
-        List<Transaction> expectedTransactions = Arrays.asList(mock(Transaction.class), mock(Transaction.class));
+        TransactionCriteria transactionCriteria = new TransactionCriteria();
+        List<Transaction> expectedTransactions = Arrays.asList(new Transaction(), new Transaction());
 
         when(transactionRepository.fetchTransactions(transactionCriteria)).thenReturn(expectedTransactions);
 
-        // When
         List<Transaction> result = transactionService.getTransactions(transactionCriteria);
 
-        // Then
         assertEquals(expectedTransactions, result);
+        verify(transactionRepository).fetchTransactions(transactionCriteria);
     }
 
     @Test(expected = CustomException.class)
     public void testGetTransactions_DataAccessException() {
-        // Given
-        TransactionCriteria transactionCriteria = mock(TransactionCriteria.class);
+        TransactionCriteria transactionCriteria = new TransactionCriteria();
 
         when(transactionRepository.fetchTransactions(transactionCriteria)).thenThrow(new org.springframework.dao.DataAccessException("DB Error") {});
 
-        // When & Then
         transactionService.getTransactions(transactionCriteria);
     }
 
     @Test
-    public void testUpdateTransaction_NormalFlow() {
-        // Given
-        RequestInfo requestInfo = mock(RequestInfo.class);
+    public void testUpdateTransaction_WithSkipGateway() {
+        RequestInfo requestInfo = new RequestInfo();
         Map<String, String> requestParams = new HashMap<>();
         requestParams.put("txnId", "TXN123");
-        Transaction currentTxnStatus = mock(Transaction.class);
-        Transaction newTxn = mock(Transaction.class);
-        TransactionDump dump = mock(TransactionDump.class);
 
-        when(validator.validateUpdateTxn(requestParams)).thenReturn(currentTxnStatus);
-        when(validator.skipGateway(currentTxnStatus)).thenReturn(false);
-        when(gatewayService.getLiveStatus(currentTxnStatus, requestParams)).thenReturn(newTxn);
-        when(newTxn.getResponseJson()).thenReturn("{\"status\":\"SUCCESS\"}");
-        when(appProperties.getUpdateTxnTopic()).thenReturn("update-txn-topic");
-        when(appProperties.getUpdateTxnDumpTopic()).thenReturn("update-txn-dump-topic");
-
-        // When
-        List<Transaction> result = transactionService.updateTransaction(requestInfo, requestParams);
-
-        // Then
-        verify(validator).validateUpdateTxn(requestParams);
-        verify(validator).skipGateway(currentTxnStatus);
-        verify(gatewayService).getLiveStatus(currentTxnStatus, requestParams);
-        verify(enrichmentService).enrichUpdateTransaction(any(TransactionRequest.class), eq(newTxn));
-        verify(validator).shouldGenerateReceipt(currentTxnStatus, newTxn);
-        verify(producer).push(eq("update-txn-topic"), any(org.egov.pg.models.TransactionRequest.class));
-        verify(producer).push(eq("update-txn-dump-topic"), any(TransactionDumpRequest.class));
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals(newTxn, result.get(0));
-    }
-
-    @Test
-    public void testUpdateTransaction_SkipGateway() {
-        // Given
-        RequestInfo requestInfo = mock(RequestInfo.class);
-        Map<String, String> requestParams = new HashMap<>();
-        requestParams.put("txnId", "TXN123");
-        Transaction currentTxnStatus = mock(Transaction.class);
+        Transaction currentTxnStatus = new Transaction();
+        currentTxnStatus.setTxnId("TXN123");
+        currentTxnStatus.setTxnStatus(Transaction.TxnStatusEnum.PENDING);
 
         when(validator.validateUpdateTxn(requestParams)).thenReturn(currentTxnStatus);
         when(validator.skipGateway(currentTxnStatus)).thenReturn(true);
+        doNothing().when(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        doNothing().when(producer).push(anyString(), any(TransactionDumpRequest.class));
 
-        // When
         List<Transaction> result = transactionService.updateTransaction(requestInfo, requestParams);
 
-        // Then
-        verify(validator).validateUpdateTxn(requestParams);
-        verify(validator).skipGateway(currentTxnStatus);
         assertNotNull(result);
         assertEquals(1, result.size());
         assertEquals(currentTxnStatus, result.get(0));
+        verify(validator).validateUpdateTxn(requestParams);
+        verify(validator).skipGateway(currentTxnStatus);
+        verify(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        verify(producer).push(anyString(), any(TransactionDumpRequest.class));
     }
 
     @Test
-    public void testUpdateTransaction_GenerateReceipt_Success() {
-        // Given
-        RequestInfo requestInfo = mock(RequestInfo.class);
+    public void testUpdateTransaction_WithoutSkipGateway_Success() {
+        RequestInfo requestInfo = new RequestInfo();
         Map<String, String> requestParams = new HashMap<>();
         requestParams.put("txnId", "TXN123");
-        Transaction currentTxnStatus = mock(Transaction.class);
-        Transaction newTxn = mock(Transaction.class);
-        Receipt receipt = mock(Receipt.class);
-        List<Receipt> receipts = Arrays.asList(receipt);
+
+        Transaction currentTxnStatus = new Transaction();
+        currentTxnStatus.setTxnId("TXN123");
+        currentTxnStatus.setTxnStatus(Transaction.TxnStatusEnum.PENDING);
+
+        Transaction newTxn = new Transaction();
+        newTxn.setTxnId("TXN123");
+        newTxn.setTxnStatus(Transaction.TxnStatusEnum.SUCCESS);
+        newTxn.setResponseJson("{\"status\":\"SUCCESS\"}");
 
         when(validator.validateUpdateTxn(requestParams)).thenReturn(currentTxnStatus);
         when(validator.skipGateway(currentTxnStatus)).thenReturn(false);
         when(gatewayService.getLiveStatus(currentTxnStatus, requestParams)).thenReturn(newTxn);
-        when(newTxn.getResponseJson()).thenReturn("{\"status\":\"SUCCESS\"}");
+        doNothing().when(enrichmentService).enrichUpdateTransaction(any(TransactionRequest.class), any(Transaction.class));
         when(validator.shouldGenerateReceipt(currentTxnStatus, newTxn)).thenReturn(true);
-        when(collectionService.generateReceipt(requestInfo, newTxn)).thenReturn(receipts);
-        when(receipt.getBill()).thenReturn(Collections.emptyList());
-        when(appProperties.getUpdateTxnTopic()).thenReturn("update-txn-topic");
-        when(appProperties.getUpdateTxnDumpTopic()).thenReturn("update-txn-dump-topic");
+        when(collectionService.generateReceipt(requestInfo, newTxn)).thenReturn(Arrays.asList(new Receipt()));
+        doNothing().when(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        doNothing().when(producer).push(anyString(), any(TransactionDumpRequest.class));
 
-        // When
         List<Transaction> result = transactionService.updateTransaction(requestInfo, requestParams);
 
-        // Then
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertEquals(newTxn, result.get(0));
         verify(validator).validateUpdateTxn(requestParams);
+        verify(validator).skipGateway(currentTxnStatus);
+        verify(gatewayService).getLiveStatus(currentTxnStatus, requestParams);
+        verify(enrichmentService).enrichUpdateTransaction(any(TransactionRequest.class), any(Transaction.class));
         verify(validator).shouldGenerateReceipt(currentTxnStatus, newTxn);
         verify(collectionService).generateReceipt(requestInfo, newTxn);
-        verify(producer).push(eq("update-txn-topic"), any(org.egov.pg.models.TransactionRequest.class));
-        verify(producer).push(eq("update-txn-dump-topic"), any(TransactionDumpRequest.class));
+        verify(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        verify(producer).push(anyString(), any(TransactionDumpRequest.class));
     }
 
     @Test
-    public void testUpdateTransaction_GenerateReceipt_Exception() {
-        // Given
-        RequestInfo requestInfo = mock(RequestInfo.class);
+    public void testUpdateTransaction_WithoutSkipGateway_Failure() {
+        RequestInfo requestInfo = new RequestInfo();
         Map<String, String> requestParams = new HashMap<>();
         requestParams.put("txnId", "TXN123");
-        Transaction currentTxnStatus = mock(Transaction.class);
-        Transaction newTxn = mock(Transaction.class);
+
+        Transaction currentTxnStatus = new Transaction();
+        currentTxnStatus.setTxnId("TXN123");
+        currentTxnStatus.setTxnStatus(Transaction.TxnStatusEnum.PENDING);
+
+        Transaction newTxn = new Transaction();
+        newTxn.setTxnId("TXN123");
+        newTxn.setTxnStatus(Transaction.TxnStatusEnum.FAILED);
+        newTxn.setResponseJson("{\"status\":\"FAILED\"}");
 
         when(validator.validateUpdateTxn(requestParams)).thenReturn(currentTxnStatus);
         when(validator.skipGateway(currentTxnStatus)).thenReturn(false);
         when(gatewayService.getLiveStatus(currentTxnStatus, requestParams)).thenReturn(newTxn);
-        when(newTxn.getResponseJson()).thenReturn("{\"status\":\"SUCCESS\"}");
-        when(validator.shouldGenerateReceipt(currentTxnStatus, newTxn)).thenReturn(true);
-        when(collectionService.generateReceipt(requestInfo, newTxn))
-                .thenThrow(new CustomException("RECEIPT_GENERATION_FAILED", "Failed to generate receipt"));
+        doNothing().when(enrichmentService).enrichUpdateTransaction(any(TransactionRequest.class), any(Transaction.class));
+        when(validator.shouldGenerateReceipt(currentTxnStatus, newTxn)).thenReturn(false);
+        doNothing().when(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        doNothing().when(producer).push(anyString(), any(TransactionDumpRequest.class));
 
-        // When
         List<Transaction> result = transactionService.updateTransaction(requestInfo, requestParams);
 
-        // Then
+        assertNotNull(result);
+        assertEquals(1, result.size());
+        assertEquals(newTxn, result.get(0));
         verify(validator).validateUpdateTxn(requestParams);
+        verify(validator).skipGateway(currentTxnStatus);
+        verify(gatewayService).getLiveStatus(currentTxnStatus, requestParams);
+        verify(enrichmentService).enrichUpdateTransaction(any(TransactionRequest.class), any(Transaction.class));
         verify(validator).shouldGenerateReceipt(currentTxnStatus, newTxn);
-        verify(collectionService).generateReceipt(requestInfo, newTxn);
-        verify(newTxn).setTxnStatusMsg(PgConstants.TXN_RECEIPT_GEN_FAILED);
+        verify(producer).push(anyString(), any(org.egov.pg.models.TransactionRequest.class));
+        verify(producer).push(anyString(), any(TransactionDumpRequest.class));
+    }
+
+    @Test
+    public void testGenerateReceipt_Success() {
+        RequestInfo requestInfo = new RequestInfo();
+        Transaction transaction = new Transaction();
+        transaction.setTxnId("TXN123");
+
+        Receipt receipt = new Receipt();
+        receipt.setBill(Collections.singletonList(
+                new org.egov.pg.models.Bill(
+                        Collections.singletonList(
+                                new org.egov.pg.models.BillDetails("REC123")
+                        )
+                )
+        ));
+
+        when(collectionService.generateReceipt(requestInfo, transaction)).thenReturn(Arrays.asList(receipt));
+
+        transactionService.generateReceipt(requestInfo, transaction);
+
+        assertEquals("REC123", transaction.getReceipt());
+        verify(collectionService).generateReceipt(requestInfo, transaction);
+    }
+
+    @Test
+    public void testGenerateReceipt_CustomException() {
+        RequestInfo requestInfo = new RequestInfo();
+        Transaction transaction = new Transaction();
+        transaction.setTxnId("TXN123");
+
+        when(collectionService.generateReceipt(requestInfo, transaction)).thenThrow(new CustomException("ERROR", "Error"));
+
+        transactionService.generateReceipt(requestInfo, transaction);
+
+        assertEquals(PgConstants.TXN_RECEIPT_GEN_FAILED, transaction.getTxnStatusMsg());
+        verify(collectionService).generateReceipt(requestInfo, transaction);
+    }
+
+    @Test
+    public void testGenerateReceipt_ServiceCallException() {
+        RequestInfo requestInfo = new RequestInfo();
+        Transaction transaction = new Transaction();
+        transaction.setTxnId("TXN123");
+
+        when(collectionService.generateReceipt(requestInfo, transaction)).thenThrow(new ServiceCallException("ERROR"));
+
+        transactionService.generateReceipt(requestInfo, transaction);
+
+        assertEquals(PgConstants.TXN_RECEIPT_GEN_FAILED, transaction.getTxnStatusMsg());
+        verify(collectionService).generateReceipt(requestInfo, transaction);
     }
 }

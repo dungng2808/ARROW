@@ -63,28 +63,28 @@ public class UnknownHandshakeMessage_ArrowTest {
     @Test
     public void testGetHandler() {
         UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        TlsMessageHandler handler = message.getHandler(null);
-        assertNotNull(handler);
-        assertTrue(handler instanceof UnknownHandshakeHandler);
+        TlsContext context = new TlsContext();
+        assertNotNull(message.getHandler(context));
+        assertTrue(message.getHandler(context) instanceof UnknownHandshakeHandler);
     }
 
     @Test
-    public void testToStringWithNullData() {
+    public void testToString() {
         UnknownHandshakeMessage message = new UnknownHandshakeMessage();
         String result = message.toString();
         assertNotNull(result);
         assertTrue(result.contains("UnknownHandshakeMessage"));
-        assertTrue(result.contains("null"));
+        assertTrue(result.contains("Data: null"));
     }
 
     @Test
     public void testToStringWithData() {
         UnknownHandshakeMessage message = new UnknownHandshakeMessage();
-        byte[] testData = {1, 2, 3, 4};
+        byte[] testData = {(byte) 0xFF, (byte) 0xFE, (byte) 0xFD};
         message.setData(testData);
         String result = message.toString();
         assertNotNull(result);
         assertTrue(result.contains("UnknownHandshakeMessage"));
-        assertTrue(result.contains("01020304"));
+        assertTrue(result.contains("Data: "));
     }
 }

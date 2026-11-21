@@ -66,6 +66,8 @@ public class BaseCouchbaseRepository_ArrowTest {
         } catch (ExecutionException e) {
             assertNotNull(e.getCause());
             assertEquals(IOException.class, e.getCause().getClass());
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
         }
     }
 

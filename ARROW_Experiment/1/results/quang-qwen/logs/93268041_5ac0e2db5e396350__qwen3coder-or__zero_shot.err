@@ -1,5 +1,5 @@
 ARROW · Key (com.macasaet.fernet)
-[OK] Khối 1  Maven 3.6.3 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 38 test ×2 · 114.6 s
-[OK] Khối 2  c0 · 6.9k token · 10.6 s · Candidate hợp lệ: 26 test, 46 assertion
-[OK] Khối 3  c0: VALID
-[OK] Khối 3  Kết thúc: VALID (không sửa)
+[OK] Khối 1  Maven 3.6.3 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 38 test ×2 · 103.1 s
+[OK] Khối 2  c0 · 5.7k token · 18.8 s · Candidate hợp lệ: 24 test, 34 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

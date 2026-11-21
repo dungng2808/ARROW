@@ -1,5 +1,5 @@
 ARROW · WordPos (edu.umn.biomedicus.common.tuples)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 378 test (dùng lại, đo 20/11 00:17) · 24.3 s
-[OK] Khối 2  c0 · 4.4k token · 20.0 s · Candidate hợp lệ: 18 test, 23 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 378 test (dùng lại, đo 22/11 00:15) · 28.4 s
+[OK] Khối 2  c0 · 4.5k token · 3.9 s · Candidate hợp lệ: 18 test, 21 assertion
 [>] Khối 3  c0: COMPILE · cannot find symbol | variable
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

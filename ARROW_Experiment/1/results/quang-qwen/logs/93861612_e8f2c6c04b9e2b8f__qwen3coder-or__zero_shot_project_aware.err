@@ -1,5 +1,5 @@
 ARROW · CucableLogger (com.trivago.logging)
-[OK] Khối 1  Maven 3.9.16 · build root plugin-code · JDK 8 · JUnit 4 + Mockito · baseline 88 test (dùng lại, đo 20/11 00:35) · 8.6 s
-[OK] Khối 2  c0 · 3.2k token · 2.9 s · Candidate hợp lệ: 17 test, 17 assertion
-[>] Khối 3  c0: ASSERTION · NoInteractionsWanted | testLogWithNullCurrentLogLevel
-[X] Khối 3  Kết thúc: ASSERTION (không sửa)
+[OK] Khối 1  Maven 3.9.16 · build root plugin-code · JDK 8 · JUnit 4 + Mockito · baseline 88 test (dùng lại, đo 22/11 00:36) · 11.7 s
+[OK] Khối 2  c0 · 3.0k token · 3.0 s · Candidate hợp lệ: 13 test, 13 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

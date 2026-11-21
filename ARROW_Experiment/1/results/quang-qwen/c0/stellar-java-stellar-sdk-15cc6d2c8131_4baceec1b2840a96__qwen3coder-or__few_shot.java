@@ -23,8 +23,10 @@ public class KeyPair_ArrowTest {
     }
 
     @Test
-    public void testCanSignReturnsFalseWhenPrivateKeyAbsent() {
-        EdDSAPublicKey publicKey = new EdDSAPublicKey(new byte[32]);
+    public void testCanSignReturnsFalseWhenPrivateKeyNull() {
+        EdDSAPublicKey publicKey = new EdDSAPublicKey(
+                new net.i2p.crypto.eddsa.spec.EdDSAPublicKeySpec(
+                        new byte[32], EdDSANamedCurveTable.ED_25519_CURVE_SPEC));
         KeyPair keyPair = new KeyPair(publicKey);
         assertFalse(keyPair.canSign());
     }
@@ -90,18 +92,11 @@ public class KeyPair_ArrowTest {
 
     @Test(expected = RuntimeException.class)
     public void testSignThrowsExceptionWhenNoPrivateKey() {
-        EdDSAPublicKey publicKey = new EdDSAPublicKey(new byte[32]);
+        EdDSAPublicKey publicKey = new EdDSAPublicKey(
+                new net.i2p.crypto.eddsa.spec.EdDSAPublicKeySpec(
+                        new byte[32], EdDSANamedCurveTable.ED_25519_CURVE_SPEC));
         KeyPair keyPair = new KeyPair(publicKey);
-        keyPair.sign("test data".getBytes());
-    }
-
-    @Test
-    public void testVerifyReturnsFalseOnInvalidSignature() {
-        KeyPair keyPair = KeyPair.random();
-        byte[] data = "test data".getBytes();
-        byte[] invalidSignature = new byte[64];
-        Arrays.fill(invalidSignature, (byte) 1);
-        assertFalse(keyPair.verify(data, invalidSignature));
+        keyPair.sign("test".getBytes());
     }
 
     @Test
@@ -125,12 +120,56 @@ public class KeyPair_ArrowTest {
     }
 
     @Test
+    public void testVerifyReturnsFalseOnInvalidSignature() {
+        KeyPair keyPair = KeyPair.random();
+        byte[] data = "test data".getBytes();
+        byte[] invalidSignature = new byte[64];
+        Arrays.fill(invalidSignature, (byte) 1);
+        assertFalse(keyPair.verify(data, invalidSignature));
+    }
+
+    @Test
+    public void testVerifyReturnsFalseOnSignatureException() {
+        KeyPair keyPair = KeyPair.random();
+        byte[] data = "test data".getBytes();
+        byte[] signature = new byte[64];
+        Arrays.fill(signature, (byte) 1);
+        try {
+            // This should cause a SignatureException
+            assertFalse(keyPair.verify(data, signature));
+        } catch (RuntimeException e) {
+            // Expected behavior
+        }
+    }
+
+    @Test
     public void testGetSignatureHint() {
         KeyPair keyPair = KeyPair.random();
-        org.stellar.sdk.xdr.SignatureHint signatureHint = keyPair.getSignatureHint();
-        assertNotNull(signatureHint);
-        assertNotNull(signatureHint.getSignatureHint());
-        assertEquals(4, signatureHint.getSignatureHint().length);
+        org.stellar.sdk.xdr.SignatureHint hint = keyPair.getSignatureHint();
+        assertNotNull(hint);
+        assertNotNull(hint.getSignatureHint());
+        assertEquals(4, hint.getSignatureHint().length);
+    }
+
+    @Test
+    public void testEqualsAndHashCode() {
+        KeyPair keyPair1 = KeyPair.random();
+        KeyPair keyPair2 = KeyPair.random();
+        KeyPair keyPair3 = new KeyPair(keyPair1.mPublicKey, keyPair1.mPrivateKey);
+
+        assertEquals(keyPair1, keyPair1);
+        assertNotEquals(keyPair1, keyPair2);
+        assertEquals(keyPair1, keyPair3);
+        assertEquals(keyPair1.hashCode(), keyPair3.hashCode());
+
+        // Test with public key only
+        EdDSAPublicKey publicKey = new EdDSAPublicKey(
+                new net.i2p.crypto.eddsa.spec.EdDSAPublicKeySpec(
+                        new byte[32], EdDSANamedCurveTable.ED_25519_CURVE_SPEC));
+        KeyPair keyPair4 = new KeyPair(publicKey);
+        KeyPair keyPair5 = new KeyPair(publicKey);
+        assertEquals(keyPair4, keyPair5);
+        assertEquals(keyPair4.hashCode(), keyPair5.hashCode());
     }
 
     @Test
@@ -153,7 +192,7 @@ public class KeyPair_ArrowTest {
     }
 
     @Test
-    public void testFromSecretSeedByteArray() {
+    public void testFromSecretSeedBytes() {
         KeyPair keyPair = KeyPair.random();
         char[] seedChars = keyPair.getSecretSeed();
         byte[] seedBytes = StrKey.decodeStellarSecretSeed(seedChars);
@@ -182,35 +221,12 @@ public class KeyPair_ArrowTest {
 
     @Test
     public void testRandom() {
-        KeyPair keyPair = KeyPair.random();
-        assertNotNull(keyPair);
-        assertNotNull(keyPair.getPublicKey());
-        assertNotNull(keyPair.getSecretSeed());
-        assertTrue(keyPair.canSign());
-    }
-
-    @Test
-    public void testEqualsAndHashCode() {
         KeyPair keyPair1 = KeyPair.random();
         KeyPair keyPair2 = KeyPair.random();
-        KeyPair keyPair3 = new KeyPair(keyPair1.mPublicKey, keyPair1.mPrivateKey);
-
-        assertEquals(keyPair1, keyPair3);
-        assertEquals(keyPair1.hashCode(), keyPair3.hashCode());
-
-        assertNotEquals(keyPair1, keyPair2);
-        assertNotEquals(keyPair1.hashCode(), keyPair2.hashCode());
-    }
-
-    @Test
-    public void testEqualsWithNull() {
-        KeyPair keyPair = KeyPair.random();
-        assertNotEquals(keyPair, null);
-    }
-
-    @Test
-    public void testEqualsWithDifferentClass() {
-        KeyPair keyPair = KeyPair.random();
-        assertNotEquals(keyPair, new Object());
+        assertNotNull(keyPair1);
+        assertNotNull(keyPair2);
+        assertTrue(keyPair1.canSign());
+        assertTrue(keyPair2.canSign());
+        assertNotEquals(keyPair1.getPublicKey(), keyPair2.getPublicKey());
     }
 }

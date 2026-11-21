@@ -82,7 +82,20 @@ public class WordPos_ArrowTest {
         WordPos wordPos = new WordPos(word, tag);
         
         WordPos forwarded = wordPos.forward();
+        
         assertEquals("ello", forwarded.getWord());
+        assertEquals(tag, forwarded.getTag());
+    }
+
+    @Test
+    public void testForwardEmptyString() {
+        PartOfSpeech tag = PartOfSpeech.NOUN;
+        String word = "a";
+        WordPos wordPos = new WordPos(word, tag);
+        
+        WordPos forwarded = wordPos.forward();
+        
+        assertEquals("", forwarded.getWord());
         assertEquals(tag, forwarded.getTag());
     }
 

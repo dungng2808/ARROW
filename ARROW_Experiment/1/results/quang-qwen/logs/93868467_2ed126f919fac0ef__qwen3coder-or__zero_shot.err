@@ -1,5 +1,5 @@
 ARROW · MythTime (com.redis.utils)
-[OK] Khối 1  Gradle 3.5 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 100 test ×2 · 121.4 s
-[OK] Khối 2  c0 · 1.5k token · 1.3 s · Candidate hợp lệ: 3 test, 6 assertion
+[OK] Khối 1  Gradle 3.5 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 100 test ×2 · 135.8 s
+[OK] Khối 2  c0 · 1.5k token · 7.4 s · Candidate hợp lệ: 3 test, 6 assertion
 [OK] Khối 3  c0: VALID
 [OK] Khối 3  Kết thúc: VALID (không sửa)

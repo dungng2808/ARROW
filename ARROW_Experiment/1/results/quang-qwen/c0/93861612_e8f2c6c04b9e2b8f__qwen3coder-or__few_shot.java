@@ -73,7 +73,7 @@ public class CucableLogger_ArrowTest {
     @Test
     public void testLogWithNullLogLevels() {
         cucableLogger.initialize(mockLog, "default");
-        cucableLogger.info("test message", (CucableLogger.CucableLogLevel[]) null);
+        cucableLogger.info("test message");
         verifyNoInteractions(mockLog);
     }
 
@@ -92,9 +92,16 @@ public class CucableLogger_ArrowTest {
     }
 
     @Test
-    public void testLogWithNonMatchingLogLevelInArray() {
+    public void testLogWithNoMatchingLogLevelInArray() {
         cucableLogger.initialize(mockLog, "compact");
         cucableLogger.info("test message", CucableLogger.CucableLogLevel.DEFAULT, CucableLogger.CucableLogLevel.MINIMAL);
+        verifyNoInteractions(mockLog);
+    }
+
+    @Test
+    public void testLogWithOffLogLevel() {
+        cucableLogger.initialize(mockLog, "off");
+        cucableLogger.info("test message", CucableLogger.CucableLogLevel.DEFAULT);
         verifyNoInteractions(mockLog);
     }
 }

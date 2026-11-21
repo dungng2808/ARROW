@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-005040-hsc0",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-005040-hsc0",
+  "run_id": "20261122-005555-z38w",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-005555-z38w",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.github.ssedano.hash.JumpConsistentHash",
-      "result": "ASSERTION",
-      "c0_state": "ASSERTION",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2012,
-        "out": 823
+        "out": 936
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 11.7,
-        "block2": 2.9,
-        "block3": 5.2,
+        "block1": 15.2,
+        "block2": 10.9,
+        "block3": 5.7,
         "block4": null,
-        "total": 19.9
+        "total": 31.9
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2012,
-    "tokens_out": 823,
+    "tokens_out": 936,
     "cost_usd": null
   },
   "warnings": [

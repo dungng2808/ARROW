@@ -36,7 +36,7 @@ public class ArtemisBrokerManager_ArrowTest {
         properties.setBrokerRedeliveryDelayMultiplier(2.0);
         properties.setBrokerMaxRedeliveryDelay(10000L);
         properties.setBrokerSendToDlaOnNoRoute(true);
-        properties.setManagementAddress("activemq.management");
+        properties.setManagementAddress("management");
     }
 
     @Test
@@ -44,14 +44,14 @@ public class ArtemisBrokerManager_ArrowTest {
         ClientSessionFactory sessionFactory = Mockito.mock(ClientSessionFactory.class);
         ClientSession session = Mockito.mock(ClientSession.class);
         ClientSession.AddressQuery addressQuery = Mockito.mock(ClientSession.AddressQuery.class);
-        
+
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
         when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt())).thenReturn(session);
         when(session.addressQuery(any(SimpleString.class))).thenReturn(addressQuery);
         when(addressQuery.isExists()).thenReturn(false);
-        
+
         artemisBrokerManager.createAddress("testAddress", properties);
-        
+
         verify(session).start();
         verify(session).createAddress(any(SimpleString.class), any(), anyBoolean());
         verify(session).stop();
@@ -62,14 +62,14 @@ public class ArtemisBrokerManager_ArrowTest {
         ClientSessionFactory sessionFactory = Mockito.mock(ClientSessionFactory.class);
         ClientSession session = Mockito.mock(ClientSession.class);
         ClientSession.AddressQuery addressQuery = Mockito.mock(ClientSession.AddressQuery.class);
-        
+
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
         when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt())).thenReturn(session);
         when(session.addressQuery(any(SimpleString.class))).thenReturn(addressQuery);
         when(addressQuery.isExists()).thenReturn(true);
-        
+
         artemisBrokerManager.createAddress("testAddress", properties);
-        
+
         verify(session).start();
         verify(session, never()).createAddress(any(SimpleString.class), any(), anyBoolean());
         verify(session).stop();
@@ -79,17 +79,16 @@ public class ArtemisBrokerManager_ArrowTest {
     public void testCreateQueue() throws Exception {
         ClientSessionFactory sessionFactory = Mockito.mock(ClientSessionFactory.class);
         ClientSession session = Mockito.mock(ClientSession.class);
-        
+
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
         when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt())).thenReturn(session);
         doNothing().when(session).start();
-        doNothing().when(session).stop();
-        
+
         artemisBrokerManager.createQueue("testAddress", "testQueue");
-        
+
         verify(session).start();
+        verify(session).queueQuery(any(SimpleString.class));
         verify(session).createSharedQueue(any(SimpleString.class), any(), any(SimpleString.class), anyBoolean());
-        verify(session).stop();
     }
 
     @Test(expected = ProvisioningException.class)
@@ -97,13 +96,13 @@ public class ArtemisBrokerManager_ArrowTest {
         ClientSessionFactory sessionFactory = Mockito.mock(ClientSessionFactory.class);
         ClientSession session = Mockito.mock(ClientSession.class);
         ClientSession.QueueQuery queueQuery = Mockito.mock(ClientSession.QueueQuery.class);
-        
+
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
         when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt())).thenReturn(session);
         when(session.queueQuery(any(SimpleString.class))).thenReturn(queueQuery);
         when(queueQuery.isExists()).thenReturn(true);
         when(queueQuery.getAddress()).thenReturn(SimpleString.toSimpleString("differentAddress"));
-        
+
         artemisBrokerManager.createQueue("testAddress", "testQueue");
     }
 
@@ -113,13 +112,13 @@ public class ArtemisBrokerManager_ArrowTest {
         ClientSession session = Mockito.mock(ClientSession.class);
         ClientRequestor requestor = Mockito.mock(ClientRequestor.class);
         AddressSettingsInfo addressSettingsInfo = Mockito.mock(AddressSettingsInfo.class);
-        
+
         when(serverLocator.createSessionFactory()).thenReturn(sessionFactory);
         when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt())).thenReturn(session);
         when(session.createMessage(anyBoolean())).thenReturn(Mockito.mock(ClientMessage.class));
         when(session.createRequestor(anyString())).thenReturn(requestor);
-        when(addressSettingsInfo.getDeadLetterAddress()).thenReturn("test.dlq");
-        when(addressSettingsInfo.getExpiryAddress()).thenReturn("test.exp");
+        when(addressSettingsInfo.getDeadLetterAddress()).thenReturn("deadLetter");
+        when(addressSettingsInfo.getExpiryAddress()).thenReturn("expiry");
         when(addressSettingsInfo.isLastValueQueue()).thenReturn(false);
         when(addressSettingsInfo.getMaxSizeBytes()).thenReturn(-1L);
         when(addressSettingsInfo.getPageSizeBytes()).thenReturn(1024L);
@@ -133,36 +132,39 @@ public class ArtemisBrokerManager_ArrowTest {
         when(addressSettingsInfo.isAutoDeleteJmsQueues()).thenReturn(false);
         when(addressSettingsInfo.isAutoCreateJmsTopics()).thenReturn(false);
         when(addressSettingsInfo.isAutoDeleteJmsTopics()).thenReturn(false);
-        
-        doNothing().when(session).start();
-        doNothing().when(session).stop();
-        doReturn(addressSettingsInfo).when(artemisBrokerManager).getCurrentAddressSettings(any(ClientSession.class), any(ClientRequestor.class), anyString());
-        
-        artemisBrokerManager.createAddress("testAddress", properties);
-        
+
+        artemisBrokerManager.getClass().getDeclaredMethod("configureAddress", ClientSession.class, String.class, ArtemisCommonProperties.class)
+                .invoke(artemisBrokerManager, session, "testAddress", properties);
+
         verify(session, times(2)).createSharedQueue(any(SimpleString.class), any(), any(SimpleString.class), anyBoolean());
     }
 
     @Test
-    public void testGetClientSessionWithNullUsername() throws Exception {
-        ArtemisBrokerManager manager = new ArtemisBrokerManager(serverLocator, null, "testPassword");
+    public void testGetClientSessionWithoutUsername() throws Exception {
         ClientSessionFactory sessionFactory = Mockito.mock(ClientSessionFactory.class);
         ClientSession session = Mockito.mock(ClientSession.class);
-        
+
+        ArtemisBrokerManager manager = new ArtemisBrokerManager(serverLocator, null, null);
         when(sessionFactory.createSession()).thenReturn(session);
-        ClientSession result = manager.getClientSession(sessionFactory);
-        
+
+        ClientSession result = manager.getClass().getDeclaredMethod("getClientSession", ClientSessionFactory.class)
+                .invoke(manager, sessionFactory);
+
         assertEquals(session, result);
     }
 
     @Test
-    public void testGetClientSessionWithUsernameAndPassword() throws Exception {
+    public void testGetClientSessionWithUsername() throws Exception {
         ClientSessionFactory sessionFactory = Mockito.mock(ClientSessionFactory.class);
         ClientSession session = Mockito.mock(ClientSession.class);
-        
+
         when(sessionFactory.createSession(anyString(), anyString(), anyBoolean(), anyBoolean(), anyBoolean(), anyBoolean(), anyInt())).thenReturn(session);
-        ClientSession result = artemisBrokerManager.getClientSession(sessionFactory);
-        
+        when(serverLocator.isPreAcknowledge()).thenReturn(false);
+        when(serverLocator.getAckBatchSize()).thenReturn(0);
+
+        ClientSession result = artemisBrokerManager.getClass().getDeclaredMethod("getClientSession", ClientSessionFactory.class)
+                .invoke(artemisBrokerManager, sessionFactory);
+
         assertEquals(session, result);
     }
 }

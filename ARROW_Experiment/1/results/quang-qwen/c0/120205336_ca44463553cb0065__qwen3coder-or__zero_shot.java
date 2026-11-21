@@ -17,31 +17,34 @@ public class Slice_ArrowTest {
   @Test
   public void testGetWithDefaultValue() {
     Slice<String, Integer> slice = new Slice<>(0);
-    Integer result = slice.get("nonExistentField");
-    assertEquals(Integer.valueOf(0), result);
+    Integer value = slice.get("nonExistentField");
+    assertEquals(Integer.valueOf(0), value);
   }
 
   @Test
   public void testGetWithSetField() {
     Slice<String, Integer> slice = new Slice<>(0);
     slice.set("field1", 42);
-    Integer result = slice.get("field1");
-    assertEquals(Integer.valueOf(42), result);
+    Integer value = slice.get("field1");
+    assertEquals(Integer.valueOf(42), value);
   }
 
   @Test
   public void testGetWithNullDefaultValue() {
     Slice<String, Integer> slice = new Slice<>((Integer) null);
-    Integer result = slice.get("anyField");
-    assertNull(result);
+    Integer value = slice.get("anyField");
+    assertNull(value);
   }
 
   @Test
   public void testSetAndGet() {
     Slice<String, Integer> slice = new Slice<>(0);
     slice.set("field1", 100);
-    Integer result = slice.get("field1");
-    assertEquals(Integer.valueOf(100), result);
+    slice.set("field2", 200);
+    
+    assertEquals(Integer.valueOf(100), slice.get("field1"));
+    assertEquals(Integer.valueOf(200), slice.get("field2"));
+    assertEquals(Integer.valueOf(0), slice.get("field3"));
   }
 
   @Test
@@ -53,8 +56,7 @@ public class Slice_ArrowTest {
     Iterator<Integer> iterator = slice.iterator();
     assertTrue(iterator.hasNext());
     
-    // We can't easily verify the exact contents since we don't know the iteration order,
-    // but we can at least ensure it's not empty and iterable
+    // Collect values to verify contents
     int count = 0;
     while (iterator.hasNext()) {
       iterator.next();
@@ -71,13 +73,20 @@ public class Slice_ArrowTest {
   }
 
   @Test
-  public void testMultipleSets() {
+  public void testIteratorWithNullValues() {
     Slice<String, Integer> slice = new Slice<>(0);
-    slice.set("field1", 10);
-    slice.set("field2", 20);
-    slice.set("field1", 30); // overwrite
+    slice.set("field1", null);
+    slice.set("field2", 42);
     
-    assertEquals(Integer.valueOf(30), slice.get("field1"));
-    assertEquals(Integer.valueOf(20), slice.get("field2"));
+    Iterator<Integer> iterator = slice.iterator();
+    assertTrue(iterator.hasNext());
+    
+    // Verify we can iterate through all values
+    int count = 0;
+    while (iterator.hasNext()) {
+      iterator.next();
+      count++;
+    }
+    assertEquals(2, count);
   }
 }

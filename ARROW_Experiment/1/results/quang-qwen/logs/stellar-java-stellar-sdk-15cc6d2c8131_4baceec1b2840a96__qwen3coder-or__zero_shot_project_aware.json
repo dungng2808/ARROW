@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-010515-o7c5",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-010515-o7c5",
+  "run_id": "20261122-010929-spjy",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-010929-spjy",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 4123,
-        "out": 1728
+        "out": 3338
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 71,
-        "block2": 5.3,
-        "block3": 19,
+        "block1": 75.9,
+        "block2": 52.1,
+        "block3": 20.8,
         "block4": null,
-        "total": 95.4
+        "total": 148.9
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 4123,
-    "tokens_out": 1728,
+    "tokens_out": 3338,
     "cost_usd": null
   },
   "warnings": []

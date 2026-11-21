@@ -39,17 +39,18 @@ public class CompactHilbertCurve_ArrowTest {
     p[0] = BitVectorFactories.OPTIMAL.apply(3);
     p[1] = BitVectorFactories.OPTIMAL.apply(3);
     
-    p[0].set(0);
-    p[0].set(2);
-    p[1].set(1);
+    p[0].set(1);
     p[1].set(2);
     
     BitVector bs = BitVectorFactories.OPTIMAL.apply(2);
-    CompactHilbertCurve.copyOneBitFromEachDimension(2, p, bs);
-    
+    CompactHilbertCurve.copyOneBitFromEachDimension(1, p, bs);
     assertTrue(bs.get(0));
+    assertFalse(bs.get(1));
+    
+    bs.clear();
+    CompactHilbertCurve.copyOneBitFromEachDimension(2, p, bs);
+    assertFalse(bs.get(0));
     assertTrue(bs.get(1));
-    assertFalse(bs.get(2));
   }
 
   @Test
@@ -58,17 +59,15 @@ public class CompactHilbertCurve_ArrowTest {
     p[0] = BitVectorFactories.OPTIMAL.apply(3);
     p[1] = BitVectorFactories.OPTIMAL.apply(3);
     
-    p[0].set(0);
-    p[0].set(2);
-    p[1].set(1);
+    p[0].set(1);
     p[1].set(2);
     
-    CompactHilbertCurve.clearOneBitInEachDimension(2, p);
+    CompactHilbertCurve.clearOneBitInEachDimension(1, p);
+    assertFalse(p[0].get(1));
+    assertTrue(p[1].get(2));
     
-    assertFalse(p[0].get(2));
+    CompactHilbertCurve.clearOneBitInEachDimension(2, p);
     assertFalse(p[1].get(2));
-    assertTrue(p[0].get(0));
-    assertTrue(p[1].get(1));
   }
 
   @Test
@@ -77,15 +76,15 @@ public class CompactHilbertCurve_ArrowTest {
     src.set(0);
     src.set(2);
     
-    BitVector[] p = new BitVector[2];
-    p[0] = BitVectorFactories.OPTIMAL.apply(3);
-    p[1] = BitVectorFactories.OPTIMAL.apply(3);
+    BitVector[] p = new BitVector[3];
+    for (int i = 0; i < 3; i++) {
+      p[i] = BitVectorFactories.OPTIMAL.apply(2);
+    }
     
     CompactHilbertCurve.copyOneBitToEachDimensionWhereSet(src, 1, p);
     
+    assertTrue(p[2].get(1));
+    assertFalse(p[1].get(1));
     assertTrue(p[0].get(1));
-    assertTrue(p[1].get(1));
-    assertFalse(p[0].get(0));
-    assertFalse(p[1].get(0));
   }
 }

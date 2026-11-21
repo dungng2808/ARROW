@@ -7,75 +7,75 @@ public class OnlineStockSpan_ArrowTest {
 
     @Test
     public void testNextSingleElement() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
-        assertEquals(1, spanner.next(100));
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
+        int result = stockSpan.next(100);
+        assertEquals(1, result);
     }
 
     @Test
     public void testNextIncreasingSequence() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
-        assertEquals(1, spanner.next(100));
-        assertEquals(2, spanner.next(150));
-        assertEquals(3, spanner.next(200));
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
+        stockSpan.next(100);
+        int result = stockSpan.next(101);
+        assertEquals(2, result);
     }
 
     @Test
     public void testNextDecreasingSequence() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
-        assertEquals(1, spanner.next(200));
-        assertEquals(1, spanner.next(150));
-        assertEquals(1, spanner.next(100));
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
+        stockSpan.next(101);
+        int result = stockSpan.next(100);
+        assertEquals(1, result);
     }
 
     @Test
     public void testNextMixedSequence() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
-        assertEquals(1, spanner.next(100));
-        assertEquals(1, spanner.next(80));
-        assertEquals(1, spanner.next(60));
-        assertEquals(1, spanner.next(70));
-        assertEquals(2, spanner.next(60));
-        assertEquals(1, spanner.next(75));
-        assertEquals(6, spanner.next(85));
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
+        stockSpan.next(100);
+        stockSpan.next(80);
+        stockSpan.next(60);
+        stockSpan.next(70);
+        int result = stockSpan.next(60);
+        assertEquals(1, result);
     }
 
     @Test
     public void testCalculateSpansEmptyArray() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
         int[] prices = {};
-        int[] expected = {};
-        assertArrayEquals(expected, spanner.calculateSpans(prices));
+        int[] result = stockSpan.calculateSpans(prices);
+        assertEquals(0, result.length);
     }
 
     @Test
     public void testCalculateSpansSingleElement() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
         int[] prices = {100};
-        int[] expected = {1};
-        assertArrayEquals(expected, spanner.calculateSpans(prices));
+        int[] result = stockSpan.calculateSpans(prices);
+        assertArrayEquals(new int[]{1}, result);
     }
 
     @Test
-    public void testCalculateSpansAllIncreasing() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
-        int[] prices = {100, 150, 200};
-        int[] expected = {1, 2, 3};
-        assertArrayEquals(expected, spanner.calculateSpans(prices));
+    public void testCalculateSpansIncreasingSequence() {
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
+        int[] prices = {100, 101, 102, 103};
+        int[] result = stockSpan.calculateSpans(prices);
+        assertArrayEquals(new int[]{1, 2, 3, 4}, result);
     }
 
     @Test
-    public void testCalculateSpansAllDecreasing() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
-        int[] prices = {200, 150, 100};
-        int[] expected = {1, 1, 1};
-        assertArrayEquals(expected, spanner.calculateSpans(prices));
+    public void testCalculateSpansDecreasingSequence() {
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
+        int[] prices = {103, 102, 101, 100};
+        int[] result = stockSpan.calculateSpans(prices);
+        assertArrayEquals(new int[]{1, 1, 1, 1}, result);
     }
 
     @Test
-    public void testCalculateSpansMixedValues() {
-        OnlineStockSpan spanner = new OnlineStockSpan();
+    public void testCalculateSpansMixedSequence() {
+        OnlineStockSpan stockSpan = new OnlineStockSpan();
         int[] prices = {100, 80, 60, 70, 60, 75, 85};
-        int[] expected = {1, 1, 1, 2, 1, 4, 6};
-        assertArrayEquals(expected, spanner.calculateSpans(prices));
+        int[] result = stockSpan.calculateSpans(prices);
+        assertArrayEquals(new int[]{1, 1, 1, 2, 1, 4, 6}, result);
     }
 }

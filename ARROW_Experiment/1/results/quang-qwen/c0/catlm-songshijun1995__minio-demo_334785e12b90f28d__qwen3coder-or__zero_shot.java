@@ -7,8 +7,9 @@ public class MinioDemoApplication_ArrowTest {
 
     @Test
     public void testMainMethod() {
-        // Test that the main method can be called without throwing exceptions
-        // This test verifies the basic functionality of the main method
+        // Test that main method can be called without throwing exception
+        // This test verifies the main method executes without issues
+        // The actual functionality is tested by the Spring Boot framework
         try {
             MinioDemoApplication.main(new String[]{});
             // If we reach here, the main method executed successfully

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-001231-aeox",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-001231-aeox",
+  "run_id": "20261122-001004-xccr",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-001004-xccr",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -24,11 +24,11 @@
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 26,
-        "block2": 2.9,
-        "block3": 4.3,
+        "block1": 26.3,
+        "block2": 3,
+        "block3": 4.2,
         "block4": null,
-        "total": 33.3
+        "total": 33.6
       },
       "error": null,
       "warnings": [],
@@ -45,7 +45,6 @@
     "cost_usd": null
   },
   "warnings": [
-    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
-    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
   ]
 }

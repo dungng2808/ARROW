@@ -1,5 +1,5 @@
 ARROW · Hello (hello.domain)
-[OK] Khối 1  Maven 3.9.16 · build root slide/4days-workshop/workshop/hello · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 20/11 00:06) · 6.4 s
-[OK] Khối 2  c0 · 1.5k token · 2.2 s · Candidate hợp lệ: 3 test, 3 assertion
+[OK] Khối 1  Maven 3.9.16 · build root slide/4days-workshop/workshop/hello · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 22/11 00:03) · 6.7 s
+[OK] Khối 2  c0 · 1.5k token · 1.5 s · Candidate hợp lệ: 3 test, 3 assertion
 [OK] Khối 3  c0: VALID
 [OK] Khối 3  Kết thúc: VALID (không sửa)

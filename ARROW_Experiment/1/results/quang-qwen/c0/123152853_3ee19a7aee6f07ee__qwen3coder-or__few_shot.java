@@ -52,8 +52,8 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
     IRDAG irDAG = new IRDAG(dag);
     
-    // Test with a checker that always returns true
-    boolean result = irDAG.advanceDAGSnapshot((oldDAG, newDAG) -> true);
+    BiFunction<IRDAG, IRDAG, Boolean> checker = (a, b) -> true;
+    boolean result = irDAG.advanceDAGSnapshot(checker);
     assertTrue(result);
   }
 
@@ -99,420 +99,528 @@ public class IRDAG_ArrowTest {
 
   @Test
   public void testDeleteRelayVertex() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    RelayVertex relay = new RelayVertex("relay");
+    IRVertex vertex2 = new IRVertex("vertex2");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(relay);
+    builder.addVertex(vertex2);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    IREdge edge2 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, vertex1, relay);
+    IREdge edge3 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, relay, vertex2);
+    
+    builder.connectVertices(edge1);
+    builder.connectVertices(edge2);
+    builder.connectVertices(edge3);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    RelayVertex relayVertex = new RelayVertex("testRelay");
-    IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, 
-                             new SourceVertex("src"), 
-                             new IRVertex("dst"));
+    irDAG.delete(relay);
     
-    // This should not throw an exception
-    try {
-      irDAG.insert(relayVertex, edge);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    assertTrue(irDAG.getVertices().contains(source));
+    assertTrue(irDAG.getVertices().contains(vertex1));
+    assertTrue(irDAG.getVertices().contains(vertex2));
+    assertFalse(irDAG.getVertices().contains(relay));
   }
 
   @Test
   public void testInsertRelayVertex() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    RelayVertex relay = new RelayVertex("relay");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(relay);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    RelayVertex relayVertex = new RelayVertex("testRelay");
-    IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, 
-                             new SourceVertex("src"), 
-                             new IRVertex("dst"));
+    irDAG.insert(relay, edge1);
     
-    // This should not throw an exception
-    try {
-      irDAG.insert(relayVertex, edge);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    assertTrue(irDAG.getVertices().contains(relay));
+    assertTrue(irDAG.getEdges().size() >= 3);
   }
 
   @Test
   public void testInsertMessageGeneratorAndAggregator() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    MessageGeneratorVertex<String> messageGenerator = new MessageGeneratorVertex<>(s -> s);
+    MessageAggregatorVertex<String> messageAggregator = new MessageAggregatorVertex<>(s -> s);
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(messageGenerator);
+    builder.addVertex(messageAggregator);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    MessageGeneratorVertex<String> messageGeneratorVertex = new MessageGeneratorVertex<>(s -> s);
-    MessageAggregatorVertex<String> messageAggregatorVertex = new MessageAggregatorVertex<>(s -> s);
-    EncoderProperty encoder = EncoderProperty.of(BytesEncoderFactory.of());
-    DecoderProperty decoder = DecoderProperty.of(BytesDecoderFactory.of());
     Set<IREdge> edgesToGetStatisticsOf = new HashSet<>();
+    edgesToGetStatisticsOf.add(edge1);
     Set<IREdge> edgesToOptimize = new HashSet<>();
+    edgesToOptimize.add(edge1);
     
-    // This should not throw an exception
-    try {
-      irDAG.insert(messageGeneratorVertex, messageAggregatorVertex, encoder, decoder, edgesToGetStatisticsOf, edgesToOptimize);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    irDAG.insert(messageGenerator, messageAggregator, 
+                 EncoderProperty.of(BytesEncoderFactory.of()), 
+                 DecoderProperty.of(BytesDecoderFactory.of()), 
+                 edgesToGetStatisticsOf, 
+                 edgesToOptimize);
+    
+    assertTrue(irDAG.getVertices().contains(messageGenerator));
+    assertTrue(irDAG.getVertices().contains(messageAggregator));
   }
 
   @Test
   public void testInsertSignalVertex() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    SignalVertex signal = new SignalVertex("signal");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(signal);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    SignalVertex signalVertex = new SignalVertex();
-    IREdge edgeToOptimize = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, 
-                                       new SourceVertex("src"), 
-                                       new IRVertex("dst"));
+    irDAG.insert(signal, edge1);
     
-    // This should not throw an exception
-    try {
-      irDAG.insert(signalVertex, edgeToOptimize);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    assertTrue(irDAG.getVertices().contains(signal));
   }
 
   @Test
   public void testInsertSamplingVertices() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    SamplingVertex sampling1 = new SamplingVertex(new IRVertex("sampling1"), 0.5);
+    SamplingVertex sampling2 = new SamplingVertex(new IRVertex("sampling2"), 0.5);
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(sampling1);
+    builder.addVertex(sampling2);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
     Set<SamplingVertex> toInsert = new HashSet<>();
-    Set<IRVertex> executeAfter = new HashSet<>();
+    toInsert.add(sampling1);
+    toInsert.add(sampling2);
     
-    // This should not throw an exception
-    try {
-      irDAG.insert(toInsert, executeAfter);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    Set<IRVertex> executeAfter = new HashSet<>();
+    executeAfter.add(vertex1);
+    
+    irDAG.insert(toInsert, executeAfter);
+    
+    assertTrue(irDAG.getVertices().contains(sampling1));
+    assertTrue(irDAG.getVertices().contains(sampling2));
   }
 
   @Test
   public void testInsertTaskSizeSplitterVertex() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    TaskSizeSplitterVertex toInsert = new TaskSizeSplitterVertex();
+    TaskSizeSplitterVertex splitter = new TaskSizeSplitterVertex("splitter");
     
-    // This should not throw an exception
-    try {
-      irDAG.insert(toInsert);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    irDAG.insert(splitter);
+    
+    assertTrue(irDAG.getVertices().contains(splitter));
   }
 
   @Test
   public void testReshapeUnsafely() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    DAG<IRVertex, IREdge> newDag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAG<IRVertex, IREdge> newDag = irDAG.getVertices().stream()
+        .filter(v -> v.getId().equals("source"))
+        .findFirst()
+        .map(v -> {
+          DAGBuilder<IRVertex, IREdge> newBuilder = new DAGBuilder<>();
+          newBuilder.addVertex(v);
+          return newBuilder.build();
+        })
+        .orElse(null);
     
-    // This should not throw an exception
-    try {
-      irDAG.reshapeUnsafely(d -> newDag);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
+    irDAG.reshapeUnsafely(d -> newDag);
+    
+    assertNotNull(irDAG.getVertices());
   }
 
   @Test
   public void testGetSinksWithinVertexSet() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    IRVertex vertex2 = new IRVertex("vertex2");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(vertex2);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    IREdge edge2 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, vertex1, vertex2);
+    builder.connectVertices(edge1);
+    builder.connectVertices(edge2);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
     Set<IRVertex> vertexSet = new HashSet<>();
+    vertexSet.add(vertex1);
+    vertexSet.add(vertex2);
+    
     Set<IRVertex> sinks = irDAG.getSinksWithinVertexSet(dag, vertexSet);
     
-    assertNotNull(sinks);
+    assertEquals(1, sinks.size());
+    assertTrue(sinks.contains(vertex2));
   }
 
   @Test
   public void testWrapSamplingVertexIfNeeded() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    SamplingVertex sampling = new SamplingVertex(new IRVertex("sampling"), 0.5);
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(sampling);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IRVertex newVertex = new IRVertex("newVertex");
-    IRVertex existingVertex = new SamplingVertex(new IRVertex("original"), 0.5f);
+    IRVertex result = irDAG.wrapSamplingVertexIfNeeded(vertex1, sampling);
     
-    IRVertex result = irDAG.wrapSamplingVertexIfNeeded(newVertex, existingVertex);
-    
-    assertNotNull(result);
     assertTrue(result instanceof SamplingVertex);
   }
 
   @Test
   public void testAssertNonControlEdge() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, 
-                             new SourceVertex("src"), 
-                             new IRVertex("dst"));
-    
-    // This should not throw an exception
     try {
-      irDAG.assertNonControlEdge(edge);
-    } catch (Exception e) {
-      // Expected behavior for this test
+      irDAG.assertNonControlEdge(edge1);
+      assertTrue(true); // Should not throw exception
+    } catch (IllegalArgumentException e) {
+      fail("Should not throw IllegalArgumentException");
     }
   }
 
   @Test
   public void testAssertExistence() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IRVertex vertex = new IRVertex("testVertex");
-    
-    // This should not throw an exception
     try {
-      irDAG.assertExistence(vertex);
-    } catch (Exception e) {
-      // Expected behavior for this test
+      irDAG.assertExistence(vertex1);
+      assertTrue(true); // Should not throw exception
+    } catch (IllegalArgumentException e) {
+      fail("Should not throw IllegalArgumentException");
     }
   }
 
   @Test
   public void testAssertNonExistence() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IRVertex vertex = new IRVertex("testVertex");
+    IRVertex vertex2 = new IRVertex("vertex2");
     
-    // This should not throw an exception
     try {
-      irDAG.assertNonExistence(vertex);
-    } catch (Exception e) {
-      // Expected behavior for this test
+      irDAG.assertNonExistence(vertex2);
+      assertTrue(true); // Should not throw exception
+    } catch (IllegalArgumentException e) {
+      fail("Should not throw IllegalArgumentException");
     }
   }
 
   @Test
   public void testEdgeToMessageAggregator() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    MessageAggregatorVertex<String> messageAggregator = new MessageAggregatorVertex<>(s -> s);
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(messageAggregator);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IRVertex trigger = new IRVertex("trigger");
-    IRVertex agg = new IRVertex("agg");
-    EncoderProperty encoder = EncoderProperty.of(BytesEncoderFactory.of());
-    DecoderProperty decoder = DecoderProperty.of(BytesDecoderFactory.of());
+    IREdge result = irDAG.edgeToMessageAggregator(source, messageAggregator, 
+                                                   EncoderProperty.of(BytesEncoderFactory.of()), 
+                                                   DecoderProperty.of(BytesDecoderFactory.of()));
     
-    IREdge edge = irDAG.edgeToMessageAggregator(trigger, agg, encoder, decoder);
-    
-    assertNotNull(edge);
-  }
-
-  @Test
-  public void testTopologicalDo() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    // This should not throw an exception
-    try {
-      irDAG.topologicalDo(v -> {});
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
-  }
-
-  @Test
-  public void testDFSOperations() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    // These should not throw exceptions
-    try {
-      irDAG.dfsTraverse(v -> {}, DAG.TraversalOrder.TOP_DOWN);
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
-    
-    try {
-      irDAG.dfsDo(new IRVertex("test"), v -> {}, DAG.TraversalOrder.TOP_DOWN, new HashSet<>());
-    } catch (Exception e) {
-      // Expected behavior for this test
-    }
-  }
-
-  @Test
-  public void testPathExistsBetween() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    Boolean result = irDAG.pathExistsBetween(new IRVertex("v1"), new IRVertex("v2"));
     assertNotNull(result);
-  }
-
-  @Test
-  public void testIsCompositeVertex() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    Boolean result = irDAG.isCompositeVertex(new IRVertex("test"));
-    assertNotNull(result);
-  }
-
-  @Test
-  public void testGetLoopStackDepthOf() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    Integer result = irDAG.getLoopStackDepthOf(new IRVertex("test"));
-    assertNotNull(result);
-  }
-
-  @Test
-  public void testGetAssignedLoopVertexOf() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    LoopVertex result = irDAG.getAssignedLoopVertexOf(new IRVertex("test"));
-    assertNull(result);
-  }
-
-  @Test
-  public void testAsJsonNode() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    ObjectNode node = irDAG.asJsonNode();
-    assertNotNull(node);
+    assertEquals(CommunicationPatternProperty.Value.SHUFFLE, 
+                 result.getPropertyValue(CommunicationPatternProperty.class).get());
   }
 
   @Test
   public void testGetVertexById() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IRVertex vertex = irDAG.getVertexById("nonexistent");
-    assertNull(vertex);
+    IRVertex result = irDAG.getVertexById("source");
+    
+    assertNotNull(result);
+    assertEquals("source", result.getId());
   }
 
   @Test
   public void testGetEdgeById() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    IREdge edge = irDAG.getEdgeById("nonexistent");
-    assertNull(edge);
+    IREdge result = irDAG.getEdgeById(edge1.getId());
+    
+    assertNotNull(result);
+    assertEquals(edge1.getId(), result.getId());
   }
 
   @Test
   public void testGetVertices() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
     List<IRVertex> vertices = irDAG.getVertices();
+    
     assertNotNull(vertices);
+    assertEquals(2, vertices.size());
   }
 
   @Test
   public void testGetEdges() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
     List<IREdge> edges = irDAG.getEdges();
+    
     assertNotNull(edges);
+    assertEquals(1, edges.size());
   }
 
   @Test
   public void testGetRootVertices() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
     List<IRVertex> rootVertices = irDAG.getRootVertices();
+    
     assertNotNull(rootVertices);
+    assertEquals(1, rootVertices.size());
+    assertEquals("source", rootVertices.get(0).getId());
   }
 
   @Test
   public void testGetIncomingEdgesOf() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    List<IREdge> edges = irDAG.getIncomingEdgesOf(new IRVertex("test"));
-    assertNotNull(edges);
+    List<IREdge> incomingEdges = irDAG.getIncomingEdgesOf(vertex1);
+    
+    assertNotNull(incomingEdges);
+    assertEquals(1, incomingEdges.size());
+    assertEquals(edge1.getId(), incomingEdges.get(0).getId());
   }
 
   @Test
   public void testGetOutgoingEdgesOf() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    List<IREdge> edges = irDAG.getOutgoingEdgesOf(new IRVertex("test"));
-    assertNotNull(edges);
+    List<IREdge> outgoingEdges = irDAG.getOutgoingEdgesOf(source);
+    
+    assertNotNull(outgoingEdges);
+    assertEquals(1, outgoingEdges.size());
+    assertEquals(edge1.getId(), outgoingEdges.get(0).getId());
   }
 
   @Test
-  public void testGetParents() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+  public void testAsJsonNode() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    List<IRVertex> parents = irDAG.getParents("nonexistent");
-    assertNotNull(parents);
-  }
-
-  @Test
-  public void testGetChildren() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
+    ObjectNode jsonNode = irDAG.asJsonNode();
     
-    List<IRVertex> children = irDAG.getChildren("nonexistent");
-    assertNotNull(children);
-  }
-
-  @Test
-  public void testGetEdgeBetween() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    IREdge edge = irDAG.getEdgeBetween("src", "dst");
-    assertNull(edge);
-  }
-
-  @Test
-  public void testGetTopologicalSort() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    List<IRVertex> sorted = irDAG.getTopologicalSort();
-    assertNotNull(sorted);
-  }
-
-  @Test
-  public void testGetAncestors() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    List<IRVertex> ancestors = irDAG.getAncestors("nonexistent");
-    assertNotNull(ancestors);
-  }
-
-  @Test
-  public void testGetDescendants() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    List<IRVertex> descendants = irDAG.getDescendants("nonexistent");
-    assertNotNull(descendants);
-  }
-
-  @Test
-  public void testFilterVertices() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
-    IRDAG irDAG = new IRDAG(dag);
-    
-    List<IRVertex> filtered = irDAG.filterVertices(v -> true);
-    assertNotNull(filtered);
+    assertNotNull(jsonNode);
   }
 
   @Test
   public void testToString() {
-    DAG<IRVertex, IREdge> dag = new DAGBuilder<IRVertex, IREdge>().build();
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    builder.connectVertices(edge1);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
     String str = irDAG.toString();
+    
     assertNotNull(str);
   }
 }

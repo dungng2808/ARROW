@@ -87,6 +87,10 @@ public class DataWrapper_ArrowTest {
         public JsonStructure toJson() {
             return json;
         }
+
+        public JsonStructure getJson() {
+            return json;
+        }
     }
 
 }

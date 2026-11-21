@@ -10,96 +10,120 @@ import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import rx.Single;
 
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.assertThat;
-import static org.mockito.Mockito.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.mockito.Mockito.when;
 
 public class BaseCouchbaseRepository_ArrowTest {
-
-    @Mock
-    private ObjectMapper objectMapper;
-
     @Mock
     private CouchbaseAsyncBucketFactory couchbaseAsyncBucketFactory;
-
+    
     @Mock
     private CouchbaseProperties couchbaseProperties;
-
+    
     @Mock
     private AsyncBucket asyncBucket;
-
+    
     private BaseCouchbaseRepository<TestEntity> repository;
-
+    
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        repository = new BaseCouchbaseRepository<TestEntity>(objectMapper);
-        repository.couchbaseAsyncBucketFactory = couchbaseAsyncBucketFactory;
-        repository.couchbaseProperties = couchbaseProperties;
+        
+        repository = new BaseCouchbaseRepository<TestEntity>(new ObjectMapper()) {
+            @Override
+            public Single<AsyncBucket> asyncBucket() {
+                return couchbaseAsyncBucketFactory.getAsyncBucketInstance();
+            }
+        };
     }
-
+    
     @Test
-    public void shouldCreateDefaultConstructor() {
-        BaseCouchbaseRepository<TestEntity> repo = new BaseCouchbaseRepository<TestEntity>();
-        assertThat(repo, notNullValue());
+    public void shouldCreateRepositoryWithObjectMapper() {
+        ObjectMapper mapper = new ObjectMapper();
+        BaseCouchbaseRepository<TestEntity> repo = new BaseCouchbaseRepository<TestEntity>(mapper);
+        
+        assertThat(repo).isNotNull();
     }
-
+    
     @Test(expected = NullPointerException.class)
-    public void shouldThrowExceptionForNullObjectMapperInConstructor() {
+    public void shouldThrowExceptionWhenObjectMapperIsNull() {
         new BaseCouchbaseRepository<TestEntity>(null);
     }
-
+    
     @Test
-    public void shouldReturnAsyncBucketFromFactory() {
+    public void shouldGetAsyncBucket() {
         when(couchbaseAsyncBucketFactory.getAsyncBucketInstance()).thenReturn(Single.just(asyncBucket));
-
+        
         Single<AsyncBucket> result = repository.asyncBucket();
-
-        assertThat(result, notNullValue());
-        assertThat(result.toBlocking().value(), is(asyncBucket));
+        
+        assertThat(result).isNotNull();
+        assertThat(result.toBlocking().value()).isEqualTo(asyncBucket);
     }
-
+    
     @Test
     public void shouldConvertJsonToObject() throws Exception {
-        String json = "{\"name\":\"test\"}";
-        TestEntity entity = new TestEntity("test");
-
-        when(objectMapper.readValue(json, TestEntity.class)).thenReturn(entity);
-
+        String json = "{\"name\":\"test\",\"id\":1}";
+        TestEntity expected = new TestEntity("test", 1);
+        
         Single<TestEntity> result = repository.convert(json);
-
-        assertThat(result, notNullValue());
-        assertThat(result.toBlocking().value(), is(entity));
+        
+        assertThat(result).isNotNull();
+        assertThat(result.toBlocking().value()).isEqualTo(expected);
     }
-
+    
     @Test
-    public void shouldReturnErrorWhenConversionFails() throws Exception {
-        String json = "{\"name\":\"test\"}";
-
-        when(objectMapper.readValue(json, TestEntity.class)).thenThrow(new RuntimeException("Parse error"));
-
-        Single<TestEntity> result = repository.convert(json);
-
-        assertThat(result, notNullValue());
-        assertThat(result.toBlocking().getThrowable(), instanceOf(RuntimeException.class));
+    public void shouldReturnErrorWhenConversionFails() {
+        String invalidJson = "{invalid json}";
+        
+        Single<TestEntity> result = repository.convert(invalidJson);
+        
+        assertThat(result).isNotNull();
+        assertThat(result.toBlocking().getThrowable()).isNotNull();
     }
-
+    
     private static class TestEntity {
         private String name;
-
-        public TestEntity() {
-        }
-
-        public TestEntity(String name) {
+        private int id;
+        
+        public TestEntity() {}
+        
+        public TestEntity(String name, int id) {
             this.name = name;
+            this.id = id;
         }
-
+        
         public String getName() {
             return name;
         }
-
+        
         public void setName(String name) {
             this.name = name;
+        }
+        
+        public int getId() {
+            return id;
+        }
+        
+        public void setId(int id) {
+            this.id = id;
+        }
+        
+        @Override
+        public boolean equals(Object o) {
+            if (this == o) return true;
+            if (o == null || getClass() != o.getClass()) return false;
+            
+            TestEntity that = (TestEntity) o;
+            
+            if (id != that.id) return false;
+            return name != null ? name.equals(that.name) : that.name == null;
+        }
+        
+        @Override
+        public int hashCode() {
+            int result = name != null ? name.hashCode() : 0;
+            result = 31 * result + id;
+            return result;
         }
     }
 }

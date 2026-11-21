@@ -15,116 +15,140 @@ public class ProxyHelper_ArrowTest {
 
     @Test
     public void shouldCreateProxyOfObject() {
-        // Create a test object
         TestClass testObject = new TestClass();
+        TestInterceptor interceptor = mock(TestInterceptor.class);
         
-        // Create an interceptor
-        ProxyHelper.Interceptor interceptor = mock(ProxyHelper.Interceptor.class);
-        when(interceptor.intercept(any(Method.class), any(Object[].class))).thenReturn("intercepted");
+        when(interceptor.intercept(any(Method.class), any(Object[].class)))
+            .thenReturn("intercepted result");
+
+        ProxyHelper.Interceptor proxyInterceptor = new ProxyHelper.Interceptor() {
+            @Override
+            public Object intercept(Method method, Object[] args) throws Throwable {
+                return interceptor.intercept(method, args);
+            }
+        };
+
+        TestClass proxy = ProxyHelper.createProxyOf(testObject, proxyInterceptor);
         
-        // Create proxy
-        TestClass proxy = ProxyHelper.createProxyOf(testObject, interceptor);
-        
-        // Verify that the proxy works
         assertNotNull(proxy);
-        assertEquals("intercepted", proxy.someMethod());
-        
-        // Verify that the interceptor was called
-        verify(interceptor).intercept(any(Method.class), any(Object[].class));
+        assertEquals("intercepted result", proxy.someMethod());
     }
 
     @Test
     public void shouldCreateProxyOfClass() {
-        // Create an interceptor
-        ProxyHelper.Interceptor interceptor = mock(ProxyHelper.Interceptor.class);
-        when(interceptor.intercept(any(Method.class), any(Object[].class))).thenReturn("intercepted");
+        TestInterceptor interceptor = mock(TestInterceptor.class);
         
-        // Create proxy
-        TestClass proxy = ProxyHelper.createProxyOf(TestClass.class, interceptor);
+        when(interceptor.intercept(any(Method.class), any(Object[].class)))
+            .thenReturn("intercepted result");
+
+        ProxyHelper.Interceptor proxyInterceptor = new ProxyHelper.Interceptor() {
+            @Override
+            public Object intercept(Method method, Object[] args) throws Throwable {
+                return interceptor.intercept(method, args);
+            }
+        };
+
+        TestClass proxy = ProxyHelper.createProxyOf(TestClass.class, proxyInterceptor);
         
-        // Verify that the proxy works
         assertNotNull(proxy);
-        assertEquals("intercepted", proxy.someMethod());
-        
-        // Verify that the interceptor was called
-        verify(interceptor).intercept(any(Method.class), any(Object[].class));
+        assertEquals("intercepted result", proxy.someMethod());
     }
 
     @Test
     public void shouldHandleVarArgs() throws Exception {
-        // Create an interceptor
-        ProxyHelper.Interceptor interceptor = mock(ProxyHelper.Interceptor.class);
-        Object[] expectedArgs = new Object[]{"arg1", "arg2", "arg3"};
-        when(interceptor.intercept(any(Method.class), any(Object[].class))).thenReturn("varargs_result");
+        TestClass testObject = new TestClass();
+        TestInterceptor interceptor = mock(TestInterceptor.class);
         
-        // Create proxy
-        TestClass proxy = ProxyHelper.createProxyOf(TestClass.class, interceptor);
-        
-        // Call method with varargs
-        String result = proxy.varArgsMethod("arg1", "arg2", "arg3");
-        
-        // Verify result
-        assertEquals("varargs_result", result);
-        
-        // Verify that the interceptor was called with correct arguments
-        verify(interceptor).intercept(any(Method.class), eq(expectedArgs));
+        Object[] varArgs = {"arg1", "arg2", "arg3"};
+        when(interceptor.intercept(any(Method.class), any(Object[].class)))
+            .thenAnswer(new Answer<Object>() {
+                @Override
+                public Object answer(InvocationOnMock invocation) throws Throwable {
+                    Object[] args = invocation.getArguments()[1];
+                    assertEquals(3, args.length);
+                    assertEquals("arg1", args[0]);
+                    assertEquals("arg2", args[1]);
+                    assertEquals("arg3", args[2]);
+                    return "varargs result";
+                }
+            });
+
+        ProxyHelper.Interceptor proxyInterceptor = new ProxyHelper.Interceptor() {
+            @Override
+            public Object intercept(Method method, Object[] args) throws Throwable {
+                return interceptor.intercept(method, args);
+            }
+        };
+
+        TestClass proxy = ProxyHelper.createProxyOf(testObject, proxyInterceptor);
+        assertEquals("varargs result", proxy.varArgsMethod("arg1", "arg2", "arg3"));
     }
 
     @Test
     public void shouldHandleNoArgs() throws Exception {
-        // Create an interceptor
-        ProxyHelper.Interceptor interceptor = mock(ProxyHelper.Interceptor.class);
-        when(interceptor.intercept(any(Method.class), any(Object[].class))).thenReturn("no_args_result");
+        TestClass testObject = new TestClass();
+        TestInterceptor interceptor = mock(TestInterceptor.class);
         
-        // Create proxy
-        TestClass proxy = ProxyHelper.createProxyOf(TestClass.class, interceptor);
-        
-        // Call method with no args
-        String result = proxy.noArgsMethod();
-        
-        // Verify result
-        assertEquals("no_args_result", result);
-        
-        // Verify that the interceptor was called with correct arguments
-        verify(interceptor).intercept(any(Method.class), any(Object[].class));
+        when(interceptor.intercept(any(Method.class), any(Object[].class)))
+            .thenReturn("no args result");
+
+        ProxyHelper.Interceptor proxyInterceptor = new ProxyHelper.Interceptor() {
+            @Override
+            public Object intercept(Method method, Object[] args) throws Throwable {
+                return interceptor.intercept(method, args);
+            }
+        };
+
+        TestClass proxy = ProxyHelper.createProxyOf(testObject, proxyInterceptor);
+        assertEquals("no args result", proxy.noArgsMethod());
     }
 
     @Test
     public void shouldHandleSingleArg() throws Exception {
-        // Create an interceptor
-        ProxyHelper.Interceptor interceptor = mock(ProxyHelper.Interceptor.class);
-        Object[] expectedArgs = new Object[]{"single_arg"};
-        when(interceptor.intercept(any(Method.class), any(Object[].class))).thenReturn("single_arg_result");
+        TestClass testObject = new TestClass();
+        TestInterceptor interceptor = mock(TestInterceptor.class);
         
-        // Create proxy
-        TestClass proxy = ProxyHelper.createProxyOf(TestClass.class, interceptor);
-        
-        // Call method with single arg
-        String result = proxy.singleArgMethod("single_arg");
-        
-        // Verify result
-        assertEquals("single_arg_result", result);
-        
-        // Verify that the interceptor was called with correct arguments
-        verify(interceptor).intercept(any(Method.class), eq(expectedArgs));
+        when(interceptor.intercept(any(Method.class), any(Object[].class)))
+            .thenAnswer(new Answer<Object>() {
+                @Override
+                public Object answer(InvocationOnMock invocation) throws Throwable {
+                    Object[] args = invocation.getArguments()[1];
+                    assertEquals(1, args.length);
+                    assertEquals("single arg", args[0]);
+                    return "single arg result";
+                }
+            });
+
+        ProxyHelper.Interceptor proxyInterceptor = new ProxyHelper.Interceptor() {
+            @Override
+            public Object intercept(Method method, Object[] args) throws Throwable {
+                return interceptor.intercept(method, args);
+            }
+        };
+
+        TestClass proxy = ProxyHelper.createProxyOf(testObject, proxyInterceptor);
+        assertEquals("single arg result", proxy.singleArgMethod("single arg"));
     }
 
-    // Helper class for testing
+    // Helper classes for testing
     private static class TestClass {
         public String someMethod() {
-            return "original";
+            return "original result";
         }
-        
+
         public String noArgsMethod() {
-            return "original_no_args";
+            return "no args original";
         }
-        
+
         public String singleArgMethod(String arg) {
-            return "original_single_arg";
+            return "single arg original";
         }
-        
+
         public String varArgsMethod(String... args) {
-            return "original_varargs";
+            return "var args original";
         }
+    }
+
+    private interface TestInterceptor extends ProxyHelper.Interceptor {
     }
 }

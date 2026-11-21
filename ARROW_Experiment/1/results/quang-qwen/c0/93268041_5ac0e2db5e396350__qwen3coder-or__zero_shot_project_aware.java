@@ -81,10 +81,10 @@ public class Key_ArrowTest {
         Key originalKey = new Key(signingKey, encryptionKey);
         String serialized = originalKey.serialise();
         
-        Key key = new Key(serialized);
+        Key keyFromString = new Key(serialized);
         
-        assertArrayEquals(originalKey.getSigningKey(), key.getSigningKey());
-        assertArrayEquals(originalKey.getEncryptionKey(), key.getEncryptionKey());
+        assertArrayEquals(originalKey.getSigningKey(), keyFromString.getSigningKey());
+        assertArrayEquals(originalKey.getEncryptionKey(), keyFromString.getEncryptionKey());
     }
 
     @Test
@@ -92,7 +92,6 @@ public class Key_ArrowTest {
         Key key1 = Key.generateKey();
         Key key2 = Key.generateKey();
         
-        // Keys should be different due to randomness
         assertNotEquals(key1.getSigningKey(), key2.getSigningKey());
         assertNotEquals(key1.getEncryptionKey(), key2.getEncryptionKey());
     }
@@ -103,7 +102,6 @@ public class Key_ArrowTest {
         Key key1 = Key.generateKey(random);
         Key key2 = Key.generateKey(random);
         
-        // Keys should be different due to randomness
         assertNotEquals(key1.getSigningKey(), key2.getSigningKey());
         assertNotEquals(key1.getEncryptionKey(), key2.getEncryptionKey());
     }
@@ -116,9 +114,8 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         byte[] payload = "Hello World".getBytes();
-        IvParameterSpec iv = new IvParameterSpec(new byte[16]); // 16 bytes IV
+        IvParameterSpec iv = new IvParameterSpec(new byte[16]);
         
         byte[] encrypted = key.encrypt(payload, iv);
         byte[] decrypted = key.decrypt(encrypted, iv);
@@ -134,13 +131,11 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
-        byte version = 1;
-        Instant timestamp = Instant.now();
+        byte[] payload = "Hello World".getBytes();
         IvParameterSpec iv = new IvParameterSpec(new byte[16]);
-        byte[] cipherText = "test".getBytes();
+        byte[] encrypted = key.encrypt(payload, iv);
         
-        byte[] signature = key.sign(version, timestamp, iv, cipherText);
+        byte[] signature = key.sign((byte) 1, Instant.now(), iv, encrypted);
         
         assertTrue(signature.length > 0);
     }
@@ -167,18 +162,14 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        
         key.writeTo(baos);
         
         byte[] written = baos.toByteArray();
         assertEquals(signingKeyBytes + encryptionKeyBytes, written.length);
-        
-        byte[] extractedSigningKey = Arrays.copyOfRange(written, 0, signingKeyBytes);
-        byte[] extractedEncryptionKey = Arrays.copyOfRange(written, signingKeyBytes, written.length);
-        
-        assertArrayEquals(signingKey, extractedSigningKey);
-        assertArrayEquals(encryptionKey, extractedEncryptionKey);
+        assertArrayEquals(signingKey, Arrays.copyOf(written, signingKeyBytes));
+        assertArrayEquals(encryptionKey, Arrays.copyOfRange(written, signingKeyBytes, written.length));
     }
 
     @Test
@@ -219,8 +210,8 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         java.security.Key signingKeySpec = key.getSigningKeySpec();
+        
         assertNotNull(signingKeySpec);
         assertEquals("HmacSHA256", signingKeySpec.getAlgorithm());
     }
@@ -233,8 +224,8 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         javax.crypto.spec.SecretKeySpec encryptionKeySpec = key.getEncryptionKeySpec();
+        
         assertNotNull(encryptionKeySpec);
         assertEquals("AES", encryptionKeySpec.getAlgorithm());
     }
@@ -247,9 +238,12 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         byte[] retrievedSigningKey = key.getSigningKey();
+        
         assertArrayEquals(signingKey, retrievedSigningKey);
+        // Verify that modifying the returned array doesn't affect the internal state
+        retrievedSigningKey[0] = (byte) 99;
+        assertArrayEquals(signingKey, key.getSigningKey());
     }
 
     @Test
@@ -260,9 +254,12 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         byte[] retrievedEncryptionKey = key.getEncryptionKey();
+        
         assertArrayEquals(encryptionKey, retrievedEncryptionKey);
+        // Verify that modifying the returned array doesn't affect the internal state
+        retrievedEncryptionKey[0] = (byte) 99;
+        assertArrayEquals(encryptionKey, key.getEncryptionKey());
     }
 
     @Test
@@ -273,9 +270,9 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         int prefixBytes = key.getTokenPrefixBytes();
-        assertEquals(17, prefixBytes); // This is the value from Constants.tokenPrefixBytes
+        
+        assertEquals(17, prefixBytes);
     }
 
     @Test
@@ -286,8 +283,8 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         String signingAlgorithm = key.getSigningAlgorithm();
+        
         assertEquals("HmacSHA256", signingAlgorithm);
     }
 
@@ -299,8 +296,8 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         String encryptionAlgorithm = key.getEncryptionAlgorithm();
+        
         assertEquals("AES", encryptionAlgorithm);
     }
 
@@ -312,8 +309,8 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         java.util.Base64.Encoder encoder = key.getEncoder();
+        
         assertNotNull(encoder);
     }
 
@@ -325,8 +322,14 @@ public class Key_ArrowTest {
         Arrays.fill(encryptionKey, (byte) 2);
         
         Key key = new Key(signingKey, encryptionKey);
-        
         String cipherTransformation = key.getCipherTransformation();
+        
         assertEquals("AES/CBC/PKCS5Padding", cipherTransformation);
+    }
+
+    private void assertNotNull(Object obj) {
+        if (obj == null) {
+            fail("Object should not be null");
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-003627-o5ph",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-003627-o5ph",
+  "run_id": "20261122-003844-pizi",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-003844-pizi",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1699,
-        "out": 979
+        "out": 978
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 6.2,
-        "block2": 4.1,
-        "block3": 3.5,
+        "block1": 7.3,
+        "block2": 32.8,
+        "block3": 3.3,
         "block4": null,
-        "total": 14
+        "total": 43.5
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1699,
-    "tokens_out": 979,
+    "tokens_out": 978,
     "cost_usd": null
   },
   "warnings": []

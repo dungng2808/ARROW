@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005546-z3sm",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-005546-z3sm",
+  "run_id": "20261122-010107-sb7n",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-010107-sb7n",
   "status": "COMPLETED",
   "exit_code": 0,
   "targets": [
@@ -24,11 +24,11 @@
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 5.9,
-        "block2": 1.5,
-        "block3": 31.3,
+        "block1": 6.5,
+        "block2": 2,
+        "block3": 32.3,
         "block4": null,
-        "total": 38.8
+        "total": 40.8
       },
       "error": null,
       "warnings": [],

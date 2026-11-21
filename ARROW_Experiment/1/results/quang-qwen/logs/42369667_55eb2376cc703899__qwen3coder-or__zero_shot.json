@@ -1,6 +1,6 @@
 {
-  "run_id": "20261119-235918-boey",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261119-235918-boey",
+  "run_id": "20261121-235630-3uz3",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261121-235630-3uz3",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2008,
-        "out": 912
+        "out": 801
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 156.1,
-        "block2": 3,
-        "block3": 14.3,
+        "block1": 120.2,
+        "block2": 4.3,
+        "block3": 15.8,
         "block4": null,
-        "total": 173.4
+        "total": 140.4
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2008,
-    "tokens_out": 912,
+    "tokens_out": 801,
     "cost_usd": null
   },
   "warnings": [

@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-005449-7j4e",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-005449-7j4e",
+  "run_id": "20261122-010036-rz73",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-010036-rz73",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.monitor4all.cn.springcloud_gateway.SpringcloudGatewayApplication",
-      "result": "COMPILE",
-      "c0_state": "COMPILE",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2571,
-        "out": 250
+        "out": 214
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 8,
-        "block2": 1.8,
-        "block3": 4.9,
+        "block1": 10.3,
+        "block2": 2.5,
+        "block3": 17.9,
         "block4": null,
-        "total": 14.8
+        "total": 30.7
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2571,
-    "tokens_out": 250,
+    "tokens_out": 214,
     "cost_usd": null
   },
   "warnings": [

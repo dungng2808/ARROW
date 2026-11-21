@@ -1,5 +1,5 @@
 ARROW · Fibonacci ((default package))
-[OK] Khối 1  Maven 3.9.16 · build root Beirut/2016/2016-02-17-even-fibonacci-numbers · JDK 17 · JUnit 4 · baseline 5 test ×2 · 19.7 s
-[OK] Khối 2  c0 · 1.6k token · 2.2 s · Candidate hợp lệ: 3 test, 21 assertion
+[OK] Khối 1  Maven 3.9.16 · build root Beirut/2016/2016-02-17-even-fibonacci-numbers · JDK 17 · JUnit 4 · baseline 5 test ×2 · 23.3 s
+[OK] Khối 2  c0 · 1.6k token · 8.3 s · Candidate hợp lệ: 3 test, 21 assertion
 [>] Khối 3  c0: ASSERTION · AssertionFailedError | testComputeLessThanFourMillion
 [X] Khối 3  Kết thúc: ASSERTION (không sửa)

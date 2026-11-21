@@ -1,5 +1,5 @@
 ARROW · ArtemisBrokerManager (me.snowdrop.stream.binder.artemis.provisioning)
-[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 29 test ×2 · 135.9 s
-[OK] Khối 2  c0 · 4.8k token · 14.8 s · Candidate hợp lệ: 7 test, 17 assertion
-[>] Khối 3  c0: COMPILE · other | -
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 29 test ×2 · 122.8 s
+[OK] Khối 2  c0 · 5.2k token · 28.6 s · Candidate hợp lệ: 9 test, 14 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -17,8 +17,6 @@ import org.testng.annotations.Test;
 
 import java.util.*;
 
-import static org.mockito.Matchers.anyInt;
-import static org.mockito.Matchers.anyObject;
 import static org.mockito.Mockito.*;
 
 public class CBan_ArrowTest {
@@ -67,7 +65,12 @@ public class CBan_ArrowTest {
         when(reconfigurationProblem.getLogger()).thenReturn(mock(org.slf4j.Logger.class));
 
         CBan cBan = new CBan(ban);
-        Assert.assertFalse(cBan.inject(parameters, reconfigurationProblem));
+
+        // When
+        boolean result = cBan.inject(parameters, reconfigurationProblem);
+
+        // Then
+        Assert.assertFalse(result);
     }
 
     @Test
@@ -92,7 +95,12 @@ public class CBan_ArrowTest {
         when(reconfigurationProblem.getLogger()).thenReturn(mock(org.slf4j.Logger.class));
 
         CBan cBan = new CBan(ban);
-        Assert.assertTrue(cBan.inject(parameters, reconfigurationProblem));
+
+        // When
+        boolean result = cBan.inject(parameters, reconfigurationProblem);
+
+        // Then
+        Assert.assertTrue(result);
     }
 
     @Test
@@ -109,16 +117,21 @@ public class CBan_ArrowTest {
         nodes.add(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
 
-        when(reconfigurationProblem.getNode(anyObject())).thenReturn(1);
+        when(reconfigurationProblem.getNode(node)).thenReturn(1);
         when(reconfigurationProblem.getVMAction(vm)).thenReturn(slice);
-        when(slice.getHoster()).thenReturn(mock(org.chocosolver.solver.variables.IntVar.class));
+        when(slice.getHoster()).thenReturn(null); // No hoster to remove value from
 
         CBan cBan = new CBan(ban);
-        Assert.assertTrue(cBan.inject(parameters, reconfigurationProblem));
+
+        // When
+        boolean result = cBan.inject(parameters, reconfigurationProblem);
+
+        // Then
+        Assert.assertTrue(result);
     }
 
     @Test
-    public void testInjectWithNonContinuousConstraintAndContradiction() throws ContradictionException {
+    public void testInjectWithHosterAndContradictionException() throws ContradictionException {
         // Setup
         when(ban.isContinuous()).thenReturn(false);
         Set<VM> vms = new HashSet<>();
@@ -131,15 +144,20 @@ public class CBan_ArrowTest {
         nodes.add(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
 
-        when(reconfigurationProblem.getNode(anyObject())).thenReturn(1);
+        when(reconfigurationProblem.getNode(node)).thenReturn(1);
         when(reconfigurationProblem.getVMAction(vm)).thenReturn(slice);
         when(slice.getHoster()).thenReturn(mock(org.chocosolver.solver.variables.IntVar.class));
-        doThrow(new ContradictionException()).when(slice.getHoster()).removeValue(anyInt(), anyObject());
+        doThrow(new ContradictionException()).when(slice.getHoster()).removeValue(anyInt(), any());
 
         when(reconfigurationProblem.getLogger()).thenReturn(mock(org.slf4j.Logger.class));
 
         CBan cBan = new CBan(ban);
-        Assert.assertFalse(cBan.inject(parameters, reconfigurationProblem));
+
+        // When
+        boolean result = cBan.inject(parameters, reconfigurationProblem);
+
+        // Then
+        Assert.assertFalse(result);
     }
 
     @Test
@@ -155,13 +173,18 @@ public class CBan_ArrowTest {
         nodes.add(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
 
+        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mock(org.btrplace.model.Model.class));
         when(instance.getModel().getMapping()).thenReturn(mapping);
         when(mapping.isRunning(vm)).thenReturn(true);
         when(mapping.getVMLocation(vm)).thenReturn(node);
 
         CBan cBan = new CBan(ban);
+
+        // When
         Set<VM> result = cBan.getMisPlacedVMs(instance);
+
+        // Then
         Assert.assertEquals(result.size(), 1);
         Assert.assertTrue(result.contains(vm));
     }
@@ -179,13 +202,18 @@ public class CBan_ArrowTest {
         nodes.add(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
 
+        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mock(org.btrplace.model.Model.class));
         when(instance.getModel().getMapping()).thenReturn(mapping);
         when(mapping.isRunning(vm)).thenReturn(false);
 
         CBan cBan = new CBan(ban);
+
+        // When
         Set<VM> result = cBan.getMisPlacedVMs(instance);
-        Assert.assertEquals(result.size(), 0);
+
+        // Then
+        Assert.assertTrue(result.isEmpty());
     }
 
     @Test
@@ -201,14 +229,19 @@ public class CBan_ArrowTest {
         nodes.add(node);
         when(ban.getInvolvedNodes()).thenReturn(nodes);
 
+        when(reconfigurationProblem.getSourceModel()).thenReturn(instance);
         when(instance.getModel()).thenReturn(mock(org.btrplace.model.Model.class));
         when(instance.getModel().getMapping()).thenReturn(mapping);
         when(mapping.isRunning(vm)).thenReturn(true);
         when(mapping.getVMLocation(vm)).thenReturn(mock(Node.class)); // Different node
 
         CBan cBan = new CBan(ban);
+
+        // When
         Set<VM> result = cBan.getMisPlacedVMs(instance);
-        Assert.assertEquals(result.size(), 0);
+
+        // Then
+        Assert.assertTrue(result.isEmpty());
     }
 
     @Test
@@ -216,8 +249,12 @@ public class CBan_ArrowTest {
         // Setup
         String banString = "Ban constraint";
         when(ban.toString()).thenReturn(banString);
-
         CBan cBan = new CBan(ban);
-        Assert.assertEquals(cBan.toString(), banString);
+
+        // When
+        String result = cBan.toString();
+
+        // Then
+        Assert.assertEquals(result, banString);
     }
 }

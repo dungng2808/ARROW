@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000911-ag5p",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-000911-ag5p",
+  "run_id": "20261122-000544-o53h",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261122-000544-o53h",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 4251,
-        "out": 564
+        "out": 686
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 14.4,
-        "block2": 3,
-        "block3": 7.9,
+        "block1": 21.4,
+        "block2": 4.6,
+        "block3": 10.7,
         "block4": null,
-        "total": 25.4
+        "total": 38.3
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 4251,
-    "tokens_out": 564,
+    "tokens_out": 686,
     "cost_usd": null
   },
   "warnings": [

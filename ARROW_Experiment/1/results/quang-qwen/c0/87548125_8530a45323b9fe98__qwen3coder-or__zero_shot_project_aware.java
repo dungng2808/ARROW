@@ -92,10 +92,11 @@ public class Analyzer_ArrowTest {
 	public void testCreateEdges() {
 		Package<String> pkg1 = mock(Package.class);
 		Package<String> pkg2 = mock(Package.class);
-		Set<Package<String>> usages = new HashSet<>(Arrays.asList(pkg1, pkg2));
+		Set<Package<String>> usages = new HashSet<>(Arrays.asList(pkg2));
 		when(pkg1.getPackageUsages()).thenReturn(usages);
 		
 		Set<Package<String>> packages = new HashSet<>(Arrays.asList(pkg1));
+		
 		Analyzer<String> analyzer = new Analyzer<>();
 		java.util.Map<Package<String>, Set<Package<String>>> result = analyzer.createEdges(packages);
 		
@@ -109,6 +110,7 @@ public class Analyzer_ArrowTest {
 		Package<String> pkg1 = mock(Package.class);
 		Package<String> pkg2 = mock(Package.class);
 		List<Package<String>> circuit = Arrays.asList(pkg1, pkg2);
+		
 		List<List<Package<String>>> elementaryCircuits = Arrays.asList(circuit);
 		
 		Analyzer<String> analyzer = new Analyzer<>();

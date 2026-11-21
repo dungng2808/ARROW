@@ -2,12 +2,12 @@ package io.trane.future;
 
 import java.time.Duration;
 import java.util.concurrent.ScheduledExecutorService;
-import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.function.BiFunction;
 import java.util.function.Consumer;
 import java.util.function.Function;
 import org.junit.Test;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 
 public class NoFuture_ArrowTest {
 
@@ -15,7 +15,7 @@ public class NoFuture_ArrowTest {
     public void testRaise() {
         NoFuture<String> future = new NoFuture<>();
         future.raise(new RuntimeException("test"));
-        // Method does nothing, so no assertion needed
+        // No exception expected, method does nothing
     }
 
     @Test
@@ -113,14 +113,14 @@ public class NoFuture_ArrowTest {
     @Test(expected = TimeoutException.class)
     public void testGet() throws CheckedFutureException {
         NoFuture<String> future = new NoFuture<>();
-        future.get(Duration.ofMillis(10));
+        future.get(Duration.ofMillis(100));
     }
 
     @Test
     public void testJoin() throws CheckedFutureException {
         NoFuture<String> future = new NoFuture<>();
-        future.join(Duration.ofMillis(10));
-        // Should not throw anything
+        future.join(Duration.ofMillis(100));
+        // Should not throw exception
     }
 
     @Test
@@ -133,22 +133,24 @@ public class NoFuture_ArrowTest {
     @Test
     public void testDelayed() {
         NoFuture<String> future = new NoFuture<>();
-        Future<String> result = future.delayed(Duration.ofMillis(10), null);
+        ScheduledExecutorService scheduler = mock(ScheduledExecutorService.class);
+        Future<String> result = future.delayed(Duration.ofMillis(100), scheduler);
         assertSame(future, result);
     }
 
     @Test
     public void testProxyTo() {
         NoFuture<String> future = new NoFuture<>();
-        Promise<String> promise = new Promise<>();
+        Promise<String> promise = mock(Promise.class);
         future.proxyTo(promise);
-        // Method does nothing, so no assertion needed
+        // Should not throw exception
     }
 
     @Test
     public void testWithin() {
         NoFuture<String> future = new NoFuture<>();
-        Future<String> result = future.within(Duration.ofMillis(10), null, new RuntimeException());
+        ScheduledExecutorService scheduler = mock(ScheduledExecutorService.class);
+        Future<String> result = future.within(Duration.ofMillis(100), scheduler, new RuntimeException());
         assertSame(future, result);
     }
 }

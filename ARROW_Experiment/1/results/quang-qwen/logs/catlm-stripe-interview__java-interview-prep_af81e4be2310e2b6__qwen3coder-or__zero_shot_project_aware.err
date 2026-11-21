@@ -1,5 +1,5 @@
 ARROW · Main (com.stripe.interview)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 1 test (dùng lại, đo 20/11 00:53) · 5.2 s
-[OK] Khối 2  c0 · 1.6k token · 1.7 s · Candidate hợp lệ: 4 test, 4 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 1 test (dùng lại, đo 22/11 00:59) · 6.1 s
+[OK] Khối 2  c0 · 1.6k token · 2.2 s · Candidate hợp lệ: 4 test, 4 assertion
 [>] Khối 3  c0: RUNTIME · NullPointerException | Preconditions.checkNotNull
 [X] Khối 3  Kết thúc: RUNTIME (không sửa)

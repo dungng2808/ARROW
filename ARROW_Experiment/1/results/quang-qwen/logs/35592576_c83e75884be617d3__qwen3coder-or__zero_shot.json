@@ -1,6 +1,6 @@
 {
-  "run_id": "20261119-235918-sodp",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261119-235918-sodp",
+  "run_id": "20261121-235630-qjik",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261121-235630-qjik",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1611,
-        "out": 422
+        "out": 371
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 177.6,
-        "block2": 6.3,
-        "block3": 9.6,
+        "block1": 202.3,
+        "block2": 3.5,
+        "block3": 9.3,
         "block4": null,
-        "total": 193.5
+        "total": 215.2
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1611,
-    "tokens_out": 422,
+    "tokens_out": 371,
     "cost_usd": null
   },
   "warnings": [

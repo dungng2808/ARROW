@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-004056-y3tk",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-004056-y3tk",
+  "run_id": "20261122-004443-zmqf",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-004443-zmqf",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.gxk.jvm.Args",
-      "result": "COMPILE",
-      "c0_state": "COMPILE",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 3561,
-        "out": 861
+        "out": 890
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 7.1,
-        "block2": 3.2,
-        "block3": 5.3,
+        "block1": 8.6,
+        "block2": 3.5,
+        "block3": 8.4,
         "block4": null,
-        "total": 15.6
+        "total": 20.6
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 3561,
-    "tokens_out": 861,
+    "tokens_out": 890,
     "cost_usd": null
   },
   "warnings": [

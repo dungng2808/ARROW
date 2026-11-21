@@ -1,5 +1,5 @@
 ARROW · SpringcloudGatewayApplication (com.monitor4all.cn.springcloud_gateway)
-[OK] Khối 1  Maven 3.9.16 · build root springcloud_gateway · JDK 8 · JUnit 5 + Mockito · baseline 1 test ×2 · 100.4 s
-[OK] Khối 2  c0 · 1.4k token · 2.3 s · Candidate hợp lệ: 2 test, 3 assertion
+[OK] Khối 1  Maven 3.9.16 · build root springcloud_gateway · JDK 8 · JUnit 5 + Mockito · baseline 1 test ×2 · 106.9 s
+[OK] Khối 2  c0 · 1.4k token · 1.6 s · Candidate hợp lệ: 2 test, 2 assertion
 [>] Khối 3  c0: ASSERTION · AssertionError | testMain
 [X] Khối 3  Kết thúc: ASSERTION (không sửa)

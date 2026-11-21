@@ -1,15 +1,15 @@
 {
-  "run_id": "20261120-002703-y61d",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-002703-y61d",
+  "run_id": "20261122-002504-ucc4",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261122-002504-ucc4",
   "status": "COMPLETED",
-  "exit_code": 1,
+  "exit_code": 0,
   "targets": [
     {
       "cut_fqn": "com.github.hburgmeier.jerseyoauth2.protocol.impl.extractor.HeaderExtractor",
-      "result": "ASSERTION",
-      "c0_state": "ASSERTION",
+      "result": "VALID",
+      "c0_state": "VALID",
       "rounds_run": 0,
-      "success_round": null,
+      "success_round": 0,
       "stop_reason": null,
       "test_fqn": "com.github.hburgmeier.jerseyoauth2.protocol.impl.extractor.HeaderExtractor_ArrowTest",
       "test_path": "jersey-oauth2-protocol-impl/src/test/java/com/github/hburgmeier/jerseyoauth2/protocol/impl/extractor/HeaderExtractor_ArrowTest.java",
@@ -19,21 +19,21 @@
       "tools": null,
       "tokens": {
         "in": 1608,
-        "out": 392
+        "out": 353
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 7.1,
-        "block2": 2.3,
-        "block3": 7.2,
+        "block1": 7,
+        "block2": 5.3,
+        "block3": 12.1,
         "block4": null,
-        "total": 17
+        "total": 24.4
       },
       "error": null,
       "warnings": [],
       "apply": {
-        "decision": "not_valid",
+        "decision": "remote_project",
         "path": null
       }
     }
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1608,
-    "tokens_out": 392,
+    "tokens_out": 353,
     "cost_usd": null
   },
   "warnings": []

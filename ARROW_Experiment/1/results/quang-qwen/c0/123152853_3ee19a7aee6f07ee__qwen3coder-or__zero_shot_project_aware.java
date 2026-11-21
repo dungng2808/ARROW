@@ -13,12 +13,10 @@ import org.apache.nemo.common.ir.edge.executionproperty.*;
 import org.apache.nemo.common.ir.vertex.*;
 import org.apache.nemo.common.ir.vertex.executionproperty.MessageIdVertexProperty;
 import org.apache.nemo.common.ir.vertex.executionproperty.ParallelismProperty;
-import org.apache.nemo.common.ir.vertex.utility.RelayVertex;
-import org.apache.nemo.common.ir.vertex.utility.SamplingVertex;
+import org.apache.nemo.common.ir.vertex.utility.TaskSizeSplitterVertex;
 import org.apache.nemo.common.ir.vertex.utility.runtimepass.MessageAggregatorVertex;
 import org.apache.nemo.common.ir.vertex.utility.runtimepass.MessageGeneratorVertex;
 import org.apache.nemo.common.ir.vertex.utility.runtimepass.SignalVertex;
-import org.apache.nemo.common.ir.vertex.utility.TaskSizeSplitterVertex;
 import org.junit.Test;
 import org.mockito.Mockito;
 
@@ -39,12 +37,8 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     assertNotNull(irDAG);
-    assertEquals(dag, irDAG.dagSnapshot);
-    assertEquals(dag, irDAG.modifiedDAG);
-    assertNotNull(irDAG.streamVertexToOriginalEdge);
-    assertNotNull(irDAG.samplingVertexToGroup);
-    assertNotNull(irDAG.messageVertexToGroup);
-    assertNotNull(irDAG.executorInfo);
+    assertEquals(dag, irDAG.getVertices());
+    assertEquals(dag, irDAG.getEdges());
   }
 
   @Test
@@ -53,6 +47,7 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     IRDAGChecker.CheckerResult result = irDAG.checkIntegrity();
+    
     assertNotNull(result);
   }
 
@@ -65,7 +60,6 @@ public class IRDAG_ArrowTest {
     boolean result = irDAG.advanceDAGSnapshot(checker);
     
     assertTrue(result);
-    assertEquals(irDAG.modifiedDAG, irDAG.dagSnapshot);
   }
 
   @Test
@@ -74,7 +68,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -83,16 +76,20 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     String summary = irDAG.irDAGSummary();
+    
     assertNotNull(summary);
+    assertTrue(summary.contains("rv"));
+    assertTrue(summary.contains("_v"));
+    assertTrue(summary.contains("_e"));
   }
 
   @Test
   public void testGetInputSize() {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
+    source.setEstimatedSizeBytes(1024L);
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -100,8 +97,9 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    Long size = irDAG.getInputSize();
-    assertNotNull(size);
+    Long inputSize = irDAG.getInputSize();
+    
+    assertEquals(Long.valueOf(1024L), inputSize);
   }
 
   @Test
@@ -110,12 +108,12 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     List<Pair<Integer, ResourceSpecification>> info = new ArrayList<>();
-    Pair<Integer, ResourceSpecification> pair = new Pair<>(1, ResourceSpecification.of(1000));
+    Pair<Integer, ResourceSpecification> pair = new Pair<>(1, ResourceSpecification.of(1024));
     info.add(pair);
     
     irDAG.recordExecutorInfo(info);
     
-    assertEquals(info, irDAG.getExecutorInfo());
+    assertEquals(1, irDAG.getExecutorInfo().size());
   }
 
   @Test
@@ -124,26 +122,28 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     List<Pair<Integer, ResourceSpecification>> info = new ArrayList<>();
-    Pair<Integer, ResourceSpecification> pair = new Pair<>(1, ResourceSpecification.of(1000));
+    Pair<Integer, ResourceSpecification> pair = new Pair<>(1, ResourceSpecification.of(1024));
     info.add(pair);
     
     irDAG.recordExecutorInfo(info);
     
-    assertEquals(info, irDAG.getExecutorInfo());
+    List<Pair<Integer, ResourceSpecification>> retrieved = irDAG.getExecutorInfo();
+    
+    assertEquals(1, retrieved.size());
+    assertEquals(Integer.valueOf(1), retrieved.get(0).left());
   }
 
   @Test
   public void testDeleteRelayVertex() {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
-    IRVertex vertex = new IRVertex("vertex");
     RelayVertex relay = new RelayVertex("relay");
+    IRVertex vertex = new IRVertex("vertex");
     IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, relay);
     IREdge edge2 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, relay, vertex);
-    
     builder.addVertex(source);
-    builder.addVertex(vertex);
     builder.addVertex(relay);
+    builder.addVertex(vertex);
     builder.connectVertices(edge1);
     builder.connectVertices(edge2);
     
@@ -152,8 +152,7 @@ public class IRDAG_ArrowTest {
     
     irDAG.delete(relay);
     
-    assertTrue(irDAG.getVertices().contains(source));
-    assertTrue(irDAG.getVertices().contains(vertex));
+    assertEquals(2, irDAG.getVertices().size());
     assertFalse(irDAG.getVertices().contains(relay));
   }
 
@@ -162,9 +161,7 @@ public class IRDAG_ArrowTest {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
-    RelayVertex relay = new RelayVertex("relay");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -172,10 +169,11 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
+    RelayVertex relay = new RelayVertex("relay");
     irDAG.insert(relay, edge);
     
-    assertTrue(irDAG.getVertices().contains(relay));
     assertEquals(3, irDAG.getVertices().size());
+    assertTrue(irDAG.getVertices().contains(relay));
   }
 
   @Test
@@ -183,10 +181,7 @@ public class IRDAG_ArrowTest {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
-    MessageGeneratorVertex messageGen = new MessageGeneratorVertex<>(null);
-    MessageAggregatorVertex messageAgg = new MessageAggregatorVertex(null);
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -194,6 +189,8 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
+    MessageGeneratorVertex<String> messageGen = new MessageGeneratorVertex<>(s -> s);
+    MessageAggregatorVertex<String> messageAgg = new MessageAggregatorVertex<>(s -> s);
     Set<IREdge> edgesToGetStats = Sets.newHashSet(edge);
     Set<IREdge> edgesToOptimize = Sets.newHashSet(edge);
     
@@ -202,6 +199,7 @@ public class IRDAG_ArrowTest {
                  DecoderProperty.of(BytesDecoderFactory.of()),
                  edgesToGetStats, edgesToOptimize);
     
+    assertEquals(4, irDAG.getVertices().size());
     assertTrue(irDAG.getVertices().contains(messageGen));
     assertTrue(irDAG.getVertices().contains(messageAgg));
   }
@@ -211,9 +209,7 @@ public class IRDAG_ArrowTest {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
-    SignalVertex signal = new SignalVertex("signal");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -221,8 +217,10 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
+    SignalVertex signal = new SignalVertex("signal");
     irDAG.insert(signal, edge);
     
+    assertEquals(3, irDAG.getVertices().size());
     assertTrue(irDAG.getVertices().contains(signal));
   }
 
@@ -231,9 +229,7 @@ public class IRDAG_ArrowTest {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
-    SamplingVertex sampling = new SamplingVertex(new IRVertex("inner"), 0.5);
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -241,12 +237,13 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    Set<SamplingVertex> toInsert = Sets.newHashSet(sampling);
+    Set<SamplingVertex> samplingVertices = Sets.newHashSet(new SamplingVertex(new IRVertex("sampling"), 0.5));
     Set<IRVertex> executeAfter = Sets.newHashSet(vertex);
     
-    irDAG.insert(toInsert, executeAfter);
+    irDAG.insert(samplingVertices, executeAfter);
     
-    assertTrue(irDAG.getVertices().contains(sampling));
+    assertEquals(4, irDAG.getVertices().size());
+    assertTrue(irDAG.getVertices().containsAll(samplingVertices));
   }
 
   @Test
@@ -254,9 +251,7 @@ public class IRDAG_ArrowTest {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
-    TaskSizeSplitterVertex splitter = new TaskSizeSplitterVertex("splitter", new DAGBuilder<IRVertex, IREdge>().build());
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -264,9 +259,12 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
+    TaskSizeSplitterVertex splitter = Mockito.mock(TaskSizeSplitterVertex.class);
+    when(splitter.getOriginalVertices()).thenReturn(Sets.newHashSet(vertex));
+    
     irDAG.insert(splitter);
     
-    assertTrue(irDAG.getVertices().contains(splitter));
+    assertEquals(3, irDAG.getVertices().size());
   }
 
   @Test
@@ -275,7 +273,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -286,7 +283,68 @@ public class IRDAG_ArrowTest {
     Function<DAG<IRVertex, IREdge>, DAG<IRVertex, IREdge>> reshaper = d -> d;
     irDAG.reshapeUnsafely(reshaper);
     
-    assertNotNull(irDAG.modifiedDAG);
+    assertNotNull(irDAG);
+  }
+
+  @Test
+  public void testGetSinksWithinVertexSet() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex1 = new IRVertex("vertex1");
+    IRVertex vertex2 = new IRVertex("vertex2");
+    IREdge edge1 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex1);
+    IREdge edge2 = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, vertex1, vertex2);
+    builder.addVertex(source);
+    builder.addVertex(vertex1);
+    builder.addVertex(vertex2);
+    builder.connectVertices(edge1);
+    builder.connectVertices(edge2);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    Set<IRVertex> vertexSet = Sets.newHashSet(vertex1, vertex2);
+    Set<IRVertex> sinks = irDAG.getSinksWithinVertexSet(dag, vertexSet);
+    
+    assertEquals(1, sinks.size());
+    assertTrue(sinks.contains(vertex2));
+  }
+
+  @Test
+  public void testWrapSamplingVertexIfNeeded() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex = new IRVertex("vertex");
+    builder.addVertex(source);
+    builder.addVertex(vertex);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    SamplingVertex sampling = new SamplingVertex(vertex, 0.5);
+    IRVertex result = irDAG.wrapSamplingVertexIfNeeded(vertex, sampling);
+    
+    assertTrue(result instanceof SamplingVertex);
+  }
+
+  @Test
+  public void testEdgeToMessageAggregator() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex = new IRVertex("vertex");
+    builder.addVertex(source);
+    builder.addVertex(vertex);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    IREdge edge = irDAG.edgeToMessageAggregator(source, vertex,
+                                                 EncoderProperty.of(BytesEncoderFactory.of()),
+                                                 DecoderProperty.of(BytesDecoderFactory.of()));
+    
+    assertNotNull(edge);
+    assertEquals(CommunicationPatternProperty.Value.SHUFFLE, 
+                 edge.getPropertyValue(CommunicationPatternProperty.class).get());
   }
 
   @Test
@@ -295,7 +353,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -303,8 +360,8 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
-    final List<String> visited = new ArrayList<>();
-    Consumer<IRVertex> consumer = v -> visited.add(v.getId());
+    final List<IRVertex> visited = new ArrayList<>();
+    Consumer<IRVertex> consumer = visited::add;
     
     irDAG.topologicalDo(consumer);
     
@@ -312,12 +369,11 @@ public class IRDAG_ArrowTest {
   }
 
   @Test
-  public void testGetVertices() {
+  public void testDFS() {
     DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -325,7 +381,77 @@ public class IRDAG_ArrowTest {
     DAG<IRVertex, IREdge> dag = builder.build();
     IRDAG irDAG = new IRDAG(dag);
     
+    final List<IRVertex> visited = new ArrayList<>();
+    Consumer<IRVertex> consumer = visited::add;
+    
+    irDAG.dfsTraverse(consumer, DAGInterface.TraversalOrder.TOP_DOWN);
+    
+    assertEquals(2, visited.size());
+  }
+
+  @Test
+  public void testPathExistsBetween() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex = new IRVertex("vertex");
+    IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
+    builder.addVertex(source);
+    builder.addVertex(vertex);
+    builder.connectVertices(edge);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    Boolean result = irDAG.pathExistsBetween(source, vertex);
+    
+    assertTrue(result);
+  }
+
+  @Test
+  public void testGetVertexById() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    builder.addVertex(source);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    IRVertex result = irDAG.getVertexById("source");
+    
+    assertEquals(source, result);
+  }
+
+  @Test
+  public void testGetEdgeById() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex = new IRVertex("vertex");
+    IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
+    builder.addVertex(source);
+    builder.addVertex(vertex);
+    builder.connectVertices(edge);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    IREdge result = irDAG.getEdgeById(edge.getId());
+    
+    assertEquals(edge, result);
+  }
+
+  @Test
+  public void testGetVertices() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex = new IRVertex("vertex");
+    builder.addVertex(source);
+    builder.addVertex(vertex);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
     List<IRVertex> vertices = irDAG.getVertices();
+    
     assertEquals(2, vertices.size());
   }
 
@@ -335,7 +461,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -344,6 +469,7 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     List<IREdge> edges = irDAG.getEdges();
+    
     assertEquals(1, edges.size());
   }
 
@@ -353,7 +479,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -362,7 +487,9 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     List<IRVertex> roots = irDAG.getRootVertices();
+    
     assertEquals(1, roots.size());
+    assertEquals(source, roots.get(0));
   }
 
   @Test
@@ -371,7 +498,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -380,7 +506,9 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     List<IREdge> edges = irDAG.getIncomingEdgesOf(vertex);
+    
     assertEquals(1, edges.size());
+    assertEquals(edge, edges.get(0));
   }
 
   @Test
@@ -389,7 +517,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -398,7 +525,26 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     List<IREdge> edges = irDAG.getOutgoingEdgesOf(source);
+    
     assertEquals(1, edges.size());
+    assertEquals(edge, edges.get(0));
+  }
+
+  @Test
+  public void testFilterVertices() {
+    DAGBuilder<IRVertex, IREdge> builder = new DAGBuilder<>();
+    SourceVertex source = new SourceVertex<>("source");
+    IRVertex vertex = new IRVertex("vertex");
+    builder.addVertex(source);
+    builder.addVertex(vertex);
+    
+    DAG<IRVertex, IREdge> dag = builder.build();
+    IRDAG irDAG = new IRDAG(dag);
+    
+    List<IRVertex> filtered = irDAG.filterVertices(v -> v instanceof SourceVertex);
+    
+    assertEquals(1, filtered.size());
+    assertTrue(filtered.get(0) instanceof SourceVertex);
   }
 
   @Test
@@ -407,7 +553,6 @@ public class IRDAG_ArrowTest {
     SourceVertex source = new SourceVertex<>("source");
     IRVertex vertex = new IRVertex("vertex");
     IREdge edge = new IREdge(CommunicationPatternProperty.Value.ONE_TO_ONE, source, vertex);
-    
     builder.addVertex(source);
     builder.addVertex(vertex);
     builder.connectVertices(edge);
@@ -416,6 +561,7 @@ public class IRDAG_ArrowTest {
     IRDAG irDAG = new IRDAG(dag);
     
     String str = irDAG.toString();
+    
     assertNotNull(str);
   }
 }

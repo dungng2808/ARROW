@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-003509-8h8e",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-003509-8h8e",
+  "run_id": "20261122-003631-me40",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-003631-me40",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.macasaet.fernet.Key",
-      "result": "COMPILE",
-      "c0_state": "COMPILE",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 4290,
-        "out": 2692
+        "out": 2744
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 6.4,
-        "block2": 5.8,
-        "block3": 4,
+        "block1": 9.1,
+        "block2": 7,
+        "block3": 9.3,
         "block4": null,
-        "total": 16.3
+        "total": 25.4
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 4290,
-    "tokens_out": 2692,
+    "tokens_out": 2744,
     "cost_usd": null
   },
   "warnings": []

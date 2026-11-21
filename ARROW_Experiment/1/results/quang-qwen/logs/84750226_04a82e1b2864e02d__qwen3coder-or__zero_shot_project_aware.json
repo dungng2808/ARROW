@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000702-co29",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-000702-co29",
+  "run_id": "20261122-000421-kjpe",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-000421-kjpe",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1896,
-        "out": 469
+        "out": 691
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 117.7,
-        "block2": 2.3,
-        "block3": 24.7,
+        "block1": 161.6,
+        "block2": 4.1,
+        "block3": 27.2,
         "block4": null,
-        "total": 144.8
+        "total": 193.1
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1896,
-    "tokens_out": 469,
+    "tokens_out": 691,
     "cost_usd": null
   },
   "warnings": [

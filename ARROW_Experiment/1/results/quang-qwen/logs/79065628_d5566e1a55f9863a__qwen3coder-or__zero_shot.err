@@ -1,5 +1,5 @@
 ARROW · BaseCouchbaseRepository (org.abhijitsarkar.spring.beer.repository)
-[OK] Khối 1  Gradle 4.1 · build root beer-demo · JDK 8 · JUnit 4 + Mockito · baseline 33 test ×2 · 85.2 s
-[OK] Khối 2  c0 · 2.0k token · 1.7 s · Candidate hợp lệ: 4 test, 4 assertion
-[>] Khối 3  c0: RUNTIME · NullPointerException | BaseCouchbaseRepository_ArrowTest$1.asyncBucket
+[OK] Khối 1  Gradle 4.1 · build root beer-demo · JDK 8 · JUnit 4 + Mockito · baseline 33 test ×2 · 56.4 s
+[OK] Khối 2  c0 · 2.0k token · 7.5 s · Candidate hợp lệ: 5 test, 6 assertion
+[>] Khối 3  c0: RUNTIME · ClassCastException | BaseCouchbaseRepository.getGenericClass
 [X] Khối 3  Kết thúc: RUNTIME (không sửa)

@@ -10,23 +10,29 @@ public class NGSessionPool_ArrowTest {
 
     @Test
     public void testConstructorWithMaxIdleZero() {
-        NGServer server = new NGServer();
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 0);
         assertEquals(0, pool.maxIdleSessions);
     }
 
     @Test
-    public void testConstructorWithMaxIdlePositive() {
-        NGServer server = new NGServer();
+    public void testConstructorWithNegativeMaxIdle() {
+        NGServer server = new MockNGServer();
+        NGSessionPool pool = new NGSessionPool(server, -5);
+        assertEquals(0, pool.maxIdleSessions);
+    }
+
+    @Test
+    public void testConstructorWithPositiveMaxIdle() {
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 5);
         assertEquals(5, pool.maxIdleSessions);
     }
 
     @Test
-    public void testTakeFromEmptyPoolCreatesNewSession() throws Exception {
-        NGServer server = new NGServer();
+    public void testTakeWhenPoolEmpty() throws Exception {
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 2);
-        
         NGSession session = pool.take();
         assertNotNull(session);
         assertTrue(pool.workingPool.contains(session));
@@ -35,57 +41,74 @@ public class NGSessionPool_ArrowTest {
     }
 
     @Test
-    public void testTakeFromIdlePoolReturnsIdleSession() throws Exception {
-        NGServer server = new NGServer();
+    public void testTakeWhenPoolHasIdleSessions() throws Exception {
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 2);
         
-        // First take creates a session
-        NGSession session1 = pool.take();
-        // Give it back to idle pool
-        pool.give(session1);
+        // Add a session to idle pool
+        NGSession idleSession = new NGSession(pool, server);
+        pool.idlePool.add(idleSession);
         
-        // Take again should get the same session from idle pool
-        NGSession session2 = pool.take();
-        assertSame(session1, session2);
-        assertTrue(pool.workingPool.contains(session1));
+        NGSession takenSession = pool.take();
+        assertSame(idleSession, takenSession);
+        assertTrue(pool.workingPool.contains(takenSession));
         assertEquals(1, pool.workingPool.size());
         assertEquals(0, pool.idlePool.size());
     }
 
+    @Test(expected = UnsupportedOperationException.class)
+    public void testTakeAfterShutdown() throws Exception {
+        NGServer server = new MockNGServer();
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        pool.shutdown();
+        pool.take();
+    }
+
     @Test
-    public void testGiveToIdlePoolWhenUnderLimit() throws Exception {
-        NGServer server = new NGServer();
+    public void testGiveWhenIdlePoolNotFull() throws Exception {
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 2);
         
         NGSession session = pool.take();
         pool.give(session);
         
-        assertEquals(0, pool.workingPool.size());
+        assertTrue(pool.idlePool.contains(session));
+        assertFalse(pool.workingPool.contains(session));
         assertEquals(1, pool.idlePool.size());
-        assertSame(session, pool.idlePool.peek());
+        assertEquals(0, pool.workingPool.size());
     }
 
     @Test
-    public void testGiveToShutdownWhenIdlePoolFull() throws Exception {
-        NGServer server = new NGServer();
+    public void testGiveWhenIdlePoolFull() throws Exception {
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 1);
         
-        // Take and give back two sessions to fill the idle pool
+        // Take and give a session to fill the idle pool
         NGSession session1 = pool.take();
         pool.give(session1);
+        
+        // Take another session, this should not go to idle pool
         NGSession session2 = pool.take();
         pool.give(session2);
         
-        // Now pool is full, giving another session should shutdown it
-        NGSession session3 = pool.take();
-        pool.give(session3);
-        
-        assertFalse(session3.isAlive());
+        // session2 should be shutdown since idle pool is full
+        assertTrue(session2.isShutdownCalled());
+        assertFalse(pool.idlePool.contains(session2));
+        assertFalse(pool.workingPool.contains(session2));
+        assertEquals(1, pool.idlePool.size());
+    }
+
+    @Test
+    public void testShutdownWithNoSessions() throws Exception {
+        NGServer server = new MockNGServer();
+        NGSessionPool pool = new NGSessionPool(server, 2);
+        pool.shutdown();
+        assertTrue(pool.done);
     }
 
     @Test
     public void testShutdownWithWorkingAndIdleSessions() throws Exception {
-        NGServer server = new NGServer();
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 2);
         
         // Take and give some sessions
@@ -94,43 +117,45 @@ public class NGSessionPool_ArrowTest {
         pool.give(session1);
         pool.give(session2);
         
-        // Shutdown the pool
         pool.shutdown();
         
-        // All sessions should be shutdown
-        assertFalse(session1.isAlive());
-        assertFalse(session2.isAlive());
-    }
-
-    @Test(expected = UnsupportedOperationException.class)
-    public void testTakeAfterShutdown() throws Exception {
-        NGServer server = new NGServer();
-        NGSessionPool pool = new NGSessionPool(server, 2);
-        pool.shutdown();
-        pool.take();
+        assertTrue(pool.done);
+        assertEquals(0, pool.workingPool.size());
+        assertEquals(0, pool.idlePool.size());
     }
 
     @Test
-    public void testGiveAfterShutdownDoesNothing() throws Exception {
-        NGServer server = new NGServer();
+    public void testGiveAfterShutdown() throws Exception {
+        NGServer server = new MockNGServer();
         NGSessionPool pool = new NGSessionPool(server, 2);
-        NGSession session = pool.take();
         pool.shutdown();
+        
+        NGSession session = new MockNGSession();
         pool.give(session); // Should not throw exception
-        // Session should still be in working pool since shutdown was called
-        assertTrue(pool.workingPool.contains(session));
     }
 
-    @Test
-    public void testConstructorWithCustomInstanceCreator() {
-        NGServer server = new NGServer();
-        AtomicBoolean created = new AtomicBoolean(false);
-        Supplier<NGSession> creator = () -> {
-            created.set(true);
-            return new NGSession(null, server);
-        };
-        NGSessionPool pool = new NGSessionPool(server, 2, creator);
-        assertEquals(2, pool.maxIdleSessions);
-        assertTrue(created.get());
+    // Helper classes for testing
+    private static class MockNGServer extends NGServer {
+        @Override
+        public void run() {
+            // No-op
+        }
+    }
+
+    private static class MockNGSession extends NGSession {
+        private AtomicBoolean shutdownCalled = new AtomicBoolean(false);
+        
+        public MockNGSession() {
+            super(null, null);
+        }
+        
+        @Override
+        public void shutdown() {
+            shutdownCalled.set(true);
+        }
+        
+        public boolean isShutdownCalled() {
+            return shutdownCalled.get();
+        }
     }
 }

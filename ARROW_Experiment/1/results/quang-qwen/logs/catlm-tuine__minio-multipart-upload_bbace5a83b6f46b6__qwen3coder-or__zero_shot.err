@@ -1,5 +1,5 @@
 ARROW · MinioApplication (me.tuine.minio)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 1 test ×2 · 71.1 s
-[OK] Khối 2  c0 · 1.3k token · 1.5 s · Candidate hợp lệ: 1 test, 0 assertion
-[OK] Khối 3  c0: VALID
-[OK] Khối 3  Kết thúc: VALID (không sửa)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 1 test ×2 · 84.1 s
+[OK] Khối 2  c0 · 1.4k token · 2.0 s · Candidate hợp lệ: 2 test, 4 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

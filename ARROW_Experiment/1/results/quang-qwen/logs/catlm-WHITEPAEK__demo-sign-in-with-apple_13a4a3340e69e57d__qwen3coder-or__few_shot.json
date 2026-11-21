@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005301-g1xk",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-005301-g1xk",
+  "run_id": "20261122-005830-madz",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-005830-madz",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2505,
-        "out": 198
+        "out": 184
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 5.8,
-        "block2": 1.8,
-        "block3": 3,
+        "block1": 6.7,
+        "block2": 1.6,
+        "block3": 7.3,
         "block4": null,
-        "total": 10.7
+        "total": 15.7
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2505,
-    "tokens_out": 198,
+    "tokens_out": 184,
     "cost_usd": null
   },
   "warnings": [

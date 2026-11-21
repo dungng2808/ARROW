@@ -11,25 +11,23 @@ public class SpringcloudGatewayApplication_ArrowTest {
         // This test verifies the method exists and can be invoked
         try {
             SpringcloudGatewayApplication.main(new String[]{});
-            // If we reach here, main executed successfully
+            // If we reach here, the method executed successfully
             assertTrue(true);
         } catch (Exception e) {
-            fail("Main method should not throw exception: " + e.getMessage());
+            fail("Main method should not throw exception when called with empty args");
         }
     }
 
     @Test
-    public void testBodyPredicateBean() {
-        // Create an instance to test the bean method
+    public void testBodyPredicate() {
         SpringcloudGatewayApplication application = new SpringcloudGatewayApplication();
+        assertNotNull(application);
         
-        // Call the bodyPredicate method which should return a Predicate
+        // Test that bodyPredicate bean can be created and returns a valid predicate
         java.util.function.Predicate<?> predicate = application.bodyPredicate();
+        assertNotNull(predicate);
         
-        // Verify that the predicate is not null
-        assertNotNull("bodyPredicate should not return null", predicate);
-        
-        // Verify that the predicate returns true for any input (as defined in the implementation)
-        assertTrue("Predicate should return true for any input", predicate.test("any_input"));
+        // Test that the predicate works correctly (returns true as defined in source)
+        assertTrue(predicate.test(null));
     }
 }

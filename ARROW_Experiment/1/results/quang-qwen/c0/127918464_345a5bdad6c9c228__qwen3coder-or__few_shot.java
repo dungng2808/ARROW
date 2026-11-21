@@ -137,9 +137,8 @@ public class DatabaseOLAPService_ArrowTest {
         joinTypesMapping.put(Dimension.JOIN_TYPE_LEFT, JoinType.LEFT_OUTER_JOIN);
         joinTypesMapping.put(Dimension.JOIN_TYPE_RIGHT, JoinType.RIGHT_OUTER_JOIN);
 
-        // Mocking the jdbcTemplate
+        // Mocking the JdbcTemplate
         when(new JdbcTemplate(any())).thenReturn(jdbcTemplate);
-        when(jdbcTemplate.queryForList(anyString())).thenReturn(new ArrayList<>());
 
         // Call the method
         DataSet<Field> result = databaseOLAPService.fetchData(connector, cube);
@@ -149,46 +148,43 @@ public class DatabaseOLAPService_ArrowTest {
     }
 
     @Test
-    public void testExtractDataSet() throws Exception {
+    public void testExtractDataSet() throws SQLException {
         // Mocking the necessary components
         when(resultSet.next()).thenReturn(true).thenReturn(false);
         when(resultSet.getString("columnName")).thenReturn("value");
 
-        // Mocking the row mapper
-        List<Object> expectedList = Arrays.asList("value");
-        // This would normally be tested through integration but we're testing the method directly
-
         // Call the method
-        // We can't easily test this without more complex mocking of the RowMapperResultSetExtractor
-        // But we can at least verify it doesn't throw an exception
-        try {
-            // This will fail due to missing implementation details, but we're just checking it compiles
-            databaseOLAPService.getClass().getDeclaredMethod("extractDataSet", ResultSet.class, Class.class);
-        } catch (NoSuchMethodException e) {
-            // Expected since we're trying to access a private method
-        }
+        List<Field> result = databaseOLAPService.extractDataSet(resultSet, Field.class);
+
+        // Verify
+        assertNotNull(result);
     }
 
     @Test
     public void testExtractDatabaseMetaDataSuccess() throws Exception {
-        // Mocking successful extraction
+        // Mocking the necessary components
         DatabaseMetaDataCallback callback = any(DatabaseMetaDataCallback.class);
-        Object result = new Object();
+        Object expected = new Object();
+
+        // Mocking the JdbcUtils.extractDatabaseMetaData
+        when(org.springframework.jdbc.support.JdbcUtils.extractDatabaseMetaData(any(), any(DatabaseMetaDataCallback.class))).thenReturn(expected);
 
         // Call the method
-        Object actualResult = databaseOLAPService.extractDatabaseMetaData(connector, callback);
+        Object result = databaseOLAPService.extractDatabaseMetaData(connector, callback);
 
         // Verify
-        assertNotNull(actualResult);
+        assertEquals(expected, result);
     }
 
     @Test(expected = DatumCoreException.class)
     public void testExtractDatabaseMetaDataFailure() throws Exception {
-        // Mocking failed extraction
+        // Mocking the necessary components
         DatabaseMetaDataCallback callback = any(DatabaseMetaDataCallback.class);
-        doThrow(new MetaDataAccessException("Test exception")).when(databaseOLAPService).extractDatabaseMetaData(any(Connector.class), any(DatabaseMetaDataCallback.class));
 
-        // Call the method - should throw DatumCoreException
+        // Mocking the JdbcUtils.extractDatabaseMetaData to throw MetaDataAccessException
+        doThrow(new MetaDataAccessException("Test exception")).when(org.springframework.jdbc.support.JdbcUtils.class);
+
+        // Call the method
         databaseOLAPService.extractDatabaseMetaData(connector, callback);
     }
 
@@ -197,29 +193,26 @@ public class DatabaseOLAPService_ArrowTest {
         // Mocking the necessary components
         DatabaseMetaDataCallback callback = any(DatabaseMetaDataCallback.class);
         Dialect dialect = mock(Dialect.class);
-        when(databaseOLAPService.extractDatabaseMetaData(any(Connector.class), any(DatabaseMetaDataCallback.class))).thenReturn(dialect);
+
+        // Mocking the database metadata callback
+        doReturn(dialect).when(databaseOLAPService).extractDatabaseMetaData(any(Connector.class), any(DatabaseMetaDataCallback.class));
 
         // Call the method
         Dialect result = databaseOLAPService.resolveDialect(connector);
 
         // Verify
-        assertNotNull(result);
+        assertEquals(dialect, result);
     }
 
     @Test(expected = DatumCoreException.class)
     public void testResolveDialectNotFound() throws Exception {
         // Mocking the necessary components
         DatabaseMetaDataCallback callback = any(DatabaseMetaDataCallback.class);
-        when(databaseOLAPService.extractDatabaseMetaData(any(Connector.class), any(DatabaseMetaDataCallback.class)))
-                .thenAnswer(invocation -> {
-                    DatabaseMetaDataCallback cb = invocation.getArgument(1);
-                    // Simulate the case where no dialect is found
-                    DialectResolutionInfo info = mock(MetaDataDialectResolutionInfo.class);
-                    // This will cause the method to throw an exception
-                    throw new DatumCoreException(ErrorCodes.DIALECT_NOT_FOUND);
-                });
 
-        // Call the method - should throw DatumCoreException
+        // Mocking the database metadata callback to return null dialect
+        doReturn(null).when(databaseOLAPService).extractDatabaseMetaData(any(Connector.class), any(DatabaseMetaDataCallback.class));
+
+        // Call the method
         databaseOLAPService.resolveDialect(connector);
     }
 }

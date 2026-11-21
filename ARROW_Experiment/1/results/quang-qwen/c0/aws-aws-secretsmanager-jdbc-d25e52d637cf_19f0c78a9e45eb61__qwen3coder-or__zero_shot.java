@@ -22,14 +22,14 @@ public class AWSSecretsManagerPostgreSQLDriver_ArrowTest {
     }
 
     @Test
-    public void testIsExceptionDueToAuthenticationErrorWithMatchingSqlState() {
+    public void testIsExceptionDueToAuthenticationErrorWithCorrectSqlState() {
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver();
         SQLException sqlException = new SQLException("", "28P01");
         assertTrue(driver.isExceptionDueToAuthenticationError(sqlException));
     }
 
     @Test
-    public void testIsExceptionDueToAuthenticationErrorWithNonMatchingSqlState() {
+    public void testIsExceptionDueToAuthenticationErrorWithWrongSqlState() {
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver();
         SQLException sqlException = new SQLException("", "28P02");
         assertFalse(driver.isExceptionDueToAuthenticationError(sqlException));
@@ -64,14 +64,14 @@ public class AWSSecretsManagerPostgreSQLDriver_ArrowTest {
     }
 
     @Test
-    public void testConstructUrlFromEndpointPortDatabaseWithNoDbname() {
+    public void testConstructUrlFromEndpointPortDatabaseWithNoDbName() {
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver();
         String url = driver.constructUrlFromEndpointPortDatabase("localhost", "5432", null);
         assertEquals("jdbc:postgresql://localhost:5432/", url);
     }
 
     @Test
-    public void testConstructUrlFromEndpointPortDatabaseWithNoPortAndNoDbname() {
+    public void testConstructUrlFromEndpointPortDatabaseWithNoPortAndNoDbName() {
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver();
         String url = driver.constructUrlFromEndpointPortDatabase("localhost", null, null);
         assertEquals("jdbc:postgresql://localhost/", url);
@@ -91,21 +91,21 @@ public class AWSSecretsManagerPostgreSQLDriver_ArrowTest {
     }
 
     @Test
-    public void testConstructorWithClientBuilder() {
+    public void testConstructorWithAWSSecretsManagerClientBuilder() {
         AWSSecretsManagerClientBuilder builder = AWSSecretsManagerClientBuilder.defaultClient();
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver(builder);
         assertEquals("postgresql", driver.getPropertySubprefix());
     }
 
     @Test
-    public void testConstructorWithClient() {
+    public void testConstructorWithAWSSecretsManagerClient() {
         AWSSecretsManager client = AWSSecretsManagerClientBuilder.defaultClient();
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver(client);
         assertEquals("postgresql", driver.getPropertySubprefix());
     }
 
     @Test
-    public void testConstructorWithCacheConfiguration() {
+    public void testConstructorWithSecretCacheConfiguration() {
         SecretCacheConfiguration config = new SecretCacheConfiguration();
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver(config);
         assertEquals("postgresql", driver.getPropertySubprefix());

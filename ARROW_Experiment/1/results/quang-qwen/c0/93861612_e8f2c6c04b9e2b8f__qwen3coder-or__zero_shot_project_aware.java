@@ -21,19 +21,19 @@ public class CucableLogger_ArrowTest {
     @Test
     public void testInitializeWithNullLogLevel() {
         cucableLogger.initialize(mockLog, null);
-        verifyZeroInteractions(mockLog);
+        verifyNoMoreInteractions(mockLog);
     }
     
     @Test
     public void testInitializeWithValidLogLevel() {
         cucableLogger.initialize(mockLog, "DEFAULT");
-        verifyZeroInteractions(mockLog);
+        verifyNoMoreInteractions(mockLog);
     }
     
     @Test
     public void testInitializeWithInvalidLogLevel() {
         cucableLogger.initialize(mockLog, "INVALID");
-        verifyZeroInteractions(mockLog);
+        verifyNoMoreInteractions(mockLog);
     }
     
     @Test
@@ -54,7 +54,7 @@ public class CucableLogger_ArrowTest {
     public void testInfoWithNonMatchingLogLevel() {
         cucableLogger.initialize(mockLog, "DEFAULT");
         cucableLogger.info("test message", CucableLogger.CucableLogLevel.COMPACT);
-        verifyZeroInteractions(mockLog);
+        verifyNoMoreInteractions(mockLog);
     }
     
     @Test
@@ -65,73 +65,43 @@ public class CucableLogger_ArrowTest {
     }
     
     @Test
+    public void testLogWithInfoAndMatchingLogLevel() {
+        cucableLogger.initialize(mockLog, "DEFAULT");
+        cucableLogger.log(CucableLogger.LogLevel.INFO, "test message", CucableLogger.CucableLogLevel.DEFAULT);
+        verify(mockLog).info("test message");
+    }
+    
+    @Test
+    public void testLogWithInfoAndNonMatchingLogLevel() {
+        cucableLogger.initialize(mockLog, "DEFAULT");
+        cucableLogger.log(CucableLogger.LogLevel.INFO, "test message", CucableLogger.CucableLogLevel.COMPACT);
+        verifyNoMoreInteractions(mockLog);
+    }
+    
+    @Test
+    public void testLogWithWarn() {
+        cucableLogger.initialize(mockLog, "DEFAULT");
+        cucableLogger.log(CucableLogger.LogLevel.WARN, "test message", CucableLogger.CucableLogLevel.DEFAULT);
+        verify(mockLog).warn("test message");
+    }
+    
+    @Test
     public void testLogWithNullCurrentLogLevel() {
-        cucableLogger.initialize(mockLog, null);
-        cucableLogger.info("test message", CucableLogger.CucableLogLevel.DEFAULT);
-        verifyZeroInteractions(mockLog);
+        cucableLogger.log(CucableLogger.LogLevel.INFO, "test message", CucableLogger.CucableLogLevel.DEFAULT);
+        verifyNoMoreInteractions(mockLog);
     }
     
     @Test
     public void testLogWithNullLogLevels() {
         cucableLogger.initialize(mockLog, "DEFAULT");
-        cucableLogger.info("test message", (CucableLogger.CucableLogLevel[]) null);
-        verifyZeroInteractions(mockLog);
+        cucableLogger.log(CucableLogger.LogLevel.INFO, "test message", null);
+        verifyNoMoreInteractions(mockLog);
     }
     
     @Test
     public void testLogWithEmptyLogLevels() {
         cucableLogger.initialize(mockLog, "DEFAULT");
-        cucableLogger.info("test message");
-        verifyZeroInteractions(mockLog);
-    }
-    
-    @Test
-    public void testLogWithNoMatchingLogLevels() {
-        cucableLogger.initialize(mockLog, "DEFAULT");
-        cucableLogger.info("test message", CucableLogger.CucableLogLevel.COMPACT, CucableLogger.CucableLogLevel.MINIMAL);
-        verifyZeroInteractions(mockLog);
-    }
-    
-    @Test
-    public void testLogWithMatchingLogLevels() {
-        cucableLogger.initialize(mockLog, "DEFAULT");
-        cucableLogger.info("test message", CucableLogger.CucableLogLevel.DEFAULT, CucableLogger.CucableLogLevel.COMPACT);
-        verify(mockLog).info("test message");
-    }
-    
-    @Test
-    public void testLogWithWarnLevel() {
-        cucableLogger.initialize(mockLog, "DEFAULT");
-        cucableLogger.warn("warning message");
-        verify(mockLog).warn("warning message");
-    }
-    
-    @Test
-    public void testInitializeWithAllLogLevels() {
-        for (CucableLogger.CucableLogLevel level : CucableLogger.CucableLogLevel.values()) {
-            cucableLogger.initialize(mockLog, level.name());
-            verifyZeroInteractions(mockLog);
-        }
-    }
-    
-    @Test
-    public void testLogWithOffLogLevel() {
-        cucableLogger.initialize(mockLog, "OFF");
-        cucableLogger.info("test message", CucableLogger.CucableLogLevel.DEFAULT);
-        verifyZeroInteractions(mockLog);
-    }
-    
-    @Test
-    public void testLogWithCompactLogLevel() {
-        cucableLogger.initialize(mockLog, "COMPACT");
-        cucableLogger.info("test message", CucableLogger.CucableLogLevel.COMPACT);
-        verify(mockLog).info("test message");
-    }
-    
-    @Test
-    public void testLogWithMinimalLogLevel() {
-        cucableLogger.initialize(mockLog, "MINIMAL");
-        cucableLogger.info("test message", CucableLogger.CucableLogLevel.MINIMAL);
-        verify(mockLog).info("test message");
+        cucableLogger.log(CucableLogger.LogLevel.INFO, "test message");
+        verifyNoMoreInteractions(mockLog);
     }
 }

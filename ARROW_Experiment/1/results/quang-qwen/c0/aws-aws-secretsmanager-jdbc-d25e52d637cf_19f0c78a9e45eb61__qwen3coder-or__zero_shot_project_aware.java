@@ -58,14 +58,14 @@ public class AWSSecretsManagerPostgreSQLDriver_ArrowTest {
     }
 
     @Test
-    public void testConstructUrlFromEndpointPortDatabaseWithoutDbname() {
+    public void testConstructUrlFromEndpointPortDatabaseWithoutDBName() {
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver();
         String url = driver.constructUrlFromEndpointPortDatabase("localhost", "5432", null);
         assertEquals("jdbc:postgresql://localhost:5432/", url);
     }
 
     @Test
-    public void testConstructUrlFromEndpointPortDatabaseWithoutPortAndDbname() {
+    public void testConstructUrlFromEndpointPortDatabaseWithoutPortAndDBName() {
         AWSSecretsManagerPostgreSQLDriver driver = new AWSSecretsManagerPostgreSQLDriver();
         String url = driver.constructUrlFromEndpointPortDatabase("localhost", null, null);
         assertEquals("jdbc:postgresql://localhost/", url);

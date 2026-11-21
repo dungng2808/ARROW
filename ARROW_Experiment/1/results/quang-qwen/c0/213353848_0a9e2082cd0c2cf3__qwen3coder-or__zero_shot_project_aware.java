@@ -115,13 +115,6 @@ public class Args_ArrowTest {
   }
 
   @Test
-  public void testParseArgs_DefaultClasspath() {
-    Args args = Args.parseArgs("com.gxk.Main");
-    assertEquals(".", args.classpath);
-    assertEquals("com.gxk.Main", args.clazz);
-  }
-
-  @Test
   public void testParseArgs_MultipleVerboseFlags() {
     Args args = Args.parseArgs("-verbose", "-verbose:trace", "-verbose:call", "com.gxk.Main");
     assertTrue(args.verbose);
@@ -129,5 +122,14 @@ public class Args_ArrowTest {
     assertTrue(args.verboseCall);
     assertFalse(args.verboseClass);
     assertFalse(args.verboseDebug);
+  }
+
+  @Test
+  public void testParseArgs_MixedFlags() {
+    Args args = Args.parseArgs("-Xcolor:red", "-verbose", "-cp", "/tmp/classes", "com.gxk.Main");
+    assertEquals(Logger.ANSI_RED, Logger.fg);
+    assertTrue(args.verbose);
+    assertEquals("/tmp/classes", args.classpath);
+    assertEquals("com.gxk.Main", args.clazz);
   }
 }

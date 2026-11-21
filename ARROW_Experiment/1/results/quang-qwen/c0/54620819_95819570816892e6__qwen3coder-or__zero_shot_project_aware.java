@@ -21,12 +21,12 @@ public class SysUtils_ArrowTest {
     @Test
     public void testFindGoSdkOsType_FreeBSD() {
         // Mock FreeBSD environment
-        boolean originalIsFreeBsd = SystemUtils.IS_OS_FREE_BSD;
+        boolean originalIsFreeBSD = SystemUtils.IS_OS_FREE_BSD;
         SystemUtils.IS_OS_FREE_BSD = true;
         try {
             assertEquals("freebsd", SysUtils.findGoSdkOsType());
         } finally {
-            SystemUtils.IS_OS_FREE_BSD = originalIsFreeBsd;
+            SystemUtils.IS_OS_FREE_BSD = originalIsFreeBSD;
         }
     }
 
@@ -34,14 +34,14 @@ public class SysUtils_ArrowTest {
     public void testFindGoSdkOsType_Mac() {
         // Mock Mac environment
         boolean originalIsMac = SystemUtils.IS_OS_MAC;
-        boolean originalIsMacOsx = SystemUtils.IS_OS_MAC_OSX;
+        boolean originalIsMacOSX = SystemUtils.IS_OS_MAC_OSX;
         SystemUtils.IS_OS_MAC = true;
         SystemUtils.IS_OS_MAC_OSX = true;
         try {
             assertEquals("darwin", SysUtils.findGoSdkOsType());
         } finally {
             SystemUtils.IS_OS_MAC = originalIsMac;
-            SystemUtils.IS_OS_MAC_OSX = originalIsMacOsx;
+            SystemUtils.IS_OS_MAC_OSX = originalIsMacOSX;
         }
     }
 
@@ -61,9 +61,9 @@ public class SysUtils_ArrowTest {
     public void testFindGoSdkOsType_Unsupported() {
         // Mock unsupported OS
         boolean originalIsWindows = SystemUtils.IS_OS_WINDOWS;
-        boolean originalIsFreeBsd = SystemUtils.IS_OS_FREE_BSD;
+        boolean originalIsFreeBSD = SystemUtils.IS_OS_FREE_BSD;
         boolean originalIsMac = SystemUtils.IS_OS_MAC;
-        boolean originalIsMacOsx = SystemUtils.IS_OS_MAC_OSX;
+        boolean originalIsMacOSX = SystemUtils.IS_OS_MAC_OSX;
         boolean originalIsLinux = SystemUtils.IS_OS_LINUX;
         
         SystemUtils.IS_OS_WINDOWS = false;
@@ -76,9 +76,9 @@ public class SysUtils_ArrowTest {
             assertNull(SysUtils.findGoSdkOsType());
         } finally {
             SystemUtils.IS_OS_WINDOWS = originalIsWindows;
-            SystemUtils.IS_OS_FREE_BSD = originalIsFreeBsd;
+            SystemUtils.IS_OS_FREE_BSD = originalIsFreeBSD;
             SystemUtils.IS_OS_MAC = originalIsMac;
-            SystemUtils.IS_OS_MAC_OSX = originalIsMacOsx;
+            SystemUtils.IS_OS_MAC_OSX = originalIsMacOSX;
             SystemUtils.IS_OS_LINUX = originalIsLinux;
         }
     }
@@ -123,6 +123,8 @@ public class SysUtils_ArrowTest {
         assertEquals("386", SysUtils.decodeGoSdkArchType("x32"));
         assertEquals("386", SysUtils.decodeGoSdkArchType("X8632"));
         assertEquals("386", SysUtils.decodeGoSdkArchType("X86"));
+        assertEquals("386", SysUtils.decodeGoSdkArchType("IA32"));
+        assertEquals("386", SysUtils.decodeGoSdkArchType("X32"));
     }
 
     @Test
@@ -135,12 +137,18 @@ public class SysUtils_ArrowTest {
         assertEquals("amd64", SysUtils.decodeGoSdkArchType("x86_64"));
         assertEquals("amd64", SysUtils.decodeGoSdkArchType("EM64T"));
         assertEquals("amd64", SysUtils.decodeGoSdkArchType("X8664"));
+        assertEquals("amd64", SysUtils.decodeGoSdkArchType("IA32E"));
+        assertEquals("amd64", SysUtils.decodeGoSdkArchType("X64"));
+        assertEquals("amd64", SysUtils.decodeGoSdkArchType("AMD64"));
+        assertEquals("amd64", SysUtils.decodeGoSdkArchType("X86_64"));
     }
 
     @Test
-    public void testDecodeGoSdkArchType_Null() {
-        assertNull(SysUtils.decodeGoSdkArchType("unknown"));
-        assertNull(SysUtils.decodeGoSdkArchType(""));
+    public void testDecodeGoSdkArchType_NullOrEmpty() {
         assertNull(SysUtils.decodeGoSdkArchType(null));
+        assertNull(SysUtils.decodeGoSdkArchType(""));
+        assertNull(SysUtils.decodeGoSdkArchType("unknown"));
+        assertNull(SysUtils.decodeGoSdkArchType("ppc64be"));
+        assertNull(SysUtils.decodeGoSdkArchType("mips"));
     }
 }

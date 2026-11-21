@@ -1,5 +1,5 @@
 ARROW · CBan (org.btrplace.scheduler.choco.constraint)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG + Mockito · baseline 589 test ×2 · 165.2 s
-[OK] Khối 2  c0 · 3.3k token · 4.0 s · Candidate hợp lệ: 8 test, 9 assertion
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG + Mockito · baseline 589 test ×2 · 156.8 s
+[OK] Khối 2  c0 · 3.6k token · 6.3 s · Candidate hợp lệ: 7 test, 8 assertion
 [>] Khối 3  c0: COMPILE · package does not exist | -
 [X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005434-he3a",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-005434-he3a",
+  "run_id": "20261122-010036-m5yo",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-010036-m5yo",
   "status": "COMPLETED",
   "exit_code": 0,
   "targets": [
@@ -24,11 +24,11 @@
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 53.7,
-        "block2": 2,
-        "block3": 13.4,
+        "block1": 54,
+        "block2": 2.4,
+        "block3": 14.1,
         "block4": null,
-        "total": 69.2
+        "total": 70.5
       },
       "error": null,
       "warnings": [],

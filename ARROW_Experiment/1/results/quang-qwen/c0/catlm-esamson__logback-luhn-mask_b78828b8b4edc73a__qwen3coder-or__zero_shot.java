@@ -95,6 +95,14 @@ public class LuhnMaskingConverter_ArrowTest {
     }
 
     @Test
+    public void testConvert_NumberNotEndingInFourDigits() {
+        LuhnMaskingConverter converter = new LuhnMaskingConverter();
+        ILoggingEvent event = mock(ILoggingEvent.class);
+        when(event.getFormattedMessage()).thenReturn("Some text 1234567890123456789012345678901234567890");
+        assertEquals("Some text 1234567890123456789012345678901234567890", converter.convert(event));
+    }
+
+    @Test
     public void testHasEnoughDigits_NullInput() {
         assertFalse(LuhnMaskingConverter.hasEnoughDigits(null));
     }
@@ -116,7 +124,7 @@ public class LuhnMaskingConverter_ArrowTest {
 
     @Test
     public void testHasEnoughDigits_DigitsWithSeparators() {
-        assertTrue(LuhnMaskingConverter.hasEnoughDigits("1234 5678 9012 345"));
+        assertTrue(LuhnMaskingConverter.hasEnoughDigits("1234 5678 9012 3456"));
     }
 
     @Test
@@ -156,17 +164,17 @@ public class LuhnMaskingConverter_ArrowTest {
 
     @Test
     public void testMaskString_LongMask() {
-        assertEquals("**********MASKED", LuhnMaskingConverter.maskString("12345678901234567890", "1234"));
+        assertEquals("****************MASKED", LuhnMaskingConverter.maskString("12345678901234567890", "7890"));
     }
 
     @Test
     public void testBuildMask_SmallLength() {
-        assertEquals("MASKED", LuhnMaskingConverter.buildMask(6));
+        assertEquals("***MASKED", LuhnMaskingConverter.buildMask(7));
     }
 
     @Test
     public void testBuildMask_LargeLength() {
-        assertEquals("**********MASKED", LuhnMaskingConverter.buildMask(16));
+        assertEquals("************MASKED", LuhnMaskingConverter.buildMask(12));
     }
 
     @Test

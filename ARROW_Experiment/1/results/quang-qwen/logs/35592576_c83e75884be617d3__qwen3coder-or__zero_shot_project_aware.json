@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000302-fucy",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261120-000302-fucy",
+  "run_id": "20261122-000039-jdt0",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-000039-jdt0",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2107,
-        "out": 480
+        "out": 442
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 11.3,
-        "block2": 2.4,
-        "block3": 10.1,
+        "block1": 15.2,
+        "block2": 3.5,
+        "block3": 10,
         "block4": null,
-        "total": 23.9
+        "total": 28.8
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2107,
-    "tokens_out": 480,
+    "tokens_out": 442,
     "cost_usd": null
   },
   "warnings": []

@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-004724-bzzg",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-004724-bzzg",
+  "run_id": "20261122-005155-arxe",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-005155-arxe",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 3026,
-        "out": 1780
+        "out": 1930
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 53.9,
-        "block2": 4,
+        "block1": 43.9,
+        "block2": 38.3,
         "block3": 2.9,
         "block4": null,
-        "total": 60.9
+        "total": 85.2
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 3026,
-    "tokens_out": 1780,
+    "tokens_out": 1930,
     "cost_usd": null
   },
   "warnings": [

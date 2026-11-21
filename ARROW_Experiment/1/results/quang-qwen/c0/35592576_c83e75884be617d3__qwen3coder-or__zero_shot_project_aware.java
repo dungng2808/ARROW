@@ -2,7 +2,6 @@ package org.fuin.esc.spi;
 
 import jakarta.json.JsonStructure;
 import org.fuin.esc.api.ToJsonCapable;
-import org.fuin.objects4j.common.Contract;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -11,65 +10,63 @@ import static org.assertj.core.api.Assertions.assertThatThrownBy;
 public class DataWrapper_ArrowTest {
 
     @Test
-    public void testDefaultConstructor() {
-        final DataWrapper wrapper = new DataWrapper();
-        assertThat(wrapper).isNotNull();
-    }
-
-    @Test
-    public void testConstructorWithNull() {
-        assertThatThrownBy(() -> new DataWrapper(null))
-                .isInstanceOf(NullPointerException.class)
-                .hasMessageContaining("obj");
-    }
-
-    @Test
-    public void testConstructorWithValidObject() {
-        final Object testObj = new Object();
-        final DataWrapper wrapper = new DataWrapper(testObj);
-        assertThat(wrapper.getObj()).isSameAs(testObj);
+    public void testConstructor() {
+        final String testData = "test";
+        final DataWrapper wrapper = new DataWrapper(testData);
+        assertThat(wrapper.getObj()).isSameAs(testData);
     }
 
     @Test
     public void testGetObj() {
-        final Object testObj = "test";
-        final DataWrapper wrapper = new DataWrapper(testObj);
-        assertThat(wrapper.getObj()).isSameAs(testObj);
+        final Integer testData = 42;
+        final DataWrapper wrapper = new DataWrapper(testData);
+        assertThat(wrapper.getObj()).isSameAs(testData);
     }
 
     @Test
     public void testToJsonWithToJsonCapable() {
-        final ToJsonCapable mockToJson = new ToJsonCapable() {
-            @Override
-            public JsonStructure toJson() {
-                return new JsonStructure() {};
-            }
-        };
-
-        final DataWrapper wrapper = new DataWrapper(mockToJson);
+        final TestToJsonCapable testData = new TestToJsonCapable();
+        final DataWrapper wrapper = new DataWrapper(testData);
         final JsonStructure result = wrapper.toJson();
-        assertThat(result).isNotNull();
+        assertThat(result).isSameAs(testData.getJsonStructure());
     }
 
     @Test
     public void testToJsonWithJsonStructure() {
-        final JsonStructure mockJsonStructure = new JsonStructure() {};
-
-        final DataWrapper wrapper = new DataWrapper(mockJsonStructure);
+        final TestJsonStructure testData = new TestJsonStructure();
+        final DataWrapper wrapper = new DataWrapper(testData);
         final JsonStructure result = wrapper.toJson();
-        assertThat(result).isSameAs(mockJsonStructure);
+        assertThat(result).isSameAs(testData);
     }
 
     @Test
     public void testToJsonWithOtherObject() {
-        final Object testObj = new Object();
-
-        final DataWrapper wrapper = new DataWrapper(testObj);
+        final String testData = "test";
+        final DataWrapper wrapper = new DataWrapper(testData);
         assertThatThrownBy(() -> wrapper.toJson())
                 .isInstanceOf(IllegalStateException.class)
-                .hasMessageContaining("Wrapped object is not an instance of")
-                .hasMessageContaining(ToJsonCapable.class.getSimpleName())
-                .hasMessageContaining(JsonStructure.class.getSimpleName());
+                .hasMessageContaining("Wrapped object is not an instance of 'ToJsonCapable' or 'JsonStructure'");
+    }
+
+    private static class TestToJsonCapable implements ToJsonCapable {
+
+        private final JsonStructure jsonStructure = new TestJsonStructure();
+
+        @Override
+        public JsonStructure toJson() {
+            return jsonStructure;
+        }
+
+        public JsonStructure getJsonStructure() {
+            return jsonStructure;
+        }
+
+    }
+
+    private static class TestJsonStructure implements JsonStructure {
+
+        // Empty implementation for testing purposes
+
     }
 
 }

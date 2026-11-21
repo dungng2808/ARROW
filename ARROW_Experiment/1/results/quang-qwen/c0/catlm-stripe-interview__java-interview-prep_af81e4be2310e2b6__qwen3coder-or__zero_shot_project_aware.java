@@ -9,17 +9,8 @@ public class Main_ArrowTest {
 
     @Test
     public void testUseGuavaForSomeReason() {
-        // Test with normal string
-        String input = "Hello & welcome";
-        String expected = HtmlEscapers.htmlEscaper().escape(input);
-        String actual = Main.useGuavaForSomeReason(input);
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void testUseGuavaForSomeReasonWithSpecialCharacters() {
-        // Test with special HTML characters
-        String input = "<script>alert('xss')</script>";
+        // Test normal case
+        String input = "Hello & welcome <to> the world";
         String expected = HtmlEscapers.htmlEscaper().escape(input);
         String actual = Main.useGuavaForSomeReason(input);
         assertEquals(expected, actual);
@@ -27,7 +18,6 @@ public class Main_ArrowTest {
 
     @Test
     public void testUseGuavaForSomeReasonWithEmptyString() {
-        // Test with empty string
         String input = "";
         String expected = HtmlEscapers.htmlEscaper().escape(input);
         String actual = Main.useGuavaForSomeReason(input);
@@ -36,8 +26,15 @@ public class Main_ArrowTest {
 
     @Test
     public void testUseGuavaForSomeReasonWithNull() {
-        // Test with null string
         String input = null;
+        String expected = HtmlEscapers.htmlEscaper().escape(input);
+        String actual = Main.useGuavaForSomeReason(input);
+        assertEquals(expected, actual);
+    }
+
+    @Test
+    public void testUseGuavaForSomeReasonWithSpecialCharacters() {
+        String input = "<script>alert('xss')</script>";
         String expected = HtmlEscapers.htmlEscaper().escape(input);
         String actual = Main.useGuavaForSomeReason(input);
         assertEquals(expected, actual);

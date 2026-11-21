@@ -60,21 +60,21 @@ public class NGSessionPool_ArrowTest {
   public void testTakeWhenPoolHasIdleSessions() {
     pool = new NGSessionPool(server, 2, mockInstanceCreator);
     
-    // Add a session to the idle pool
-    pool.idlePool.offer(mockSession);
-    when(mockSession.isAlive()).thenReturn(true);
+    // Add a session to idle pool
+    NGSession idleSession = mock(NGSession.class);
+    pool.idlePool.add(idleSession);
     
-    NGSession session = pool.take();
+    NGSession takenSession = pool.take();
     
-    assertEquals(mockSession, session);
-    assertTrue(pool.workingPool.contains(session));
-    assertFalse(pool.idlePool.contains(session));
+    assertEquals(idleSession, takenSession);
+    assertTrue(pool.workingPool.contains(takenSession));
+    assertFalse(pool.idlePool.contains(takenSession));
   }
 
   @Test(expected = UnsupportedOperationException.class)
-  public void testTakeWhenPoolIsShutdown() {
+  public void testTakeAfterShutdown() {
     pool = new NGSessionPool(server, 2, mockInstanceCreator);
-    pool.done = true;
+    pool.shutdown();
     
     pool.take();
   }
@@ -83,79 +83,66 @@ public class NGSessionPool_ArrowTest {
   public void testGiveWhenIdlePoolNotFull() {
     pool = new NGSessionPool(server, 2, mockInstanceCreator);
     
-    // Add a session to the working pool
-    pool.workingPool.add(mockSession);
+    NGSession session = pool.take();
     
-    pool.give(mockSession);
+    pool.give(session);
     
-    assertTrue(pool.idlePool.contains(mockSession));
-    assertFalse(pool.workingPool.contains(mockSession));
+    assertTrue(pool.idlePool.contains(session));
+    assertFalse(pool.workingPool.contains(session));
   }
 
   @Test
-  public void testGiveWhenIdlePoolIsFull() {
+  public void testGiveWhenIdlePoolFull() throws InterruptedException {
     pool = new NGSessionPool(server, 1, mockInstanceCreator);
     
-    // Add a session to the idle pool
-    pool.idlePool.offer(mockSession);
+    // Take and give back one session to fill the idle pool
+    NGSession session1 = pool.take();
+    pool.give(session1);
     
-    // Add another session to the working pool
-    NGSession secondSession = mock(NGSession.class);
-    pool.workingPool.add(secondSession);
+    // Take another session (this will be created fresh)
+    NGSession session2 = pool.take();
     
-    pool.give(secondSession);
+    // Give back the second session - should be shutdown since idle pool is full
+    pool.give(session2);
     
-    assertFalse(pool.idlePool.contains(secondSession));
-    assertFalse(pool.workingPool.contains(secondSession));
-    verify(secondSession, times(1)).shutdown();
+    verify(session2, times(1)).shutdown();
   }
 
   @Test
   public void testShutdown() throws InterruptedException {
     pool = new NGSessionPool(server, 2, mockInstanceCreator);
     
-    // Add sessions to both pools
-    NGSession workingSession = mock(NGSession.class);
-    NGSession idleSession = mock(NGSession.class);
-    pool.workingPool.add(workingSession);
-    pool.idlePool.offer(idleSession);
+    // Take a session to add it to working pool
+    NGSession session1 = pool.take();
     
-    when(workingSession.isAlive()).thenReturn(false);
-    when(idleSession.isAlive()).thenReturn(false);
+    // Add a session to idle pool
+    NGSession session2 = mock(NGSession.class);
+    pool.idlePool.add(session2);
     
     pool.shutdown();
     
+    verify(session1, times(1)).shutdown();
+    verify(session2, times(1)).shutdown();
     assertTrue(pool.done);
-    assertTrue(pool.idlePool.isEmpty());
-    assertTrue(pool.workingPool.isEmpty());
-    verify(workingSession, times(1)).shutdown();
-    verify(idleSession, times(1)).shutdown();
   }
 
   @Test
-  public void testShutdownWithTimeout() throws InterruptedException {
-    pool = new NGSessionPool(server, 2, mockInstanceCreator);
+  public void testShutdownWithRunningSessions() throws InterruptedException {
+    pool = new NGSessionPool(server, 1, mockInstanceCreator);
     
-    // Add sessions to both pools
-    NGSession workingSession = mock(NGSession.class);
-    NGSession idleSession = mock(NGSession.class);
-    pool.workingPool.add(workingSession);
-    pool.idlePool.offer(idleSession);
+    // Mock session to simulate being alive
+    when(mockSession.isAlive()).thenReturn(true);
+    when(mockSession.join(1000L)).thenAnswer(invocation -> {
+      // Simulate some time passing
+      Thread.sleep(10);
+      return null;
+    });
     
-    when(workingSession.isAlive()).thenReturn(true);
-    when(idleSession.isAlive()).thenReturn(true);
+    NGSession session = pool.take();
     
-    // Mock join to simulate timeout
-    when(workingSession.join(NGConstants.SESSION_TERMINATION_TIMEOUT_MILLIS))
-        .thenAnswer(invocation -> {
-          Thread.sleep(10);
-          return null;
-        });
+    pool.shutdown();
     
-    try {
-      pool.shutdown();
-    } catch (IllegalStateException e) {
-      // Expected due to timeout
-    }
+    // Should not throw exception even though session is alive
+    // (This test verifies that the shutdown doesn't crash)
   }
 }

@@ -1,15 +1,21 @@
 package com.javatechie.s3;
 
 import org.junit.Test;
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertTrue;
 
 public class FileStorageServiceApplication_ArrowTest {
 
     @Test
     public void testMainMethod() {
         // Since the main method just calls SpringApplication.run(), 
-        // we can't easily test its behavior without more complex integration testing.
-        // However, we can verify the class is properly structured and accessible.
-        assertNotNull(FileStorageServiceApplication.class);
+        // we can verify it executes without throwing an exception
+        try {
+            FileStorageServiceApplication.main(new String[]{});
+            assertTrue(true); // If we reach here, the method executed successfully
+        } catch (Exception e) {
+            // This test is mainly to ensure the main method doesn't crash
+            // If it does crash, the test will fail naturally
+            assertTrue("Main method should not throw exception", false);
+        }
     }
 }

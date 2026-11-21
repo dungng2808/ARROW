@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-001327-i9sg",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-001327-i9sg",
+  "run_id": "20261122-001130-2pq9",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-001130-2pq9",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1940,
-        "out": 1087
+        "out": 1060
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 8.2,
-        "block2": 4.7,
-        "block3": 12.1,
+        "block1": 7.8,
+        "block2": 4.6,
+        "block3": 3.9,
         "block4": null,
-        "total": 25.1
+        "total": 17.7
       },
       "error": null,
       "warnings": [],
@@ -41,10 +41,8 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1940,
-    "tokens_out": 1087,
+    "tokens_out": 1060,
     "cost_usd": null
   },
-  "warnings": [
-    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
-  ]
+  "warnings": []
 }

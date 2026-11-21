@@ -8,13 +8,13 @@ import static org.junit.Assert.*;
 
 public class JsonHelper_ArrowTest {
 
-    public static class TestClass {
+    public static class TestObject {
         private String name;
         private int age;
 
-        public TestClass() {}
+        public TestObject() {}
 
-        public TestClass(String name, int age) {
+        public TestObject(String name, int age) {
             this.name = name;
             this.age = age;
         }
@@ -23,67 +23,74 @@ public class JsonHelper_ArrowTest {
             return name;
         }
 
+        public void setName(String name) {
+            this.name = name;
+        }
+
         public int getAge() {
             return age;
+        }
+
+        public void setAge(int age) {
+            this.age = age;
         }
 
         @Override
         public boolean equals(Object o) {
             if (this == o) return true;
             if (o == null || getClass() != o.getClass()) return false;
-            TestClass testClass = (TestClass) o;
-            return age == testClass.age && 
-                   (name != null ? name.equals(testClass.name) : testClass.name == null);
+            TestObject that = (TestObject) o;
+            return age == that.age && name.equals(that.name);
         }
 
         @Override
         public int hashCode() {
-            int result = name != null ? name.hashCode() : 0;
+            int result = name.hashCode();
             result = 31 * result + age;
             return result;
         }
     }
 
     @Test
-    public void testObj() {
+    public void testObjWithValidJson() {
         String json = "{'name': 'John', 'age': 30}";
-        TestClass result = JsonHelper.obj(json, TestClass.class);
+        TestObject result = JsonHelper.obj(json, TestObject.class);
         assertEquals("John", result.getName());
         assertEquals(30, result.getAge());
     }
 
     @Test
-    public void testObject() {
+    public void testObjectWithValidJson() {
         String json = "{'name': 'Jane', 'age': 25}";
-        TestClass result = JsonHelper.object(json, TestClass.class);
+        TestObject result = JsonHelper.object(json, TestObject.class);
         assertEquals("Jane", result.getName());
         assertEquals(25, result.getAge());
     }
 
     @Test
-    public void testUpdate() {
+    public void testUpdateWithValidJson() {
         String json = "{'value': {'name': 'Bob', 'age': 35}}";
-        Update<TestClass> result = JsonHelper.update(json, TestClass.class);
+        Update<TestObject> result = JsonHelper.update(json, TestObject.class);
         assertNotNull(result);
-        TestClass value = result.getValue();
+        TestObject value = result.getValue();
+        assertNotNull(value);
         assertEquals("Bob", value.getName());
         assertEquals(35, value.getAge());
     }
 
     @Test
-    public void testJson() {
-        TestClass obj = new TestClass("Alice", 28);
-        String json = JsonHelper.json(obj);
-        assertNotNull(json);
-        assertTrue(json.contains("Alice"));
-        assertTrue(json.contains("28"));
+    public void testJsonWithObject() {
+        TestObject obj = new TestObject("Alice", 28);
+        String result = JsonHelper.json(obj);
+        assertNotNull(result);
+        assertTrue(result.contains("Alice"));
+        assertTrue(result.contains("28"));
     }
 
     @Test
-    public void testMapperConfiguration() {
+    public void testMapperIsInitializedCorrectly() {
+        assertNotNull(JsonHelper.MAPPER);
         ObjectMapper mapper = JsonHelper.MAPPER;
-        assertNotNull(mapper);
-        // Verify that the mapper has the expected configurations
         assertTrue(mapper.getFactory().isEnabled(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_SINGLE_QUOTES));
         assertTrue(mapper.getFactory().isEnabled(com.fasterxml.jackson.core.JsonParser.Feature.ALLOW_UNQUOTED_FIELD_NAMES));
     }

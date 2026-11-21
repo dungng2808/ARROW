@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-000726-2d5e",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-000726-2d5e",
+  "run_id": "20261122-000435-h90w",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-000435-h90w",
   "status": "COMPLETED",
   "exit_code": 0,
   "targets": [
@@ -24,11 +24,11 @@
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 6.4,
-        "block2": 2.4,
-        "block3": 15.6,
+        "block1": 6.7,
+        "block2": 1.7,
+        "block3": 18.9,
         "block4": null,
-        "total": 24.5
+        "total": 27.5
       },
       "error": null,
       "warnings": [],

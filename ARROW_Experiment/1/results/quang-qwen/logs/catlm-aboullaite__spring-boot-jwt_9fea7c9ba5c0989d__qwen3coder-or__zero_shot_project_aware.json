@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005627-1lsq",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-005627-1lsq",
+  "run_id": "20261122-010150-e08j",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-010150-e08j",
   "status": "COMPLETED",
   "exit_code": 0,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 1466,
-        "out": 130
+        "out": 238
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 6.3,
-        "block2": 1.5,
-        "block3": 32.5,
+        "block1": 6.7,
+        "block2": 5,
+        "block3": 74,
         "block4": null,
-        "total": 40.3
+        "total": 85.8
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 1466,
-    "tokens_out": 130,
+    "tokens_out": 238,
     "cost_usd": null
   },
   "warnings": []

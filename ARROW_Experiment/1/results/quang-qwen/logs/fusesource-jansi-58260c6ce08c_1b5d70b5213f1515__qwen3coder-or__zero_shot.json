@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-010055-uwkt",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w4\\runs\\20261120-010055-uwkt",
+  "run_id": "20261122-010534-00oz",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261122-010534-00oz",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 2712,
-        "out": 861
+        "out": 1108
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 78.7,
-        "block2": 2.9,
-        "block3": 5.7,
+        "block1": 91.7,
+        "block2": 3.8,
+        "block3": 6.5,
         "block4": null,
-        "total": 87.3
+        "total": 102.1
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 2712,
-    "tokens_out": 861,
+    "tokens_out": 1108,
     "cost_usd": null
   },
   "warnings": [

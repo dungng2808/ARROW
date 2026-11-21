@@ -1,6 +1,5 @@
 ARROW · QuantitationTypeParameterGuesser (ubic.gemma.core.loader.expression.geo)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 307 test (dùng lại, đo 20/11 00:55) · 60.4 s
-[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
-[X] Khối 2  c0 · 26.7k token · 51.6 s · Câu trả lời không dùng được: parse_error
-[X] B2_INVALID_OUTPUT · parse_error
-  → Cách sửa: Chạy lại, hoặc đổi model.
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 307 test (dùng lại, đo 22/11 00:56) · 66.3 s
+[OK] Khối 2  c0 · 21.5k token · 74.1 s · Candidate hợp lệ: 62 test, 620 assertion
+[>] Khối 3  c0: COMPILE · class is abstract | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

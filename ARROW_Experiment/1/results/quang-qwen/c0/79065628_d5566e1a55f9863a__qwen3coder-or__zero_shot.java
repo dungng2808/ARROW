@@ -27,23 +27,43 @@ public class BaseCouchbaseRepository_ArrowTest {
     @Mock
     private AsyncBucket asyncBucket;
 
-    private BaseCouchbaseRepository<TestEntity> repository;
+    private ObjectMapper objectMapper;
 
     @Before
     public void setUp() {
         MockitoAnnotations.initMocks(this);
-        repository = new BaseCouchbaseRepository<TestEntity>(new ObjectMapper()) {
-            @Override
-            public Single<AsyncBucket> asyncBucket() {
-                return couchbaseAsyncBucketFactory.getAsyncBucketInstance();
-            }
-        };
+        objectMapper = new ObjectMapper();
     }
 
     @Test
-    public void testConvertSuccess() throws Exception {
+    public void testConstructorWithObjectMapper() {
+        BaseCouchbaseRepository<String> repository = new BaseCouchbaseRepository<>(objectMapper);
+
+        assertNotNull(repository);
+        assertSame(objectMapper, repository.objectMapper);
+    }
+
+    @Test(expected = NullPointerException.class)
+    public void testConstructorWithNullObjectMapper() {
+        new BaseCouchbaseRepository<String>(null);
+    }
+
+    @Test
+    public void testAsyncBucket() {
+        BaseCouchbaseRepository<String> repository = new BaseCouchbaseRepository<>(objectMapper);
+        repository.couchbaseAsyncBucketFactory = couchbaseAsyncBucketFactory;
+
+        when(couchbaseAsyncBucketFactory.getAsyncBucketInstance()).thenReturn(Single.just(asyncBucket));
+
+        Single<AsyncBucket> result = repository.asyncBucket();
+
+        assertNotNull(result);
+    }
+
+    @Test
+    public void testConvertValidJson() throws IOException {
+        BaseCouchbaseRepository<TestEntity> repository = new BaseCouchbaseRepository<>(objectMapper);
         String json = "{\"name\":\"test\"}";
-        TestEntity entity = new TestEntity("test");
 
         Single<TestEntity> result = repository.convert(json);
 
@@ -51,7 +71,8 @@ public class BaseCouchbaseRepository_ArrowTest {
     }
 
     @Test
-    public void testConvertFailure() throws Exception {
+    public void testConvertInvalidJson() {
+        BaseCouchbaseRepository<TestEntity> repository = new BaseCouchbaseRepository<>(objectMapper);
         String invalidJson = "{invalid json}";
 
         Single<TestEntity> result = repository.convert(invalidJson);
@@ -59,29 +80,8 @@ public class BaseCouchbaseRepository_ArrowTest {
         assertNotNull(result);
     }
 
-    @Test
-    public void testAsyncBucket() throws Exception {
-        when(couchbaseAsyncBucketFactory.getAsyncBucketInstance()).thenReturn(Single.just(asyncBucket));
-
-        Single<AsyncBucket> result = repository.asyncBucket();
-
-        assertSame(Single.just(asyncBucket), result);
-    }
-
-    @Test(expected = NullPointerException.class)
-    public void testConstructorWithNullObjectMapper() {
-        new BaseCouchbaseRepository<TestEntity>(null);
-    }
-
     private static class TestEntity {
         private String name;
-
-        public TestEntity() {
-        }
-
-        public TestEntity(String name) {
-            this.name = name;
-        }
 
         public String getName() {
             return name;

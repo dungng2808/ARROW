@@ -1,15 +1,15 @@
 {
-  "run_id": "20261120-004943-alan",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w3\\runs\\20261120-004943-alan",
+  "run_id": "20261122-005438-rorg",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-005438-rorg",
   "status": "COMPLETED",
-  "exit_code": 0,
+  "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.javatechie.spring.mockito.api.SpringBootMockitoApplication",
-      "result": "VALID",
-      "c0_state": "VALID",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
       "rounds_run": 0,
-      "success_round": 0,
+      "success_round": null,
       "stop_reason": null,
       "test_fqn": "com.javatechie.spring.mockito.api.SpringBootMockitoApplication_ArrowTest",
       "test_path": "src/test/java/com/javatechie/spring/mockito/api/SpringBootMockitoApplication_ArrowTest.java",
@@ -25,15 +25,15 @@
       "llm_calls": 1,
       "seconds": {
         "block1": 7.7,
-        "block2": 1.7,
-        "block3": 22.1,
+        "block2": 2.3,
+        "block3": 13.7,
         "block4": null,
-        "total": 31.6
+        "total": 23.7
       },
       "error": null,
       "warnings": [],
       "apply": {
-        "decision": "remote_project",
+        "decision": "not_valid",
         "path": null
       }
     }

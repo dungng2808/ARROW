@@ -1,6 +1,6 @@
 {
-  "run_id": "20261120-005010-luzn",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-005010-luzn",
+  "run_id": "20261122-005534-vgqh",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261122-005534-vgqh",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
@@ -24,11 +24,11 @@
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 6.4,
-        "block2": 2,
-        "block3": 7.1,
+        "block1": 7.5,
+        "block2": 2.3,
+        "block3": 8.8,
         "block4": null,
-        "total": 15.6
+        "total": 18.6
       },
       "error": null,
       "warnings": [],

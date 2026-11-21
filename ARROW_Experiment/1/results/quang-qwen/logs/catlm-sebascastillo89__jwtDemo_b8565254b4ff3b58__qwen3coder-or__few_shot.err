@@ -1,5 +1,5 @@
 ARROW · JwtDemoApplication (es.softtek.jwtDemo)
-[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1 test (dùng lại, đo 20/11 00:47) · 5.6 s
-[OK] Khối 2  c0 · 3.3k token · 3.2 s · Candidate hợp lệ: 3 test, 0 assertion
-[>] Khối 3  c0: COMPILE · method cannot be applied | -
-[X] Khối 3  Kết thúc: COMPILE (không sửa)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 1 test (dùng lại, đo 22/11 00:52) · 6.4 s
+[X] Khối 2  c0 · 3.1k token · 12.8 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

@@ -1,13 +1,13 @@
 {
-  "run_id": "20261120-004000-z01f",
-  "run_dir": "C:\\arrow-homes\\quang-qwen\\w1\\runs\\20261120-004000-z01f",
+  "run_id": "20261122-004157-9nq0",
+  "run_dir": "C:\\arrow-homes\\quang-qwen\\w2\\runs\\20261122-004157-9nq0",
   "status": "COMPLETED",
   "exit_code": 1,
   "targets": [
     {
       "cut_fqn": "com.google.uzaygezen.core.CompactHilbertCurve",
-      "result": "RUNTIME",
-      "c0_state": "RUNTIME",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
       "rounds_run": 0,
       "success_round": null,
       "stop_reason": null,
@@ -19,16 +19,16 @@
       "tools": null,
       "tokens": {
         "in": 4460,
-        "out": 727
+        "out": 719
       },
       "cost_usd": null,
       "llm_calls": 1,
       "seconds": {
-        "block1": 99,
-        "block2": 2.8,
-        "block3": 10,
+        "block1": 127.3,
+        "block2": 4.6,
+        "block3": 9,
         "block4": null,
-        "total": 111.9
+        "total": 140.8
       },
       "error": null,
       "warnings": [],
@@ -41,7 +41,7 @@
   "totals": {
     "llm_calls": 1,
     "tokens_in": 4460,
-    "tokens_out": 727,
+    "tokens_out": 719,
     "cost_usd": null
   },
   "warnings": [

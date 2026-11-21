@@ -15,15 +15,15 @@ public class Analyzer_ArrowTest {
     @Test
     public void testFindPackageCycles_EmptyModel() {
         // Test with empty model
-        final Model<String> model = new Model<String>() {
+        Model<String> model = new Model<String>() {
             @Override
             public Set<Package<String>> getPackages() {
                 return new HashSet<Package<String>>();
             }
         };
 
-        final Analyzer<String> analyzer = new Analyzer<String>();
-        final List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
+        Analyzer<String> analyzer = new Analyzer<String>();
+        List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
         
         assertNotNull(result);
         assertEquals(0, result.size());
@@ -32,25 +32,25 @@ public class Analyzer_ArrowTest {
     @Test
     public void testFindPackageCycles_SinglePackageNoUsage() {
         // Test with single package that doesn't use any other packages
-        final Package<String> pkg = new Package<String>("com.example") {
+        Package<String> pkg = new Package<String>("com.example") {
             @Override
             public Set<Package<String>> getPackageUsages() {
                 return new HashSet<Package<String>>();
             }
         };
-
-        final Set<Package<String>> packages = new HashSet<Package<String>>();
+        
+        Set<Package<String>> packages = new HashSet<Package<String>>();
         packages.add(pkg);
-
-        final Model<String> model = new Model<String>() {
+        
+        Model<String> model = new Model<String>() {
             @Override
             public Set<Package<String>> getPackages() {
                 return packages;
             }
         };
 
-        final Analyzer<String> analyzer = new Analyzer<String>();
-        final List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
+        Analyzer<String> analyzer = new Analyzer<String>();
+        List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
         
         assertNotNull(result);
         assertEquals(0, result.size());
@@ -59,152 +59,151 @@ public class Analyzer_ArrowTest {
     @Test
     public void testFindPackageCycles_SinglePackageSelfReference() {
         // Test with single package that references itself
-        final Package<String> pkg = new Package<String>("com.example") {
+        Package<String> pkg = new Package<String>("com.example") {
             @Override
             public Set<Package<String>> getPackageUsages() {
-                final Set<Package<String>> usages = new HashSet<Package<String>>();
-                usages.add(this);
+                Set<Package<String>> usages = new HashSet<Package<String>>();
+                usages.add(this); // Self reference
                 return usages;
             }
         };
-
-        final Set<Package<String>> packages = new HashSet<Package<String>>();
+        
+        Set<Package<String>> packages = new HashSet<Package<String>>();
         packages.add(pkg);
-
-        final Model<String> model = new Model<String>() {
+        
+        Model<String> model = new Model<String>() {
             @Override
             public Set<Package<String>> getPackages() {
                 return packages;
             }
         };
 
-        final Analyzer<String> analyzer = new Analyzer<String>();
-        final List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
+        Analyzer<String> analyzer = new Analyzer<String>();
+        List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
         
         assertNotNull(result);
         assertEquals(1, result.size());
-        assertNotNull(result.get(0));
-        assertNotNull(result.get(0).getPackages());
-        assertEquals(1, result.get(0).getPackages().size());
-        assertEquals(pkg, result.get(0).getPackages().get(0));
+        PackageCycle<String> cycle = result.get(0);
+        assertNotNull(cycle);
+        assertEquals(1, cycle.getPackages().size());
+        assertEquals(pkg, cycle.getPackages().get(0));
     }
 
     @Test
-    public void testFindPackageCycles_TwoPackagesCircularReference() {
+    public void testFindPackageCycles_TwoPackagesCircular() {
         // Test with two packages referencing each other
-        final Package<String> pkg1 = new Package<String>("com.example1") {
+        Package<String> pkg1 = new Package<String>("com.example1") {
             @Override
             public Set<Package<String>> getPackageUsages() {
-                final Set<Package<String>> usages = new HashSet<Package<String>>();
-                usages.add(pkg2);
+                Set<Package<String>> usages = new HashSet<Package<String>>();
+                usages.add(pkg2); // References pkg2
                 return usages;
             }
         };
-
-        final Package<String> pkg2 = new Package<String>("com.example2") {
+        
+        Package<String> pkg2 = new Package<String>("com.example2") {
             @Override
             public Set<Package<String>> getPackageUsages() {
-                final Set<Package<String>> usages = new HashSet<Package<String>>();
-                usages.add(pkg1);
+                Set<Package<String>> usages = new HashSet<Package<String>>();
+                usages.add(pkg1); // References pkg1
                 return usages;
             }
         };
-
-        final Set<Package<String>> packages = new HashSet<Package<String>>();
+        
+        Set<Package<String>> packages = new HashSet<Package<String>>();
         packages.add(pkg1);
         packages.add(pkg2);
-
-        final Model<String> model = new Model<String>() {
+        
+        Model<String> model = new Model<String>() {
             @Override
             public Set<Package<String>> getPackages() {
                 return packages;
             }
         };
 
-        final Analyzer<String> analyzer = new Analyzer<String>();
-        final List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
+        Analyzer<String> analyzer = new Analyzer<String>();
+        List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
         
         assertNotNull(result);
         assertEquals(1, result.size());
-        assertNotNull(result.get(0));
-        assertNotNull(result.get(0).getPackages());
-        assertEquals(2, result.get(0).getPackages().size());
-        assertTrue(result.get(0).getPackages().contains(pkg1));
-        assertTrue(result.get(0).getPackages().contains(pkg2));
+        PackageCycle<String> cycle = result.get(0);
+        assertNotNull(cycle);
+        assertEquals(2, cycle.getPackages().size());
+        assertTrue(cycle.getPackages().contains(pkg1));
+        assertTrue(cycle.getPackages().contains(pkg2));
     }
 
     @Test
     public void testCreateEdges() {
         // Test the createEdges method directly
-        final Package<String> pkg1 = new Package<String>("com.example1") {
+        Package<String> pkg1 = new Package<String>("com.example1") {
             @Override
             public Set<Package<String>> getPackageUsages() {
-                final Set<Package<String>> usages = new HashSet<Package<String>>();
+                Set<Package<String>> usages = new HashSet<Package<String>>();
                 usages.add(pkg2);
                 return usages;
             }
         };
-
-        final Package<String> pkg2 = new Package<String>("com.example2") {
+        
+        Package<String> pkg2 = new Package<String>("com.example2") {
             @Override
             public Set<Package<String>> getPackageUsages() {
-                final Set<Package<String>> usages = new HashSet<Package<String>>();
-                usages.add(pkg1);
+                Set<Package<String>> usages = new HashSet<Package<String>>();
                 return usages;
             }
         };
-
-        final Set<Package<String>> packages = new HashSet<Package<String>>();
+        
+        Set<Package<String>> packages = new HashSet<Package<String>>();
         packages.add(pkg1);
         packages.add(pkg2);
-
-        final Analyzer<String> analyzer = new Analyzer<String>();
+        
+        Analyzer<String> analyzer = new Analyzer<String>();
         
         // We can't directly test private method, but we can verify behavior through findPackageCycles
-        final Model<String> model = new Model<String>() {
+        Model<String> model = new Model<String>() {
             @Override
             public Set<Package<String>> getPackages() {
                 return packages;
             }
         };
-
-        final List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
+        
+        List<PackageCycle<String>> result = analyzer.findPackageCycles(model);
         assertNotNull(result);
-        assertEquals(1, result.size());
     }
 
     @Test
     public void testCreatePackageCycles() {
         // Test the createPackageCycles method directly
-        final Package<String> pkg1 = new Package<String>("com.example1") {
+        Package<String> pkg1 = new Package<String>("com.example1") {
             @Override
             public Set<Package<String>> getPackageUsages() {
                 return new HashSet<Package<String>>();
             }
         };
-
-        final Package<String> pkg2 = new Package<String>("com.example2") {
+        
+        Package<String> pkg2 = new Package<String>("com.example2") {
             @Override
             public Set<Package<String>> getPackageUsages() {
                 return new HashSet<Package<String>>();
             }
         };
-
-        final List<List<Package<String>>> elementaryCircuits = new ArrayList<List<Package<String>>>();
-        final List<Package<String>> circuit = new ArrayList<Package<String>>();
+        
+        List<List<Package<String>>> elementaryCircuits = new java.util.ArrayList<List<Package<String>>>();
+        List<Package<String>> circuit = new java.util.ArrayList<Package<String>>();
         circuit.add(pkg1);
         circuit.add(pkg2);
         elementaryCircuits.add(circuit);
-
-        final Analyzer<String> analyzer = new Analyzer<String>();
-        final List<PackageCycle<String>> result = analyzer.createPackageCycles(elementaryCircuits);
+        
+        Analyzer<String> analyzer = new Analyzer<String>();
+        
+        List<PackageCycle<String>> result = analyzer.createPackageCycles(elementaryCircuits);
         
         assertNotNull(result);
         assertEquals(1, result.size());
-        assertNotNull(result.get(0));
-        assertNotNull(result.get(0).getPackages());
-        assertEquals(2, result.get(0).getPackages().size());
-        assertEquals(pkg1, result.get(0).getPackages().get(0));
-        assertEquals(pkg2, result.get(0).getPackages().get(1));
+        PackageCycle<String> cycle = result.get(0);
+        assertNotNull(cycle);
+        assertEquals(2, cycle.getPackages().size());
+        assertEquals(pkg1, cycle.getPackages().get(0));
+        assertEquals(pkg2, cycle.getPackages().get(1));
     }
 }
