@@ -1,6 +1,6 @@
 # Pilot chọn N — hướng dẫn chạy (dành cho agent)
 
-> **Người dùng:** đưa file này cho agent và nói: *"Làm theo file này cho máy của tôi, tôi là <Quang | Hán | Chính>."* Máy phải là máy **đã chạy TN1 Qwen** (đã có `arrow` bản `d0f2b5c`, JDK, cấu hình và khóa OpenRouter). Agent sẽ cần bạn: **đưa file zip `arrow-0.2.0-203fb8e-win-x64.zip`** Dung gửi, **tự nhập khóa TeamoRouter** (Dung gửi riêng) bằng `arrow secrets set teamo`, và **đăng nhập GitHub** nếu máy chưa có.
+> **Người dùng:** đưa file này cho agent và nói: *"Làm theo file này cho máy của tôi, tôi là <Quang | Hán | Chính>."* Máy phải là máy **đã chạy TN1 Qwen** (đã có `arrow` bản `d0f2b5c`, JDK, cấu hình và khóa OpenRouter). Agent sẽ cần bạn: **tự nhập khóa TeamoRouter** (Dung gửi riêng) bằng `arrow secrets set teamo`, và **đăng nhập GitHub** nếu máy chưa có.
 >
 > **Agent:** bạn đang chạy trong repo `ARROW` người dùng mở sẵn. Mọi đường dẫn tính từ thư mục gốc đó. Làm lần lượt Bước 1–7, kiểm "Kết quả mong đợi" sau mỗi bước. Gặp tình huống không có trong file thì **dừng và báo người dùng**.
 
@@ -61,13 +61,16 @@ cd ..\..
 
 ## Bước 3. Cài thêm `arrow` bản `203fb8e` (cho bước repair)
 
-Bản này đặt ở thư mục **riêng** `C:\tools\arrow-203`, **không** thêm vào PATH (lệnh `arrow` trong PATH vẫn phải là bản `d0f2b5c`). Hỏi người dùng đường dẫn file zip, rồi:
+Bản này đặt ở thư mục **riêng** `C:\tools\arrow-203`, **không** thêm vào PATH (lệnh `arrow` trong PATH vẫn phải là bản `d0f2b5c`). Tải từ GitHub Release `arrow-203fb8e` của repo:
 ```powershell
-(Get-FileHash <đường dẫn zip> -Algorithm SHA256).Hash   # phải là 4B040A523D56A4C1FFFE7715898A403E49018A43070EBC5D63E378D350A1BDC7
+$zip = "$env:TEMP\arrow-0.2.0-203fb8e-win-x64.zip"
+curl.exe -L -o $zip https://github.com/dungng2808/ARROW/releases/download/arrow-203fb8e/arrow-0.2.0-203fb8e-win-x64.zip
+(Get-FileHash $zip -Algorithm SHA256).Hash   # phải là 4B040A523D56A4C1FFFE7715898A403E49018A43070EBC5D63E378D350A1BDC7
 New-Item -ItemType Directory -Force C:\tools\arrow-203 | Out-Null
-Expand-Archive <đường dẫn zip> -DestinationPath C:\tools\arrow-203 -Force
+Expand-Archive $zip -DestinationPath C:\tools\arrow-203 -Force
 C:\tools\arrow-203\arrow.exe --version
 ```
+Không tải được (mạng chặn GitHub) → hỏi người dùng file zip Dung gửi, rồi làm từ dòng `Get-FileHash` với đường dẫn đó.
 **Kết quả mong đợi:** dòng cuối có `commit 203fb8e`. Hash sai → dừng, báo người dùng.
 
 Không có zip: build như Cách B ở Bước 3 của `huong_dan_chay_TN1.md`, nhưng dùng commit `203fb8e` và thư mục ra `C:\tools\arrow-203`; **không** thêm vào PATH.
@@ -173,7 +176,7 @@ Pilot · máy <M> · shard <S>
 ## Phiên bản
 
 - Repo: nhánh `main` của `dungng2808/ARROW`
-- Tool: sinh c0 `arrow 0.2.0` commit `d0f2b5c`; sửa commit `203fb8e` (zip sha256 `4B040A52…1BDC7`)
+- Tool: sinh c0 `arrow 0.2.0` commit `d0f2b5c`; sửa commit `203fb8e` (GitHub Release `arrow-203fb8e`, zip sha256 `4B040A52…1BDC7`)
 - Mô hình: `gpt6luna` (TeamoRouter) và `qwen3coder-or` (OpenRouter, Amazon Bedrock), cấu hình do `setup_tn1.py --gpt` đặt
 - Prompt: sinh test `team-v1`; sửa test `team-v1` (v3), sha256 ở `ARROW_Experiment/1/prompt_trial/README.md`
 - Quy tắc chọn N: quy tắc B, ngưỡng 1% (commit `9ef4c8c`)
