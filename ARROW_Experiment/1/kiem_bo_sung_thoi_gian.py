@@ -4,6 +4,7 @@ So results/<máy>/tn1_candidates.csv hiện tại với bản đã commit (HEAD)
     - số dòng không đổi
     - KHÔNG ô cũ nào bị đổi (chỉ được điền thêm ô đang trống)
     - đếm số dòng đã có thời gian từng bước build (step_*_s)
+    - mọi bộ test có code đã có file mã trong results/<máy>/tests/ (TN3 dùng bộ Zero-shot-project-aware VALID)
 Chạy:  python kiem_bo_sung_thoi_gian.py <máy>      (ví dụ: python kiem_bo_sung_thoi_gian.py quang-qwen)
 In "ĐẠT" thì được nộp; in "KHÔNG ĐẠT" thì dừng, báo người dùng.
 """
@@ -48,6 +49,15 @@ def main():
     if filled["step_compile_s"] == 0:
         ok = False
         print("[X] Chưa lấy được thời gian từng bước: thư mục homes/ (ví dụ C:\\arrow-homes\\<máy>) không còn?")
+    need = [r for r in new.values() if r.get("valid_output") == "True"]
+    have = [r for r in need if os.path.exists(os.path.join(HERE, "results", m, "tests",
+                                                           f"{r['task_id']}__{r['model']}__{r['strategy']}.java"))]
+    zv = [r for r in need if r["strategy"] == "zero_shot_project_aware" and r["result"] == "VALID"]
+    zh = [r for r in zv if r in have]
+    print(f"Mã bộ test trong tests/: {len(have)}/{len(need)}; Zero-shot-project-aware VALID (cho TN3): {len(zh)}/{len(zv)}")
+    if len(have) < len(need):
+        ok = False
+        print("[X] Thiếu mã bộ test: thư mục homes/ không còn đủ?")
     print("ĐẠT" if ok else "KHÔNG ĐẠT")
     sys.exit(0 if ok else 1)
 

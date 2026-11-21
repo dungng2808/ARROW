@@ -1,0 +1,47 @@
+package io.github.leberkleber.ljcm.parser.impl;
+
+import io.github.leberkleber.ljcm.parser.ConfigurationParserException;
+import org.junit.Test;
+
+import java.util.HashSet;
+import java.util.Set;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
+
+public class BooleanParser_ArrowTest {
+    @Test
+    public void getResponsibleClassesReturnsBooleanTypes() {
+        BooleanParser parser = new BooleanParser();
+        Set<Class> expected = new HashSet<>();
+        expected.add(Boolean.class);
+        expected.add(boolean.class);
+
+        assertEquals(expected, parser.getResponsibleClasses());
+    }
+
+    @Test
+    public void parseValueRecognizesTrueValuesIgnoringCase() {
+        BooleanParser parser = new BooleanParser();
+
+        assertTrue(parser.parseValue("1", Boolean.class));
+        assertTrue(parser.parseValue("true", Boolean.class));
+        assertTrue(parser.parseValue("YES", Boolean.class));
+    }
+
+    @Test
+    public void parseValueReturnsFalseForOtherValues() {
+        BooleanParser parser = new BooleanParser();
+
+        assertFalse(parser.parseValue("false", Boolean.class));
+        assertFalse(parser.parseValue("", Boolean.class));
+        assertFalse(parser.parseValue(" true ", Boolean.class));
+    }
+
+    @Test(expected = ConfigurationParserException.class)
+    public void parseValueRejectsNull() {
+        BooleanParser parser = new BooleanParser();
+        parser.parseValue(null, Boolean.class);
+    }
+}

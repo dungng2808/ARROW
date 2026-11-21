@@ -10,6 +10,7 @@ Ghi (cùng thư mục results/<máy>/):
     tn1_candidates.csv   mỗi bộ test một dòng; đủ cột để tn1_analyze.py tính mọi bảng
     tn2_pool.jsonl       bộ test có code, không lỗi hạ tầng, chưa VALID → nguồn để rút 180 bộ cho TN2
     c0/                  mã nguồn (c0) của các bộ test trong tn2_pool.jsonl
+    tests/               mã nguồn của MỌI bộ test có code, kể cả VALID (TN3 dùng bộ Zero-shot-project-aware VALID)
 
 Cách chạy:
     python3 tn1_collect.py --machine dung          # gom một máy
@@ -215,6 +216,18 @@ def collect_machine(mdir):
 
     # Nguồn cho TN2: có code, đã chạy xong, chưa VALID (R03 §6.1).
     # Mã c0 được chép sang results/<máy>/c0/ (nhỏ, commit được), vì homes/ không đưa lên Git.
+    # Lưu mã của MỌI bộ test có code (kể cả VALID): TN3 dùng thẳng bộ Zero-shot-project-aware VALID của TN1.
+    # Mã chỉ nằm trong homes/ (không lên Git), nên phải chép ra khi còn homes/. Không có homes/ thì giữ file cũ.
+    tests_dir = os.path.join(mdir, "tests")
+    os.makedirs(tests_dir, exist_ok=True)
+    n_tests = 0
+    for r in rows:
+        rec = latest[(r["task_id"], r["model"], r["strategy"])]
+        if rec.get("run_dir"):
+            src = os.path.join(target_dir(rec["run_dir"], r["class_fqn"]), "block2", "candidate.java")
+            if os.path.exists(src):
+                shutil.copyfile(src, os.path.join(tests_dir, f"{r['task_id']}__{r['model']}__{r['strategy']}.java"))
+        n_tests += os.path.exists(os.path.join(tests_dir, f"{r['task_id']}__{r['model']}__{r['strategy']}.java"))
     pool_path = os.path.join(mdir, "tn2_pool.jsonl")
     c0_dir = os.path.join(mdir, "c0")
     os.makedirs(c0_dir, exist_ok=True)
@@ -235,7 +248,8 @@ def collect_machine(mdir):
 
     counted = sum(r["counted"] for r in rows)
     print(f"{os.path.basename(mdir)}: {len(rows)} bộ test ({counted} tính vào mẫu số, "
-          f"{len(rows) - counted} lỗi hạ tầng/bị chặn) → tn1_candidates.csv; {n_pool} bộ vào tn2_pool.jsonl")
+          f"{len(rows) - counted} lỗi hạ tầng/bị chặn) → tn1_candidates.csv; {n_pool} bộ vào tn2_pool.jsonl; "
+          f"{n_tests} file mã trong tests/")
 
 
 def main():
