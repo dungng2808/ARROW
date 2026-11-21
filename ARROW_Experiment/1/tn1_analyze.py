@@ -9,7 +9,7 @@ Cách chạy:
 
 Ghi ra thư mục --out:
     tn1_tables.md        mọi bảng, đọc được ngay
-    table1_rq1a.csv ... table6_jdk_framework.csv   từng bảng dạng CSV để đưa vào báo cáo
+    table1_rq1a.csv ... table7_timing.csv   từng bảng dạng CSV để đưa vào báo cáo
 
 Kiểm khi gộp:
     - bộ test (lớp, mô hình, cách viết prompt) xuất hiện ở hơn một file:
@@ -116,7 +116,12 @@ def paired_diff(b, c, n):
 
 INT_COLS = ["counted", "pass_s1", "pass_s2", "pass_s3", "pass_s4", "pass_s5", "csr", "esr", "valid",
             "module_flaky", "prompt_chars"]
-NUM_COLS = ["prompt_tokens", "completion_tokens", "llm_seconds", "seconds"]
+NUM_COLS = ["prompt_tokens", "completion_tokens", "llm_seconds", "seconds", "build_seconds",
+            "block1_s", "block2_s", "block3_s", "total_s", "step_compile_s", "step_run_target_s", "step_module_tests_s"]
+# Bảng 7: thời gian từng công đoạn (cột của tn1_collect.py từ 21/11/2026; file CSV cũ không có thì để trống)
+TIMING = [("block1_s", "Khối 1: clone, phân tích, baseline"), ("llm_seconds", "Gọi mô hình"),
+          ("build_seconds", "Kiểm c0 (tổng)"), ("step_compile_s", "↳ biên dịch"), ("step_run_target_s", "↳ chạy test đích"),
+          ("step_module_tests_s", "↳ chạy test module"), ("total_s", "Tổng một lần sinh")]
 
 
 def load(paths):
@@ -337,6 +342,33 @@ def table6(rows):
 # 5. CHƯƠNG TRÌNH CHÍNH
 # ---------------------------------------------------------------------------
 
+def quantile(vals, q):
+    vals = sorted(vals)
+    i = (len(vals) - 1) * q
+    lo = int(i)
+    hi = min(lo + 1, len(vals) - 1)
+    return vals[lo] + (vals[hi] - vals[lo]) * (i - lo)
+
+
+def table7(rows, models):
+    """Bảng 7: thời gian từng công đoạn (giây), trung vị / p90, theo mô hình và máy."""
+    headers = ["Mô hình", "Máy", "Số bộ test"] + [name for _, name in TIMING]
+    body = []
+    for m in models:
+        machines = sorted({r["machine"] for r in rows if r["model"] == m})
+        groups = [(mc, [r for r in rows if r["model"] == m and r["machine"] == mc]) for mc in machines]
+        if len(machines) > 1:
+            groups.append(("(mọi máy)", [r for r in rows if r["model"] == m]))
+        for mc, g in groups:
+            g = [r for r in g if r["counted"] == 1]
+            cells = []
+            for col, _ in TIMING:
+                vals = [r.get(col) for r in g if r.get(col) is not None]
+                cells.append(f"{quantile(vals, .5):.1f} / {quantile(vals, .9):.1f} (n={len(vals)})" if vals else "-")
+            body.append([m, mc, len(g)] + cells)
+    return headers, body
+
+
 def main():
     ap = argparse.ArgumentParser(description="Phân tích TN1 → các bảng kết quả.")
     ap.add_argument("inputs", nargs="+", help="một hoặc nhiều tn1_candidates.csv")
@@ -399,6 +431,13 @@ def main():
         h, b = fn(rows)
         md += [f"## {title}", "", md_table(h, b), ""]
         write_csv(os.path.join(args.out, f"{fname}.csv"), h, b)
+
+    h, b = table7(rows, models)
+    md += ["## Bảng 7. Thời gian từng công đoạn (giây, trung vị / p90)", "",
+           "_Đo khi chạy song song nhiều worker, máy khác nhau thì cấu hình và số worker khác nhau: so thời gian giữa "
+           "các mô hình chỉ trên cùng một máy. n = số bộ test có số đo (bước sau không chạy nếu bước trước lỗi; "
+           "\"-\" = máy chưa nộp số liệu từng bước)._", "", md_table(h, b), ""]
+    write_csv(os.path.join(args.out, "table7_timing.csv"), h, b)
 
     md += ["## Ghi chú", "",
            "- Mẫu số: bộ test đã chạy xong, kể cả không ra code; không gồm lỗi hạ tầng và lớp bị chặn ở khối 1.",

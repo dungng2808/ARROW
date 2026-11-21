@@ -275,6 +275,20 @@ _Ít lớp nên lực thống kê thấp (CI 95% khoảng ±16–17 điểm %); 
 | gitbug-java | gradle | 11 | 2 | 0 | 0 | 0 |
 | gitbug-java | gradle | 17 | 0 | 0 | 1 | 0 |
 
+## Bảng 7. Thời gian từng công đoạn (giây, trung vị / p90)
+
+_Đo khi chạy song song nhiều worker, máy khác nhau thì cấu hình và số worker khác nhau: so thời gian giữa các mô hình chỉ trên cùng một máy. n = số bộ test có số đo (bước sau không chạy nếu bước trước lỗi; "-" = máy chưa nộp số liệu từng bước)._
+
+| Mô hình | Máy | Số bộ test | Khối 1: clone, phân tích, baseline | Gọi mô hình | Kiểm c0 (tổng) | ↳ biên dịch | ↳ chạy test đích | ↳ chạy test module | Tổng một lần sinh |
+|---|---|---|---|---|---|---|---|---|---|
+| gpt6luna | dung | 804 | 5.5 / 38.7 (n=804) | 4.4 / 9.5 (n=804) | 5.3 / 15.9 (n=804) | 2.2 / 4.8 (n=804) | 2.3 / 4.1 (n=512) | 3.8 / 20.6 (n=340) | 18.9 / 59.9 (n=804) |
+| qwen3coder-or | chinh-qwen | 177 | 18.8 / 207.3 (n=177) | 3.5 / 12.8 (n=177) | 12.2 / 50.7 (n=175) | - | - | - | 51.3 / 267.8 (n=177) |
+| qwen3coder-or | dung-qwen | 243 | 5.5 / 25.4 (n=243) | 3.9 / 21.3 (n=243) | 3.0 / 7.5 (n=235) | 2.0 / 4.1 (n=235) | 2.2 / 3.6 (n=79) | 3.1 / 11.4 (n=26) | 16.4 / 59.4 (n=243) |
+| qwen3coder-or | dung-qwen-fix | 6 | 3.6 / 10.0 (n=6) | 2.9 / 3.0 (n=6) | 4.6 / 4.7 (n=6) | 2.2 / 2.2 (n=6) | 2.2 / 2.3 (n=4) | - | 11.1 / 17.5 (n=6) |
+| qwen3coder-or | han-qwen | 192 | 27.9 / 147.2 (n=192) | 3.1 / 8.7 (n=192) | 15.0 / 60.0 (n=187) | - | - | - | 61.7 / 201.6 (n=192) |
+| qwen3coder-or | quang-qwen | 186 | 13.2 / 128.8 (n=186) | 2.8 / 10.7 (n=186) | 9.2 / 27.6 (n=184) | - | - | - | 34.5 / 161.2 (n=186) |
+| qwen3coder-or | (mọi máy) | 804 | 13.6 / 129.6 (n=804) | 3.3 / 13.8 (n=804) | 8.2 / 37.1 (n=787) | 2.0 / 4.1 (n=241) | 2.2 / 3.6 (n=83) | 3.1 / 11.4 (n=26) | 32.8 / 182.8 (n=804) |
+
 ## Ghi chú
 
 - Mẫu số: bộ test đã chạy xong, kể cả không ra code; không gồm lỗi hạ tầng và lớp bị chặn ở khối 1.
