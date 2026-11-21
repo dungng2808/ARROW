@@ -1,0 +1,5 @@
+ARROW · StateTypeConverter (org.arquillian.algeron.pact.provider.core)
+[OK] Khối 1  Maven 3.3.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 37 test (dùng lại, đo 22/11 00:45) · 3.1 s
+[X] Khối 2  c0 · 3,6k token · 4.3 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

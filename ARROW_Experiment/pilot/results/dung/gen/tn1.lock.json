@@ -1,0 +1,101 @@
+{
+  "invocations": [
+    {
+      "started_at": "2026-11-21T17:40:53+00:00",
+      "tool_version": "arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-18)",
+      "tool_commit": "d0f2b5c4c7e3",
+      "machine": "dung",
+      "os": "macOS-15.8.1-arm64-arm-64bit-Mach-O",
+      "cpu_count": 14,
+      "models": {
+        "gpt6luna": {
+          "model": {
+            "provider": "teamo",
+            "model_id": "gpt-6-luna",
+            "expected_model_id_prefix": "gpt-6-luna",
+            "params": {
+              "temperature": 0,
+              "max_tokens": 16384,
+              "seed": 42,
+              "reasoning_effort": "none"
+            }
+          },
+          "provider": {
+            "kind": "openai-compatible",
+            "base_url": "https://api.teamorouter.com/v1",
+            "secret_ref": "teamo"
+          }
+        },
+        "qwen3coder-or": {
+          "model": {
+            "provider": "openrouter",
+            "model_id": "qwen/qwen3-coder-30b-a3b-instruct",
+            "expected_model_id_prefix": "qwen/qwen3-coder-30b-a3b-instruct",
+            "params": {
+              "temperature": 0,
+              "max_tokens": 16384,
+              "provider": {
+                "order": [
+                  "amazon-bedrock"
+                ],
+                "allow_fallbacks": false
+              }
+            }
+          },
+          "provider": {
+            "kind": "openai-compatible",
+            "base_url": "https://openrouter.ai/api/v1",
+            "secret_ref": "openrouter"
+          }
+        }
+      },
+      "strategies": [
+        "zero_shot",
+        "few_shot",
+        "zero_shot_project_aware"
+      ],
+      "group": "pilot",
+      "shard": "1/1",
+      "workers_start": 4,
+      "manifest_sha256": {
+        "classes2test_pilot.jsonl": "7ede4875f010eac0b4e7246d632bebd666ffda78636683a52220cd15d37280d5"
+      },
+      "prompt_override_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/prompts/override",
+      "prompt_sha256": {
+        "repair/failure_summaries.md": "fe188b8ae5c3341848deccd48848cc374ac112ebc1a639e647f6f23e30794689",
+        "repair/system.md": "cf5e5868c02d5197a4d161408e24e94b558b4aeb801518188b83ed9f688b46d3",
+        "repair/user/level1.md": "f085fe3b62aaecb54e062f4ee33310567a77544ca06342d931091583ec4ebeef",
+        "repair/user/level2.md": "8150e6a250a7aef8f6c3d8d1ff25faf21a05063bc513bbb18086c26b365cb67b",
+        "repair/user/level3.md": "b45dc39ad0074d84b45397921045f116bfcb69e093cbb16acedefd6cd1b308a5",
+        "generation/user/default.md": "4562e84ab9c4b4f1f9f5d80da777be3b86f056c1e26691da8ab1b4934c810c83",
+        "generation/user/project_aware.md": "f084f399a8e17c4800353803be9795edd856a2adea87a123d4942952072b6fc6",
+        "generation/system/few_shot.md": "2c0cb7f72bc8c562fdfa34f5a5e8498c33d048d93f16ad636e5a63f65ccf12fa",
+        "generation/system/zero_shot.md": "2bb1385b06c487393c68c131234ab74c1af8e5ddf759654daaa474f9a0dc1429",
+        "generation/system/zero_shot_project_aware.md": "b0b9313a0602ac744e5710a3f944c7d1d0da4a62d4c1e1f054c2b8e5f5067358"
+      },
+      "verification": {},
+      "argv": [
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/tn1_run.py",
+        "--pilot",
+        "--machine",
+        "dung",
+        "--models",
+        "gpt6luna,qwen3coder-or",
+        "--workers",
+        "4",
+        "--shard",
+        "1/1",
+        "--only",
+        "61105758_0e817e45eed049ba,71868774_04a8df35dac9247a,39158944_6ba18e9dbcdfb87e,98605274_f0d8541cebdf1283,67030086_0426dc8625c80c2b,60702089_44ea272393cb269d,14340523_b0b9eeb5415cacb2,80098624_e92616c9e17c63ab,158546420_f604bc5862e1c0fc,39525650_b72feab336942a69,91478358_270e9e92a8f4827c,55965971_79834be4409e259d",
+        "--out-dir",
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen",
+        "--base-home",
+        "/Users/dungng/.arrow",
+        "--arrow",
+        "arrow",
+        "--homes-dir",
+        "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes"
+      ]
+    }
+  ]
+}

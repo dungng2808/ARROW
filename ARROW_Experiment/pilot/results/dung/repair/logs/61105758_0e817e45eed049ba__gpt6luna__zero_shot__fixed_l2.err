@@ -1,0 +1,6 @@
+ARROW · ReadWriteAccessDelegate (com.hazelcast.hibernate.access)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 155 test (dùng lại, đo 22/11 01:40) · 4.3 s
+[OK] Khối 2  c0 · c0 lấy từ file 61105758_0e817e45eed049ba__gpt6luna__zero_shot.java: 4 test, 2 assertion
+[>] Khối 3  c0: RUNTIME · NullPointerException | ReadWriteAccessDelegate_ArrowTest.removeDoesNotThrow
+          vòng 1 · mức 2 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-004749-tatt",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes/w3/runs/20261122-004749-tatt",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.eclipse.kapua.gateway.client.Topic",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.eclipse.kapua.gateway.client.Topic_ArrowTest",
+      "test_path": "gateway-client-api/src/test/java/org/eclipse/kapua/gateway/client/Topic_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2133,
+        "out": 868
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.4,
+        "block2": 7.2,
+        "block3": 6.3,
+        "block4": null,
+        "total": 16.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2133,
+    "tokens_out": 868,
+    "cost_usd": null
+  },
+  "warnings": []
+}

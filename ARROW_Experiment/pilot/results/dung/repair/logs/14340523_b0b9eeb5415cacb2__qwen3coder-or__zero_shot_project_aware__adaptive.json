@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-005609-foad",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/repair/homes/w3/runs/20261122-005609-foad",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "info.ozkan.vipera.business.notification.NotificationGenerator",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "info.ozkan.vipera.business.notification.NotificationGenerator_ArrowTest",
+      "test_path": "vipera-business/src/test/java/info/ozkan/vipera/business/notification/NotificationGenerator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 67020,
+        "out": 12533
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 3.2,
+        "block2": 0.1,
+        "block3": 76.4,
+        "block4": null,
+        "total": 79.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 67020,
+    "tokens_out": 12533,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 8 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

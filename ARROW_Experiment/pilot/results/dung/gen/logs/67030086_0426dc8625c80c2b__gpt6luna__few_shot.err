@@ -1,0 +1,5 @@
+ARROW · StateTypeConverter (org.arquillian.algeron.pact.provider.core)
+[OK] Khối 1  Maven 3.3.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 37 test (dùng lại, đo 22/11 00:45) · 3.3 s
+[OK] Khối 2  c0 · 4,3k token · 6.8 s · Candidate hợp lệ: 9 test, 21 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

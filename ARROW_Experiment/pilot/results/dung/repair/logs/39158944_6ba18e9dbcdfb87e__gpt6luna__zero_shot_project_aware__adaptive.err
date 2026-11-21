@@ -1,0 +1,18 @@
+ARROW · NavigationManagerImpl (io.wcm.samples.core.business.navigation.impl)
+[OK] Khối 1  Maven 3.9.4 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 19 test (dùng lại, đo 22/11 01:01) · 4.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 39158944_6ba18e9dbcdfb87e__gpt6luna__zero_shot_project_aware.java: 4 test, 20 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+          vòng 1 · mức 1 → COMPILE · tệ hơn · rollback, lên mức 2
+          vòng 2 · mức 2 → COMPILE · lên mức 3
+          vòng 3 · mức 3 → COMPILE · lên mức 2
+          vòng 4 · mức 2 → COMPILE · giữ mức
+          vòng 5 · mức 2 → COMPILE · lên mức 3
+          vòng 6 · mức 3 → COMPILE · lên mức 2
+          vòng 7 · mức 2 → COMPILE · lên mức 3
+          vòng 8 · mức 3 → RUNTIME · tốt hơn · checkpoint
+          vòng 9 · mức 1 → COMPILE · tệ hơn · rollback, lên mức 2
+          vòng 10 · mức 2 → COMPILE · tệ hơn · rollback, lên mức 3
+          vòng 11 · mức 3 → COMPILE · tệ hơn · rollback, lên mức 2
+[!] gọi lại sau 20 s (timeout)
+          vòng 12 · mức 2 → COMPILE · tệ hơn · rollback, lên mức 3
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

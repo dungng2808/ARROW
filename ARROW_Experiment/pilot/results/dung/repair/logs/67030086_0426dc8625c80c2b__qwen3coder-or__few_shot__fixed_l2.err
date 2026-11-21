@@ -1,0 +1,17 @@
+ARROW · StateTypeConverter (org.arquillian.algeron.pact.provider.core)
+[OK] Khối 1  Maven 3.3.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 37 test (dùng lại, đo 22/11 01:50) · 3.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 67030086_0426dc8625c80c2b__qwen3coder-or__few_shot.java: 36 test, 36 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+          vòng 1 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 2 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 3 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 5 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 6 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 7 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 8 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 9 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 10 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 11 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 12 · mức 2 → RUNTIME · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

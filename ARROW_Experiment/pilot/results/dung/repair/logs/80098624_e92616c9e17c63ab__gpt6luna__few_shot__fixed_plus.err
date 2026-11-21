@@ -1,0 +1,6 @@
+ARROW · IntegrationCoffeeNetAppService (rocks.coffeenet.autoconfigure.discovery.service)
+[OK] Khối 1  Maven 3.6.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 90 test ×2 · 20.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 80098624_e92616c9e17c63ab__gpt6luna__few_shot.java: 3 test, 3 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+          vòng 1 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

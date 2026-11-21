@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-004449-rx1p",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes/w3/runs/20261122-004449-rx1p",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl_ArrowTest",
+      "test_path": "bundles/core/src/test/java/io/wcm/samples/core/business/navigation/impl/NavigationManagerImpl_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3310,
+        "out": 1697
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 5.8,
+        "block2": 11.7,
+        "block3": 3,
+        "block4": null,
+        "total": 20.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3310,
+    "tokens_out": 1697,
+    "cost_usd": null
+  },
+  "warnings": []
+}

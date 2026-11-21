@@ -1,0 +1,5 @@
+ARROW · Serializer (com.addhen.serializer)
+[OK] Khối 1  Gradle 4.4.1 · build root . · JDK 8 · JUnit 4 · baseline 16 test ×2 · 11.5 s
+[OK] Khối 2  c0 · 2,9k token · 3.1 s · Candidate hợp lệ: 5 test, 5 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

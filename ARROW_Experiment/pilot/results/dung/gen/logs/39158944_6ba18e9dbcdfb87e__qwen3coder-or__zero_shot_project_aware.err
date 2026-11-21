@@ -1,0 +1,5 @@
+ARROW · NavigationManagerImpl (io.wcm.samples.core.business.navigation.impl)
+[OK] Khối 1  Maven 3.9.4 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 19 test (dùng lại, đo 22/11 00:44) · 4.5 s
+[OK] Khối 2  c0 · 4,7k token · 72.4 s · Candidate hợp lệ: 6 test, 32 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

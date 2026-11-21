@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-014450-wdtp",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/repair/homes/w1/runs/20261122-014450-wdtp",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.hazelcast.hibernate.access.ReadWriteAccessDelegate",
+      "result": "VALID",
+      "c0_state": "RUNTIME",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "com.hazelcast.hibernate.access.ReadWriteAccessDelegate_ArrowTest",
+      "test_path": "hazelcast-hibernate5/src/test/java/com/hazelcast/hibernate/access/ReadWriteAccessDelegate_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3321,
+        "out": 260
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 4.3,
+        "block2": 0.1,
+        "block3": 153.4,
+        "block4": null,
+        "total": 157.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3321,
+    "tokens_out": 260,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

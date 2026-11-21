@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-020227-jgdc",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/repair/homes/w2/runs/20261122-020227-jgdc",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.addhen.serializer.Serializer",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.addhen.serializer.Serializer_ArrowTest",
+      "test_path": "serializer/src/test/java/com/addhen/serializer/Serializer_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 43866,
+        "out": 6900
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 12.3,
+        "block2": 0.1,
+        "block3": 42.8,
+        "block4": null,
+        "total": 55.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 43866,
+    "tokens_out": 6900,
+    "cost_usd": null
+  },
+  "warnings": []
+}

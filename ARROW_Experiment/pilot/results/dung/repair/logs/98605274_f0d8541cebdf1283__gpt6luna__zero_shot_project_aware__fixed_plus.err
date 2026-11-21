@@ -1,0 +1,6 @@
+ARROW · TopicSubscription (com.github.christophersmith.summer.mqtt.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 59 test (dùng lại, đo 22/11 02:07) · 2.7 s
+[OK] Khối 2  c0 · c0 lấy từ file 98605274_f0d8541cebdf1283__gpt6luna__zero_shot_project_aware.java: 7 test, 14 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+          vòng 1 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

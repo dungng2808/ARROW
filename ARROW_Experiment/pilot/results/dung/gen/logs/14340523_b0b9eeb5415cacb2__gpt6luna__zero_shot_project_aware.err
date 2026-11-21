@@ -1,0 +1,5 @@
+ARROW · NotificationGenerator (info.ozkan.vipera.business.notification)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 + Mockito · baseline 16 test (dùng lại, đo 22/11 00:44) · 3.0 s
+[OK] Khối 2  c0 · 2,6k token · 12.9 s · Candidate hợp lệ: 4 test, 8 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

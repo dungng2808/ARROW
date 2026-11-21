@@ -1,0 +1,5 @@
+ARROW · IntegrationCoffeeNetAppService (rocks.coffeenet.autoconfigure.discovery.service)
+[OK] Khối 1  Maven 3.6.0 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 90 test (dùng lại, đo 22/11 00:46) · 3.1 s
+[OK] Khối 2  c0 · 3,7k token · 5.1 s · Candidate hợp lệ: 7 test, 26 assertion
+[>] Khối 3  c0: COMPILE · method cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

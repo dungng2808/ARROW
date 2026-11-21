@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-004054-8xqn",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes/w1/runs/20261122-004054-8xqn",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication_ArrowTest",
+      "test_path": "publisher/src/test/java/io/wcm/caravan/jaxrs/publisher/impl/JaxRsApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1722,
+        "out": 778
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 14,
+        "block2": 5.9,
+        "block3": 9.7,
+        "block4": null,
+        "total": 29.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1722,
+    "tokens_out": 778,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

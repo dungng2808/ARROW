@@ -1,0 +1,6 @@
+ARROW · NavigationManagerImpl (io.wcm.samples.core.business.navigation.impl)
+[OK] Khối 1  Maven 3.9.4 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 19 test (dùng lại, đo 22/11 01:01) · 4.3 s
+[OK] Khối 2  c0 · c0 lấy từ file 39158944_6ba18e9dbcdfb87e__gpt6luna__few_shot.java: 1 test, 1 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

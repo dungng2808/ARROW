@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-004313-k41s",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes/w2/runs/20261122-004313-k41s",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName_ArrowTest",
+      "test_path": "DefaultConfigsExtension/src/test/java/de/viadee/xai/anchor/adapter/tabular/builder/AnchorTabularBuilderByName_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2241,
+        "out": 649
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 3.1,
+        "block2": 6.1,
+        "block3": 3.9,
+        "block4": null,
+        "total": 13.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2241,
+    "tokens_out": 649,
+    "cost_usd": null
+  },
+  "warnings": []
+}

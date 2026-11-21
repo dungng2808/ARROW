@@ -1,0 +1,81 @@
+Phần 4/4: 12 lớp pilot
+$ /opt/homebrew/opt/python@3.15/bin/python3.15 -u /Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/1/tn1_run.py --pilot --machine dung --models gpt6luna,qwen3coder-or --workers 4 --shard 1/1 --only 61105758_0e817e45eed049ba,71868774_04a8df35dac9247a,39158944_6ba18e9dbcdfb87e,98605274_f0d8541cebdf1283,67030086_0426dc8625c80c2b,60702089_44ea272393cb269d,14340523_b0b9eeb5415cacb2,80098624_e92616c9e17c63ab,158546420_f604bc5862e1c0fc,39525650_b72feab336942a69,91478358_270e9e92a8f4827c,55965971_79834be4409e259d --out-dir /Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen --base-home /Users/dungng/.arrow --arrow arrow --homes-dir /Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes
+arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-18)
+Máy dung · phần 1/1 · 12 lớp · mô hình ['gpt6luna', 'qwen3coder-or'] · còn 72 lần chạy (12 lớp) · 4 worker
+--- 4 worker
+[1/72] DONE  COMPILE            18.3s  gpt6luna   zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[2/72] DONE  COMPILE            29.3s  gpt6luna   zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[3/72] DONE  VALID              29.9s  gpt6luna   zero_shot                com.addhen.serializer.Serializer
+[4/72] DONE  VALID              33.3s  gpt6luna   zero_shot                io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[5/72] DONE  COMPILE            16.9s  qwen3coder-or zero_shot                com.addhen.serializer.Serializer
+[6/72] DONE  ASSERTION          13.9s  qwen3coder-or zero_shot                io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[7/72] DONE  COMPILE            32.7s  qwen3coder-or zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[8/72] DONE  COMPILE             9.7s  gpt6luna   few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[9/72] DONE  COMPILE            34.5s  qwen3coder-or zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[10/72] DONE  VALID              22.3s  gpt6luna   few_shot                 io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[11/72] DONE  VALID              25.1s  gpt6luna   few_shot                 com.addhen.serializer.Serializer
+[12/72] DONE  COMPILE            12.1s  gpt6luna   few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[13/72] DONE  COMPILE            26.3s  qwen3coder-or few_shot                 com.addhen.serializer.Serializer
+[14/72] DONE  COMPILE            49.8s  qwen3coder-or few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[15/72] DONE  ASSERTION          46.7s  qwen3coder-or few_shot                 io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[16/72] DONE  VALID              23.6s  gpt6luna   zero_shot_project_aware  com.addhen.serializer.Serializer
+[17/72] DONE  COMPILE            15.8s  gpt6luna   zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[18/72] DONE  VALID              21.0s  gpt6luna   zero_shot_project_aware  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[19/72] DONE  COMPILE            63.6s  qwen3coder-or few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[20/72] DONE  COMPILE            20.5s  qwen3coder-or zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[21/72] DONE  RUNTIME            13.9s  gpt6luna   zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[22/72] DONE  VALID              17.2s  gpt6luna   zero_shot                chapter1.finaltask.SubString
+[23/72] DONE  COMPILE            13.2s  qwen3coder-or zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[24/72] DONE  COMPILE            47.3s  qwen3coder-or zero_shot_project_aware  com.addhen.serializer.Serializer
+[25/72] DONE  ASSERTION          41.6s  qwen3coder-or zero_shot_project_aware  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[26/72] DONE  ASSERTION          15.2s  qwen3coder-or zero_shot                chapter1.finaltask.SubString
+[27/72] DONE  VALID              24.2s  gpt6luna   zero_shot                com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[28/72] DONE  VALID              14.2s  gpt6luna   few_shot                 chapter1.finaltask.SubString
+[29/72] DONE  COMPILE            27.0s  gpt6luna   zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[30/72] DONE  VALID              10.5s  qwen3coder-or few_shot                 chapter1.finaltask.SubString
+[31/72] DONE  VALID              28.2s  gpt6luna   zero_shot                info.ozkan.vipera.business.notification.NotificationGenerator
+[32/72] DONE  COMPILE            13.4s  qwen3coder-or zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[33/72] DONE  VALID              11.5s  gpt6luna   zero_shot_project_aware  chapter1.finaltask.SubString
+[34/72] DONE  COMPILE            10.8s  qwen3coder-or zero_shot                info.ozkan.vipera.business.notification.NotificationGenerator
+[35/72] DONE  COMPILE            11.4s  gpt6luna   few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[36/72] DONE  COMPILE            29.9s  qwen3coder-or zero_shot                com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[37/72] DONE  ASSERTION          17.1s  qwen3coder-or zero_shot_project_aware  chapter1.finaltask.SubString
+[38/72] DONE  COMPILE            13.2s  qwen3coder-or few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[39/72] DONE  VALID              18.5s  gpt6luna   few_shot                 info.ozkan.vipera.business.notification.NotificationGenerator
+[40/72] DONE  VALID              16.9s  gpt6luna   few_shot                 com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[41/72] DONE  COMPILE            12.0s  qwen3coder-or few_shot                 com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[42/72] DONE  COMPILE            21.5s  gpt6luna   zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[43/72] DONE  VALID              12.4s  gpt6luna   zero_shot_project_aware  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[44/72] DONE  COMPILE            40.2s  qwen3coder-or few_shot                 info.ozkan.vipera.business.notification.NotificationGenerator
+[45/72] DONE  COMPILE            19.2s  qwen3coder-or zero_shot_project_aware  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[46/72] DONE  VALID              21.8s  gpt6luna   zero_shot_project_aware  info.ozkan.vipera.business.notification.NotificationGenerator
+[47/72] DONE  VALID              31.6s  gpt6luna   zero_shot                org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[48/72] DONE  INVALID_OUTPUT      8.4s  qwen3coder-or zero_shot                org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[49/72] DONE  COMPILE            27.1s  qwen3coder-or zero_shot_project_aware  info.ozkan.vipera.business.notification.NotificationGenerator
+[50/72] DONE  COMPILE            81.4s  qwen3coder-or zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[51/72] DONE  VALID              20.4s  gpt6luna   few_shot                 org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[52/72] DONE  COMPILE            11.5s  qwen3coder-or few_shot                 org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[53/72] DONE  VALID              26.7s  gpt6luna   zero_shot                org.eclipse.kapua.gateway.client.Topic
+[54/72] DONE  COMPILE            47.4s  gpt6luna   zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[55/72] DONE  VALID              19.7s  gpt6luna   zero_shot_project_aware  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[56/72] DONE  ASSERTION          14.6s  qwen3coder-or zero_shot                org.eclipse.kapua.gateway.client.Topic
+[57/72] DONE  COMPILE            11.5s  qwen3coder-or zero_shot_project_aware  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[58/72] DONE  COMPILE            12.0s  qwen3coder-or zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[59/72] DONE  VALID              18.8s  gpt6luna   few_shot                 org.eclipse.kapua.gateway.client.Topic
+[60/72] DONE  COMPILE            16.6s  gpt6luna   few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[61/72] DONE  VALID              15.0s  qwen3coder-or few_shot                 org.eclipse.kapua.gateway.client.Topic
+[62/72] DONE  COMPILE            20.7s  qwen3coder-or few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[63/72] DONE  VALID              17.7s  gpt6luna   zero_shot_project_aware  org.eclipse.kapua.gateway.client.Topic
+[64/72] DONE  COMPILE            13.0s  gpt6luna   zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[65/72] DONE  COMPILE            11.2s  qwen3coder-or zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[66/72] DONE  RUNTIME           229.4s  gpt6luna   zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[67/72] DONE  COMPILE            41.2s  qwen3coder-or zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[68/72] DONE  VALID              75.9s  qwen3coder-or zero_shot_project_aware  org.eclipse.kapua.gateway.client.Topic
+[69/72] DONE  RUNTIME            16.0s  gpt6luna   few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[70/72] DONE  COMPILE            11.5s  qwen3coder-or few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[71/72] DONE  RUNTIME            24.5s  gpt6luna   zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[72/72] DONE  COMPILE            11.3s  qwen3coder-or zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+Kết quả: ASSERTION 6, COMPILE 37, INVALID_OUTPUT 1, RUNTIME 4, VALID 24
+gen: 72 bộ test (72 tính vào mẫu số, 0 lỗi hạ tầng/bị chặn) → tn1_candidates.csv; 47 bộ vào tn2_pool.jsonl; 71 file mã trong tests/
+
+Xong bước gen. Bước tiếp: python3 pilot_run.py repair --machine dung --models gpt6luna,qwen3coder-or --arrow <arrow bản 203fb8e>

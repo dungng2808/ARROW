@@ -1,0 +1,5 @@
+ARROW · JaxRsApplication (io.wcm.caravan.jaxrs.publisher.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 8 test (dùng lại, đo 22/11 00:41) · 4.6 s
+[OK] Khối 2  c0 · 3,8k token · 35.0 s · Candidate hợp lệ: 3 test, 15 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testGetSingletons
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

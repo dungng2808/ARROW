@@ -1,0 +1,52 @@
+{
+  "run_id": "20261122-014812-pj0o",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/repair/homes/w4/runs/20261122-014812-pj0o",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.hazelcast.hibernate.access.ReadWriteAccessDelegate",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.hazelcast.hibernate.access.ReadWriteAccessDelegate_ArrowTest",
+      "test_path": "hazelcast-hibernate5/src/test/java/com/hazelcast/hibernate/access/ReadWriteAccessDelegate_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 43022,
+        "out": 5405
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 4.6,
+        "block2": 0.1,
+        "block3": 94.2,
+        "block4": null,
+        "total": 98.8
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 2"
+      ],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 43022,
+    "tokens_out": 5405,
+    "cost_usd": null
+  },
+  "warnings": [
+    "ReadWriteAccessDelegate: 2 test method đã bị bỏ trong lúc sửa: lockItemReturnsNullWhenRegionIsNull, unlockItemWithNullLockDoesNotThrowWhenRegionIsNull"
+  ]
+}

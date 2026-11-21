@@ -1,0 +1,17 @@
+ARROW · JaxRsApplication (io.wcm.caravan.jaxrs.publisher.impl)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 8 test (dùng lại, đo 22/11 01:27) · 4.7 s
+[OK] Khối 2  c0 · c0 lấy từ file 39525650_b72feab336942a69__qwen3coder-or__zero_shot.java: 3 test, 11 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testGetSingletons
+          vòng 1 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 2 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 4 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 5 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 6 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 7 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 8 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 9 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 10 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 11 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+          vòng 12 · mức 2 → ASSERTION 2 pass · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 12 vòng

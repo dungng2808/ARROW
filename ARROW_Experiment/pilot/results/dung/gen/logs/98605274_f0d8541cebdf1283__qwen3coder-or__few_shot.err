@@ -1,0 +1,5 @@
+ARROW · TopicSubscription (com.github.christophersmith.summer.mqtt.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 59 test (dùng lại, đo 22/11 00:41) · 3.6 s
+[OK] Khối 2  c0 · 3,8k token · 43.7 s · Candidate hợp lệ: 11 test, 19 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

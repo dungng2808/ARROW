@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-020527-o2qg",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/repair/homes/w4/runs/20261122-020527-o2qg",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.eclipse.kapua.gateway.client.Topic",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.eclipse.kapua.gateway.client.Topic_ArrowTest",
+      "test_path": "gateway-client-api/src/test/java/org/eclipse/kapua/gateway/client/Topic_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 56076,
+        "out": 24600
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 8.9,
+        "block2": 0.1,
+        "block3": 119.8,
+        "block4": null,
+        "total": 128.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 56076,
+    "tokens_out": 24600,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

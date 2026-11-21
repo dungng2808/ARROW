@@ -1,0 +1,11 @@
+ARROW · NotificationGenerator (info.ozkan.vipera.business.notification)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 17 · JUnit 4 + Mockito · baseline 16 test (dùng lại, đo 22/11 00:50) · 3.2 s
+[OK] Khối 2  c0 · c0 lấy từ file 14340523_b0b9eeb5415cacb2__qwen3coder-or__zero_shot_project_aware.java: 5 test, 16 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+          vòng 1 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 5 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 6 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 6 vòng

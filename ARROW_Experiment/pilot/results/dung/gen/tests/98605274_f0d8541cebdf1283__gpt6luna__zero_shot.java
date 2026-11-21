@@ -1,0 +1,75 @@
+package com.github.christophersmith.summer.mqtt.core;
+
+import org.junit.Test;
+
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotSame;
+import static org.junit.Assert.assertSame;
+import static org.junit.Assert.assertTrue;
+
+public class TopicSubscription_ArrowTest
+{
+    @Test
+    public void constructorStoresTopicAndQualityOfService()
+    {
+        TopicSubscription subscription =
+                new TopicSubscription("sensors/temperature", MqttQualityOfService.AT_MOST_ONCE);
+
+        assertEquals("sensors/temperature", subscription.getTopicFilter());
+        assertSame(MqttQualityOfService.AT_MOST_ONCE, subscription.getQualityOfService());
+        assertFalse(subscription.isSubscribed());
+    }
+
+    @Test
+    public void setSubscribedUpdatesSubscriptionState()
+    {
+        TopicSubscription subscription =
+                new TopicSubscription("sensors/temperature", MqttQualityOfService.AT_LEAST_ONCE);
+
+        subscription.setSubscribed(true);
+        assertTrue(subscription.isSubscribed());
+
+        subscription.setSubscribed(false);
+        assertFalse(subscription.isSubscribed());
+    }
+
+    @Test
+    public void cloneCopiesValuesIntoDistinctInstance()
+    {
+        TopicSubscription subscription =
+                new TopicSubscription("sensors/temperature", MqttQualityOfService.EXACTLY_ONCE);
+        subscription.setSubscribed(true);
+
+        TopicSubscription copy = subscription.clone();
+
+        assertNotSame(subscription, copy);
+        assertEquals("sensors/temperature", copy.getTopicFilter());
+        assertSame(MqttQualityOfService.EXACTLY_ONCE, copy.getQualityOfService());
+        assertTrue(copy.isSubscribed());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorRejectsNullTopicFilter()
+    {
+        new TopicSubscription(null, MqttQualityOfService.AT_MOST_ONCE);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorRejectsEmptyTopicFilter()
+    {
+        new TopicSubscription("", MqttQualityOfService.AT_MOST_ONCE);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorRejectsWhitespaceTopicFilter()
+    {
+        new TopicSubscription("   ", MqttQualityOfService.AT_MOST_ONCE);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void constructorRejectsNullQualityOfService()
+    {
+        new TopicSubscription("sensors/temperature", null);
+    }
+}

@@ -1,0 +1,193 @@
+arrow 0.2.0 (commit 203fb8e6bac6, build 2026-11-20)
+Máy dung · 47 c0 · mô hình ['gpt6luna', 'qwen3coder-or'] · cơ chế ['fixed_plus', 'fixed_minus', 'fixed_l2', 'adaptive'] · 12 vòng · còn 188 chain · 4 worker
+--- 4 worker
+[1/188] DONE       VALID       vòng  1/ 1    36.1s  gpt6luna      fixed_plus  few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[2/188] DONE       VALID       vòng  1/ 1    24.7s  gpt6luna      fixed_minus few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[3/188] DONE       VALID       vòng  1/ 1    25.5s  gpt6luna      fixed_l2    few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[4/188] DONE       VALID       vòng  1/ 1    25.3s  gpt6luna      adaptive    few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[5/188] DONE       VALID       vòng  1/ 1    23.1s  gpt6luna      fixed_plus  zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[6/188] DONE       VALID       vòng  1/ 1    18.8s  gpt6luna      fixed_minus zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[7/188] DONE       VALID       vòng  1/ 1    24.6s  gpt6luna      fixed_l2    zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[8/188] DONE       COMPILE     vòng  -/12   179.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  info.ozkan.vipera.business.notification.NotificationGenerator
+[9/188] DONE       COMPILE     vòng  -/12   188.5s  qwen3coder-or fixed_plus  zero_shot                info.ozkan.vipera.business.notification.NotificationGenerator
+[10/188] DONE       VALID       vòng  1/ 1    19.0s  gpt6luna      adaptive    zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[11/188] DONE       COMPILE     vòng  -/12   202.0s  qwen3coder-or fixed_plus  few_shot                 info.ozkan.vipera.business.notification.NotificationGenerator
+[12/188] DONE       VALID       vòng  6/ 6    59.8s  qwen3coder-or fixed_minus zero_shot_project_aware  info.ozkan.vipera.business.notification.NotificationGenerator
+[13/188] DONE       VALID       vòng  5/ 5    80.5s  gpt6luna      fixed_plus  zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[14/188] DONE       VALID       vòng  2/ 2    29.9s  gpt6luna      fixed_minus zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[15/188] DONE       RUNTIME     vòng  -/12   103.2s  qwen3coder-or fixed_l2    zero_shot_project_aware  info.ozkan.vipera.business.notification.NotificationGenerator
+[16/188] DONE       COMPILE     vòng  -/12   163.5s  qwen3coder-or fixed_minus zero_shot                info.ozkan.vipera.business.notification.NotificationGenerator
+[17/188] DONE       COMPILE     vòng  -/12    80.8s  qwen3coder-or adaptive    zero_shot_project_aware  info.ozkan.vipera.business.notification.NotificationGenerator
+[18/188] DONE       COMPILE     vòng  -/12   223.6s  qwen3coder-or fixed_minus few_shot                 info.ozkan.vipera.business.notification.NotificationGenerator
+[19/188] DONE       RUNTIME     vòng  -/12   130.2s  gpt6luna      fixed_l2    zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[20/188] DONE       COMPILE     vòng  -/12   109.9s  qwen3coder-or fixed_l2    zero_shot                info.ozkan.vipera.business.notification.NotificationGenerator
+[21/188] DONE       VALID       vòng 10/10   101.9s  qwen3coder-or fixed_plus  few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[22/188] DONE       COMPILE     vòng  -/12    91.5s  qwen3coder-or adaptive    zero_shot                info.ozkan.vipera.business.notification.NotificationGenerator
+[23/188] DONE       COMPILE     vòng  -/12   154.0s  qwen3coder-or fixed_l2    few_shot                 info.ozkan.vipera.business.notification.NotificationGenerator
+[24/188] DONE       RUNTIME     vòng  -/12   167.8s  gpt6luna      adaptive    zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[25/188] DONE       COMPILE     vòng  -/12    99.0s  qwen3coder-or fixed_minus few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[26/188] DONE       COMPILE     vòng  -/12    76.1s  qwen3coder-or adaptive    few_shot                 info.ozkan.vipera.business.notification.NotificationGenerator
+[27/188] DONE       VALID       vòng  3/ 3    65.1s  qwen3coder-or fixed_l2    few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[28/188] DONE       VALID       vòng  1/ 1    37.5s  gpt6luna      fixed_plus  few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[29/188] DONE       COMPILE     vòng  -/12   147.0s  qwen3coder-or fixed_plus  zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[30/188] DONE       VALID       vòng  1/ 1    21.4s  gpt6luna      fixed_minus few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[31/188] DONE       VALID       vòng  1/ 1    19.8s  gpt6luna      fixed_l2    few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[32/188] DONE       VALID       vòng  7/ 7    59.7s  qwen3coder-or adaptive    few_shot                 de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[33/188] DONE       VALID       vòng  1/ 1    21.1s  gpt6luna      adaptive    few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[34/188] DONE       COMPILE     vòng  -/12   164.1s  qwen3coder-or fixed_plus  zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[35/188] DONE       VALID       vòng  1/ 1    34.6s  gpt6luna      fixed_plus  zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[36/188] DONE       VALID       vòng  1/ 1    20.6s  gpt6luna      fixed_minus zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[37/188] DONE       VALID       vòng  1/ 1    20.0s  gpt6luna      fixed_l2    zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[38/188] DONE       VALID       vòng  1/ 1    20.2s  gpt6luna      adaptive    zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[39/188] DONE       COMPILE     vòng  -/12   156.2s  qwen3coder-or fixed_minus zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[40/188] DONE       COMPILE     vòng  -/12   130.4s  qwen3coder-or fixed_minus zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[41/188] DONE       COMPILE     vòng  -/12   202.5s  qwen3coder-or fixed_plus  few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[42/188] DONE       COMPILE     vòng  -/12   315.5s  gpt6luna      fixed_plus  zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[43/188] DONE       COMPILE     vòng  -/12   232.4s  qwen3coder-or fixed_l2    zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[44/188] DONE       COMPILE     vòng  -/12   195.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[45/188] DONE       COMPILE     vòng  -/12   266.5s  qwen3coder-or fixed_minus few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[46/188] DONE       COMPILE     vòng  -/12   251.7s  qwen3coder-or adaptive    zero_shot_project_aware  de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[47/188] DONE       COMPILE     vòng  -/12   260.7s  qwen3coder-or adaptive    zero_shot                de.viadee.xai.anchor.adapter.tabular.builder.AnchorTabularBuilderByName
+[48/188] DONE       RUNTIME     vòng  -/12   338.4s  gpt6luna      fixed_minus zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[49/188] DONE       RUNTIME     vòng  -/12   229.5s  qwen3coder-or fixed_plus  zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[50/188] DONE       VALID       vòng  5/ 5   172.5s  gpt6luna      fixed_l2    zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[51/188] DONE       RUNTIME     vòng  -/12   259.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[52/188] DONE       RUNTIME     vòng  -/12   325.0s  qwen3coder-or fixed_l2    few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[53/188] DONE       COMPILE     vòng  -/12   160.4s  qwen3coder-or fixed_minus zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[54/188] DONE       COMPILE     vòng  -/12   125.4s  qwen3coder-or adaptive    few_shot                 io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[55/188] DONE       RUNTIME     vòng  -/12   181.6s  qwen3coder-or fixed_minus zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[56/188] DONE       ASSERTION   vòng  -/12   185.0s  qwen3coder-or fixed_plus  few_shot                 io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[57/188] DONE       ASSERTION   vòng  -/12   135.0s  qwen3coder-or fixed_minus few_shot                 io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[58/188] DONE       RUNTIME     vòng  -/12   595.3s  gpt6luna      adaptive    zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[59/188] DONE       COMPILE     vòng  -/12   100.9s  qwen3coder-or fixed_l2    few_shot                 io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[60/188] DONE       RUNTIME     vòng  -/12   530.4s  qwen3coder-or fixed_l2    zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[61/188] DONE       ASSERTION   vòng  -/12    87.5s  qwen3coder-or adaptive    few_shot                 io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[62/188] DONE       RUNTIME     vòng  -/12   502.0s  qwen3coder-or fixed_l2    zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[63/188] DONE       ASSERTION   vòng  -/12   156.3s  qwen3coder-or fixed_plus  zero_shot                io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[64/188] DONE       ASSERTION   vòng  -/12   123.5s  qwen3coder-or fixed_plus  zero_shot_project_aware  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[65/188] DONE       COMPILE     vòng  -/12   164.4s  qwen3coder-or adaptive    zero_shot                io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[66/188] DONE       RUNTIME     vòng  -/12   162.4s  qwen3coder-or adaptive    zero_shot_project_aware  io.wcm.samples.core.business.navigation.impl.NavigationManagerImpl
+[67/188] DONE       VALID       vòng  1/ 1    25.9s  qwen3coder-or fixed_plus  few_shot                 com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[68/188] DONE       VALID       vòng  1/ 1    15.9s  qwen3coder-or fixed_minus few_shot                 com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[69/188] DONE       VALID       vòng  1/ 1    25.4s  qwen3coder-or fixed_plus  zero_shot                com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[70/188] DONE       ASSERTION   vòng  -/12   149.2s  qwen3coder-or fixed_minus zero_shot                io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[71/188] DONE       VALID       vòng  1/ 1    13.2s  qwen3coder-or fixed_l2    few_shot                 com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[72/188] DONE       COMPILE     vòng  -/12    94.7s  qwen3coder-or fixed_minus zero_shot_project_aware  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[73/188] DONE       VALID       vòng  1/ 1    19.2s  qwen3coder-or fixed_minus zero_shot                com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[74/188] DONE       VALID       vòng  1/ 1    14.0s  qwen3coder-or adaptive    few_shot                 com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[75/188] DONE       VALID       vòng  1/ 1    15.2s  qwen3coder-or fixed_l2    zero_shot                com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[76/188] DONE       VALID       vòng  1/ 1    19.2s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[77/188] DONE       VALID       vòng  1/ 1    14.2s  qwen3coder-or adaptive    zero_shot                com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[78/188] DONE       VALID       vòng  1/ 1    18.3s  qwen3coder-or fixed_minus zero_shot_project_aware  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[79/188] DONE       VALID       vòng  1/ 1    17.9s  qwen3coder-or fixed_plus  zero_shot                chapter1.finaltask.SubString
+[80/188] DONE       VALID       vòng  1/ 1    13.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[81/188] DONE       VALID       vòng  2/ 2    17.2s  qwen3coder-or fixed_minus zero_shot                chapter1.finaltask.SubString
+[82/188] DONE       VALID       vòng  1/ 1    13.9s  qwen3coder-or adaptive    zero_shot_project_aware  com.brianway.learning.algorithms.leetcode.easy.RemoveDuplicatesfromSortedArray
+[83/188] DONE       VALID       vòng  1/ 1    17.1s  qwen3coder-or fixed_l2    zero_shot                chapter1.finaltask.SubString
+[84/188] DONE       VALID       vòng  2/ 2    25.5s  qwen3coder-or fixed_plus  zero_shot_project_aware  chapter1.finaltask.SubString
+[85/188] DONE       VALID       vòng  1/ 1    13.3s  qwen3coder-or adaptive    zero_shot                chapter1.finaltask.SubString
+[86/188] DONE       ASSERTION   vòng  -/12   129.7s  qwen3coder-or fixed_l2    zero_shot                io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[87/188] DONE       VALID       vòng  2/ 2    19.9s  qwen3coder-or fixed_minus zero_shot_project_aware  chapter1.finaltask.SubString
+[88/188] DONE       ASSERTION   vòng  -/12   137.0s  qwen3coder-or fixed_l2    zero_shot_project_aware  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[89/188] DONE       ASSERTION   vòng  -/12    80.4s  qwen3coder-or adaptive    zero_shot                io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[90/188] DONE       ASSERTION   vòng  -/12    90.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  chapter1.finaltask.SubString
+[91/188] DONE       ASSERTION   vòng  -/12    91.0s  qwen3coder-or adaptive    zero_shot_project_aware  io.wcm.caravan.jaxrs.publisher.impl.JaxRsApplication
+[92/188] DONE       ASSERTION   vòng  -/12    48.0s  qwen3coder-or adaptive    zero_shot_project_aware  chapter1.finaltask.SubString
+[93/188] DONE       VALID       vòng  6/ 6   493.4s  gpt6luna      fixed_plus  few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[94/188] DONE       RUNTIME     vòng  -/12   427.3s  gpt6luna      fixed_plus  zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[95/188] DONE       COMPILE     vòng  -/12   382.4s  qwen3coder-or fixed_plus  few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[96/188] DONE       RUNTIME     vòng  -/12   439.7s  gpt6luna      fixed_plus  zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[97/188] DONE       COMPILE     vòng  -/12    88.9s  qwen3coder-or fixed_minus few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[98/188] DONE       RUNTIME     vòng  -/12   146.2s  gpt6luna      fixed_minus few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[99/188] DONE       RUNTIME     vòng  -/12   136.7s  gpt6luna      fixed_minus zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[100/188] DONE       COMPILE     vòng  -/12   101.3s  qwen3coder-or fixed_l2    few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[101/188] DONE       VALID       vòng  7/ 7   217.0s  gpt6luna      fixed_minus zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[102/188] DONE       COMPILE     vòng  -/12    56.8s  qwen3coder-or adaptive    few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[103/188] DONE       VALID       vòng  1/ 1   158.9s  gpt6luna      fixed_l2    zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[104/188] DONE       VALID       vòng  7/ 7   224.5s  gpt6luna      fixed_l2    few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[105/188] DONE       COMPILE     vòng  -/12    89.9s  qwen3coder-or fixed_plus  zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[106/188] DONE       RUNTIME     vòng  -/12    99.8s  gpt6luna      adaptive    few_shot                 com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[107/188] DONE       VALID       vòng  5/ 5   194.6s  gpt6luna      fixed_l2    zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[108/188] DONE       VALID       vòng  3/ 3   156.6s  gpt6luna      adaptive    zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[109/188] DONE       COMPILE     vòng  -/12   112.2s  qwen3coder-or fixed_minus zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[110/188] DONE       COMPILE     vòng  -/12    88.2s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[111/188] DONE       COMPILE     vòng  -/12   121.0s  qwen3coder-or fixed_l2    zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[112/188] DONE       RUNTIME     vòng  -/12   139.8s  qwen3coder-or fixed_plus  few_shot                 org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[113/188] DONE       RUNTIME     vòng  -/12   178.1s  gpt6luna      adaptive    zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[114/188] DONE       COMPILE     vòng  -/12   101.6s  qwen3coder-or fixed_minus zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[115/188] DONE       COMPILE     vòng  -/12    68.1s  qwen3coder-or adaptive    zero_shot                com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[116/188] DONE       COMPILE     vòng  -/12    72.0s  qwen3coder-or fixed_plus  few_shot                 com.addhen.serializer.Serializer
+[117/188] DONE       COMPILE     vòng  -/12   118.7s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[118/188] DONE       RUNTIME     vòng  -/12   164.2s  qwen3coder-or fixed_minus few_shot                 org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[119/188] DONE       RUNTIME     vòng  -/12   137.7s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[120/188] DONE       VALID       vòng  3/ 3    44.4s  qwen3coder-or fixed_minus few_shot                 com.addhen.serializer.Serializer
+[121/188] DONE       COMPILE     vòng  -/12    55.6s  qwen3coder-or adaptive    zero_shot_project_aware  com.hazelcast.hibernate.access.ReadWriteAccessDelegate
+[122/188] DONE       COMPILE     vòng  -/12    77.1s  qwen3coder-or fixed_l2    few_shot                 com.addhen.serializer.Serializer
+[123/188] DONE       RUNTIME     vòng  -/12   113.9s  qwen3coder-or fixed_l2    few_shot                 org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[124/188] DONE       COMPILE     vòng  -/12    99.0s  qwen3coder-or fixed_plus  zero_shot                com.addhen.serializer.Serializer
+[125/188] DONE       RUNTIME     vòng  -/12   142.1s  qwen3coder-or fixed_minus zero_shot_project_aware  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[126/188] DONE       COMPILE     vòng  -/12    60.2s  qwen3coder-or adaptive    few_shot                 com.addhen.serializer.Serializer
+[127/188] DONE       COMPILE     vòng  -/12    71.7s  qwen3coder-or fixed_minus zero_shot                com.addhen.serializer.Serializer
+[128/188] DONE       ASSERTION   vòng  -/12   150.9s  qwen3coder-or adaptive    few_shot                 org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[129/188] DONE       COMPILE     vòng  -/12   119.5s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.addhen.serializer.Serializer
+[130/188] DONE       RUNTIME     vòng  -/12   137.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[131/188] DONE       VALID       vòng  1/ 1    50.8s  gpt6luna      fixed_plus  few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[132/188] DONE       COMPILE     vòng  -/12    99.9s  qwen3coder-or fixed_l2    zero_shot                com.addhen.serializer.Serializer
+[133/188] DONE       VALID       vòng  1/ 1    24.9s  gpt6luna      fixed_minus few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[134/188] DONE       COMPILE     vòng  -/12    77.7s  qwen3coder-or fixed_minus zero_shot_project_aware  com.addhen.serializer.Serializer
+[135/188] DONE       VALID       vòng  1/ 1    30.2s  gpt6luna      fixed_l2    few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[136/188] DONE       COMPILE     vòng  -/12    79.3s  qwen3coder-or adaptive    zero_shot                com.addhen.serializer.Serializer
+[137/188] DONE       VALID       vòng  1/ 1    29.7s  gpt6luna      adaptive    few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[138/188] DONE       VALID       vòng  9/ 9    84.1s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.addhen.serializer.Serializer
+[139/188] DONE       RUNTIME     vòng  -/12   151.5s  qwen3coder-or adaptive    zero_shot_project_aware  org.arquillian.algeron.pact.provider.core.StateTypeConverter
+[140/188] DONE       VALID       vòng  2/ 2    49.0s  gpt6luna      fixed_plus  zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[141/188] DONE       VALID       vòng  2/ 2    58.7s  gpt6luna      fixed_plus  zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[142/188] DONE       COMPILE     vòng  -/12    56.0s  qwen3coder-or adaptive    zero_shot_project_aware  com.addhen.serializer.Serializer
+[143/188] DONE       VALID       vòng  2/ 2    45.6s  gpt6luna      fixed_minus zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[144/188] DONE       VALID       vòng  2/ 2    53.4s  gpt6luna      fixed_minus zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[145/188] DONE       COMPILE     vòng  -/12    90.8s  qwen3coder-or fixed_plus  few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[146/188] DONE       VALID       vòng  2/ 2    39.5s  gpt6luna      fixed_l2    zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[147/188] DONE       VALID       vòng  4/ 4    63.0s  gpt6luna      fixed_l2    zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[148/188] DONE       VALID       vòng  3/ 3    56.7s  gpt6luna      adaptive    zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[149/188] DONE       COMPILE     vòng  -/12   106.5s  qwen3coder-or fixed_plus  zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[150/188] DONE       COMPILE     vòng  -/12    70.5s  qwen3coder-or fixed_minus few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[151/188] DONE       VALID       vòng  2/ 2    41.3s  gpt6luna      adaptive    zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[152/188] DONE       VALID       vòng  5/ 5    47.8s  qwen3coder-or fixed_l2    few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[153/188] DONE       COMPILE     vòng  -/12    96.6s  qwen3coder-or fixed_plus  zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[154/188] DONE       COMPILE     vòng  -/12    93.0s  qwen3coder-or fixed_minus zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[155/188] DONE       COMPILE     vòng  -/12    70.5s  qwen3coder-or adaptive    few_shot                 rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[156/188] DONE       VALID       vòng  1/ 1    19.4s  gpt6luna      fixed_plus  few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[157/188] DONE       ASSERTION   vòng  -/12   130.9s  qwen3coder-or fixed_plus  zero_shot                org.eclipse.kapua.gateway.client.Topic
+[158/188] DONE       VALID       vòng  1/ 1    14.8s  gpt6luna      fixed_minus few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[159/188] DONE       COMPILE     vòng  -/12    80.4s  qwen3coder-or fixed_minus zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[160/188] DONE       VALID       vòng  1/ 1    15.9s  gpt6luna      fixed_l2    few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[161/188] DONE       COMPILE     vòng  -/12    91.3s  qwen3coder-or fixed_l2    zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[162/188] DONE       VALID       vòng  1/ 1    15.0s  gpt6luna      adaptive    few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[163/188] DONE       VALID       vòng  1/ 1    15.6s  gpt6luna      fixed_plus  zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[164/188] DONE       VALID       vòng  1/ 1    14.6s  gpt6luna      fixed_minus zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[165/188] DONE       VALID       vòng  1/ 1    20.5s  gpt6luna      fixed_l2    zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[166/188] DONE       VALID       vòng  1/ 1    13.6s  gpt6luna      adaptive    zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[167/188] DONE       COMPILE     vòng  -/12    84.7s  qwen3coder-or adaptive    zero_shot                rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[168/188] DONE       COMPILE     vòng  -/12    99.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[169/188] DONE       VALID       vòng  1/ 1    15.7s  gpt6luna      fixed_plus  zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[170/188] DONE       ASSERTION   vòng  -/12   135.7s  qwen3coder-or fixed_minus zero_shot                org.eclipse.kapua.gateway.client.Topic
+[171/188] DONE       VALID       vòng  1/ 1    21.3s  gpt6luna      fixed_minus zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[172/188] DONE       VALID       vòng  1/ 1    21.0s  qwen3coder-or fixed_l2    zero_shot                org.eclipse.kapua.gateway.client.Topic
+[173/188] DONE       VALID       vòng  1/ 1    15.1s  gpt6luna      fixed_l2    zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[174/188] DONE       VALID       vòng  2/ 2    25.3s  qwen3coder-or adaptive    zero_shot                org.eclipse.kapua.gateway.client.Topic
+[175/188] DONE       COMPILE     vòng  -/12    59.6s  qwen3coder-or fixed_plus  few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[176/188] DONE       VALID       vòng  2/ 2    28.1s  gpt6luna      adaptive    zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[177/188] DONE       COMPILE     vòng  -/12    67.0s  qwen3coder-or adaptive    zero_shot_project_aware  rocks.coffeenet.autoconfigure.discovery.service.IntegrationCoffeeNetAppService
+[178/188] DONE       COMPILE     vòng  -/12    57.1s  qwen3coder-or fixed_minus few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[179/188] DONE       COMPILE     vòng  -/12    54.0s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[180/188] DONE       COMPILE     vòng  -/12    64.5s  qwen3coder-or fixed_plus  zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[181/188] DONE       VALID       vòng  1/ 1    12.4s  qwen3coder-or fixed_l2    few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[182/188] DONE       RUNTIME     vòng  -/12    39.6s  qwen3coder-or adaptive    few_shot                 com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[183/188] DONE       COMPILE     vòng  -/12    48.4s  qwen3coder-or fixed_minus zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[184/188] DONE       COMPILE     vòng  -/12    48.1s  qwen3coder-or fixed_minus zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[185/188] DONE       VALID       vòng  1/ 1    11.9s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[186/188] DONE       VALID       vòng  1/ 1    12.1s  qwen3coder-or fixed_l2    zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[187/188] DONE       VALID       vòng  2/ 2    14.0s  qwen3coder-or adaptive    zero_shot                com.github.christophersmith.summer.mqtt.core.TopicSubscription
+[188/188] DONE       VALID       vòng  2/ 2    17.1s  qwen3coder-or adaptive    zero_shot_project_aware  com.github.christophersmith.summer.mqtt.core.TopicSubscription
+Kết quả: ASSERTION 15, COMPILE 66, RUNTIME 26, VALID 81
+REPAIR KẾT THÚC, mã 0

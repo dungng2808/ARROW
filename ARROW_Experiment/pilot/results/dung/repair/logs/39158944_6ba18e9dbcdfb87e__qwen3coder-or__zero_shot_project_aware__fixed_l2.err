@@ -1,0 +1,18 @@
+ARROW · NavigationManagerImpl (io.wcm.samples.core.business.navigation.impl)
+[OK] Khối 1  Maven 3.9.4 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 19 test (dùng lại, đo 22/11 01:13) · 5.1 s
+[OK] Khối 2  c0 · c0 lấy từ file 39158944_6ba18e9dbcdfb87e__qwen3coder-or__zero_shot_project_aware.java: 6 test, 32 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+          vòng 1 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 2 · mức 2 → RUNTIME · sửa tiếp từ bản này
+[!] gọi lại sau 20 s (timeout)
+          vòng 3 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 5 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 6 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 7 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 8 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 9 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 10 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 11 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 12 · mức 2 → RUNTIME · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

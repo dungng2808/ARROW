@@ -1,0 +1,17 @@
+ARROW · AnchorTabularBuilderByName (de.viadee.xai.anchor.adapter.tabular.builder)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 14 test (dùng lại, đo 22/11 00:50) · 3.2 s
+[OK] Khối 2  c0 · c0 lấy từ file 158546420_f604bc5862e1c0fc__gpt6luna__zero_shot_project_aware.java: 8 test, 8 assertion
+[>] Khối 3  c0: RUNTIME · UnsupportedOperationException | AnchorTabularBuilderByName_ArrowTest.buildUsesHeaderOrderAndAddsIgnoredColumns
+          vòng 1 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 2 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 3 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 5 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 6 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 7 · mức 2 → output không dùng được · giữ bản trước
+          vòng 8 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 9 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 10 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 11 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 12 · mức 2 → RUNTIME · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

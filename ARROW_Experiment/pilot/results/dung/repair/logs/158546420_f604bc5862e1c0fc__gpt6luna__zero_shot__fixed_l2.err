@@ -1,0 +1,6 @@
+ARROW · AnchorTabularBuilderByName (de.viadee.xai.anchor.adapter.tabular.builder)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 14 test (dùng lại, đo 22/11 00:50) · 3.1 s
+[OK] Khối 2  c0 · c0 lấy từ file 158546420_f604bc5862e1c0fc__gpt6luna__zero_shot.java: 7 test, 8 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 2 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

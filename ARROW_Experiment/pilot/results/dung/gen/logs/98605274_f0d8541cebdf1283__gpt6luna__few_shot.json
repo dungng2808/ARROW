@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-004145-o6da",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/gen/homes/w4/runs/20261122-004145-o6da",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.christophersmith.summer.mqtt.core.TopicSubscription",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.github.christophersmith.summer.mqtt.core.TopicSubscription_ArrowTest",
+      "test_path": "summer-mqtt-core/src/test/java/com/github/christophersmith/summer/mqtt/core/TopicSubscription_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3138,
+        "out": 452
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 2.8,
+        "block2": 4.2,
+        "block3": 1.7,
+        "block4": null,
+        "total": 8.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3138,
+    "tokens_out": 452,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

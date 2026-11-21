@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-005025-j95a",
+  "run_dir": "/Users/dungng/FPT/Ki9/SET490/DoAnARROW/ARROW/ARROW_Experiment/pilot/results/dung/repair/homes/w2/runs/20261122-005025-j95a",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "info.ozkan.vipera.business.notification.NotificationGenerator",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "info.ozkan.vipera.business.notification.NotificationGenerator_ArrowTest",
+      "test_path": "vipera-business/src/test/java/info/ozkan/vipera/business/notification/NotificationGenerator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 58248,
+        "out": 21120
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 9.4,
+        "block2": 0.1,
+        "block3": 176.2,
+        "block4": null,
+        "total": 185.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 58248,
+    "tokens_out": 21120,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "Có 8 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}
