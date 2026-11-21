@@ -64,7 +64,13 @@ COLUMNS = [
     "verify_state", "tests_total", "tests_passed", "module_flaky", "regressions", "build_seconds",
     # tính sẵn cho phân tích
     "counted", "pass_s1", "pass_s2", "pass_s3", "pass_s4", "pass_s5", "csr", "esr", "valid",
+    # Thời gian từng công đoạn (giây), thêm 21/11/2026:
+    #   block1_s..total_s: từ JSON gốc của arrow trong logs/ (đã commit, có cho mọi máy)
+    #   step_*_s: các bước kiểm c0, từ verify_c0.json trong homes/ (chỉ có trên máy đã chạy)
+    "block1_s", "block2_s", "block3_s", "total_s",
+    "step_compile_s", "step_run_target_s", "step_module_tests_s",
 ]
+TIMING_STEPS = ("compile", "run_target", "module_tests")
 
 
 # ---------------------------------------------------------------------------
@@ -100,9 +106,14 @@ def target_dir(run_dir, class_fqn):
 # 2. GOM MỘT BỘ TEST THÀNH MỘT DÒNG
 # ---------------------------------------------------------------------------
 
-def collect_row(rec):
+def collect_row(rec, mdir=None):
     """Từ một dòng tn1_runs.jsonl → một dòng đầy đủ cho tn1_candidates.csv."""
     row = {c: "" for c in COLUMNS}                  # bắt đầu bằng mọi cột rỗng
+    if mdir:                                        # thời gian từng khối: JSON gốc arrow in ra (logs/)
+        log = read_json(os.path.join(mdir, "logs", f"{rec['task_id']}__{rec['model']}__{rec['strategy']}.json")) or {}
+        secs = ((log.get("targets") or [{}])[0]).get("seconds") or {}
+        for k in ("block1", "block2", "block3", "total"):
+            row[k + "_s"] = secs.get(k) if secs.get(k) is not None else ""
     for c in COLUMNS:                               # chép các trường có sẵn trong bản ghi chạy
         if c in rec and rec[c] is not None:
             row[c] = rec[c]
@@ -143,6 +154,10 @@ def collect_row(rec):
         row["module_flaky"] = len(ver.get("module_flaky") or [])  # số test cũ bị nghi chập chờn
         row["regressions"] = len(ver.get("regressions") or [])
         row["build_seconds"] = ver.get("build_seconds", "")
+        for st in ver.get("steps") or []:           # thời gian từng bước kiểm c0
+            if st.get("step") in TIMING_STEPS:
+                k = f"step_{st['step']}_s"
+                row[k] = round((row[k] or 0) + (st.get("seconds") or 0), 3)
 
     # --- Cột tính sẵn ---
     result = rec.get("result", "")
@@ -171,7 +186,23 @@ def collect_machine(mdir):
         print(f"[!] Bỏ qua {mdir}: không có tn1_runs.jsonl")
         return
     latest = read_latest(runs_path)
-    rows = [collect_row(r) for r in latest.values()]       # mỗi bộ test một dòng
+    rows = [collect_row(r, mdir) for r in latest.values()]  # mỗi bộ test một dòng
+    # Máy khác đã gom trên máy của họ (homes/ không đưa lên Git): ô nào lần này rỗng vì thiếu homes/
+    # thì giữ giá trị trong tn1_candidates.csv cũ, để gom lại không làm mất số liệu.
+    old_csv = os.path.join(mdir, "tn1_candidates.csv")
+    if os.path.exists(old_csv):
+        with open(old_csv, encoding="utf-8") as f:
+            old = {(r["task_id"], r["model"], r["strategy"]): r for r in csv.DictReader(f)}
+        for row in rows:
+            prev = old.get((row["task_id"], row["model"], row["strategy"]), {})
+            for c in COLUMNS:
+                if row[c] == "" and prev.get(c, "") != "":
+                    row[c] = prev[c]
+            if row["counted"] == 1:                 # ESR tính lại sau khi đã lấy lại tests_total
+                try:
+                    row["esr"] = int(int(row["tests_total"]) >= 1)
+                except (TypeError, ValueError):
+                    row["esr"] = 0
     rows.sort(key=lambda r: (r["dataset"], r["task_id"], r["model"], r["strategy"]))
     # ^ sắp xếp cố định để file giống nhau giữa các lần gom
 
@@ -190,7 +221,7 @@ def collect_machine(mdir):
     n_pool = 0
     with open(pool_path, "w", encoding="utf-8") as f:
         for r in rows:
-            if r["counted"] == 1 and r["valid_output"] is True and r["valid"] == 0:
+            if r["counted"] == 1 and r["valid_output"] in (True, "True") and r["valid"] == 0:
                 rec = latest[(r["task_id"], r["model"], r["strategy"])]
                 src = os.path.join(target_dir(rec["run_dir"], r["class_fqn"]), "block2", "candidate.java")
                 dst = os.path.join(c0_dir, f"{r['task_id']}__{r['model']}__{r['strategy']}.java")
@@ -198,7 +229,7 @@ def collect_machine(mdir):
                     shutil.copyfile(src, dst)       # chép mã c0 (bộ test lỗi) ra chỗ commit được
                 f.write(json.dumps({k: r[k] for k in ("dataset", "task_id", "class_fqn", "model", "strategy",
                                                       "result", "machine", "run_id")}
-                                   | {"c0_path": os.path.relpath(dst, HERE)}, ensure_ascii=False) + "\n")
+                                   | {"c0_path": os.path.relpath(dst, HERE).replace(os.sep, "/")}, ensure_ascii=False) + "\n")
                 # ^ "a | b" gộp hai từ điển (Python 3.9+); relpath ghi đường dẫn tương đối so với thư mục script
                 n_pool += 1
 
@@ -211,10 +242,13 @@ def main():
     ap = argparse.ArgumentParser(description="Gom kết quả TN1 thành tn1_candidates.csv.")
     ap.add_argument("--machine", help="tên máy (thư mục results/<machine>)")
     ap.add_argument("--all", action="store_true", help="gom mọi máy trong results/ (trừ thư mục *-smoke)")
+    ap.add_argument("--dir", help="gom một thư mục kết quả bất kỳ (pilot dùng: ../pilot/results/<máy>/gen)")
     args = ap.parse_args()
     if args.all:
         dirs = [d for d in sorted(glob.glob(os.path.join(RESULTS, "*")))
                 if os.path.isdir(d) and not d.endswith("-smoke") and not os.path.basename(d).startswith("_")]
+    elif args.dir:
+        dirs = [os.path.abspath(args.dir)]
     elif args.machine:
         dirs = [os.path.join(RESULTS, args.machine)]
     else:

@@ -429,12 +429,15 @@ def main():
     ap.add_argument("--homes-dir", help="nơi đặt ARROW_HOME của các worker (mặc định: results/<máy>/homes; "
                                         "Windows: C:\\arrow-homes\\<máy> cho đường dẫn ngắn)")
     ap.add_argument("--allow-other-version", action="store_true", help="cho chạy bản tool khác bản đã chốt")
+    ap.add_argument("--out-dir", help="thư mục kết quả thay cho results/<máy> (pilot dùng: ../pilot/results/<máy>/gen)")
     args = ap.parse_args()                          # đọc tùy chọn người dùng gõ → args
 
     models = [m.strip() for m in args.models.split(",") if m.strip()]   # "a,b" → ["a", "b"]
     k, n = (int(x) for x in args.shard.split("/"))                      # "2/5" → k=2, n=5
     group = "pilot" if args.pilot else "eval"                           # chọn nhóm manifest
     out_dir = os.path.join(HERE, "results", args.machine + ("-smoke" if args.pilot else ""))
+    if args.out_dir:
+        out_dir = os.path.abspath(args.out_dir)
     if args.homes_dir:
         homes_root = args.homes_dir
     elif IS_WINDOWS:   # Windows giới hạn đường dẫn 260 ký tự: đặt homes ở gốc ổ đĩa cho ngắn
