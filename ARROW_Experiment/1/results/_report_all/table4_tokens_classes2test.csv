@@ -2,6 +2,6 @@ Mô hình,Cách viết prompt,Token prompt (TB / trung vị),Token đầu ra (TB
 gpt6luna,Zero-shot,2301 / 1772,593 / 505,4.8,-
 gpt6luna,Few-shot,3662 / 3132,557 / 470,4.7,-
 gpt6luna,Project-aware,2649 / 2148,618 / 508,4.8,-
-qwen3coder-or,Zero-shot,2292 / 1776,1074 / 820,3.4,0
-qwen3coder-or,Few-shot,3650 / 3134,1017 / 780,3.3,0
-qwen3coder-or,Project-aware,2646 / 2150,1378 / 908,3.6,0
+qwen3coder-or,Zero-shot,2292 / 1776,1156 / 826,3.7,0
+qwen3coder-or,Few-shot,3650 / 3134,1027 / 783,3.5,0
+qwen3coder-or,Project-aware,2646 / 2150,1357 / 898,3.8,0

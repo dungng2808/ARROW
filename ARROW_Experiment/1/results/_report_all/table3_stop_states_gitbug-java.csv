@@ -3,5 +3,5 @@ gpt6luna,Zero-shot,4,22,1,0,1,4,0,0,0,0
 gpt6luna,Few-shot,5,20,1,0,3,3,0,0,0,0
 gpt6luna,Project-aware,6,11,1,0,4,10,0,0,0,0
 qwen3coder-or,Zero-shot,2,24,1,0,1,2,0,2,0,0
-qwen3coder-or,Few-shot,2,25,1,1,1,0,0,2,0,0
-qwen3coder-or,Project-aware,3,18,1,0,4,4,0,2,0,0
+qwen3coder-or,Few-shot,2,24,1,1,1,1,0,2,0,0
+qwen3coder-or,Project-aware,3,17,1,0,5,4,0,2,0,0

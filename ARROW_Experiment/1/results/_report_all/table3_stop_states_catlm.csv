@@ -2,6 +2,6 @@ Mô hình,Cách viết prompt,VALID,COMPILE,UNKNOWN,DISCOVERY,RUNTIME,ASSERTION,
 gpt6luna,Zero-shot,14,19,0,1,1,1,0,0,0,0
 gpt6luna,Few-shot,13,18,0,1,2,2,0,0,0,0
 gpt6luna,Project-aware,29,3,0,0,2,2,0,0,0,0
-qwen3coder-or,Zero-shot,8,23,0,1,1,3,0,0,0,0
-qwen3coder-or,Few-shot,8,25,0,1,2,0,0,0,0,0
-qwen3coder-or,Project-aware,14,12,0,1,4,4,0,1,0,0
+qwen3coder-or,Zero-shot,6,24,0,1,2,3,0,0,0,0
+qwen3coder-or,Few-shot,8,22,0,1,1,2,0,2,0,0
+qwen3coder-or,Project-aware,14,12,0,1,5,4,0,0,0,0
