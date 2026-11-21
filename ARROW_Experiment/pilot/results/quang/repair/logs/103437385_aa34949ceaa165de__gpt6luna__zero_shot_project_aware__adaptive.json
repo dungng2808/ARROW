@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-024716-35il",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w1\\runs\\20261122-024716-35il",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.kie.soup.commons.util.ListSplitter",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "org.kie.soup.commons.util.ListSplitter_ArrowTest",
+      "test_path": "kie-soup-commons/src/test/java/org/kie/soup/commons/util/ListSplitter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3045,
+        "out": 335
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.9,
+        "block2": 0.1,
+        "block3": 36,
+        "block4": null,
+        "total": 47.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3045,
+    "tokens_out": 335,
+    "cost_usd": null
+  },
+  "warnings": []
+}

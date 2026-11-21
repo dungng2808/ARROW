@@ -1,0 +1,247 @@
+
+
+--- RESUMING REPAIR AT 2026-11-22T02:44:24.099834 ---
+arrow 0.2.0 (commit 203fb8e6bac6, build 2026-11-21)
+Máy quang · 60 c0 · mô hình ['gpt6luna', 'qwen3coder-or'] · cơ chế ['fixed_plus', 'fixed_minus', 'fixed_l2', 'adaptive'] · 12 vòng · còn 240 chain · 4 worker
+--- 4 worker
+[1/240] DONE       VALID       vòng  1/ 1    68.4s  gpt6luna      fixed_plus  zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[2/240] DONE       VALID       vòng  1/ 1    47.9s  gpt6luna      fixed_minus zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[3/240] DONE       VALID       vòng  1/ 1    53.0s  gpt6luna      fixed_l2    zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[4/240] DONE       VALID       vòng  1/ 1    50.5s  gpt6luna      adaptive    zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[5/240] DONE       ASSERTION   vòng  -/12   225.7s  qwen3coder-or fixed_plus  few_shot                 org.kie.soup.commons.util.ListSplitter
+[6/240] DONE       ASSERTION   vòng  -/12   225.4s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[7/240] DONE       VALID       vòng  5/ 5   312.8s  gpt6luna      fixed_plus  few_shot                 org.jskat.control.iss.MessageParser
+[8/240] DONE       ASSERTION   vòng  -/12   208.0s  qwen3coder-or fixed_minus zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[9/240] DONE       ASSERTION   vòng  -/12   219.3s  qwen3coder-or fixed_minus few_shot                 org.kie.soup.commons.util.ListSplitter
+[10/240] DONE       VALID       vòng  5/ 5   258.3s  gpt6luna      fixed_plus  zero_shot                org.jskat.control.iss.MessageParser
+[11/240] DONE       ASSERTION   vòng  -/12   207.2s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[12/240] DONE       ASSERTION   vòng  -/12   202.0s  qwen3coder-or fixed_l2    few_shot                 org.kie.soup.commons.util.ListSplitter
+[13/240] DONE       VALID       vòng  9/ 9   391.5s  gpt6luna      fixed_minus few_shot                 org.jskat.control.iss.MessageParser
+[14/240] DONE       ASSERTION   vòng  -/12   108.5s  qwen3coder-or adaptive    few_shot                 org.kie.soup.commons.util.ListSplitter
+[15/240] DONE       ASSERTION   vòng  -/12   122.9s  qwen3coder-or adaptive    zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[16/240] DONE       VALID       vòng  8/ 8   355.4s  gpt6luna      fixed_minus zero_shot                org.jskat.control.iss.MessageParser
+[17/240] DONE       VALID       vòng  6/ 6   303.0s  gpt6luna      fixed_l2    few_shot                 org.jskat.control.iss.MessageParser
+[18/240] DONE       VALID       vòng  5/ 5   253.8s  gpt6luna      fixed_l2    zero_shot                org.jskat.control.iss.MessageParser
+[19/240] DONE       VALID       vòng 10/10   405.6s  gpt6luna      fixed_plus  zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[20/240] DONE       COMPILE     vòng  -/12   435.8s  qwen3coder-or fixed_plus  few_shot                 org.jskat.control.iss.MessageParser
+[21/240] DONE       VALID       vòng  2/ 2   138.4s  gpt6luna      fixed_minus zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[22/240] DONE       COMPILE     vòng  -/12   328.9s  gpt6luna      adaptive    few_shot                 org.jskat.control.iss.MessageParser
+[23/240] DONE       COMPILE     vòng  -/12   351.6s  gpt6luna      adaptive    zero_shot                org.jskat.control.iss.MessageParser
+[24/240] DONE       VALID       vòng  4/ 4   199.5s  gpt6luna      fixed_l2    zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[25/240] DONE       COMPILE     vòng  -/12   387.9s  qwen3coder-or fixed_minus few_shot                 org.jskat.control.iss.MessageParser
+[26/240] DONE       VALID       vòng  4/ 4   191.8s  gpt6luna      adaptive    zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[27/240] DONE       VALID       vòng  1/ 1    62.7s  gpt6luna      fixed_plus  few_shot                 net.kylindb.coder.RowKeyCoder
+[28/240] DONE       VALID       vòng  1/ 1    37.0s  gpt6luna      fixed_minus few_shot                 net.kylindb.coder.RowKeyCoder
+[29/240] DONE       VALID       vòng  1/ 1    39.5s  gpt6luna      fixed_l2    few_shot                 net.kylindb.coder.RowKeyCoder
+[30/240] DONE       VALID       vòng  1/ 1    35.3s  gpt6luna      adaptive    few_shot                 net.kylindb.coder.RowKeyCoder
+[31/240] DONE       VALID       vòng  1/ 1    34.6s  gpt6luna      fixed_plus  zero_shot                net.kylindb.coder.RowKeyCoder
+[32/240] DONE       COMPILE     vòng  -/12   588.4s  qwen3coder-or fixed_plus  zero_shot                org.jskat.control.iss.MessageParser
+[33/240] DONE       VALID       vòng  1/ 1    42.5s  gpt6luna      fixed_minus zero_shot                net.kylindb.coder.RowKeyCoder
+[34/240] DONE       VALID       vòng  1/ 1    38.8s  gpt6luna      fixed_l2    zero_shot                net.kylindb.coder.RowKeyCoder
+[35/240] DONE       VALID       vòng  1/ 1    39.1s  gpt6luna      adaptive    zero_shot                net.kylindb.coder.RowKeyCoder
+[36/240] DONE       COMPILE     vòng  -/12   459.8s  qwen3coder-or fixed_l2    few_shot                 org.jskat.control.iss.MessageParser
+[37/240] DONE       VALID       vòng  1/ 1    51.4s  gpt6luna      fixed_plus  zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[38/240] DONE       COMPILE     vòng  -/12   664.4s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[39/240] DONE       VALID       vòng  1/ 1    46.3s  gpt6luna      fixed_minus zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[40/240] DONE       VALID       vòng  1/ 1    33.9s  gpt6luna      fixed_l2    zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[41/240] DONE       VALID       vòng  1/ 1    52.9s  gpt6luna      adaptive    zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[42/240] DONE       VALID       vòng 10/10   127.8s  qwen3coder-or fixed_plus  few_shot                 net.kylindb.coder.RowKeyCoder
+[43/240] DONE       VALID       vòng  1/ 1    36.2s  qwen3coder-or fixed_minus few_shot                 net.kylindb.coder.RowKeyCoder
+[44/240] DONE       VALID       vòng  1/ 1    29.0s  qwen3coder-or fixed_l2    few_shot                 net.kylindb.coder.RowKeyCoder
+[45/240] DONE       VALID       vòng  3/ 3    42.5s  qwen3coder-or adaptive    few_shot                 net.kylindb.coder.RowKeyCoder
+[46/240] DONE       VALID       vòng  1/ 1    31.7s  qwen3coder-or fixed_plus  zero_shot                net.kylindb.coder.RowKeyCoder
+[47/240] DONE       VALID       vòng  1/ 1    34.3s  qwen3coder-or fixed_minus zero_shot                net.kylindb.coder.RowKeyCoder
+[48/240] DONE       COMPILE     vòng  -/12   627.2s  qwen3coder-or fixed_minus zero_shot                org.jskat.control.iss.MessageParser
+[49/240] DONE       VALID       vòng  1/ 1    38.1s  qwen3coder-or fixed_l2    zero_shot                net.kylindb.coder.RowKeyCoder
+[50/240] DONE       ASSERTION   vòng  -/12   512.0s  qwen3coder-or adaptive    few_shot                 org.jskat.control.iss.MessageParser
+[51/240] DONE       VALID       vòng  1/ 1    39.5s  qwen3coder-or adaptive    zero_shot                net.kylindb.coder.RowKeyCoder
+[52/240] DONE       COMPILE     vòng  -/12   552.8s  qwen3coder-or fixed_minus zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[53/240] DONE       RUNTIME     vòng  -/12   212.5s  qwen3coder-or fixed_plus  zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[54/240] DONE       VALID       vòng  2/ 2    43.0s  qwen3coder-or fixed_minus zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[55/240] DONE       VALID       vòng  1/ 1   223.1s  gpt6luna      fixed_plus  few_shot                 org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[56/240] DONE       VALID       vòng  2/ 2    48.7s  qwen3coder-or fixed_l2    zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[57/240] DONE       VALID       vòng  3/ 3    56.4s  qwen3coder-or adaptive    zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[58/240] DONE       VALID       vòng  1/ 1   163.5s  gpt6luna      fixed_minus few_shot                 org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[59/240] DONE       VALID       vòng  1/ 1   145.8s  gpt6luna      fixed_l2    few_shot                 org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[60/240] DONE       VALID       vòng  2/ 2   264.0s  gpt6luna      fixed_plus  zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[61/240] DONE       COMPILE     vòng  -/12   612.9s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[62/240] DONE       COMPILE     vòng  -/12   719.2s  qwen3coder-or fixed_l2    zero_shot                org.jskat.control.iss.MessageParser
+[63/240] DONE       VALID       vòng  1/ 1   162.2s  gpt6luna      adaptive    few_shot                 org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[64/240] DONE       VALID       vòng  1/ 1   187.0s  gpt6luna      fixed_plus  zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[65/240] DONE       COMPILE     vòng  -/12   347.4s  qwen3coder-or adaptive    zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[66/240] DONE       VALID       vòng  1/ 1   157.9s  gpt6luna      fixed_minus zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[67/240] DONE       RUNTIME     vòng  -/12   616.2s  gpt6luna      fixed_minus zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[68/240] DONE       VALID       vòng  1/ 1   182.3s  gpt6luna      fixed_l2    zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[69/240] DONE       VALID       vòng  2/ 2   187.8s  gpt6luna      fixed_l2    zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[70/240] DONE       VALID       vòng  1/ 1   181.9s  gpt6luna      adaptive    zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[71/240] DONE       COMPILE     vòng  -/12   795.9s  qwen3coder-or adaptive    zero_shot                org.jskat.control.iss.MessageParser
+[72/240] DONE       VALID       vòng  3/ 3   137.0s  gpt6luna      fixed_plus  few_shot                 com.github.davidmoten.grumpy.core.Position
+[73/240] DONE       VALID       vòng  3/ 3   226.7s  gpt6luna      adaptive    zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[74/240] DONE       COMPILE     vòng  -/12   601.4s  qwen3coder-or fixed_plus  zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[75/240] DONE       COMPILE     vòng  -/12   435.6s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[76/240] DONE       VALID       vòng  6/ 6   280.2s  gpt6luna      fixed_plus  zero_shot                com.github.davidmoten.grumpy.core.Position
+[77/240] DONE       ASSERTION   vòng  -/12   334.6s  gpt6luna      fixed_minus few_shot                 com.github.davidmoten.grumpy.core.Position
+[78/240] DONE       COMPILE     vòng  -/12   384.5s  qwen3coder-or fixed_minus zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[79/240] DONE       VALID       vòng  3/ 3    92.3s  gpt6luna      fixed_l2    few_shot                 com.github.davidmoten.grumpy.core.Position
+[80/240] DONE       COMPILE     vòng  -/12   390.6s  qwen3coder-or fixed_minus zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[81/240] DONE       VALID       vòng  6/ 6   247.4s  gpt6luna      adaptive    few_shot                 com.github.davidmoten.grumpy.core.Position
+[82/240] DONE       ASSERTION   vòng  -/12   515.2s  gpt6luna      fixed_minus zero_shot                com.github.davidmoten.grumpy.core.Position
+[83/240] DONE       COMPILE     vòng  -/12   440.8s  qwen3coder-or fixed_l2    zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[84/240] DONE       VALID       vòng  3/ 3    91.1s  gpt6luna      fixed_l2    zero_shot                com.github.davidmoten.grumpy.core.Position
+[85/240] DONE       VALID       vòng  3/ 3    91.1s  gpt6luna      adaptive    zero_shot                com.github.davidmoten.grumpy.core.Position
+[86/240] DONE       COMPILE     vòng  -/12   386.0s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[87/240] DONE       ASSERTION   vòng  -/12   350.3s  gpt6luna      fixed_plus  zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[88/240] DONE       COMPILE     vòng  -/12   368.5s  qwen3coder-or adaptive    zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[89/240] DONE       ASSERTION   vòng  -/12   222.7s  qwen3coder-or fixed_plus  few_shot                 com.github.davidmoten.grumpy.core.Position
+[90/240] DONE       COMPILE     vòng  -/12   396.7s  qwen3coder-or adaptive    zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[91/240] DONE       COMPILE     vòng  -/12   209.8s  qwen3coder-or fixed_plus  zero_shot                com.github.davidmoten.grumpy.core.Position
+[92/240] DONE       ASSERTION   vòng  -/12   416.2s  gpt6luna      fixed_minus zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[93/240] DONE       ASSERTION   vòng  -/12   240.0s  qwen3coder-or fixed_minus few_shot                 com.github.davidmoten.grumpy.core.Position
+[94/240] DONE       ASSERTION   vòng  -/12   188.0s  qwen3coder-or fixed_l2    few_shot                 com.github.davidmoten.grumpy.core.Position
+[95/240] DONE       VALID       vòng  5/ 5   213.5s  gpt6luna      fixed_l2    zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[96/240] DONE       COMPILE     vòng  -/12   267.3s  qwen3coder-or fixed_minus zero_shot                com.github.davidmoten.grumpy.core.Position
+[97/240] DONE       COMPILE     vòng  -/12   351.1s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[98/240] DONE       VALID       vòng  3/ 3   161.9s  gpt6luna      adaptive    zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[99/240] DONE       ASSERTION   vòng  -/12   218.6s  qwen3coder-or adaptive    few_shot                 com.github.davidmoten.grumpy.core.Position
+[100/240] DONE       COMPILE     vòng  -/12   157.1s  qwen3coder-or fixed_minus zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[101/240] DONE       VALID       vòng  2/ 2   112.8s  gpt6luna      fixed_plus  zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[102/240] DONE       ASSERTION   vòng  -/12   256.3s  qwen3coder-or fixed_l2    zero_shot                com.github.davidmoten.grumpy.core.Position
+[103/240] DONE       VALID       vòng  1/ 1    52.6s  gpt6luna      fixed_minus zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[104/240] DONE       VALID       vòng  4/ 4    80.5s  gpt6luna      fixed_l2    zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[105/240] DONE       VALID       vòng  4/ 4    76.2s  gpt6luna      adaptive    zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[106/240] DONE       ASSERTION   vòng  -/12   218.7s  qwen3coder-or adaptive    zero_shot                com.github.davidmoten.grumpy.core.Position
+[107/240] DONE       ASSERTION   vòng  -/12   252.0s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[108/240] DONE       COMPILE     vòng  -/12   414.1s  qwen3coder-or fixed_plus  few_shot                 io.jaegertracing.analytics.ServiceHeight
+[109/240] DONE       VALID       vòng  8/ 8   121.4s  qwen3coder-or fixed_minus few_shot                 io.jaegertracing.analytics.ServiceHeight
+[110/240] DONE       COMPILE     vòng  -/12   249.3s  qwen3coder-or adaptive    zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[111/240] DONE       COMPILE     vòng  -/12   290.0s  qwen3coder-or fixed_plus  zero_shot                io.jaegertracing.analytics.ServiceHeight
+[112/240] DONE       VALID       vòng  1/ 1    40.6s  gpt6luna      fixed_plus  zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[113/240] DONE       VALID       vòng  2/ 2    51.5s  gpt6luna      fixed_minus zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[114/240] DONE       VALID       vòng  5/ 5    88.9s  gpt6luna      fixed_l2    zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[115/240] DONE       RUNTIME     vòng  -/12   469.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[116/240] DONE       VALID       vòng  3/ 3    72.6s  gpt6luna      adaptive    zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[117/240] DONE       COMPILE     vòng  -/12   125.4s  qwen3coder-or fixed_minus zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[118/240] DONE       COMPILE     vòng  -/12   186.5s  qwen3coder-or fixed_plus  few_shot                 com.github.loyada.jdollarx.InBrowserFinder
+[119/240] DONE       VALID       vòng  5/ 5   506.5s  qwen3coder-or fixed_l2    few_shot                 io.jaegertracing.analytics.ServiceHeight
+[120/240] DONE       COMPILE     vòng  -/12    91.8s  qwen3coder-or fixed_minus few_shot                 com.github.loyada.jdollarx.InBrowserFinder
+[121/240] DONE       COMPILE     vòng  -/12   239.7s  qwen3coder-or fixed_l2    zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[122/240] DONE       COMPILE     vòng  -/12   581.6s  qwen3coder-or fixed_minus zero_shot                io.jaegertracing.analytics.ServiceHeight
+[123/240] DONE       COMPILE     vòng  -/12   120.3s  qwen3coder-or fixed_l2    few_shot                 com.github.loyada.jdollarx.InBrowserFinder
+[124/240] DONE       COMPILE     vòng  -/12   139.2s  qwen3coder-or adaptive    few_shot                 com.github.loyada.jdollarx.InBrowserFinder
+[125/240] DONE       COMPILE     vòng  -/12   314.0s  qwen3coder-or adaptive    few_shot                 io.jaegertracing.analytics.ServiceHeight
+[126/240] DONE       ASSERTION   vòng  -/12   270.7s  qwen3coder-or adaptive    zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[127/240] DONE       COMPILE     vòng  -/12   107.9s  qwen3coder-or fixed_plus  zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[128/240] DONE       COMPILE     vòng  -/12   134.0s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.github.loyada.jdollarx.InBrowserFinder
+[129/240] DONE       VALID       vòng  2/ 2   118.1s  gpt6luna      fixed_plus  few_shot                 com.aliyun.odps.data.TableInfo
+[130/240] DONE       COMPILE     vòng  -/12    98.7s  qwen3coder-or fixed_minus zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[131/240] DONE       COMPILE     vòng  -/12   414.4s  qwen3coder-or fixed_l2    zero_shot                io.jaegertracing.analytics.ServiceHeight
+[132/240] DONE       COMPILE     vòng  -/12   105.3s  qwen3coder-or fixed_minus zero_shot_project_aware  com.github.loyada.jdollarx.InBrowserFinder
+[133/240] DONE       ASSERTION   vòng  -/12   112.8s  qwen3coder-or fixed_l2    zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[134/240] DONE       VALID       vòng  4/ 4   151.3s  gpt6luna      fixed_minus few_shot                 com.aliyun.odps.data.TableInfo
+[135/240] DONE       RUNTIME     vòng  -/12   130.8s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.github.loyada.jdollarx.InBrowserFinder
+[136/240] DONE       VALID       vòng  2/ 2    88.8s  gpt6luna      fixed_l2    few_shot                 com.aliyun.odps.data.TableInfo
+[137/240] DONE       RUNTIME     vòng  -/12   145.5s  qwen3coder-or adaptive    zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[138/240] DONE       RUNTIME     vòng  -/12   103.8s  qwen3coder-or adaptive    zero_shot_project_aware  com.github.loyada.jdollarx.InBrowserFinder
+[139/240] DONE       VALID       vòng  3/ 3   116.4s  gpt6luna      adaptive    few_shot                 com.aliyun.odps.data.TableInfo
+[140/240] DONE       VALID       vòng  1/ 1    66.4s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.aliyun.odps.data.TableInfo
+[141/240] DONE       VALID       vòng  1/ 1    41.4s  qwen3coder-or fixed_minus zero_shot_project_aware  com.aliyun.odps.data.TableInfo
+[142/240] DONE       VALID       vòng  1/ 1    43.8s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.aliyun.odps.data.TableInfo
+[143/240] DONE       VALID       vòng  1/ 1    40.7s  qwen3coder-or adaptive    zero_shot_project_aware  com.aliyun.odps.data.TableInfo
+[144/240] DONE       COMPILE     vòng  -/12   475.8s  qwen3coder-or adaptive    zero_shot                io.jaegertracing.analytics.ServiceHeight
+[145/240] DONE       DISCOVERY   vòng  -/12   184.9s  gpt6luna      fixed_plus  zero_shot                org.configfacade.ConfigFactory
+[146/240] DONE       COMPILE     vòng  -/12    95.0s  qwen3coder-or fixed_plus  zero_shot                org.configfacade.ConfigFactory
+[147/240] DONE       DISCOVERY   vòng  -/12   343.0s  gpt6luna      fixed_plus  few_shot                 org.configfacade.ConfigFactory
+[148/240] DONE       DISCOVERY   vòng  -/12   166.8s  gpt6luna      fixed_plus  zero_shot_project_aware  org.configfacade.ConfigFactory
+[149/240] DONE       COMPILE     vòng  -/12    85.0s  qwen3coder-or fixed_minus zero_shot                org.configfacade.ConfigFactory
+[150/240] DONE       DISCOVERY   vòng  -/12   160.0s  gpt6luna      fixed_minus few_shot                 org.configfacade.ConfigFactory
+[151/240] DONE       DISCOVERY   vòng  -/12   123.5s  qwen3coder-or fixed_l2    zero_shot                org.configfacade.ConfigFactory
+[152/240] DONE       DISCOVERY   vòng  -/12   174.9s  gpt6luna      fixed_minus zero_shot_project_aware  org.configfacade.ConfigFactory
+[153/240] DONE       DISCOVERY   vòng  -/12   302.3s  gpt6luna      fixed_minus zero_shot                org.configfacade.ConfigFactory
+[154/240] DONE       DISCOVERY   vòng  -/12    86.9s  qwen3coder-or adaptive    zero_shot                org.configfacade.ConfigFactory
+[155/240] DONE       DISCOVERY   vòng  -/12   177.1s  gpt6luna      fixed_l2    few_shot                 org.configfacade.ConfigFactory
+[156/240] DONE       DISCOVERY   vòng  -/12   171.6s  gpt6luna      fixed_l2    zero_shot_project_aware  org.configfacade.ConfigFactory
+[157/240] DONE       VALID       vòng  1/ 1   110.3s  gpt6luna      fixed_plus  zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[158/240] DONE       VALID       vòng  1/ 1    62.5s  gpt6luna      fixed_minus zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[159/240] DONE       DISCOVERY   vòng  -/12   253.4s  gpt6luna      fixed_l2    zero_shot                org.configfacade.ConfigFactory
+[160/240] DONE       DISCOVERY   vòng  -/12   137.7s  gpt6luna      adaptive    zero_shot_project_aware  org.configfacade.ConfigFactory
+[161/240] DONE       VALID       vòng  1/ 1    58.5s  gpt6luna      fixed_l2    zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[162/240] DONE       DISCOVERY   vòng  -/12   188.9s  gpt6luna      adaptive    few_shot                 org.configfacade.ConfigFactory
+[163/240] DONE       VALID       vòng  1/ 1    60.4s  gpt6luna      adaptive    zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[164/240] DONE       COMPILE     vòng  -/12   167.9s  qwen3coder-or fixed_plus  zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[165/240] DONE       COMPILE     vòng  -/12   182.8s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.ikasoa.core.netty.server.NettyServerConfiguration
+[166/240] DONE       DISCOVERY   vòng  -/12   275.2s  gpt6luna      adaptive    zero_shot                org.configfacade.ConfigFactory
+[167/240] DONE       COMPILE     vòng  -/12   121.4s  qwen3coder-or fixed_minus zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[168/240] DONE       COMPILE     vòng  -/12   146.8s  qwen3coder-or fixed_minus zero_shot_project_aware  com.ikasoa.core.netty.server.NettyServerConfiguration
+[169/240] DONE       COMPILE     vòng  -/12   124.9s  qwen3coder-or fixed_l2    zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[170/240] DONE       COMPILE     vòng  -/12    47.5s  qwen3coder-or adaptive    zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[171/240] DONE       VALID       vòng  7/ 7   123.0s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.ikasoa.core.netty.server.NettyServerConfiguration
+[172/240] DONE       RUNTIME     vòng  -/12   462.7s  gpt6luna      fixed_plus  few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[173/240] DONE       COMPILE     vòng  -/12    78.9s  qwen3coder-or adaptive    zero_shot_project_aware  com.ikasoa.core.netty.server.NettyServerConfiguration
+[174/240] DONE       RUNTIME     vòng  -/12   488.3s  gpt6luna      fixed_plus  zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[175/240] DONE       COMPILE     vòng  -/12   364.3s  qwen3coder-or fixed_plus  few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[176/240] DONE       RUNTIME     vòng  -/12   554.1s  gpt6luna      fixed_plus  zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[177/240] DONE       RUNTIME     vòng  -/12   546.2s  gpt6luna      fixed_minus few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[178/240] DONE       RUNTIME     vòng  -/12   520.5s  gpt6luna      fixed_minus zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[179/240] DONE       COMPILE     vòng  -/12   358.5s  qwen3coder-or fixed_minus few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[180/240] DONE       RUNTIME     vòng  -/12   554.9s  gpt6luna      fixed_minus zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[181/240] DONE       RUNTIME     vòng  -/12   550.6s  gpt6luna      fixed_l2    few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[182/240] DONE       COMPILE     vòng  -/12   427.1s  qwen3coder-or fixed_l2    few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[183/240] DONE       RUNTIME     vòng  -/12   547.6s  gpt6luna      fixed_l2    zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[184/240] DONE       COMPILE     vòng  -/12   246.5s  qwen3coder-or adaptive    few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[185/240] DONE       RUNTIME     vòng  -/12   283.1s  gpt6luna      adaptive    zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[186/240] DONE       RUNTIME     vòng  -/12   545.5s  gpt6luna      fixed_l2    zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[187/240] DONE       RUNTIME     vòng  -/12   508.8s  gpt6luna      adaptive    few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[188/240] DONE       COMPILE     vòng  -/12   346.1s  qwen3coder-or fixed_plus  zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[189/240] DONE       COMPILE     vòng  -/12   192.0s  gpt6luna      fixed_plus  few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[190/240] DONE       RUNTIME     vòng  -/12   278.3s  gpt6luna      adaptive    zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[191/240] DONE       COMPILE     vòng  -/12   362.7s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[192/240] DONE       COMPILE     vòng  -/12   149.1s  gpt6luna      fixed_minus few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[193/240] DONE       VALID       vòng 12/12   200.6s  gpt6luna      fixed_plus  zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[194/240] DONE       VALID       vòng 10/10   166.9s  gpt6luna      fixed_l2    few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[195/240] DONE       COMPILE     vòng  -/12   328.2s  qwen3coder-or fixed_minus zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[196/240] DONE       COMPILE     vòng  -/12   158.2s  gpt6luna      fixed_minus zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[197/240] DONE       COMPILE     vòng  -/12   346.8s  qwen3coder-or fixed_minus zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[198/240] DONE       VALID       vòng 11/11   162.8s  gpt6luna      adaptive    few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[199/240] DONE       VALID       vòng  6/ 6    96.5s  gpt6luna      fixed_l2    zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[200/240] DONE       VALID       vòng  9/ 9   132.6s  gpt6luna      fixed_plus  zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[201/240] DONE       RUNTIME     vòng  -/12   149.8s  gpt6luna      adaptive    zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[202/240] DONE       RUNTIME     vòng  -/12   445.0s  qwen3coder-or fixed_l2    zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[203/240] DONE       COMPILE     vòng  -/12   189.5s  gpt6luna      fixed_minus zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[204/240] DONE       COMPILE     vòng  -/12   124.0s  qwen3coder-or fixed_plus  few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[205/240] DONE       VALID       vòng  6/ 6   111.0s  gpt6luna      fixed_l2    zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[206/240] DONE       COMPILE     vòng  -/12   123.9s  qwen3coder-or fixed_minus few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[207/240] DONE       RUNTIME     vòng  -/12   469.6s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[208/240] DONE       VALID       vòng  6/ 6   102.9s  gpt6luna      adaptive    zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[209/240] DONE       COMPILE     vòng  -/12   125.7s  qwen3coder-or fixed_l2    few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[210/240] DONE       RUNTIME     vòng  -/12   307.6s  qwen3coder-or adaptive    zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[211/240] DONE       COMPILE     vòng  -/12   128.8s  qwen3coder-or fixed_plus  zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[212/240] DONE       COMPILE     vòng  -/12   106.2s  qwen3coder-or adaptive    few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[213/240] DONE       RUNTIME     vòng  -/12   260.1s  qwen3coder-or adaptive    zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[214/240] DONE       COMPILE     vòng  -/12   153.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[215/240] DONE       COMPILE     vòng  -/12   120.7s  qwen3coder-or fixed_minus zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[216/240] DONE       COMPILE     vòng  -/12   118.0s  qwen3coder-or fixed_minus zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[217/240] DONE       COMPILE     vòng  -/12   123.9s  qwen3coder-or fixed_l2    zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[218/240] DONE       COMPILE     vòng  -/12   123.6s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[219/240] DONE       COMPILE     vòng  -/12   100.2s  qwen3coder-or adaptive    zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[220/240] DONE       RUNTIME     vòng  -/12   387.2s  gpt6luna      fixed_plus  few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[221/240] DONE       COMPILE     vòng  -/12   116.8s  qwen3coder-or adaptive    zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[222/240] DONE       VALID       vòng  8/ 8   515.8s  gpt6luna      fixed_plus  zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[223/240] DONE       VALID       vòng  4/ 4   213.0s  gpt6luna      fixed_minus few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[224/240] DONE       COMPILE     vòng  -/12   368.0s  qwen3coder-or fixed_plus  few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[225/240] DONE       RUNTIME     vòng  -/12   169.1s  gpt6luna      fixed_minus zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[226/240] DONE       VALID       vòng  5/ 5   178.4s  gpt6luna      fixed_l2    few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[227/240] DONE       COMPILE     vòng  -/12    83.9s  qwen3coder-or fixed_minus few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[228/240] DONE       COMPILE     vòng  -/12   394.0s  qwen3coder-or fixed_plus  zero_shot                packt.java9.by.example.ch03.quick.QuickSort
+[229/240] DONE       COMPILE     vòng  -/12    80.8s  qwen3coder-or fixed_l2    few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[230/240] DONE       COMPILE     vòng  -/12    91.2s  qwen3coder-or fixed_minus zero_shot                packt.java9.by.example.ch03.quick.QuickSort
+[231/240] DONE       COMPILE     vòng  -/12    71.1s  qwen3coder-or adaptive    few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[232/240] DONE       VALID       vòng  4/ 4   244.1s  gpt6luna      fixed_l2    zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[233/240] DONE       RUNTIME     vòng  -/12   122.8s  qwen3coder-or fixed_l2    zero_shot                packt.java9.by.example.ch03.quick.QuickSort
+[234/240] DONE       VALID       vòng  8/ 8   289.2s  gpt6luna      adaptive    few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[235/240] DONE       RUNTIME     vòng  -/12   136.7s  qwen3coder-or fixed_plus  zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[236/240] DONE       COMPILE     vòng  -/12    47.4s  qwen3coder-or adaptive    zero_shot                packt.java9.by.example.ch03.quick.QuickSort
+[237/240] DONE       VALID       vòng  4/ 4   196.4s  gpt6luna      adaptive    zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[238/240] DONE       RUNTIME     vòng  -/12   126.5s  qwen3coder-or fixed_minus zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[239/240] DONE       RUNTIME     vòng  -/12   121.4s  qwen3coder-or fixed_l2    zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[240/240] DONE       RUNTIME     vòng  -/12    61.8s  qwen3coder-or adaptive    zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+Kết quả: ASSERTION 22, COMPILE 82, DISCOVERY 14, RUNTIME 30, VALID 92

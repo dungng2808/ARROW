@@ -1,0 +1,5 @@
+ARROW · ConfigFactory (org.configfacade)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 5 test (dùng lại, đo 22/11 02:22) · 6.2 s
+[X] Khối 2  c0 · 7.9k token · 4.1 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

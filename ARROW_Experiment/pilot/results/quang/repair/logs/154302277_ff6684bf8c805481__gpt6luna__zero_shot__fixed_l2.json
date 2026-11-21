@@ -1,0 +1,53 @@
+{
+  "run_id": "20261122-034752-a45w",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-034752-a45w",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender_ArrowTest",
+      "test_path": "osgp/platform/osgp-core/src/test/java/org/opensmartgridplatform/core/infra/jms/protocol/outbound/ProtocolRequestMessageSender_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 8155,
+        "out": 330
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 33.2,
+        "block2": 0.1,
+        "block3": 144.7,
+        "block4": null,
+        "total": 178.1
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 1"
+      ],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 8155,
+    "tokens_out": 330,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback.",
+    "ProtocolRequestMessageSender: 1 test method đã bị bỏ trong lúc sửa: isSupportedReturnsFalseWhenNoTemplateIsAvailable"
+  ]
+}

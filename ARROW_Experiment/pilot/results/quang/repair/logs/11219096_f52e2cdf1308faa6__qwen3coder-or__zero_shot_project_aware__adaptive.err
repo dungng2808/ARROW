@@ -1,0 +1,17 @@
+ARROW · MessageParser (org.jskat.control.iss)
+[OK] Khối 1  Gradle 6.3 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 181 test ×2 · 70.3 s
+[OK] Khối 2  c0 · c0 lấy từ file 11219096_f52e2cdf1308faa6__qwen3coder-or__zero_shot_project_aware.java: 34 test, 113 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+          vòng 1 · mức 1 → mã trùng vòng 0 · lên mức 2
+          vòng 2 · mức 2 → COMPILE · giữ mức
+          vòng 3 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 4 · mức 3 → COMPILE · tốt hơn · checkpoint
+          vòng 5 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 6 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 7 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 8 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 9 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 11 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 4 · lên mức 3
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

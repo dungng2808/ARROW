@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-045003-mis9",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-045003-mis9",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.loyada.jdollarx.InBrowserFinder",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.github.loyada.jdollarx.InBrowserFinder_ArrowTest",
+      "test_path": "jdollarx/src/test/java/com/github/loyada/jdollarx/InBrowserFinder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 54807,
+        "out": 19818
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 7,
+        "block2": 0.2,
+        "block3": 89.7,
+        "block4": null,
+        "total": 96.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 54807,
+    "tokens_out": 19818,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

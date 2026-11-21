@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-045750-17n0",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-045750-17n0",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.aliyun.odps.data.TableInfo",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "com.aliyun.odps.data.TableInfo_ArrowTest",
+      "test_path": "odps-sdk/odps-sdk-commons/src/test/java/com/aliyun/odps/data/TableInfo_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6359,
+        "out": 1853
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.2,
+        "block2": 0.2,
+        "block3": 28.7,
+        "block4": null,
+        "total": 37.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 6359,
+    "tokens_out": 1853,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback.",
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

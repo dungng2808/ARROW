@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-043631-rult",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-043631-rult",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.loyada.jdollarx.InBrowserFinder",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 5,
+      "success_round": 5,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.loyada.jdollarx.InBrowserFinder_ArrowTest",
+      "test_path": "jdollarx/src/test/java/com/github/loyada/jdollarx/InBrowserFinder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 22965,
+        "out": 4568
+      },
+      "cost_usd": null,
+      "llm_calls": 5,
+      "seconds": {
+        "block1": 6.2,
+        "block2": 0.1,
+        "block3": 80.8,
+        "block4": null,
+        "total": 87.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 5,
+    "tokens_in": 22965,
+    "tokens_out": 4568,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-050008-vsm7",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w1\\runs\\20261122-050008-vsm7",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.configfacade.ConfigFactory",
+      "result": "DISCOVERY",
+      "c0_state": "DISCOVERY",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.configfacade.ConfigFactory_ArrowTest",
+      "test_path": "configfacade-api/src/test/java/org/configfacade/ConfigFactory_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 94495,
+        "out": 17156
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 5.3,
+        "block2": 0.2,
+        "block3": 295.1,
+        "block4": null,
+        "total": 300.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 94495,
+    "tokens_out": 17156,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

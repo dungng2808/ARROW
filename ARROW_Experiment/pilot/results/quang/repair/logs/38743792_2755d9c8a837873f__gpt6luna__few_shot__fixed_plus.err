@@ -1,0 +1,7 @@
+ARROW · TableInfo (com.aliyun.odps.data)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 41 test ×2 · 29.7 s
+[OK] Khối 2  c0 · c0 lấy từ file 38743792_2755d9c8a837873f__gpt6luna__few_shot.java: 15 test, 38 assertion
+[>] Khối 3  c0: ASSERTION · ComparisonFailure | setPartSpecPathParsesOrderedPartitions
+          vòng 1 · mức 1 → ASSERTION 14 pass · sửa tiếp từ bản này
+          vòng 2 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 2 vòng

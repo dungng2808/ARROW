@@ -1,0 +1,17 @@
+ARROW · KeyMaterials (com.palantir.crypto2.keys.serialization)
+[OK] Khối 1  Gradle 7.5.1 · build root . · JDK 11 · JUnit 4 + Mockito · baseline 0 test ×2 · 117.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 62156481_a9ca85556cc043ea__qwen3coder-or__zero_shot.java: 9 test, 21 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+          vòng 1 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 4 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 5 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 6 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 7 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 8 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 9 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 10 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 11 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 12 · mức 1 → COMPILE · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

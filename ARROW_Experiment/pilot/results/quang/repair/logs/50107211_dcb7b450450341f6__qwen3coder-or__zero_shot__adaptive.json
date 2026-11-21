@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-050450-mkpk",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w4\\runs\\20261122-050450-mkpk",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.configfacade.ConfigFactory",
+      "result": "DISCOVERY",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.configfacade.ConfigFactory_ArrowTest",
+      "test_path": "configfacade-api/src/test/java/org/configfacade/ConfigFactory_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 104964,
+        "out": 21721
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 5.1,
+        "block2": 0.2,
+        "block3": 79.8,
+        "block4": null,
+        "total": 85.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 104964,
+    "tokens_out": 21721,
+    "cost_usd": null
+  },
+  "warnings": []
+}

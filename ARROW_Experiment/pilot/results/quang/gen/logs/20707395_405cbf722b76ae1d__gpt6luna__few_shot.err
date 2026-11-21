@@ -1,0 +1,5 @@
+ARROW · Position (com.github.davidmoten.grumpy.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 39 test (dùng lại, đo 22/11 02:09) · 7.0 s
+[OK] Khối 2  c0 · 9.7k token · 20.3 s · Candidate hợp lệ: 24 test, 80 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | longitudeOnGreatCircleReturnsCandidates
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

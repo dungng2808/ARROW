@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-021403-7wdw",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w1\\runs\\20261122-021403-7wdw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.aliyun.odps.data.TableInfo",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.aliyun.odps.data.TableInfo_ArrowTest",
+      "test_path": "odps-sdk/odps-sdk-commons/src/test/java/com/aliyun/odps/data/TableInfo_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3784,
+        "out": 1850
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.7,
+        "block2": 4.2,
+        "block3": 6.8,
+        "block4": null,
+        "total": 21.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3784,
+    "tokens_out": 1850,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,52 @@
+{
+  "run_id": "20261122-062326-ifas",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-062326-ifas",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "packt.java9.by.example.ch03.quick.QuickSort",
+      "result": "RUNTIME",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "packt.java9.by.example.ch03.quick.QuickSort_ArrowTest",
+      "test_path": "Chapter03/genericsort/quick/src/test/java/packt/java9/by/example/ch03/quick/QuickSort_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 44497,
+        "out": 13630
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 6.6,
+        "block2": 0.2,
+        "block3": 113.2,
+        "block4": null,
+        "total": 120.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 44497,
+    "tokens_out": 13630,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback.",
+    "1 file .java không đọc được (ví dụ Chapter10/advanced-java-part-15-java8/agents/src/main/java/com/javacodegeeks/advanced/agent/SimpleClassTransformer.java: Parse error. Found  \"AbstractProcessor\" <IDENTIFIER>, expected \"}\").",
+    "1 file .java không đọc được (ví dụ Chapter10/advanced-java-part-15-java8/agents/src/main/java/com/javacodegeeks/advanced/agent/SimpleClassTransformer.java: Parse error. Found  \"AbstractProcessor\" <IDENTIFIER>, expected \"}\")."
+  ]
+}

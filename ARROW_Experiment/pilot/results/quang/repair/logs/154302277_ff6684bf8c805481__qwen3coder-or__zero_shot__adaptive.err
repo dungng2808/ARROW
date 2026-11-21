@@ -1,0 +1,17 @@
+ARROW · ProtocolRequestMessageSender (org.opensmartgridplatform.core.infra.jms.protocol.outbound)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 56 test (dùng lại, đo 22/11 03:46) · 25.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 154302277_ff6684bf8c805481__qwen3coder-or__zero_shot.java: 8 test, 19 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → COMPILE · lên mức 2
+          vòng 2 · mức 2 → COMPILE · lên mức 3
+          vòng 3 · mức 3 → COMPILE · giữ mức
+          vòng 4 · mức 3 → mã trùng vòng 3 · lên mức 2
+          vòng 5 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 6 · mức 3 → mã trùng vòng 3 · lên mức 2
+          vòng 7 · mức 2 → COMPILE · lên mức 3
+          vòng 8 · mức 3 → COMPILE · lên mức 2
+          vòng 9 · mức 2 → COMPILE · giữ mức
+          vòng 10 · mức 2 → mã trùng vòng 9 · lên mức 3
+          vòng 11 · mức 3 → COMPILE · lên mức 2
+          vòng 12 · mức 2 → COMPILE · giữ mức
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

@@ -1,0 +1,5 @@
+ARROW · InBrowserFinder (com.github.loyada.jdollarx)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 188 test ×2 · 63.4 s
+[OK] Khối 2  c0 · 2.9k token · 8.0 s · Candidate hợp lệ: 7 test, 9 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | findPageWithNumberOfOccurrencesUsesHtmlRoot
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

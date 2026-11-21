@@ -1,0 +1,53 @@
+{
+  "run_id": "20261122-060219-1cep",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-060219-1cep",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.resource4j.extras.config.ConfigResourceBundleParser",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.github.resource4j.extras.config.ConfigResourceBundleParser_ArrowTest",
+      "test_path": "integration/extras/src/test/java/com/github/resource4j/extras/config/ConfigResourceBundleParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 27483,
+        "out": 4716
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 10,
+        "block2": 0.2,
+        "block3": 110.7,
+        "block4": null,
+        "total": 121
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 2"
+      ],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 27483,
+    "tokens_out": 4716,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback.",
+    "ConfigResourceBundleParser: 2 test method đã bị bỏ trong lúc sửa: testParseReturnsParsedMap, testContentTypeAnnotation"
+  ]
+}

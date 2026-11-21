@@ -1,0 +1,117 @@
+Phần 1/4: 13 lớp pilot
+$ C:\Users\pc\AppData\Local\Programs\Python\Python311\python.exe -u D:\ki9\SET490\ARROW\ARROW_Experiment\1\tn1_run.py --pilot --machine quang --models gpt6luna,qwen3coder-or --workers 4 --shard 1/1 --only 154302277_ff6684bf8c805481,38743792_2755d9c8a837873f,37208641_cd50747627a872ab,50107211_dcb7b450450341f6,62156481_a9ca85556cc043ea,103437385_aa34949ceaa165de,211099032_7065893291cb06bc,114983680_94d96c81677c244e,11219096_f52e2cdf1308faa6,8313187_e69d438003aa4adb,56219850_7f800e246207ce21,88978812_1a2ce39009b9ee62,20707395_405cbf722b76ae1d --out-dir D:\ki9\SET490\ARROW\ARROW_Experiment\pilot\results\quang\gen --base-home C:\Users\pc\AppData\Local\arrow --arrow arrow --homes-dir C:\arrow-homes\pilot-quang-gen
+arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-19)
+Máy quang · phần 1/1 · 13 lớp · mô hình ['gpt6luna', 'qwen3coder-or'] · còn 78 lần chạy (13 lớp) · 4 worker
+--- 4 worker
+[1/78] DONE  ASSERTION          65.4s  gpt6luna   zero_shot                com.github.davidmoten.grumpy.core.Position
+[2/78] DONE  COMPILE            18.9s  qwen3coder-or zero_shot                com.github.davidmoten.grumpy.core.Position
+[3/78] DONE  VALID              90.9s  gpt6luna   zero_shot                com.aliyun.odps.data.TableInfo
+[4/78] DONE  ASSERTION          37.5s  gpt6luna   few_shot                 com.github.davidmoten.grumpy.core.Position
+[5/78] DONE  VALID              41.0s  qwen3coder-or zero_shot                com.aliyun.odps.data.TableInfo
+[6/78] DONE  ASSERTION          29.4s  qwen3coder-or few_shot                 com.github.davidmoten.grumpy.core.Position
+[7/78] DONE  ASSERTION          37.8s  gpt6luna   few_shot                 com.aliyun.odps.data.TableInfo
+[8/78] DONE  VALID              40.6s  qwen3coder-or few_shot                 com.aliyun.odps.data.TableInfo
+[9/78] DONE  ASSERTION          72.0s  gpt6luna   zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[10/78] DONE  COMPILE            22.1s  qwen3coder-or zero_shot_project_aware  com.github.davidmoten.grumpy.core.Position
+[11/78] DONE  VALID              69.4s  gpt6luna   zero_shot_project_aware  com.aliyun.odps.data.TableInfo
+[12/78] DONE  COMPILE            27.0s  qwen3coder-or zero_shot_project_aware  com.aliyun.odps.data.TableInfo
+[13/78] DONE  VALID             322.2s  gpt6luna   zero_shot                io.jaegertracing.analytics.ServiceHeight
+
+
+--- RESUMING GEN AT 2026-11-22T02:18:38.962739 ---
+Phần 1/4: 13 lớp pilot
+$ C:\Users\pc\AppData\Local\Programs\Python\Python311\python.exe -u D:\ki9\SET490\ARROW\ARROW_Experiment\1\tn1_run.py --pilot --machine quang --models gpt6luna,qwen3coder-or --workers 4 --shard 1/1 --only 154302277_ff6684bf8c805481,38743792_2755d9c8a837873f,37208641_cd50747627a872ab,50107211_dcb7b450450341f6,62156481_a9ca85556cc043ea,103437385_aa34949ceaa165de,211099032_7065893291cb06bc,114983680_94d96c81677c244e,11219096_f52e2cdf1308faa6,8313187_e69d438003aa4adb,56219850_7f800e246207ce21,88978812_1a2ce39009b9ee62,20707395_405cbf722b76ae1d --out-dir D:\ki9\SET490\ARROW\ARROW_Experiment\pilot\results\quang\gen --base-home C:\Users\pc\AppData\Local\arrow --arrow arrow --homes-dir C:\arrow-homes\pilot-quang-gen
+arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-19)
+Máy quang · phần 1/1 · 13 lớp · mô hình ['gpt6luna', 'qwen3coder-or'] · còn 65 lần chạy (11 lớp) · 4 worker
+--- 4 worker
+[1/65] DONE  ASSERTION          65.7s  gpt6luna   zero_shot                net.kylindb.coder.RowKeyCoder
+[2/65] DONE  COMPILE            95.9s  qwen3coder-or zero_shot                io.jaegertracing.analytics.ServiceHeight
+[3/65] DONE  COMPILE            35.1s  qwen3coder-or zero_shot                net.kylindb.coder.RowKeyCoder
+[4/65] DONE  COMPILE           111.9s  gpt6luna   zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[5/65] DONE  ASSERTION          29.8s  gpt6luna   few_shot                 net.kylindb.coder.RowKeyCoder
+[6/65] DONE  COMPILE            28.8s  qwen3coder-or zero_shot                com.github.resource4j.extras.config.ConfigResourceBundleParser
+[7/65] DONE  COMPILE            21.4s  qwen3coder-or few_shot                 net.kylindb.coder.RowKeyCoder
+[8/65] DONE  VALID              69.3s  gpt6luna   few_shot                 io.jaegertracing.analytics.ServiceHeight
+[9/65] DONE  COMPILE            35.0s  gpt6luna   few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[10/65] DONE  ASSERTION          31.9s  gpt6luna   zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[11/65] DONE  COMPILE            32.7s  qwen3coder-or few_shot                 io.jaegertracing.analytics.ServiceHeight
+[12/65] DONE  COMPILE            25.7s  qwen3coder-or few_shot                 com.github.resource4j.extras.config.ConfigResourceBundleParser
+[13/65] DONE  COMPILE            21.8s  qwen3coder-or zero_shot_project_aware  net.kylindb.coder.RowKeyCoder
+[14/65] DONE  COMPILE            26.7s  gpt6luna   zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[15/65] DONE  COMPILE            26.6s  gpt6luna   zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[16/65] DONE  COMPILE            23.8s  qwen3coder-or zero_shot_project_aware  com.github.resource4j.extras.config.ConfigResourceBundleParser
+[17/65] DONE  COMPILE            28.5s  qwen3coder-or zero_shot_project_aware  io.jaegertracing.analytics.ServiceHeight
+[18/65] DONE  DISCOVERY          64.0s  gpt6luna   zero_shot                org.configfacade.ConfigFactory
+[19/65] DONE  COMPILE            15.9s  qwen3coder-or zero_shot                org.configfacade.ConfigFactory
+[20/65] DONE  DISCOVERY          22.8s  gpt6luna   few_shot                 org.configfacade.ConfigFactory
+[21/65] DONE  INVALID_OUTPUT     13.4s  qwen3coder-or few_shot                 org.configfacade.ConfigFactory
+[22/65] DONE  DISCOVERY          25.5s  gpt6luna   zero_shot_project_aware  org.configfacade.ConfigFactory
+[23/65] DONE  INVALID_OUTPUT     12.4s  qwen3coder-or zero_shot_project_aware  org.configfacade.ConfigFactory
+[24/65] DONE  VALID             415.5s  gpt6luna   zero_shot                packt.java9.by.example.ch03.quick.QuickSort
+[25/65] DONE  COMPILE            18.4s  qwen3coder-or zero_shot                packt.java9.by.example.ch03.quick.QuickSort
+[26/65] DONE  COMPILE            21.8s  gpt6luna   few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[27/65] DONE  COMPILE           203.3s  gpt6luna   zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[28/65] DONE  COMPILE            16.9s  qwen3coder-or few_shot                 packt.java9.by.example.ch03.quick.QuickSort
+[29/65] DONE  COMPILE            20.6s  gpt6luna   zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[30/65] DONE  COMPILE            18.6s  qwen3coder-or zero_shot_project_aware  packt.java9.by.example.ch03.quick.QuickSort
+[31/65] DONE  VALID             314.6s  gpt6luna   zero_shot                org.kie.soup.commons.util.ListSplitter
+[32/65] DONE  COMPILE           217.9s  gpt6luna   zero_shot                org.jskat.control.iss.MessageParser
+[33/65] DONE  INVALID_OUTPUT     17.6s  qwen3coder-or zero_shot                org.kie.soup.commons.util.ListSplitter
+[34/65] DONE  COMPILE           148.0s  qwen3coder-or zero_shot                com.palantir.crypto2.keys.serialization.KeyMaterials
+[35/65] DONE  VALID              36.4s  gpt6luna   few_shot                 org.kie.soup.commons.util.ListSplitter
+[36/65] DONE  ASSERTION          25.7s  qwen3coder-or few_shot                 org.kie.soup.commons.util.ListSplitter
+[37/65] DONE  COMPILE           144.5s  gpt6luna   zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[38/65] DONE  COMPILE            94.8s  qwen3coder-or zero_shot                org.jskat.control.iss.MessageParser
+[39/65] DONE  ASSERTION          29.0s  gpt6luna   zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[40/65] DONE  COMPILE            30.2s  qwen3coder-or zero_shot                com.ikasoa.core.netty.server.NettyServerConfiguration
+[41/65] DONE  COMPILE            27.2s  qwen3coder-or zero_shot_project_aware  org.kie.soup.commons.util.ListSplitter
+[42/65] DONE  VALID              60.6s  gpt6luna   few_shot                 com.ikasoa.core.netty.server.NettyServerConfiguration
+[43/65] DONE  COMPILE           148.6s  gpt6luna   few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[44/65] DONE  COMPILE            99.7s  gpt6luna   few_shot                 org.jskat.control.iss.MessageParser
+[45/65] DONE  ASSERTION          82.2s  gpt6luna   zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[46/65] DONE  COMPILE            17.9s  qwen3coder-or zero_shot                com.github.loyada.jdollarx.InBrowserFinder
+[47/65] DONE  VALID              59.4s  qwen3coder-or few_shot                 com.ikasoa.core.netty.server.NettyServerConfiguration
+[48/65] DONE  VALID              33.1s  gpt6luna   few_shot                 com.github.loyada.jdollarx.InBrowserFinder
+[49/65] DONE  COMPILE            28.5s  qwen3coder-or few_shot                 com.github.loyada.jdollarx.InBrowserFinder
+[50/65] DONE  VALID              63.5s  gpt6luna   zero_shot_project_aware  com.ikasoa.core.netty.server.NettyServerConfiguration
+[51/65] DONE  COMPILE           105.4s  qwen3coder-or few_shot                 org.jskat.control.iss.MessageParser
+[52/65] DONE  VALID              29.9s  gpt6luna   zero_shot_project_aware  com.github.loyada.jdollarx.InBrowserFinder
+[53/65] DONE  COMPILE           142.3s  qwen3coder-or few_shot                 com.palantir.crypto2.keys.serialization.KeyMaterials
+[54/65] DONE  COMPILE            28.5s  qwen3coder-or zero_shot_project_aware  com.ikasoa.core.netty.server.NettyServerConfiguration
+[55/65] DONE  COMPILE            22.6s  qwen3coder-or zero_shot_project_aware  com.github.loyada.jdollarx.InBrowserFinder
+[56/65] DONE  COMPILE            85.7s  gpt6luna   zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[57/65] DONE  COMPILE           140.2s  gpt6luna   zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[58/65] DONE  COMPILE            82.9s  qwen3coder-or zero_shot_project_aware  org.jskat.control.iss.MessageParser
+[59/65] DONE  COMPILE           126.4s  qwen3coder-or zero_shot_project_aware  com.palantir.crypto2.keys.serialization.KeyMaterials
+[60/65] DONE  COMPILE           283.6s  gpt6luna   zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[61/65] DONE  COMPILE            62.5s  qwen3coder-or zero_shot                org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[62/65] DONE  COMPILE            63.2s  gpt6luna   few_shot                 org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[63/65] DONE  VALID             101.2s  qwen3coder-or few_shot                 org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[64/65] DONE  COMPILE            66.9s  gpt6luna   zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+[65/65] DONE  COMPILE            60.0s  qwen3coder-or zero_shot_project_aware  org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender
+Kết quả: ASSERTION 11, COMPILE 46, DISCOVERY 3, INVALID_OUTPUT 3, VALID 15
+gen: 78 bộ test (78 tính vào mẫu số, 0 lỗi hạ tầng/bị chặn) → tn1_candidates.csv; 60 bộ vào tn2_pool.jsonl; 75 file mã trong tests/
+
+Xong bước gen. Bước tiếp: python3 pilot_run.py repair --machine quang --models gpt6luna,qwen3coder-or --arrow <arrow bản 203fb8e>
+
+
+--- RETRY INFRA GEN (1) AT 2026-11-22T02:44:23.064832 ---
+Phần 1/4: 13 lớp pilot
+$ C:\Users\pc\AppData\Local\Programs\Python\Python311\python.exe -u D:\ki9\SET490\ARROW\ARROW_Experiment\1\tn1_run.py --pilot --machine quang --models gpt6luna,qwen3coder-or --workers 4 --shard 1/1 --only 154302277_ff6684bf8c805481,38743792_2755d9c8a837873f,37208641_cd50747627a872ab,50107211_dcb7b450450341f6,62156481_a9ca85556cc043ea,103437385_aa34949ceaa165de,211099032_7065893291cb06bc,114983680_94d96c81677c244e,11219096_f52e2cdf1308faa6,8313187_e69d438003aa4adb,56219850_7f800e246207ce21,88978812_1a2ce39009b9ee62,20707395_405cbf722b76ae1d --out-dir D:\ki9\SET490\ARROW\ARROW_Experiment\pilot\results\quang\gen --base-home C:\Users\pc\AppData\Local\arrow --arrow arrow --homes-dir C:\arrow-homes\pilot-quang-gen --retry-infra
+arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-19)
+Máy quang · phần 1/1 · 13 lớp · mô hình ['gpt6luna', 'qwen3coder-or'] · còn 0 lần chạy (0 lớp) · 4 worker
+Kết quả: ASSERTION 11, COMPILE 46, DISCOVERY 3, INVALID_OUTPUT 3, VALID 15
+gen: 78 bộ test (78 tính vào mẫu số, 0 lỗi hạ tầng/bị chặn) → tn1_candidates.csv; 60 bộ vào tn2_pool.jsonl; 75 file mã trong tests/
+
+Xong bước gen. Bước tiếp: python3 pilot_run.py repair --machine quang --models gpt6luna,qwen3coder-or --arrow <arrow bản 203fb8e>
+
+
+--- RETRY INFRA GEN (2) AT 2026-11-22T02:44:23.611819 ---
+Phần 1/4: 13 lớp pilot
+$ C:\Users\pc\AppData\Local\Programs\Python\Python311\python.exe -u D:\ki9\SET490\ARROW\ARROW_Experiment\1\tn1_run.py --pilot --machine quang --models gpt6luna,qwen3coder-or --workers 4 --shard 1/1 --only 154302277_ff6684bf8c805481,38743792_2755d9c8a837873f,37208641_cd50747627a872ab,50107211_dcb7b450450341f6,62156481_a9ca85556cc043ea,103437385_aa34949ceaa165de,211099032_7065893291cb06bc,114983680_94d96c81677c244e,11219096_f52e2cdf1308faa6,8313187_e69d438003aa4adb,56219850_7f800e246207ce21,88978812_1a2ce39009b9ee62,20707395_405cbf722b76ae1d --out-dir D:\ki9\SET490\ARROW\ARROW_Experiment\pilot\results\quang\gen --base-home C:\Users\pc\AppData\Local\arrow --arrow arrow --homes-dir C:\arrow-homes\pilot-quang-gen --retry-infra
+arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-19)
+Máy quang · phần 1/1 · 13 lớp · mô hình ['gpt6luna', 'qwen3coder-or'] · còn 0 lần chạy (0 lớp) · 4 worker
+Kết quả: ASSERTION 11, COMPILE 46, DISCOVERY 3, INVALID_OUTPUT 3, VALID 15
+gen: 78 bộ test (78 tính vào mẫu số, 0 lỗi hạ tầng/bị chặn) → tn1_candidates.csv; 60 bộ vào tn2_pool.jsonl; 75 file mã trong tests/
+
+Xong bước gen. Bước tiếp: python3 pilot_run.py repair --machine quang --models gpt6luna,qwen3coder-or --arrow <arrow bản 203fb8e>

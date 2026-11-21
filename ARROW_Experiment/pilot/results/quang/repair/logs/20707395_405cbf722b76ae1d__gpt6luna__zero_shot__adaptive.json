@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-040935-7gk5",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-040935-7gk5",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.davidmoten.grumpy.core.Position",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.davidmoten.grumpy.core.Position_ArrowTest",
+      "test_path": "grumpy-core/src/test/java/com/github/davidmoten/grumpy/core/Position_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 29042,
+        "out": 8486
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 7.3,
+        "block2": 0.2,
+        "block3": 80.9,
+        "block4": null,
+        "total": 88.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 29042,
+    "tokens_out": 8486,
+    "cost_usd": null
+  },
+  "warnings": []
+}

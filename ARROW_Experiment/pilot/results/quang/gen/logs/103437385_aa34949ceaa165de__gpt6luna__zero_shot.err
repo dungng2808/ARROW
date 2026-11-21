@@ -1,0 +1,5 @@
+ARROW · ListSplitter (org.kie.soup.commons.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 32 test ×2 · 287.2 s
+[OK] Khối 2  c0 · 2.1k token · 4.1 s · Candidate hợp lệ: 7 test, 7 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

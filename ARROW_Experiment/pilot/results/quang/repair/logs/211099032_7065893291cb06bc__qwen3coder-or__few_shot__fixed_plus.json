@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-042541-c3rn",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-042541-c3rn",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.jaegertracing.analytics.ServiceHeight",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "io.jaegertracing.analytics.ServiceHeight_ArrowTest",
+      "test_path": "tracedsl/src/test/java/io/jaegertracing/analytics/ServiceHeight_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 48369,
+        "out": 60103
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 56,
+        "block2": 0.2,
+        "block3": 353.8,
+        "block4": null,
+        "total": 410
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 48369,
+    "tokens_out": 60103,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

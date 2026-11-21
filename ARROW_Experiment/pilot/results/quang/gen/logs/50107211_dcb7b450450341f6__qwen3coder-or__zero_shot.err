@@ -1,0 +1,5 @@
+ARROW · ConfigFactory (org.configfacade)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 5 test (dùng lại, đo 22/11 02:22) · 5.8 s
+[OK] Khối 2  c0 · 7.6k token · 5.1 s · Candidate hợp lệ: 16 test, 42 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,6 @@
+ARROW · ProtocolRequestMessageSender (org.opensmartgridplatform.core.infra.jms.protocol.outbound)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 56 test ×2 · 102.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 154302277_ff6684bf8c805481__gpt6luna__few_shot.java: 3 test, 3 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

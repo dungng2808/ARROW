@@ -1,0 +1,17 @@
+ARROW · InBrowserFinder (com.github.loyada.jdollarx)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 188 test (dùng lại, đo 22/11 04:35) · 8.5 s
+[OK] Khối 2  c0 · c0 lấy từ file 37208641_cd50747627a872ab__qwen3coder-or__zero_shot.java: 19 test, 22 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+          vòng 1 · mức 1 → mã trùng vòng 0 · lên mức 2
+          vòng 2 · mức 2 → mã trùng vòng 0 · lên mức 3
+          vòng 3 · mức 3 → RUNTIME · tốt hơn · checkpoint
+          vòng 4 · mức 1 → RUNTIME · giữ mức
+          vòng 5 · mức 1 → mã trùng vòng 4 · lên mức 2
+          vòng 6 · mức 2 → RUNTIME · giữ mức
+          vòng 7 · mức 2 → RUNTIME · giữ mức
+          vòng 8 · mức 2 → mã trùng vòng 7 · lên mức 3
+          vòng 9 · mức 3 → mã trùng vòng 7 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 11 · mức 3 → mã trùng vòng 7 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 7 · lên mức 3
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

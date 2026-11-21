@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-021212-nsxs",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w1\\runs\\20261122-021212-nsxs",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.aliyun.odps.data.TableInfo",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.aliyun.odps.data.TableInfo_ArrowTest",
+      "test_path": "odps-sdk/odps-sdk-commons/src/test/java/com/aliyun/odps/data/TableInfo_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 4745,
+        "out": 1558
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 10.5,
+        "block2": 3.5,
+        "block3": 21,
+        "block4": null,
+        "total": 35.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 4745,
+    "tokens_out": 1558,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project.",
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

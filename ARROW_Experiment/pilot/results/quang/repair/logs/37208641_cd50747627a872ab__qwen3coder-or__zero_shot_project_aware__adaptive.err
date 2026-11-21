@@ -1,0 +1,17 @@
+ARROW · InBrowserFinder (com.github.loyada.jdollarx)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 188 test (dùng lại, đo 22/11 04:48) · 6.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 37208641_cd50747627a872ab__qwen3coder-or__zero_shot_project_aware.java: 21 test, 32 assertion
+[>] Khối 3  c0: COMPILE · unreported exception | -
+          vòng 1 · mức 1 → RUNTIME · tốt hơn · checkpoint
+          vòng 2 · mức 1 → COMPILE · tệ hơn · rollback, lên mức 2
+          vòng 3 · mức 2 → RUNTIME · lên mức 3
+          vòng 4 · mức 3 → COMPILE · tệ hơn · rollback, lên mức 2
+          vòng 5 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 6 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 7 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 8 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 9 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 10 · mức 3 → COMPILE · tệ hơn · rollback, lên mức 2
+          vòng 11 · mức 2 → mã trùng vòng 10 · lên mức 3
+          vòng 12 · mức 3 → mã trùng vòng 10 · lên mức 2
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

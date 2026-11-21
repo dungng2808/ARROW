@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-030607-fu9v",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-030607-fu9v",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.jskat.control.iss.MessageParser",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 4,
+      "success_round": 4,
+      "stop_reason": "valid",
+      "test_fqn": "org.jskat.control.iss.MessageParser_ArrowTest",
+      "test_path": "jskat-base/src/test/java/org/jskat/control/iss/MessageParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 37498,
+        "out": 3372
+      },
+      "cost_usd": null,
+      "llm_calls": 4,
+      "seconds": {
+        "block1": 48,
+        "block2": 0.1,
+        "block3": 148.2,
+        "block4": null,
+        "total": 196.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 4,
+    "tokens_in": 37498,
+    "tokens_out": 3372,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

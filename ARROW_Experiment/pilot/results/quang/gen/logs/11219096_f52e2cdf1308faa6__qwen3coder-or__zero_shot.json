@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-022822-0fgj",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w3\\runs\\20261122-022822-0fgj",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jskat.control.iss.MessageParser",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.jskat.control.iss.MessageParser_ArrowTest",
+      "test_path": "jskat-base/src/test/java/org/jskat/control/iss/MessageParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6752,
+        "out": 5082
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 55.4,
+        "block2": 21,
+        "block3": 15,
+        "block4": null,
+        "total": 91.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 6752,
+    "tokens_out": 5082,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

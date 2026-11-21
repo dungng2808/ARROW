@@ -1,0 +1,5 @@
+ARROW · Position (com.github.davidmoten.grumpy.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 39 test (dùng lại, đo 22/11 02:09) · 6.7 s
+[OK] Khối 2  c0 · 9.6k token · 13.8 s · Candidate hợp lệ: 34 test, 52 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testEnsureContinuous
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

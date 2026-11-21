@@ -1,0 +1,5 @@
+ARROW · ProtocolRequestMessageSender (org.opensmartgridplatform.core.infra.jms.protocol.outbound)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 + Mockito · baseline 56 test (dùng lại, đo 22/11 02:38) · 26.8 s
+[OK] Khối 2  c0 · 4.0k token · 5.1 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

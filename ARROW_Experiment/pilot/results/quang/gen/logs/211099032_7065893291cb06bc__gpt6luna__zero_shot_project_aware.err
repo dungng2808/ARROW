@@ -1,0 +1,5 @@
+ARROW · ServiceHeight (io.jaegertracing.analytics)
+[OK] Khối 1  Maven 3.6.2 · build root . · JDK 8 · JUnit 4 · baseline 17 test (dùng lại, đo 22/11 02:19) · 11.4 s
+[OK] Khối 2  c0 · 2.1k token · 2.2 s · Candidate hợp lệ: 1 test, 1 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | variable
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,18 @@
+ARROW · ServiceHeight (io.jaegertracing.analytics)
+[OK] Khối 1  Maven 3.6.2 · build root . · JDK 8 · JUnit 4 · baseline 17 test (dùng lại, đo 22/11 04:31) · 8.5 s
+[OK] Khối 2  c0 · c0 lấy từ file 211099032_7065893291cb06bc__qwen3coder-or__zero_shot_project_aware.java: 6 test, 15 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+          vòng 1 · mức 1 → COMPILE · lên mức 2
+          vòng 2 · mức 2 → ASSERTION 5 pass · tốt hơn · checkpoint
+[!] Câu trả lời bị cắt vì hết max_tokens. Tăng llm.models.<tên>.params.max_tokens nếu lỗi này lặp lại.
+          vòng 3 · mức 1 → output không dùng được · lên mức 2
+          vòng 4 · mức 2 → ASSERTION 5 pass · lên mức 3
+          vòng 5 · mức 3 → ASSERTION 5 pass · lên mức 2
+          vòng 6 · mức 2 → mã trùng vòng 5 · lên mức 3
+          vòng 7 · mức 3 → mã trùng vòng 5 · lên mức 2
+          vòng 8 · mức 2 → mã trùng vòng 5 · lên mức 3
+          vòng 9 · mức 3 → mã trùng vòng 5 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 5 · lên mức 3
+          vòng 11 · mức 3 → mã trùng vòng 5 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 5 · lên mức 3
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 12 vòng

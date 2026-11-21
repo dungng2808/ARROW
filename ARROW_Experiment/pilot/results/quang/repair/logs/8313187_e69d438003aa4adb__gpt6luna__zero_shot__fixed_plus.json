@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-055006-gjee",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-055006-gjee",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.resource4j.extras.config.ConfigResourceBundleParser",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": 12,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.resource4j.extras.config.ConfigResourceBundleParser_ArrowTest",
+      "test_path": "integration/extras/src/test/java/com/github/resource4j/extras/config/ConfigResourceBundleParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 27624,
+        "out": 2734
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 34.2,
+        "block2": 0.1,
+        "block3": 162.2,
+        "block4": null,
+        "total": 196.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 27624,
+    "tokens_out": 2734,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

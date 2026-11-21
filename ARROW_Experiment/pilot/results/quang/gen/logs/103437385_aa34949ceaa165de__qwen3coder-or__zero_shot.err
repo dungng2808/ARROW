@@ -1,0 +1,5 @@
+ARROW · ListSplitter (org.kie.soup.commons.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 32 test (dùng lại, đo 22/11 02:27) · 10.1 s
+[X] Khối 2  c0 · 2.8k token · 3.8 s · Câu trả lời không dùng được: parse_error
+[X] B2_INVALID_OUTPUT · parse_error
+  → Cách sửa: Chạy lại, hoặc đổi model.

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-042200-ab5q",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-042200-ab5q",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.davidmoten.grumpy.core.Position",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.github.davidmoten.grumpy.core.Position_ArrowTest",
+      "test_path": "grumpy-core/src/test/java/com/github/davidmoten/grumpy/core/Position_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 123836,
+        "out": 33096
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 5.3,
+        "block2": 0.2,
+        "block3": 211.2,
+        "block4": null,
+        "total": 216.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 123836,
+    "tokens_out": 33096,
+    "cost_usd": null
+  },
+  "warnings": []
+}

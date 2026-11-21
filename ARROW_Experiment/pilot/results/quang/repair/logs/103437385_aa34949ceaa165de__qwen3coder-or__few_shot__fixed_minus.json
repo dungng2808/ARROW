@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-024812-u0ws",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-024812-u0ws",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.kie.soup.commons.util.ListSplitter",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.kie.soup.commons.util.ListSplitter_ArrowTest",
+      "test_path": "kie-soup-commons/src/test/java/org/kie/soup/commons/util/ListSplitter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 43485,
+        "out": 10488
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 10.7,
+        "block2": 0.2,
+        "block3": 204.8,
+        "block4": null,
+        "total": 215.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 43485,
+    "tokens_out": 10488,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

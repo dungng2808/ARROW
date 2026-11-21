@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-023339-7yjl",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w4\\runs\\20261122-023339-7yjl",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.loyada.jdollarx.InBrowserFinder",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.github.loyada.jdollarx.InBrowserFinder_ArrowTest",
+      "test_path": "jdollarx/src/test/java/com/github/loyada/jdollarx/InBrowserFinder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2204,
+        "out": 1947
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.6,
+        "block2": 5.6,
+        "block3": 6,
+        "block4": null,
+        "total": 20.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2204,
+    "tokens_out": 1947,
+    "cost_usd": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,11 @@
+ARROW · MessageParser (org.jskat.control.iss)
+[OK] Khối 1  Gradle 6.3 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 181 test ×2 · 53.5 s
+[OK] Khối 2  c0 · c0 lấy từ file 11219096_f52e2cdf1308faa6__gpt6luna__few_shot.java: 11 test, 40 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 2 → ASSERTION 10 pass · sửa tiếp từ bản này
+          vòng 5 · mức 2 → ASSERTION 10 pass · sửa tiếp từ bản này
+          vòng 6 · mức 2 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 6 vòng

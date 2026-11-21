@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-025508-ay1u",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-025508-ay1u",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.kie.soup.commons.util.ListSplitter",
+      "result": "ASSERTION",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.kie.soup.commons.util.ListSplitter_ArrowTest",
+      "test_path": "kie-soup-commons/src/test/java/org/kie/soup/commons/util/ListSplitter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 58956,
+        "out": 15604
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 11.5,
+        "block2": 0.2,
+        "block3": 107.5,
+        "block4": null,
+        "total": 119.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 58956,
+    "tokens_out": 15604,
+    "cost_usd": null
+  },
+  "warnings": []
+}

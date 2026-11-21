@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-035448-eyml",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-035448-eyml",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.davidmoten.grumpy.core.Position",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 6,
+      "success_round": 6,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.davidmoten.grumpy.core.Position_ArrowTest",
+      "test_path": "grumpy-core/src/test/java/com/github/davidmoten/grumpy/core/Position_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 55940,
+        "out": 16850
+      },
+      "cost_usd": null,
+      "llm_calls": 6,
+      "seconds": {
+        "block1": 17.4,
+        "block2": 0.2,
+        "block3": 259.1,
+        "block4": null,
+        "total": 276.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 6,
+    "tokens_in": 55940,
+    "tokens_out": 16850,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-060629-7ze5",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-060629-7ze5",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.resource4j.extras.config.ConfigResourceBundleParser",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.github.resource4j.extras.config.ConfigResourceBundleParser_ArrowTest",
+      "test_path": "integration/extras/src/test/java/com/github/resource4j/extras/config/ConfigResourceBundleParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 41329,
+        "out": 4413
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 9.9,
+        "block2": 0.1,
+        "block3": 93.3,
+        "block4": null,
+        "total": 103.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 41329,
+    "tokens_out": 4413,
+    "cost_usd": null
+  },
+  "warnings": []
+}

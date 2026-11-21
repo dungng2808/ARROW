@@ -1,0 +1,53 @@
+{
+  "run_id": "20261122-032701-jrpw",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w4\\runs\\20261122-032701-jrpw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jskat.control.iss.MessageParser",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.jskat.control.iss.MessageParser_ArrowTest",
+      "test_path": "jskat-base/src/test/java/org/jskat/control/iss/MessageParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 182913,
+        "out": 61140
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 67.4,
+        "block2": 0.3,
+        "block3": 647.9,
+        "block4": null,
+        "total": 715.6
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 1"
+      ],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 182913,
+    "tokens_out": 61140,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback.",
+    "MessageParser: 1 test method đã bị bỏ trong lúc sửa: testParsePlayerStatus"
+  ]
+}

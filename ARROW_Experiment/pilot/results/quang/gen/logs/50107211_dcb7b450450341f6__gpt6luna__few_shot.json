@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-022329-40cv",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w3\\runs\\20261122-022329-40cv",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.configfacade.ConfigFactory",
+      "result": "DISCOVERY",
+      "c0_state": "DISCOVERY",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.configfacade.ConfigFactory_ArrowTest",
+      "test_path": "configfacade-api/src/test/java/org/configfacade/ConfigFactory_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 7405,
+        "out": 1197
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 7.2,
+        "block2": 7.9,
+        "block3": 5.1,
+        "block4": null,
+        "total": 20.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 7405,
+    "tokens_out": 1197,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

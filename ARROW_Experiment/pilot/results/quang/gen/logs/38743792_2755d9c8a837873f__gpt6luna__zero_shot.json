@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-020922-knmr",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w1\\runs\\20261122-020922-knmr",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.aliyun.odps.data.TableInfo",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.aliyun.odps.data.TableInfo_ArrowTest",
+      "test_path": "odps-sdk/odps-sdk-commons/src/test/java/com/aliyun/odps/data/TableInfo_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3451,
+        "out": 1687
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 27.1,
+        "block2": 13.9,
+        "block3": 21.5,
+        "block4": null,
+        "total": 64.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3451,
+    "tokens_out": 1687,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework.",
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

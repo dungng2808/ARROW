@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-032710-ecgw",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-032710-ecgw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "net.kylindb.coder.RowKeyCoder",
+      "result": "RUNTIME",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "net.kylindb.coder.RowKeyCoder_ArrowTest",
+      "test_path": "kylindb-core/src/test/java/net/kylindb/coder/RowKeyCoder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 44564,
+        "out": 11131
+      },
+      "cost_usd": null,
+      "llm_calls": 13,
+      "seconds": {
+        "block1": 20.9,
+        "block2": 0.2,
+        "block3": 169.5,
+        "block4": null,
+        "total": 190.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 13,
+    "tokens_in": 44564,
+    "tokens_out": 11131,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

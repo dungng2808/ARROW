@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-051616-vp6k",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w3\\runs\\20261122-051616-vp6k",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.ikasoa.core.netty.server.NettyServerConfiguration",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 7,
+      "success_round": 7,
+      "stop_reason": "valid",
+      "test_fqn": "com.ikasoa.core.netty.server.NettyServerConfiguration_ArrowTest",
+      "test_path": "ikasoa-core/src/test/java/com/ikasoa/core/netty/server/NettyServerConfiguration_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 23780,
+        "out": 3134
+      },
+      "cost_usd": null,
+      "llm_calls": 7,
+      "seconds": {
+        "block1": 11.1,
+        "block2": 0.1,
+        "block3": 109.4,
+        "block4": null,
+        "total": 120.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 7,
+    "tokens_in": 23780,
+    "tokens_out": 3134,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

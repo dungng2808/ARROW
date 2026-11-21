@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-045506-r4g9",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w1\\runs\\20261122-045506-r4g9",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.aliyun.odps.data.TableInfo",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.aliyun.odps.data.TableInfo_ArrowTest",
+      "test_path": "odps-sdk/odps-sdk-commons/src/test/java/com/aliyun/odps/data/TableInfo_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 18100,
+        "out": 4281
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 8.6,
+        "block2": 0.2,
+        "block3": 103,
+        "block4": null,
+        "total": 111.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 18100,
+    "tokens_out": 4281,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,5 @@
+ARROW · ListSplitter (org.kie.soup.commons.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 32 test (dùng lại, đo 22/11 02:27) · 9.4 s
+[OK] Khối 2  c0 · 2.5k token · 4.1 s · Candidate hợp lệ: 7 test, 7 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | splitUsesSingleQuoteAndPreservesUnquotedWhitespace
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

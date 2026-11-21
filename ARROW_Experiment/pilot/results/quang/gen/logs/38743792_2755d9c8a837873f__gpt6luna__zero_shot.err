@@ -1,0 +1,5 @@
+ARROW · TableInfo (com.aliyun.odps.data)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 41 test ×2 · 27.1 s
+[OK] Khối 2  c0 · 5.1k token · 13.4 s · Candidate hợp lệ: 17 test, 46 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

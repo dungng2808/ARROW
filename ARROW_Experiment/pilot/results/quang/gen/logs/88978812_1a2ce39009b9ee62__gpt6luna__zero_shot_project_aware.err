@@ -1,0 +1,5 @@
+ARROW · QuickSort (packt.java9.by.example.ch03.quick)
+[OK] Khối 1  Maven 3.9.16 · build root Chapter03/genericsort · JDK 8 · JUnit 4 · baseline 7 test (dùng lại, đo 22/11 02:23) · 7.2 s
+[OK] Khối 2  c0 · 1.7k token · 5.5 s · Candidate hợp lệ: 1 test, 1 assertion
+[>] Khối 3  c0: COMPILE · does not override | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

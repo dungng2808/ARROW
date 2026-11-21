@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-030115-h55t",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w4\\runs\\20261122-030115-h55t",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jskat.control.iss.MessageParser",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.jskat.control.iss.MessageParser_ArrowTest",
+      "test_path": "jskat-base/src/test/java/org/jskat/control/iss/MessageParser_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 124731,
+        "out": 15533
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 54.9,
+        "block2": 0.1,
+        "block3": 270,
+        "block4": null,
+        "total": 325.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 124731,
+    "tokens_out": 15533,
+    "cost_usd": null
+  },
+  "warnings": []
+}

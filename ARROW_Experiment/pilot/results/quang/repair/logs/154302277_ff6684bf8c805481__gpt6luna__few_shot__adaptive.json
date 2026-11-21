@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-033641-dpoj",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-repair\\w2\\runs\\20261122-033641-dpoj",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "org.opensmartgridplatform.core.infra.jms.protocol.outbound.ProtocolRequestMessageSender_ArrowTest",
+      "test_path": "osgp/platform/osgp-core/src/test/java/org/opensmartgridplatform/core/infra/jms/protocol/outbound/ProtocolRequestMessageSender_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 4467,
+        "out": 458
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 28.8,
+        "block2": 0.1,
+        "block3": 123.7,
+        "block4": null,
+        "total": 152.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 4467,
+    "tokens_out": 458,
+    "cost_usd": null
+  },
+  "warnings": []
+}

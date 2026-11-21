@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-023207-xgxn",
+  "run_dir": "C:\\arrow-homes\\pilot-quang-gen\\w4\\runs\\20261122-023207-xgxn",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.loyada.jdollarx.InBrowserFinder",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.github.loyada.jdollarx.InBrowserFinder_ArrowTest",
+      "test_path": "jdollarx/src/test/java/com/github/loyada/jdollarx/InBrowserFinder_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3381,
+        "out": 952
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.4,
+        "block2": 8.9,
+        "block3": 13.7,
+        "block4": null,
+        "total": 31.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3381,
+    "tokens_out": 952,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

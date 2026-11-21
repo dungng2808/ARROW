@@ -1,0 +1,5 @@
+ARROW · ConfigResourceBundleParser (com.github.resource4j.extras.config)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 5 · baseline 311 test (dùng lại, đo 22/11 02:20) · 13.2 s
+[OK] Khối 2  c0 · 1.5k token · 1.5 s · Candidate hợp lệ: 2 test, 4 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

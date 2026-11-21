@@ -1,0 +1,8 @@
+ARROW · Position (com.github.davidmoten.grumpy.core)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 39 test (dùng lại, đo 22/11 03:52) · 5.0 s
+[OK] Khối 2  c0 · c0 lấy từ file 20707395_405cbf722b76ae1d__gpt6luna__zero_shot_project_aware.java: 30 test, 72 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | bearingDifferenceIsNormalized
+          vòng 1 · mức 1 → ASSERTION 27 pass · tốt hơn · checkpoint
+          vòng 2 · mức 1 → ASSERTION 29 pass · tốt hơn · checkpoint
+          vòng 3 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 3 vòng
