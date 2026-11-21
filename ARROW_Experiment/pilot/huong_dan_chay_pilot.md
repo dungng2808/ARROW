@@ -93,6 +93,7 @@ Chạy nền, lần lượt **gen rồi repair** (repair cần kết quả gen).
 ```powershell
 New-Item -ItemType Directory -Force results\<M> | Out-Null
 Start-Process python -ArgumentList "-u pilot_run.py gen --machine <M> --models gpt6luna,qwen3coder-or --shard <S> --workers 4" -RedirectStandardOutput results\<M>\gen.log -RedirectStandardError results\<M>\gen.err -WindowStyle Hidden -Wait
+Test-Path results\<M>\gen\DA_DUNG.txt      # True → bước gen đã dừng: làm theo mục "Hết tiền / sai khóa" bên dưới, CHƯA chạy repair
 Start-Process python -ArgumentList "-u pilot_run.py repair --machine <M> --models gpt6luna,qwen3coder-or --workers 4 --arrow C:\tools\arrow-203\arrow.exe" -RedirectStandardOutput results\<M>\repair.log -RedirectStandardError results\<M>\repair.err -WindowStyle Hidden
 ```
 macOS (Dung): như trên với `caffeinate -i python3 -u pilot_run.py ...` và `--arrow ~/.local/share/arrow-dev/build-tn2/arrow`.
@@ -108,6 +109,10 @@ Get-Content results\<M>\repair.log -Tail 3
 - **Worker:** máy ì → ghi `3` vào `results\<M>\repair\workers.txt`; CPU rảnh → `5`.
 - Script dừng giữa chừng → chạy lại **đúng lệnh đó**; nó tự bỏ qua phần đã xong.
 - `gen.err` hoặc `repair.err` có `Traceback` → dừng, gửi Dung file `.log` và `.err`.
+- **Hết tiền / sai khóa:** script **tự dừng**: không mở việc mới, chờ việc đang chạy xong, hiện hộp thoại cảnh báo, in khối `!!!! ĐÃ DỪNG: HẾT TIỀN / HẾT HẠN MỨC (<mô hình>)` cuối log và ghi file `DA_DUNG.txt` (trong `results\<M>\gen\` hoặc `results\<M>\repair\`; file tự xóa khi chạy lại). Kiểm nhanh: `Test-Path results\<M>\repair\DA_DUNG.txt`. Khi thấy một trong các dấu hiệu đó:
+  1. báo người dùng đúng mô hình bị dừng: `qwen3coder-or` → nạp tiền **OpenRouter**; `gpt6luna` → báo **Dung** (TeamoRouter dùng chung);
+  2. người dùng nạp xong thì kiểm: `arrow models test <mô hình>` phải in `OK`;
+  3. chạy lại **đúng lệnh vừa dừng** (gen hoặc repair). Phần chưa xong, kể cả các lần bị dừng (`STOPPED`), tự chạy tiếp, không cần `--retry-infra`. Nếu bước gen bị dừng thì chạy lại gen cho xong **rồi mới** chạy repair.
 
 ## Bước 6. Chạy lại lỗi hạ tầng (nếu có)
 
@@ -161,7 +166,8 @@ Pilot · máy <M> · shard <S>
 | `Bộ prompt ... khác các lần chạy trước` | `git checkout -- ..\1\prompts` rồi chạy lại; vẫn lỗi thì báo Dung |
 | `ARROW_HOME gốc chưa dùng bộ prompt của nhóm` | Chạy lại `python ..\1\setup_tn1.py` |
 | `BAD_CONFIG` trong `repair.log` | Dừng, báo Dung (không chạy tiếp) |
-| `B2_LLM_*` (401, 402, 429) | Khóa sai, hết tiền, hoặc nhà cung cấp quá tải (OpenRouter cho Qwen, TeamoRouter cho GPT) → báo người dùng; sau đó Bước 6 |
+| `ĐÃ DỪNG: HẾT TIỀN / HẾT HẠN MỨC` hoặc `ĐÃ DỪNG: LỖI CẤU HÌNH MÔ HÌNH` | Script đã tự dừng; làm theo mục "Hết tiền / sai khóa" ở Bước 5 |
+| `B2_LLM_UNAVAILABLE` (429, 5xx: nhà cung cấp quá tải) | Không dừng cả lô; các lần đó ghi lỗi hạ tầng → Bước 6 (`--retry-infra`) |
 | `Filename too long` | Bật đường dẫn dài (Bước 1 của hướng dẫn TN1) |
 
 ## Phiên bản

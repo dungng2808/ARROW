@@ -107,6 +107,9 @@ def cmd_gen(args):
         cmd += ["--retry-infra"]
     print("$", " ".join(cmd), flush=True)
     code = subprocess.run(cmd).returncode
+    if code == 3:                                   # tn1_run đã dừng vì hết tiền / sai cấu hình mô hình và đã báo
+        print("Bước gen đã dừng (xem DA_DUNG.txt trong results/<máy>/gen). Xử lý xong thì chạy lại đúng lệnh gen.")
+        sys.exit(3)
     if code != 0:
         raise SystemExit(f"tn1_run.py dừng với mã {code}.")
     code = subprocess.run([sys.executable, os.path.join(TN1_DIR, "tn1_collect.py"), "--dir", gen_dir]).returncode
@@ -213,7 +216,9 @@ def run_chain(arrow, task, c0, mechanism, home, log_dir, rounds=PILOT_ROUNDS, re
     elif data is None:
         rec.update(status="INFRA", result="NO_JSON")
     elif "error" in data and not data.get("targets"):
-        rec.update(status="INFRA", result=(data["error"] or {}).get("code") or "ERROR")
+        err = data["error"] or {}
+        rec.update(status="INFRA", result=err.get("code") or "ERROR",
+                   error_message=err.get("message"), error_hint=err.get("hint"))
     else:
         target = (data.get("targets") or [{}])[0]
         result = target.get("result") or "UNKNOWN_RESULT"
@@ -221,6 +226,8 @@ def run_chain(arrow, task, c0, mechanism, home, log_dir, rounds=PILOT_ROUNDS, re
                    c0_state=target.get("c0_state"), success_round=target.get("success_round"),
                    rounds_run=target.get("rounds_run"), stop_reason=target.get("stop_reason"),
                    error_code=(target.get("error") or {}).get("code"),
+                   error_message=(target.get("error") or {}).get("message"),
+                   error_hint=(target.get("error") or {}).get("hint"),
                    block_seconds=target.get("seconds"))   # khối 1 (clone, phân tích, baseline), khối 3 (kiểm + sửa), tổng
         rec["status"] = "INFRA" if result in ("INFRA", "CANCELLED") or rec["stop_reason"] == "infra" else "DONE"
         # Kiểm cấu hình thật arrow đã dùng (run.json), tránh chạy nhầm cơ chế/số vòng/dừng sớm.
@@ -245,6 +252,9 @@ def cmd_repair(args):
     gen_dir, rep_dir = os.path.join(root, "gen"), os.path.join(root, "repair")
     log_dir = os.path.join(rep_dir, "logs")
     os.makedirs(log_dir, exist_ok=True)
+    stale = os.path.join(rep_dir, "DA_DUNG.txt")
+    if os.path.exists(stale):                       # báo dừng của lần trước: lần này chạy lại nên xóa
+        os.remove(stale)
     homes_root = os.path.join(args.homes_dir, "repair") if args.homes_dir else default_homes(args.machine, smoke, "repair")
     runs_path = os.path.join(rep_dir, "pilot_runs.jsonl")
     models = [m.strip() for m in args.models.split(",") if m.strip()]
@@ -303,7 +313,8 @@ def cmd_repair(args):
 
     def needs(c0, mech):
         rec = latest.get((c0["task_id"], c0["model"], c0["strategy"], mech))
-        return rec is None or (args.retry_infra and rec["status"] != "DONE")
+        return (rec is None or rec["status"] == "STOPPED"            # STOPPED: dừng vì hết tiền → chạy lại
+                or (args.retry_infra and rec["status"] != "DONE"))
 
     # Một job = một c0 với các cơ chế còn thiếu, chạy liền nhau trong cùng một home (dùng lại bản clone).
     jobs = [(c0, [m for m in MECHANISMS if needs(c0, m)]) for c0 in pool]
@@ -347,6 +358,8 @@ def cmd_repair(args):
         task = tasks[c0["task_id"]]
         try:
             for mech in todo:
+                if base.STOP.is_set():              # đã gặp lỗi phải dừng: bỏ phần còn lại (lần sau chạy tiếp)
+                    break
                 try:
                     arrow_cfg(args.arrow, home, "repair.mechanism", mech)
                     rec = run_chain(args.arrow, task, c0, mech, home, log_dir)
@@ -355,6 +368,7 @@ def cmd_repair(args):
                                status="INFRA", result="SCRIPT_EXCEPTION", detail=repr(e),
                                finished_at=base.now_iso())
                 rec.update(machine=args.machine, worker=os.path.basename(home), tool_commit=commit)
+                base.mark_fatal(rec)                # hết tiền / sai khóa → STOPPED và dừng cả lô
                 with write_lock:
                     with open(runs_path, "a", encoding="utf-8") as f:
                         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -376,6 +390,8 @@ def cmd_repair(args):
             if target != shown:
                 print(f"--- {target} worker", flush=True)
                 shown = target
+            if base.STOP.is_set():                  # dừng: không mở c0 mới, chờ chain đang chạy xong
+                pending = []
             while pending and len(running) < target:
                 c0, todo = pending.pop(0)
                 th = threading.Thread(target=job, args=(c0, todo, borrow_home()), daemon=True)
@@ -395,9 +411,12 @@ def cmd_repair(args):
         label = rec.get("result", "?") if rec["status"] == "DONE" else rec["status"]
         summary[label] = summary.get(label, 0) + 1
     print("Kết quả:", ", ".join(f"{k} {v}" for k, v in sorted(summary.items())))
-    left = sum(1 for r in latest.values() if r["status"] != "DONE")
+    left = sum(1 for r in latest.values() if r["status"] not in ("DONE", "STOPPED"))
     if left:
         print(f"Còn {left} chain không xong (INFRA/BAD_CONFIG): xem log, rồi chạy lại với --retry-infra.")
+    if base.STOP.is_set():
+        base.notify_stop(rep_dir, " ".join(["python"] + sys.argv))
+        sys.exit(3)
 
 
 def main():

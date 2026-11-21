@@ -132,6 +132,64 @@ PROCS_LOCK = threading.Lock()
 
 
 # ---------------------------------------------------------------------------
+# 0. DỪNG CẢ LÔ KHI MÔ HÌNH KHÔNG DÙNG ĐƯỢC (hết tiền, sai khóa, sai mô hình)
+# ---------------------------------------------------------------------------
+# arrow báo các lỗi này rồi dừng run (P03 §4): chạy tiếp các lần sau cũng lỗi y hệt.
+FATAL_CODES = {"B2_LLM_CONFIG", "B2_WRONG_MODEL", "B2_TOKEN_BUDGET"}
+MONEY_WORDS = ("hết tiền", "hạn mức", "402", "insufficient", "billing", "quota", "credit", "payment")
+STOP = threading.Event()        # đặt khi gặp lỗi phải dừng: không mở lần chạy mới nữa
+STOP_INFO = {}
+
+
+def fatal_of(rec):
+    """Mã lỗi phải dừng của một lần chạy (None nếu không phải)."""
+    for c in (rec.get("result"), rec.get("error_code")):
+        if c in FATAL_CODES:
+            return c
+    return None
+
+
+def mark_fatal(rec):
+    """Ghi lần chạy là STOPPED (chạy lại đúng lệnh cũ là làm lại) và bật cờ dừng cả lô."""
+    code = fatal_of(rec)
+    if not code:
+        return False
+    rec["status"] = "STOPPED"
+    text = f"{rec.get('error_message') or ''} {rec.get('error_hint') or ''}".lower()
+    money = any(w in text for w in MONEY_WORDS)
+    if not STOP.is_set():
+        STOP_INFO.update(code=code, money=money, model=rec.get("repair_model") or rec.get("model"),
+                         message=rec.get("error_message") or "", hint=rec.get("error_hint") or "")
+        STOP.set()
+    return True
+
+
+def notify_stop(out_dir, command):
+    """In banner, ghi DA_DUNG.txt và hiện cảnh báo trên màn hình (Windows: hộp thoại; macOS: thông báo)."""
+    i = STOP_INFO
+    title = ("ĐÃ DỪNG: HẾT TIỀN / HẾT HẠN MỨC" if i.get("money") else "ĐÃ DỪNG: LỖI CẤU HÌNH MÔ HÌNH") + f" ({i.get('model')})"
+    body = (f"{title}\nMã lỗi: {i.get('code')}\nThông báo của arrow: {i.get('message')} {i.get('hint')}\n\n"
+            + ("Nạp tiền vào tài khoản của mô hình trên (OpenRouter cho qwen3coder-or, TeamoRouter cho gpt6luna), "
+               if i.get("money") else "Sửa khóa hoặc cấu hình mô hình (arrow models test <tên>), ")
+            + f"rồi chạy lại ĐÚNG lệnh cũ; phần chưa xong sẽ tự chạy tiếp:\n  {command}\n")
+    print("\n" + "!" * 70 + "\n" + body + "!" * 70, flush=True)
+    try:
+        with open(os.path.join(out_dir, "DA_DUNG.txt"), "w", encoding="utf-8") as f:
+            f.write(now_iso() + "\n" + body)
+    except OSError:
+        pass
+    try:
+        if IS_WINDOWS:
+            import ctypes
+            ctypes.windll.user32.MessageBoxW(0, body, "ARROW: " + title, 0x30 | 0x1000)   # cảnh báo, luôn ở trên cùng
+        elif sys.platform == "darwin":
+            subprocess.run(["osascript", "-e", f'display notification "{title}" with title "ARROW" sound name "Basso"'],
+                           stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL, timeout=10)
+    except Exception:
+        pass
+
+
+# ---------------------------------------------------------------------------
 # 1. HÀM TIỆN ÍCH NHỎ
 # ---------------------------------------------------------------------------
 
@@ -338,6 +396,8 @@ def needs_run(key, latest, retry_infra, rerun):
     rec = latest.get(key)
     if rec is None:                                 # chưa chạy lần nào
         return True
+    if rec["status"] == "STOPPED":                  # bị dừng vì hết tiền/sai cấu hình → chạy lại khi gọi lại lệnh
+        return True
     if retry_infra and rec["status"] != "DONE":     # có --retry-infra và lần trước không xong
         return True
     return False                                    # đã xong → bỏ qua
@@ -396,12 +456,15 @@ def run_gen(arrow, task, model, strategy, home, log_dir):
     elif data is None:
         rec.update(status="INFRA", result="NO_JSON")
     elif "error" in data:                                      # arrow báo lỗi trước khi chạy xong
-        rec.update(status="INFRA", result=(data["error"] or {}).get("code") or "ERROR")
+        err = data["error"] or {}
+        rec.update(status="INFRA", result=err.get("code") or "ERROR",
+                   error_message=err.get("message"), error_hint=err.get("hint"))
     else:
         target = (data.get("targets") or [{}])[0]              # kết quả của lớp (chỉ có 1 lớp)
         result = target.get("result") or "UNKNOWN_RESULT"      # VALID, COMPILE, ..., INFRA
+        terr = target.get("error") or {}
         rec.update(run_id=data.get("run_id"), run_dir=data.get("run_dir"), result=result,
-                   error_code=(target.get("error") or {}).get("code"))
+                   error_code=terr.get("code"), error_message=terr.get("message"), error_hint=terr.get("hint"))
         rec["status"] = "INFRA" if result in ("INFRA", "CANCELLED") else "DONE"
         # ^ INFRA/CANCELLED là lỗi hạ tầng → chạy lại sau; mọi kết quả khác là xong
     return rec
@@ -448,6 +511,9 @@ def main():
     # ^ chạy khói ghi riêng vào results/<máy>-smoke để không lẫn với kết quả thật
     log_dir = os.path.join(out_dir, "logs")
     os.makedirs(log_dir, exist_ok=True)
+    stale = os.path.join(out_dir, "DA_DUNG.txt")
+    if os.path.exists(stale):                       # báo dừng của lần trước: lần này chạy lại nên xóa
+        os.remove(stale)
     runs_path = os.path.join(out_dir, "tn1_runs.jsonl")
 
     # --- Kiểm bản tool ---
@@ -566,6 +632,8 @@ def main():
         try:
             current = None                          # cách viết prompt đang đặt trong home
             for model, strategy in todo:
+                if STOP.is_set():                   # đã gặp lỗi phải dừng: bỏ phần còn lại (lần sau chạy tiếp)
+                    break
                 if strategy != current:             # chỉ đổi cấu hình khi sang cách khác
                     set_strategy(args.arrow, home, strategy)
                     current = strategy
@@ -575,6 +643,7 @@ def main():
                     rec = dict(task, model=model, strategy=strategy, status="INFRA",
                                result="SCRIPT_EXCEPTION", detail=repr(e), finished_at=now_iso())
                 rec.update(machine=args.machine, worker=os.path.basename(home), tool_commit=commit)
+                mark_fatal(rec)                     # hết tiền / sai khóa → STOPPED và dừng cả lô
                 with write_lock:                    # ghi từng dòng ngay khi xong (bị ngắt không mất)
                     with open(runs_path, "a", encoding="utf-8") as f:   # "a" = ghi thêm vào cuối file
                         f.write(json.dumps(rec, ensure_ascii=False) + "\n")
@@ -596,6 +665,8 @@ def main():
             if target != shown:
                 print(f"--- {target} worker", flush=True)
                 shown = target
+            if STOP.is_set():                                     # dừng: không mở lớp mới, chờ lớp đang chạy xong
+                pending = []
             while pending and len(running) < target:
                 task, todo = pending.pop(0)                       # pop(0) lấy phần tử đầu
                 th = threading.Thread(target=job, args=(task, todo, borrow_home()), daemon=True)
@@ -617,9 +688,12 @@ def main():
         label = rec["status"] if rec["status"] != "DONE" else rec.get("result", "?")
         summary[label] = summary.get(label, 0) + 1
     print("Kết quả:", ", ".join(f"{k} {v}" for k, v in sorted(summary.items())))
-    left = sum(1 for r in latest.values() if r["status"] != "DONE")
+    left = sum(1 for r in latest.values() if r["status"] not in ("DONE", "STOPPED"))
     if left:
         print(f"Còn {left} bộ test lỗi hạ tầng: chạy lại với --retry-infra.")
+    if STOP.is_set():
+        notify_stop(out_dir, " ".join(["python"] + sys.argv))
+        sys.exit(3)                                               # mã 3: dừng vì mô hình không dùng được
 
 
 if __name__ == "__main__":
