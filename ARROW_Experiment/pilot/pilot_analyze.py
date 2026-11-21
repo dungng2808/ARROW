@@ -21,12 +21,15 @@ Loại khỏi mẫu số:
 Cách chạy:
     python3 pilot_analyze.py                 # gộp mọi máy trong results/ (bỏ *-smoke)
     python3 pilot_analyze.py --dir results/dung-smoke     # xem thử kết quả chạy khói
+    python3 pilot_analyze.py --dir results/<máy>          # MỖI MÁY chạy trước khi nộp: ghi results/<máy>/report/*.csv
+Khi gộp, máy nào không có homes/ (của máy khác) thì số liệu từng vòng lấy từ results/<máy>/report/ đã nộp.
 Đầu ra (reports/ hoặc <dir>/report/):
     pilot_n.md        tóm tắt: N, bảng S(k), tỷ lệ mất, kiểm công bằng, thời gian
     pilot_n.csv       k, S(k), Δ(k), RSR@k gộp
     pilot_chains.csv  mỗi chain một dòng
     pilot_rounds.csv  mỗi vòng sửa một dòng (gọi mô hình, build, và từng bước build: compile, run_target, module_tests…)
     pilot_gen_timing.csv  mỗi lần sinh c0 một dòng (khối 1, gọi mô hình sinh, kiểm c0 và từng bước)
+    final_code/           mã cuối của mỗi chain sửa (chỉ ghi khi máy này có homes/; mã c0 nằm ở gen/tests/)
 """
 import argparse
 import csv
@@ -34,6 +37,7 @@ import glob
 import json
 import math
 import os
+import shutil
 import statistics
 import sys
 
@@ -108,6 +112,40 @@ def uniform(rows):
     return [{k: r.get(k, "") for k in keys} for r in rows]
 
 
+_REPORTS = {}
+
+
+def machine_report(log_dir):
+    """CSV đã gom sẵn trên máy đã chạy (results/<máy>/report/), dùng khi máy này không có homes/ của máy đó."""
+    d = os.path.dirname(os.path.dirname(log_dir))          # results/<máy>
+    if d not in _REPORTS:
+        rep = {"chains": {}, "rounds": {}, "gen": []}
+        def rd(name):
+            path = os.path.join(d, "report", name)
+            if not os.path.exists(path):
+                return []
+            with open(path, encoding="utf-8") as f:
+                return list(csv.DictReader(f))
+        for r in rd("pilot_chains.csv"):
+            rep["chains"][(r["task_id"], r["model"], r["strategy"], r["mechanism"])] = r
+        for r in rd("pilot_rounds.csv"):
+            rep["rounds"].setdefault((r["task_id"], r["model"], r["strategy"], r["mechanism"]), []).append(r)
+        rep["gen"] = rd("pilot_gen_timing.csv")
+        _REPORTS[d] = rep
+    return _REPORTS[d]
+
+
+def num(v):
+    """Chữ trong CSV → số (giữ None/rỗng)."""
+    if v in (None, ""):
+        return None
+    try:
+        f = float(v)
+        return int(f) if f.is_integer() else f
+    except ValueError:
+        return v
+
+
 def chain_rows(latest):
     """Mỗi chain → một dòng; kèm danh sách vòng sửa."""
     chains, rounds = [], []
@@ -119,7 +157,25 @@ def chain_rows(latest):
                "rounds_run": r.get("rounds_run"), "stop_reason": r.get("stop_reason"),
                "seconds": r.get("seconds"), "run_id": r.get("run_id"), "templates": "", "level_max": ""}
         b3 = os.path.join(r.get("run_dir") or "", "targets", r.get("class_fqn") or "", "block3")
+        if not os.path.isdir(b3) and r.get("_log_dir"):
+            rep = machine_report(r["_log_dir"])
+            k4 = (task_id, model, strategy, mech)
+            if k4 in rep["chains"]:                 # máy khác: dùng CSV nó đã gom và nộp
+                old = rep["chains"][k4]
+                row.update({k: num(v) for k, v in old.items() if k not in row or row[k] in (None, "")})
+                for k in ("success_round", "rounds_run"):
+                    row[k] = num(old.get(k)) if old.get(k) not in (None, "") else row[k]
+                chains.append(row)
+                rounds += [{k: num(v) if k not in ("task_id", "model", "strategy", "mechanism", "machine", "state",
+                                                    "finish_reason") else v for k, v in x.items()}
+                           for x in rep["rounds"].get(k4, [])]
+                continue
         bs = block_seconds(r, r.get("_log_dir", ""), f"{task_id}__{model}__{strategy}__{mech}")
+        if r.get("_log_dir") and os.path.exists(os.path.join(b3, "final.java")):
+            # Lưu mã cuối của chain vào results/<máy>/report/final_code/ (homes/ không lên Git)
+            fc = os.path.join(os.path.dirname(os.path.dirname(r["_log_dir"])), "report", "final_code")
+            os.makedirs(fc, exist_ok=True)
+            shutil.copyfile(os.path.join(b3, "final.java"), os.path.join(fc, f"{task_id}__{model}__{strategy}__{mech}.java"))
         vc0 = read_json(os.path.join(b3, "verify_c0.json")) or {}
         row.update(block1_s=bs.get("block1"), block3_s=bs.get("block3"), total_s=bs.get("total"),
                    c0_verify_s=vc0.get("build_seconds"), **{"c0_" + k: v for k, v in step_seconds(vc0).items()})
@@ -143,6 +199,7 @@ def chain_rows(latest):
                 levels.append(dec["level"])
             llm_s, build_s = use.get("latency_seconds"), ver.get("build_seconds", dec.get("build_seconds"))
             rounds.append({"task_id": task_id, "model": model, "strategy": strategy, "mechanism": mech, "round": k,
+                           "machine": r.get("machine"),
                            "state": ver.get("state", dec.get("state")), "level": dec.get("level"),
                            "duplicate_of_round": dec.get("duplicate_of_round"),
                            "llm_seconds": llm_s, "build_seconds": build_s,
@@ -167,8 +224,12 @@ def gen_rows(dirs):
             if line.strip():
                 r = json.loads(line)
                 latest[(r["task_id"], r["model"], r["strategy"])] = r
+        rep_gen = {(g["task_id"], g["model"], g["strategy"]): g for g in machine_report(os.path.join(d, "repair", "logs"))["gen"]}
         for (task_id, model, strategy), r in sorted(latest.items()):
             if r.get("status") != "DONE":
+                continue
+            if not os.path.isdir(r.get("run_dir") or "") and (task_id, model, strategy) in rep_gen:
+                rows.append({k: num(v) if k.endswith("_s") else v for k, v in rep_gen[(task_id, model, strategy)].items()})
                 continue
             data = read_json(os.path.join(d, "gen", "logs", f"{task_id}__{model}__{strategy}.json")) or {}
             bs = ((data.get("targets") or [{}])[0]).get("seconds") or {}
@@ -176,6 +237,7 @@ def gen_rows(dirs):
             use = read_json(os.path.join(tdir, "block2", "usage.json")) or {}
             vc0 = read_json(os.path.join(tdir, "block3", "verify_c0.json")) or {}
             rows.append({"task_id": task_id, "model": model, "strategy": strategy, "result": r.get("result"),
+                         "machine": os.path.basename(d),
                          "block1_s": bs.get("block1"), "llm_s": use.get("latency_seconds"),
                          "c0_verify_s": vc0.get("build_seconds"), "total_s": bs.get("total"), **step_seconds(vc0)})
     return rows
@@ -368,13 +430,16 @@ def main():
     L.append("## Thời gian từng công đoạn\n")
     STEPS = [("step_compile_s", "biên dịch"), ("step_run_target_s", "chạy test đích"), ("step_module_tests_s", "chạy test module")]
     models = sorted({c["model"] for c in chains})
-    L += timing_table("Sinh c0", {m: [g for g in gen if g["model"] == m] for m in sorted({g["model"] for g in gen})},
+    by = lambda rows: {f"{m} · {mc}": [x for x in rows if x["model"] == m and x.get("machine") == mc]
+                       for m, mc in sorted({(x["model"], x.get("machine")) for x in rows})}
+    L.append("_Theo mô hình · máy: máy khác nhau thì cấu hình và số worker khác nhau, chỉ so các mô hình trên cùng một máy._\n")
+    L += timing_table("Sinh c0", by(gen),
                       [("block1_s", "khối 1 (clone, phân tích, baseline)"), ("llm_s", "gọi mô hình sinh"),
                        ("c0_verify_s", "kiểm c0 (tổng build)")] + STEPS + [("total_s", "tổng")])
-    L += timing_table("Sửa: mỗi chain", {m: [c for c in used if c["model"] == m] for m in models},
+    L += timing_table("Sửa: mỗi chain", by(used),
                       [("block1_s", "khối 1"), ("c0_verify_s", "kiểm lại c0"), ("block3_s", "khối 3 (kiểm + mọi vòng sửa)"),
                        ("total_s", "tổng chain")])
-    L += timing_table("Sửa: mỗi vòng", {m: [r for r in rounds if r["model"] == m] for m in models},
+    L += timing_table("Sửa: mỗi vòng", by(rounds),
                       [("llm_seconds", "gọi mô hình sửa"), ("build_seconds", "build (tổng)")] + STEPS + [("round_seconds", "tổng vòng")])
     L.append("## Kiểm tra tính hợp lệ\n")
     L.append(f"- Chain không thành công nhưng chạy chưa đủ {K_PILOT} vòng: {len(short)}"

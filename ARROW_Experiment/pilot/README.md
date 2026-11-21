@@ -19,6 +19,10 @@ Hai loại chain bị loại khỏi mẫu số:
 - chain lỗi hạ tầng;
 - chain có c0 đã VALID khi kiểm lại (`success_round = 0`).
 
+## Chia máy
+
+`--shard k/4` chia **đều** 50 lớp (xếp theo sha256: 13/13/12/12, khác cách chia của TN1). Mỗi máy chạy **cả GPT và Qwen** trên phần của mình: Quang 1/4, Hán 2/4, Chính 3/4, Dung 4/4 (`--machine quang|han|chinh|dung`). Mỗi máy chạy gen rồi repair; `pilot_analyze.py` gộp mọi `results/<máy>/` rồi mới tính N. Máy Windows cần thêm GPT bằng `python ../1/setup_tn1.py --gpt`. Hướng dẫn cho agent: [`huong_dan_chay_pilot.md`](huong_dan_chay_pilot.md).
+
 ## Chạy
 
 ```bash

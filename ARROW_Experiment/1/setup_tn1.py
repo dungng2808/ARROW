@@ -11,7 +11,8 @@ Script làm thay các lệnh "arrow config set" (tránh lỗi gõ JSON trong Pow
 Cách chạy:
     python setup_tn1.py                                        (tự tìm JDK)
     python setup_tn1.py --jdk8 "C:\\Program Files\\Eclipse Adoptium\\jdk-8.0.432.6-hotspot" ...
-Khóa API KHÔNG nhập ở đây: tự chạy  arrow secrets set openrouter
+    python setup_tn1.py --gpt                                  (thêm GPT-6 Luna qua TeamoRouter, cho pilot)
+Khóa API KHÔNG nhập ở đây: tự chạy  arrow secrets set openrouter  (và  arrow secrets set teamo  nếu dùng --gpt)
 """
 import argparse, glob, json, os, re, shutil, subprocess, sys
 
@@ -29,6 +30,10 @@ MODEL = {"provider": "openrouter", "model_id": "qwen/qwen3-coder-30b-a3b-instruc
          "expected_model_id_prefix": "qwen/qwen3-coder-30b-a3b-instruct",
          "params": {"temperature": 0, "max_tokens": 16384,
                     "provider": {"order": ["amazon-bedrock"], "allow_fallbacks": False}}}
+# GPT-6 Luna: đúng cấu hình máy Dung đã dùng cho TN1 (không đổi tham số)
+GPT_PROVIDER = {"kind": "openai-compatible", "base_url": "https://api.teamorouter.com/v1", "secret_ref": "teamo"}
+GPT_MODEL = {"provider": "teamo", "model_id": "gpt-6-luna", "expected_model_id_prefix": "gpt-6-luna",
+             "params": {"temperature": 0, "max_tokens": 16384, "seed": 42, "reasoning_effort": "none"}}
 OK, BAD = "[OK]", "[X] "
 
 
@@ -62,6 +67,7 @@ def main():
     ap = argparse.ArgumentParser(description="Cài đặt máy để chạy TN1 Qwen.")
     for m in (8, 11, 17, 21):
         ap.add_argument(f"--jdk{m}", help=f"thư mục JDK {m} (bỏ trống để tự tìm)")
+    ap.add_argument("--gpt", action="store_true", help="thêm GPT-6 Luna qua TeamoRouter (khóa: arrow secrets set teamo)")
     args = ap.parse_args()
 
     # 1. arrow đúng bản
@@ -90,6 +96,10 @@ def main():
     arrow("config", "set", "llm.providers.openrouter", json.dumps(PROVIDER))
     arrow("config", "set", "llm.models.qwen3coder-or", json.dumps(MODEL))
     print(OK, "Model qwen3coder-or: qwen/qwen3-coder-30b-a3b-instruct · Amazon Bedrock · temperature 0")
+    if args.gpt:
+        arrow("config", "set", "llm.providers.teamo", json.dumps(GPT_PROVIDER))
+        arrow("config", "set", "llm.models.gpt6luna", json.dumps(GPT_MODEL))
+        print(OK, "Model gpt6luna: gpt-6-luna · TeamoRouter · temperature 0, seed 42, reasoning_effort none")
 
     # 5. bản sao Maven Central
     home = os.path.expanduser("~")
@@ -113,13 +123,22 @@ def main():
     if not re.search(r"^openrouter\s", arrow("secrets", "list", check=False), re.M):
         print(f"\n{BAD} Chưa có khóa OpenRouter. Chạy:  arrow secrets set openrouter   rồi chạy lại script này.")
         return
-    print("\n--- arrow models test qwen3coder-or ---")
-    out = arrow("models", "test", "qwen3coder-or", check=False).strip()
-    print(out)
-    if "OK" in out and "khớp" in out:
-        print(f"\n{OK} Máy đã sẵn sàng. Bước tiếp: chạy khói (mục 6 của huong_dan_chay_TN1.md).")
-    else:
-        print(f"\n{BAD} Model chưa trả lời đúng. Kiểm khóa và số dư OpenRouter.")
+    models = ["qwen3coder-or"]
+    if args.gpt:
+        if not re.search(r"^teamo\s", arrow("secrets", "list", check=False), re.M):
+            print(f"\n{BAD} Chưa có khóa TeamoRouter. Chạy:  arrow secrets set teamo   rồi chạy lại script này (với --gpt).")
+            return
+        models.append("gpt6luna")
+    ready = True
+    for m in models:
+        print(f"\n--- arrow models test {m} ---")
+        out = arrow("models", "test", m, check=False).strip()
+        print(out)
+        if not ("OK" in out and "khớp" in out):
+            ready = False
+            print(f"{BAD} Model {m} chưa trả lời đúng. Kiểm khóa và số dư ({'TeamoRouter' if m == 'gpt6luna' else 'OpenRouter'}).")
+    if ready:
+        print(f"\n{OK} Máy đã sẵn sàng.")
 
 
 if __name__ == "__main__":

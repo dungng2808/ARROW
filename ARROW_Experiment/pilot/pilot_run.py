@@ -20,6 +20,9 @@ Cách chạy (macOS, máy Dung):
     python3 pilot_run.py repair --machine dung --models gpt6luna,qwen3coder-or --workers 4 \\
         --arrow ~/.local/share/arrow-dev/build-tn2/arrow
 Chạy khói: thêm --limit 2 (gen: 2 lớp đầu; repair: 2 c0 đầu), kết quả vào results/<máy>-smoke/.
+Chia máy: --shard k/4 chia ĐỀU 50 lớp (13/13/12/12, xếp theo sha256, khác cách chia của TN1); mỗi máy chạy
+cả GPT và Qwen trên phần của mình (--models gpt6luna,qwen3coder-or). Bước repair đọc tn2_pool.jsonl của chính
+máy đó, nên mỗi máy sửa đúng c0 nó sinh. pilot_analyze.py gộp mọi results/<máy>/ rồi mới tính N.
 
 Chạy lại:
     - bị ngắt: chạy lại đúng lệnh cũ, script bỏ qua chain đã xong
@@ -77,13 +80,27 @@ def default_homes(machine, smoke, phase):
 # BƯỚC 1: SINH c0
 # ---------------------------------------------------------------------------
 
+def pilot_shard(k, n):
+    """Chia ĐỀU 50 lớp pilot cho n máy: xếp theo sha256(task_id) rồi lấy lần lượt (13/13/12/12 với n = 4).
+
+    Khác --shard của TN1 (phần dư của mã băm), vốn ra 13/10/22/5 với 50 lớp. Máy nào tính cũng ra cùng kết quả.
+    """
+    import hashlib
+    tasks = sorted(base.read_tasks([MANIFEST]), key=lambda t: hashlib.sha256(t["task_id"].encode()).hexdigest())
+    return [t["task_id"] for i, t in enumerate(tasks) if i % n == k - 1]
+
+
 def cmd_gen(args):
     gen_dir = os.path.join(out_root(args.machine, args.limit is not None), "gen")
+    k, n = (int(x) for x in args.shard.split("/"))
+    only = pilot_shard(k, n)
+    print(f"Phần {args.shard}: {len(only)} lớp pilot", flush=True)
     cmd = [sys.executable, "-u", os.path.join(TN1_DIR, "tn1_run.py"), "--pilot",
            "--machine", args.machine, "--models", args.models, "--workers", str(args.workers),
-           "--shard", args.shard, "--out-dir", gen_dir, "--base-home", args.base_home,
+           "--shard", "1/1", "--only", ",".join(only), "--out-dir", gen_dir, "--base-home", args.base_home,
            "--arrow", args.arrow,
-           "--homes-dir", args.homes_dir or default_homes(args.machine, args.limit is not None, "gen")]
+           "--homes-dir", os.path.join(args.homes_dir, "gen") if args.homes_dir
+           else default_homes(args.machine, args.limit is not None, "gen")]
     if args.limit is not None:
         cmd += ["--limit", str(args.limit)]
     if args.retry_infra:
@@ -228,7 +245,7 @@ def cmd_repair(args):
     gen_dir, rep_dir = os.path.join(root, "gen"), os.path.join(root, "repair")
     log_dir = os.path.join(rep_dir, "logs")
     os.makedirs(log_dir, exist_ok=True)
-    homes_root = args.homes_dir or default_homes(args.machine, smoke, "repair")
+    homes_root = os.path.join(args.homes_dir, "repair") if args.homes_dir else default_homes(args.machine, smoke, "repair")
     runs_path = os.path.join(rep_dir, "pilot_runs.jsonl")
     models = [m.strip() for m in args.models.split(",") if m.strip()]
     base.keep_awake()
@@ -389,14 +406,15 @@ def main():
     ap.add_argument("--machine", required=True, help="tên máy/người chạy (thành results/<machine>)")
     ap.add_argument("--models", required=True, help="mô hình, cách nhau dấu phẩy, ví dụ gpt6luna,qwen3coder-or")
     ap.add_argument("--workers", type=int, default=3, help="số job chạy cùng lúc (mặc định 3)")
-    ap.add_argument("--shard", default="1/1", help="gen: phần việc của máy này, ví dụ 1/2 (mặc định 1/1)")
+    ap.add_argument("--shard", default="1/1", help="gen: phần lớp pilot của máy này, chia đều, ví dụ 2/4 (mặc định 1/1)")
     ap.add_argument("--limit", type=int, help="chạy khói: gen N lớp đầu / repair N c0 đầu → results/<máy>-smoke")
     ap.add_argument("--retry-infra", action="store_true", help="chạy lại phần bị lỗi hạ tầng")
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")),
                     help="ARROW_HOME đã cấu hình mô hình, JDK, prompt (mặc định ~/.arrow)")
     ap.add_argument("--arrow", default="arrow",
                     help=f"lệnh arrow: gen cần bản {GEN_COMMIT}, repair cần bản {REPAIR_COMMIT}")
-    ap.add_argument("--homes-dir", help="nơi đặt ARROW_HOME của các worker")
+    ap.add_argument("--homes-dir", help="nơi đặt ARROW_HOME của các worker (thêm thư mục con gen/ và repair/); "
+                                        "mặc định Windows: C:\\arrow-homes\\pilot-<máy>-<bước>")
     ap.add_argument("--allow-other-version", action="store_true", help="repair: cho chạy bản tool khác (không khuyên)")
     args = ap.parse_args()
     if args.phase == "gen":
