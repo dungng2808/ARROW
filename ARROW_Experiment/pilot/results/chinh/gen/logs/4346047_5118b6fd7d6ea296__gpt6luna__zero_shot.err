@@ -1,0 +1,5 @@
+ARROW · ProxyURLToContextMapping (org.jboss.arquillian.warp.impl.client.proxy)
+[OK] Khối 1  Maven 3.5.4 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 109 test ×2 · 233.2 s
+[OK] Khối 2  c0 · 2.5k token · 6.3 s · Candidate hợp lệ: 6 test, 9 assertion
+[>] Khối 3  c0: COMPILE · class is abstract | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

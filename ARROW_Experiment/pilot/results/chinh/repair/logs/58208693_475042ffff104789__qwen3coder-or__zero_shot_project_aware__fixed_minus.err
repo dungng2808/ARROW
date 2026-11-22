@@ -1,0 +1,17 @@
+ARROW · DateTime (org.eclipse.milo.opcua.stack.core.types.builtin)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 62 test (dùng lại, đo 22/11 02:46) · 33.1 s
+[OK] Khối 2  c0 · c0 lấy từ file 58208693_475042ffff104789__qwen3coder-or__zero_shot_project_aware.java: 18 test, 27 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+          vòng 1 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 2 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 3 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 4 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 5 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 6 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 7 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 8 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 9 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 10 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 11 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+          vòng 12 · mức 1 → ASSERTION 16 pass · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 12 vòng

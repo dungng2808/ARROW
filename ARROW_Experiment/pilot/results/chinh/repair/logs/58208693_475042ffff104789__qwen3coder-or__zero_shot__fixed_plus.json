@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-025350-avcc",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w4\\runs\\20261122-025350-avcc",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime_ArrowTest",
+      "test_path": "opc-ua-stack/stack-core/src/test/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 9875,
+        "out": 2586
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 28.9,
+        "block2": 0.2,
+        "block3": 121.2,
+        "block4": null,
+        "total": 150.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 9875,
+    "tokens_out": 2586,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

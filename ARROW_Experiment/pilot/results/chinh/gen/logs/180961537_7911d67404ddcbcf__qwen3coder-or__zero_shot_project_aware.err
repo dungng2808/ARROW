@@ -1,0 +1,5 @@
+ARROW · LoansourceApplication (io.pivotal.loansource)
+[OK] Khối 1  Maven 3.6.0 · build root loansource · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 22/11 00:55) · 10.0 s
+[OK] Khối 2  c0 · 2.3k token · 8.6 s · Candidate hợp lệ: 6 test, 9 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

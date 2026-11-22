@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-005635-pqtm",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\gen\\w1\\runs\\20261122-005635-pqtm",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.myLazyClock.calendarApi.CalendarFactory",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.myLazyClock.calendarApi.CalendarFactory_ArrowTest",
+      "test_path": "server-gae/calendar-api/src/test/java/org/myLazyClock/calendarApi/CalendarFactory_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2002,
+        "out": 248
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 8.1,
+        "block2": 3.3,
+        "block3": 15.3,
+        "block4": null,
+        "total": 26.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2002,
+    "tokens_out": 248,
+    "cost_usd": null
+  },
+  "warnings": []
+}

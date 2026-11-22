@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-032947-yvn9",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w4\\runs\\20261122-032947-yvn9",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.dcm4che3.tool.findscu.FindSCU",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 6,
+      "success_round": 6,
+      "stop_reason": "valid",
+      "test_fqn": "org.dcm4che3.tool.findscu.FindSCU_ArrowTest",
+      "test_path": "dcm4che-tool/dcm4che-tool-findscu/src/test/java/org/dcm4che3/tool/findscu/FindSCU_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 58115,
+        "out": 9536
+      },
+      "cost_usd": null,
+      "llm_calls": 6,
+      "seconds": {
+        "block1": 22.4,
+        "block2": 0.3,
+        "block3": 178,
+        "block4": null,
+        "total": 200.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 6,
+    "tokens_in": 58115,
+    "tokens_out": 9536,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

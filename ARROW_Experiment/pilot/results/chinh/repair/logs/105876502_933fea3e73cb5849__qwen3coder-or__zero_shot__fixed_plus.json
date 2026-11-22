@@ -1,0 +1,52 @@
+{
+  "run_id": "20261122-014635-x8mo",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w1\\runs\\20261122-014635-x8mo",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.ec4j.core.model.PropertyType",
+      "result": "RUNTIME",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.ec4j.core.model.PropertyType_ArrowTest",
+      "test_path": "core/src/test/java/org/ec4j/core/model/PropertyType_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 101814,
+        "out": 35352
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 15.4,
+        "block2": 0.2,
+        "block3": 226.2,
+        "block4": null,
+        "total": 241.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 101814,
+    "tokens_out": 35352,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "JVM chạy test không khởi động được với JDK 8; thử JDK khác.",
+    "Module chưa có test sẵn; bước 5 chỉ kiểm tra test mới."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-023834-ry9k",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w1\\runs\\20261122-023834-ry9k",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "br.ufc.insightlab.graphast.model.Node",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "br.ufc.insightlab.graphast.model.Node_ArrowTest",
+      "test_path": "core/src/test/java/br/ufc/insightlab/graphast/model/Node_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 48864,
+        "out": 11688
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 9,
+        "block2": 0.4,
+        "block3": 186.6,
+        "block4": null,
+        "total": 196.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 48864,
+    "tokens_out": 11688,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

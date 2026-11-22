@@ -1,0 +1,6 @@
+ARROW · FileResolver (com.devskiller.jpa2ddl)
+[OK] Khối 1  Maven 3.5.3 · build root . · JDK 8 · JUnit 4 · baseline 15 test (dùng lại, đo 22/11 01:51) · 10.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 107165228_0924785415323560__gpt6luna__zero_shot_project_aware.java: 8 test, 9 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | resolveExistingMigrationsCanFilterSchemaMigrations
+          vòng 1 · mức 2 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

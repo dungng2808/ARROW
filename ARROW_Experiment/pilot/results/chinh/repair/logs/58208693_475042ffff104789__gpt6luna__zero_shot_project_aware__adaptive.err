@@ -1,0 +1,7 @@
+ARROW · DateTime (org.eclipse.milo.opcua.stack.core.types.builtin)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · TestNG · baseline 62 test (dùng lại, đo 22/11 02:46) · 26.5 s
+[OK] Khối 2  c0 · c0 lấy từ file 58208693_475042ffff104789__gpt6luna__zero_shot_project_aware.java: 8 test, 20 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testLongConstructorAndTimeConversions
+          vòng 1 · mức 1 → ASSERTION 7 pass · lên mức 2
+          vòng 2 · mức 2 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 2 vòng

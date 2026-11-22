@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-010135-r2cf",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\gen\\w4\\runs\\20261122-010135-r2cf",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime_ArrowTest",
+      "test_path": "opc-ua-stack/stack-core/src/test/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2369,
+        "out": 1432
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 17.7,
+        "block2": 4.6,
+        "block3": 15.5,
+        "block4": null,
+        "total": 37.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2369,
+    "tokens_out": 1432,
+    "cost_usd": null
+  },
+  "warnings": []
+}

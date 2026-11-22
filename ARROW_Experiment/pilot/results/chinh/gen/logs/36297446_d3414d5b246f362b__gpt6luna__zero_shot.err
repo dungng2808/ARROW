@@ -1,0 +1,5 @@
+ARROW · GenericAstrixMapReducer (com.avanza.astrix.core.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · không rõ test framework · baseline 2 test ×2 · 43.1 s
+[OK] Khối 2  c0 · 1.9k token · 9.2 s · Candidate hợp lệ: 3 test, 3 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

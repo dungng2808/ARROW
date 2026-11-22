@@ -1,0 +1,5 @@
+ARROW · CalendarFactory (org.myLazyClock.calendarApi)
+[OK] Khối 1  Maven 3.9.16 · build root server-gae · JDK 8 · JUnit 4 · baseline 1 test (dùng lại, đo 22/11 00:55) · 5.1 s
+[OK] Khối 2  c0 · 2.1k token · 5.2 s · Candidate hợp lệ: 4 test, 5 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-022451-wwwj",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w1\\runs\\20261122-022451-wwwj",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping_ArrowTest",
+      "test_path": "impl/src/test/java/org/jboss/arquillian/warp/impl/client/proxy/ProxyURLToContextMapping_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 43842,
+        "out": 10392
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 15.2,
+        "block2": 0.6,
+        "block3": 206.9,
+        "block4": null,
+        "total": 222.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 43842,
+    "tokens_out": 10392,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

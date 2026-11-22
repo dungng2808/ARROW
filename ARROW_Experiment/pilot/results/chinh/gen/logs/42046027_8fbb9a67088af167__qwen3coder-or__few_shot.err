@@ -1,0 +1,5 @@
+ARROW · CCVector4 (cc.creativecomputing.math)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 144 test (dùng lại, đo 22/11 01:20) · 11.3 s
+[OK] Khối 2  c0 · 20.2k token · 41.4 s · Candidate hợp lệ: 79 test, 286 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,17 @@
+ARROW · CalendarFactory (org.myLazyClock.calendarApi)
+[OK] Khối 1  Maven 3.9.16 · build root server-gae · JDK 8 · JUnit 4 · baseline 1 test ×2 · 16.4 s
+[OK] Khối 2  c0 · c0 lấy từ file 25453552_4e050d14922524d4__qwen3coder-or__zero_shot_project_aware.java: 6 test, 6 assertion
+[>] Khối 3  c0: COMPILE · other | -
+          vòng 1 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 4 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 5 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 6 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 7 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 8 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 9 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 10 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 11 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 12 · mức 1 → COMPILE · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

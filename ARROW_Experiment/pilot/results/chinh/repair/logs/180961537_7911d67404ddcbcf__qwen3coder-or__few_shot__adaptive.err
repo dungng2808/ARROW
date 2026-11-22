@@ -1,0 +1,18 @@
+ARROW · LoansourceApplication (io.pivotal.loansource)
+[OK] Khối 1  Maven 3.6.0 · build root loansource · JDK 8 · JUnit 4 + Mockito · baseline 2 test (dùng lại, đo 22/11 01:54) · 10.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 180961537_7911d67404ddcbcf__qwen3coder-or__few_shot.java: 4 test, 14 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → COMPILE · giữ mức
+          vòng 2 · mức 1 → COMPILE · giữ mức
+          vòng 3 · mức 1 → mã trùng vòng 1 · lên mức 2
+[!] gọi lại sau 20 s (HTTP 502)
+          vòng 4 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 5 · mức 3 → COMPILE · giữ mức
+          vòng 6 · mức 3 → COMPILE · giữ mức
+          vòng 7 · mức 3 → COMPILE · giữ mức
+          vòng 8 · mức 3 → mã trùng vòng 6 · lên mức 2
+          vòng 9 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 10 · mức 3 → mã trùng vòng 6 · lên mức 2
+          vòng 11 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 12 · mức 3 → COMPILE · giữ mức
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

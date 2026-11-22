@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-022226-wtlh",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w1\\runs\\20261122-022226-wtlh",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 6,
+      "success_round": 6,
+      "stop_reason": "valid",
+      "test_fqn": "org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping_ArrowTest",
+      "test_path": "impl/src/test/java/org/jboss/arquillian/warp/impl/client/proxy/ProxyURLToContextMapping_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 22458,
+        "out": 3384
+      },
+      "cost_usd": null,
+      "llm_calls": 6,
+      "seconds": {
+        "block1": 8.6,
+        "block2": 0.1,
+        "block3": 131.8,
+        "block4": null,
+        "total": 140.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 6,
+    "tokens_in": 22458,
+    "tokens_out": 3384,
+    "cost_usd": null
+  },
+  "warnings": []
+}

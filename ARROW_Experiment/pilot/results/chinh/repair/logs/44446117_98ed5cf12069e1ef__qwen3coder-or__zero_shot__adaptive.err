@@ -1,0 +1,17 @@
+ARROW · Node (br.ufc.insightlab.graphast.model)
+[OK] Khối 1  Maven 3.9.16 · build root core · JDK 8 · JUnit 4 · baseline 58 test (dùng lại, đo 22/11 02:34) · 6.8 s
+[OK] Khối 2  c0 · c0 lấy từ file 44446117_98ed5cf12069e1ef__qwen3coder-or__zero_shot.java: 16 test, 22 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → RUNTIME · tốt hơn · checkpoint
+          vòng 2 · mức 1 → RUNTIME · lên mức 2
+          vòng 3 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 4 · mức 3 → RUNTIME · giữ mức
+          vòng 5 · mức 3 → RUNTIME · giữ mức
+          vòng 6 · mức 3 → mã trùng vòng 5 · lên mức 2
+          vòng 7 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 8 · mức 3 → mã trùng vòng 5 · lên mức 2
+          vòng 9 · mức 2 → mã trùng vòng 5 · lên mức 3
+          vòng 10 · mức 3 → mã trùng vòng 5 · lên mức 2
+          vòng 11 · mức 2 → mã trùng vòng 5 · lên mức 3
+          vòng 12 · mức 3 → mã trùng vòng 5 · lên mức 2
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

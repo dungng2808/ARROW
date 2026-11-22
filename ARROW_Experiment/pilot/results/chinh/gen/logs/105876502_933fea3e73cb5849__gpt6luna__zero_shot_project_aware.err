@@ -1,0 +1,5 @@
+ARROW · PropertyType (org.ec4j.core.model)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 11 · JUnit 4 · baseline 0 test (dùng lại, đo 22/11 00:56) · 18.0 s
+[OK] Khối 2  c0 · 7.1k token · 35.8 s · Candidate hợp lệ: 22 test, 72 assertion
+[>] Khối 3  c0: RUNTIME · maven-surefire-plugin | -
+[X] Khối 3  Kết thúc: RUNTIME (không sửa)

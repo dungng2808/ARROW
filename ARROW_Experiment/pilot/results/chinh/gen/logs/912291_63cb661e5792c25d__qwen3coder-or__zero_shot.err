@@ -1,0 +1,5 @@
+ARROW · FindSCU (org.dcm4che3.tool.findscu)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 218 test (dùng lại, đo 22/11 01:02) · 18.9 s
+[OK] Khối 2  c0 · 6.8k token · 4.7 s · Candidate hợp lệ: 17 test, 16 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

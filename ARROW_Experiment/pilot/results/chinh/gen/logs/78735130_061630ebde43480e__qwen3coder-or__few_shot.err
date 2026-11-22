@@ -1,0 +1,5 @@
+ARROW · Embedding (de.julielab.jeseme.embeddings)
+[OK] Khối 1  Maven 3.9.16 · build root website · JDK 8 · JUnit 4 · baseline 17 test (dùng lại, đo 22/11 01:03) · 8.9 s
+[OK] Khối 2  c0 · 3.2k token · 3.6 s · Candidate hợp lệ: 5 test, 15 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

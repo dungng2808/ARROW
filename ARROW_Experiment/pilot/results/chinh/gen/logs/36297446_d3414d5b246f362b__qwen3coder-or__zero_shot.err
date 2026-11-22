@@ -1,0 +1,5 @@
+ARROW · GenericAstrixMapReducer (com.avanza.astrix.core.util)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · không rõ test framework · baseline 2 test (dùng lại, đo 22/11 01:08) · 5.1 s
+[OK] Khối 2  c0 · 2.3k token · 26.2 s · Candidate hợp lệ: 3 test, 14 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

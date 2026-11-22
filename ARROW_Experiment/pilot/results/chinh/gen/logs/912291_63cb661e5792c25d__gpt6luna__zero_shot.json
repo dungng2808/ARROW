@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-010109-40kf",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\gen\\w1\\runs\\20261122-010109-40kf",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.dcm4che3.tool.findscu.FindSCU",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.dcm4che3.tool.findscu.FindSCU_ArrowTest",
+      "test_path": "dcm4che-tool/dcm4che-tool-findscu/src/test/java/org/dcm4che3/tool/findscu/FindSCU_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 5800,
+        "out": 654
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 86.1,
+        "block2": 6.5,
+        "block3": 35.2,
+        "block4": null,
+        "total": 127.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 5800,
+    "tokens_out": 654,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

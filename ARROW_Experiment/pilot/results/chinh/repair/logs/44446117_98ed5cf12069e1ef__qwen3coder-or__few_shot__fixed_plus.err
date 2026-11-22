@@ -1,0 +1,13 @@
+ARROW · Node (br.ufc.insightlab.graphast.model)
+[OK] Khối 1  Maven 3.9.16 · build root core · JDK 8 · JUnit 4 · baseline 58 test ×2 · 28.0 s
+[OK] Khối 2  c0 · c0 lấy từ file 44446117_98ed5cf12069e1ef__qwen3coder-or__few_shot.java: 18 test, 28 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 2 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 3 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 5 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 6 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 7 · mức 1 → RUNTIME · sửa tiếp từ bản này
+          vòng 8 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 8 vòng

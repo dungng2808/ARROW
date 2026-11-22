@@ -1,0 +1,17 @@
+ARROW · FindSCU (org.dcm4che3.tool.findscu)
+[OK] Khối 1  Maven 3.9.16 · build root . · JDK 8 · JUnit 4 · baseline 218 test (dùng lại, đo 22/11 03:03) · 21.5 s
+[OK] Khối 2  c0 · c0 lấy từ file 912291_63cb661e5792c25d__qwen3coder-or__zero_shot.java: 17 test, 16 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → COMPILE · giữ mức
+          vòng 2 · mức 1 → mã trùng vòng 1 · lên mức 2
+          vòng 3 · mức 2 → ASSERTION 15 pass · tốt hơn · checkpoint
+          vòng 4 · mức 1 → mã trùng vòng 3 · lên mức 2
+          vòng 5 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 6 · mức 3 → mã trùng vòng 3 · lên mức 2
+          vòng 7 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 8 · mức 3 → mã trùng vòng 3 · lên mức 2
+          vòng 9 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 10 · mức 3 → mã trùng vòng 3 · lên mức 2
+          vòng 11 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 12 · mức 3 → mã trùng vòng 3 · lên mức 2
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 12 vòng

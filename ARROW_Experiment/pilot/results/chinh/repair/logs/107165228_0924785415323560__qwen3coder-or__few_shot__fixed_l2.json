@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-015629-r95w",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w3\\runs\\20261122-015629-r95w",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.devskiller.jpa2ddl.FileResolver",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.devskiller.jpa2ddl.FileResolver_ArrowTest",
+      "test_path": "jpa2ddl-core/src/test/java/com/devskiller/jpa2ddl/FileResolver_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 12589,
+        "out": 2877
+      },
+      "cost_usd": null,
+      "llm_calls": 4,
+      "seconds": {
+        "block1": 7.8,
+        "block2": 0.3,
+        "block3": 69.7,
+        "block4": null,
+        "total": 77.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 4,
+    "tokens_in": 12589,
+    "tokens_out": 2877,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

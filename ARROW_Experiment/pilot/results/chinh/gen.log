@@ -1,0 +1,81 @@
+Phần 3/4: 12 lớp pilot
+$ C:\Program Files\Python313\python.exe -u D:\Ky9\DoAn\DoAnArrow\ARROW_Experiment\1\tn1_run.py --pilot --machine chinh --models gpt6luna,qwen3coder-or --workers 4 --shard 1/1 --only 180961537_7911d67404ddcbcf,58208693_475042ffff104789,912291_63cb661e5792c25d,36297446_d3414d5b246f362b,107165228_0924785415323560,105876502_933fea3e73cb5849,42046027_8fbb9a67088af167,4346047_5118b6fd7d6ea296,58163050_f9d7e87c7740f31a,25453552_4e050d14922524d4,78735130_061630ebde43480e,44446117_98ed5cf12069e1ef --out-dir D:\Ky9\DoAn\DoAnArrow\ARROW_Experiment\pilot\results\chinh\gen --base-home C:\Users\Admin\AppData\Local\arrow --arrow arrow --homes-dir D:\arrow-homes\pilot-chinh\gen
+arrow 0.2.0 (commit d0f2b5c4c7e3, build 2026-11-19)
+Máy chinh · phần 1/1 · 12 lớp · mô hình ['gpt6luna', 'qwen3coder-or'] · còn 72 lần chạy (12 lớp) · 4 worker
+--- 4 worker
+[1/72] DONE  ASSERTION          36.0s  gpt6luna   zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[2/72] DONE  COMPILE            16.5s  qwen3coder-or zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[3/72] DONE  VALID              60.4s  gpt6luna   zero_shot                io.pivotal.loansource.LoansourceApplication
+[4/72] DONE  ASSERTION          21.6s  gpt6luna   few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[5/72] DONE  COMPILE            17.8s  qwen3coder-or zero_shot                io.pivotal.loansource.LoansourceApplication
+[6/72] DONE  COMPILE            17.1s  qwen3coder-or few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[7/72] DONE  RUNTIME            93.3s  gpt6luna   zero_shot                org.ec4j.core.model.PropertyType
+[8/72] DONE  VALID              39.7s  gpt6luna   few_shot                 io.pivotal.loansource.LoansourceApplication
+[9/72] DONE  VALID              29.2s  gpt6luna   zero_shot_project_aware  org.myLazyClock.calendarApi.CalendarFactory
+[10/72] DONE  COMPILE            42.2s  qwen3coder-or zero_shot                org.ec4j.core.model.PropertyType
+[11/72] DONE  COMPILE            15.4s  qwen3coder-or zero_shot_project_aware  org.myLazyClock.calendarApi.CalendarFactory
+[12/72] DONE  COMPILE            18.4s  qwen3coder-or few_shot                 io.pivotal.loansource.LoansourceApplication
+[13/72] DONE  COMPILE           162.5s  gpt6luna   zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[14/72] DONE  VALID              35.2s  gpt6luna   zero_shot_project_aware  io.pivotal.loansource.LoansourceApplication
+[15/72] DONE  RUNTIME            48.2s  gpt6luna   few_shot                 org.ec4j.core.model.PropertyType
+[16/72] DONE  COMPILE            26.8s  qwen3coder-or zero_shot_project_aware  io.pivotal.loansource.LoansourceApplication
+[17/72] DONE  COMPILE            54.3s  qwen3coder-or zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[18/72] DONE  RUNTIME            47.9s  qwen3coder-or few_shot                 org.ec4j.core.model.PropertyType
+[19/72] DONE  VALID              96.6s  gpt6luna   zero_shot                br.ufc.insightlab.graphast.model.Node
+[20/72] DONE  COMPILE            25.8s  qwen3coder-or zero_shot                br.ufc.insightlab.graphast.model.Node
+[21/72] DONE  COMPILE            54.6s  gpt6luna   few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[22/72] DONE  VALID              29.7s  gpt6luna   few_shot                 br.ufc.insightlab.graphast.model.Node
+[23/72] DONE  RUNTIME            66.2s  gpt6luna   zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[24/72] DONE  COMPILE            18.9s  qwen3coder-or few_shot                 br.ufc.insightlab.graphast.model.Node
+[25/72] DONE  COMPILE            51.2s  qwen3coder-or few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[26/72] DONE  RUNTIME            43.0s  qwen3coder-or zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[27/72] DONE  VALID              35.5s  gpt6luna   zero_shot_project_aware  br.ufc.insightlab.graphast.model.Node
+[28/72] DONE  RUNTIME            20.3s  qwen3coder-or zero_shot_project_aware  br.ufc.insightlab.graphast.model.Node
+[29/72] DONE  ASSERTION          69.3s  gpt6luna   zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[30/72] DONE  COMPILE            43.2s  qwen3coder-or zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[31/72] DONE  VALID             148.5s  gpt6luna   zero_shot                org.dcm4che3.tool.findscu.FindSCU
+[32/72] DONE  VALID              93.8s  gpt6luna   zero_shot                de.julielab.jeseme.embeddings.Embedding
+[33/72] DONE  VALID              25.6s  qwen3coder-or zero_shot                de.julielab.jeseme.embeddings.Embedding
+[34/72] DONE  COMPILE            45.9s  qwen3coder-or zero_shot                org.dcm4che3.tool.findscu.FindSCU
+[35/72] DONE  VALID              31.4s  gpt6luna   few_shot                 de.julielab.jeseme.embeddings.Embedding
+[36/72] DONE  VALID             392.9s  gpt6luna   zero_shot                org.performance.Calculator
+[37/72] DONE  COMPILE           258.1s  gpt6luna   zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[38/72] DONE  COMPILE            55.0s  gpt6luna   few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[39/72] DONE  VALID              33.0s  qwen3coder-or few_shot                 de.julielab.jeseme.embeddings.Embedding
+[40/72] DONE  COMPILE            35.7s  qwen3coder-or zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[41/72] DONE  ASSERTION          23.4s  gpt6luna   zero_shot_project_aware  de.julielab.jeseme.embeddings.Embedding
+[42/72] DONE  COMPILE            25.9s  gpt6luna   few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[43/72] DONE  VALID              33.4s  qwen3coder-or zero_shot_project_aware  de.julielab.jeseme.embeddings.Embedding
+[44/72] DONE  COMPILE            72.3s  qwen3coder-or few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[45/72] DONE  COMPILE            32.8s  qwen3coder-or few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[46/72] DONE  VALID             136.3s  qwen3coder-or zero_shot                org.performance.Calculator
+[47/72] DONE  ASSERTION          60.4s  gpt6luna   zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[48/72] DONE  VALID              54.7s  gpt6luna   zero_shot_project_aware  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[49/72] DONE  VALID              96.5s  gpt6luna   zero_shot                com.devskiller.jpa2ddl.FileResolver
+[50/72] DONE  COMPILE            34.0s  qwen3coder-or zero_shot_project_aware  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[51/72] DONE  COMPILE            51.6s  qwen3coder-or zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[52/72] DONE  VALID              31.5s  qwen3coder-or zero_shot                com.devskiller.jpa2ddl.FileResolver
+[53/72] DONE  ASSERTION          32.3s  gpt6luna   few_shot                 com.devskiller.jpa2ddl.FileResolver
+[54/72] DONE  COMPILE            62.6s  gpt6luna   zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[55/72] DONE  COMPILE            20.2s  qwen3coder-or few_shot                 com.devskiller.jpa2ddl.FileResolver
+[56/72] DONE  VALID             139.1s  gpt6luna   few_shot                 org.performance.Calculator
+[57/72] DONE  ASSERTION          21.1s  gpt6luna   zero_shot_project_aware  com.devskiller.jpa2ddl.FileResolver
+[58/72] DONE  COMPILE            37.8s  qwen3coder-or zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[59/72] DONE  COMPILE            20.0s  gpt6luna   few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[60/72] DONE  COMPILE            23.7s  qwen3coder-or few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[61/72] DONE  VALID              49.2s  qwen3coder-or zero_shot_project_aware  com.devskiller.jpa2ddl.FileResolver
+[62/72] DONE  COMPILE            14.7s  gpt6luna   zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[63/72] DONE  COMPILE            28.9s  qwen3coder-or zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[64/72] DONE  VALID             126.4s  qwen3coder-or few_shot                 org.performance.Calculator
+[65/72] DONE  VALID             136.6s  gpt6luna   zero_shot_project_aware  org.performance.Calculator
+[66/72] DONE  VALID             130.2s  qwen3coder-or zero_shot_project_aware  org.performance.Calculator
+[67/72] DONE  ASSERTION         728.8s  gpt6luna   zero_shot                cc.creativecomputing.math.CCVector4
+[68/72] DONE  VALID              64.3s  qwen3coder-or zero_shot                cc.creativecomputing.math.CCVector4
+[69/72] DONE  ASSERTION          45.5s  gpt6luna   few_shot                 cc.creativecomputing.math.CCVector4
+[70/72] DONE  VALID              77.7s  qwen3coder-or few_shot                 cc.creativecomputing.math.CCVector4
+[71/72] DONE  VALID              55.1s  gpt6luna   zero_shot_project_aware  cc.creativecomputing.math.CCVector4
+[72/72] DONE  VALID             112.4s  qwen3coder-or zero_shot_project_aware  cc.creativecomputing.math.CCVector4
+Kết quả: ASSERTION 9, COMPILE 30, RUNTIME 6, VALID 27
+gen: 72 bộ test (72 tính vào mẫu số, 0 lỗi hạ tầng/bị chặn) → tn1_candidates.csv; 45 bộ vào tn2_pool.jsonl; 72 file mã trong tests/
+
+Xong bước gen. Bước tiếp: python3 pilot_run.py repair --machine chinh --models gpt6luna,qwen3coder-or --arrow <arrow bản 203fb8e>

@@ -1,0 +1,184 @@
+arrow 0.2.0 (commit 203fb8e6bac6, build 2026-11-21)
+Máy chinh · 45 c0 · mô hình ['gpt6luna', 'qwen3coder-or'] · cơ chế ['fixed_plus', 'fixed_minus', 'fixed_l2', 'adaptive'] · 12 vòng · còn 180 chain · 4 worker
+--- 4 worker
+[1/180] DONE       RUNTIME     vòng  -/12   337.2s  gpt6luna      fixed_plus  few_shot                 org.ec4j.core.model.PropertyType
+[2/180] DONE       RUNTIME     vòng  -/12   375.7s  qwen3coder-or fixed_plus  few_shot                 org.ec4j.core.model.PropertyType
+[3/180] DONE       RUNTIME     vòng  -/12   404.3s  gpt6luna      fixed_plus  zero_shot                org.ec4j.core.model.PropertyType
+[4/180] DONE       RUNTIME     vòng  -/12   414.8s  gpt6luna      fixed_plus  zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[5/180] DONE       RUNTIME     vòng  -/12   318.6s  gpt6luna      fixed_minus few_shot                 org.ec4j.core.model.PropertyType
+[6/180] DONE       RUNTIME     vòng  -/12   304.0s  qwen3coder-or fixed_minus few_shot                 org.ec4j.core.model.PropertyType
+[7/180] DONE       RUNTIME     vòng  -/12   357.5s  gpt6luna      fixed_minus zero_shot                org.ec4j.core.model.PropertyType
+[8/180] DONE       RUNTIME     vòng  -/12   363.4s  gpt6luna      fixed_minus zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[9/180] DONE       RUNTIME     vòng  -/12   316.9s  gpt6luna      fixed_l2    few_shot                 org.ec4j.core.model.PropertyType
+[10/180] DONE       RUNTIME     vòng  -/12   294.4s  qwen3coder-or fixed_l2    few_shot                 org.ec4j.core.model.PropertyType
+[11/180] DONE       RUNTIME     vòng  -/12   317.5s  gpt6luna      fixed_l2    zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[12/180] DONE       RUNTIME     vòng  -/12   383.1s  gpt6luna      fixed_l2    zero_shot                org.ec4j.core.model.PropertyType
+[13/180] DONE       RUNTIME     vòng  -/12   209.9s  gpt6luna      adaptive    few_shot                 org.ec4j.core.model.PropertyType
+[14/180] DONE       RUNTIME     vòng  -/12   229.5s  qwen3coder-or adaptive    few_shot                 org.ec4j.core.model.PropertyType
+[15/180] DONE       RUNTIME     vòng  -/12   304.6s  gpt6luna      adaptive    zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[16/180] DONE       RUNTIME     vòng  -/12   243.8s  qwen3coder-or fixed_plus  zero_shot                org.ec4j.core.model.PropertyType
+[17/180] DONE       RUNTIME     vòng  -/12   302.6s  gpt6luna      adaptive    zero_shot                org.ec4j.core.model.PropertyType
+[18/180] DONE       VALID       vòng  1/ 1    57.5s  gpt6luna      fixed_plus  few_shot                 com.devskiller.jpa2ddl.FileResolver
+[19/180] DONE       VALID       vòng  1/ 1    36.7s  gpt6luna      fixed_minus few_shot                 com.devskiller.jpa2ddl.FileResolver
+[20/180] DONE       VALID       vòng  1/ 1    50.5s  gpt6luna      fixed_plus  zero_shot_project_aware  com.devskiller.jpa2ddl.FileResolver
+[21/180] DONE       VALID       vòng  1/ 1    37.5s  gpt6luna      fixed_l2    few_shot                 com.devskiller.jpa2ddl.FileResolver
+[22/180] DONE       VALID       vòng  1/ 1    39.9s  gpt6luna      fixed_minus zero_shot_project_aware  com.devskiller.jpa2ddl.FileResolver
+[23/180] DONE       RUNTIME     vòng  -/12   343.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[24/180] DONE       VALID       vòng  1/ 1    43.9s  gpt6luna      adaptive    few_shot                 com.devskiller.jpa2ddl.FileResolver
+[25/180] DONE       VALID       vòng  1/ 1    55.4s  gpt6luna      fixed_l2    zero_shot_project_aware  com.devskiller.jpa2ddl.FileResolver
+[26/180] DONE       VALID       vòng  2/ 2    37.2s  qwen3coder-or fixed_plus  few_shot                 com.devskiller.jpa2ddl.FileResolver
+[27/180] DONE       VALID       vòng  1/ 1    47.5s  gpt6luna      adaptive    zero_shot_project_aware  com.devskiller.jpa2ddl.FileResolver
+[28/180] DONE       RUNTIME     vòng  -/12   320.0s  qwen3coder-or fixed_minus zero_shot                org.ec4j.core.model.PropertyType
+[29/180] DONE       COMPILE     vòng  -/12   128.1s  qwen3coder-or fixed_plus  few_shot                 io.pivotal.loansource.LoansourceApplication
+[30/180] DONE       ASSERTION   vòng  -/12   160.2s  qwen3coder-or fixed_minus few_shot                 com.devskiller.jpa2ddl.FileResolver
+[31/180] DONE       VALID       vòng  3/ 3    79.9s  qwen3coder-or fixed_l2    few_shot                 com.devskiller.jpa2ddl.FileResolver
+[32/180] DONE       COMPILE     vòng  -/12   111.3s  qwen3coder-or fixed_minus few_shot                 io.pivotal.loansource.LoansourceApplication
+[33/180] DONE       VALID       vòng  2/ 2    35.1s  qwen3coder-or adaptive    few_shot                 com.devskiller.jpa2ddl.FileResolver
+[34/180] DONE       RUNTIME     vòng  -/12   349.1s  qwen3coder-or fixed_minus zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[35/180] DONE       VALID       vòng  9/ 9    98.3s  qwen3coder-or fixed_l2    few_shot                 io.pivotal.loansource.LoansourceApplication
+[36/180] DONE       COMPILE     vòng  -/12   127.3s  qwen3coder-or fixed_plus  zero_shot                io.pivotal.loansource.LoansourceApplication
+[37/180] DONE       VALID       vòng  2/ 2    49.2s  qwen3coder-or fixed_minus zero_shot                io.pivotal.loansource.LoansourceApplication
+[38/180] DONE       COMPILE     vòng  -/12   103.2s  qwen3coder-or adaptive    few_shot                 io.pivotal.loansource.LoansourceApplication
+[39/180] DONE       RUNTIME     vòng  -/12   351.1s  qwen3coder-or fixed_l2    zero_shot                org.ec4j.core.model.PropertyType
+[40/180] DONE       VALID       vòng  2/ 2    55.5s  qwen3coder-or fixed_l2    zero_shot                io.pivotal.loansource.LoansourceApplication
+[41/180] DONE       VALID       vòng  2/ 2    58.2s  qwen3coder-or fixed_plus  zero_shot_project_aware  io.pivotal.loansource.LoansourceApplication
+[42/180] DONE       RUNTIME     vòng  -/12   272.4s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[43/180] DONE       VALID       vòng  2/ 2    50.1s  qwen3coder-or fixed_minus zero_shot_project_aware  io.pivotal.loansource.LoansourceApplication
+[44/180] DONE       VALID       vòng  3/ 3    81.7s  qwen3coder-or adaptive    zero_shot                io.pivotal.loansource.LoansourceApplication
+[45/180] DONE       VALID       vòng  2/ 2    48.1s  qwen3coder-or fixed_l2    zero_shot_project_aware  io.pivotal.loansource.LoansourceApplication
+[46/180] DONE       VALID       vòng  1/ 1    38.3s  gpt6luna      fixed_plus  few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[47/180] DONE       VALID       vòng  1/ 1    25.1s  gpt6luna      fixed_minus few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[48/180] DONE       VALID       vòng  2/ 2    43.8s  qwen3coder-or adaptive    zero_shot_project_aware  io.pivotal.loansource.LoansourceApplication
+[49/180] DONE       RUNTIME     vòng  -/12   188.4s  qwen3coder-or adaptive    zero_shot                org.ec4j.core.model.PropertyType
+[50/180] DONE       VALID       vòng  1/ 1    32.7s  gpt6luna      fixed_l2    few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[51/180] DONE       VALID       vòng  1/ 1    40.6s  gpt6luna      fixed_plus  zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[52/180] DONE       VALID       vòng  1/ 1    27.5s  gpt6luna      adaptive    few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[53/180] DONE       RUNTIME     vòng  -/12   182.6s  qwen3coder-or adaptive    zero_shot_project_aware  org.ec4j.core.model.PropertyType
+[54/180] DONE       VALID       vòng  1/ 1    29.1s  gpt6luna      fixed_minus zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[55/180] DONE       VALID       vòng  1/ 1    33.0s  gpt6luna      fixed_l2    zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[56/180] DONE       COMPILE     vòng  -/12    72.7s  qwen3coder-or fixed_plus  zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[57/180] DONE       RUNTIME     vòng  -/12   121.1s  qwen3coder-or fixed_plus  few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[58/180] DONE       VALID       vòng  1/ 1    33.5s  gpt6luna      adaptive    zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[59/180] DONE       COMPILE     vòng  -/12    90.0s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.myLazyClock.calendarApi.CalendarFactory
+[60/180] DONE       COMPILE     vòng  -/12    75.6s  qwen3coder-or fixed_minus zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[61/180] DONE       COMPILE     vòng  -/12    74.7s  qwen3coder-or fixed_minus zero_shot_project_aware  org.myLazyClock.calendarApi.CalendarFactory
+[62/180] DONE       ASSERTION   vòng  -/12   120.3s  qwen3coder-or fixed_minus few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[63/180] DONE       COMPILE     vòng  -/12   120.0s  gpt6luna      fixed_plus  few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[64/180] DONE       COMPILE     vòng  -/12    72.9s  qwen3coder-or fixed_l2    zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[65/180] DONE       COMPILE     vòng  -/12    70.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.myLazyClock.calendarApi.CalendarFactory
+[66/180] DONE       COMPILE     vòng  -/12    39.6s  qwen3coder-or adaptive    zero_shot                org.myLazyClock.calendarApi.CalendarFactory
+[67/180] DONE       ASSERTION   vòng  -/12   110.3s  qwen3coder-or fixed_l2    few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[68/180] DONE       VALID       vòng  7/ 7    54.9s  qwen3coder-or adaptive    zero_shot_project_aware  org.myLazyClock.calendarApi.CalendarFactory
+[69/180] DONE       COMPILE     vòng  -/12    40.7s  qwen3coder-or adaptive    few_shot                 org.myLazyClock.calendarApi.CalendarFactory
+[70/180] DONE       COMPILE     vòng  -/12   148.6s  gpt6luna      fixed_minus few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[71/180] DONE       COMPILE     vòng  -/12   117.6s  gpt6luna      fixed_plus  zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[72/180] DONE       VALID       vòng  1/ 1    33.2s  gpt6luna      fixed_l2    few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[73/180] DONE       VALID       vòng  4/ 4    50.6s  gpt6luna      adaptive    few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[74/180] DONE       COMPILE     vòng  -/12   102.9s  qwen3coder-or fixed_plus  few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[75/180] DONE       COMPILE     vòng  -/12   150.7s  gpt6luna      fixed_plus  zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[76/180] DONE       COMPILE     vòng  -/12   109.5s  gpt6luna      fixed_minus zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[77/180] DONE       VALID       vòng  1/ 1    30.8s  gpt6luna      fixed_l2    zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[78/180] DONE       COMPILE     vòng  -/12    87.2s  qwen3coder-or fixed_plus  zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[79/180] DONE       COMPILE     vòng  -/12    91.4s  qwen3coder-or fixed_minus few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[80/180] DONE       VALID       vòng  3/ 3    44.3s  gpt6luna      adaptive    zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[81/180] DONE       COMPILE     vòng  -/12   146.2s  gpt6luna      fixed_minus zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[82/180] DONE       COMPILE     vòng  -/12    92.2s  qwen3coder-or fixed_minus zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[83/180] DONE       COMPILE     vòng  -/12    92.6s  qwen3coder-or fixed_l2    few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[84/180] DONE       VALID       vòng  1/ 1    41.5s  gpt6luna      fixed_l2    zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[85/180] DONE       COMPILE     vòng  -/12    86.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[86/180] DONE       COMPILE     vòng  -/12    53.2s  qwen3coder-or adaptive    few_shot                 com.avanza.astrix.core.util.GenericAstrixMapReducer
+[87/180] DONE       COMPILE     vòng  -/12    84.1s  qwen3coder-or fixed_l2    zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[88/180] DONE       COMPILE     vòng  -/12    74.2s  qwen3coder-or fixed_minus zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[89/180] DONE       VALID       vòng  6/ 6    99.3s  gpt6luna      adaptive    zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[90/180] DONE       COMPILE     vòng  -/12    48.6s  qwen3coder-or adaptive    zero_shot                com.avanza.astrix.core.util.GenericAstrixMapReducer
+[91/180] DONE       COMPILE     vòng  -/12    72.1s  qwen3coder-or fixed_l2    zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[92/180] DONE       COMPILE     vòng  -/12    41.7s  qwen3coder-or adaptive    zero_shot_project_aware  com.avanza.astrix.core.util.GenericAstrixMapReducer
+[93/180] DONE       VALID       vòng  2/ 2   121.8s  gpt6luna      fixed_plus  few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[94/180] DONE       VALID       vòng  1/ 1    90.6s  gpt6luna      fixed_plus  zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[95/180] DONE       VALID       vòng  2/ 2    65.0s  gpt6luna      fixed_minus few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[96/180] DONE       VALID       vòng  1/ 1    53.1s  gpt6luna      fixed_l2    few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[97/180] DONE       VALID       vòng  7/ 7   164.3s  gpt6luna      fixed_minus zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[98/180] DONE       VALID       vòng  6/ 6   143.2s  gpt6luna      adaptive    few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[99/180] DONE       VALID       vòng  1/ 1   102.0s  gpt6luna      fixed_l2    zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[100/180] DONE       VALID       vòng  1/ 1   478.4s  gpt6luna      fixed_plus  zero_shot                cc.creativecomputing.math.CCVector4
+[101/180] DONE       VALID       vòng  1/ 1    89.3s  gpt6luna      adaptive    zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[102/180] DONE       VALID       vòng  1/ 1   611.1s  gpt6luna      fixed_plus  few_shot                 cc.creativecomputing.math.CCVector4
+[103/180] DONE       VALID       vòng  1/ 1    98.4s  gpt6luna      fixed_minus zero_shot                cc.creativecomputing.math.CCVector4
+[104/180] DONE       COMPILE     vòng  -/12   225.8s  qwen3coder-or fixed_plus  few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[105/180] DONE       VALID       vòng  1/ 1    88.5s  qwen3coder-or fixed_plus  zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[106/180] DONE       VALID       vòng  1/ 1   101.0s  gpt6luna      fixed_l2    zero_shot                cc.creativecomputing.math.CCVector4
+[107/180] DONE       VALID       vòng  1/ 1   133.8s  gpt6luna      fixed_minus few_shot                 cc.creativecomputing.math.CCVector4
+[108/180] DONE       VALID       vòng  1/ 1    87.1s  qwen3coder-or fixed_minus zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[109/180] DONE       VALID       vòng  1/ 1    67.8s  qwen3coder-or fixed_l2    zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[110/180] DONE       VALID       vòng  1/ 1   107.8s  gpt6luna      adaptive    zero_shot                cc.creativecomputing.math.CCVector4
+[111/180] DONE       VALID       vòng  1/ 1   132.4s  gpt6luna      fixed_l2    few_shot                 cc.creativecomputing.math.CCVector4
+[112/180] DONE       COMPILE     vòng  -/12   202.5s  qwen3coder-or fixed_minus few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[113/180] DONE       VALID       vòng  1/ 1    87.6s  qwen3coder-or adaptive    zero_shot                org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[114/180] DONE       VALID       vòng  1/ 1    74.2s  qwen3coder-or fixed_l2    few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[115/180] DONE       VALID       vòng  1/ 1   127.1s  gpt6luna      adaptive    few_shot                 cc.creativecomputing.math.CCVector4
+[116/180] DONE       VALID       vòng  3/ 3   157.2s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[117/180] DONE       VALID       vòng  2/ 2    89.2s  qwen3coder-or adaptive    few_shot                 org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[118/180] DONE       VALID       vòng  8/ 8   171.6s  qwen3coder-or fixed_plus  few_shot                 br.ufc.insightlab.graphast.model.Node
+[119/180] DONE       VALID       vòng  3/ 3   101.0s  qwen3coder-or fixed_minus zero_shot_project_aware  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[120/180] DONE       RUNTIME     vòng  -/12   213.9s  qwen3coder-or fixed_plus  zero_shot                br.ufc.insightlab.graphast.model.Node
+[121/180] DONE       VALID       vòng  6/ 6   137.9s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[122/180] DONE       RUNTIME     vòng  -/12   228.5s  qwen3coder-or fixed_plus  zero_shot_project_aware  br.ufc.insightlab.graphast.model.Node
+[123/180] DONE       RUNTIME     vòng  -/12   202.0s  qwen3coder-or fixed_minus few_shot                 br.ufc.insightlab.graphast.model.Node
+[124/180] DONE       COMPILE     vòng  -/12    84.9s  qwen3coder-or adaptive    zero_shot_project_aware  org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping
+[125/180] DONE       COMPILE     vòng  -/12   182.9s  qwen3coder-or fixed_minus zero_shot                br.ufc.insightlab.graphast.model.Node
+[126/180] DONE       RUNTIME     vòng  -/12   199.2s  qwen3coder-or fixed_minus zero_shot_project_aware  br.ufc.insightlab.graphast.model.Node
+[127/180] DONE       ASSERTION   vòng  -/12   176.3s  qwen3coder-or fixed_l2    few_shot                 br.ufc.insightlab.graphast.model.Node
+[128/180] DONE       COMPILE     vòng  -/12   133.7s  qwen3coder-or fixed_l2    zero_shot                br.ufc.insightlab.graphast.model.Node
+[129/180] DONE       VALID       vòng  2/ 2   242.2s  gpt6luna      fixed_plus  few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[130/180] DONE       ASSERTION   vòng  -/12    88.5s  qwen3coder-or adaptive    few_shot                 br.ufc.insightlab.graphast.model.Node
+[131/180] DONE       RUNTIME     vòng  -/12    99.5s  qwen3coder-or adaptive    zero_shot                br.ufc.insightlab.graphast.model.Node
+[132/180] DONE       RUNTIME     vòng  -/12   203.0s  qwen3coder-or fixed_l2    zero_shot_project_aware  br.ufc.insightlab.graphast.model.Node
+[133/180] DONE       RUNTIME     vòng  -/12    53.5s  qwen3coder-or adaptive    zero_shot_project_aware  br.ufc.insightlab.graphast.model.Node
+[134/180] DONE       VALID       vòng  1/ 1   191.1s  gpt6luna      fixed_plus  zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[135/180] DONE       VALID       vòng  4/ 4   240.8s  gpt6luna      fixed_minus few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[136/180] DONE       VALID       vòng  1/ 1   209.8s  gpt6luna      fixed_plus  zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[137/180] DONE       VALID       vòng  2/ 2   171.1s  gpt6luna      fixed_l2    few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[138/180] DONE       VALID       vòng  1/ 1   243.3s  gpt6luna      fixed_minus zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[139/180] DONE       COMPILE     vòng  -/12   412.8s  gpt6luna      fixed_minus zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[140/180] DONE       VALID       vòng  3/ 3   201.5s  gpt6luna      adaptive    few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[141/180] DONE       VALID       vòng  1/ 1   145.3s  gpt6luna      fixed_l2    zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[142/180] DONE       VALID       vòng  1/ 1   137.4s  gpt6luna      fixed_l2    zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[143/180] DONE       ASSERTION   vòng  -/12   599.4s  qwen3coder-or fixed_plus  few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[144/180] DONE       VALID       vòng  2/ 2   158.2s  qwen3coder-or fixed_plus  zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[145/180] DONE       VALID       vòng  2/ 2   199.6s  gpt6luna      adaptive    zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[146/180] DONE       VALID       vòng  1/ 1   142.0s  gpt6luna      adaptive    zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[147/180] DONE       VALID       vòng  1/ 1    60.8s  gpt6luna      fixed_plus  zero_shot_project_aware  de.julielab.jeseme.embeddings.Embedding
+[148/180] DONE       VALID       vòng  1/ 1    39.4s  gpt6luna      fixed_minus zero_shot_project_aware  de.julielab.jeseme.embeddings.Embedding
+[149/180] DONE       VALID       vòng  1/ 1    35.7s  gpt6luna      fixed_l2    zero_shot_project_aware  de.julielab.jeseme.embeddings.Embedding
+[150/180] DONE       VALID       vòng  1/ 1    45.7s  gpt6luna      adaptive    zero_shot_project_aware  de.julielab.jeseme.embeddings.Embedding
+[151/180] DONE       COMPILE     vòng  -/12   378.1s  qwen3coder-or fixed_minus few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[152/180] DONE       COMPILE     vòng  -/12   360.6s  qwen3coder-or fixed_minus zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[153/180] DONE       VALID       vòng  2/ 2   162.4s  qwen3coder-or fixed_l2    zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[154/180] DONE       VALID       vòng  2/ 2   234.9s  gpt6luna      fixed_plus  few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[155/180] DONE       ASSERTION   vòng  -/12   574.9s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[156/180] DONE       VALID       vòng  6/ 6   304.9s  qwen3coder-or fixed_l2    few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[157/180] DONE       VALID       vòng  2/ 2   151.9s  gpt6luna      fixed_minus few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[158/180] DONE       COMPILE     vòng  -/12   203.0s  qwen3coder-or adaptive    zero_shot                org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[159/180] DONE       COMPILE     vòng  -/12   143.7s  qwen3coder-or adaptive    few_shot                 org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[160/180] DONE       VALID       vòng  2/ 2   156.8s  gpt6luna      fixed_l2    few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[161/180] DONE       VALID       vòng  1/ 1   177.1s  gpt6luna      fixed_plus  zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[162/180] DONE       VALID       vòng  2/ 2   157.1s  gpt6luna      adaptive    few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[163/180] DONE       VALID       vòng  2/ 2   154.7s  gpt6luna      fixed_minus zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[164/180] DONE       VALID       vòng  1/ 1   122.2s  gpt6luna      fixed_l2    zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[165/180] DONE       COMPILE     vòng  -/12   418.8s  qwen3coder-or fixed_plus  few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[166/180] DONE       ASSERTION   vòng  -/12   628.2s  qwen3coder-or fixed_minus zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[167/180] DONE       VALID       vòng  1/ 1   139.3s  gpt6luna      adaptive    zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[168/180] DONE       RUNTIME     vòng  -/12   476.4s  qwen3coder-or fixed_plus  zero_shot                org.dcm4che3.tool.findscu.FindSCU
+[169/180] DONE       COMPILE     vòng  -/12   415.6s  qwen3coder-or fixed_minus few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[170/180] DONE       COMPILE     vòng  -/12   324.1s  qwen3coder-or fixed_plus  zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[171/180] DONE       VALID       vòng  4/ 4   262.6s  qwen3coder-or fixed_minus zero_shot                org.dcm4che3.tool.findscu.FindSCU
+[172/180] DONE       ASSERTION   vòng  -/12   597.7s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[173/180] DONE       COMPILE     vòng  -/12   350.1s  qwen3coder-or fixed_minus zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[174/180] DONE       COMPILE     vòng  -/12   370.9s  qwen3coder-or fixed_l2    few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[175/180] DONE       ASSERTION   vòng  -/12   239.0s  qwen3coder-or adaptive    zero_shot_project_aware  org.eclipse.milo.opcua.stack.core.types.builtin.DateTime
+[176/180] DONE       RUNTIME     vòng  -/12   458.0s  qwen3coder-or fixed_l2    zero_shot                org.dcm4che3.tool.findscu.FindSCU
+[177/180] DONE       VALID       vòng  6/ 6   206.5s  qwen3coder-or fixed_l2    zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+[178/180] DONE       COMPILE     vòng  -/12   261.2s  qwen3coder-or adaptive    few_shot                 org.dcm4che3.tool.findscu.FindSCU
+[179/180] DONE       ASSERTION   vòng  -/12   134.9s  qwen3coder-or adaptive    zero_shot                org.dcm4che3.tool.findscu.FindSCU
+[180/180] DONE       COMPILE     vòng  -/12   201.4s  qwen3coder-or adaptive    zero_shot_project_aware  org.dcm4che3.tool.findscu.FindSCU
+Kết quả: ASSERTION 11, COMPILE 47, RUNTIME 34, VALID 88

@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-012342-14ia",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\gen\\w1\\runs\\20261122-012342-14ia",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "cc.creativecomputing.math.CCVector4",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "cc.creativecomputing.math.CCVector4_ArrowTest",
+      "test_path": "cc-math/src/test/java/cc/creativecomputing/math/CCVector4_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 9356,
+        "out": 2215
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 11.6,
+        "block2": 16.7,
+        "block3": 17.7,
+        "block4": null,
+        "total": 46.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 9356,
+    "tokens_out": 2215,
+    "cost_usd": null
+  },
+  "warnings": [
+    "1 file .java không đọc được (ví dụ cc-video-ffmpeg/src/main/java/cc/creativecomputing/video/ffmpeg/FFmpegFrameGrabber.java: MalformedInputException: Input length = 4).",
+    "1 file .java không đọc được (ví dụ cc-video-ffmpeg/src/main/java/cc/creativecomputing/video/ffmpeg/FFmpegFrameGrabber.java: MalformedInputException: Input length = 4)."
+  ]
+}

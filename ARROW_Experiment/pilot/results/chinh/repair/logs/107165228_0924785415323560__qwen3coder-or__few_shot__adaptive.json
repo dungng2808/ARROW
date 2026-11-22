@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-015749-8976",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w3\\runs\\20261122-015749-8976",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.devskiller.jpa2ddl.FileResolver",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "com.devskiller.jpa2ddl.FileResolver_ArrowTest",
+      "test_path": "jpa2ddl-core/src/test/java/com/devskiller/jpa2ddl/FileResolver_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 7727,
+        "out": 2343
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 6,
+        "block2": 0.2,
+        "block3": 27.4,
+        "block4": null,
+        "total": 33.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 7727,
+    "tokens_out": 2343,
+    "cost_usd": null
+  },
+  "warnings": []
+}

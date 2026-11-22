@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-025435-6f4d",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w2\\runs\\20261122-025435-6f4d",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "org.eclipse.milo.opcua.stack.core.types.builtin.DateTime_ArrowTest",
+      "test_path": "opc-ua-stack/stack-core/src/test/java/org/eclipse/milo/opcua/stack/core/types/builtin/DateTime_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 7365,
+        "out": 1285
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 26.5,
+        "block2": 0.1,
+        "block3": 166,
+        "block4": null,
+        "total": 192.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 7365,
+    "tokens_out": 1285,
+    "cost_usd": null
+  },
+  "warnings": []
+}

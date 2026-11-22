@@ -1,0 +1,5 @@
+ARROW · LoansourceApplication (io.pivotal.loansource)
+[OK] Khối 1  Maven 3.6.0 · build root loansource · JDK 8 · JUnit 4 + Mockito · baseline 2 test ×2 · 29.9 s
+[OK] Khối 2  c0 · 1.8k token · 7.4 s · Candidate hợp lệ: 2 test, 7 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

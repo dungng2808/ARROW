@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-021431-46rq",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w3\\runs\\20261122-021431-46rq",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.avanza.astrix.core.util.GenericAstrixMapReducer",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.avanza.astrix.core.util.GenericAstrixMapReducer_ArrowTest",
+      "test_path": "astrix-core/src/test/java/com/avanza/astrix/core/util/GenericAstrixMapReducer_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 8488,
+        "out": 1275
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 6.9,
+        "block2": 0.2,
+        "block3": 33.8,
+        "block4": null,
+        "total": 41
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 8488,
+    "tokens_out": 1275,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Không thấy JUnit hay TestNG trong dependency test; nên thêm JUnit vào project."
+  ]
+}

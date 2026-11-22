@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-015624-mght",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w2\\runs\\20261122-015624-mght",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "io.pivotal.loansource.LoansourceApplication",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "io.pivotal.loansource.LoansourceApplication_ArrowTest",
+      "test_path": "loansource/src/test/java/io/pivotal/loansource/LoansourceApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 32204,
+        "out": 7164
+      },
+      "cost_usd": null,
+      "llm_calls": 13,
+      "seconds": {
+        "block1": 8.2,
+        "block2": 0.2,
+        "block3": 100.2,
+        "block4": null,
+        "total": 108.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 13,
+    "tokens_in": 32204,
+    "tokens_out": 7164,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

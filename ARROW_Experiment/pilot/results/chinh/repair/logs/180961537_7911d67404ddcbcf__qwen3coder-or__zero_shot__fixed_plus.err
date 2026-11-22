@@ -1,0 +1,17 @@
+ARROW · LoansourceApplication (io.pivotal.loansource)
+[OK] Khối 1  Maven 3.6.0 · build root loansource · JDK 8 · JUnit 4 + Mockito · baseline 2 test ×2 · 28.0 s
+[OK] Khối 2  c0 · c0 lấy từ file 180961537_7911d67404ddcbcf__qwen3coder-or__zero_shot.java: 5 test, 16 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+          vòng 1 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 4 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 5 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 6 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 7 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 8 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 9 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 10 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 11 · mức 1 → COMPILE · sửa tiếp từ bản này
+          vòng 12 · mức 1 → COMPILE · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

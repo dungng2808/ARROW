@@ -1,0 +1,17 @@
+ARROW · PropertyType (org.ec4j.core.model)
+[OK] Khối 1  Maven 3.5.0 · build root . · JDK 11 · JUnit 4 · baseline 0 test (dùng lại, đo 22/11 01:27) · 15.7 s
+[OK] Khối 2  c0 · c0 lấy từ file 105876502_933fea3e73cb5849__gpt6luna__zero_shot.java: 22 test, 75 assertion
+[>] Khối 3  c0: RUNTIME · maven-surefire-plugin | -
+          vòng 1 · mức 1 → RUNTIME · lên mức 2
+          vòng 2 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 3 · mức 2 (yêu cầu 3) → mã trùng vòng 1 · lên mức 2
+          vòng 4 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 5 · mức 2 (yêu cầu 3) → mã trùng vòng 1 · lên mức 2
+          vòng 6 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 7 · mức 2 (yêu cầu 3) → mã trùng vòng 1 · lên mức 2
+          vòng 8 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 9 · mức 2 (yêu cầu 3) → mã trùng vòng 1 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 1 · lên mức 3
+          vòng 11 · mức 2 (yêu cầu 3) → mã trùng vòng 1 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 1 · lên mức 3
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

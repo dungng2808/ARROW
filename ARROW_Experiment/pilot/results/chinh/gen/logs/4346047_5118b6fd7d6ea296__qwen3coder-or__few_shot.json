@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-010605-pqyw",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\gen\\w3\\runs\\20261122-010605-pqyw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.jboss.arquillian.warp.impl.client.proxy.ProxyURLToContextMapping_ArrowTest",
+      "test_path": "impl/src/test/java/org/jboss/arquillian/warp/impl/client/proxy/ProxyURLToContextMapping_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3180,
+        "out": 846
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.6,
+        "block2": 7.4,
+        "block3": 10.6,
+        "block4": null,
+        "total": 30.7
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3180,
+    "tokens_out": 846,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

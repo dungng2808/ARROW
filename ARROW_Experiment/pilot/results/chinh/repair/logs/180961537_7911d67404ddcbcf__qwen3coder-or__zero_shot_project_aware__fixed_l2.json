@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-020327-iwf6",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w2\\runs\\20261122-020327-iwf6",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "io.pivotal.loansource.LoansourceApplication",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "io.pivotal.loansource.LoansourceApplication_ArrowTest",
+      "test_path": "loansource/src/test/java/io/pivotal/loansource/LoansourceApplication_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6708,
+        "out": 1266
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 10.7,
+        "block2": 0.2,
+        "block3": 35,
+        "block4": null,
+        "total": 46
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 6708,
+    "tokens_out": 1266,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

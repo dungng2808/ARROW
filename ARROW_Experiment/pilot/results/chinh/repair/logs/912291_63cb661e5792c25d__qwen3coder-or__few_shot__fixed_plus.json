@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-031002-idzw",
+  "run_dir": "D:\\arrow-homes\\pilot-chinh\\repair\\w1\\runs\\20261122-031002-idzw",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.dcm4che3.tool.findscu.FindSCU",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.dcm4che3.tool.findscu.FindSCU_ArrowTest",
+      "test_path": "dcm4che-tool/dcm4che-tool-findscu/src/test/java/org/dcm4che3/tool/findscu/FindSCU_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 101157,
+        "out": 12866
+      },
+      "cost_usd": null,
+      "llm_calls": 13,
+      "seconds": {
+        "block1": 76.1,
+        "block2": 0.2,
+        "block3": 327.1,
+        "block4": null,
+        "total": 403.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 13,
+    "tokens_in": 101157,
+    "tokens_out": 12866,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}
