@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-020931-b04k",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w1\\runs\\20261122-020931-b04k",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.alibaba.dubbo.rpc.cluster.router.condition.ConditionRouter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.alibaba.dubbo.rpc.cluster.router.condition.ConditionRouter_ArrowTest",
+      "test_path": "dubbo-cluster/src/test/java/com/alibaba/dubbo/rpc/cluster/router/condition/ConditionRouter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3599,
+        "out": 1636
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 102,
+        "block2": 4.6,
+        "block3": 26.3,
+        "block4": null,
+        "total": 133
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3599,
+    "tokens_out": 1636,
+    "cost_usd": null
+  },
+  "warnings": [
+    "JVM chạy test không khởi động được với JDK 17; thử JDK khác.",
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

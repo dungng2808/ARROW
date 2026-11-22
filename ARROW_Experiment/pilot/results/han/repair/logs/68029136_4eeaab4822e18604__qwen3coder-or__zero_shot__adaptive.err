@@ -1,0 +1,17 @@
+ARROW · ApplicationResolver (ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 1402 test (dùng lại, đo 22-11 07:20) · 55.6 s
+[OK] Khối 2  c0 · c0 lấy từ file 68029136_4eeaab4822e18604__qwen3coder-or__zero_shot.java: 5 test, 11 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+          vòng 1 · mức 1 → COMPILE · tệ hơn · rollback, lên mức 2
+          vòng 2 · mức 2 → COMPILE · giữ mức
+          vòng 3 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 4 · mức 3 → COMPILE · lên mức 2
+          vòng 5 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 6 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 7 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 8 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 9 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 10 · mức 3 → mã trùng vòng 4 · lên mức 2
+          vòng 11 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 12 · mức 3 → mã trùng vòng 4 · lên mức 2
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

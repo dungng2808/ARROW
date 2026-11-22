@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-090649-j12e",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w2\\runs\\20261122-090649-j12e",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "morfologik.stemming.DictionaryLookup",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "morfologik.stemming.DictionaryLookup_ArrowTest",
+      "test_path": "morfologik-stemming/src/test/java/morfologik/stemming/DictionaryLookup_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 61306,
+        "out": 7040
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 20.1,
+        "block2": 1.2,
+        "block3": 164.5,
+        "block4": null,
+        "total": 186
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 61306,
+    "tokens_out": 7040,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

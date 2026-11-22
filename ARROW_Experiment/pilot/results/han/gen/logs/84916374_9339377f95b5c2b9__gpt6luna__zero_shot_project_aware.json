@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-020145-mwv0",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w4\\runs\\20261122-020145-mwv0",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.apache.rocketmq.flink.common.selector.SimpleTopicSelector",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.apache.rocketmq.flink.common.selector.SimpleTopicSelector_ArrowTest",
+      "test_path": "rocketmq-flink/src/test/java/org/apache/rocketmq/flink/common/selector/SimpleTopicSelector_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2051,
+        "out": 500
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 15.3,
+        "block2": 5.5,
+        "block3": 33.4,
+        "block4": null,
+        "total": 54.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2051,
+    "tokens_out": 500,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

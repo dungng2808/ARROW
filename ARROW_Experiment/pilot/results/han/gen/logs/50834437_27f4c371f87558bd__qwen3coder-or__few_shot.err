@@ -1,0 +1,5 @@
+ARROW · SuffixedCatalogMapper (com.orange.cloud.servicebroker.filter.core.service.mapper)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 19 test (dùng lại, đo 22-11 01:46) · 31.5 s
+[OK] Khối 2  c0 · 4.1k token · 3.4 s · Candidate hợp lệ: 4 test, 32 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

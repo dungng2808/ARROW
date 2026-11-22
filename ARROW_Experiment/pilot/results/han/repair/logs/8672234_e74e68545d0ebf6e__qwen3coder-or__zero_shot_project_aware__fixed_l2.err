@@ -1,0 +1,17 @@
+ARROW · DictionaryLookup (morfologik.stemming)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 26 test (dùng lại, đo 22-11 08:39) · 12.4 s
+[OK] Khối 2  c0 · c0 lấy từ file 8672234_e74e68545d0ebf6e__qwen3coder-or__zero_shot_project_aware.java: 6 test, 9 assertion
+[>] Khối 3  c0: COMPILE · class is abstract | -
+          vòng 1 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 3 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 4 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 5 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 6 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 7 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 8 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 9 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 10 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 11 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 12 · mức 2 → COMPILE · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

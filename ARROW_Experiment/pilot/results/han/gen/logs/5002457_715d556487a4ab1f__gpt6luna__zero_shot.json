@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-015706-4nxg",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w2\\runs\\20261122-015706-4nxg",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic_ArrowTest",
+      "test_path": "noisemodelling-emission/src/test/java/org/noise_planet/noisemodelling/emission/EvaluateRoadSourceDynamic_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 16181,
+        "out": 585
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 109.3,
+        "block2": 6.1,
+        "block3": 57.4,
+        "block4": null,
+        "total": 172.9
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 16181,
+    "tokens_out": 585,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

@@ -1,0 +1,5 @@
+ARROW · RangeCondition (com.github.robozonky.strategy.natural.conditions)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 837 test (dùng lại, đo 22-11 01:40) · 54.4 s
+[OK] Khối 2  c0 · 4.2k token · 10.5 s · Candidate hợp lệ: 14 test, 23 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

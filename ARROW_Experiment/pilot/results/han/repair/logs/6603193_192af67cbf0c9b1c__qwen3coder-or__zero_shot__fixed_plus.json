@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-070345-oofk",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w1\\runs\\20261122-070345-oofk",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.miguelfonseca.completely.text.match.EqualityAutomaton",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "com.miguelfonseca.completely.text.match.EqualityAutomaton_ArrowTest",
+      "test_path": "core/src/test/java/com/miguelfonseca/completely/text/match/EqualityAutomaton_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 8594,
+        "out": 2023
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 11.5,
+        "block2": 0.4,
+        "block3": 67.1,
+        "block4": null,
+        "total": 79.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 8594,
+    "tokens_out": 2023,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

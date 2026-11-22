@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-015228-s6jz",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w2\\runs\\20261122-015228-s6jz",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.miguelfonseca.completely.text.match.EqualityAutomaton",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.miguelfonseca.completely.text.match.EqualityAutomaton_ArrowTest",
+      "test_path": "core/src/test/java/com/miguelfonseca/completely/text/match/EqualityAutomaton_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1408,
+        "out": 552
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 31.5,
+        "block2": 5.1,
+        "block3": 27.1,
+        "block4": null,
+        "total": 63.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1408,
+    "tokens_out": 552,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

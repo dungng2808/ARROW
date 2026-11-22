@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-075716-sxdq",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w1\\runs\\20261122-075716-sxdq",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates.ApplicationResolver",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 6,
+      "success_round": 6,
+      "stop_reason": "valid",
+      "test_fqn": "ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates.ApplicationResolver_ArrowTest",
+      "test_path": "AMW_business/src/test/java/ch/puzzle/itc/mobiliar/business/generator/control/extracted/templates/ApplicationResolver_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 25474,
+        "out": 2481
+      },
+      "cost_usd": null,
+      "llm_calls": 6,
+      "seconds": {
+        "block1": 65.7,
+        "block2": 0.5,
+        "block3": 961.8,
+        "block4": null,
+        "total": 1028.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 6,
+    "tokens_in": 25474,
+    "tokens_out": 2481,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback.",
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-022546-k133",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w2\\runs\\20261122-022546-k133",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "javaeetutorial.standalone.ejb.StandaloneBean",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "javaeetutorial.standalone.ejb.StandaloneBean_ArrowTest",
+      "test_path": "ejb/standalone/src/test/java/javaeetutorial/standalone/ejb/StandaloneBean_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1844,
+        "out": 73
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 11.8,
+        "block2": 2.1,
+        "block3": 163.1,
+        "block4": null,
+        "total": 177.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1844,
+    "tokens_out": 73,
+    "cost_usd": null
+  },
+  "warnings": []
+}

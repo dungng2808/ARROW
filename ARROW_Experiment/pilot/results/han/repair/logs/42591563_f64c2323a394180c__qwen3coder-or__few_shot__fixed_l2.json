@@ -1,0 +1,52 @@
+{
+  "run_id": "20261122-040403-x2rt",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w1\\runs\\20261122-040403-x2rt",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator_ArrowTest",
+      "test_path": "web/src/test/java/org/cbioportal/genome_nexus/web/validation/GenomicLocationValidator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 42540,
+        "out": 12696
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 159.4,
+        "block2": 0.5,
+        "block3": 603.2,
+        "block4": null,
+        "total": 763.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 42540,
+    "tokens_out": 12696,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback.",
+    "JVM chạy test không khởi động được với JDK 8; thử JDK khác.",
+    "JVM chạy test không khởi động được với JDK 11; thử JDK khác."
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-044555-u7d4",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w2\\runs\\20261122-044555-u7d4",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator",
+      "result": "DISCOVERY",
+      "c0_state": "DISCOVERY",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator_ArrowTest",
+      "test_path": "web/src/test/java/org/cbioportal/genome_nexus/web/validation/GenomicLocationValidator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 39605,
+        "out": 10260
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 91.9,
+        "block2": 0.3,
+        "block3": 76.6,
+        "block4": null,
+        "total": 169
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 39605,
+    "tokens_out": 10260,
+    "cost_usd": null
+  },
+  "warnings": []
+}

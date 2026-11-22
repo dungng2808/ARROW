@@ -1,0 +1,5 @@
+ARROW · ConditionRouter (com.alibaba.dubbo.rpc.cluster.router.condition)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 722 test (dùng lại, đo 22-11 01:54) · 107.2 s
+[OK] Khối 2  c0 · 5.8k token · 23.1 s · Candidate hợp lệ: 11 test, 11 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

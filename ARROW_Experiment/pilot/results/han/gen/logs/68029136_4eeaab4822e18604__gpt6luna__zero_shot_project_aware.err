@@ -1,0 +1,5 @@
+ARROW · ApplicationResolver (ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 1402 test (dùng lại, đo 22-11 01:46) · 63.6 s
+[OK] Khối 2  c0 · 3.2k token · 4.6 s · Candidate hợp lệ: 2 test, 4 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | class
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

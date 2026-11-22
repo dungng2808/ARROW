@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-045201-l05j",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w3\\runs\\20261122-045201-l05j",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.tqmall.search.commons.nlp.TraditionToSimple",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "com.tqmall.search.commons.nlp.TraditionToSimple_ArrowTest",
+      "test_path": "commons-nlp/src/test/java/com/tqmall/search/commons/nlp/TraditionToSimple_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3710,
+        "out": 614
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 39.2,
+        "block2": 0.3,
+        "block3": 52.9,
+        "block4": null,
+        "total": 92.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3710,
+    "tokens_out": 614,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "Có 2 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

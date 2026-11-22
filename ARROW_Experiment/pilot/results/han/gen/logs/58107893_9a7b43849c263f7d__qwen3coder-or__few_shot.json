@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-014548-1lpe",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w2\\runs\\20261122-014548-1lpe",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.github.robozonky.strategy.natural.conditions.RangeCondition",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.github.robozonky.strategy.natural.conditions.RangeCondition_ArrowTest",
+      "test_path": "robozonky-strategy-natural/src/test/java/com/github/robozonky/strategy/natural/conditions/RangeCondition_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3854,
+        "out": 2108
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 54.6,
+        "block2": 24.6,
+        "block3": 47.6,
+        "block4": null,
+        "total": 127
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3854,
+    "tokens_out": 2108,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test few_shot (prompts.strategy): model chỉ có 2 ví dụ cố định (JUnit 4, JUnit 5), không được biết cấu hình project."
+  ]
+}

@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-063348-tewg",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w2\\runs\\20261122-063348-tewg",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "it.geosolutions.jaiext.BufferedImageAdapter",
+      "result": "ASSERTION",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "it.geosolutions.jaiext.BufferedImageAdapter_ArrowTest",
+      "test_path": "jt-utilities/src/test/java/it/geosolutions/jaiext/BufferedImageAdapter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 43492,
+        "out": 12427
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 23,
+        "block2": 0.6,
+        "block3": 366.8,
+        "block4": null,
+        "total": 390.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 43492,
+    "tokens_out": 12427,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

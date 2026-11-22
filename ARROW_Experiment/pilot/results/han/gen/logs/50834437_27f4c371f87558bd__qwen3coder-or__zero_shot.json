@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-014813-i0sp",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w4\\runs\\20261122-014813-i0sp",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper_ArrowTest",
+      "test_path": "service-broker-filter-core/src/test/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1747,
+        "out": 1219
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 27.8,
+        "block2": 4.7,
+        "block3": 21,
+        "block4": null,
+        "total": 53.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1747,
+    "tokens_out": 1219,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Quy trình sinh test zero_shot (prompts.strategy): model không được biết cấu hình project, kể cả test framework."
+  ]
+}

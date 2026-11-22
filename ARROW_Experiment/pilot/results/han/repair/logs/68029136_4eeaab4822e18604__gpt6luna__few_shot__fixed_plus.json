@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-070807-bwss",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w3\\runs\\20261122-070807-bwss",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates.ApplicationResolver",
+      "result": "RUNTIME",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "ch.puzzle.itc.mobiliar.business.generator.control.extracted.templates.ApplicationResolver_ArrowTest",
+      "test_path": "AMW_business/src/test/java/ch/puzzle/itc/mobiliar/business/generator/control/extracted/templates/ApplicationResolver_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 41406,
+        "out": 2934
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 640.6,
+        "block2": 0.4,
+        "block3": 1253.9,
+        "block4": null,
+        "total": 1895.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 41406,
+    "tokens_out": 2934,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

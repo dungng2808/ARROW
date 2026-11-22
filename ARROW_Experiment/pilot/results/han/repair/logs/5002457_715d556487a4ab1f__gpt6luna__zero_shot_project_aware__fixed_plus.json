@@ -1,0 +1,53 @@
+{
+  "run_id": "20261122-041110-1n0s",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w4\\runs\\20261122-041110-1n0s",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 3,
+      "success_round": 3,
+      "stop_reason": "valid",
+      "test_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic_ArrowTest",
+      "test_path": "noisemodelling-emission/src/test/java/org/noise_planet/noisemodelling/emission/EvaluateRoadSourceDynamic_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 53243,
+        "out": 1513
+      },
+      "cost_usd": null,
+      "llm_calls": 3,
+      "seconds": {
+        "block1": 78.9,
+        "block2": 0.3,
+        "block3": 114,
+        "block4": null,
+        "total": 193.4
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 1"
+      ],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 3,
+    "tokens_in": 53243,
+    "tokens_out": 1513,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "EvaluateRoadSourceDynamic: 1 test method đã bị bỏ trong lúc sửa: evaluateReturnsFiniteNoiseLevelForValidParameters"
+  ]
+}

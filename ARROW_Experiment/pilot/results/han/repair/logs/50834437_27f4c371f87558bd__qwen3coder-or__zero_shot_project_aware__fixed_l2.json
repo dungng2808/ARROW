@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-050741-7a7h",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w2\\runs\\20261122-050741-7a7h",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper",
+      "result": "ASSERTION",
+      "c0_state": "ASSERTION",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper_ArrowTest",
+      "test_path": "service-broker-filter-core/src/test/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 52236,
+        "out": 17076
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 26.1,
+        "block2": 1.1,
+        "block3": 530,
+        "block4": null,
+        "total": 557.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 52236,
+    "tokens_out": 17076,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_l2 (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 2, không checkpoint, không rollback."
+  ]
+}

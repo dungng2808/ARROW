@@ -1,0 +1,53 @@
+{
+  "run_id": "20261122-042549-sv1v",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w4\\runs\\20261122-042549-sv1v",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic_ArrowTest",
+      "test_path": "noisemodelling-emission/src/test/java/org/noise_planet/noisemodelling/emission/EvaluateRoadSourceDynamic_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 227134,
+        "out": 10355
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 20.3,
+        "block2": 0.5,
+        "block3": 242.9,
+        "block4": null,
+        "total": 263.8
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 2"
+      ],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 227134,
+    "tokens_out": 10355,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback.",
+    "EvaluateRoadSourceDynamic: 2 test method đã bị bỏ trong lúc sửa: testGetRoadSpeedMin, testGetRoadSpeedMax"
+  ]
+}

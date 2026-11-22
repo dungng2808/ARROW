@@ -1,0 +1,5 @@
+ARROW · NliDescriptionsUtils (il.ac.technion.nlp.nli.core)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 20 test (dùng lại, đo 22-11 01:37) · 36.0 s
+[OK] Khối 2  c0 · 4.4k token · 3.6 s · Candidate hợp lệ: 12 test, 27 assertion
+[>] Khối 3  c0: COMPILE · other | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)

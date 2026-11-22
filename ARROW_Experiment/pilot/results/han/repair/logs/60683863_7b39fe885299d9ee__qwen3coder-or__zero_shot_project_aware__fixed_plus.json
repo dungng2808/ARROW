@@ -1,0 +1,52 @@
+{
+  "run_id": "20261122-065004-sjnf",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w2\\runs\\20261122-065004-sjnf",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "com.alibaba.dubbo.rpc.cluster.router.condition.ConditionRouter",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "com.alibaba.dubbo.rpc.cluster.router.condition.ConditionRouter_ArrowTest",
+      "test_path": "dubbo-cluster/src/test/java/com/alibaba/dubbo/rpc/cluster/router/condition/ConditionRouter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 70526,
+        "out": 20063
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 222.2,
+        "block2": 0.8,
+        "block3": 451.3,
+        "block4": null,
+        "total": 674.6
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 70526,
+    "tokens_out": 20063,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "JVM chạy test không khởi động được với JDK 17; thử JDK khác.",
+    "Có 1 test fail sẵn trong module; các test này không dùng để kết luận regression."
+  ]
+}

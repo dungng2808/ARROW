@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-023212-z1zt",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w2\\runs\\20261122-023212-z1zt",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils",
+      "result": "ASSERTION",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils_ArrowTest",
+      "test_path": "core/src/test/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 46081,
+        "out": 9678
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 121.4,
+        "block2": 0.3,
+        "block3": 673.7,
+        "block4": null,
+        "total": 795.5
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 46081,
+    "tokens_out": 9678,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback."
+  ]
+}

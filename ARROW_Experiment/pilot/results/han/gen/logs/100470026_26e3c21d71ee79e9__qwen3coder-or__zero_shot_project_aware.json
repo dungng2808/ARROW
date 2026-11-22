@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-022851-im8p",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w2\\runs\\20261122-022851-im8p",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "javaeetutorial.standalone.ejb.StandaloneBean",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "javaeetutorial.standalone.ejb.StandaloneBean_ArrowTest",
+      "test_path": "ejb/standalone/src/test/java/javaeetutorial/standalone/ejb/StandaloneBean_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1847,
+        "out": 72
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 11.7,
+        "block2": 1.6,
+        "block3": 158.7,
+        "block4": null,
+        "total": 172.1
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1847,
+    "tokens_out": 72,
+    "cost_usd": null
+  },
+  "warnings": []
+}

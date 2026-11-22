@@ -1,0 +1,5 @@
+ARROW · SimpleTopicSelector (org.apache.rocketmq.flink.common.selector)
+[OK] Khối 1  Maven 3.9.9 · build root rocketmq-flink · JDK 8 · JUnit 4 + Mockito · baseline 7 test (dùng lại, đo 22-11 01:57) · 15.3 s
+[OK] Khối 2  c0 · 2.6k token · 4.8 s · Candidate hợp lệ: 6 test, 6 assertion
+[OK] Khối 3  c0: VALID
+[OK] Khối 3  Kết thúc: VALID (không sửa)

@@ -1,0 +1,17 @@
+ARROW · GenomicLocationValidator (org.cbioportal.genome_nexus.web.validation)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 4 test ×2 · 97.7 s
+[OK] Khối 2  c0 · c0 lấy từ file 42591563_f64c2323a394180c__gpt6luna__zero_shot_project_aware.java: 7 test, 7 assertion
+[>] Khối 3  c0: DISCOVERY · no tests executed | -
+          vòng 1 · mức 1 → mã trùng vòng 0 · lên mức 2
+          vòng 2 · mức 2 → mã trùng vòng 0 · lên mức 3
+          vòng 3 · mức 2 (yêu cầu 3) → DISCOVERY · lên mức 2
+          vòng 4 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 5 · mức 2 (yêu cầu 3) → mã trùng vòng 3 · lên mức 2
+          vòng 6 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 7 · mức 2 (yêu cầu 3) → mã trùng vòng 3 · lên mức 2
+          vòng 8 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 9 · mức 2 (yêu cầu 3) → mã trùng vòng 3 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 3 · lên mức 3
+          vòng 11 · mức 2 (yêu cầu 3) → mã trùng vòng 0 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 3 · lên mức 3
+[X] Khối 3  Kết thúc (budget): DISCOVERY sau 12 vòng

@@ -1,0 +1,5 @@
+ARROW · GenomicLocationValidator (org.cbioportal.genome_nexus.web.validation)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 3 test ×2 · 181.8 s
+[OK] Khối 2  c0 · 1.8k token · 7.5 s · Candidate hợp lệ: 6 test, 6 assertion
+[>] Khối 3  c0: DISCOVERY · no tests executed | -
+[X] Khối 3  Kết thúc: DISCOVERY (không sửa)

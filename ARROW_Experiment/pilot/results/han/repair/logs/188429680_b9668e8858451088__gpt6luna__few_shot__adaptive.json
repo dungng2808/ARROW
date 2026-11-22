@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-030618-daal",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w1\\runs\\20261122-030618-daal",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils",
+      "result": "ASSERTION",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils_ArrowTest",
+      "test_path": "core/src/test/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 47598,
+        "out": 6836
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 31.4,
+        "block2": 0.2,
+        "block3": 222.5,
+        "block4": null,
+        "total": 254.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 47598,
+    "tokens_out": 6836,
+    "cost_usd": null
+  },
+  "warnings": []
+}

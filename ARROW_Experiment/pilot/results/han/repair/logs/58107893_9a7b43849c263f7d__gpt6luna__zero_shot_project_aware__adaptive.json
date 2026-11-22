@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-054545-y79r",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w1\\runs\\20261122-054545-y79r",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.robozonky.strategy.natural.conditions.RangeCondition",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 4,
+      "success_round": 4,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.robozonky.strategy.natural.conditions.RangeCondition_ArrowTest",
+      "test_path": "robozonky-strategy-natural/src/test/java/com/github/robozonky/strategy/natural/conditions/RangeCondition_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 25278,
+        "out": 4942
+      },
+      "cost_usd": null,
+      "llm_calls": 4,
+      "seconds": {
+        "block1": 53.4,
+        "block2": 1,
+        "block3": 443.6,
+        "block4": null,
+        "total": 498.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 4,
+    "tokens_in": 25278,
+    "tokens_out": 4942,
+    "cost_usd": null
+  },
+  "warnings": []
+}

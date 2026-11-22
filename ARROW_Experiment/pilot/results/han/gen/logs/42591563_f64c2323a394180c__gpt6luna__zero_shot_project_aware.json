@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-020806-1hjf",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w3\\runs\\20261122-020806-1hjf",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator",
+      "result": "DISCOVERY",
+      "c0_state": "DISCOVERY",
+      "rounds_run": 0,
+      "success_round": null,
+      "stop_reason": null,
+      "test_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator_ArrowTest",
+      "test_path": "web/src/test/java/org/cbioportal/genome_nexus/web/validation/GenomicLocationValidator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 1784,
+        "out": 387
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 29.2,
+        "block2": 8.6,
+        "block3": 42.2,
+        "block4": null,
+        "total": 80.2
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 1784,
+    "tokens_out": 387,
+    "cost_usd": null
+  },
+  "warnings": []
+}

@@ -1,0 +1,53 @@
+{
+  "run_id": "20261122-023213-maxh",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w4\\runs\\20261122-023213-maxh",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils",
+      "result": "COMPILE",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "il.ac.technion.nlp.nli.core.NliDescriptionsUtils_ArrowTest",
+      "test_path": "core/src/test/java/il/ac/technion/nlp/nli/core/NliDescriptionsUtils_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 48296,
+        "out": 12216
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 95.8,
+        "block2": 0.3,
+        "block3": 311.5,
+        "block4": null,
+        "total": 407.9
+      },
+      "error": null,
+      "warnings": [
+        "dropped_methods: 1"
+      ],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 48296,
+    "tokens_out": 12216,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_plus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1, không checkpoint, không rollback.",
+    "NliDescriptionsUtils: 1 test method đã bị bỏ trong lúc sửa: testGenerateDescriptionsFromAnnotation"
+  ]
+}

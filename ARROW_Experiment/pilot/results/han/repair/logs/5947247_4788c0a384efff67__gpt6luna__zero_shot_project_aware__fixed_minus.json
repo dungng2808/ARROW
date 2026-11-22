@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-055801-10n8",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w1\\runs\\20261122-055801-10n8",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "it.geosolutions.jaiext.BufferedImageAdapter",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 2,
+      "success_round": 2,
+      "stop_reason": "valid",
+      "test_fqn": "it.geosolutions.jaiext.BufferedImageAdapter_ArrowTest",
+      "test_path": "jt-utilities/src/test/java/it/geosolutions/jaiext/BufferedImageAdapter_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 6841,
+        "out": 1717
+      },
+      "cost_usd": null,
+      "llm_calls": 2,
+      "seconds": {
+        "block1": 20.3,
+        "block2": 0.4,
+        "block3": 119.6,
+        "block4": null,
+        "total": 140.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 2,
+    "tokens_in": 6841,
+    "tokens_out": 1717,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

@@ -1,0 +1,17 @@
+ARROW · SuffixedCatalogMapper (com.orange.cloud.servicebroker.filter.core.service.mapper)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 19 test (dùng lại, đo 22-11 04:46) · 24.2 s
+[OK] Khối 2  c0 · c0 lấy từ file 50834437_27f4c371f87558bd__qwen3coder-or__zero_shot.java: 5 test, 36 assertion
+[>] Khối 3  c0: COMPILE · has private access | -
+          vòng 1 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 2 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 3 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 4 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 5 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 6 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 7 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 8 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 9 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 10 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 11 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+          vòng 12 · mức 2 → ASSERTION 3 pass · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 12 vòng

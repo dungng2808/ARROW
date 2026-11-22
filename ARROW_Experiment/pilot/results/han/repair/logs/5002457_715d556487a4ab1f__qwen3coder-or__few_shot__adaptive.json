@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-043441-789l",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w4\\runs\\20261122-043441-789l",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic",
+      "result": "ASSERTION",
+      "c0_state": "COMPILE",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.noise_planet.noisemodelling.emission.EvaluateRoadSourceDynamic_ArrowTest",
+      "test_path": "noisemodelling-emission/src/test/java/org/noise_planet/noisemodelling/emission/EvaluateRoadSourceDynamic_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 256788,
+        "out": 11783
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 23.7,
+        "block2": 0.6,
+        "block3": 180,
+        "block4": null,
+        "total": 204.8
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 256788,
+    "tokens_out": 11783,
+    "cost_usd": null
+  },
+  "warnings": []
+}

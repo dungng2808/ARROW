@@ -1,0 +1,17 @@
+ARROW · DictionaryLookup (morfologik.stemming)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 26 test (dùng lại, đo 22-11 08:39) · 20.4 s
+[OK] Khối 2  c0 · c0 lấy từ file 8672234_e74e68545d0ebf6e__qwen3coder-or__few_shot.java: 6 test, 8 assertion
+[>] Khối 3  c0: COMPILE · constructor cannot be applied | -
+          vòng 1 · mức 1 → COMPILE · lên mức 2
+          vòng 2 · mức 2 → COMPILE · giữ mức
+          vòng 3 · mức 2 → COMPILE · giữ mức
+          vòng 4 · mức 2 → COMPILE · giữ mức
+          vòng 5 · mức 2 → COMPILE · giữ mức
+          vòng 6 · mức 2 → COMPILE · giữ mức
+          vòng 7 · mức 2 → mã trùng vòng 6 · lên mức 3
+          vòng 8 · mức 3 → COMPILE · giữ mức
+          vòng 9 · mức 3 → COMPILE · giữ mức
+          vòng 10 · mức 3 → COMPILE · giữ mức
+          vòng 11 · mức 3 → COMPILE · giữ mức
+          vòng 12 · mức 3 → COMPILE · giữ mức
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

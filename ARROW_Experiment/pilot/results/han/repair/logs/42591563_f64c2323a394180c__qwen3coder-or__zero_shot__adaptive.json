@@ -1,0 +1,51 @@
+{
+  "run_id": "20261122-044812-ql3h",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w3\\runs\\20261122-044812-ql3h",
+  "status": "COMPLETED",
+  "exit_code": 1,
+  "targets": [
+    {
+      "cut_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator",
+      "result": "RUNTIME",
+      "c0_state": "RUNTIME",
+      "rounds_run": 12,
+      "success_round": null,
+      "stop_reason": "budget",
+      "test_fqn": "org.cbioportal.genome_nexus.web.validation.GenomicLocationValidator_ArrowTest",
+      "test_path": "web/src/test/java/org/cbioportal/genome_nexus/web/validation/GenomicLocationValidator_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 39727,
+        "out": 11064
+      },
+      "cost_usd": null,
+      "llm_calls": 12,
+      "seconds": {
+        "block1": 151.8,
+        "block2": 0.4,
+        "block3": 70.6,
+        "block4": null,
+        "total": 223
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "not_valid",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 12,
+    "tokens_in": 39727,
+    "tokens_out": 11064,
+    "cost_usd": null
+  },
+  "warnings": [
+    "JVM chạy test không khởi động được với JDK 8; thử JDK khác.",
+    "Baseline lần 2 lỗi và không có báo cáo test: [ERROR] There are test failures."
+  ]
+}

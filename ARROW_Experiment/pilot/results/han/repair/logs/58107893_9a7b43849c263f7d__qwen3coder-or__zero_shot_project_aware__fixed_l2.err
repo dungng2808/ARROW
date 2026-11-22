@@ -1,0 +1,17 @@
+ARROW · RangeCondition (com.github.robozonky.strategy.natural.conditions)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 11 · JUnit 5 + Mockito · baseline 837 test (dùng lại, đo 22-11 05:02) · 57.1 s
+[OK] Khối 2  c0 · c0 lấy từ file 58107893_9a7b43849c263f7d__qwen3coder-or__zero_shot_project_aware.java: 16 test, 36 assertion
+[>] Khối 3  c0: COMPILE · cannot find symbol | method
+          vòng 1 · mức 2 → COMPILE · sửa tiếp từ bản này
+          vòng 2 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 3 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 4 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 5 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 6 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 7 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 8 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 9 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 10 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 11 · mức 2 → RUNTIME · sửa tiếp từ bản này
+          vòng 12 · mức 2 → RUNTIME · sửa tiếp từ bản này
+[X] Khối 3  Kết thúc (budget): RUNTIME sau 12 vòng

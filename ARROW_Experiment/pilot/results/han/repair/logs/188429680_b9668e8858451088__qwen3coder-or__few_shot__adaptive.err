@@ -1,0 +1,17 @@
+ARROW · NliDescriptionsUtils (il.ac.technion.nlp.nli.core)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 20 test (dùng lại, đo 22-11 02:34) · 31.7 s
+[OK] Khối 2  c0 · c0 lấy từ file 188429680_b9668e8858451088__qwen3coder-or__few_shot.java: 12 test, 27 assertion
+[>] Khối 3  c0: COMPILE · other | -
+          vòng 1 · mức 1 → mã trùng vòng 0 · lên mức 2
+          vòng 2 · mức 2 → COMPILE · lên mức 3
+          vòng 3 · mức 3 → mã trùng vòng 0 · lên mức 2
+          vòng 4 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 5 · mức 3 → mã trùng vòng 0 · lên mức 2
+          vòng 6 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 7 · mức 3 → mã trùng vòng 0 · lên mức 2
+          vòng 8 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 9 · mức 3 → mã trùng vòng 0 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 2 · lên mức 3
+          vòng 11 · mức 3 → mã trùng vòng 0 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 2 · lên mức 3
+[X] Khối 3  Kết thúc (budget): COMPILE sau 12 vòng

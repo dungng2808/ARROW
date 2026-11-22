@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-015250-m069",
+  "run_dir": "C:\\arrow-homes\\pilot-han-gen\\w4\\runs\\20261122-015250-m069",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper",
+      "result": "VALID",
+      "c0_state": "VALID",
+      "rounds_run": 0,
+      "success_round": 0,
+      "stop_reason": null,
+      "test_fqn": "com.orange.cloud.servicebroker.filter.core.service.mapper.SuffixedCatalogMapper_ArrowTest",
+      "test_path": "service-broker-filter-core/src/test/java/com/orange/cloud/servicebroker/filter/core/service/mapper/SuffixedCatalogMapper_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 2067,
+        "out": 575
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 24.8,
+        "block2": 5.8,
+        "block3": 59.6,
+        "block4": null,
+        "total": 90.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 2067,
+    "tokens_out": 575,
+    "cost_usd": null
+  },
+  "warnings": []
+}

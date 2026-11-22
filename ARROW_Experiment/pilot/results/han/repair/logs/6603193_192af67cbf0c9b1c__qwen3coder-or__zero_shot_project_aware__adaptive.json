@@ -1,0 +1,48 @@
+{
+  "run_id": "20261122-070705-wspi",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w3\\runs\\20261122-070705-wspi",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.miguelfonseca.completely.text.match.EqualityAutomaton",
+      "result": "VALID",
+      "c0_state": "ASSERTION",
+      "rounds_run": 1,
+      "success_round": 1,
+      "stop_reason": "valid",
+      "test_fqn": "com.miguelfonseca.completely.text.match.EqualityAutomaton_ArrowTest",
+      "test_path": "core/src/test/java/com/miguelfonseca/completely/text/match/EqualityAutomaton_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 3108,
+        "out": 727
+      },
+      "cost_usd": null,
+      "llm_calls": 1,
+      "seconds": {
+        "block1": 12.8,
+        "block2": 0.4,
+        "block3": 42,
+        "block4": null,
+        "total": 55.3
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 1,
+    "tokens_in": 3108,
+    "tokens_out": 727,
+    "cost_usd": null
+  },
+  "warnings": []
+}

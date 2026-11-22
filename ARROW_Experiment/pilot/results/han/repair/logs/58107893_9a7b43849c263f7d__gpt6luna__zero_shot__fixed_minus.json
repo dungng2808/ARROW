@@ -1,0 +1,50 @@
+{
+  "run_id": "20261122-051614-rhad",
+  "run_dir": "C:\\arrow-homes\\pilot-han-repair\\w3\\runs\\20261122-051614-rhad",
+  "status": "COMPLETED",
+  "exit_code": 0,
+  "targets": [
+    {
+      "cut_fqn": "com.github.robozonky.strategy.natural.conditions.RangeCondition",
+      "result": "VALID",
+      "c0_state": "COMPILE",
+      "rounds_run": 6,
+      "success_round": 6,
+      "stop_reason": "valid",
+      "test_fqn": "com.github.robozonky.strategy.natural.conditions.RangeCondition_ArrowTest",
+      "test_path": "robozonky-strategy-natural/src/test/java/com/github/robozonky/strategy/natural/conditions/RangeCondition_ArrowTest.java",
+      "final_code": "block3/final.java",
+      "metrics": null,
+      "metrics_skipped": "disabled",
+      "tools": null,
+      "tokens": {
+        "in": 26607,
+        "out": 5339
+      },
+      "cost_usd": null,
+      "llm_calls": 6,
+      "seconds": {
+        "block1": 49.9,
+        "block2": 0.5,
+        "block3": 537.7,
+        "block4": null,
+        "total": 588.4
+      },
+      "error": null,
+      "warnings": [],
+      "apply": {
+        "decision": "remote_project",
+        "path": null
+      }
+    }
+  ],
+  "totals": {
+    "llm_calls": 6,
+    "tokens_in": 26607,
+    "tokens_out": 5339,
+    "cost_usd": null
+  },
+  "warnings": [
+    "Đang sửa theo cơ chế fixed_minus (repair.mechanism, dùng cho thực nghiệm): mọi vòng dùng prompt mức 1 không có cấu hình project, không checkpoint, không rollback."
+  ]
+}

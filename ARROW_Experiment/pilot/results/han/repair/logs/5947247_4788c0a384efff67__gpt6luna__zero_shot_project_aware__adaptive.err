@@ -1,0 +1,6 @@
+ARROW · BufferedImageAdapter (it.geosolutions.jaiext)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 53 test (dùng lại, đo 22-11 05:55) · 20.5 s
+[OK] Khối 2  c0 · c0 lấy từ file 5947247_4788c0a384efff67__gpt6luna__zero_shot_project_aware.java: 5 test, 29 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | exposesImageMetadataAndNoSources
+          vòng 1 · mức 1 → VALID ✓ · thành công
+[OK] Khối 3  Kết thúc (valid): VALID sau 1 vòng

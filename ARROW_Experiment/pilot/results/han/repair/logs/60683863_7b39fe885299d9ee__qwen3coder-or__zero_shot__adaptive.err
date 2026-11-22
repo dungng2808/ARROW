@@ -1,0 +1,17 @@
+ARROW · ConditionRouter (com.alibaba.dubbo.rpc.cluster.router.condition)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 722 test (dùng lại, đo 22-11 06:47) · 113.9 s
+[OK] Khối 2  c0 · c0 lấy từ file 60683863_7b39fe885299d9ee__qwen3coder-or__zero_shot.java: 11 test, 17 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+          vòng 1 · mức 1 → ASSERTION 5 pass · tốt hơn · checkpoint
+          vòng 2 · mức 1 → ASSERTION 6 pass · tốt hơn · checkpoint
+          vòng 3 · mức 1 → ASSERTION 5 pass · tệ hơn · rollback, lên mức 2
+          vòng 4 · mức 2 → ASSERTION 6 pass · giữ mức
+          vòng 5 · mức 2 → mã trùng vòng 4 · lên mức 3
+          vòng 6 · mức 3 → ASSERTION 7 pass · tốt hơn · checkpoint
+          vòng 7 · mức 3 → mã trùng vòng 6 · lên mức 2
+          vòng 8 · mức 2 → mã trùng vòng 6 · lên mức 3
+          vòng 9 · mức 3 → mã trùng vòng 6 · lên mức 2
+          vòng 10 · mức 2 → mã trùng vòng 6 · lên mức 3
+          vòng 11 · mức 3 → mã trùng vòng 6 · lên mức 2
+          vòng 12 · mức 2 → mã trùng vòng 6 · lên mức 3
+[X] Khối 3  Kết thúc (budget): ASSERTION sau 12 vòng

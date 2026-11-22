@@ -1,0 +1,5 @@
+ARROW · SuffixedCatalogMapper (com.orange.cloud.servicebroker.filter.core.service.mapper)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 + Mockito · baseline 19 test (dùng lại, đo 22-11 01:46) · 28.1 s
+[OK] Khối 2  c0 · 3.5k token · 4.1 s · Candidate hợp lệ: 6 test, 40 assertion
+[>] Khối 3  c0: ASSERTION · AssertionError | testToCatalog_ServiceDefinitionWithNullFields
+[X] Khối 3  Kết thúc: ASSERTION (không sửa)

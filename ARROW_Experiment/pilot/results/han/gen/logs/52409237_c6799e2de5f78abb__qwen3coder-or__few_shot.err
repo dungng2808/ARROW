@@ -1,0 +1,5 @@
+ARROW · TraditionToSimple (com.tqmall.search.commons.nlp)
+[OK] Khối 1  Maven 3.9.9 · build root . · JDK 8 · JUnit 4 · baseline 21 test (dùng lại, đo 22-11 01:36) · 15.5 s
+[OK] Khối 2  c0 · 4.2k token · 2.6 s · Candidate hợp lệ: 5 test, 13 assertion
+[>] Khối 3  c0: COMPILE · package does not exist | -
+[X] Khối 3  Kết thúc: COMPILE (không sửa)
