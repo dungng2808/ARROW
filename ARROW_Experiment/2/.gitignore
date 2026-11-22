@@ -1,0 +1,4 @@
+results/*/homes/
+results/*/workers.txt
+results/*-smoke/
+__pycache__/
