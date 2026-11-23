@@ -51,6 +51,7 @@ MECHANISMS = pr.MECHANISMS                           # fixed_plus, fixed_minus, 
 REPAIR_MODELS = ["gpt6luna", "qwen3coder-or"]        # mỗi candidate sửa bằng cả hai mô hình
 REPAIR_COMMIT = pr.REPAIR_COMMIT                     # 203fb8e (giống pilot)
 SUBSET = os.path.join(HERE, "tn2_subset.jsonl")
+REPL = os.path.join(HERE, "tn2_thay_the.jsonl")          # candidate thay thế (nếu có), xem tn2_subset.py
 
 
 def chain_key(rec):
@@ -79,6 +80,13 @@ def load_subset(part):
         for line in f:
             if line.strip():
                 rows.append(json.loads(line))
+    # Candidate thay thế (tn2_subset.py --thay): thêm vào; candidate bị thay vẫn giữ để dữ liệu đã chạy không mất.
+    if os.path.exists(REPL):
+        with open(REPL + ".sha256", encoding="utf-8") as f:
+            if base.sha256_file(REPL) != f.read().split()[0]:
+                raise SystemExit("tn2_thay_the.jsonl khác bản đã commit (sha256). Chạy git pull / git checkout lại file. Dừng.")
+        with open(REPL, encoding="utf-8") as f:
+            rows += [json.loads(line) for line in f if line.strip()]
     parts = sorted({r["machine"] for r in rows})
     if part not in parts:
         raise SystemExit(f"Không có phần '{part}' trong tập con. Các phần: {parts}")

@@ -15,6 +15,7 @@ Thiết kế: `Sua/ban_phan_bien/cac_thuc_nghiem.md`, mục "Thực nghiệm 2".
 | Kiểm lại REGRESSION | có sẵn trong tool (chạy riêng 3 lần, rồi chạy lại module), giống TN1 và pilot |
 | Tool, prompt | `arrow` `203fb8e`, prompt sửa `team-v1` v3 (giống pilot) |
 | Chia máy | theo tốc độ đo ở pilot: Dung 82, Chính 33, Kiều Anh 30, Quang 17, Hán 17 candidate |
+| Thay thế (22/11/2026) | candidate có c0 VALID ngay ở vòng 0 trong ít nhất một chain (c0 không tái hiện lỗi, test phụ thuộc môi trường) được thay bằng candidate hạng kế tiếp chưa dùng trong cùng ô, cùng máy; ghi ở `tn2_thay_the.jsonl`, không sửa `tn2_subset.jsonl`. Dữ liệu của candidate bị thay giữ trong `results/` nhưng không vào phân tích. Lần thay 1: CAT-LM · Qwen · Zero-shot, `springcloud_gateway_demo` (hạng 4) → `springboot-multithreading-example` (hạng 9) |
 
 ## Các file
 
@@ -22,6 +23,8 @@ Thiết kế: `Sua/ban_phan_bien/cac_thuc_nghiem.md`, mục "Thực nghiệm 2".
 |---|---|---|
 | `tn2_subset.py` | Dung, **một lần** | Chọn tập con, chia máy, ghi `tn2_subset.jsonl` (+ `.sha256`, `tn2_subset.md`). `--check` để kiểm lại |
 | `tn2_subset.jsonl` | — | Danh sách đóng băng: candidate, máy, c0 (đường dẫn + sha256), thứ hạng trong ô |
+| `tn2_thay_the.jsonl` | Dung (`tn2_subset.py --thay`) | Candidate thay thế, kèm candidate bị thay và lý do; `tn2_run.py` tự đọc thêm |
 | `tn2_run.py` | mỗi máy | Chạy 24 chain cho mỗi candidate của máy mình → `results/<máy>/tn2_runs.jsonl` |
 | `tn2_collect.py` | mỗi máy, trước khi nộp | Gom từ homes/ ra `results/<máy>/report/` (chain, từng vòng gồm cả quay lui/checkpoint, mã cuối) và kiểm ĐẠT |
+| `tn2_bang.py` | ai cũng được, chỉ đọc | Bảng tạm để xem nhanh (RSR@10 + Wilson, McNemar + Holm, RSR@k, RA/RT/chi phí, Wilcoxon + A12, biến thiên 3 lần, mô hình sinh × sửa) từ `results/<máy>/report/`: `python3 tn2_bang.py <máy>` hoặc `all` |
 | `tn2_analyze.py`, `tn2_glmer.R` | Dung, sau khi đủ máy | (sẽ viết) Gộp và phân tích |

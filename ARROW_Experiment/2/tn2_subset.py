@@ -23,9 +23,17 @@ rồi phát lần lượt theo tỷ lệ của từng máy, nên máy nào cũng
 Cách chạy (trong ARROW_Experiment/2):
     python3 tn2_subset.py            # ghi 3 file trên; đã có tn2_subset.jsonl thì dừng (đã đóng băng)
     python3 tn2_subset.py --check    # chỉ tính lại và so với file đã đóng băng, không ghi gì
+
+Thay thế (quy tắc chốt 22/11/2026, sau khi chạy máy Dung): candidate có c0 đạt VALID ngay ở vòng 0 trong ít nhất
+một chain TN2 thì c0 không tái hiện được lỗi (test phụ thuộc môi trường), nên không đo được tác dụng của cơ chế sửa.
+Candidate đó được thay bằng candidate hạng kế tiếp CHƯA DÙNG trong cùng ô (cùng thứ tự sha256 ở trên), giao cho cùng
+máy. Không sửa tn2_subset.jsonl; các lần thay ghi nối vào tn2_thay_the.jsonl (+ .sha256). Dữ liệu chain của
+candidate bị thay giữ nguyên trong results/, chỉ không đưa vào phân tích.
+    python3 tn2_subset.py --thay <candidate_id> --ly-do "<lý do + bằng chứng>"
 """
 import argparse
 import csv
+import datetime
 import hashlib
 import json
 import os
@@ -40,6 +48,7 @@ except (AttributeError, ValueError):
 HERE = os.path.dirname(os.path.abspath(__file__))                    # ARROW_Experiment/2
 TN1_DIR = os.path.normpath(os.path.join(HERE, "..", "1"))            # ARROW_Experiment/1
 OUT = os.path.join(HERE, "tn2_subset.jsonl")
+REPL = os.path.join(HERE, "tn2_thay_the.jsonl")
 
 # ---------------------------------------------------------------------------
 # CẤU HÌNH ĐÃ CHỐT (không sửa sau khi đã commit tn2_subset.jsonl)
@@ -147,10 +156,55 @@ def summary(chosen, table, shortfall):
     return "\n".join(L) + "\n"
 
 
+def read_jsonl(path):
+    if not os.path.exists(path):
+        return []
+    with open(path, encoding="utf-8") as f:
+        return [json.loads(line) for line in f if line.strip()]
+
+
+def replace(bad_id, reason):
+    """Thay candidate `bad_id` bằng candidate hạng kế tiếp chưa dùng trong cùng ô; ghi nối vào tn2_thay_the.jsonl."""
+    frozen = read_jsonl(OUT)
+    if not frozen:
+        raise SystemExit("Chưa có tn2_subset.jsonl.")
+    repl = read_jsonl(REPL)
+    used = {c["candidate_id"] for c in frozen} | {r["candidate_id"] for r in repl}
+    replaced = {r["replaces"] for r in repl}
+    current = {c["candidate_id"]: c for c in frozen + repl}
+    if bad_id not in current:
+        raise SystemExit(f"{bad_id} không có trong tập con TN2.")
+    if bad_id in replaced:
+        raise SystemExit(f"{bad_id} đã được thay rồi.")
+    bad = current[bad_id]
+    ds, model, strategy = bad["dataset"], bad["model"], bad["strategy"]
+    cell = [c for c in read_pool() if (c["dataset"], c["model"], c["strategy"]) == (ds, model, strategy)]
+    cell.sort(key=lambda c: rank_key(ds, c["task_id"], model, strategy))
+    for rank, c in enumerate(cell, 1):
+        if c["candidate_id"] not in used:
+            new = dict(c, cell_rank=rank, machine=bad["machine"], replaces=bad_id, replace_reason=reason,
+                       replaced_at=datetime.date.today().isoformat())
+            break
+    else:
+        raise SystemExit(f"Ô {ds} · {model} · {strategy} hết candidate dự bị.")
+    with open(REPL, "a", encoding="utf-8", newline="\n") as f:
+        f.write(json.dumps(new, ensure_ascii=False, sort_keys=True) + "\n")
+    with open(REPL + ".sha256", "w", encoding="utf-8", newline="\n") as f:
+        f.write(f"{sha256_file(REPL)}  tn2_thay_the.jsonl\n")
+    print(f"Thay {bad_id} (hạng {bad['cell_rank']}) bằng {new['candidate_id']} (hạng {new['cell_rank']}), "
+          f"máy {new['machine']}.\nĐã ghi {REPL} (+ .sha256). Commit hai file này trước khi chạy candidate mới.")
+
+
 def main():
     ap = argparse.ArgumentParser(description="Chọn và đóng băng tập con TN2.")
     ap.add_argument("--check", action="store_true", help="tính lại và so với tn2_subset.jsonl đã đóng băng")
+    ap.add_argument("--thay", metavar="CANDIDATE_ID", help="thay candidate có c0 VALID ở vòng 0 (xem đầu file)")
+    ap.add_argument("--ly-do", default="", help="lý do và bằng chứng (bắt buộc với --thay)")
     args = ap.parse_args()
+    if args.thay:
+        if not args.ly_do.strip():
+            raise SystemExit("Cần --ly-do.")
+        return replace(args.thay, args.ly_do.strip())
     pool = read_pool()
     chosen, table, shortfall = select(pool)
     chosen = assign(chosen)
