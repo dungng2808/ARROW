@@ -1,0 +1,6 @@
+# Không commit: home của worker (chứa runs, mirror, cache) và thư mục làm việc (bản sao dự án)
+results/*/homes/
+results/*/work/
+# Kết quả chạy khói: chỉ để kiểm pipeline, không dùng trong báo cáo
+results/*-smoke/
+__pycache__/

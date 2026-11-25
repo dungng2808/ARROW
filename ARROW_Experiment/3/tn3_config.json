@@ -1,0 +1,47 @@
+{
+  "_ghi_chu": "Cấu hình đã chốt của TN3 (26/11/2026, xem cac_thuc_nghiem.md). JSON không có chú thích, nên các khóa bắt đầu bằng '_' là lời giải thích, script bỏ qua.",
+  "version": "tn3-v2",
+  "_version": "tn3-v1 là bản dựng thử 25/11 (đã xóa); tn3-v2 là bản dựng lại theo thiết kế chốt 26/11.",
+  "arrow_commit": "203fb8e",
+  "_arrow_commit": "Mọi máy dùng cùng một bản tool arrow (bản của pilot và TN2). Script từ chối chạy nếu khác.",
+
+  "evosuite": {
+    "version": "1.2.0",
+    "seeds": [1, 2, 3, 4, 5],
+    "_seeds": "Cấu hình chính: 5 lần, mỗi lần một seed (chốt 26/11).",
+    "timeout_seconds": 1200,
+    "_timeout_seconds": "20 phút cho mỗi lần EvoSuite sinh test.",
+    "budget_min_seconds": 10,
+    "_budget": "Cấu hình phụ: 1 lần, search_budget = trung vị qua 2 mô hình của (thời gian sinh ở TN1 + thời gian sửa ở TN3) của cùng lớp, tối thiểu 10 giây.",
+    "detection_seed_rule": "smallest_valid",
+    "_detection_seed_rule": "Phát hiện lỗi thật: mỗi lớp lấy bộ của seed nhỏ nhất cho bộ VALID (chốt 26/11)."
+  },
+
+  "chatunitest": {
+    "version": "2.1.1",
+    "models": ["gpt6luna", "qwen3coder-or"],
+    "testNumber": 5,
+    "maxRounds": 5,
+    "merge": true,
+    "timeout_seconds": 3600,
+    "_timeout_seconds": "60 phút mỗi lớp, mỗi mô hình (chốt 26/11).",
+    "starter": "io.github.ZJU-ACES-ISE:chatunitest-starter:1.4.0",
+    "_starter": "1.4.0 chạy được trên Java 8; 1.5.0 kéo Mockito 5 cần Java 11 (chốt 26/11).",
+    "keep_chatunitest_max_tokens": true,
+    "_keep_chatunitest_max_tokens": "Proxy KHÔNG chèn max_tokens của ARROW (16.384): giữ maxResponseTokens mặc định 1.024 của ChatUniTest (chốt 26/11).",
+    "smoke": "2 lớp Maven của máy (1 JUnit 4, 1 JUnit 5) x 2 mô hình; không có tiêu chí đạt/không đạt (chốt 26/11, bỏ 50 lớp pilot)."
+  },
+
+  "arrow": {
+    "strategy": "zero_shot_project_aware",
+    "mechanism": "adaptive",
+    "rounds": 10,
+    "repair_model": "cùng mô hình đã sinh c0",
+    "invalid_output": "không sinh lại, không sửa; tính là thất bại"
+  },
+
+  "machines": {"dung": 107, "chinh": 38, "kieuanh": 41, "quang": 41, "han": 41},
+  "_machines": "Chốt 26/11: 10 phần, Dung 4 phần (107 lớp); 6 phần còn lại (161 lớp) cho 4 máy, Chính ít hơn một chút.",
+  "n_pairs_threshold": 10,
+  "_n_pairs_threshold": "Phép so sánh nào dưới 10 cặp thì chỉ mô tả, không kiểm định."
+}
