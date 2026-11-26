@@ -56,6 +56,25 @@ python3 tn3_phat_hien_loi.py --machine <máy> --workers 2 --arrow <arrow>
   được; sau đó chạy lại không có `--model`.
 - **Windows:** home và thư mục làm việc tự đặt ở `C:\arrow-homes\tn3-<máy>`, `C:\arrow-work\tn3-<máy>` (đường dẫn ngắn).
 
+## 2b. Chạy lại đúng một việc và xóa sạch lần chạy cũ (`--redo`)
+
+Dùng khi một kết quả sai (vd. sửa lỗi script giữa chừng). `--redo` **xóa sạch mọi dấu vết của lần chạy cũ** của đúng
+việc đó (dòng trong `*_runs.jsonl`, log trong `logs/`, bộ test trong `suites/`, thư mục run cũ của arrow trong `homes/`;
+ChatUniTest: cả các lượt gọi mô hình cũ trong `proxy_calls.jsonl`), rồi chạy lại và ghi kết quả mới. Không giữ bản cũ nào:
+
+```bash
+python3 tn3_arrow.py         --machine <máy> --arrow <arrow> --redo <task_id> [--model qwen3coder-or]
+python3 tn3_evosuite.py      --machine <máy> --arrow <arrow> --redo <task_id> [--seeds 3]   [--budget]
+python3 tn3_chatunitest.py   --machine <máy> --arrow <arrow> --redo <task_id> [--model gpt6luna]
+python3 tn3_phat_hien_loi.py --machine <máy> --arrow <arrow> --redo <task_id> [--system evosuite]
+```
+
+- Không ghi `--model` / `--seeds` / `--system` thì chạy lại **mọi** mô hình / seed / hệ thống của lớp đó.
+- `--redo` lặp lại được: `--redo A --redo B`. Bộ test và log mới ghi đè file cùng tên.
+- Chạy lại kết quả ARROW của một lớp thì nên chạy lại cả EvoSuite `--budget` của lớp đó (ngân sách lấy theo thời gian ARROW).
+- Log dùng chung của cả lớp (`inspect`, `build_orig.log`, `apply_*.log`) không xóa; lần chạy lại ghi đè.
+- `tn3.lock.json` vẫn ghi lại lệnh `--redo` đã chạy (giờ, nguyên dòng lệnh).
+
 ## 3. Nộp kết quả
 
 Commit thư mục `results/<máy>/` (trừ `homes/`, `work/`, đã có trong `.gitignore`):

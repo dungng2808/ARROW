@@ -11,7 +11,9 @@ Các bảng (làm riêng từng dataset; "Tất cả" chỉ để tham khảo, k
     B3  chỉ số chất lượng trên bộ VALID (mô tả: trung vị [Q1–Q3]); ARROW tách nguồn initial / adaptive
     B4  HAI PHÉP SO SÁNH CHÍNH: ARROW–EvoSuite, ARROW–ChatUniTest (cùng mô hình); Wilcoxon hạng có dấu + A12,
         Holm cho 2 phép trong từng (dataset, mô hình, chỉ số); dưới 10 cặp → chỉ mô tả. Chỉ số chính: điểm đột biến
+    B4b (bổ sung) so sánh trên TỔNG 3 dataset, cùng cách B4, có p Holm
     B5  McNemar chính xác: tỷ lệ VALID ARROW với ChatUniTest (cùng mô hình) trên lớp Maven
+    B5b (bổ sung) tỷ lệ VALID trên TỔNG 3 dataset: McNemar ARROW–EvoSuite, ARROW–ChatUniTest, có p Holm
     B6  chi phí ARROW với ChatUniTest: lượt gọi mô hình, token vào/ra, thời gian mỗi lớp (chỉ mô tả)
     B7  ARROW với EvoSuite cùng ngân sách (phụ, không Holm)
     B8  phân tích phụ trên mọi lớp, lớp không có bộ VALID gán 0 ("theo cách tính của AgoneTest")
@@ -162,7 +164,7 @@ def qtxt(xs, d=3):
     xs = sorted(v for v in xs if v is not None)
     if not xs:
         return "—"
-    q = statistics.quantiles(xs, n=4) if len(xs) > 1 else [xs[0]] * 3
+    q = statistics.quantiles(xs, n=4, method="inclusive") if len(xs) > 1 else [xs[0]] * 3   # inclusive: không ngoại suy ra ngoài khoảng dữ liệu
     return f"{fmt(statistics.median(xs), d)} [{fmt(q[0], d)}–{fmt(q[2], d)}]"
 
 
@@ -173,6 +175,13 @@ def fmt(v, d=3):
     if isinstance(v, float) and v.is_integer() and d == 0:
         return str(int(v))
     return f"{v:.{d}f}".replace(".", ",")
+
+
+def fmtp(p):
+    """Giá trị p: dưới 0,0001 ghi '< 0,0001'; None → '—'."""
+    if p is None:
+        return "—"
+    return "< 0,0001" if p < 0.0001 else fmt(p, 4)
 
 
 def pct(x, n):
@@ -318,12 +327,56 @@ def b4_main(lop):
                 for (other, (n, ma, mb, a, p)), ph in zip(res, adj):
                     note = "chỉ mô tả (< 10 cặp)" if n < N_MIN else ""
                     rows.append([DN[ds], MN[m], title + (" (chính)" if key == "mutation" else ""), f"ARROW – {other}", n,
-                                 fmt(ma), fmt(mb), fmt(a), fmt(p, 4), fmt(ph, 4), note])
+                                 fmt(ma), fmt(mb), fmt(a), fmtp(p), fmtp(ph), note])
     table("b4_so_sanh_chinh", "B4. Hai phép so sánh chính (Wilcoxon hạng có dấu + A12, Holm cho 2 phép trong từng dataset, mô hình, chỉ số)",
           ["Dataset", "Mô hình ARROW", "Chỉ số", "So sánh", "n cặp", "Trung vị ARROW", "Trung vị đối thủ",
            "A12", "p", "p Holm", "Ghi chú"], rows,
           "Cặp = lớp mà cả hai hệ thống có bộ VALID và cùng đo được chỉ số. A12 > 0,5: ARROW cao hơn "
           "(với mật độ smell, thấp hơn mới tốt). Không viết 'không có ý nghĩa thống kê' thành 'không có khác biệt'.")
+
+
+def b4b_total(lop):
+    """B4b (bổ sung theo yêu cầu 26/11): so sánh trên TỔNG cả 3 dataset gộp lại. Cùng cách như B4: mỗi (mô hình, chỉ số)
+    có 2 phép (ARROW–EvoSuite, ARROW–ChatUniTest cùng mô hình), Holm cho 2 phép đó; dưới 10 cặp → chỉ mô tả.
+    Thiết kế quy định kiểm định chính làm riêng từng dataset; bảng này chỉ là phân tích bổ sung."""
+    rows = []
+    for m in MODELS:
+        pa = f"arrow_{m}_"
+        for key, title in METRICS:
+            res = [("EvoSuite", compare(lop, pa, "evo_", key)),
+                   (f"ChatUniTest-{MN[m]}", compare(lop, pa, f"cut_{m}_", key))]
+            adj = holm([r[4] for _, r in res])
+            for (other, (n, ma, mb, a, p)), ph in zip(res, adj):
+                rows.append([MN[m], title + (" (chính)" if key == "mutation" else ""), f"ARROW – {other}", n,
+                             fmt(ma), fmt(mb), fmt(a), fmtp(p), fmtp(ph),
+                             "chỉ mô tả (< 10 cặp)" if n < N_MIN else ""])
+    table("b4b_so_sanh_tong", "B4b. So sánh trên TỔNG 3 dataset (bổ sung): Wilcoxon + A12, Holm cho 2 phép trong từng mô hình, chỉ số",
+          ["Mô hình ARROW", "Chỉ số", "So sánh", "n cặp", "Trung vị ARROW", "Trung vị đối thủ", "A12", "p", "p Holm", "Ghi chú"],
+          rows, "Phân tích bổ sung: thiết kế quy định kiểm định chính làm riêng từng dataset (B4). A12 > 0,5: ARROW cao hơn "
+          "(mật độ smell: thấp hơn mới tốt).")
+
+
+def b5b_total(lop):
+    """B5b (bổ sung): tỷ lệ VALID trên TỔNG 3 dataset, McNemar chính xác, Holm cho 2 phép (ARROW–EvoSuite,
+    ARROW–ChatUniTest) trong từng mô hình. ARROW–ChatUniTest chỉ trên lớp Maven."""
+    rows = []
+    for m in MODELS:
+        pa = f"arrow_{m}_"
+        res = []
+        for other, pb in (("EvoSuite", "evo_"), (f"ChatUniTest-{MN[m]}", f"cut_{m}_")):
+            sel = [r for r in lop if state_of(r, pa) not in (None, "MISSING")
+                   and state_of(r, pb) not in (None, "MISSING", "NOT_APPLICABLE")]
+            va = [state_of(r, pa) == "VALID" for r in sel]
+            vb = [state_of(r, pb) == "VALID" for r in sel]
+            b = sum(1 for x, y in zip(va, vb) if x and not y)          # chỉ ARROW VALID
+            c_ = sum(1 for x, y in zip(va, vb) if y and not x)         # chỉ đối thủ VALID
+            p = mcnemar_exact(b, c_) if len(sel) >= N_MIN else None
+            res.append((other, len(sel), sum(va), sum(vb), b, c_, p))
+        adj = holm([r[6] for r in res])
+        for (other, n, xa, xb, b, c_, p), ph in zip(res, adj):
+            rows.append([MN[m], f"ARROW – {other}", n, pct(xa, n), pct(xb, n), b, c_, fmtp(p), fmtp(ph)])
+    table("b5b_valid_tong", "B5b. Tỷ lệ VALID trên TỔNG 3 dataset (bổ sung): McNemar chính xác, Holm cho 2 phép trong từng mô hình",
+          ["Mô hình ARROW", "So sánh", "n lớp", "ARROW VALID", "Đối thủ VALID", "Chỉ ARROW VALID", "Chỉ đối thủ VALID", "p", "p Holm"], rows)
 
 
 def b5_mcnemar(lop):
@@ -339,7 +392,7 @@ def b5_mcnemar(lop):
             b = sum(1 for x, y in zip(va, vb) if x and not y)           # chỉ ARROW VALID
             c_ = sum(1 for x, y in zip(va, vb) if y and not x)          # chỉ ChatUniTest VALID
             p = mcnemar_exact(b, c_) if len(sel) >= N_MIN and ds != "all" else None
-            rows.append([DN[ds], MN[m], len(sel), pct(sum(va), len(sel)), pct(sum(vb), len(sel)), b, c_, fmt(p, 4)])
+            rows.append([DN[ds], MN[m], len(sel), pct(sum(va), len(sel)), pct(sum(vb), len(sel)), b, c_, fmtp(p)])
     table("b5_mcnemar", "B5. Tỷ lệ VALID: ARROW với ChatUniTest cùng mô hình, lớp Maven (McNemar chính xác)",
           ["Dataset", "Mô hình", "n lớp", "ARROW VALID", "ChatUniTest VALID", "Chỉ ARROW", "Chỉ ChatUniTest", "p"], rows)
 
@@ -371,7 +424,7 @@ def b7_budget(lop):
         for m in MODELS:
             for key, title in METRICS:
                 n, ma, mb, a, p = compare(sel, f"arrow_{m}_", "evob_", key)
-                rows.append([DN[ds], MN[m], title, n, fmt(ma), fmt(mb), fmt(a), fmt(p, 4),
+                rows.append([DN[ds], MN[m], title, n, fmt(ma), fmt(mb), fmt(a), fmtp(p),
                              "chỉ mô tả (< 10 cặp)" if n < N_MIN else "", n_valid,
                              qtxt([r.get("evob_budget") for r in sel], 0)])
     table("b7_cung_ngan_sach", "B7. ARROW với EvoSuite cùng ngân sách (phụ)",
@@ -399,7 +452,7 @@ def b8_zero(lop):
                     rows.append([DN[ds], MN[m], f"ARROW – {other}", title, len(pr),
                                  fmt(statistics.mean(xa) if xa else None), fmt(statistics.mean(xb) if xb else None),
                                  fmt(statistics.median(xa) if xa else None), fmt(statistics.median(xb) if xb else None),
-                                 fmt(p, 4)])
+                                 fmtp(p)])
     table("b8_gan_0", "B8. Phân tích phụ trên mọi lớp, không VALID gán 0 (theo cách tính của AgoneTest)",
           ["Dataset", "Mô hình ARROW", "So sánh", "Chỉ số", "n lớp", "TB ARROW", "TB đối thủ", "Trung vị ARROW",
            "Trung vị đối thủ", "p Wilcoxon"], rows,
@@ -447,7 +500,8 @@ def b11_flags(lop):
     """B11: cờ đặc biệt theo hệ thống (đếm lớp)."""
     flag_names = [("valid_mutation_0", "VALID mà mutation = 0"), ("dep_breaks_baseline", "Thư viện thêm làm hỏng test có sẵn"),
                   ("evo_classloader_reg", "REGRESSION do classloader EvoSuite"),
-                  ("mutation_not_measured", "VALID nhưng không đo được mutation")]
+                  ("mutation_not_measured", "VALID nhưng không đo được mutation"),
+                  ("smell_not_measured", "VALID nhưng không đo được smell (test không public, giới hạn tsDetect)")]
     rows = []
     for ds in DATASETS + ["all"]:
         for name, p in SYSTEMS:
@@ -488,7 +542,9 @@ def main():
     b2_evosuite_seeds(lop, evo_rows)
     b3_quality(lop)
     b4_main(lop)
+    b4b_total(lop)
     b5_mcnemar(lop)
+    b5b_total(lop)
     b6_cost(lop)
     b7_budget(lop)
     b8_zero(lop)

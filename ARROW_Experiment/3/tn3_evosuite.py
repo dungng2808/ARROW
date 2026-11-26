@@ -19,6 +19,7 @@ Kết quả: results/<máy>/evosuite_runs.jsonl (mỗi (lớp, cấu hình, seed
     Chạy khói:     --task <task_id> [--task ...] [--seeds 1]    → results/<máy>-smoke/
     Cấu hình phụ:  --budget   (chạy SAU tn3_arrow.py của cùng máy)
     Chạy tiếp:     chạy lại đúng lệnh; --retry-infra chạy lại các dòng INFRA
+    Chạy lại và ghi đè kết quả thật: --redo <task_id> [--seeds 3] [--budget]
 """
 import argparse          # tham số dòng lệnh
 import os                # đường dẫn
@@ -202,27 +203,38 @@ def main():
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")))
     ap.add_argument("--task", action="append", help="chạy khói: chỉ lớp này (lặp lại được)")
     ap.add_argument("--limit", type=int, help="chạy khói: N lớp đầu của phần")
-    ap.add_argument("--seeds", help="chạy khói: danh sách seed, ví dụ 1 hoặc 1,2")
+    ap.add_argument("--seeds", help="chạy khói (hoặc kèm --redo): danh sách seed, ví dụ 1 hoặc 1,2")
+    ap.add_argument("--redo", action="append", help="CHẠY LẠI lớp này và XÓA SẠCH kết quả, log, bộ test của lần chạy cũ (lặp lại được)")
     ap.add_argument("--budget", action="store_true", help="cấu hình phụ cùng ngân sách (sau tn3_arrow.py)")
     ap.add_argument("--retry-infra", action="store_true")
     ap.add_argument("--homes-dir")
     ap.add_argument("--keep-work", action="store_true", help="giữ thư mục làm việc (để gỡ lỗi)")
     a = ap.parse_args()
 
-    smoke = bool(a.task or a.limit or a.seeds)
+    smoke = bool(a.task or a.limit or (a.seeds and not a.redo))         # --seeds đi kèm --redo thì vẫn là kết quả thật
     cfg = c.load_config()
     root = c.out_root(a.machine, smoke)
     os.makedirs(root, exist_ok=True)
     version, commit = c.check_arrow(a.arrow)
     evo_sha = c.ensure_evosuite()                              # tải/kiểm EvoSuite, cài runtime vào ~/.m2
     classes, _ = tn3_lists.load_frozen()
-    mine = c.select_classes(classes, a.part or a.machine, a.task, a.limit)
+    mine = c.select_classes(classes, a.part or a.machine, a.redo or a.task, a.limit)
     base_cfg = c.base.load_config(a.base_home)
     c.lock_invocation(root, "tn3_evosuite.py", {"tool_version": version, "tool_commit": commit, "evosuite": evo_sha,
                                                 "setup": c.EVOSUITE_SETUP, "machine": a.machine,
                                                 "part": a.part or a.machine, "workers": a.workers, "budget": a.budget})
     runs_path = os.path.join(root, "evosuite_runs.jsonl")
     # chỉ dòng của cách dựng hiện tại (v3) mới được tính là đã xong
+    if a.redo:   # --redo: xóa dòng cũ của (lớp, cấu hình, seed) cần chạy lại → bên dưới coi là chưa làm
+        want_cfg = "budget" if a.budget else "default"
+        want_seeds = {int(s) for s in a.seeds.split(",")} if a.seeds else None
+        def old_files(r):                                      # log và bộ test cũ của đúng (lớp, cấu hình, seed)
+            name = f"{r['config']}-seed{r['seed']}"
+            return [os.path.join(root, "logs", SYSTEM, r["task_id"], name + "__*"),
+                    os.path.join(root, "suites", SYSTEM, r["task_id"], name)]
+        n = c.redo_remove(runs_path, lambda r: r["task_id"] in a.redo and r.get("config") == want_cfg
+                          and (want_seeds is None or r.get("seed") in want_seeds), old_files)
+        print(f"[redo] đã xóa sạch {n} kết quả cũ (dòng, log, bộ test, thư mục run)")
     latest = {k: r for k, r in c.latest_by(runs_path, key_of).items() if r.get("setup") == c.EVOSUITE_SETUP}
     seeds = [int(s) for s in a.seeds.split(",")] if a.seeds else cfg["evosuite"]["seeds"]
 

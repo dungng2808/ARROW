@@ -12,6 +12,7 @@ Kết quả: results/<máy>/arrow_runs.jsonl (mỗi (lớp, mô hình) một dò
     python3 tn3_arrow.py --machine dung --workers 3 --arrow ~/.local/share/arrow-dev/build-tn2/arrow
     Chạy khói:  --task <task_id> [--model gpt6luna]      Chạy tiếp: chạy lại đúng lệnh; --retry-infra cho dòng INFRA
     Một nhà cung cấp đang lỗi: --model gpt6luna (chỉ chạy mô hình đó), sau đó chạy lại không có --model
+    Chạy lại 1 bộ và ghi đè kết quả thật: --redo <task_id> [--model qwen3coder-or]
 """
 import argparse          # tham số dòng lệnh
 import os                # đường dẫn
@@ -116,6 +117,7 @@ def main():
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")))
     ap.add_argument("--task", action="append", help="chạy khói: chỉ lớp này (lặp lại được)")
     ap.add_argument("--model", action="append", help="chỉ chạy mô hình này (khi một nhà cung cấp đang lỗi)")
+    ap.add_argument("--redo", action="append", help="CHẠY LẠI lớp này và XÓA SẠCH kết quả, log, bộ test của lần chạy cũ (lặp lại được)")
     ap.add_argument("--limit", type=int, help="chạy khói: N lớp đầu của phần")
     ap.add_argument("--retry-infra", action="store_true", help="chạy lại các dòng lỗi hạ tầng")
     ap.add_argument("--homes-dir", help="nơi đặt home của worker (mặc định results/<máy>/homes)")
@@ -126,7 +128,7 @@ def main():
     os.makedirs(root, exist_ok=True)
     version, commit = c.check_arrow(a.arrow)                            # phải là arrow 203fb8e
     classes, arrow_items = tn3_lists.load_frozen()                      # danh sách đã đóng băng (kiểm sha256)
-    mine = {cl["task_id"]: cl for cl in c.select_classes(classes, a.part or a.machine, a.task, a.limit)}
+    mine = {cl["task_id"]: cl for cl in c.select_classes(classes, a.part or a.machine, a.redo or a.task, a.limit)}
     base_cfg = c.base.load_config(a.base_home)                          # cấu hình arrow gốc (~/.arrow/config.json)
     models = sorted({x["model"] for x in arrow_items})
     model_info = c.base.check_models(base_cfg, models)                  # 2 mô hình phải khai báo trong arrow
@@ -147,6 +149,11 @@ def main():
                                              "rounds": N_ROUNDS, "mechanism": MECHANISM, "early_stop_p": None,
                                              "prompt_sha256": prompt_sha})
     runs_path = os.path.join(root, "arrow_runs.jsonl")
+    if a.redo:   # --redo: xóa dòng cũ của (lớp, mô hình) cần chạy lại → bên dưới coi là chưa làm
+        logs = os.path.join(root, "logs", SYSTEM)
+        n = c.redo_remove(runs_path, lambda r: r["task_id"] in a.redo and (not a.model or r["model"] in a.model),
+                          lambda r: [os.path.join(logs, f"{r['task_id']}__{r['model']}.*")])   # log .json/.err cũ
+        print(f"[redo] đã xóa sạch {n} kết quả cũ (dòng, log, thư mục run)")
     latest = c.latest_by(runs_path, key_of)                             # dòng mới nhất của mỗi bộ đã chạy
     items = [x for x in arrow_items if x["task_id"] in mine and (not a.model or x["model"] in a.model)]
     todo = []

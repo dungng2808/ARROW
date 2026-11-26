@@ -17,6 +17,7 @@ Kết quả: results/<máy>/chatunitest_runs.jsonl, proxy_calls.jsonl, suites/ch
     python3 tn3_chatunitest.py --machine dung --workers 2 --arrow ~/.local/share/arrow-dev/build-tn2/arrow
     Chạy khói (chốt 26/11, thay 50 lớp pilot): --smoke   → 2 lớp Maven của máy (1 JUnit 4, 1 JUnit 5) × 2 mô hình
     Chạy khói tùy chọn: --task <task_id> [--model gpt6luna]
+    Chạy lại và ghi đè kết quả thật: --redo <task_id> [--model qwen3coder-or]
 """
 import argparse          # tham số dòng lệnh
 import os                # đường dẫn
@@ -268,7 +269,8 @@ def main():
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")))
     ap.add_argument("--smoke", action="store_true", help="chạy khói: 2 lớp Maven của máy (1 JUnit 4, 1 JUnit 5) × 2 mô hình")
     ap.add_argument("--task", action="append", help="chạy khói: chỉ lớp này")
-    ap.add_argument("--model", action="append", help="chỉ mô hình này")
+    ap.add_argument("--model", action="append", help="chỉ chạy mô hình này (vd. GPT trước, Qwen sau khi nạp tiền)")
+    ap.add_argument("--redo", action="append", help="CHẠY LẠI lớp này và XÓA SẠCH kết quả, log, bộ test của lần chạy cũ (lặp lại được)")
     ap.add_argument("--limit", type=int)
     ap.add_argument("--retry-infra", action="store_true")
     ap.add_argument("--homes-dir")
@@ -276,7 +278,7 @@ def main():
     a = ap.parse_args()
 
     cfg = c.load_config()
-    smoke = bool(a.smoke or a.task or a.limit or a.model)      # mọi cách chạy thử đều ghi vào results/<máy>-smoke
+    smoke = bool(a.smoke or a.task or a.limit)       # chạy thử ghi vào results/<máy>-smoke; --model chỉ lọc mô hình (như tn3_arrow.py)
     root = c.out_root(a.machine, smoke)
     os.makedirs(root, exist_ok=True)
     version, commit = c.check_arrow(a.arrow)
@@ -284,7 +286,7 @@ def main():
     if a.smoke:
         mine = smoke_classes(c.select_classes(classes, a.part or a.machine))
     else:
-        mine = c.select_classes(classes, a.part or a.machine, a.task, a.limit)
+        mine = c.select_classes(classes, a.part or a.machine, a.redo or a.task, a.limit)
     models = a.model or cfg["chatunitest"]["models"]
     plugin_mvn = shutil.which("mvn") or shutil.which("mvn.cmd")   # Maven của máy, dùng để chạy plugin ChatUniTest
     if not plugin_mvn:
@@ -296,6 +298,15 @@ def main():
                                                    "client_model": CLIENT_MODEL, "models": models, "smoke": a.smoke,
                                                    "plugin_maven": plugin_mvn})
     runs_path = os.path.join(root, "chatunitest_runs.jsonl")
+    if a.redo:   # --redo: xóa dòng cũ của (lớp, mô hình) cần chạy lại → bên dưới coi là chưa làm
+        def old_files(r):                                      # log, bộ test, thư mục pit cũ của đúng (lớp, mô hình)
+            return [os.path.join(root, "logs", SYSTEM, r["task_id"], r["model"] + "__*"),
+                    os.path.join(root, "suites", SYSTEM, r["task_id"], r["model"])]
+        n = c.redo_remove(runs_path, lambda r: r["task_id"] in a.redo and r["model"] in models, old_files)
+        # các lượt gọi mô hình cũ của (lớp, mô hình) trong log proxy (nhãn bắt đầu bằng <task_id>__<mô hình>__)
+        c.redo_remove(os.path.join(root, "proxy_calls.jsonl"),
+                      lambda r: any((r.get("tag") or "").startswith(f"{t}__{m}__") for t in a.redo for m in models))
+        print(f"[redo] đã xóa sạch {n} kết quả cũ (dòng, log, bộ test, lượt gọi mô hình, thư mục run)")
     latest = c.latest_by(runs_path, key_of)
     todo = {}
     for cl in mine:

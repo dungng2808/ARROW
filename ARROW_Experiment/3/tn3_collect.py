@@ -18,6 +18,7 @@ Cờ đặc biệt (chốt khi chạy khói 26/11/2026, để phân tích tách 
     dep_breaks_baseline    thư viện thêm vào (runtime EvoSuite / starter ChatUniTest) làm mất test đạt có sẵn
     evo_classloader_reg    EvoSuite REGRESSION do classloader riêng rò sang test có sẵn (Spring/Mockito), không do thư viện
     mutation_not_measured  bộ VALID nhưng không đo được điểm đột biến (vd. pit_source = script-junit5-failed)
+    smell_not_measured     bộ VALID có phương thức @Test không public: tsDetect 2.2 chỉ dò test public → smell để trống
 
     python3 tn3_collect.py                 gom mọi máy
     python3 tn3_collect.py --allow-missing bỏ qua máy chưa có kết quả (xem trước khi các máy chạy xong)
@@ -26,6 +27,7 @@ import argparse          # tham số dòng lệnh
 import csv               # ghi CSV
 import json              # đọc JSON
 import os                # đường dẫn
+import re                # nhận ra phương thức @Test không public (giới hạn của tsDetect)
 import statistics        # trung vị
 
 import tn3_common as c   # thư viện chung TN3 (đọc jsonl, đường dẫn)
@@ -54,11 +56,41 @@ def latest(rows, keyfn):
     return out
 
 
+_NONPUBLIC_TEST = re.compile(r"@Test\b[^\n]*\n(?:\s*@[^\n]*\n)*\s*(?!public\b)(?:(?:protected|private|static|final|synchronized)\s+)*void\s+\w+\s*\(")
+
+
+def fix_smell(r):
+    """tsDetect 2.2 chỉ dò smell trong phương thức test `public` (kiểu JUnit 4). Bộ có phương thức @Test không public
+    (JUnit 5 cho phép, vd. ChatUniTest-GPT) thì tsDetect không dò được → mật độ smell 0 GIẢ. Với bộ đó: để trống
+    smell_density (không đo được) và gắn cờ smell_not_measured. Đọc bộ test cuối của arrow trong run_dir."""
+    r["smell_not_measured"] = False
+    if r.get("final_state") != "VALID" or not r.get("run_dir"):
+        return r
+    import glob as _glob
+    files = (_glob.glob(os.path.join(r["run_dir"], "targets", "*", "block3", "final.java"))
+             or _glob.glob(os.path.join(r["run_dir"], "targets", "*", "block2", "candidate.java")))
+    if not files and r.get("system") == "chatunitest" and r.get("_file_machine"):  # máy khác không nộp homes/ → đọc suites/
+        files = _glob.glob(os.path.join(c.HERE, "results", r["_file_machine"], "suites", "chatunitest",
+                                        r["task_id"], r["model"], "*.java"))
+    if not files:
+        return r
+    code = ""
+    for p in files:
+        with open(p, encoding="utf-8", errors="replace") as f:
+            code += f.read() + "\n"
+    if _NONPUBLIC_TEST.search(code):                          # có ít nhất một phương thức @Test không public
+        r["smell_density_tsdetect"] = r.get("smell_density")  # giữ số tsDetect báo để đối chiếu
+        r["smell_density"] = None
+        r["smell_not_measured"] = True
+    return r
+
+
 def flags(r, system):
     """Gắn các cờ đặc biệt cho một dòng kết quả."""
     f = {"valid_mutation_0": r.get("final_state") == "VALID" and r.get("mutation") == 0,
          "dep_breaks_baseline": r.get("baseline_check") == "DEP_BREAKS_BASELINE",
          "mutation_not_measured": r.get("final_state") == "VALID" and r.get("mutation") is None,
+         "smell_not_measured": bool(r.get("smell_not_measured")),
          "evo_classloader_reg": False}
     if system == "evosuite" and r.get("final_state") == "REGRESSION" and not f["dep_breaks_baseline"]:
         text = json.dumps(r.get("regressions") or [], ensure_ascii=False)      # loại lỗi và thông báo của các test hỏng
@@ -135,6 +167,9 @@ def main():
                  lambda r: (r["task_id"], r["config"], r["seed"]))
     cut = latest(raw["chatunitest"], lambda r: (r["task_id"], r["model"]))
     det = latest(raw["phat_hien_loi"], lambda r: (r["task_id"], r["system"], r["variant"]))
+    for d in (arrow, evo, cut):                                # mật độ smell giả = 0 do tsDetect bỏ qua test không public
+        for r in d.values():
+            fix_smell(r)
     not_done = {}
     for name, d in (("arrow", arrow), ("evosuite", evo), ("chatunitest", cut), ("phat_hien_loi", det)):
         bad = [k for k, r in d.items() if r.get("status") != "DONE"]
@@ -161,7 +196,7 @@ def main():
     # --- 5. Bảng dài từng hệ thống (gắn thông tin lớp + cờ) ---
     info_keys = ["task_id", "dataset", "class_fqn", "machine", "build_tool", "jdk", "framework", "vintage",
                  "evosuite_runnable", "chatunitest_applicable"]
-    flag_keys = ["valid_mutation_0", "dep_breaks_baseline", "evo_classloader_reg", "mutation_not_measured"]
+    flag_keys = ["valid_mutation_0", "dep_breaks_baseline", "evo_classloader_reg", "mutation_not_measured", "smell_not_measured"]
 
     def enrich(r, system):
         out = {k: cls[r["task_id"]].get(k) for k in info_keys}   # thông tin lớp từ danh sách đóng băng
@@ -245,7 +280,7 @@ def main():
     L = ["# TN3: kiểm tra dữ liệu đã gom", "", f"Sinh bởi `tn3_collect.py`, {c.now_iso()}. Bản tool: {all_commits}.", ""] + notes
     cnt = lambda rows, f: sum(1 for r in rows if r.get(f))
     L += ["", "## Cờ đặc biệt (số dòng)", "", "| Hệ thống | VALID mà mutation = 0 | Thư viện thêm làm hỏng test có sẵn | "
-          "EvoSuite REGRESSION do classloader | VALID nhưng không đo được mutation |", "|---|---:|---:|---:|---:|"]
+          "EvoSuite REGRESSION do classloader | VALID nhưng không đo được mutation | VALID nhưng không đo được smell (test không public) |", "|---|---:|---:|---:|---:|---:|"]
     for name, rows in (("ARROW", a_rows), ("EvoSuite", e_rows), ("ChatUniTest", c_rows)):
         L.append(f"| {name} | " + " | ".join(str(cnt(rows, f)) for f in flag_keys) + " |")
     with open(os.path.join(OUT, "kiem_tra.md"), "w", encoding="utf-8", newline="\n") as f:

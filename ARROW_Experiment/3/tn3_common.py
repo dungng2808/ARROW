@@ -1142,3 +1142,34 @@ def snap_summary(snap):
     return {"build_tool": ws.get("build_tool"), "jdk": ws.get("jdk_major"),
             "framework": (md.get("test_framework") or {}).get("name"),
             "vintage": (md.get("test_framework") or {}).get("vintage")}
+
+
+def redo_remove(runs_path, match, cleanup=None):
+    """Chạy lại một việc và XÓA SẠCH dấu vết lần chạy cũ (cờ --redo của các script; chốt 26/11/2026):
+      - xóa hẳn khỏi file kết quả mọi dòng khớp `match(dòng)` (không giữ bản sao nào);
+      - xóa thư mục run cũ của arrow (trường run_dir của dòng cũ, nằm trong homes/ của worker);
+      - xóa các file/thư mục do `cleanup(dòng)` trả về (log, bộ test cũ của đúng việc đó; mẫu glob cũng được).
+    Sau đó script coi việc đó là chưa làm và chạy lại; dòng mới ghi vào file kết quả như bình thường.
+    Trả về số dòng đã xóa."""
+    import glob as _glob
+    rows = read_jsonl(runs_path)
+    gone = [r for r in rows if match(r)]                       # dòng bị xóa
+    if not gone:
+        return 0
+    keep = [r for r in rows if not match(r)]                   # dòng giữ lại
+    with JSONL_LOCK:
+        tmp = runs_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:            # ghi file mới không còn dòng cũ (ghi file tạm rồi đổi tên)
+            for r in keep:
+                f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        os.replace(tmp, runs_path)
+    for r in gone:
+        paths = [r["run_dir"]] if r.get("run_dir") else []     # thư mục run cũ của arrow
+        paths += list(cleanup(r)) if cleanup else []           # log, bộ test cũ
+        for pat in paths:
+            for p in _glob.glob(pat):
+                if os.path.isdir(p):
+                    shutil.rmtree(p, ignore_errors=True)
+                elif os.path.exists(p):
+                    os.remove(p)
+    return len(gone)

@@ -189,6 +189,8 @@ def main():
     ap.add_argument("--arrow", default="arrow")
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")))
     ap.add_argument("--task", action="append")
+    ap.add_argument("--redo", action="append", help="CHẠY LẠI lớp này và XÓA SẠCH kết quả, log, bộ test của lần chạy cũ (lặp lại được)")
+    ap.add_argument("--system", action="append", help="kèm --redo: chỉ hệ thống này (arrow / evosuite / chatunitest / human)")
     ap.add_argument("--smoke", action="store_true", help="đọc/ghi results/<máy>-smoke")
     ap.add_argument("--keep-work", action="store_true")
     ap.add_argument("--homes-dir")
@@ -201,7 +203,7 @@ def main():
     c.ensure_evosuite()                                                # bản lỗi EvoSuite cần runtime trong ~/.m2
     cfg = c.load_config()
     classes, _ = tn3_lists.load_frozen()
-    mine = [cl for cl in c.select_classes(classes, a.part or a.machine, a.task) if cl["dataset"] == "gitbug-java"]   # chỉ GitBug-Java
+    mine = [cl for cl in c.select_classes(classes, a.part or a.machine, a.redo or a.task) if cl["dataset"] == "gitbug-java"]   # chỉ GitBug-Java
     manifest = {}                                                      # manifest GitBug-Java: test người viết ghép với lớp
     with open(os.path.join(c.base.FINAL_DIR, "gitbug_java_eval.jsonl"), encoding="utf-8") as f:
         for line in f:
@@ -210,6 +212,14 @@ def main():
                 manifest[r["task_id"]] = r
     c.lock_invocation(root, "tn3_phat_hien_loi.py", {"tool_version": version, "tool_commit": commit, "machine": a.machine})
     runs_path = os.path.join(root, "phat_hien_loi.jsonl")
+    if a.redo:   # --redo: xóa dòng cũ của lớp (và hệ thống) cần chạy lại → bên dưới coi là chưa làm
+        def old_files(r):                                      # log cũ của đúng (lớp, hệ thống, biến thể)
+            d = os.path.join(root, "logs", "phat_hien_loi", r["task_id"])
+            if r["system"] == "human":
+                return [os.path.join(d, f"human_{r['variant']}*")]
+            return [os.path.join(d, f"{r['system']}__{r['variant']}*")]
+        n = c.redo_remove(runs_path, lambda r: r["task_id"] in a.redo and (not a.system or r["system"] in a.system), old_files)
+        print(f"[redo] đã xóa sạch {n} kết quả cũ (dòng, log, thư mục run)")
     done = {(r["task_id"], r["system"], r["variant"]) for r in c.read_jsonl(runs_path) if r.get("status") == "DONE"}
     print(f"TN3 phát hiện lỗi · máy {a.machine} · {len(mine)} lớp GitBug-Java")
     if not mine:
