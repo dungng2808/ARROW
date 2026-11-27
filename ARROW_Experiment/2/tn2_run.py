@@ -13,6 +13,10 @@ Cách chạy (trong ARROW_Experiment/2):
 Chạy khói:  thêm --limit 1 (1 candidate, chỉ lần 1 = 8 chain) → results/<máy>-smoke/
 Bị ngắt / hết tiền: chạy lại đúng lệnh cũ, script bỏ qua chain đã xong.
 Lỗi hạ tầng: --retry-infra chạy lại các chain chưa DONE.
+Chạy lại một chain bất kỳ và ghi đè hoàn toàn: --redo <candidate_id>__<nhánh>__<mô hình sửa>__rep<k> (lặp lại được)
+    Xóa sạch kết quả cũ của chain (dòng trong tn2_runs.jsonl, thư mục run trong homes/, logs/<chain>.*,
+    report/final_code/<chain>.java, dòng trong report/tn2_chains.csv và tn2_rounds.csv), chạy lại chỉ chain đó,
+    rồi ghi kết quả mới vào report/ (không cần chạy tn2_collect.py cả máy). Kèm --limit thì làm trên results/<máy>-smoke.
 Đổi số worker khi đang chạy: ghi số mới vào results/<máy>/workers.txt.
 Chạy giúp phần của máy khác (chỉ khi Dung bảo): --part <máy kia>; kết quả vẫn ghi vào results/<máy mình>/.
 
@@ -20,10 +24,13 @@ Kết quả: results/<máy>/tn2_runs.jsonl (mỗi chain một dòng), logs/, tn2
 Xong thì chạy: python3 tn2_collect.py --machine <máy>
 """
 import argparse
+import csv
+import glob
 import hashlib
 import json
 import os
 import platform
+import shutil
 import sys
 import threading
 import time
@@ -116,6 +123,94 @@ def default_homes(machine, smoke):
 IS_WINDOWS = base.IS_WINDOWS
 
 
+def chain_name(rec):
+    """Tên chain như trong logs/ và report/final_code/: <candidate_id>__<nhánh>__<mô hình sửa>__rep<k>."""
+    return f"{rec['candidate_id']}__{rec['mechanism']}__{rec['repair_model']}__rep{rec['rep']}"
+
+
+def parse_chain(name, cands):
+    """--redo <chain> → (candidate, mô hình sửa, nhánh, lần); dừng nếu tên sai hoặc không thuộc phần này."""
+    parts = name.strip().rsplit("__", 3)
+    if len(parts) != 4 or not parts[3].startswith("rep") or not parts[3][3:].isdigit():
+        raise SystemExit(f"--redo '{name}': cần dạng <candidate_id>__<nhánh>__<mô hình sửa>__rep<k>")
+    cid, mech, rm, rep = parts[0], parts[1], parts[2], int(parts[3][3:])
+    by_id = {c["candidate_id"]: c for c in cands}
+    if cid not in by_id:
+        raise SystemExit(f"--redo '{name}': candidate {cid} không thuộc phần này (hoặc ngoài --limit)")
+    if mech not in MECHANISMS or rm not in REPAIR_MODELS or not 1 <= rep <= REPS:
+        raise SystemExit(f"--redo '{name}': nhánh phải thuộc {MECHANISMS}, mô hình sửa {REPAIR_MODELS}, lần 1–{REPS}")
+    return by_id[cid], rm, mech, rep
+
+
+def redo_remove(root, runs_path, keys):
+    """XÓA SẠCH kết quả cũ của các chain `keys` (chain_key) trước khi chạy lại (--redo):
+      - mọi dòng của chain trong tn2_runs.jsonl (kể cả dòng INFRA), ghi file mới qua file tạm;
+      - thư mục run cũ (run_dir của các dòng đó, trong homes/);
+      - logs/<chain>.err, logs/<chain>.json, report/final_code/<chain>.java;
+      - dòng của chain trong report/tn2_chains.csv và report/tn2_rounds.csv.
+    Trả về số dòng đã xóa khỏi tn2_runs.jsonl."""
+    rows = []
+    if os.path.exists(runs_path):
+        with open(runs_path, encoding="utf-8") as f:
+            rows = [json.loads(line) for line in f if line.strip()]
+    gone = [r for r in rows if chain_key(r) in keys]
+    if gone:
+        tmp = runs_path + ".tmp"
+        with open(tmp, "w", encoding="utf-8") as f:
+            for r in rows:
+                if chain_key(r) not in keys:
+                    f.write(json.dumps(r, ensure_ascii=False) + "\n")
+        os.replace(tmp, runs_path)
+    names = {chain_name(r) for r in gone}
+    for r in gone:
+        if r.get("run_dir") and os.path.isdir(r["run_dir"]):
+            shutil.rmtree(r["run_dir"], ignore_errors=True)
+    for n in names:
+        for pat in (os.path.join(root, "logs", n + ".*"), os.path.join(root, "report", "final_code", n + ".java")):
+            for path in glob.glob(pat):
+                os.remove(path)
+    rep_keys = {tuple(str(x) for x in k) for k in keys}
+    for fn in ("tn2_chains.csv", "tn2_rounds.csv"):
+        path = os.path.join(root, "report", fn)
+        if not os.path.exists(path):
+            continue
+        with open(path, encoding="utf-8", newline="") as f:
+            rd = csv.DictReader(f)
+            cols, keep = rd.fieldnames, [row for row in rd if tuple(row.get(k) for k in
+                                         ("task_id", "model", "strategy", "repair_model", "mechanism", "rep")) not in rep_keys]
+        with open(path, "w", encoding="utf-8", newline="") as f:
+            w = csv.DictWriter(f, fieldnames=cols)
+            w.writeheader()
+            w.writerows(keep)
+    return len(gone)
+
+
+def redo_report(root, runs_path, keys):
+    """Sau khi chạy lại: gom riêng các chain `keys` từ homes/ (như tn2_collect.py) và nối vào report/."""
+    import tn2_collect as col                         # nhập ở đây để tránh vòng lặp import
+    rep_dir, fc_dir = os.path.join(root, "report"), os.path.join(root, "report", "final_code")
+    os.makedirs(fc_dir, exist_ok=True)
+    latest = read_latest(runs_path)
+    new_chains, new_rounds = [], []
+    for k in sorted(keys, key=lambda k: tuple(str(x) for x in k)):
+        rec = latest.get(k)
+        if rec is None:
+            continue
+        got = col.collect(rec, fc_dir) if rec.get("status") == "DONE" else None
+        if got is None:
+            row = {x: rec.get(x) for x in col.KEY_COLS}
+            row.update(candidate_id=rec.get("candidate_id"), status=rec.get("status"), result=rec.get("result"),
+                       machine=rec.get("machine"), n_rounds_logged=0)
+            new_chains.append(row)
+        else:
+            new_chains.append(got[0])
+            new_rounds += got[1]
+    for fn, add in (("tn2_chains.csv", new_chains), ("tn2_rounds.csv", new_rounds)):
+        path = os.path.join(rep_dir, fn)
+        col.write_csv(path, col.read_csv(path) + add)
+    return len(new_chains), len(new_rounds)
+
+
 def main():
     ap = argparse.ArgumentParser(description="Chạy TN2 (RQ1b, RQ2) trên phần của một máy.")
     ap.add_argument("--machine", required=True, help="tên máy: dung / chinh / kieuanh / quang / han")
@@ -123,6 +218,9 @@ def main():
     ap.add_argument("--workers", type=int, default=4, help="số candidate chạy cùng lúc (mặc định 4)")
     ap.add_argument("--limit", type=int, help="chạy khói: N candidate đầu, chỉ lần 1 → results/<máy>-smoke")
     ap.add_argument("--retry-infra", action="store_true", help="chạy lại các chain chưa DONE (lỗi hạ tầng)")
+    ap.add_argument("--redo", action="append", metavar="CHAIN",
+                    help="CHẠY LẠI chain này và XÓA SẠCH kết quả cũ (jsonl, homes, logs, report); "
+                         "dạng <candidate_id>__<nhánh>__<mô hình sửa>__rep<k>; lặp lại được")
     ap.add_argument("--base-home", default=os.environ.get("ARROW_HOME", os.path.expanduser("~/.arrow")),
                     help="ARROW_HOME đã cấu hình mô hình, JDK, prompt (mặc định ~/.arrow)")
     ap.add_argument("--arrow", default="arrow", help=f"lệnh arrow bản {REPAIR_COMMIT}")
@@ -187,9 +285,21 @@ def main():
     reps = [1] if smoke else list(range(1, REPS + 1))
     if smoke:
         cands = cands[:args.limit]
+    redo_keys = set()
+    if args.redo:                                      # --redo: chỉ chạy đúng các chain này, sau khi xóa sạch bản cũ
+        if args.retry_infra:
+            raise SystemExit("--redo không dùng chung với --retry-infra.")
+        want = [parse_chain(n, cands) for n in args.redo]
+        if smoke and any(rep != 1 for _, _, _, rep in want):
+            raise SystemExit("--redo kèm --limit (chạy khói) chỉ có lần 1.")
+        redo_keys = {(c["task_id"], c["model"], c["strategy"], rm, mech, rep) for c, rm, mech, rep in want}
+        n = redo_remove(root, runs_path, redo_keys)
+        print(f"[redo] đã xóa sạch {n} dòng cũ của {len(redo_keys)} chain (dòng, thư mục run, log, report)", flush=True)
     latest = read_latest(runs_path)
 
     def needs(c, rm, mech, rep):
+        if redo_keys:
+            return (c["task_id"], c["model"], c["strategy"], rm, mech, rep) in redo_keys
         rec = latest.get((c["task_id"], c["model"], c["strategy"], rm, mech, rep))
         return (rec is None or rec["status"] == "STOPPED"              # STOPPED: dừng vì hết tiền → chạy lại
                 or (args.retry_infra and rec["status"] != "DONE"))
@@ -289,6 +399,10 @@ def main():
                 base.kill_tree(p)
         raise SystemExit("Đã dừng. Chạy lại đúng lệnh cũ để làm tiếp.")
 
+    if redo_keys:
+        nc, nr = redo_report(root, runs_path, redo_keys)
+        print(f"[redo] đã ghi {nc} chain, {nr} vòng sửa mới vào report/", flush=True)
+
     latest = read_latest(runs_path)
     summary = {}
     for rec in latest.values():
@@ -301,8 +415,9 @@ def main():
     if base.STOP.is_set():
         base.notify_stop(root, " ".join(["python"] + sys.argv))
         sys.exit(3)
-    print(f"\nXong phần chạy. Bước tiếp: python tn2_collect.py --machine {args.machine}"
-          + (" --smoke" if smoke else ""))
+    if not redo_keys:
+        print(f"\nXong phần chạy. Bước tiếp: python tn2_collect.py --machine {args.machine}"
+              + (" --smoke" if smoke else ""))
 
 
 if __name__ == "__main__":
